@@ -661,6 +661,8 @@
 
   Calculations["parsing.lr.lalr1_automaton"] = function(grammar) {
     
+    var i, j;
+    
     // Get the LR1 automaton.
     
     var automaton = grammar.calculate("parsing.lr.lr1_automaton");

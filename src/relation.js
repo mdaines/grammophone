@@ -19,7 +19,8 @@ var Relation = {
   // (floyd-warshall)
   
   closure: function(relation) {
-  
+    
+    var i, j, k;
     var result = {};
     var keys = {};
   
@@ -58,6 +59,8 @@ var Relation = {
   // Propagate the immediate relation using the (closure of the) propagation relation.
   
   propagate: function(immediate, propagation) {
+    
+    var k, l, s, t, u;
   
     var result = {};
     var closed = this.closure(propagation);
@@ -89,7 +92,7 @@ var Relation = {
   
     function dfs(k, v) {
     
-      var w, i, l;
+      var w, l;
     
       for (l in relation[k]) {
         
