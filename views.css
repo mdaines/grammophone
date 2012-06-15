@@ -1,6 +1,7 @@
 table {
   border-collapse: collapse;
   border: hidden;
+  background: #fff;
 }
 
 td, th {
@@ -54,6 +55,17 @@ td.conflict {
 tr.conflict td {
   background: #fcc;
   border-color: #dbb;
+}
+
+table.relation td {
+  text-align: left;
+  border-right: 0;
+  border-left: 0;
+}
+
+table.relation .e {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 table.ll1 .t {
