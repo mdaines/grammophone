@@ -8,7 +8,7 @@ Calculations["grammar.nonterminals"] = function(grammar) {
 
   return nonterminals;
   
-}
+};
 
 Calculations["grammar.terminals"] = function(grammar) {
   
@@ -27,7 +27,7 @@ Calculations["grammar.terminals"] = function(grammar) {
 
   return terminals;
   
-}
+};
 
 Calculations["grammar.symbol_info"] = function(grammar) {
   
@@ -52,19 +52,19 @@ Calculations["grammar.symbol_info"] = function(grammar) {
     terminals: terminals
   };
   
-}
+};
 
 Calculations["grammar.start"] = function(grammar) {
   
   return grammar.productions[0][0];
   
-}
+};
 
 Calculations["grammar.productions"] = function(grammar) {
   
   return grammar.productions;
   
-}
+};
 
 Calculations["grammar.unreachable"] = function(grammar) {
     
@@ -105,7 +105,7 @@ Calculations["grammar.unreachable"] = function(grammar) {
   
   return unreachable;
   
-}
+};
 
 Calculations["grammar.unrealizable"] = function(grammar) {
   
@@ -159,7 +159,7 @@ Calculations["grammar.unrealizable"] = function(grammar) {
   
   return unrealizable;
   
-}
+};
 
 Calculations["grammar.cycle"] = function(grammar) {
   
@@ -200,7 +200,7 @@ Calculations["grammar.cycle"] = function(grammar) {
   
   return Relation.cycle(relation);
   
-}
+};
 
 Calculations["grammar.nullable"] = function(grammar) {
   
@@ -232,7 +232,7 @@ Calculations["grammar.nullable"] = function(grammar) {
 
   return nullable;
   
-}
+};
 
 Calculations["grammar.first"] = function(grammar) {
   
@@ -288,7 +288,7 @@ Calculations["grammar.first"] = function(grammar) {
 
   return Relation.propagate(immediate, propagation);
   
-}
+};
 
 Calculations["grammar.follow"] = function(grammar) {
   
@@ -371,7 +371,7 @@ Calculations["grammar.follow"] = function(grammar) {
 
   return Relation.propagate(immediate, propagation);
 
-}
+};
 
 Calculations["grammar.endable"] = function(grammar) {
   
@@ -386,4 +386,4 @@ Calculations["grammar.endable"] = function(grammar) {
   
   return endable;
   
-}
+};

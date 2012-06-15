@@ -25,7 +25,7 @@
     <section id="results">
     </section>
     
-    <script src="../zepto.js"></script>
+    <script src="../lib/zepto.js"></script>
     <script src="../src/relation.js"></script>
     <script src="../src/set.js"></script>
     <script src="../src/parser.js"></script>
@@ -122,9 +122,12 @@
       var passing = true;
       
       passing &= assertProductions("A -> a | b.", [["A", "a"], ["A", "b"]]);
+      passing &= assertProductions("A -> a. B -> b.", [["A", "a"], ["B", "b"]]);
+      passing &= assertProductions("A->a.", [["A", "a"]]);
       passing &= assertProductions("1 -> 5 6.", [["1", "5", "6"]]);
       passing &= assertProductions("** -> 42.", [["**", "42"]]);
       passing &= assertProductions("A -> x - y.", [["A", "x", "-", "y"]]);
+      passing &= assertProductions("-->-. - -> -.", [["-", "-"], ["-", "-"]]);
       passing &= assertProductions("A -> x > y.", [["A", "x", ">", "y"]]);
       passing &= assertProductions("\"x.y\" -> \" \" \"->\".", [["x.y", " ", "->"]]);
       passing &= assertProductions("A -> \\\".", [["A", "\""]]);

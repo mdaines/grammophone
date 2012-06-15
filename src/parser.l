@@ -17,7 +17,8 @@ var quotedString;
 <INITIAL><<EOF>> { return "EOF"; }
 
 <INITIAL>"\\". { yytext = yytext.slice(1); return "NAME"; }
-<INITIAL>[^\s|.]+ { return "NAME"; }
+<INITIAL>[^\s-|.]+ { return "NAME"; }
+<INITIAL>"-"     { return "NAME"; }
 
 <INITIAL>. { return "INVALID"; }
 

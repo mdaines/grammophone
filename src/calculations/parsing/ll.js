@@ -52,4 +52,4 @@ Calculations["parsing.ll.ll1_table"] = function(grammar) {
   
   return table;
   
-}
+};

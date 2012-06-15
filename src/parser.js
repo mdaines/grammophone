@@ -373,12 +373,14 @@ case 9: yy_.yytext = yy_.yytext.slice(1); return "NAME";
 break;
 case 10: return "NAME"; 
 break;
-case 11: return "INVALID"; 
+case 11: return "NAME"; 
+break;
+case 12: return "INVALID"; 
 break;
 }
 };
-lexer.rules = [/^"/,/^[\"]/,/^$/,/^[^\"]*/,/^\s+/,/^->/,/^\|/,/^\./,/^$/,/^\\./,/^[^\s|.]+/,/^./];
-lexer.conditions = {"QUOTED":{"rules":[1,2,3],"inclusive":true},"INITIAL":{"rules":[0,4,5,6,7,8,9,10,11],"inclusive":true}};
+lexer.rules = [/^"/,/^[\"]/,/^$/,/^[^\"]*/,/^\s+/,/^->/,/^\|/,/^\./,/^$/,/^\\./,/^[^\s-|.]+/,/^-/,/^./];
+lexer.conditions = {"QUOTED":{"rules":[1,2,3],"inclusive":true},"INITIAL":{"rules":[0,4,5,6,7,8,9,10,11,12],"inclusive":true}};
 return lexer;})()
 parser.lexer = lexer;
 return parser;
