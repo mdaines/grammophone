@@ -1,0 +1,21 @@
+var TEST_GRAMMARS = [
+  { name: "Unreachable", productions: ["A", "B"] },
+  { name: "Unrealizable (test10.cfg)", productions: ["A B", "A x C", "A y A", "B C B", "C r"] },
+  { name: "Cycle", productions: ["A B", "B C", "C A"] },
+  { name: "Nullable", productions: ["A B C", "B b", "C c", "C"] },
+  { name: "Integer expression grammar (Louden, p. 170)", productions: ["E A T", "E T", "A + -", "T T M F", "T F", "M *", "F ( E )", "F n"] },
+  { name: "Statement sequences (Louden, p. 173)", productions: ["Q S Q'", "Q' ; Q", "Q'", "S s"] },
+  { name: "Assignment and call statements (Louden, p. 189)", productions: ["S A", "S C", "S o", "A i eq e", "C i ( l )"] },
+  { name: "lexp (Louden, p. 190)", productions: ["L n", "L ( O S )", "O +", "O -", "O *", "S S L", "S L"] },
+  { name: "Balanced parentheses (Louden, p. 199)", productions: ["S ( S ) S", "S"] },
+  { name: "Dangling else (Louden, p. 213)", productions: ["S I", "S other", "I if S", "I if S else S"] },
+  { name: "Parentheses (Louden, p. 218)", productions: ["A ( A )", "A a"] },
+  { name: "Statements (Louden, p. 222)", productions: ["S id", "S V := E", "V id", "E V", "E n"] },
+  { name: "test16.cfg", productions: ["TERM id", "TERM id INDEX", "TERM let LEXP", "LEXP INDEX LEXP", "LEXP id", "INDEX lpar TERM rpar"] },
+  { name: "test18.cfg", productions: ["A A B", "A B C", "B x A", "B A y", "B C n", "C z", "C r"] },
+  { name: "test22.cfg", productions: ["A B a", "B b C", "B c", "C a B", "C"] },
+  { name: "Two kinds of brackets (class notes)", productions: ["A B ( A B )", "A", "B A *( B A )*", "B"] },
+  { name: "Two kinds of brackets variation (class notes)", productions: ["A B ( B A )", "A", "B B *( A B )*", "B"] },
+  { name: "LALR(1) grammar (CS143 handout)", productions: ["S B b b", "S a a b", "S b B a", "B a"] },
+  { name: "LALR merge conflicts (CS143 handout)", productions: ["S a B c", "S b C c", "S a C d", "S b B d", "B e", "C e"] }
+];

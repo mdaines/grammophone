@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Parsing</title>
+    <link rel="stylesheet" href="views.css">
+    <style>
+      
+      section {
+        margin: 1em 0;
+      }
+      
+      pre.error {
+        color: red;
+      }
+      
+    </style>
+  </head>
+  <body>
+    
+    <script src="zepto.js"></script>
+    <script src="../src/relation.js"></script>
+    <script src="../src/set.js"></script>
+    <script src="../src/parser.js"></script>
+    <script src="../src/grammar.js"></script>
+    <script src="../src/calculations.js"></script>
+    <script src="../src/calculations/grammar.js"></script>
+    <script src="../src/helpers.js"></script>
+    <script src="../src/views.js"></script>
+    <script src="../src/views/productions.js"></script>
+    <script>
+    
+      function appendParseTest(spec) {
+        
+        var wrap = $("<section></section>");
+      
+        wrap.append("<pre>" + Helpers.escapeHTML(spec) + "</pre>");
+        
+        try {
+        
+          var grammar = Grammar.parse(spec);
+      
+          var view = new Views["productions"]();
+      
+          view.update({
+            productions: grammar.calculate("grammar.productions"),
+            info: grammar.calculate("grammar.symbol_info"),
+          });
+      
+          wrap.append(view.element);
+          
+        } catch (e) {
+          
+          wrap.append("<pre class=\"error\">" + Helpers.escapeHTML(e.toString()) + "</pre>");
+          
+        }
+      
+        $(document.body).append(wrap);
+        
+      }
+      
+      appendParseTest("A -> a | b.");
+      appendParseTest("A -> a | b. xyz");
+      appendParseTest("A -> a | b. 1 -> 5 6. *** -> 42.");
+      
+    </script>
+    
+  </body>
+</html>
