@@ -351,24 +351,34 @@ lexer.performAction = function anonymous(yy,yy_,$avoiding_name_collisions,YY_STA
 
 var YYSTATE=YY_START
 switch($avoiding_name_collisions) {
-case 0: 
+case 0: this.begin("QUOTED"); quotedString = ""; 
 break;
-case 1: return "NAME" 
+case 1: this.begin("INITIAL"); yy_.yytext = quotedString; return "NAME"; 
 break;
-case 2: return "ARROW" 
+case 2: return "INVALID"; 
 break;
-case 3: return "CHOICE" 
+case 3: quotedString += yy_.yytext; 
 break;
-case 4: return "STOP" 
+case 4: 
 break;
-case 5: return "EOF" 
+case 5: return "ARROW"; 
 break;
-case 6: return "INVALID" 
+case 6: return "CHOICE"; 
+break;
+case 7: return "STOP"; 
+break;
+case 8: return "EOF"; 
+break;
+case 9: yy_.yytext = yy_.yytext.slice(1); return "NAME"; 
+break;
+case 10: return "NAME"; 
+break;
+case 11: return "INVALID"; 
 break;
 }
 };
-lexer.rules = [/^\s+/,/^[^\s\->|.]+/,/^->/,/^\|/,/^\./,/^$/,/^./];
-lexer.conditions = {"INITIAL":{"rules":[0,1,2,3,4,5,6],"inclusive":true}};
+lexer.rules = [/^"/,/^[\"]/,/^$/,/^[^\"]*/,/^\s+/,/^->/,/^\|/,/^\./,/^$/,/^\\./,/^[^\s|.]+/,/^./];
+lexer.conditions = {"QUOTED":{"rules":[1,2,3],"inclusive":true},"INITIAL":{"rules":[0,4,5,6,7,8,9,10,11],"inclusive":true}};
 return lexer;})()
 parser.lexer = lexer;
 return parser;

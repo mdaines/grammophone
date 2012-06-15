@@ -5,18 +5,25 @@
     <title>Parsing</title>
     <link rel="stylesheet" href="views.css">
     <style>
-      
-      section {
+    
+      article {
         margin: 1em 0;
       }
-      
-      pre.error {
-        color: red;
+    
+      article.fail {
+        background: #fcc;
+      }
+    
+      article.pass {
+        background: #cfc;
       }
       
     </style>
   </head>
   <body>
+    
+    <section id="results">
+    </section>
     
     <script src="zepto.js"></script>
     <script src="../src/relation.js"></script>
@@ -29,39 +36,110 @@
     <script src="../src/views.js"></script>
     <script src="../src/views/productions.js"></script>
     <script>
-    
-      function appendParseTest(spec) {
+      
+      function productionsEqual(a, b) {
         
-        var wrap = $("<section></section>");
-      
-        wrap.append("<pre>" + Helpers.escapeHTML(spec) + "</pre>");
+        var i, j;
         
-        try {
+        if (a.length !== b.length)
+          return false;
         
-          var grammar = Grammar.parse(spec);
-      
-          var view = new Views["productions"]();
-      
-          view.update({
-            productions: grammar.calculate("grammar.productions"),
-            info: grammar.calculate("grammar.symbol_info"),
-          });
-      
-          wrap.append(view.element);
+        for (i = 0; i < a.length; i++) {
+          if (a[i].length !== b[i].length)
+            return false;
           
-        } catch (e) {
-          
-          wrap.append("<pre class=\"error\">" + Helpers.escapeHTML(e.toString()) + "</pre>");
-          
+          for (j = 0; j < a[i].length; j++) {
+            if (a[i][j] !== b[i][j])
+              return false;
+          }
         }
-      
-        $(document.body).append(wrap);
+        
+        return true;
         
       }
       
-      appendParseTest("A -> a | b.");
-      appendParseTest("A -> a | b. xyz");
-      appendParseTest("A -> a | b. 1 -> 5 6. *** -> 42.");
+      function inspectProductionsAsList(productions) {
+        
+        return "<ul class=\"p\">" + productions.map(function(p) {
+          
+          return "<li>" +
+            "<b>" + Helpers.escapeHTML(p[0]) + "</b> &rarr; " +
+            p.slice(1).map(function(s) { return "<b>" + Helpers.escapeHTML(s) + "</b>"; }) +
+            "</li>";
+          
+        }) + "</ul>";
+        
+      }
+      
+      function fail(message) {
+        
+        $("#results").append("<article class=\"fail\">" + message + "</article>");
+        
+      }
+      
+      function assertProductions(spec, expected) {
+        
+        var grammar;
+        var i, j;
+        
+        try {
+          
+          grammar = Grammar.parse(spec);
+          
+          if (!productionsEqual(expected, grammar.productions)) {
+            fail("<p>Expected:</p>" + inspectProductionsAsList(expected) + "<p>Actual:</p>" + inspectProductionsAsList(grammar.productions) + "<p>Spec:</p><pre>" + spec + "</pre>");
+            return false;
+          }
+          
+        } catch (e) {
+          
+          fail("<p>Unexpected parse error:</p><pre>" + e.toString() + "</pre><p>Spec:</p><pre>" + spec + "</pre>");
+          return false;
+          
+        }
+        
+        return true;
+        
+      }
+      
+      function assertParseError(spec) {
+        
+        try {
+          
+          var grammar = Grammar.parse(spec);
+          
+          fail("<p>Expected parse error for spec, none thrown:</p><pre>" + spec + "</pre>");
+          return false;
+          
+        } catch (e) {
+          
+          return true;
+          
+        }
+        
+      }
+      
+      var passing = true;
+      
+      passing &= assertProductions("A -> a | b.", [["A", "a"], ["A", "b"]]);
+      passing &= assertProductions("1 -> 5 6.", [["1", "5", "6"]]);
+      passing &= assertProductions("** -> 42.", [["**", "42"]]);
+      passing &= assertProductions("A -> x - y.", [["A", "x", "-", "y"]]);
+      passing &= assertProductions("A -> x > y.", [["A", "x", ">", "y"]]);
+      passing &= assertProductions("\"x.y\" -> \" \" \"->\".", [["x.y", " ", "->"]]);
+      passing &= assertProductions("A -> \\\".", [["A", "\""]]);
+      passing &= assertProductions("A -> \\..", [["A", "."]]);
+      
+      passing &= assertParseError("A -> a. B");
+      passing &= assertParseError("A.y -> a.");
+      passing &= assertParseError("A B -> a.");
+      passing &= assertParseError("A -> a. ->");
+      passing &= assertParseError("-> X");
+      passing &= assertParseError("A");
+      passing &= assertParseError("A -> \"x");
+      
+      if (passing)
+        $("#results").append("<article class=\"pass\">Passed!</article>");
       
     </script>
     

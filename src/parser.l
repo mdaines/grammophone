@@ -1,14 +1,24 @@
+var quotedString;
+
+%s QUOTED
+
 %%
 
-\s+ { }
+<INITIAL>"\"" { this.begin("QUOTED"); quotedString = ""; }
+<QUOTED>[\"] { this.begin("INITIAL"); yytext = quotedString; return "NAME"; }
+<QUOTED><<EOF>> { return "INVALID"; }
+<QUOTED>[^\"]* { quotedString += yytext; }
 
-[^\s\->|.]+ { return "NAME" }
+<INITIAL>\s+ { }
 
-"->"    { return "ARROW" }
-"|"     { return "CHOICE" }
-"."     { return "STOP" }
-<<EOF>> { return "EOF" }
+<INITIAL>"->"    { return "ARROW"; }
+<INITIAL>"|"     { return "CHOICE"; }
+<INITIAL>"."     { return "STOP"; }
+<INITIAL><<EOF>> { return "EOF"; }
 
-. { return "INVALID" }
+<INITIAL>"\\". { yytext = yytext.slice(1); return "NAME"; }
+<INITIAL>[^\s|.]+ { return "NAME"; }
+
+<INITIAL>. { return "INVALID"; }
 
 %%
