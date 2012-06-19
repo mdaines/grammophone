@@ -19,14 +19,20 @@ var Helpers = function() {
     
   }
   
+  function prettifySymbol(symbol) {
+    
+    return symbol.replace(/'/g, "&prime;").replace(/_(.+)$/, "<sub>$1</sub>").replace(/\^(.+)$/, "<sup>$1</sup>");
+    
+  }
+  
   function formatSymbol(symbol, info) {
     
     if (symbol == Grammar.END)
       return "<u>$</u>";
     else if (info.nonterminals[symbol])
-      return "<i>" + escapeHTML(symbol) + "</i>";
+      return "<i>" + prettifySymbol(escapeHTML(symbol)) + "</i>";
     else if (info.terminals[symbol])
-      return "<b>" + escapeHTML(symbol) + "</b>";
+      return "<b>" + prettifySymbol(escapeHTML(symbol)) + "</b>";
     else
       throw "Unknown symbol: " + symbol;
     

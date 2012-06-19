@@ -4,6 +4,7 @@ var TEST_GRAMMARS = [
   { name: "Cycle", productions: ["A B", "B C", "C A"] },
   { name: "Nullable", productions: ["A B C", "B b", "C c", "C"] },
   { name: "Ambiguously Nullable", productions: ["A B", "A", "B"] },
+  { name: "Prettify", productions: ["A' a'", "A''' a'''", "B^2 b^2", "B_12 b_12"] },
   { name: "Integer expression grammar (Louden, p. 170)", productions: ["E A T", "E T", "A + -", "T T M F", "T F", "M *", "F ( E )", "F n"] },
   { name: "Statement sequences (Louden, p. 173)", productions: ["Q S Q'", "Q' ; Q", "Q'", "S s"] },
   { name: "Assignment and call statements (Louden, p. 189)", productions: ["S A", "S C", "S o", "A i eq e", "C i ( l )"] },
