@@ -23,8 +23,8 @@ Views["sanity"] = (function() {
     else
       list.append("<li>The grammar contains no cycles.</li>");
 
-    if (params.ambiguouslyNullable)
-      list.append("<li>The grammar is ambiguously nullable.</li>");
+    if (params.nullAmbiguity.length > 0)
+      list.append("<li>The grammar contains a null ambiguity: " + Helpers.formatProduction(params.productions[params.nullAmbiguity[0]], params.info) + " and " + Helpers.formatProduction(params.productions[params.nullAmbiguity[1]], params.info) + " are ambiguously nullable.</li>");
     else
       list.append("<li>The grammar is null unambiguous.</li>");
     

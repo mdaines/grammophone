@@ -202,7 +202,7 @@ Calculations["grammar.cycle"] = function(grammar) {
   
 };
 
-Calculations["grammar.ambiguouslyNullable"] = function(grammar) {
+Calculations["grammar.nullAmbiguity"] = function(grammar) {
   
   var nonterminals = grammar.calculate("grammar.nonterminals");
   var nullable = grammar.calculate("grammar.nullable");
@@ -214,9 +214,9 @@ Calculations["grammar.ambiguouslyNullable"] = function(grammar) {
     
     // Look through the productions of this nonterminal for
     // productions which are nullable. If we find more than
-    // one, return true.
+    // one, return them as an array.
     
-    found = false;
+    found = undefined;
     
     for (i = 0; i < grammar.productions.length; i++) {
       
@@ -226,10 +226,10 @@ Calculations["grammar.ambiguouslyNullable"] = function(grammar) {
         
         if (grammar.productions[i].length == 1) {
           
-          if (found)
-            return true;
+          if (typeof found !== "undefined")
+            return [i, found];
           else
-            found = true;
+            found = i;
           
           continue;
           
@@ -247,9 +247,9 @@ Calculations["grammar.ambiguouslyNullable"] = function(grammar) {
         if (j == grammar.productions[i].length) {
           
           if (found)
-            return true;
+            return [i, found];
           else
-            found = true;
+            found = i;
           
         }
         
@@ -259,7 +259,7 @@ Calculations["grammar.ambiguouslyNullable"] = function(grammar) {
     
   }
   
-  return false;
+  return [];
   
 }
 
