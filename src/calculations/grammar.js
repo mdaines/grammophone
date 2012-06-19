@@ -29,7 +29,7 @@ Calculations["grammar.terminals"] = function(grammar) {
   
 };
 
-Calculations["grammar.symbol_info"] = function(grammar) {
+Calculations["grammar.symbolInfo"] = function(grammar) {
   
   var i, j, s;
   

@@ -8,7 +8,7 @@ tests["sanity"] = {
     cycle: "grammar.cycle",
     nullAmbiguity: "grammar.nullAmbiguity",
     productions: "grammar.productions",
-    info: "grammar.symbol_info"
+    info: "grammar.symbolInfo"
   }
 };
 
@@ -19,7 +19,7 @@ tests["vitals"] = {
     endable: "grammar.endable",
     first: "grammar.first",
     follow: "grammar.follow",
-    info: "grammar.symbol_info"
+    info: "grammar.symbolInfo"
   }
 }
 
@@ -28,7 +28,7 @@ tests["ll1"] = {
   calculations: {
     table: "parsing.ll.ll1_table",
     productions: "grammar.productions",
-    info: "grammar.symbol_info"
+    info: "grammar.symbolInfo"
   }
 }
 
@@ -39,7 +39,7 @@ tests["lr0"] = {
     table: "parsing.lr.lr0_table",
     productions: "grammar.productions",
     start: "grammar.start",
-    info: "grammar.symbol_info"
+    info: "grammar.symbolInfo"
   }
 }
 
@@ -50,7 +50,7 @@ tests["slr1"] = {
     table: "parsing.lr.slr1_table",
     productions: "grammar.productions",
     start: "grammar.start",
-    info: "grammar.symbol_info"
+    info: "grammar.symbolInfo"
   }
 }
 
@@ -61,7 +61,7 @@ tests["lr1"] = {
     table: "parsing.lr.lr1_table",
     productions: "grammar.productions",
     start: "grammar.start",
-    info: "grammar.symbol_info"
+    info: "grammar.symbolInfo"
   }
 }
 
@@ -72,6 +72,6 @@ tests["lalr1"] = {
     table: "parsing.lr.lalr1_table",
     productions: "grammar.productions",
     start: "grammar.start",
-    info: "grammar.symbol_info"
+    info: "grammar.symbolInfo"
   }
 }

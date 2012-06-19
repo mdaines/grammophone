@@ -93,7 +93,7 @@
           var productions = new Views["productions"]();
           productions.update({
             productions: g.grammar.calculate("grammar.productions"),
-            info: g.grammar.calculate("grammar.symbol_info"),
+            info: g.grammar.calculate("grammar.symbolInfo"),
           });
           $("#results").append(productions.element);
           
