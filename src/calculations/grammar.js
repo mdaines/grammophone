@@ -202,6 +202,67 @@ Calculations["grammar.cycle"] = function(grammar) {
   
 };
 
+Calculations["grammar.ambiguouslyNullable"] = function(grammar) {
+  
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var nullable = grammar.calculate("grammar.nullable");
+  var found;
+  
+  // For each nonterminal...
+  
+  for (nt in nonterminals) {
+    
+    // Look through the productions of this nonterminal for
+    // productions which are nullable. If we find more than
+    // one, return true.
+    
+    found = false;
+    
+    for (i = 0; i < grammar.productions.length; i++) {
+      
+      if (grammar.productions[i][0] == nt) {
+        
+        // An empty production is nullable.
+        
+        if (grammar.productions[i].length == 1) {
+          
+          if (found)
+            return true;
+          else
+            found = true;
+          
+          continue;
+          
+        }
+        
+        // A production is nullable if all of its symbols are nullable.
+      
+        for (j = 1; j < grammar.productions[i].length; j++) {
+        
+          if (!nullable[grammar.productions[i][j]])
+            break;
+        
+        }
+      
+        if (j == grammar.productions[i].length) {
+          
+          if (found)
+            return true;
+          else
+            found = true;
+          
+        }
+        
+      }
+      
+    }
+    
+  }
+  
+  return false;
+  
+}
+
 Calculations["grammar.nullable"] = function(grammar) {
   
   var nullable = {};

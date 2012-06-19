@@ -6,6 +6,7 @@ tests["sanity"] = {
     unreachable: "grammar.unreachable",
     unrealizable: "grammar.unrealizable",
     cycle: "grammar.cycle",
+    ambiguouslyNullable: "grammar.ambiguouslyNullable",
     info: "grammar.symbol_info"
   }
 };

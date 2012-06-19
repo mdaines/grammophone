@@ -22,6 +22,11 @@ Views["sanity"] = (function() {
       list.append("<li>The grammar is cyclic: " + Helpers.formatSymbols(params.cycle, params.info).join(" &rArr; ") + " is a cycle.</li>");
     else
       list.append("<li>The grammar contains no cycles.</li>");
+
+    if (params.ambiguouslyNullable)
+      list.append("<li>The grammar is ambiguously nullable.</li>");
+    else
+      list.append("<li>The grammar is null unambiguous.</li>");
     
     this.element.append(list);
     
