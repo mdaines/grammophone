@@ -33,29 +33,93 @@
     <script src="../src/views/productions.js"></script>
     <script>
     
-      function appendProductions(grammar) {
+      var TransformView = (function() {
+  
+        function initialize() {
+          this.element = $("<article></article>");
+        }
+        
+        function formatTransformation(transformation, productions, info) {
+          
+          if (transformation.name == "expand")
+            return "Expand " + Helpers.formatSymbol(productions[transformation.production][transformation.symbol], info);
+          
+        }
+  
+        function update(params) {
+    
+          var table = $("<table></table>");
+    
+          params.productions.forEach(function(production, index) {
       
-        var productions = new Views["productions"]();
+            var head = production[0];
+            var body = production.slice(1);
       
-        productions.update({
+            var row = $("<tr></tr>");
+            
+            row.append("<td>" + index + "</td>");
+            row.append("<td>" + Helpers.formatSymbol(head, params.info) + "</td>");
+            row.append("<td>&rarr;</td>");
+            row.append("<td>" + Helpers.formatSymbols(body, params.info).join(" ") + "</td>");
+            
+            var cell = $("<td></td>");
+            
+            params.transformations.forEach(function(transformation) {
+              
+              var button;
+              
+              if (transformation.production === index) {
+                button = $("<button>" + formatTransformation(transformation, params.productions, params.info) + "</button>").on("click", function() { performTransformation(transformation); } );
+                cell.append(button);
+              }
+              
+            });
+            
+            row.append(cell);
+      
+            table.append(row);
+      
+          });
+    
+          $(this.element).html(table);
+    
+        }
+  
+        var klass = initialize;
+        klass.prototype.update = update;
+  
+        return klass;
+        
+      })();
+      
+      function performTransformation(transformation) {
+        
+        grammar = grammar.transform(transformation.name, transformation);
+        
+        transformView.update({
           productions: grammar.calculate("grammar.productions"),
           info: grammar.calculate("grammar.symbolInfo"),
+          transformations: grammar.calculate("transformations")
         });
-      
-        $("#results").append(productions.element);
         
       }
-    
-      var before = new Grammar([
-        ["A", "B", "b"],
+      
+      var grammar = new Grammar([
+        ["A", "A", "a"],
+        ["A", "B"],
         ["B", "A", "a"],
         ["B", "x"]
       ]);
       
-      var after = before.transform("expand", { production: 0, symbol: 1 });
+      var transformView = new TransformView();
       
-      appendProductions(before);
-      appendProductions(after);
+      transformView.update({
+        productions: grammar.calculate("grammar.productions"),
+        info: grammar.calculate("grammar.symbolInfo"),
+        transformations: grammar.calculate("transformations")
+      });
+      
+      $("#results").append(transformView.element);
       
     </script>
     

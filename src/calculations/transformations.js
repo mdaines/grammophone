@@ -11,7 +11,7 @@ Calculations["transformations"] = function(grammar) {
       if (nonterminals[grammar.productions[i][j]]) {
         
         result.push({
-          transformation: "expand",
+          name: "expand",
           production: i,
           symbol: j
         });
