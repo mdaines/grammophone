@@ -26,9 +26,6 @@ Transformations["expand"] = function(grammar, options) {
   
   for (i = 0; i < grammar.productions.length; i++) {
     
-    if (i == options.production)
-      continue;
-    
     if (grammar.productions[i][0] === symbol) {
       
       var expanded = [];
