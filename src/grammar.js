@@ -72,6 +72,15 @@ var Grammar = function() {
     
   }
   
+  function transform(name, options) {
+    
+    if (typeof Transformations[name] === "undefined")
+      throw "Undefined grammar transformation " + name;
+    
+    return Transformations[name](this, options);
+    
+  }
+  
   function getFirst(symbols) {
   
     var i, k;
@@ -152,6 +161,23 @@ var Grammar = function() {
   
   }
   
+  function copyProductions() {
+    
+    var i, j;
+    var result = [];
+    
+    for (i = 0; i < this.productions.length; i++) {
+      result[i] = [];
+      
+      for (j = 0; j < this.productions[i].length; j++) {
+        result[i][j] = this.productions[i][j];
+      }
+    }
+    
+    return result;
+    
+  }
+  
   // export
   
   var klass = initialize;
@@ -160,8 +186,10 @@ var Grammar = function() {
   klass.END = END;
   
   klass.prototype.calculate = calculate;
+  klass.prototype.transform = transform;
   klass.prototype.getFirst = getFirst;
   klass.prototype.isNullable = isNullable;
+  klass.prototype.copyProductions = copyProductions;
   
   return klass;
   

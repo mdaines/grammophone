@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Transformation</title>
+    <link rel="stylesheet" href="../views.css">
+    <style>
+      
+      article {
+        margin: 1em 0;
+      }
+      
+    </style>
+  </head>
+  <body>
+    
+    <section id="results">
+    </section>
+    
+    <script src="../lib/zepto.js"></script>
+    <script src="grammars.js"></script>
+    <script src="functional.js"></script>
+    <script src="../src/relation.js"></script>
+    <script src="../src/set.js"></script>
+    <script src="../src/parser.js"></script>
+    <script src="../src/grammar.js"></script>
+    <script src="../src/calculations.js"></script>
+    <script src="../src/calculations/grammar.js"></script>
+    <script src="../src/calculations/transformations.js"></script>
+    <script src="../src/transformations.js"></script>
+    <script src="../src/helpers.js"></script>
+    <script src="../src/views.js"></script>
+    <script src="../src/views/productions.js"></script>
+    <script>
+    
+      function appendProductions(grammar) {
+      
+        var productions = new Views["productions"]();
+      
+        productions.update({
+          productions: grammar.calculate("grammar.productions"),
+          info: grammar.calculate("grammar.symbolInfo"),
+        });
+      
+        $("#results").append(productions.element);
+        
+      }
+    
+      var before = new Grammar([
+        ["A", "B", "b"],
+        ["B", "A", "a"],
+        ["B", "x"]
+      ]);
+      
+      var after = before.transform("expand", { production: 0, symbol: 1 });
+      
+      appendProductions(before);
+      appendProductions(after);
+      
+    </script>
+    
+  </body>
+</html>
