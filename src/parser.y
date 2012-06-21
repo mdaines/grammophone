@@ -3,7 +3,7 @@
 %%
 
 spec
-  : rules EOF { return $$ = $1; }
+  : rules { return $$ = $1; }
   ;
 
 rules

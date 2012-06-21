@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Parsing</title>
-    <link rel="stylesheet" href="views.css">
+    <link rel="stylesheet" href="../views.css">
     <style>
     
       article {
@@ -13,9 +13,17 @@
       article.fail {
         background: #fcc;
       }
+      
+      article.fail b {
+        background: #ebb;
+      }
     
       article.pass {
         background: #cfc;
+      }
+      
+      article.pass b {
+        background: #beb;
       }
       
     </style>
@@ -64,16 +72,22 @@
           
           return "<li>" +
             "<b>" + Helpers.escapeHTML(p[0]) + "</b> &rarr; " +
-            p.slice(1).map(function(s) { return "<b>" + Helpers.escapeHTML(s) + "</b>"; }) +
+            p.slice(1).map(function(s) { return "<b>" + Helpers.escapeHTML(s) + "</b>"; }).join(" ") +
             "</li>";
           
-        }) + "</ul>";
+        }).join("") + "</ul>";
         
       }
       
       function fail(message) {
         
         $("#results").append("<article class=\"fail\">" + message + "</article>");
+        
+      }
+      
+      function pass(message) {
+        
+        $("#results").append("<article class=\"pass\">" + message + "</article>");
         
       }
       
@@ -88,17 +102,18 @@
           
           if (!productionsEqual(expected, grammar.productions)) {
             fail("<p>Expected:</p>" + inspectProductionsAsList(expected) + "<p>Actual:</p>" + inspectProductionsAsList(grammar.productions) + "<p>Spec:</p><pre>" + spec + "</pre>");
-            return false;
+            return 1;
           }
           
         } catch (e) {
           
           fail("<p>Unexpected parse error:</p><pre>" + e.toString() + "</pre><p>Spec:</p><pre>" + spec + "</pre>");
-          return false;
+          return 1;
           
         }
         
-        return true;
+        pass("<pre>" + spec + "</pre>" + inspectProductionsAsList(expected));
+        return 0;
         
       }
       
@@ -109,40 +124,46 @@
           var grammar = Grammar.parse(spec);
           
           fail("<p>Expected parse error for spec, none thrown:</p><pre>" + spec + "</pre>");
-          return false;
+          return 1;
           
         } catch (e) {
           
-          return true;
+          pass("<pre>" + spec + "</pre><pre>" + e.toString() + "</pre>");
+          return 0;
           
         }
         
       }
       
-      var passing = true;
+      var failures = 0;
       
-      passing &= assertProductions("A -> a | b.", [["A", "a"], ["A", "b"]]);
-      passing &= assertProductions("A -> a. B -> b.", [["A", "a"], ["B", "b"]]);
-      passing &= assertProductions("A->a.", [["A", "a"]]);
-      passing &= assertProductions("1 -> 5 6.", [["1", "5", "6"]]);
-      passing &= assertProductions("** -> 42.", [["**", "42"]]);
-      passing &= assertProductions("A -> x - y.", [["A", "x", "-", "y"]]);
-      passing &= assertProductions("-->-. - -> -.", [["-", "-"], ["-", "-"]]);
-      passing &= assertProductions("A -> x > y.", [["A", "x", ">", "y"]]);
-      passing &= assertProductions("\"x.y\" -> \" \" \"->\".", [["x.y", " ", "->"]]);
-      passing &= assertProductions("A -> \\\".", [["A", "\""]]);
-      passing &= assertProductions("A -> \\..", [["A", "."]]);
+      failures += assertProductions("A -> a | b.", [["A", "a"], ["A", "b"]]);
+      failures += assertProductions("A -> a. B -> b.", [["A", "a"], ["B", "b"]]);
+      failures += assertProductions("A->a.", [["A", "a"]]);
+      failures += assertProductions("1 -> 5 6.", [["1", "5", "6"]]);
+      failures += assertProductions("** -> 42.", [["**", "42"]]);
+      failures += assertProductions("A -> x - y.", [["A", "x", "-", "y"]]);
+      failures += assertProductions("-->-. - -> -.", [["-", "-"], ["-", "-"]]);
+      failures += assertProductions("A -> x > y.", [["A", "x", ">", "y"]]);
+      failures += assertProductions("\"x.y\" -> \" \" \"->\".", [["x.y", " ", "->"]]);
+      failures += assertProductions("A -> \\\".", [["A", "\""]]);
+      failures += assertProductions("A -> \\..", [["A", "."]]);
+      failures += assertProductions("A -> a\\.a.", [["A", "a.a"]]);
+      failures += assertProductions("a -> a-b.", [["a", "a-b"]]);
+      failures += assertProductions("a-b -> a-b.", [["a-b", "a-b"]]);
+      failures += assertProductions("a-b->a-b.", [["a-b", "a-b"]]);
+      failures += assertProductions("a'->x.", [["a'", "x"]]);
       
-      passing &= assertParseError("A -> a. B");
-      passing &= assertParseError("A.y -> a.");
-      passing &= assertParseError("A B -> a.");
-      passing &= assertParseError("A -> a. ->");
-      passing &= assertParseError("-> X");
-      passing &= assertParseError("A");
-      passing &= assertParseError("A -> \"x");
+      failures += assertParseError("A -> a. B");
+      failures += assertParseError("A.y -> a.");
+      failures += assertParseError("A B -> a.");
+      failures += assertParseError("A -> a. ->");
+      failures += assertParseError("-> X");
+      failures += assertParseError("A");
+      failures += assertParseError("A -> \"x");
       
-      if (passing)
-        $("#results").append("<article class=\"pass\">Passed!</article>");
+      if (failures > 0)
+        $("#results").prepend("<article class=\"fail\">" + failures + " " + (failures == 1 ? "failure" : "failures") + "!</article>");
       
     </script>
     
