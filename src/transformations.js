@@ -6,10 +6,10 @@ Transformations["expand"] = function(grammar, options) {
   var productions = grammar.copyProductions();
   
   // Attempting to expand a symbol that is not a nonterminal
-  // should have no effect.
+  // is an error.
   
   if (!nonterminals[grammar.productions[options.production][options.symbol]])
-    return new Grammar(productions);
+    throw "Attempted to expand a symbol that is not a nonterminal.";
   
   // Remove the production with the terminal we want to expand.
   
@@ -49,6 +49,86 @@ Transformations["expand"] = function(grammar, options) {
   }
   
   // Return a new grammar.
+  
+  return new Grammar(productions);
+  
+}
+
+Transformations["removeImmediateLeftRecursion"] = function(grammar, options) {
+  
+  var i, j;
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  
+  // Find a new symbol for the right recursive production by adding primes
+  // to the existing symbol.
+  
+  var symbol = grammar.productions[options.recursive[0]][0];
+  
+  do {
+    symbol += "'";
+  } while (typeof nonterminals[symbol] !== "undefined");
+  
+  // Copy unrelated productions into the grammar.
+  
+  var productions = [];
+  
+  for (i = 0; i < grammar.productions.length; i++) {
+    
+    if (options.base.indexOf(i) === -1 && options.recursive.indexOf(i) === -1) {
+      
+      var production = [];
+      
+      for (j = 0; j < grammar.productions[i].length; j++)
+        production.push(grammar.productions[i][j]);
+      
+      productions.push(production);
+      
+    }
+    
+  }
+  
+  // Create the new productions...
+  
+  // Base rules
+  
+  var replacement = [];
+  
+  for (i = 0; i < options.base.length; i++) {
+    
+    var production = [];
+    
+    for (j = 0; j < grammar.productions[options.base[i]].length; j++)
+      production.push(grammar.productions[options.base[i]][j]);
+      
+    production.push(symbol);
+    
+    replacement.push(production);
+    
+  }
+  
+  // Recursive rules
+  
+  for (i = 0; i < options.recursive.length; i++) {
+    
+    var production = [];
+    
+    production.push(symbol);
+    
+    for (j = 2; j < grammar.productions[options.recursive[i]].length; j++)
+      production.push(grammar.productions[options.recursive[i]][j]);
+    
+    production.push(symbol);
+    
+    replacement.push(production);
+    
+  }
+  
+  replacement.push([symbol]);
+  
+  // Put replacement into new list of productions and return
+  // resulting grammar.
+  
+  productions = productions.slice(0, options.recursive[0]).concat(replacement).concat(productions.slice(options.recursive[0]));
   
   return new Grammar(productions);
   

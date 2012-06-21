@@ -10,6 +10,10 @@
         margin: 1em 0;
       }
       
+      button {
+        display: block;
+      }
+      
     </style>
   </head>
   <body>
@@ -43,6 +47,8 @@
           
           if (transformation.name == "expand")
             return "Expand " + Helpers.formatSymbol(productions[transformation.production][transformation.symbol], info);
+          else if (transformation.name == "removeImmediateLeftRecursion")
+            return "Remove immediate left recursion from " + Helpers.formatSymbol(productions[transformation.production][transformation.symbol], info);
           
         }
   
@@ -105,10 +111,10 @@
       }
       
       var grammar = new Grammar([
-        ["A", "A", "a"],
-        ["A", "B"],
         ["B", "A", "a"],
-        ["B", "x"]
+        ["A", "A", "B", "a"],
+        ["B", "x"],
+        ["A", "B"]
       ]);
       
       var transformView = new TransformView();
