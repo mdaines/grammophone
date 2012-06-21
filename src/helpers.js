@@ -21,7 +21,7 @@ var Helpers = function() {
   
   function prettifySymbol(symbol) {
     
-    return symbol.replace(/'/g, "&prime;").replace(/_(.+)$/, "<sub>$1</sub>").replace(/\^(.+)$/, "<sup>$1</sup>");
+    return symbol.replace(/'/g, "&prime;");
     
   }
   
