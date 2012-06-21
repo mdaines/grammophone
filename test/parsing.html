@@ -138,6 +138,9 @@
       var failures = 0;
       
       failures += assertProductions("A -> a | b.", [["A", "a"], ["A", "b"]]);
+      failures += assertProductions("A->a|b.", [["A", "a"], ["A", "b"]]);
+      failures += assertProductions("A -> .", [["A"]]);
+      failures += assertProductions("A->.", [["A"]]);
       failures += assertProductions("A -> a. B -> b.", [["A", "a"], ["B", "b"]]);
       failures += assertProductions("A->a.", [["A", "a"]]);
       failures += assertProductions("1 -> 5 6.", [["1", "5", "6"]]);
