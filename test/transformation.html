@@ -14,9 +14,33 @@
         display: block;
       }
       
+      body.transform #transform,
+      body.edit #edit {
+        display: none;
+      }
+      
+      body.edit #results,
+      body.transform #spec {
+        display: none;
+      }
+      
+      #spec {
+        width: 300px;
+        height: 150px;
+        font: 12pt courier;
+      }
+      
     </style>
   </head>
-  <body>
+  <body class="transform">
+    
+    <nav id="buttons">
+      <button id="edit">Edit</button>
+      <button id="transform">Transform</button>
+    </nav>
+    
+    <textarea id="spec">
+</textarea>
     
     <section id="results">
     </section>
@@ -110,12 +134,7 @@
         
       }
       
-      var grammar = new Grammar([
-        ["B", "A", "a"],
-        ["A", "A", "B", "a"],
-        ["B", "x"],
-        ["A", "B"]
-      ]);
+      var grammar = Grammar.parse("B -> A a.\nA -> A B a.\nB -> x.A -> B.");
       
       var transformView = new TransformView();
       
@@ -126,6 +145,27 @@
       });
       
       $("#results").append(transformView.element);
+      
+      $("#edit").on("click", function() {
+        $(document.body).removeClass("transform");
+        $(document.body).addClass("edit");
+        
+        document.getElementById("spec").value = grammar.toString();
+      });
+      
+      $("#transform").on("click", function() {
+        $(document.body).removeClass("edit");
+        $(document.body).addClass("transform");
+        
+        spec = document.getElementById("spec").value;
+        grammar = Grammar.parse(spec);
+        
+        transformView.update({
+          productions: grammar.calculate("grammar.productions"),
+          info: grammar.calculate("grammar.symbolInfo"),
+          transformations: grammar.calculate("transformations")
+        });
+      });
       
     </script>
     
