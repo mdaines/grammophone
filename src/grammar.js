@@ -178,6 +178,27 @@ var Grammar = function() {
     
   }
   
+  function toString() {
+    
+    var i, j;
+    var result = "";
+    
+    for (i = 0; i < this.productions.length; i++) {
+      
+      result += this.productions[i][0];
+      result += " ->";
+      
+      for (j = 1; j < this.productions[i].length; j++)
+        result += " " + this.productions[i][j];
+      
+      result += ".\n";
+      
+    }
+    
+    return result;
+    
+  }
+  
   // export
   
   var klass = initialize;
@@ -190,6 +211,7 @@ var Grammar = function() {
   klass.prototype.getFirst = getFirst;
   klass.prototype.isNullable = isNullable;
   klass.prototype.copyProductions = copyProductions;
+  klass.prototype.toString = toString;
   
   return klass;
   
