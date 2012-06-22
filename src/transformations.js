@@ -133,3 +133,56 @@ Transformations["removeImmediateLeftRecursion"] = function(grammar, options) {
   return new Grammar(productions);
   
 }
+
+Transformations["leftFactor"] = function(grammar, options) {
+  
+  var i, j;
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  
+  // Find a new symbol...
+  
+  var symbol = grammar.productions[options.production][0];
+  
+  do {
+    symbol += "'";
+  } while (typeof nonterminals[symbol] !== "undefined");
+  
+  // Copy unrelated productions into the grammar.
+  
+  var productions = [];
+  
+  for (i = 0; i < grammar.productions.length; i++) {
+    
+    if (options.productions.indexOf(i) === -1) {
+      
+      var production = [];
+      
+      for (j = 0; j < grammar.productions[i].length; j++)
+        production.push(grammar.productions[i][j]);
+      
+      productions.push(production);
+      
+    }
+    
+  }
+  
+  var replacement = [];
+  
+  // Add the reference to the new symbol with the factored prefix
+  
+  replacement.push(grammar.productions[options.productions[0]].slice(0, options.prefix).concat(symbol));
+  
+  // Add the productions in the group
+  
+  for (i = 0; i < options.productions.length; i++) {
+    replacement.push([symbol].concat(grammar.productions[options.productions[i]].slice(options.prefix)));
+  }
+  
+  // Put replacement into new list of productions and return
+  // resulting grammar.
+  
+  productions = productions.slice(0, options.productions[0]).concat(replacement).concat(productions.slice(options.productions[0]));
+  
+  return new Grammar(productions);
+  
+}

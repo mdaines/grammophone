@@ -6,6 +6,11 @@ button i {
   font-family: inherit;
 }
 
+button b {
+  font-family: inherit;
+  font-size: inherit;
+}
+
 b {
   font-family: courier;
   font-size: 90%;

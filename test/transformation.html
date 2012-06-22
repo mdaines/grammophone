@@ -73,6 +73,8 @@
             return "Expand " + Helpers.formatSymbol(productions[transformation.production][transformation.symbol], info);
           else if (transformation.name == "removeImmediateLeftRecursion")
             return "Remove immediate left recursion from " + Helpers.formatSymbol(productions[transformation.production][transformation.symbol], info);
+          else if (transformation.name == "leftFactor")
+            return "Left-factor " + Helpers.formatSymbols(productions[transformation.production].slice(1, transformation.prefix), info).join(" ") + " out of " + Helpers.formatSymbol(productions[transformation.production][transformation.symbol], info);
           
         }
   
@@ -134,7 +136,12 @@
         
       }
       
-      var grammar = Grammar.parse("B -> A a.\nA -> A B a.\nB -> x.A -> B.");
+      var grammar = new Grammar([
+        ["A", "x"],
+        ["A", "x", "y"],
+        ["A", "B"],
+        ["B"]
+      ]);
       
       var transformView = new TransformView();
       
