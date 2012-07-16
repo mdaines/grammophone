@@ -1,3 +1,4 @@
+//= require views/header_view
 //= require views/sanity_view
 //= require views/nonterminals_view
 //= require views/parsing_view
@@ -9,14 +10,21 @@
 //= require views/lr1_table_view
 //= require views/lalr1_automaton_view
 //= require views/lalr1_table_view
-//= require templates/header
 
 var Analysis = function(element) {
   
   this._element = element;
   
+  // header view (managed separately from views which are swapped
+  // depending on routes)
+  
   this._headerElement = document.createElement("header");
   this._element.appendChild(this._headerElement);
+  
+  this._headerView = new HeaderView(this._headerElement);
+  this._headerView.setDelegate(this);
+  
+  // routes
   
   this._routes = {
     
@@ -68,6 +76,8 @@ var Analysis = function(element) {
     }
     
   };
+  
+  // view (for routes)
   
   this._views = [];
   
@@ -143,11 +153,9 @@ Analysis.prototype.reload = function() {
     
     }
     
-    // Update path in header
+    // ask header view to reload
     
-    this._headerElement.innerHTML = JST["templates/header"]({
-      path: route.path
-    });
+    this._headerView.reload();
     
   }
   
@@ -157,6 +165,12 @@ Analysis.prototype.getCalculation = function(name) {
   
   return FAKE_CALCULATIONS[name];
 
+}
+
+Analysis.prototype.getPathComponents = function() {
+  
+  return this._routes[this._path].path;
+  
 }
 
 var FAKE_CALCULATIONS = {
