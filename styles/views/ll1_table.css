@@ -1,0 +1,15 @@
+#ll1-table .t {
+  border-left: 2px solid #000;
+}
+
+#ll1-table th[scope=row] {
+  border: 1px solid #eee;
+  text-align: left;
+  font-weight: normal;
+  min-width: 30px;
+}
+
+#ll1-parsing-table td.conflict {
+  background: #fdd;
+  border-color: #ecc;
+}

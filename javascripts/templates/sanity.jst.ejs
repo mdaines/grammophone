@@ -1,0 +1,42 @@
+<h1>Sanity Checks</h1>
+
+<ul class="symbols">
+  <li>
+    <% if (Set.any(unreachable)) { %>
+      The grammar has unreachable nonterminals:
+      <%= Helpers.formatSentence(Helpers.formatSymbols(Helpers.listSymbols(unreachable, info.productionOrder), info)) %>.
+    <% } else { %>
+      All nonterminals are reachable.
+    <% } %>
+  </li>
+  
+  <li>
+    <% if (Set.any(unrealizable)) { %>
+      The grammar has unrealizable nonterminals:
+      <%= Helpers.formatSentence(Helpers.formatSymbols(Helpers.listSymbols(unrealizable, info.productionOrder), info)) %>.
+    <% } else { %>
+      All nonterminals are realizable.
+    <% } %>
+  </li>
+  
+  <li>
+    <% if (typeof cycle !== "undefined") { %>
+      The grammar is cyclic:
+      <%= Helpers.formatSymbols(cycle, info).join(" &rArr; ") %> is a cycle.
+    <% } else { %>
+      The grammar contains no cycles.
+    <% } %>
+  </li>
+  
+  <li>
+    <% if (nullAmbiguity.length > 0) { %>
+      The grammar contains a null ambiguity:
+      <%= Helpers.formatProduction(productions[nullAmbiguity[0]], info) %>
+      and
+      <%= Helpers.formatProduction(productions[nullAmbiguity[1]], info) %>
+      are ambiguously nullable.
+    <% } else { %>
+      The grammar is null unambiguous.
+    <% } %>
+  </li>
+</ul>

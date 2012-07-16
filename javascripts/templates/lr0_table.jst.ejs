@@ -1,0 +1,56 @@
+<h1>Parsing Table</h1>
+
+<table class="symbols" id="lr0-table">
+  <colgroup>
+    <col>
+  </colgroup>
+  <colgroup class="t">
+    <%= Helpers.repeatString("<col>", Set.count(info.terminals)) %>
+  </colgroup>
+  <colgroup class="nt">
+    <%= Helpers.repeatString("<col>", Set.count(info.nonterminals)) %>
+  </colgroup>
+  
+  <tr>
+    <th>State</th>
+    <% info.terminalOrder.forEach(function(symbol) { %>
+      <th><%= Helpers.formatSymbol(symbol, info) %></th>
+    <% }) %>
+    <% info.nonterminalOrder.forEach(function(symbol) { %>
+      <th><%= Helpers.formatSymbol(symbol, info) %></th>
+    <% }) %>
+  </tr>
+  
+  <% table.forEach(function(state, index) { %>
+    <tr>
+      <th scope="row"><%= index %></td>
+      <% info.terminalOrder.forEach(function(s) { %>
+        <td class="<%= (state.shift[s] !== "undefined" ? 0 : 1) + state.reduce.length > 1 ? "conflict" : "" %>">
+          <ul>
+            <% if (state.shift && typeof state.shift[s] !== "undefined") { %>
+              <li>shift(<%= state.shift[s] %>)</li>
+            <% } %>
+            <% if (state.reduce) { %>
+              <% state.reduce.forEach(function(p) { %>
+                <% if (p === -1) { %>
+                  <li>accept</li>
+                <% } else { %>
+                  <li>reduce(<%= Helpers.formatProduction(productions[p], info) %>)</li>
+                <% } %>
+              <% }) %>
+            <% } %>
+          </ul>
+        </td>
+      <% }) %>
+      <% info.nonterminalOrder.forEach(function(s) { %>
+        <td>
+          <ul>
+            <% if (state.shift && typeof state.shift[s] !== "undefined") { %>
+              <li><%= state.shift[s] %></li>
+            <% } %>
+          </ul>
+        </td>
+      <% }) %>
+    </tr>
+  <% }) %>
+</table>

@@ -1,0 +1,20 @@
+#lr0-table .t,
+#lr0-table .nt {
+  border-left: 2px solid #000;
+}
+
+#lr0-table td {
+  min-width: 50px;
+}
+
+#lr0-table th[scope=row] {
+  border: 1px solid #eee;
+  text-align: center;
+  font-weight: normal;
+  min-width: 50px;
+}
+
+#lr0-table td.conflict {
+  background: #fdd;
+  border-color: #ecc;
+}
