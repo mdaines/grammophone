@@ -1,0 +1,16 @@
+<% if (typeof path !== "undefined" && path.length > 0) { %>
+  <nav id="path">
+    <%= path.map(function(p) {
+      if (p.href) {
+        return "<a href=\"" + p.href + "\">" + p.title + "</a>";
+      } else {
+        return p.title;
+      }
+    }).map(function(p, i, a) {
+      if (i === a.length - 1)
+        return "<b>" + p + "</b>";
+      else
+        return p;
+    }).join(" / ") %>
+  </nav>
+<% } %>

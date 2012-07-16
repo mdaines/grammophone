@@ -1,0 +1,12 @@
+header {
+  border-bottom: 1px solid #ddd;
+  margin: -24px 0 24px 0;
+  padding: 24px 0 0 0;
+  overflow: auto;
+}
+
+nav#path {
+  float: left;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}

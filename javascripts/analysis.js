@@ -9,18 +9,64 @@
 //= require views/lr1_table_view
 //= require views/lalr1_automaton_view
 //= require views/lalr1_table_view
+//= require templates/header
 
 var Analysis = function(element) {
   
   this._element = element;
   
+  this._headerElement = document.createElement("header");
+  this._element.appendChild(this._headerElement);
+  
   this._routes = {
-    "/": [SanityView, NonterminalsView, ParsingView],
-    "/ll1": [LL1TableView],
-    "/lr0": [LR0AutomatonView, LR0TableView],
-    "/slr1": [SLR1TableView],
-    "/lr1": [LR1AutomatonView, LR1TableView],
-    "/lalr1": [LALR1AutomatonView, LALR1TableView]
+    
+    "/": {
+      views: [
+        { id: "sanity", constructor: SanityView }, 
+        { id: "nonterminals", constructor: NonterminalsView },
+        { id: "parsing", constructor: ParsingView }
+      ],
+      path: []
+    },
+    
+    "/ll1": {
+      views: [
+        { id: "table", constructor: LL1TableView }
+      ],
+      path: [{ href: "/#parsing", title: "Parsing Algorithms" }, { title: "LL(1) Parsing" }]
+    },
+    
+    "/lr0": {
+      views: [
+        { id: "automaton", constructor: LR0AutomatonView },
+        { id: "table", constructor: LR0TableView }
+      ],
+      path: [{ href: "/#parsing", title: "Parsing Algorithms" }, { title: "LR(0) Parsing" }]
+    },
+    
+    "/slr1": {
+      views: [
+        { id: "table", constructor: SLR1TableView }
+      ],
+      path: [{ href: "/#parsing", title: "Parsing Algorithms" }, { title: "SLR(1) Parsing" }]
+    },
+    
+    "/lr1": {
+      views: [
+        { id: "automaton", constructor: LR1AutomatonView },
+        { id: "table", constructor: LR1TableView }
+      ],
+      path: [{ href: "/#parsing", title: "Parsing Algorithms" }, { title: "LR(1) Parsing" }]
+    },
+    
+    "/lalr1": {
+      views: [
+        { id: "automaton", constructor: LALR1AutomatonView },
+        { id: "table", constructor: LALR1TableView }
+      ],
+      path: [{ href: "/#parsing", title: "Parsing Algorithms" }, { title: "LALR(1) Parsing" }]
+    }
+    
   };
   
   this._views = [];
@@ -69,16 +115,17 @@ Analysis.prototype.reload = function() {
   
     // create new views and ask them to setup and reload
   
-    var prototypes = this._routes[this._path];
+    var route = this._routes[this._path];
   
     this._views = [];
   
-    for (i = 0; i < prototypes.length; i++) {
+    for (i = 0; i < route.views.length; i++) {
     
       var element = document.createElement("article");
+      element.id = route.views[i].id;
       this._element.appendChild(element);
   
-      var instance = new prototypes[i](element);
+      var instance = new route.views[i].constructor(element);
       instance.setDelegate(this);
   
       // setup and reload (FIXME: defer?)
@@ -95,6 +142,12 @@ Analysis.prototype.reload = function() {
       };
     
     }
+    
+    // Update path in header
+    
+    this._headerElement.innerHTML = JST["templates/header"]({
+      path: route.path
+    });
     
   }
   
