@@ -1,6 +1,7 @@
 /*= require views/parsing */
 /*= require views/ll1_table */
 /*= require views/lr0_table */
+/*= require views/lr1_table */
 
 body {
   background: #fff;

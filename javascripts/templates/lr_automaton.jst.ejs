@@ -1,0 +1,62 @@
+<%
+  function formatItem(item, start, productions, info) {
+    
+    var production;
+
+    if (item.production === -1) {
+      
+      if (item.index === 0)
+        production = "&bull; " + Helpers.formatSymbol(start, info);
+      else
+        production = Helpers.formatSymbol(start, info) + " &bull;";
+      
+    } else {
+      
+      var symbols = Helpers.formatSymbols(productions[item.production].slice(1), info);
+      symbols.splice(item.index, 0, "&bull;");
+      
+      production = Helpers.formatSymbol(productions[item.production][0], info) + " &rarr; " + symbols.join(" ");
+      
+    }
+    
+    if (item.lookaheads)
+      return "[" + production + ", " + Helpers.formatSymbols(item.lookaheads, info).join(" / ") + "]";
+    else if (item.lookahead)
+      return "[" + production + ", " + Helpers.formatSymbol(item.lookahead, info) + "]";
+    else
+      return production;
+    
+  }
+%>
+
+<h1>Automaton</h1>
+
+<table class="symbols">
+  <tr>
+    <th>State</th>
+    <th>Items</th>
+    <th>Transitions</th>
+  </tr>
+  
+  <% automaton.forEach(function(state, index) { %>
+    <tr>
+      <td><%= index %></td>
+      <td>
+        <ul>
+          <% state.items.forEach(function(item) { %>
+            <li><%= formatItem(item, start, productions, info) %></li>
+          <% }) %>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <% info.terminalOrder.concat(info.nonterminalOrder).concat(Grammar.END).forEach(function(s) { %>
+            <% if (typeof state.transitions[s] !== "undefined") { %>
+              <li><%= Helpers.formatSymbol(s, info) %> &rArr; <%= state.transitions[s] %></li>
+            <% } %>
+          <% }) %>
+        </ul>
+      </td>
+    </tr>
+  <% }) %>
+</table>

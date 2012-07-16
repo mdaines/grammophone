@@ -1,6 +1,6 @@
 <h1>Parsing Table</h1>
 
-<table class="symbols" id="ll1-table">
+<table class="symbols ll1-table">
   <colgroup>
     <col>
   </colgroup>
@@ -20,7 +20,7 @@
     <tr>
       <th scope="row"><%= Helpers.formatSymbol(nt, info) %></th>
       <% info.terminalOrder.concat(Grammar.END).forEach(function(t) { %>
-        <% if (table[nt][t]) { %>
+        <% if (typeof table[nt][t] !== "undefined") { %>
           <td class="<%= table[nt][t].length > 1 ? "conflict" : "" %>">
             <ul>
               <% table[nt][t].forEach(function(p) { %>
