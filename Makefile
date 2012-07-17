@@ -1,5 +1,5 @@
-parser: src/parser.js
+parser: javascripts/parser.js
 
-src/parser.js: src/parser.l src/parser.y
-	jison src/parser.y src/parser.l --module-type=js --output-file=src/Parser.js
-	mv src/Parser.js src/parser.js
+javascripts/parser.js: javascripts/parser.l javascripts/parser.y
+	jison javascripts/parser.y javascripts/parser.l --module-type=js --output-file=javascripts/Parser.js
+	mv javascripts/Parser.js javascripts/parser.js

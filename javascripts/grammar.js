@@ -1,3 +1,6 @@
+//= require calculations
+//= require parser
+
 var Grammar = function() {
   
   // class

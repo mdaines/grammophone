@@ -34,7 +34,8 @@
 //   { "else": { shift: 6, reduce: [3] } }
 //   { "if": { shift: 4 }, "other": { shift: 3 }, "S": { shift: 7 }, "I": { shift: 2 } }
 
-(function(Calculations) {
+(function() {
+  this.Calculations || (this.Calculations = {});
   
   // Build an LR automaton for the grammar, using the provided "build" functions.
   
@@ -432,13 +433,13 @@
   
   }
 
-  Calculations["parsing.lr.lr0_automaton"] = function(grammar) {
+  this.Calculations["parsing.lr.lr0_automaton"] = function(grammar) {
     
     return automaton(grammar, lr0);
     
   }
 
-  Calculations["parsing.lr.lr0_table"] = function(grammar) {
+  this.Calculations["parsing.lr.lr0_table"] = function(grammar) {
     
     var i, j, s;
     var state, item, actions;
@@ -491,7 +492,7 @@
     
   }
 
-  Calculations["parsing.lr.slr1_table"] = function(grammar) {
+  this.Calculations["parsing.lr.slr1_table"] = function(grammar) {
     
     var i, j, s;
     var state, actions, item;
@@ -537,13 +538,13 @@
     
   }
 
-  Calculations["parsing.lr.lr1_automaton"] = function(grammar) {
+  this.Calculations["parsing.lr.lr1_automaton"] = function(grammar) {
     
     return automaton(grammar, lr1);
   
   }
 
-  Calculations["parsing.lr.lr1_table"] = function(grammar) {
+  this.Calculations["parsing.lr.lr1_table"] = function(grammar) {
     
     var i, j, s;
     var state, actions, item;
@@ -659,7 +660,7 @@
     
   }
 
-  Calculations["parsing.lr.lalr1_automaton"] = function(grammar) {
+  this.Calculations["parsing.lr.lalr1_automaton"] = function(grammar) {
     
     var i, j;
     
@@ -766,7 +767,7 @@
   
   }
 
-  Calculations["parsing.lr.lalr1_table"] = function(grammar) {
+  this.Calculations["parsing.lr.lalr1_table"] = function(grammar) {
     
     var i, j, k, s;
     var state, actions, item;
@@ -811,4 +812,4 @@
   
   }
 
-})(Calculations);
+}).call(this);
