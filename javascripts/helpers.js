@@ -100,6 +100,20 @@ var Helpers = function() {
     
   }
   
+  // application delegate
+  
+  function setDelegate(delegate) {
+    
+    this._delegate = delegate;
+    
+  }
+  
+  function buildHref(path, fragment) {
+    
+    return this._delegate.buildHref(path, fragment);
+    
+  }
+  
   // export
   
   var klass = {};
@@ -111,6 +125,8 @@ var Helpers = function() {
   klass.formatSentence = formatSentence;
   klass.repeatString = repeatString;
   klass.escapeHTML = escapeHTML;
+  klass.setDelegate = setDelegate;
+  klass.buildHref = buildHref;
   
   return klass;
   

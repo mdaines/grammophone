@@ -41,7 +41,7 @@ var Analysis = function(element) {
       views: [
         { id: "table", constructor: LL1TableView }
       ],
-      path: [{ href: "/#parsing", title: "Parsing Algorithms" }, { title: "LL(1) Parsing" }]
+      path: [{ path: "/", fragment: "parsing", title: "Parsing Algorithms" }, { title: "LL(1) Parsing" }]
     },
     
     "/lr0": {
@@ -49,14 +49,14 @@ var Analysis = function(element) {
         { id: "automaton", constructor: LR0AutomatonView },
         { id: "table", constructor: LR0TableView }
       ],
-      path: [{ href: "/#parsing", title: "Parsing Algorithms" }, { title: "LR(0) Parsing" }]
+      path: [{ path: "/", fragment: "parsing", title: "Parsing Algorithms" }, { title: "LR(0) Parsing" }]
     },
     
     "/slr1": {
       views: [
         { id: "table", constructor: SLR1TableView }
       ],
-      path: [{ href: "/#parsing", title: "Parsing Algorithms" }, { title: "SLR(1) Parsing" }]
+      path: [{ path: "/", fragment: "parsing", title: "Parsing Algorithms" }, { title: "SLR(1) Parsing" }]
     },
     
     "/lr1": {
@@ -64,7 +64,7 @@ var Analysis = function(element) {
         { id: "automaton", constructor: LR1AutomatonView },
         { id: "table", constructor: LR1TableView }
       ],
-      path: [{ href: "/#parsing", title: "Parsing Algorithms" }, { title: "LR(1) Parsing" }]
+      path: [{ path: "/", fragment: "parsing", title: "Parsing Algorithms" }, { title: "LR(1) Parsing" }]
     },
     
     "/lalr1": {
@@ -72,7 +72,7 @@ var Analysis = function(element) {
         { id: "automaton", constructor: LALR1AutomatonView },
         { id: "table", constructor: LALR1TableView }
       ],
-      path: [{ href: "/#parsing", title: "Parsing Algorithms" }, { title: "LALR(1) Parsing" }]
+      path: [{ path: "/", fragment: "parsing", title: "Parsing Algorithms" }, { title: "LALR(1) Parsing" }]
     }
     
   };
@@ -93,75 +93,59 @@ Analysis.prototype.reload = function() {
   
   var i;
   
-  // get the new (or unchanged) grammar
+  // get grammar and path
   
   this._grammar = this._delegate.getGrammar();
+  this._path = this._delegate.getPath();
   
-  // is the path different?
+  // if we have views, clear them
   
-  var path = this._delegate.getPath();
-  
-  if (path == this._path) {
-    
-    // if not, call reload on our views
-    
-    for (i = 0; i < this._views.length; i++) {
-      if (this._views[i].instance.reload)
-        this._views[i].instance.reload();
-    }
-    
-  } else {
-    
-    // if so, note that we have a new path
-    
-    this._path = path;
-  
-    // remove any old views
+  if (this._views.length > 0) {
   
     for (i = 0; i < this._views.length; i++) {
-    
       if (this._views[i].instance.teardown)
         this._views[i].instance.teardown();
     
       this._element.removeChild(this._views[i].element);
-    
     }
+    
+    this._views = [];
+    
+  }
   
-    // create new views and ask them to setup and reload
+  // if the grammar is defined, create views
+  
+  if (typeof this._grammar !== "undefined") {
   
     var route = this._routes[this._path];
-  
-    this._views = [];
-  
+
     for (i = 0; i < route.views.length; i++) {
-    
+  
       var element = document.createElement("article");
       element.id = route.views[i].id;
       this._element.appendChild(element);
-  
+
       var instance = new route.views[i].constructor(element);
       instance.setDelegate(this);
-  
-      // setup and reload (FIXME: defer?)
-  
+
       if (instance.setup)
         instance.setup();
-      
+
       if (instance.reload)
         instance.reload();
-  
+
       this._views[i] = {
         instance: instance,
         element: element
       };
-    
+  
     }
     
-    // ask header view to reload
-    
-    this._headerView.reload();
-    
   }
+  
+  // ask header view to reload
+    
+  this._headerView.reload();
   
 }
 

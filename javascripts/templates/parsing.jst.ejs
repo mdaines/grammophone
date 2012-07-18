@@ -11,7 +11,7 @@
 
 <table class="parsing-algorithm-table">
   <tr>
-    <th scope="row"><a href="rd">Recursive descent</a></th>
+    <th scope="row"><a href="<%= Helpers.buildHref("/rd") %>">Recursive descent</a></th>
     <td class="classification">
       <%= formatClassification(classification, "rd", "recursive descent") %>
     </td>
@@ -19,42 +19,53 @@
   </tr>
   
   <tr>
-    <th scope="row"><a href="ll1">LL(1)</a></th>
+    <th scope="row"><a href="<%= Helpers.buildHref("/ll1") %>">LL(1)</a></th>
     <td class="classification">
       <%= formatClassification(classification, "ll1", "LL(1)") %>
     </td>
-    <td><a href="ll1#table">Parsing table</a></td>
+    <td>
+      <a href="<%= Helpers.buildHref("/ll1", "table") %>">Parsing table</a>
+    </td>
   </tr>
   
   <tr>
-    <th scope="row"><a href="lr0">LR(0)</a></th>
+    <th scope="row"><a href="<%= Helpers.buildHref("/lr0") %>">LR(0)</a></th>
     <td class="classification">
       <%= formatClassification(classification, "lr0", "LR(0)") %>
     </td>
-    <td><a href="lr0#automaton">Automaton</a>, <a href="lr0#table">Parsing table</a></td>
+    <td>
+      <a href="<%= Helpers.buildHref("/lr0", "automaton") %>">Automaton</a>,
+      <a href="<%= Helpers.buildHref("/lr0", "table") %>">Parsing table</a>
+    </td>
   </tr>
   
   <tr>
-    <th scope="row"><a href="slr1">SLR(1)</a></th>
+    <th scope="row"><a href="<%= Helpers.buildHref("/slr1") %>">SLR(1)</a></th>
     <td class="classification">
       <%= formatClassification(classification, "slr1", "SLR(1)") %>
     </td>
-    <td><a href="slr1#table">Parsing table</a></td>
+    <td><a href="<%= Helpers.buildHref("/slr1", "table") %>">Parsing table</a></td>
   </tr>
   
   <tr>
-    <th scope="row"><a href="lr1">LR(1)</a></th>
+    <th scope="row"><a href="<%= Helpers.buildHref("/lr1") %>">LR(1)</a></th>
     <td class="classification">
       <%= formatClassification(classification, "lr1", "LR(1)") %>
     </td>
-    <td><a href="lr1#automaton">Automaton</a>, <a href="lr1#table">Parsing table</a></td>
+    <td>
+      <a href="<%= Helpers.buildHref("/lr1", "automaton") %>">Automaton</a>,
+      <a href="<%= Helpers.buildHref("/lr1", "table") %>">Parsing table</a>
+    </td>
   </tr>
   
   <tr>
-    <th scope="row"><a href="lalr1">LALR(1)</a></th>
+    <th scope="row"><a href="<%= Helpers.buildHref("/lalr1") %>">LALR(1)</a></th>
     <td class="classification">
       <%= formatClassification(classification, "lalr1", "LALR(1)") %>
     </td>
-    <td><a href="lalr1#automaton">Automaton</a>, <a href="lalr1#table">Parsing table</a></td>
+    <td>
+      <a href="<%= Helpers.buildHref("/lalr1", "automaton") %>">Automaton</a>,
+      <a href="<%= Helpers.buildHref("/lalr1", "table") %>">Parsing table</a>
+    </td>
   </tr>
 </table>
