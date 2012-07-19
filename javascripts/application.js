@@ -1,4 +1,5 @@
 //= require analysis
+//= require edit
 //= require examples
 //= require helpers
 //= require set
@@ -21,7 +22,7 @@ var Application = function(element) {
   
   Helpers.setDelegate(this);
   
-  // set up examples
+  // examples
   
   this._examplesElement = document.createElement("section");
   this._element.appendChild(this._examplesElement);
@@ -29,7 +30,15 @@ var Application = function(element) {
   this._examples = new Examples(this._examplesElement);
   this._examples.setDelegate(this);
   
-  // set up analysis
+  // edit
+  
+  this._editElement = document.createElement("section");
+  this._element.appendChild(this._editElement);
+  
+  this._edit = new Edit(this._editElement);
+  this._edit.setDelegate(this);
+  
+  // analysis
   
   this._analysisElement = document.createElement("section");
   this._element.appendChild(this._analysisElement);
@@ -86,6 +95,7 @@ Application.prototype._handleHashChange = function() {
   // update controllers
   
   this._analysis.reload();
+  this._edit.reload();
   this._examples.reload();
   
   // handle fragments
@@ -120,6 +130,20 @@ Application.prototype.getPath = function() {
 Application.prototype.getSpec = function() {
   
   return this._spec;
+  
+}
+
+Application.prototype.specChanged = function(s) {
+  
+  this._spec = s;
+  
+  // update hash, but no fragment is included
+  
+  window.location.hash = escape(this._spec) + (typeof this._path !== "undefined" && this._path !== null ? this._path : "");
+  
+  this._grammar = Grammar.parse(s);
+  
+  this._analysis.reload();
   
 }
 
