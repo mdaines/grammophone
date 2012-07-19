@@ -21,6 +21,20 @@ var Set = {
     
     return false;
     
+  },
+  
+  intersection: function(a, b) {
+    
+    var result = {};
+    var k;
+    
+    for (k in a) {
+      if (b[k])
+        result[k] = true;
+    }
+    
+    return result;
+    
   }
   
 };

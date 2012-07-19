@@ -6,12 +6,11 @@
   this.Calculations["grammar.classification"] = function(grammar) {
   
     return {
-      "rd": { member: false, reason: "some reason" },
-      "ll1": { member: true },
-      "lr0": { member: true },
-      "slr1": { member: false, reason: "it has a conflict of some sort" },
-      "lr1": { member: true },
-      "lalr1": { member: true }
+      "ll1": grammar.calculate("parsing.ll.ll1_classification"),
+      "lr0": { member: false, reason: "NOT IMPLEMENTED" },
+      "slr1": { member: false, reason: "NOT IMPLEMENTED" },
+      "lr1": { member: false, reason: "NOT IMPLEMENTED" },
+      "lalr1": { member: false, reason: "NOT IMPLEMENTED" }
     };
   
   };
