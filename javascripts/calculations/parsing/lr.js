@@ -432,6 +432,25 @@
     }
   
   }
+  
+  this.Calculations["parsing.lr.lr0_classification"] = function(grammar) {
+    
+    var i, s;
+    var table = grammar.calculate("parsing.lr.lr0_table");
+    
+    for (i = 0; i < table.length; i++) {
+        
+      if (table[i].reduce.length > 1)
+        return { member: false, reason: "it contains a reduce-reduce conflict" };
+      
+      if (Set.any(table[i].shift) && table[i].reduce.length > 0)
+        return { member: false, reason: "it contains a shift-reduce conflict" };
+      
+    }
+    
+    return { member: true };
+    
+  }
 
   this.Calculations["parsing.lr.lr0_automaton"] = function(grammar) {
     
@@ -480,6 +499,28 @@
   
   }
   
+  function classifyLR1(table) {
+    
+    var i, s;
+    
+    for (i = 0; i < table.length; i++) {
+      
+      for (s in table[i]) {
+        
+        if (typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 1)
+          return { member: false, reason: "it contains a reduce-reduce conflict" };
+        
+        if (typeof table[i][s].shift !== "undefined" && typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 0)
+          return { member: false, reason: "it contains a shift-reduce conflict" };
+        
+      }
+      
+    }
+    
+    return { member: true };
+    
+  }
+  
   function addReduceAction(actions, symbol, production) {
     
     if (typeof actions[symbol] === "undefined")
@@ -489,6 +530,12 @@
       actions[symbol].reduce = [];
   
     actions[symbol].reduce.push(production);
+    
+  }
+  
+  this.Calculations["parsing.lr.slr1_classification"] = function(grammar) {
+    
+    return classifyLR1(grammar.calculate("parsing.lr.slr1_table"));
     
   }
 
@@ -542,6 +589,12 @@
     
     return automaton(grammar, lr1);
   
+  }
+  
+  this.Calculations["parsing.lr.lr1_classification"] = function(grammar) {
+    
+    return classifyLR1(grammar.calculate("parsing.lr.lr1_table"));
+    
   }
 
   this.Calculations["parsing.lr.lr1_table"] = function(grammar) {
@@ -657,6 +710,12 @@
     }
     
     return result;
+    
+  }
+  
+  this.Calculations["parsing.lr.lalr1_classification"] = function(grammar) {
+    
+    return classifyLR1(grammar.calculate("parsing.lr.lalr1_table"));
     
   }
 
