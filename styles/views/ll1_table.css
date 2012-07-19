@@ -9,7 +9,7 @@
   min-width: 30px;
 }
 
-.ll1-parsing-table td.conflict {
+.ll1-table td.conflict {
   background: #fdd;
   border-color: #ecc;
 }
