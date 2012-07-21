@@ -2,7 +2,8 @@ require "sprockets"
 
 map "/assets" do
   environment = Sprockets::Environment.new
-  environment.append_path "javascripts"
+  environment.append_path "src"
+  environment.append_path "lib"
   environment.append_path "styles"
   run environment
 end

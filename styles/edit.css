@@ -1,0 +1,38 @@
+.edit {
+  background: #eee;
+  padding: 8pt 8pt 16pt 8pt;
+}
+
+.edit .spec {
+  width: 600px;
+  height: 150px;
+  display: block;
+  margin: 0 auto;
+  font: 12pt courier;
+  resize: vertical;
+}
+
+.edit .buttons {
+  text-align: center;
+  padding-top: 8pt;
+}
+
+.edit .analyze {
+  font-size: 10pt;
+}
+
+.edit .errors {
+  color: red;
+  display: none;
+  padding: 8pt 0;
+}
+
+.edit .errors pre {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.edit .error .errors {
+  display: inherit;
+}
+

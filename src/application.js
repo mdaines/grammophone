@@ -1,3 +1,4 @@
+//= require zepto
 //= require analysis
 //= require edit
 //= require examples
@@ -133,17 +134,14 @@ Application.prototype.getSpec = function() {
   
 }
 
-Application.prototype.specChanged = function(s) {
+Application.prototype.specChanged = function(spec, grammar) {
   
-  this._spec = s;
+  this._spec = spec;
+  this._grammar = grammar;
   
   // update hash, but no fragment is included
   
   window.location.hash = escape(this._spec) + (typeof this._path !== "undefined" && this._path !== null ? this._path : "");
-  
-  this._grammar = Grammar.parse(s);
-  
-  this._analysis.reload();
   
 }
 

@@ -2,6 +2,7 @@
 /*= require views/ll1_table */
 /*= require views/lr0_table */
 /*= require views/lr1_table */
+/*= require edit */
 /*= require analysis */
 
 body {
@@ -11,8 +12,12 @@ body {
 }
 
 section {
-  padding: 24px 36px;
   margin: 0;
+}
+
+.examples {
+  background: #eee;
+  padding: 8pt;
 }
 
 h1 {

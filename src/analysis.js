@@ -14,6 +14,7 @@
 var Analysis = function(element) {
   
   this._element = element;
+  this._element.className = "analysis";
   
   // header view (managed separately from views which are swapped
   // depending on routes)

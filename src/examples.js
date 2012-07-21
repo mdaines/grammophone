@@ -3,6 +3,7 @@
 var Examples = function(element) {
   
   this._element = element;
+  this._element.className = "examples";
   
 }
 

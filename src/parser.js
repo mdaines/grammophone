@@ -71,6 +71,19 @@ parse: function parse(input) {
         }
         if (typeof action === "undefined" || !action.length || !action[0]) {
             var errStr = "";
+            if (!recovering) {
+                expected = [];
+                for (p in table[state])
+                    if (this.terminals_[p] && p > 2) {
+                        expected.push("'" + this.terminals_[p] + "'");
+                    }
+                if (this.lexer.showPosition) {
+                    errStr = "Parse error on line " + (yylineno + 1) + ":\n" + this.lexer.showPosition() + "\nExpecting " + expected.join(", ") + ", got '" + (this.terminals_[symbol] || symbol) + "'";
+                } else {
+                    errStr = "Parse error on line " + (yylineno + 1) + ": Unexpected " + (symbol == 1?"end of input":"'" + (this.terminals_[symbol] || symbol) + "'");
+                }
+                this.parseError(errStr, {text: this.lexer.match, token: this.terminals_[symbol] || symbol, line: this.lexer.yylineno, loc: yyloc, expected: expected});
+            }
         }
         if (action[0] instanceof Array && action.length > 1) {
             throw new Error("Parse Error: multiple actions possible at state: " + state + ", token: " + symbol);
