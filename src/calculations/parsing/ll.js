@@ -6,6 +6,13 @@
     var p, i, j, k, l;
     var head, body, first;
     
+    var nullAmbiguity = grammar.calculate("grammar.nullAmbiguity");
+    
+    // We can return immediately if the grammar contains a null ambiguity.
+    
+    if (nullAmbiguity.length > 0)
+      return { member: false, reason: "it contains a null ambiguity" };
+    
     var follow = grammar.calculate("grammar.follow");
     var terminals = grammar.calculate("grammar.terminals");
     var nonterminals = grammar.calculate("grammar.nonterminals");
@@ -101,7 +108,7 @@
       for (s in first)
         table[head][s].push(i);
     
-      // If the nonterminal is nullable, for each symbol s of follow(head),
+      // If the production is nullable, for each symbol s of follow(head),
       // add this production to table[head][s].
       
       if (grammar.isNullable(body)) {
