@@ -278,10 +278,10 @@
               break;
         
           }
-      
+          
           if (j == grammar.productions[i].length) {
           
-            if (found)
+            if (typeof found !== "undefined")
               return [i, found];
             else
               found = i;
