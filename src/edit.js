@@ -3,7 +3,7 @@
 var Edit = function(element) {
   
   this._element = element;
-  this._element.className = "edit";
+  this._element.id = "edit";
   
   this._editElement = document.createElement("article");
   this._element.appendChild(this._editElement);
@@ -18,29 +18,24 @@ var Edit = function(element) {
 
 Edit.prototype.specChanged = function(spec) {
   
-  this._spec = spec;
+  this._parse = Grammar.parse(spec);
   
-  try {
-    var grammar = Grammar.parse(spec);
-    this._error = null;
-    this._editView.reload();
-    this._delegate.specChanged(spec, grammar);
-  } catch (e) {
-    this._error = e;
-    this._editView.reload();
-  }
+  if (typeof this._parse.error === "undefined")
+    this._delegate.parseChanged(this._parse);
+  
+  this._editView.reload();
   
 }
 
 Edit.prototype.getSpec = function() {
   
-  return this._spec;
+  return this._parse.spec;
   
 }
 
 Edit.prototype.getError = function() {
   
-  return this._error;
+  return this._parse.error;
   
 }
 
@@ -52,21 +47,7 @@ Edit.prototype.setDelegate = function(delegate) {
 
 Edit.prototype.reload = function() {
   
-  // FIXME
-  // delegate only provides spec and grammar, no error --
-  // when changing hashes, the application parses the spec
-  // also, which means that we end up parsing the grammar
-  // a couple times...
-  
-  this._spec = this._delegate.getSpec();
-  
-  try {
-    Grammar.parse(this._spec);
-    this._error = null;
-  } catch (e) {
-    this._error = e;
-  }
-  
+  this._parse = this._delegate.getParse();
   this._editView.reload();
   
 }

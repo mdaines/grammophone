@@ -9,28 +9,39 @@ var Grammar = function() {
     
     var i, j;
     
-    // Parser gives us rules in the following form:
-    //
-    //   { nt: "A", p: [["a", "b"], []] }
-    //
-    // We want an array of productions in this form:
-    //
-    //   [["A", "a", "b"], ["A"]]
-    //
-    // Note that depending on the grammar specification, productions
-    // for a particular nonterminal may be at different places in the
-    // list. We want to preserve the order in the user's input.
+    if (spec.match(/^\s*$/))
+      return { spec: spec };
     
-    var rules = Parser.parse(spec);
-    var productions = [];
+    try {
+      
+      // Parser gives us rules in the following form:
+      //
+      //   { nt: "A", p: [["a", "b"], []] }
+      //
+      // We want an array of productions in this form:
+      //
+      //   [["A", "a", "b"], ["A"]]
+      //
+      // Note that depending on the grammar specification, productions
+      // for a particular nonterminal may be at different places in the
+      // list. We want to preserve the order in the user's input.
     
-    for (i = 0; i < rules.length; i++) {
-      for (j = 0; j < rules[i].p.length; j++) {
-        productions.push([rules[i].nt].concat(rules[i].p[j]));
+      var rules = Parser.parse(spec);
+      var productions = [];
+    
+      for (i = 0; i < rules.length; i++) {
+        for (j = 0; j < rules[i].p.length; j++) {
+          productions.push([rules[i].nt].concat(rules[i].p[j]));
+        }
       }
-    }
     
-    return new klass(productions);
+      return { grammar: new klass(productions), spec: spec };
+      
+    } catch (e) {
+      
+      return { error: e, spec: spec };
+      
+    }
     
   }
   

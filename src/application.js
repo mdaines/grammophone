@@ -23,14 +23,6 @@ var Application = function(element) {
   
   Helpers.setDelegate(this);
   
-  // examples
-  
-  this._examplesElement = document.createElement("section");
-  this._element.appendChild(this._examplesElement);
-  
-  this._examples = new Examples(this._examplesElement);
-  this._examples.setDelegate(this);
-  
   // edit
   
   this._editElement = document.createElement("section");
@@ -50,14 +42,14 @@ var Application = function(element) {
   // listen for hashchange events and call the handler
   
   window.addEventListener("hashchange", function() {
-    this._handleHashChange();
+    this._hashChanged();
   }.bind(this));
   
-  this._handleHashChange();
+  this._hashChanged();
   
 }
 
-Application.prototype._handleHashChange = function() {
+Application.prototype._hashChanged = function() {
   
   // get grammar and path
   
@@ -66,30 +58,12 @@ Application.prototype._handleHashChange = function() {
   
   if (components.length === 0) {
     
-    this._spec = undefined;
-    this._grammar = undefined;
-    this._path = undefined;
+    this._parse = Grammar.parse("");
     
   } else {
     
-    this._spec = unescape(components[0]);
-    
-    try {
-      this._grammar = Grammar.parse(this._spec);
-    } catch (e) {
-      this._grammar = undefined;
-    }
-    
+    this._parse = Grammar.parse(unescape(components[0]));
     this._path = "/" + components.slice(1).join("/");
-    
-    var f = this._path.indexOf("~");
-    
-    if (f !== -1) {
-      this._fragment = this._path.slice(f + 1);
-      this._path = this._path.slice(0, f);
-    } else {
-      this._fragment = undefined;
-    }
     
   }
   
@@ -97,28 +71,12 @@ Application.prototype._handleHashChange = function() {
   
   this._analysis.reload();
   this._edit.reload();
-  this._examples.reload();
-  
-  // handle fragments
-  
-  var element, rect;
-
-  if (this._fragment && (element = document.getElementById(this._fragment))) {
-  
-    var rect = element.getBoundingClientRect();
-    window.scrollTo(0, rect.top + window.pageYOffset);
-  
-  } else {
-    
-    window.scrollTo(0, 0);
-  
-  }
   
 }
 
 Application.prototype.getGrammar = function() {
   
-  return this._grammar;
+  return this._parse.grammar;
   
 }
 
@@ -128,25 +86,21 @@ Application.prototype.getPath = function() {
   
 }
 
-Application.prototype.getSpec = function() {
+Application.prototype.getParse = function() {
   
-  return this._spec;
-  
-}
-
-Application.prototype.specChanged = function(spec, grammar) {
-  
-  this._spec = spec;
-  this._grammar = grammar;
-  
-  // update hash, but no fragment is included
-  
-  window.location.hash = escape(this._spec) + (typeof this._path !== "undefined" && this._path !== null ? this._path : "");
+  return this._parse;
   
 }
 
-Application.prototype.buildHref = function(path, fragment) {
+Application.prototype.parseChanged = function(parse) {
   
-  return "#" + escape(this._spec) + path + (typeof fragment !== "undefined" && fragment !== null ? "~" + fragment : "");
+  this._parse = parse;
+  window.location.hash = escape(this._parse.spec) + (typeof this._path !== "undefined" && this._path !== null ? this._path : "");
+  
+}
+
+Application.prototype.buildHref = function(path) {
+  
+  return "#" + escape(this._parse.spec) + path;
   
 }
