@@ -11,14 +11,27 @@ body {
   line-height: 1.2;
 }
 
-section {
-  margin: 0;
+#edit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  border-right: 1px solid #bbb;
 }
 
-.examples {
-  background: #eee;
-  padding: 8pt;
+#analysis {
+  position: absolute;
+  top: 0;
+  left: 300px;
+  right: 0;
+  bottom: 0;
+  margin-left: 1px;
+  padding: 20px;
+  overflow: auto;
 }
+
+
 
 h1 {
   font-size: 18pt;

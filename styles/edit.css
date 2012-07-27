@@ -1,38 +1,49 @@
-.edit {
-  background: #eee;
-  padding: 8pt 8pt 16pt 8pt;
+#edit .buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 10px 10px 10px;
+  border-bottom: 1px solid #ccc;
+  background: #ddd;
 }
 
-.edit .spec {
-  width: 600px;
-  height: 150px;
+#edit .spec {
+  white-space: pre-wrap;
+  overflow: auto;
+  font: 9pt monaco, courier, monospace;
   display: block;
-  margin: 0 auto;
-  font: 12pt courier;
-  resize: vertical;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 10px 10px 10px;
+  margin: 0;
+  border: none;
+  resize: none;
+  background: #fff;
+  color: #000;
 }
 
-.edit .buttons {
-  text-align: center;
-  padding-top: 8pt;
+#edit .spec:focus {
+  outline: none;
 }
 
-.edit .analyze {
-  font-size: 10pt;
-}
-
-.edit .errors {
-  color: red;
+#edit .errors {
   display: none;
-  padding: 8pt 0;
 }
 
-.edit .errors pre {
-  width: 600px;
-  margin: 0 auto;
+#edit .error .errors {
+  display: block;
 }
 
-.edit .error .errors {
-  display: inherit;
+#edit .errors {
+  position: absolute;
+  left: 10px;
+  top: 52px;
+  right: 10px;
+  padding: 10px;
+  background: rgba(255, 0, 0, 0.9);
+  color: #fff;
 }
-
