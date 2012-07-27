@@ -26,17 +26,19 @@ EditView.prototype.reload = function() {
   
   this._element.find(".spec").get(0).value = this._delegate.getSpec();
   
-  // FIXME
-  // need better error display.
-  
   var error = this._delegate.getError();
   
   if (error) {
-    this._element.find(".errors").get(0).innerHTML = "<pre>" + error + "</pre>";
-    this._element.addClass("error");
+    
+    this._element.find(".errors").html("<pre>" + error + "</pre>").show();
+    this._element.find(".errors").css({ top: this._element.find(".buttons").height() + "px" });
+    this._element.find(".spec").css({ top: this._element.find(".buttons").height() + this._element.find(".errors").height() + "px" });
+    
   } else {
-    this._element.find(".errors").get(0).innerHTML = "";
-    this._element.removeClass("error");
+    
+    this._element.find(".errors").html("").hide();
+    this._element.find(".spec").css({ top: this._element.find(".buttons").height() + "px" });
+    
   }
   
 }

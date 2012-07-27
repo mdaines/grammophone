@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   padding: 10px 10px 10px 10px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #bbb;
   background: #ddd;
 }
 
@@ -14,7 +14,7 @@
   font: 9pt monaco, courier, monospace;
   display: block;
   position: absolute;
-  top: 42px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -31,21 +31,17 @@
 }
 
 #edit .errors {
-  display: none;
-}
-
-#edit .error .errors {
-  display: block;
-}
-
-#edit .errors {
   position: absolute;
   left: 0;
-  top: 43px;
+  top: 0;
   right: 0;
   padding: 10px;
   background: #f00;
-  border-bottom: 1px solid #c00;
+  margin-right: -1px;
+  margin-top: -1px;
+  border-bottom: 1px solid #e11;
+  border-right: 1px solid #e11;
+  border-top: 1px solid #e11;
   color: #fff;
   font-weight: bold;
 }
