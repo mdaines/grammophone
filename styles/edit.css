@@ -40,10 +40,12 @@
 
 #edit .errors {
   position: absolute;
-  left: 10px;
-  top: 52px;
-  right: 10px;
+  left: 0;
+  top: 43px;
+  right: 0;
   padding: 10px;
-  background: rgba(255, 0, 0, 0.9);
+  background: #f00;
+  border-bottom: 1px solid #c00;
   color: #fff;
+  font-weight: bold;
 }

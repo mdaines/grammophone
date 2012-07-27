@@ -35,45 +35,63 @@ var Analysis = function(element) {
         { id: "nonterminals", constructor: NonterminalsView },
         { id: "parsing", constructor: ParsingView }
       ],
-      path: []
+      path: [{ title: "Analysis" }]
     },
     
-    "/ll1": {
+    "/ll1-table": {
       views: [
         { id: "table", constructor: LL1TableView }
       ],
-      path: [{ path: "/", fragment: "parsing", title: "Parsing Algorithms" }, { title: "LL(1) Parsing" }]
+      path: [{ path: "/", title: "Analysis" }, { title: "LL(1) Parsing Table" }]
     },
     
-    "/lr0": {
+    "/lr0-automaton": {
       views: [
-        { id: "automaton", constructor: LR0AutomatonView },
+        { id: "automaton", constructor: LR0AutomatonView }
+      ],
+      path: [{ path: "/", title: "Analysis" }, { title: "LR(0) Automaton" }]
+    },
+    
+    "/lr0-table": {
+      views: [
         { id: "table", constructor: LR0TableView }
       ],
-      path: [{ path: "/", fragment: "parsing", title: "Parsing Algorithms" }, { title: "LR(0) Parsing" }]
+      path: [{ path: "/", title: "Analysis" }, { title: "LR(0) Parsing Table" }]
     },
     
-    "/slr1": {
+    "/slr1-table": {
       views: [
         { id: "table", constructor: SLR1TableView }
       ],
-      path: [{ path: "/", fragment: "parsing", title: "Parsing Algorithms" }, { title: "SLR(1) Parsing" }]
+      path: [{ path: "/", title: "Analysis" }, { title: "SLR(1) Parsing Table" }]
     },
     
-    "/lr1": {
+    "/lr1-automaton": {
       views: [
-        { id: "automaton", constructor: LR1AutomatonView },
+        { id: "automaton", constructor: LR1AutomatonView }
+      ],
+      path: [{ path: "/", title: "Analysis" }, { title: "LR(1) Automaton" }]
+    },
+    
+    "/lr1-table": {
+      views: [
         { id: "table", constructor: LR1TableView }
       ],
-      path: [{ path: "/", fragment: "parsing", title: "Parsing Algorithms" }, { title: "LR(1) Parsing" }]
+      path: [{ path: "/", title: "Analysis" }, { title: "LR(1) Parsing Table" }]
     },
     
-    "/lalr1": {
+    "/lalr1-automaton": {
       views: [
-        { id: "automaton", constructor: LALR1AutomatonView },
+        { id: "automaton", constructor: LALR1AutomatonView }
+      ],
+      path: [{ path: "/", title: "Analysis" }, { title: "LALR(1) Automaton" }]
+    },
+    
+    "/lalr1-table": {
+      views: [
         { id: "table", constructor: LALR1TableView }
       ],
-      path: [{ path: "/", fragment: "parsing", title: "Parsing Algorithms" }, { title: "LALR(1) Parsing" }]
+      path: [{ path: "/", title: "Analysis" }, { title: "LALR(1) Parsing Table" }]
     }
     
   };

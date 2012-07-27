@@ -3,6 +3,7 @@
 var HeaderView = function(element) {
   
   this._element = element;
+  this._element.className = "header";
   
 }
 
