@@ -39,13 +39,21 @@ var Application = function(element) {
   this._analysis = new Analysis(this._analysisElement);
   this._analysis.setDelegate(this);
   
-  // listen for hashchange events and call the handler
+  // listen for hashchange events
+  
+  window.location.hash = "";
   
   window.addEventListener("hashchange", function() {
     this._hashChanged();
   }.bind(this));
   
-  this._hashChanged();
+  // set initial path and parse, and reload children
+  
+  this._path = "/";
+  this._parse = { spec: "" };
+  
+  this._analysis.reload();
+  this._edit.reload();
   
 }
 
@@ -53,24 +61,14 @@ Application.prototype._hashChanged = function() {
   
   // get grammar and path
   
-  var hash = window.location.hash.slice(1);
-  var components = hash.split("/");
+  this._path = window.location.hash.slice(1);
   
-  if (components.length === 0) {
-    
-    this._parse = Grammar.parse("");
-    
-  } else {
-    
-    this._parse = Grammar.parse(unescape(components[0]));
-    this._path = "/" + components.slice(1).join("/");
-    
-  }
+  if (this._path == "")
+    this._path = "/";
   
   // update controllers
   
   this._analysis.reload();
-  this._edit.reload();
   
 }
 
@@ -95,12 +93,13 @@ Application.prototype.getParse = function() {
 Application.prototype.parseChanged = function(parse) {
   
   this._parse = parse;
-  window.location.hash = escape(this._parse.spec) + (typeof this._path !== "undefined" && this._path !== null ? this._path : "");
+  
+  this._analysis.reload();
   
 }
 
 Application.prototype.buildHref = function(path) {
   
-  return "#" + escape(this._parse.spec) + path;
+  return "#" + path;
   
 }
