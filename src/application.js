@@ -50,7 +50,12 @@ var Application = function(element) {
   // set initial path and parse, and reload children
   
   this._path = "/";
-  this._parse = { spec: "" };
+  
+  try {
+    this._parse = Grammar.parse(window.localStorage.getItem("spec") || "");
+  } catch(e) {
+    this._parse = { spec: "" };
+  }
   
   this._analysis.reload();
   this._edit.reload();
@@ -93,6 +98,12 @@ Application.prototype.getParse = function() {
 Application.prototype.parseChanged = function(parse) {
   
   this._parse = parse;
+  
+  try {
+    window.localStorage.setItem("spec", this._parse.spec);
+  } catch(e) {
+    
+  }
   
   this._analysis.reload();
   
