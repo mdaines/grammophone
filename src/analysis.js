@@ -1,5 +1,6 @@
 //= require views/header_view
 //= require views/sanity_view
+//= require views/sentences_view
 //= require views/nonterminals_view
 //= require views/parsing_view
 //= require views/ll1_table_view
@@ -31,7 +32,8 @@ var Analysis = function(element) {
     
     "/": {
       views: [
-        { id: "sanity", constructor: SanityView }, 
+        { id: "sanity", constructor: SanityView },
+        { id: "sentences", constructor: SentencesView },
         { id: "nonterminals", constructor: NonterminalsView },
         { id: "parsing", constructor: ParsingView }
       ],

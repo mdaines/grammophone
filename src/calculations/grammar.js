@@ -483,5 +483,66 @@
     return endable;
   
   };
+  
+  function expandSentence(sentence, grammar) {
+    
+    var i, j;
+    var sentences = [];
+    var nonterminals = grammar.calculate("grammar.nonterminals");
+    
+    // expand the first nonterminal
+    
+    for (i = 0; i < sentence.length; i++) {
+      
+      if (nonterminals[sentence[i]]) {
+        
+        for (j = 0; j < grammar.productions.length; j++) {
+          
+          if (grammar.productions[j][0] === sentence[i]) {
+            sentences.push(sentence.slice(0, i).concat(grammar.productions[j].slice(1)).concat(sentence.slice(i+1)));
+          }
+          
+        }
+        
+        break;
+        
+      }
+      
+    }
+    
+    return sentences;
+    
+  }
+  
+  this.Calculations["grammar.sentences"] = function(grammar) {
+    
+    var start = grammar.calculate("grammar.start");
+    
+    var sentences = [[start]];
+    var expanded;
+    var result;
+    var finished = [];
+    
+    var i, j;
+    
+    for (i = 0; i < 30; i++) {
+      result = [];
+      for (j = 0; j < sentences.length; j++) {
+        expanded = expandSentence(sentences[j], grammar);
+        
+        if (expanded.length > 0) {
+          result = result.concat(expanded);
+        } else {
+          finished.push(sentences[j].slice(0));
+          if (finished.length == 20)
+            return finished;
+        }
+      }
+      sentences = result;
+    }
+    
+    return finished;
+    
+  };
 
 }).call(this);
