@@ -61,7 +61,7 @@ var Helpers = function() {
     if (production.length > 1)
       result += formatSymbols(production.slice(1), info).join(" ");
     else
-      result += "&epsilon;";
+      result += "<u>&epsilon;</u>";
     
     return result;
     
