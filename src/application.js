@@ -1,7 +1,6 @@
 //= require zepto
 //= require analysis
 //= require edit
-//= require examples
 //= require helpers
 //= require set
 //= require grammar
