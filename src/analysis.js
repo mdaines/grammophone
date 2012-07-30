@@ -166,6 +166,11 @@ Analysis.prototype.reload = function() {
     
   this._headerView.reload();
   
+  // scroll to top-left
+  
+  this._element.scrollLeft = 0;
+  this._element.scrollTop = 0;
+  
 }
 
 Analysis.prototype.getCalculation = function(name) {
