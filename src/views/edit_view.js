@@ -41,14 +41,16 @@ EditView.prototype.reload = function() {
     
     this._element.find(".errors").html("<pre>" + error + "</pre>").show();
     this._element.find(".errors").css({ top: this._element.find(".buttons").height() + "px" });
-    this._element.find(".spec").css({ top: this._element.find(".buttons").height() + this._element.find(".errors").height() + "px" });
-    this._element.find(".spec").css({ bottom: this._element.find(".examples").height() + "px" });
+    
+    this._element.find(".spec-wrap").css({ top: this._element.find(".buttons").height() + this._element.find(".errors").height() + "px" });
+    this._element.find(".spec-wrap").css({ bottom: this._element.find(".examples").height() + 20 + "px" });
     
   } else {
     
     this._element.find(".errors").html("").hide();
-    this._element.find(".spec").css({ top: this._element.find(".buttons").height() + "px" });
-    this._element.find(".spec").css({ bottom: this._element.find(".examples").height() + "px" });
+    
+    this._element.find(".spec-wrap").css({ top: this._element.find(".buttons").height() + "px" });
+    this._element.find(".spec-wrap").css({ bottom: this._element.find(".examples").height() + 20 + "px" });
     
   }
   
