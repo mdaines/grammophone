@@ -18,3 +18,7 @@
   background: #fdd;
   border-color: #ecc;
 }
+
+.lr0-table td.conflict u {
+  background: #dcc;
+}

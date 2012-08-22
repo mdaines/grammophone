@@ -13,3 +13,7 @@
   background: #fdd;
   border-color: #ecc;
 }
+
+.ll1-table td.conflict u {
+  background: #dcc;
+}
