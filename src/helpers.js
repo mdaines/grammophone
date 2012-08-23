@@ -38,6 +38,17 @@ var Helpers = function() {
     
   }
   
+  function bareFormatSymbol(symbol, info) {
+    
+    if (symbol == Grammar.END)
+      return "$";
+    else if (info.nonterminals[symbol] || info.terminals[symbol])
+      return prettifySymbol(escapeHTML(symbol));
+    else
+      throw "Unknown symbol: " + symbol;
+    
+  }
+  
   function formatSymbols(symbols, info) {
     
     var i;
@@ -45,6 +56,18 @@ var Helpers = function() {
     
     for (i = 0; i < symbols.length; i++)
       result[i] = formatSymbol(symbols[i], info);
+    
+    return result;
+    
+  }
+  
+  function bareFormatSymbols(symbols, info) {
+    
+    var i;
+    var result = [];
+    
+    for (i = 0; i < symbols.length; i++)
+      result[i] = bareFormatSymbol(symbols[i], info);
     
     return result;
     
@@ -80,6 +103,64 @@ var Helpers = function() {
     
   }
   
+  function formatItem(item, start, productions, info) {
+    
+    var production;
+
+    if (item.production === -1) {
+      
+      if (item.index === 0)
+        production = "&bull; " + Helpers.formatSymbol(start, info);
+      else
+        production = Helpers.formatSymbol(start, info) + " &bull;";
+      
+    } else {
+      
+      var symbols = Helpers.formatSymbols(productions[item.production].slice(1), info);
+      symbols.splice(item.index, 0, "&bull;");
+      
+      production = Helpers.formatSymbol(productions[item.production][0], info) + " &rarr; " + symbols.join(" ");
+      
+    }
+    
+    if (item.lookaheads)
+      return "[" + production + ", " + Helpers.formatSymbols(item.lookaheads, info).join(" / ") + "]";
+    else if (item.lookahead)
+      return "[" + production + ", " + Helpers.formatSymbol(item.lookahead, info) + "]";
+    else
+      return production;
+    
+  }
+  
+  function bareFormatItem(item, start, productions, info) {
+    
+    var production;
+
+    if (item.production === -1) {
+      
+      if (item.index === 0)
+        production = "&bull; " + Helpers.bareFormatSymbol(start, info);
+      else
+        production = Helpers.bareFormatSymbol(start, info) + " &bull;";
+      
+    } else {
+      
+      var symbols = Helpers.bareFormatSymbols(productions[item.production].slice(1), info);
+      symbols.splice(item.index, 0, "&bull;");
+      
+      production = Helpers.bareFormatSymbol(productions[item.production][0], info) + " &rarr; " + symbols.join(" ");
+      
+    }
+    
+    if (item.lookaheads)
+      return "[" + production + ", " + Helpers.bareFormatSymbols(item.lookaheads, info).join(" / ") + "]";
+    else if (item.lookahead)
+      return "[" + production + ", " + Helpers.bareFormatSymbol(item.lookahead, info) + "]";
+    else
+      return production;
+    
+  }
+  
   function repeatString(string, times) {
     
     var result = "";
@@ -96,7 +177,7 @@ var Helpers = function() {
   
   function escapeHTML(string) {
     
-    return string.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    return string.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;");
     
   }
   
@@ -120,9 +201,13 @@ var Helpers = function() {
   
   klass.listSymbols = listSymbols;
   klass.formatSymbol = formatSymbol;
+  klass.bareFormatSymbol = bareFormatSymbol;
   klass.formatSymbols = formatSymbols;
+  klass.bareFormatSymbols = bareFormatSymbols;
   klass.formatProduction = formatProduction;
   klass.formatSentence = formatSentence;
+  klass.formatItem = formatItem;
+  klass.bareFormatItem = bareFormatItem;
   klass.repeatString = repeatString;
   klass.escapeHTML = escapeHTML;
   klass.setDelegate = setDelegate;

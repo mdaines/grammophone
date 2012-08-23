@@ -1,4 +1,5 @@
 //= require zepto
+//= require viz
 //= require analysis
 //= require edit
 //= require helpers
