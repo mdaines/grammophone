@@ -1,4 +1,5 @@
 //= require calculations
+//= require transformations
 //= require parser
 
 var Grammar = function() {

@@ -8,6 +8,12 @@ map "/assets" do
   run environment
 end
 
+# Serve tests.
+
+map "/test" do
+  run Rack::Directory.new("./test")
+end
+
 # Read index.html from disk for every path not under /assets.
 
 map "/" do
