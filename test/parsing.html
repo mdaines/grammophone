@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Parsing</title>
-    <link rel="stylesheet" href="../views.css">
     <style>
     
       article {
@@ -33,16 +32,7 @@
     <section id="results">
     </section>
     
-    <script src="../lib/zepto.js"></script>
-    <script src="../src/relation.js"></script>
-    <script src="../src/set.js"></script>
-    <script src="../src/parser.js"></script>
-    <script src="../src/grammar.js"></script>
-    <script src="../src/calculations.js"></script>
-    <script src="../src/calculations/grammar.js"></script>
-    <script src="../src/helpers.js"></script>
-    <script src="../src/views.js"></script>
-    <script src="../src/views/productions.js"></script>
+    <script src="/assets/application.js"></script>
     <script>
       
       function productionsEqual(a, b) {
@@ -93,22 +83,22 @@
       
       function assertProductions(spec, expected) {
         
-        var grammar;
+        var result;
         var i, j;
         
-        try {
-          
-          grammar = Grammar.parse(spec);
-          
-          if (!productionsEqual(expected, grammar.productions)) {
-            fail("<p>Expected:</p>" + inspectProductionsAsList(expected) + "<p>Actual:</p>" + inspectProductionsAsList(grammar.productions) + "<p>Spec:</p><pre>" + spec + "</pre>");
-            return 1;
-          }
-          
-        } catch (e) {
+        result = Grammar.parse(spec);
+        
+        if (result.error) {
           
           fail("<p>Unexpected parse error:</p><pre>" + e.toString() + "</pre><p>Spec:</p><pre>" + spec + "</pre>");
           return 1;
+          
+        } else {
+          
+          if (!productionsEqual(expected, result.grammar.productions)) {
+            fail("<p>Expected:</p>" + inspectProductionsAsList(expected) + "<p>Actual:</p>" + inspectProductionsAsList(result.grammar.productions) + "<p>Spec:</p><pre>" + spec + "</pre>");
+            return 1;
+          }
           
         }
         
