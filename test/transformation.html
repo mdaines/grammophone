@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Transformation</title>
-    <link rel="stylesheet" href="../views.css">
     <style>
       
       article {
@@ -57,8 +56,6 @@
     <script src="../src/calculations/transformations.js"></script>
     <script src="../src/transformations.js"></script>
     <script src="../src/helpers.js"></script>
-    <script src="../src/views.js"></script>
-    <script src="../src/views/productions.js"></script>
     <script>
     
       var TransformView = (function() {
@@ -90,9 +87,7 @@
             var row = $("<tr></tr>");
             
             row.append("<td>" + index + "</td>");
-            row.append("<td>" + Helpers.formatSymbol(head, params.info) + "</td>");
-            row.append("<td>&rarr;</td>");
-            row.append("<td>" + Helpers.formatSymbols(body, params.info).join(" ") + "</td>");
+            row.append("<td>" + Helpers.formatProduction(production, params.info) + "</td>");
             
             var cell = $("<td></td>");
             
@@ -164,8 +159,12 @@
         $(document.body).removeClass("edit");
         $(document.body).addClass("transform");
         
+        var result;
+        
         spec = document.getElementById("spec").value;
-        grammar = Grammar.parse(spec);
+        result = Grammar.parse(spec);
+        
+        grammar = result.grammar;
         
         transformView.update({
           productions: grammar.calculate("grammar.productions"),
