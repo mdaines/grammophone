@@ -19,6 +19,7 @@ SanityView.prototype.reload = function() {
     unrealizable: this._delegate.getCalculation("grammar.unrealizable"),
     cycle: this._delegate.getCalculation("grammar.cycle"),
     nullAmbiguity: this._delegate.getCalculation("grammar.nullAmbiguity"),
+    ambiguous: this._delegate.getCalculation("grammar.ambiguous"),
     productions: this._delegate.getCalculation("grammar.productions"),
     info: this._delegate.getCalculation("grammar.symbolInfo")
   });

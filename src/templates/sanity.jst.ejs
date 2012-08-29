@@ -39,4 +39,12 @@
       The grammar is null unambiguous.
     <% } %>
   </li>
+  
+  <% if (typeof ambiguous !== "undefined") { %>
+    <li>
+      The grammar is ambiguous: the sentence
+      <%= Helpers.formatSymbols(ambiguous, info).join(" ") %>
+      has an ambiguous derivation.
+    </li>
+  <% } %>
 </ul>
