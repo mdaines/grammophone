@@ -52,7 +52,7 @@ var Grammar = function() {
   
   function initialize(productions) {
     
-    // Check for reserved symbols (anything beginning with "Grammar.")
+    // Check for reserved and empty symbols
   
     var i, j;
   
@@ -60,7 +60,10 @@ var Grammar = function() {
       for (j = 0; j < productions[i].length; j++) {
       
         if (productions[i][j].match(/^Grammar\./))
-          throw "Reserved symbol " + productions[i][j] + " cannot be part of a production";
+          throw "Reserved symbol " + productions[i][j] + " may not be part of a production";
+        
+        if (productions[i][j] === "")
+          throw "An empty symbol may not be part of a production";
       
       }
     }

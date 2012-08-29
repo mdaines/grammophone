@@ -83,14 +83,11 @@
       
       function assertProductions(spec, expected) {
         
-        var result;
-        var i, j;
-        
-        result = Grammar.parse(spec);
+        var result = Grammar.parse(spec);
         
         if (result.error) {
           
-          fail("<p>Unexpected parse error:</p><pre>" + e.toString() + "</pre><p>Spec:</p><pre>" + spec + "</pre>");
+          fail("<p>Unexpected parse error:</p><pre>" + result.error.toString() + "</pre><p>Spec:</p><pre>" + spec + "</pre>");
           return 1;
           
         } else {
@@ -109,17 +106,17 @@
       
       function assertParseError(spec) {
         
-        try {
+        var result = Grammar.parse(spec);
+        
+        if (result.error) {
           
-          var grammar = Grammar.parse(spec);
+          pass("<pre>" + spec + "</pre><pre>" + result.error.toString() + "</pre>");
+          return 0;
+          
+        } else {
           
           fail("<p>Expected parse error for spec, none thrown:</p><pre>" + spec + "</pre>");
           return 1;
-          
-        } catch (e) {
-          
-          pass("<pre>" + spec + "</pre><pre>" + e.toString() + "</pre>");
-          return 0;
           
         }
         
@@ -139,6 +136,8 @@
       failures += assertProductions("-->-. - -> -.", [["-", "-"], ["-", "-"]]);
       failures += assertProductions("A -> x > y.", [["A", "x", ">", "y"]]);
       failures += assertProductions("\"x.y\" -> \" \" \"->\".", [["x.y", " ", "->"]]);
+      failures += assertProductions("'x.y' -> ' ' '->'.", [["x.y", " ", "->"]]);
+      failures += assertProductions("a -> \"'\" \"\\\"\" '\\'' '\"'.", [["a", "'", "\"", "'", "\""]]);
       failures += assertProductions("A -> \\\".", [["A", "\""]]);
       failures += assertProductions("A -> \\..", [["A", "."]]);
       failures += assertProductions("A -> a\\.a.", [["A", "a.a"]]);
@@ -146,6 +145,7 @@
       failures += assertProductions("a-b -> a-b.", [["a-b", "a-b"]]);
       failures += assertProductions("a-b->a-b.", [["a-b", "a-b"]]);
       failures += assertProductions("a'->x.", [["a'", "x"]]);
+      failures += assertProductions("a''->x'''.y'->b''.", [["a''", "x'''"], ["y'", "b''"]]);
       
       failures += assertParseError("A -> a. B");
       failures += assertParseError("A.y -> a.");
@@ -154,6 +154,16 @@
       failures += assertParseError("-> X");
       failures += assertParseError("A");
       failures += assertParseError("A -> \"x");
+      failures += assertParseError("A -> \"x\\\"");
+      failures += assertParseError("a->x.y .");
+      failures += assertParseError("a -> '.");
+      failures += assertParseError("a -> \".");
+      failures += assertParseError("a -> b\"c\".");
+      failures += assertParseError("a -> b'c.");
+      failures += assertParseError("a -> b'''c.");
+      failures += assertParseError("a -> b'c '.");
+      failures += assertParseError("a -> \"\".");
+      failures += assertParseError("a -> ''.");
       
       if (failures > 0)
         $("#results").prepend("<article class=\"fail\">" + failures + " " + (failures == 1 ? "failure" : "failures") + "!</article>");
