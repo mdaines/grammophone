@@ -484,17 +484,22 @@
   
   };
   
+  // Given a sentence and a grammar, expand the sentence's first realizable
+  // nonterminal and return the resulting list of sentences (which may be
+  // empty).
+  
   function expandSentence(sentence, grammar) {
     
     var i, j;
     var sentences = [];
     var nonterminals = grammar.calculate("grammar.nonterminals");
+    var unrealizable = grammar.calculate("grammar.unrealizable");
     
     // expand the first nonterminal
     
     for (i = 0; i < sentence.length; i++) {
       
-      if (nonterminals[sentence[i]]) {
+      if (nonterminals[sentence[i]] && !unrealizable[sentence[i]]) {
         
         for (j = 0; j < grammar.productions.length; j++) {
           
@@ -514,34 +519,57 @@
     
   }
   
+  function allTerminals(sentence, grammar) {
+    
+    var i;
+    var terminals = grammar.calculate("grammar.terminals");
+    
+    for (i = 0; i < sentence.length; i++) {
+      if (!terminals[sentence[i]])
+        return false;
+    }
+    
+    return true;
+    
+  }
+  
+  var MAX_SENTENCES = 20;
+  
   this.Calculations["grammar.sentences"] = function(grammar) {
     
     var start = grammar.calculate("grammar.start");
     
-    var sentences = [[start]];
-    var expanded;
-    var result;
-    var finished = [];
-    
     var i, j;
+    var sentences = [];
+    var queue = [[start]];
+    var sentence;
+    var expanded;
     
-    for (i = 0; i < 30; i++) {
-      result = [];
-      for (j = 0; j < sentences.length; j++) {
-        expanded = expandSentence(sentences[j], grammar);
+    do {
+    
+      sentence = queue.shift();
+      expanded = expandSentence(sentence, grammar);
+    
+      for (i = 0; i < expanded.length; i++) {
+      
+        if (allTerminals(expanded[i], grammar))
+          sentences.push(expanded[i]);
+        else
+          queue.push(expanded[i]);
         
-        if (expanded.length > 0) {
-          result = result.concat(expanded);
-        } else {
-          finished.push(sentences[j].slice(0));
-          if (finished.length == 20)
-            return finished;
-        }
+        if (sentences.length == MAX_SENTENCES)
+          break;
+        
       }
-      sentences = result;
-    }
+      
+    } while (queue.length > 0 && sentences.length < MAX_SENTENCES);
     
-    return finished;
+    return sentences.sort(function(a, b) {
+      if (a.length === b.length)
+        return a < b;
+      else
+        return a.length - b.length;
+    });
     
   };
 

@@ -1,7 +1,11 @@
 <h1>Example Sentences</h1>
 
-<ul class="symbols">
-  <% sentences.forEach(function(sentence) { %>
-    <li><%= sentence.length === 0 ? "<u>&epsilon;</u>" : Helpers.formatSymbols(sentence, info).join(" ") %></li>
-  <% }); %>
-</ul>
+<% if (sentences.length > 0) { %>
+  <ul class="symbols">
+    <% sentences.forEach(function(sentence) { %>
+      <li><%= sentence.length === 0 ? "<u>&epsilon;</u>" : Helpers.formatSymbols(sentence, info).join(" ") %></li>
+    <% }); %>
+  </ul>
+<% } else { %>
+  <p>No example sentences could be generated.</p>
+<% } %>
