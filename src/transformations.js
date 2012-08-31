@@ -63,22 +63,16 @@ Transformations["removeImmediateLeftRecursion"] = function(grammar, options) {
     symbol += "'";
   } while (typeof nonterminals[symbol] !== "undefined");
   
-  // Copy unrelated productions into the grammar.
+  // Copy productions to changes, marking those we're removing.
   
-  var productions = [];
+  var changes = [];
   
   for (i = 0; i < grammar.productions.length; i++) {
     
-    if (options.base.indexOf(i) === -1 && options.recursive.indexOf(i) === -1) {
-      
-      var production = [];
-      
-      for (j = 0; j < grammar.productions[i].length; j++)
-        production.push(grammar.productions[i][j]);
-      
-      productions.push(production);
-      
-    }
+    if (options.base.indexOf(i) === -1 && options.recursive.indexOf(i) === -1)
+      changes.push({ production: grammar.productions[i].slice() });
+    else
+      changes.push({ production: grammar.productions[i].slice(), change: "removed" });
     
   }
   
@@ -86,7 +80,7 @@ Transformations["removeImmediateLeftRecursion"] = function(grammar, options) {
   
   // Base rules
   
-  var replacement = [];
+  var added = [];
   
   for (i = 0; i < options.base.length; i++) {
     
@@ -97,7 +91,7 @@ Transformations["removeImmediateLeftRecursion"] = function(grammar, options) {
       
     production.push(symbol);
     
-    replacement.push(production);
+    added.push({ production: production, change: "added" });
     
   }
   
@@ -114,18 +108,19 @@ Transformations["removeImmediateLeftRecursion"] = function(grammar, options) {
     
     production.push(symbol);
     
-    replacement.push(production);
+    added.push({ production: production, change: "added" });
     
   }
   
-  replacement.push([symbol]);
+  // Epsilon
   
-  // Put replacement into new list of productions and return
-  // resulting grammar.
+  added.push({ production: [symbol], change: "added" });
   
-  productions = productions.slice(0, options.recursive[0]).concat(replacement).concat(productions.slice(options.recursive[0]));
+  // Splice in the additions
   
-  return new Grammar(productions);
+  Array.prototype.splice.apply(changes, [options.recursive[0], 0].concat(added));
+  
+  return changes;
   
 }
 
@@ -142,42 +137,35 @@ Transformations["leftFactor"] = function(grammar, options) {
     symbol += "'";
   } while (typeof nonterminals[symbol] !== "undefined");
   
-  // Copy unrelated productions into the grammar.
+  // Copy productions to changes, marking those we're removing.
   
-  var productions = [];
+  var changes = [];
   
   for (i = 0; i < grammar.productions.length; i++) {
     
-    if (options.productions.indexOf(i) === -1) {
-      
-      var production = [];
-      
-      for (j = 0; j < grammar.productions[i].length; j++)
-        production.push(grammar.productions[i][j]);
-      
-      productions.push(production);
-      
-    }
+    if (options.productions.indexOf(i) === -1)
+      changes.push({ production: grammar.productions[i].slice() });
+    else
+      changes.push({ production: grammar.productions[i].slice(), change: "removed" });
     
   }
   
-  var replacement = [];
+  var added = [];
   
   // Add the reference to the new symbol with the factored prefix
   
-  replacement.push(grammar.productions[options.productions[0]].slice(0, options.prefix).concat(symbol));
+  added.push({ production: grammar.productions[options.productions[0]].slice(0, options.prefix).concat(symbol), change: "added" });
   
   // Add the productions in the group
   
   for (i = 0; i < options.productions.length; i++) {
-    replacement.push([symbol].concat(grammar.productions[options.productions[i]].slice(options.prefix)));
+    added.push({ production: [symbol].concat(grammar.productions[options.productions[i]].slice(options.prefix)), change: "added" });
   }
   
-  // Put replacement into new list of productions and return
-  // resulting grammar.
+  // Splice in the additions
   
-  productions = productions.slice(0, options.productions[0]).concat(replacement).concat(productions.slice(options.productions[0]));
+  Array.prototype.splice.apply(changes, [options.productions[0], 0].concat(added));
   
-  return new Grammar(productions);
+  return changes;
   
 }
