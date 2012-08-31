@@ -1,0 +1,34 @@
+<table class="symbols productions">
+  <% lines.forEach(function(line) { %>
+    
+    <% if (line.change === "removed") { %>
+      <tr class="removed">
+    <% } else if (line.change === "added") { %>
+      <tr class="added">
+    <% } else { %>
+      <tr>
+    <% } %>
+    
+    <% if (line.change === "removed") { %>
+      <td><%= Helpers.formatProduction(line.production, line.info) %></td>
+    <% } else { %>
+      <td><%= Helpers.formatProduction(line.production, line.info) %></td>
+    <% } %>
+    
+      <td>
+        <% line.transformations.forEach(function(transformation) { %>
+          <button data-action="transform"
+                  data-production="<%= transformation.production %>"
+                  data-transformation="<%= transformation.transformation %>">
+            <%= transformation.label %>
+          </button>
+        <% }); %>
+      
+        <% if (line.undo) { %>
+          <button data-action="undo"><%= line.undo %></button>
+        <% } %>
+      </td>
+      
+    </tr>
+  <% }); %>
+</table>

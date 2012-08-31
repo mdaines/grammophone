@@ -165,14 +165,27 @@
   }
 
   this.Calculations["transformations"] = function(grammar) {
+    
+    // Assemble a list of available transformations
   
-    var result = [];
+    var available = [];
   
-    result = result.concat(grammar.calculate("transformations.expand"));
-    result = result.concat(grammar.calculate("transformations.removeImmediateLeftRecursion"));
-    result = result.concat(grammar.calculate("transformations.leftFactor"));
+    available = available.concat(grammar.calculate("transformations.expand"));
+    available = available.concat(grammar.calculate("transformations.removeImmediateLeftRecursion"));
+    available = available.concat(grammar.calculate("transformations.leftFactor"));
+    
+    // Return a list of lists by production
+    
+    var i;
+    var transformations = [];
+    
+    for (i = 0; i < grammar.productions.length; i++)
+      transformations[i] = [];
+    
+    for (i = 0; i < available.length; i++)
+      transformations[available[i].production].push(available[i]);
   
-    return result;
+    return transformations;
   
   }
 

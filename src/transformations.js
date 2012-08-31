@@ -1,56 +1,51 @@
 var Transformations = {};
 
+// Transformations return an array of changes, which look like:
+//
+//   { production: ["A", "x"], change: "added" }
+//   { production: ["A", "y"], change: "removed" }
+//
+// The change member may be absent, indicating that no change was made.
+
 Transformations["expand"] = function(grammar, options) {
   
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var productions = grammar.copyProductions();
-  
-  // Attempting to expand a symbol that is not a nonterminal
-  // is an error.
-  
-  if (!nonterminals[grammar.productions[options.production][options.symbol]])
-    throw "Attempted to expand a symbol that is not a nonterminal.";
-  
-  // Remove the production with the terminal we want to expand.
-  
-  var production = productions.splice(options.production, 1)[0];
+  var changes = [];
   
   // What symbol are we looking for?
   
-  var symbol = production[options.symbol];
+  var symbol = grammar.productions[options.production][options.symbol];
   
-  // For each production in the grammar with this symbol as the head,
-  // add a new production with the body replacing the symbol.
+  // Copy the productions to the changes, marking the production with the
+  // symbol we're expanding.
   
-  var count = 0;
+  for (i = 0; i < grammar.productions.length; i++) {
+    
+    if (i === options.production)
+      changes[i] = { production: grammar.productions[i].slice(), change: "removed" };
+    else
+      changes[i] = { production: grammar.productions[i].slice() };
+    
+  }
+  
+  // For each production in the grammar with the desired symbol as the head,
+  // add an "added" change with the body of that production replacing the
+  // symbol in the desired production.
   
   for (i = 0; i < grammar.productions.length; i++) {
     
     if (grammar.productions[i][0] === symbol) {
       
-      var expanded = [];
+      var production = grammar.productions[options.production].slice();
+      var body = grammar.productions[i].slice(1);
+      Array.prototype.splice.apply(production, [options.symbol, 1].concat(body));
       
-      for (j = 0; j < production.length; j++) {
-        
-        if (j === options.symbol) {
-          for (k = 1; k < grammar.productions[i].length; k++)
-            expanded.push(grammar.productions[i][k]);
-        } else {
-          expanded.push(production[j]);
-        }
-        
-      }
-      
-      productions.splice(options.production + count, 0, expanded);
-      count++;
+      changes.splice(options.production + 1, 0, { production: production, change: "added" });
       
     }
     
   }
   
-  // Return a new grammar.
-  
-  return new Grammar(productions);
+  return changes;
   
 }
 

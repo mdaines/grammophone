@@ -95,7 +95,19 @@ var Grammar = function() {
     if (typeof Transformations[name] === "undefined")
       throw "Undefined grammar transformation " + name;
     
-    return Transformations[name](this, options);
+    var diff = Transformations[name](this, options);
+    var productions = [];
+    var i;
+    
+    for (i = 0; i < diff.length; i++) {
+      if (diff[i].change !== "removed")
+        productions.push(diff[i].production);
+    }
+    
+    return {
+      diff: diff,
+      grammar: new Grammar(productions)
+    }
     
   }
   

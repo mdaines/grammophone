@@ -2,6 +2,7 @@
 //= require viz
 //= require analysis
 //= require edit
+//= require transform
 //= require helpers
 //= require set
 //= require grammar
