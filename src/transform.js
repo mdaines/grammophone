@@ -33,8 +33,6 @@ Transform.prototype.getProductions = function() {
 
 Transform.prototype.getSymbolInfo = function() {
   
-  console.log(this._grammar);
-  
   return this._grammar.calculate("grammar.symbolInfo");
   
 }
