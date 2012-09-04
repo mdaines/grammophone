@@ -16,8 +16,10 @@ var Transform = function(element) {
     
   //
   
-  this._grammar = new Grammar([["A", "B"], ["A", "x"], ["B", "B", "b"], ["B"], ["A", "x", "y"]]);
-  this._stack = [ { grammar: this._grammar } ];
+  var grammar = Grammar.parse("EXPR -> EXPR mult EXPR | TERM . TERM -> TERM add TERM | FACTOR . FACTOR -> num | lpar EXPR rpar | star EXPR .").grammar;
+  
+  this._index = 0;
+  this._stack = [ { grammar: grammar } ];
   
   //
   
@@ -27,28 +29,35 @@ var Transform = function(element) {
 
 Transform.prototype.getProductions = function() {
   
-  return this._grammar.productions;
+  return this._stack[this._index].grammar.productions;
   
 }
 
 Transform.prototype.getSymbolInfo = function() {
   
-  return this._grammar.calculate("grammar.symbolInfo");
+  return this._stack[this._index].grammar.calculate("grammar.symbolInfo");
   
 }
 
 Transform.prototype.getTransformations = function(productionIndex, symbolIndex) {
   
-  return this._grammar.calculate("transformations");
+  return this._stack[this._index].grammar.calculate("transformations");
   
 }
 
 Transform.prototype.undo = function() {
   
-  if (this._stack.length > 1) {
-    this._stack.pop();
-    this._grammar = this._stack[this._stack.length - 1].grammar;
-  }
+  if (this._index > 0)
+    this._index--;
+  
+  this._transformView.reload();
+  
+}
+
+Transform.prototype.redo = function() {
+  
+  if (this._index < this._stack.length - 1)
+    this._index++;
   
   this._transformView.reload();
   
@@ -56,12 +65,13 @@ Transform.prototype.undo = function() {
 
 Transform.prototype.transform = function(transformation) {
   
-  this._grammar = this._grammar.transform(transformation);
+  var item = {
+    grammar: this._stack[this._index].grammar.transform(transformation),
+    transformation: transformation
+  };
   
-  this._stack.push({
-    transformation: transformation,
-    grammar: this._grammar
-  });
+  this._index++;
+  this._stack.splice(this._index, this._stack.length - this._index, item);
   
   this._transformView.reload();
   

@@ -18,6 +18,8 @@ TransformView.prototype.setup = function() {
     
     if ($(e.target).data("action") === "undo")
       this._delegate.undo();
+    else if ($(e.target).data("action") === "redo")
+      this._delegate.redo();
     
   }.bind(this));
   
