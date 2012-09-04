@@ -16,15 +16,8 @@ var Transform = function(element) {
     
   //
   
-  var grammar = new Grammar([["A", "B"], ["A", "x"], ["B", "B", "b"], ["B"], ["A", "x", "y"]]);
-  
-  var diff = [];
-  var i;
-  
-  for (i = 0; i < grammar.productions.length; i++)
-    diff.push({ production: grammar.productions[i] });
-    
-  this._stack = [ { diff: diff, grammar: grammar } ];
+  this._grammar = new Grammar([["A", "B"], ["A", "x"], ["B", "B", "b"], ["B"], ["A", "x", "y"]]);
+  this._stack = [ { grammar: this._grammar } ];
   
   //
   
@@ -32,52 +25,44 @@ var Transform = function(element) {
   
 }
 
-Transform.prototype.getPreviousInfo = function() {
+Transform.prototype.getProductions = function() {
   
-  if (this._stack.length > 1)
-    return this._stack[this._stack.length - 2].grammar.calculate("grammar.symbolInfo");
-  
-}
-
-Transform.prototype.getCurrentInfo = function() {
-  
-  return this._stack[this._stack.length - 1].grammar.calculate("grammar.symbolInfo");
+  return this._grammar.productions;
   
 }
 
-Transform.prototype.getTransformations = function() {
+Transform.prototype.getSymbolInfo = function() {
   
-  return this._stack[this._stack.length - 1].grammar.calculate("transformations");
+  console.log(this._grammar);
   
-}
-
-Transform.prototype.getUndoTransformation = function() {
-  
-  return this._stack[this._stack.length - 1].undoTransformation;
+  return this._grammar.calculate("grammar.symbolInfo");
   
 }
 
-Transform.prototype.getDiff = function() {
+Transform.prototype.getTransformations = function(productionIndex, symbolIndex) {
   
-  return this._stack[this._stack.length - 1].diff;
+  return this._grammar.calculate("transformations");
   
 }
 
 Transform.prototype.undo = function() {
   
-  this._stack.pop();
+  if (this._stack.length > 1) {
+    this._stack.pop();
+    this._grammar = this._stack[this._stack.length - 1].grammar;
+  }
+  
   this._transformView.reload();
   
 }
 
 Transform.prototype.transform = function(transformation) {
   
-  var result = this._stack[this._stack.length - 1].grammar.transform(transformation.name, transformation);
+  this._grammar = this._grammar.transform(transformation);
   
   this._stack.push({
-    diff: result.diff,
-    grammar: result.grammar,
-    undoTransformation: transformation
+    transformation: transformation,
+    grammar: this._grammar
   });
   
   this._transformView.reload();

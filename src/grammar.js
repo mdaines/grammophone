@@ -1,5 +1,4 @@
 //= require calculations
-//= require transformations
 //= require parser
 
 var Grammar = function() {
@@ -90,24 +89,20 @@ var Grammar = function() {
     
   }
   
-  function transform(name, options) {
+  function transform(transformation) {
     
-    if (typeof Transformations[name] === "undefined")
-      throw "Undefined grammar transformation " + name;
+    var productions = this.productions.slice();
     
-    var diff = Transformations[name](this, options);
-    var productions = [];
-    var i;
+    transformation.changes.forEach(function(change) {
+      
+      if (change.operation === "delete")
+        productions.splice(change.index, 1);
+      else if (change.operation === "insert")
+        productions.splice(change.index, 0, change.production);
+      
+    });
     
-    for (i = 0; i < diff.length; i++) {
-      if (diff[i].change !== "removed")
-        productions.push(diff[i].production);
-    }
-    
-    return {
-      diff: diff,
-      grammar: new Grammar(productions)
-    }
+    return new Grammar(productions);
     
   }
   
