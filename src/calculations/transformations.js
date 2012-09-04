@@ -190,97 +190,139 @@
    
   }
   
-  this.Calculations["transformations.leftFactor"] = function(grammar) {
+  function leftFactor(grammar, group, prefix) {
     
-    return [];
+    var i, j;
+    var nonterminals = grammar.calculate("grammar.nonterminals");
+  
+    // Find a new symbol...
+  
+    var symbol = grammar.productions[group[0]][0];
+  
+    do {
+      symbol += "'";
+    } while (typeof nonterminals[symbol] !== "undefined");
+  
+    // Copy productions to changes, marking those we're removing.
+  
+    var changes = [];
+    var offset = 0;
+  
+    for (i = 0; i < grammar.productions.length; i++) {
+    
+      if (group.indexOf(i) !== -1) {
+        changes.push({ index: i + offset, operation: "delete" });
+        offset--;
+      }
+    
+    }
+  
+    // Add the reference to the new symbol with the factored prefix
+  
+    changes.push({
+      production: grammar.productions[group[0]].slice(0, prefix).concat(symbol),
+      operation: "insert",
+      index: group[0]
+    });
+  
+    // Add the productions in the group
+  
+    for (i = 0; i < group.length; i++) {
+      changes.push({
+        production: [symbol].concat(grammar.productions[group[i]].slice(prefix)),
+        operation: "insert",
+        index: group[0] + i + 1
+      });
+    }
+  
+    return changes;
     
   }
+  
+  this.Calculations["transformations.leftFactor"] = function(grammar) {
+  
+    var i, j;
+  
+    var nonterminals = grammar.calculate("grammar.nonterminals");
+    var result = [];
+  
+    // Collect productions for each nonterminal (don't include empty productions)
+  
+    var productions = {};
+    var nt;
+  
+    for (nt in nonterminals)
+      productions[nt] = [];
+  
+    for (i = 0; i < grammar.productions.length; i++) {
+      if (grammar.productions[i].length > 1)
+        productions[grammar.productions[i][0]].push(i);
+    }
+  
+    // For each nonterminal...
+  
+    for (nt in nonterminals) {
     
+      // Sort by length of production
     
-  // 
-  //   var i, j;
-  // 
-  //   var nonterminals = grammar.calculate("grammar.nonterminals");
-  //   var result = [];
-  // 
-  //   // Collect productions for each nonterminal (don't include empty productions)
-  // 
-  //   var productions = {};
-  //   var nt;
-  // 
-  //   for (nt in nonterminals)
-  //     productions[nt] = [];
-  // 
-  //   for (i = 0; i < grammar.productions.length; i++) {
-  //     if (grammar.productions[i].length > 1)
-  //       productions[grammar.productions[i][0]].push(i);
-  //   }
-  // 
-  //   // For each nonterminal...
-  // 
-  //   for (nt in nonterminals) {
-  //   
-  //     // Sort by length of production
-  //   
-  //     productions[nt].sort(function(a, b) {
-  //       return grammar.productions[a].length - grammar.productions[b].length;
-  //     });
-  //   
-  //     // Remove rules from the grammar having the same prefix
-  //   
-  //     while (productions[nt].length > 0) {
-  //     
-  //       // Compare the first production against subsequent productions as
-  //       // a prefix. If we find a match, add the production index to the
-  //       // group of matches.
-  //     
-  //       var group = [productions[nt][0]];
-  //       var prefix = grammar.productions[productions[nt][0]];
-  //     
-  //       for (i = 1; i < productions[nt].length; i++) {
-  //       
-  //         var compare = grammar.productions[productions[nt][i]];
-  //       
-  //         for (j = 1; j < prefix.length; j++) {
-  //           if (prefix[j] != compare[j])
-  //             break;
-  //         }
-  //       
-  //         if (j == prefix.length)
-  //           group.push(productions[nt][i]);
-  //       
-  //       }
-  //     
-  //       // If the group has more than one production, add it to the result.
-  //     
-  //       if (group.length > 1) {
-  //       
-  //         group.sort();
-  //       
-  //         result.push({
-  //           name: "leftFactor",
-  //           production: group[0],
-  //           symbol: 0,
-  //           productions: group,
-  //           prefix: prefix.length
-  //         });
-  //       
-  //       }
-  //     
-  //       // Remove the productions in the group from the list of those to
-  //       // consider on the next iteration. (We always remove at least one,
-  //       // the "prefix".)
-  //     
-  //       for (i = 0; i < group.length; i++)
-  //         productions[nt].splice(productions[nt].indexOf(group[i]), 1);
-  //     
-  //     }
-  //   
-  //   }
-  // 
-  //   return result;
-  // 
-  // }
+      productions[nt].sort(function(a, b) {
+        return grammar.productions[a].length - grammar.productions[b].length;
+      });
+    
+      // Remove rules from the grammar having the same prefix
+    
+      while (productions[nt].length > 0) {
+      
+        // Compare the first production against subsequent productions as
+        // a prefix. If we find a match, add the production index to the
+        // group of matches.
+      
+        var group = [productions[nt][0]];
+        var prefix = grammar.productions[productions[nt][0]];
+      
+        for (i = 1; i < productions[nt].length; i++) {
+        
+          var compare = grammar.productions[productions[nt][i]];
+        
+          for (j = 1; j < prefix.length; j++) {
+            if (prefix[j] != compare[j])
+              break;
+          }
+        
+          if (j == prefix.length)
+            group.push(productions[nt][i]);
+        
+        }
+      
+        // If the group has more than one production, add it to the result.
+      
+        if (group.length > 1) {
+        
+          group.sort();
+        
+          result.push({
+            name: "leftFactor",
+            production: group[0],
+            symbol: 0,
+            changes: leftFactor(grammar, group, prefix.length)
+          });
+        
+        }
+      
+        // Remove the productions in the group from the list of those to
+        // consider on the next iteration. (We always remove at least one,
+        // the "prefix".)
+      
+        for (i = 0; i < group.length; i++)
+          productions[nt].splice(productions[nt].indexOf(group[i]), 1);
+      
+      }
+    
+    }
+  
+    return result;
+  
+  }
 
   this.Calculations["transformations"] = function(grammar) {
     
