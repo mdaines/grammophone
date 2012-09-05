@@ -11,13 +11,21 @@ body {
   line-height: 1.2;
 }
 
-#edit {
+#master {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   width: 300px;
   border-right: 1px solid #bbb;
+}
+
+#edit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 #analysis {
@@ -30,6 +38,33 @@ body {
   padding: 20px;
   overflow: auto;
 }
+
+#mode {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  border-top: 1px solid #bbb;
+  background: #ddd;
+}
+
+#error {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  background: #f00;
+  margin-right: -1px;
+  margin-top: -1px;
+  border-bottom: 1px solid #e11;
+  border-right: 1px solid #e11;
+  border-top: 1px solid #e11;
+  color: #fff;
+  font-weight: bold;
+}
+
 
 
 

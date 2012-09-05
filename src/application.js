@@ -3,6 +3,8 @@
 //= require analysis
 //= require edit
 //= require transform
+//= require mode
+//= require error_controller
 //= require helpers
 //= require set
 //= require grammar
@@ -24,13 +26,33 @@ var Application = function(element) {
   
   Helpers.setDelegate(this);
   
+  this._masterElement = document.createElement("div");
+  this._masterElement.id = "master";
+  this._element.appendChild(this._masterElement);
+  
   // edit
   
   this._editElement = document.createElement("section");
-  this._element.appendChild(this._editElement);
+  this._masterElement.appendChild(this._editElement);
   
   this._edit = new Edit(this._editElement);
   this._edit.setDelegate(this);
+  
+  // mode
+  
+  this._modeElement = document.createElement("section");
+  this._masterElement.appendChild(this._modeElement);
+  
+  this._mode = new Mode(this._modeElement);
+  this._mode.setDelegate(this);
+  
+  // error
+  
+  this._errorElement = document.createElement("section");
+  this._masterElement.appendChild(this._errorElement);
+  
+  this._error = new ErrorController(this._errorElement);
+  this._error.setDelegate(this);
   
   // analysis
   
@@ -55,6 +77,10 @@ var Application = function(element) {
   
   this._analysis.reload();
   this._edit.reload();
+  this._mode.reload();
+  this._error.reload();
+  
+  this._layout();
   
 }
 
@@ -73,9 +99,22 @@ Application.prototype._hashChanged = function() {
   
 }
 
-Application.prototype.getGrammar = function() {
+Application.prototype._layout = function() {
   
-  return this._parse.grammar;
+  $(this._editElement).css({ bottom: $(this._modeElement).height() + "px" });
+  
+  if (typeof this._parse.error === "undefined") {
+    
+    $(this._errorElement).hide();
+    $(this._editElement).css({ top: "0" });
+    
+  } else {
+    
+    $(this._errorElement).show();
+    $(this._editElement).css({ top: $(this._errorElement).height() + "px" });
+    
+  }
+  
   
 }
 
@@ -85,17 +124,34 @@ Application.prototype.getPath = function() {
   
 }
 
-Application.prototype.getParse = function() {
+Application.prototype.getGrammar = function() {
   
-  return this._parse;
+  return this._parse.grammar;
   
 }
 
-Application.prototype.parseChanged = function(parse) {
+Application.prototype.getSpec = function() {
   
-  this._parse = parse;
+  return this._parse.spec;
   
-  this._analysis.reload();
+}
+
+Application.prototype.getError = function() {
+  
+  return this._parse.error;
+  
+}
+
+Application.prototype.analyze = function() {
+  
+  this._parse = Grammar.parse(this._edit.getSpec());
+  
+  if (typeof this._parse.error === "undefined")
+    this._analysis.reload();
+  
+  this._error.reload();
+  
+  this._layout();
   
 }
 
