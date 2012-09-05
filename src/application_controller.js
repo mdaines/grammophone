@@ -30,32 +30,32 @@ var ApplicationController = function(element) {
   this._editElement = document.createElement("section");
   this._masterElement.appendChild(this._editElement);
   
-  this._edit = new EditController(this._editElement);
-  this._edit.setDelegate(this);
+  this._editController = new EditController(this._editElement);
+  this._editController.setDelegate(this);
   
   // mode
   
   this._modeElement = document.createElement("section");
   this._masterElement.appendChild(this._modeElement);
   
-  this._mode = new ModeController(this._modeElement);
-  this._mode.setDelegate(this);
+  this._modeController = new ModeController(this._modeElement);
+  this._modeController.setDelegate(this);
   
   // error
   
   this._errorElement = document.createElement("section");
   this._masterElement.appendChild(this._errorElement);
   
-  this._error = new ErrorController(this._errorElement);
-  this._error.setDelegate(this);
+  this._errorController = new ErrorController(this._errorElement);
+  this._errorController.setDelegate(this);
   
   // analysis
   
   this._analysisElement = document.createElement("section");
   this._element.appendChild(this._analysisElement);
   
-  this._analysis = new AnalysisController(this._analysisElement);
-  this._analysis.setDelegate(this);
+  this._analysisController = new AnalysisController(this._analysisElement);
+  this._analysisController.setDelegate(this);
   
   // listen for hashchange events
   
@@ -69,11 +69,12 @@ var ApplicationController = function(element) {
   
   this._path = "/";
   this._parse = { spec: "" };
+  this._mode = "edit";
   
-  this._analysis.reload();
-  this._edit.reload();
-  this._mode.reload();
-  this._error.reload();
+  this._analysisController.reload();
+  this._editController.reload();
+  this._modeController.reload();
+  this._errorController.reload();
   
   this._layout();
   
@@ -90,7 +91,7 @@ ApplicationController.prototype._hashChanged = function() {
   
   // update controllers
   
-  this._analysis.reload();
+  this._analysisController.reload();
   
 }
 
@@ -109,7 +110,6 @@ ApplicationController.prototype._layout = function() {
     $(this._editElement).css({ top: $(this._errorElement).height() + "px" });
     
   }
-  
   
 }
 
@@ -137,15 +137,43 @@ ApplicationController.prototype.getError = function() {
   
 }
 
+ApplicationController.prototype.getMode = function() {
+  
+  return this._mode;
+  
+}
+
 ApplicationController.prototype.analyze = function() {
   
-  this._parse = Grammar.parse(this._edit.getSpec());
+  this._parse = Grammar.parse(this._editController.getSpec());
   
   if (typeof this._parse.error === "undefined")
-    this._analysis.reload();
+    this._analysisController.reload();
   
-  this._error.reload();
+  this._errorController.reload();
+  this._layout();
   
+}
+
+ApplicationController.prototype.transform = function() {
+  
+  this._parse = Grammar.parse(this._editController.getSpec());
+  
+  if (typeof this._parse.error === "undefined") {
+    this._mode = "transform";
+  }
+  
+  this._errorController.reload();
+  this._modeController.reload();
+  this._layout();
+  
+}
+
+ApplicationController.prototype.edit = function() {
+  
+  this._mode = "edit";
+  
+  this._modeController.reload();
   this._layout();
   
 }
