@@ -1,0 +1,45 @@
+#transform .productions {
+  margin: 0;
+}
+
+#transform .productions td {
+  border: 1px solid #eee;
+  min-width: inherit;
+}
+
+#transform .buttons {
+  padding: 10px;
+  border-bottom: 1px solid #bbb;
+  background: #ddd;
+}
+
+#transform .pill {
+  position: relative;
+  background: #eee;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  padding: 1px 6px;
+  margin-right: 2px;
+  cursor: default;
+}
+
+#transform .pill:after {
+  content: "▼";
+  font-size: 6pt;
+  color: #222;
+  margin-left: 4px;
+}
+
+#transform .pill select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  font-size: 10pt;
+}

@@ -3,6 +3,7 @@
 //= require transform_controller
 //= require mode_controller
 //= require error_controller
+//= require transform_controller
 
 Function.prototype.bind = function(context) {
   var fn = this;
@@ -57,6 +58,14 @@ var ApplicationController = function(element) {
   this._analysisController = new AnalysisController(this._analysisElement);
   this._analysisController.setDelegate(this);
   
+  // analysis
+  
+  this._transformElement = document.createElement("section");
+  this._masterElement.appendChild(this._transformElement);
+  
+  this._transformController = new TransformController(this._transformElement);
+  this._transformController.setDelegate(this);
+  
   // listen for hashchange events
   
   window.location.hash = "";
@@ -74,7 +83,11 @@ var ApplicationController = function(element) {
   this._analysisController.reload();
   this._editController.reload();
   this._modeController.reload();
-  this._errorController.reload();
+  
+  if (this._mode === "edit")
+    this._errorController.reload();
+  else
+    this._transformController.reload();
   
   this._layout();
   
@@ -97,17 +110,31 @@ ApplicationController.prototype._hashChanged = function() {
 
 ApplicationController.prototype._layout = function() {
   
-  $(this._editElement).css({ bottom: $(this._modeElement).height() + "px" });
-  
-  if (typeof this._parse.error === "undefined") {
+  if (this._mode === "edit") {
     
-    $(this._errorElement).hide();
-    $(this._editElement).css({ top: "0" });
+    $(this._editElement).show();
+    $(this._transformElement).hide();
+  
+    $(this._editElement).css({ bottom: $(this._modeElement).height() + "px" });
+  
+    if (typeof this._parse.error === "undefined") {
+    
+      $(this._errorElement).hide();
+      $(this._editElement).css({ top: "0" });
+    
+    } else {
+    
+      $(this._errorElement).show();
+      $(this._editElement).css({ top: $(this._errorElement).height() + "px" });
+    
+    }
     
   } else {
     
-    $(this._errorElement).show();
-    $(this._editElement).css({ top: $(this._errorElement).height() + "px" });
+    $(this._editElement).hide();
+    $(this._transformElement).show();
+  
+    $(this._transformElement).css({ bottom: $(this._modeElement).height() + "px" });
     
   }
   
@@ -143,6 +170,15 @@ ApplicationController.prototype.getMode = function() {
   
 }
 
+ApplicationController.prototype.grammarChanged = function(grammar) {
+  
+  this._parse = { grammar: grammar, spec: grammar.toString() };
+  
+  this._analysisController.reload();
+  this._layout();
+  
+}
+
 ApplicationController.prototype.analyze = function() {
   
   this._parse = Grammar.parse(this._editController.getSpec());
@@ -161,6 +197,7 @@ ApplicationController.prototype.transform = function() {
   
   if (typeof this._parse.error === "undefined") {
     this._mode = "transform";
+    this._transformController.reload();
   }
   
   this._errorController.reload();
@@ -173,6 +210,7 @@ ApplicationController.prototype.edit = function() {
   
   this._mode = "edit";
   
+  this._editController.reload();
   this._modeController.reload();
   this._layout();
   

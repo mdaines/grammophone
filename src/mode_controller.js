@@ -36,7 +36,7 @@ ModeController.prototype.reload = function() {
     $(this._element).find(".edit").hide();
     $(this._element).find(".transform").show();
     
-  } else if (mode === "transform") {
+  } else {
     
     $(this._element).find(".edit").show();
     $(this._element).find(".transform").hide();

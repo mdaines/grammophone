@@ -13,15 +13,19 @@ var TransformController = function(element) {
   
   if (this._transformView.setup)
     this._transformView.setup();
-    
-  //
   
-  var grammar = Grammar.parse("EXPR -> EXPR mult EXPR | TERM . TERM -> TERM add TERM | FACTOR . FACTOR -> num | lpar EXPR rpar | star EXPR .").grammar;
+}
+
+TransformController.prototype.setDelegate = function(delegate) {
+  
+  this._delegate = delegate;
+  
+}
+
+TransformController.prototype.reload = function() {
   
   this._index = 0;
-  this._stack = [ { grammar: grammar } ];
-  
-  //
+  this._stack = [ { grammar: this._delegate.getGrammar() } ];
   
   this._transformView.reload();
   
@@ -52,6 +56,8 @@ TransformController.prototype.undo = function() {
   
   this._transformView.reload();
   
+  this._delegate.grammarChanged(this._stack[this._index].grammar);
+  
 }
 
 TransformController.prototype.redo = function() {
@@ -60,6 +66,8 @@ TransformController.prototype.redo = function() {
     this._index++;
   
   this._transformView.reload();
+  
+  this._delegate.grammarChanged(this._stack[this._index].grammar);
   
 }
 
@@ -74,5 +82,7 @@ TransformController.prototype.transform = function(transformation) {
   this._stack.splice(this._index, this._stack.length - this._index, item);
   
   this._transformView.reload();
+  
+  this._delegate.grammarChanged(this._stack[this._index].grammar);
   
 }
