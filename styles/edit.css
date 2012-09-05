@@ -54,13 +54,3 @@
   color: #fff;
   font-weight: bold;
 }
-
-#edit .examples {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 10px 10px 10px 10px;
-  border-top: 1px solid #bbb;
-  background: #ddd;
-}
