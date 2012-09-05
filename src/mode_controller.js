@@ -1,6 +1,6 @@
 //= require templates/mode
 
-var Mode = function(element) {
+var ModeController = function(element) {
   
   this._element = element;
   this._element.id = "mode";
@@ -13,12 +13,12 @@ var Mode = function(element) {
   
 }
 
-Mode.prototype.setDelegate = function(delegate) {
+ModeController.prototype.setDelegate = function(delegate) {
   
   this._delegate = delegate;
   
 }
 
-Mode.prototype.reload = function() {
+ModeController.prototype.reload = function() {
   
 }

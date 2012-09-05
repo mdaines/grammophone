@@ -1,6 +1,6 @@
 //= require views/transform_view
 
-var Transform = function(element) {
+var TransformController = function(element) {
   
   this._element = element;
   this._element.id = "transform";
@@ -27,25 +27,25 @@ var Transform = function(element) {
   
 }
 
-Transform.prototype.getProductions = function() {
+TransformController.prototype.getProductions = function() {
   
   return this._stack[this._index].grammar.productions;
   
 }
 
-Transform.prototype.getSymbolInfo = function() {
+TransformController.prototype.getSymbolInfo = function() {
   
   return this._stack[this._index].grammar.calculate("grammar.symbolInfo");
   
 }
 
-Transform.prototype.getTransformations = function(productionIndex, symbolIndex) {
+TransformController.prototype.getTransformations = function(productionIndex, symbolIndex) {
   
   return this._stack[this._index].grammar.calculate("transformations");
   
 }
 
-Transform.prototype.undo = function() {
+TransformController.prototype.undo = function() {
   
   if (this._index > 0)
     this._index--;
@@ -54,7 +54,7 @@ Transform.prototype.undo = function() {
   
 }
 
-Transform.prototype.redo = function() {
+TransformController.prototype.redo = function() {
   
   if (this._index < this._stack.length - 1)
     this._index++;
@@ -63,7 +63,7 @@ Transform.prototype.redo = function() {
   
 }
 
-Transform.prototype.transform = function(transformation) {
+TransformController.prototype.transform = function(transformation) {
   
   var item = {
     grammar: this._stack[this._index].grammar.transform(transformation),

@@ -12,7 +12,7 @@
 //= require views/lalr1_automaton_view
 //= require views/lalr1_table_view
 
-var Analysis = function(element) {
+var AnalysisController = function(element) {
   
   this._element = element;
   this._element.id = "analysis";
@@ -104,13 +104,13 @@ var Analysis = function(element) {
   
 }
 
-Analysis.prototype.setDelegate = function(delegate) {
+AnalysisController.prototype.setDelegate = function(delegate) {
   
   this._delegate = delegate;
   
 }
 
-Analysis.prototype.reload = function() {
+AnalysisController.prototype.reload = function() {
   
   var i;
   
@@ -175,13 +175,13 @@ Analysis.prototype.reload = function() {
   
 }
 
-Analysis.prototype.getCalculation = function(name) {
+AnalysisController.prototype.getCalculation = function(name) {
   
   return this._grammar.calculate(name);
 
 }
 
-Analysis.prototype.getPathComponents = function() {
+AnalysisController.prototype.getPathComponents = function() {
   
   return this._routes[this._path].path;
   
