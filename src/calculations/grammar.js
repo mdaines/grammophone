@@ -332,7 +332,7 @@
 
   this.Calculations["grammar.first"] = function(grammar) {
   
-    var immediate, propagation;
+    var immediate, propagation, result;
     var i, j;
     var nullable = grammar.calculate("grammar.nullable");
     var nonterminals = grammar.calculate("grammar.nonterminals");
@@ -382,13 +382,22 @@
 
     // Propagate the relation.
 
-    return Relation.propagate(immediate, propagation);
+    result = Relation.propagate(immediate, propagation);
+    
+    // Ensure that all nonterminals are present as keys, even if that particular follow set is empty.
+    
+    for (k in nonterminals) {
+      if (typeof result[k] === "undefined")
+        result[k] = {};
+    }
+    
+    return result;
   
   };
 
   this.Calculations["grammar.follow"] = function(grammar) {
   
-    var immediate, propagation;
+    var immediate, propagation, result;
     var i, j, k, s;
     var first = grammar.calculate("grammar.first");
     var nullable = grammar.calculate("grammar.nullable");
@@ -465,7 +474,16 @@
 
     // Propagate the relation
 
-    return Relation.propagate(immediate, propagation);
+    result = Relation.propagate(immediate, propagation);
+    
+    // Ensure that all nonterminals are present as keys, even if that particular follow set is empty.
+    
+    for (k in nonterminals) {
+      if (typeof result[k] === "undefined")
+        result[k] = {};
+    }
+    
+    return result;
 
   };
 
