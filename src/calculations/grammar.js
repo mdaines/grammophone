@@ -537,6 +537,21 @@
     
   }
   
+  function countNonterminals(sentence, grammar) {
+    
+    var i;
+    var count = 0;
+    var nonterminals = grammar.calculate("grammar.nonterminals");
+    
+    for (i = 0; i < sentence.length; i++) {
+      if (nonterminals[sentence[i]])
+        count++;
+    }
+    
+    return count;
+    
+  }
+  
   function allTerminals(sentence, grammar) {
     
     var i;
@@ -575,10 +590,18 @@
         else
           queue.push(expanded[i]);
         
-        if (sentences.length == MAX_SENTENCES)
+        if (sentences.length >= MAX_SENTENCES)
           break;
         
       }
+      
+      // Sort the queue so that the next sentence is the one with the
+      // fewest nonterminals -- the closest to being a "finished" sentence.
+      // TODO: use a priority queue...
+      
+      queue = queue.sort(function(a, b) {
+        return countNonterminals(a, grammar) - countNonterminals(b, grammar);
+      });
       
     } while (queue.length > 0 && sentences.length < MAX_SENTENCES);
     
