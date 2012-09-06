@@ -132,6 +132,7 @@ ApplicationController.prototype._layout = function() {
   } else {
     
     $(this._editElement).hide();
+    $(this._errorElement).hide();
     $(this._transformElement).show();
   
     $(this._transformElement).css({ bottom: $(this._modeElement).height() + "px" });
