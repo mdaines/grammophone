@@ -1,3 +1,7 @@
+#transform {
+  overflow: auto;
+}
+
 #transform .productions {
   margin: 0;
   width: 100%;
