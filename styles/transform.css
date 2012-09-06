@@ -6,6 +6,8 @@
 #transform .productions td {
   border: 1px solid #eee;
   min-width: inherit;
+  font-size: 12pt;
+  line-height: 16pt;
 }
 
 #transform .buttons {
