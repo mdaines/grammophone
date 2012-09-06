@@ -161,6 +161,18 @@ var Helpers = function() {
     
   }
   
+  var FORMATTED_TRANSFORMATION_NAMES = {
+    expand: "Expand Nonterminal",
+    removeImmediateLeftRecursion: "Remove Immediate Left Recursion",
+    leftFactor: "Left Factor"
+  }
+  
+  function formatTransformationName(name) {
+    
+    return FORMATTED_TRANSFORMATION_NAMES[name] || name;
+    
+  }
+  
   function repeatString(string, times) {
     
     var result = "";
@@ -208,6 +220,7 @@ var Helpers = function() {
   klass.formatSentence = formatSentence;
   klass.formatItem = formatItem;
   klass.bareFormatItem = bareFormatItem;
+  klass.formatTransformationName = formatTransformationName;
   klass.repeatString = repeatString;
   klass.escapeHTML = escapeHTML;
   klass.setDelegate = setDelegate;

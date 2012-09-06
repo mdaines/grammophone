@@ -43,6 +43,13 @@ TransformController.prototype.getSymbolInfo = function() {
   
 }
 
+TransformController.prototype.getPreviousSymbolInfo = function() {
+  
+  if (this._index > 0)
+    return this._stack[this._index - 1].grammar.calculate("grammar.symbolInfo");
+  
+}
+
 TransformController.prototype.getTransformations = function(productionIndex, symbolIndex) {
   
   return this._stack[this._index].grammar.calculate("transformations");
