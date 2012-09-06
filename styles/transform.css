@@ -14,6 +14,15 @@
   padding: 10px;
   border-bottom: 1px solid #bbb;
   background: #ddd;
+  overflow: auto;
+}
+
+#transform .buttons .undo {
+  float: left;
+}
+
+#transform .buttons .redo {
+  float: right;
 }
 
 #transform .pill {
