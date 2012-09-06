@@ -49,6 +49,20 @@ TransformController.prototype.getTransformations = function(productionIndex, sym
   
 }
 
+TransformController.prototype.getUndoTransformation = function() {
+  
+  if (this._index > 0)
+    return this._stack[this._index].transformation;
+  
+}
+
+TransformController.prototype.getRedoTransformation = function() {
+  
+  if (this._index < this._stack.length - 1)
+    return this._stack[this._index + 1].transformation;
+  
+}
+
 TransformController.prototype.undo = function() {
   
   if (this._index > 0)

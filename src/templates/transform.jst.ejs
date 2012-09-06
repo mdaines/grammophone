@@ -1,5 +1,10 @@
 <div class="buttons">
-  <button data-action="undo" class="undo">Undo</button> <button data-action="redo" class="redo">Redo</button>
+  <% if (typeof undoTransformation !== "undefined") { %>
+    <button data-action="undo" class="undo">Undo <%= undoTransformation.name %></button>
+  <% } %>
+  <% if (typeof redoTransformation !== "undefined") { %>
+    <button data-action="redo" class="redo">Redo <%= redoTransformation.name %></button>
+  <% } %>
 </div>
 
 <table class="symbols productions">

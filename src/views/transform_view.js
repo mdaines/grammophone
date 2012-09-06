@@ -39,7 +39,6 @@ TransformView.prototype.reload = function() {
   
   this._transformations = this._delegate.getTransformations();
   
-  
   var transformations = [];
   var i, j;
   
@@ -63,7 +62,9 @@ TransformView.prototype.reload = function() {
   this._element.get(0).innerHTML = JST["templates/transform"]({
     productions: productions,
     info: info,
-    transformations: transformations
+    transformations: transformations,
+    undoTransformation: this._delegate.getUndoTransformation(),
+    redoTransformation: this._delegate.getRedoTransformation()
   });
   
 }
