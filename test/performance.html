@@ -42,7 +42,8 @@
       }
       
       function done(data) {
-        para.append(" Done. Elapsed time: <b>" + (event.data.elapsed / 1000) + "s</b>");
+        para.append(" Done. Elapsed time: <b>" + (data.elapsed / 1000) + "s</b>");
+        console.log(data.result);
         dispatch();
       }
       
