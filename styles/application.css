@@ -56,6 +56,11 @@ body {
   padding: 10px;
   border-top: 1px solid #bbb;
   background: #ddd;
+  text-align: center;
+}
+
+#mode button {
+  font-size: 10pt;
 }
 
 #error {
