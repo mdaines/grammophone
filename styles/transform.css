@@ -37,6 +37,7 @@
   padding: 1px 6px;
   margin-right: 2px;
   cursor: default;
+  white-space: nowrap;
 }
 
 #transform .pill:after {
