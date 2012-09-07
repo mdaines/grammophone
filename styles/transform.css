@@ -16,8 +16,8 @@
 
 #transform .buttons {
   padding: 10px;
-  border-bottom: 1px solid #bbb;
-  background: #ddd;
+  border-bottom: 1px solid #ccc;
+  background: #eee;
   overflow: auto;
 }
 

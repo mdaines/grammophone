@@ -115,17 +115,16 @@ ApplicationController.prototype._layout = function() {
     $(this._editElement).show();
     $(this._transformElement).hide();
   
-    $(this._editElement).css({ bottom: $(this._modeElement).height() + "px" });
-  
     if (typeof this._parse.error === "undefined") {
     
       $(this._errorElement).hide();
-      $(this._editElement).css({ top: "0" });
+      $(this._editElement).css({ top: $(this._modeElement).height() + "px" });
     
     } else {
     
       $(this._errorElement).show();
-      $(this._editElement).css({ top: $(this._errorElement).height() + "px" });
+      $(this._errorElement).css({ top: $(this._modeElement).height() + "px" });
+      $(this._editElement).css({ top: $(this._modeElement).height() + $(this._errorElement).height() + "px" });
     
     }
     
@@ -135,7 +134,7 @@ ApplicationController.prototype._layout = function() {
     $(this._errorElement).hide();
     $(this._transformElement).show();
   
-    $(this._transformElement).css({ bottom: $(this._modeElement).height() + "px" });
+    $(this._transformElement).css({ top: $(this._modeElement).height() + "px" });
     
   }
   
@@ -196,11 +195,12 @@ ApplicationController.prototype.transform = function() {
   
   this._parse = Grammar.parse(this._editController.getSpec());
   
-  if (typeof this._parse.error === "undefined") {
+  if (typeof this._parse.error === "undefined" && typeof this._parse.grammar !== "undefined") {
     this._mode = "transform";
     this._transformController.reload();
   }
   
+  this._analysisController.reload();
   this._errorController.reload();
   this._modeController.reload();
   this._layout();
@@ -211,6 +211,7 @@ ApplicationController.prototype.edit = function() {
   
   this._mode = "edit";
   
+  this._analysisController.reload();
   this._editController.reload();
   this._modeController.reload();
   this._layout();
