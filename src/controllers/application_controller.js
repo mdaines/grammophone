@@ -1,9 +1,9 @@
-//= require analysis_controller
-//= require edit_controller
-//= require transform_controller
-//= require mode_controller
-//= require error_controller
-//= require transform_controller
+//= require controllers/analysis_controller
+//= require controllers/edit_controller
+//= require controllers/transform_controller
+//= require controllers/mode_controller
+//= require controllers/error_controller
+//= require controllers/transform_controller
 
 Function.prototype.bind = function(context) {
   var fn = this;

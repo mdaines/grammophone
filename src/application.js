@@ -3,4 +3,4 @@
 //= require helpers
 //= require set
 //= require grammar
-//= require application_controller
+//= require controllers/application_controller
