@@ -152,6 +152,12 @@ ApplicationController.prototype.getGrammar = function() {
   
 }
 
+ApplicationController.prototype.shouldResetScroll = function() {
+  
+  return false;
+  
+}
+
 ApplicationController.prototype.getSpec = function() {
   
   return this._parse.spec;

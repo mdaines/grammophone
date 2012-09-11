@@ -168,10 +168,14 @@ AnalysisController.prototype.reload = function() {
     
   this._headerView.reload();
   
-  // scroll to top-left
+  // possilby reset scroll to top-left
   
-  this._element.scrollLeft = 0;
-  this._element.scrollTop = 0;
+  if (this._delegate.shouldResetScroll()) {
+  
+    this._element.scrollLeft = 0;
+    this._element.scrollTop = 0;
+    
+  }
   
 }
 
