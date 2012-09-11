@@ -79,7 +79,6 @@ var ApplicationController = function(element) {
   this._path = "/";
   this._parse = Grammar.parse("EXP -> EXP add TERM | TERM .\nTERM -> id | id INDEX | let STMTS in EXP end .\nSTMTS -> STMTS STMT | .\nSTMT -> LEXP assign EXP semi .\nLEXP -> LEXP INDEX | id .\nINDEX -> lpar EXP rpar .");
   this._mode = "edit";
-  this._shouldResetScroll = false;
   
   this._analysisController.reload();
   this._editController.reload();
@@ -104,8 +103,6 @@ ApplicationController.prototype._hashChanged = function() {
     this._path = "/";
   
   // update controllers
-  
-  this._shouldResetScroll = true;
   
   this._analysisController.reload();
   
@@ -155,12 +152,6 @@ ApplicationController.prototype.getGrammar = function() {
   
 }
 
-ApplicationController.prototype.shouldResetScroll = function() {
-  
-  return this._shouldResetScroll;
-  
-}
-
 ApplicationController.prototype.getSpec = function() {
   
   return this._parse.spec;
@@ -183,8 +174,6 @@ ApplicationController.prototype.grammarChanged = function(grammar) {
   
   this._parse = { grammar: grammar, spec: grammar.toString() };
   
-  this._shouldResetScroll = false;
-  
   this._analysisController.reload();
   this._layout();
   
@@ -193,8 +182,6 @@ ApplicationController.prototype.grammarChanged = function(grammar) {
 ApplicationController.prototype.analyze = function() {
   
   this._parse = Grammar.parse(this._editController.getSpec());
-  
-  this._shouldResetScroll = false;
   
   if (typeof this._parse.error === "undefined")
     this._analysisController.reload();
@@ -207,8 +194,6 @@ ApplicationController.prototype.analyze = function() {
 ApplicationController.prototype.transform = function() {
   
   this._parse = Grammar.parse(this._editController.getSpec());
-  
-  this._shouldResetScroll = false;
   
   if (typeof this._parse.error === "undefined" && typeof this._parse.grammar !== "undefined") {
     this._mode = "transform";
@@ -225,8 +210,6 @@ ApplicationController.prototype.transform = function() {
 ApplicationController.prototype.edit = function() {
   
   this._mode = "edit";
-  
-  this._shouldResetScroll = false;
   
   this._analysisController.reload();
   this._editController.reload();

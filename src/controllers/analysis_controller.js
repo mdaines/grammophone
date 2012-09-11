@@ -113,11 +113,15 @@ AnalysisController.prototype.setDelegate = function(delegate) {
 AnalysisController.prototype.reload = function() {
   
   var i;
+  var path, pathChanged;
   
   // get grammar and path
   
   this._grammar = this._delegate.getGrammar();
-  this._path = this._delegate.getPath();
+  
+  path = this._delegate.getPath();
+  pathChanged = path !== this._path;
+  this._path = path;
   
   // if we have views, clear them
   
@@ -170,7 +174,7 @@ AnalysisController.prototype.reload = function() {
   
   // possilby reset scroll to top-left
   
-  if (this._delegate.shouldResetScroll()) {
+  if (pathChanged) {
   
     this._element.scrollLeft = 0;
     this._element.scrollTop = 0;
