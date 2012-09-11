@@ -33,9 +33,9 @@ var AnalysisController = function(element) {
     "/": {
       views: [
         { id: "sanity", constructor: SanityView },
+        { id: "sentences", constructor: SentencesView },
         { id: "nonterminals", constructor: NonterminalsView },
-        { id: "parsing", constructor: ParsingView },
-        { id: "sentences", constructor: SentencesView }
+        { id: "parsing", constructor: ParsingView }
       ],
       path: [{ title: "Analysis" }]
     },
