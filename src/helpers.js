@@ -164,7 +164,8 @@ var Helpers = function() {
   var FORMATTED_TRANSFORMATION_NAMES = {
     expand: "Expand Nonterminal",
     removeImmediateLeftRecursion: "Remove Immediate Left Recursion",
-    leftFactor: "Left Factor"
+    leftFactor: "Left Factor",
+    epsilonSeparate: "Epsilon-Separate"
   }
   
   function formatTransformationName(name) {
