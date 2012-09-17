@@ -242,6 +242,8 @@
     var nonterminals = grammar.calculate("grammar.nonterminals");
     var nullable = grammar.calculate("grammar.nullable");
     var found;
+    var nt;
+    var i, j;
   
     // For each nonterminal...
   
@@ -333,7 +335,7 @@
   this.Calculations["grammar.first"] = function(grammar) {
   
     var immediate, propagation, result;
-    var i, j;
+    var i, j, k;
     var nullable = grammar.calculate("grammar.nullable");
     var nonterminals = grammar.calculate("grammar.nonterminals");
 
