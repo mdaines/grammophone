@@ -504,27 +504,45 @@
   
   };
   
-  // Given a sentence and a grammar, expand the sentence's first realizable
-  // nonterminal and return the resulting list of sentences (which may be
-  // empty).
+  // Given a "sentence node" and a grammar, expand the sentence's first
+  // realizable nonterminal and return the resulting list of sentence nodes
+  // (which may be empty).
+  //
+  // Each sentence node's "step" member is incremented and its "nonterminals"
+  // member adjusted.
   
-  function expandSentence(sentence, grammar) {
+  function expandSentenceNode(node, grammar) {
     
     var i, j;
-    var sentences = [];
+    var expanded = [];
     var nonterminals = grammar.calculate("grammar.nonterminals");
     var unrealizable = grammar.calculate("grammar.unrealizable");
+    var sentence, replacement, nonterminalCount;
     
-    // expand the first nonterminal
+    // expand the first realizable nonterminal.
     
-    for (i = 0; i < sentence.length; i++) {
+    for (i = 0; i < node.sentence.length; i++) {
       
-      if (nonterminals[sentence[i]] && !unrealizable[sentence[i]]) {
+      if (nonterminals[node.sentence[i]] && !unrealizable[node.sentence[i]]) {
         
         for (j = 0; j < grammar.productions.length; j++) {
           
-          if (grammar.productions[j][0] === sentence[i]) {
-            sentences.push(sentence.slice(0, i).concat(grammar.productions[j].slice(1)).concat(sentence.slice(i+1)));
+          if (grammar.productions[j][0] === node.sentence[i]) {
+            
+            replacement = grammar.productions[j].slice(1);
+            nonterminalCount = 0;
+            
+            for (k = 0; k < replacement.length; k++) {
+              if (nonterminals[replacement[k]])
+                nonterminalCount++;
+            }
+            
+            expanded.push({
+              sentence: node.sentence.slice(0, i).concat(replacement).concat(node.sentence.slice(i+1)),
+              steps: node.steps + 1,
+              nonterminals: node.nonterminals - 1 + nonterminalCount
+            });
+            
           }
           
         }
@@ -535,36 +553,7 @@
       
     }
     
-    return sentences;
-    
-  }
-  
-  function countNonterminals(sentence, grammar) {
-    
-    var i;
-    var count = 0;
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    
-    for (i = 0; i < sentence.length; i++) {
-      if (nonterminals[sentence[i]])
-        count++;
-    }
-    
-    return count;
-    
-  }
-  
-  function allTerminals(sentence, grammar) {
-    
-    var i;
-    var terminals = grammar.calculate("grammar.terminals");
-    
-    for (i = 0; i < sentence.length; i++) {
-      if (!terminals[sentence[i]])
-        return false;
-    }
-    
-    return true;
+    return expanded;
     
   }
   
@@ -576,19 +565,19 @@
     
     var i, j;
     var sentences = [];
-    var queue = [[start]];
-    var sentence;
+    var queue = [{ sentence: [start], steps: 0, nonterminals: 1 }];
+    var node;
     var expanded;
     
     do {
     
-      sentence = queue.shift();
-      expanded = expandSentence(sentence, grammar);
+      node = queue.shift();
+      expanded = expandSentenceNode(node, grammar);
     
       for (i = 0; i < expanded.length; i++) {
       
-        if (allTerminals(expanded[i], grammar))
-          sentences.push(expanded[i]);
+        if (expanded[i].nonterminals === 0)
+          sentences.push(expanded[i].sentence);
         else
           queue.push(expanded[i]);
         
@@ -598,11 +587,10 @@
       }
       
       // Sort the queue so that the next sentence is the one with the
-      // fewest nonterminals -- the closest to being a "finished" sentence.
-      // TODO: use a priority queue...
+      // fewest nonterminals and steps.
       
       queue = queue.sort(function(a, b) {
-        return countNonterminals(a, grammar) - countNonterminals(b, grammar);
+        return (a.nonterminals + a.steps) - (b.nonterminals + b.steps);
       });
       
     } while (queue.length > 0 && sentences.length < MAX_SENTENCES);
