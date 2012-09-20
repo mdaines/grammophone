@@ -190,6 +190,10 @@
    
   }
   
+  // Perform the left-factoring transformation. Group is an array of production
+  // indices, and prefix is the number of symbols (not counting the head of
+  // the production) to factor.
+  
   function leftFactor(grammar, group, prefix) {
     
     var i, j;
@@ -220,7 +224,7 @@
     // Add the reference to the new symbol with the factored prefix
   
     changes.push({
-      production: grammar.productions[group[0]].slice(0, prefix).concat(symbol),
+      production: grammar.productions[group[0]].slice(0, prefix + 1).concat(symbol),
       operation: "insert",
       index: group[0]
     });
@@ -229,7 +233,7 @@
   
     for (i = 0; i < group.length; i++) {
       changes.push({
-        production: [symbol].concat(grammar.productions[group[i]].slice(prefix)),
+        production: [symbol].concat(grammar.productions[group[i]].slice(prefix + 1)),
         operation: "insert",
         index: group[0] + i + 1
       });
@@ -239,85 +243,106 @@
     
   }
   
+  // Mini trie implementation for finding factorable prefixes.
+  
+  function Trie() {
+    
+    this.root = {
+      children: {},
+      values: []
+    };
+    
+  }
+
+  Trie.prototype.insert = function(production, value) {
+    
+    var node = this.root;
+    var i, s;
+    
+    for (i = 0; i < production.length; i++) {
+      s = production[i];
+      if (typeof node.children[s] === "undefined")
+        node.children[s] = { children: {}, values: [] };
+      node = node.children[s];
+    }
+    
+    node.values.push(value);
+    
+  }
+  
+  Trie.prototype.getFactorablePrefixes = function() {
+    
+    var groups = [];
+    
+    function _values(length, node) {
+      
+      var symbol;
+      var values = [];
+      
+      values = values.concat(node.values);
+      
+      for (symbol in node.children)
+        values = values.concat(_values(length + 1, node.children[symbol]));
+      
+      if (length > 0 && values.length >= 2)
+        groups.push({ length: length, group: values });
+          
+      return values;
+      
+    }
+    
+    _values(0, this.root);
+    
+    return groups;
+    
+  }
+  
   this.Calculations["transformations.leftFactor"] = function(grammar) {
   
     var i, j;
-  
-    var nonterminals = grammar.calculate("grammar.nonterminals");
     var result = [];
-  
-    // Collect productions for each nonterminal (don't include empty productions)
-  
-    var productions = {};
     var nt;
-  
-    for (nt in nonterminals)
-      productions[nt] = [];
-  
+    var prefix;
+    
+    // Build tries for each nonterminal's productions
+    
+    var productions = {};
+    
     for (i = 0; i < grammar.productions.length; i++) {
-      if (grammar.productions[i].length > 1)
-        productions[grammar.productions[i][0]].push(i);
+      
+      nt = grammar.productions[i][0];
+      
+      if (typeof productions[nt] === "undefined")
+        productions[nt] = new Trie();
+      
+      productions[nt].insert(grammar.productions[i].slice(1), i);
+      
     }
-  
-    // For each nonterminal...
-  
-    for (nt in nonterminals) {
     
-      // Sort by length of production
+    // Get factorable prefixes and their corresponding productions
     
-      productions[nt].sort(function(a, b) {
-        return grammar.productions[a].length - grammar.productions[b].length;
-      });
+    var factorable;
     
-      // Remove rules from the grammar having the same prefix
-    
-      while (productions[nt].length > 0) {
+    for (nt in productions) {
       
-        // Compare the first production against subsequent productions as
-        // a prefix. If we find a match, add the production index to the
-        // group of matches.
+      factorable = productions[nt].getFactorablePrefixes();
       
-        var group = [productions[nt][0]];
-        var prefix = grammar.productions[productions[nt][0]];
-      
-        for (i = 1; i < productions[nt].length; i++) {
+      for (i = 0; i < factorable.length; i++) {
         
-          var compare = grammar.productions[productions[nt][i]];
+        var length = factorable[i].length;
+        var group = factorable[i].group;
+        group.sort();
         
-          for (j = 1; j < prefix.length; j++) {
-            if (prefix[j] != compare[j])
-              break;
-          }
+        result.push({
+          name: "leftFactor",
+          production: group[0],
+          symbol: 0,
+          length: length,
+          changes: leftFactor(grammar, group, length)
+        });
         
-          if (j == prefix.length)
-            group.push(productions[nt][i]);
-        
-        }
-      
-        // If the group has more than one production, add it to the result.
-      
-        if (group.length > 1) {
-        
-          group.sort();
-        
-          result.push({
-            name: "leftFactor",
-            production: group[0],
-            symbol: 0,
-            changes: leftFactor(grammar, group, prefix.length)
-          });
-        
-        }
-      
-        // Remove the productions in the group from the list of those to
-        // consider on the next iteration. (We always remove at least one,
-        // the "prefix".)
-      
-        for (i = 0; i < group.length; i++)
-          productions[nt].splice(productions[nt].indexOf(group[i]), 1);
-      
       }
-    
+      
     }
   
     return result;
