@@ -17,16 +17,6 @@ HeaderView.prototype.reload = function() {
   
   var path = this._delegate.getPathComponents();
   
-  if (path.length > 0) {
-    
-    this._element.innerHTML = JST["templates/header"]({ path: path });
-    this._element.style.display = "";
-    
-  } else {
-    
-    this._element.innerHTML = "";
-    this._element.style.display = "none";
-    
-  }
+  this._element.innerHTML = JST["templates/header"]({ path: path });
   
 }

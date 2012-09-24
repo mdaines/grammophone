@@ -77,7 +77,7 @@ var ApplicationController = function(element) {
   // set initial path and parse, and reload children
   
   this._path = "/";
-  this._parse = Grammar.parse("EXP -> EXP add TERM | TERM .\nTERM -> id | id INDEX | let STMTS in EXP end .\nSTMTS -> STMTS STMT | .\nSTMT -> LEXP assign EXP semi .\nLEXP -> LEXP INDEX | id .\nINDEX -> lpar EXP rpar .");
+  this._parse = { spec: "" };
   this._mode = "edit";
   
   this._analysisController.reload();

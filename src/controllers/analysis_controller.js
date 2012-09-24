@@ -1,4 +1,5 @@
 //= require views/header_view
+//= require views/blank_slate_view
 //= require views/sanity_view
 //= require views/sentences_view
 //= require views/short_sentences_view
@@ -17,6 +18,14 @@ var AnalysisController = function(element) {
   
   this._element = element;
   this._element.id = "analysis";
+  
+  // blank slate view
+  
+  this._blankSlateElement = document.createElement("section");
+  this._element.appendChild(this._blankSlateElement);
+  
+  this._blankSlateView = new BlankSlateView(this._blankSlateElement);
+  this._blankSlateView.setDelegate(this);
   
   // header view (managed separately from views which are swapped
   // depending on routes)
@@ -174,13 +183,20 @@ AnalysisController.prototype.reload = function() {
   
     }
     
+    $(this._headerElement).show();
+    $(this._blankSlateElement).hide();
+    
+  } else {
+    
+    $(this._headerElement).hide();
+    $(this._blankSlateElement).show();
+    
   }
   
-  // ask header view to reload
-    
   this._headerView.reload();
+  this._blankSlateView.reload();
   
-  // possilby reset scroll to top-left
+  // possibly reset scroll to top-left
   
   if (pathChanged) {
   
