@@ -1,6 +1,7 @@
 //= require views/header_view
 //= require views/sanity_view
 //= require views/sentences_view
+//= require views/short_sentences_view
 //= require views/nonterminals_view
 //= require views/parsing_view
 //= require views/ll1_table_view
@@ -33,7 +34,7 @@ var AnalysisController = function(element) {
     "/": {
       views: [
         { id: "sanity", constructor: SanityView },
-        { id: "sentences", constructor: SentencesView },
+        { id: "sentences", constructor: ShortSentencesView },
         { id: "nonterminals", constructor: NonterminalsView },
         { id: "parsing", constructor: ParsingView }
       ],
@@ -94,6 +95,13 @@ var AnalysisController = function(element) {
         { id: "table", constructor: LALR1TableView }
       ],
       path: [{ path: "/", title: "Analysis" }, { title: "LALR(1) Parsing Table" }]
+    },
+    
+    "/sentences": {
+      views: [
+        { id: "sentences", constructor: SentencesView }
+      ],
+      path: [{ path: "/", title: "Analysis" }, { title: "Example Sentences" }]
     }
     
   };

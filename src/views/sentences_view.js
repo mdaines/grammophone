@@ -16,7 +16,8 @@ SentencesView.prototype.reload = function() {
   
   this._element.innerHTML = JST["templates/sentences"]({
     sentences: this._delegate.getCalculation("grammar.sentences"),
-    info: this._delegate.getCalculation("grammar.symbolInfo")
+    info: this._delegate.getCalculation("grammar.symbolInfo"),
+    more: false
   });
   
 }

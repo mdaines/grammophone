@@ -557,7 +557,7 @@
     
   }
   
-  var MAX_SENTENCES = 20;
+  var MAX_SENTENCES = 30;
   
   this.Calculations["grammar.sentences"] = function(grammar) {
     
