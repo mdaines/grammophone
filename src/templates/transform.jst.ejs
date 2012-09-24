@@ -1,10 +1,10 @@
 <div class="buttons">
   <% if (typeof undoTransformation !== "undefined") { %>
-    <button data-action="undo" class="undo">Undo <%= Helpers.formatTransformationName(undoTransformation.name) %></button>
+    <button data-action="undo" class="undo">Undo <%= Helpers.formatTransformation(undoTransformation, productions, info) %></button>
   <% } %>
   
   <% if (typeof redoTransformation !== "undefined") { %>
-    <button data-action="redo" class="redo">Redo <%= Helpers.formatTransformationName(redoTransformation.name) %></button>
+    <button data-action="redo" class="redo">Redo <%= Helpers.formatTransformation(redoTransformation, productions, info) %></button>
   <% } %>
 </div>
 
@@ -14,7 +14,7 @@
       <td>
         <% production.forEach(function(symbol, j) { %>
           <% if (transformations[i][j].length > 0) { %>
-            <span class="pill"><%= Helpers.formatSymbol(symbol, info) %><select><option disabled selected><%= symbol %></option><% transformations[i][j].forEach(function(t) { %><option value="<%= t.index %>"><%= Helpers.formatTransformationName(t.name) %></option><% }) %></select></span>
+            <span class="pill"><%= Helpers.formatSymbol(symbol, info) %><select><option disabled selected><%= symbol %></option><% transformations[i][j].forEach(function(t) { %><option value="<%= t.index %>"><%= Helpers.formatTransformation(t.transformation, productions, info) %></option><% }) %></select></span>
           <% } else { %>
             <%= Helpers.formatSymbol(symbol, info) %>
           <% } %>

@@ -54,8 +54,8 @@ TransformView.prototype.reload = function() {
   for (i = 0; i < this._transformations.length; i++) {
     transformation = this._transformations[i];
     transformations[transformation.production][transformation.symbol].push({
-      name: transformation.name,
-      index: i
+      index: i,
+      transformation: transformation
     });
   }
   

@@ -161,17 +161,33 @@ var Helpers = function() {
     
   }
   
-  var FORMATTED_TRANSFORMATION_NAMES = {
-    expand: "Expand Nonterminal",
-    removeImmediateLeftRecursion: "Remove Immediate Left Recursion",
-    leftFactor: "Left Factor",
-    epsilonSeparate: "Epsilon-Separate",
-    removeUnreachable: "Remove Unreachable Nonterminal"
+  var TRANSFORMATION_FORMATTERS = {
+    expand: function(transformation, productions, info) {
+      return "Expand Nonterminal";
+    },
+    
+    removeImmediateLeftRecursion: function(transformation, productions, info) {
+      return "Remove Immediate Left Recursion";
+        
+    },
+    
+    leftFactor: function(transformation, productions, info) {
+      return "Left Factor " +
+        bareFormatSymbols(productions[transformation.production].slice(1, transformation.length + 1), info).join(" ");
+    },
+    
+    epsilonSeparate: function(transformation, productions, info) {
+      return "Epsilon-Separate";
+    },
+    
+    removeUnreachable: function(transformation, productions, info) {
+      return "Remove Unreachable Nonterminal"
+    }
   }
   
-  function formatTransformationName(name) {
+  function formatTransformation(transformation, productions, info) {
     
-    return FORMATTED_TRANSFORMATION_NAMES[name] || name;
+    return TRANSFORMATION_FORMATTERS[transformation.name](transformation, productions, info) || transformation.name;
     
   }
   
@@ -222,7 +238,7 @@ var Helpers = function() {
   klass.formatSentence = formatSentence;
   klass.formatItem = formatItem;
   klass.bareFormatItem = bareFormatItem;
-  klass.formatTransformationName = formatTransformationName;
+  klass.formatTransformation = formatTransformation;
   klass.repeatString = repeatString;
   klass.escapeHTML = escapeHTML;
   klass.setDelegate = setDelegate;
