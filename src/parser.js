@@ -309,64 +309,40 @@ lexer.performAction = function anonymous(yy,yy_,$avoiding_name_collisions,YY_STA
 
 var YYSTATE=YY_START
 switch($avoiding_name_collisions) {
-case 0: yy_.yytext = yy_.yytext.substr(1, yy_.yyleng - 2).replace(/\\(.)/g, "$1"); return "NAME"; 
+case 0: 
 break;
-case 1: yy_.yytext = yy_.yytext.substr(1, yy_.yyleng - 2).replace(/\\(.)/g, "$1"); return "NAME"; 
+case 1: this.begin("COMMENT"); 
 break;
-case 2: 
+case 2: return "ARROW"; 
 break;
-case 3: return "ARROW"; 
+case 3: return "CHOICE"; 
 break;
-case 4: return "CHOICE"; 
+case 4: return "STOP"; 
 break;
-case 5: return "STOP"; 
+case 5: 
 break;
-case 6: 
+case 6: this.begin("NAME"); name = yy_.yytext; 
 break;
-case 7: this.begin("NAME"); name = yy_.yytext[1]; 
+case 7: this.unput("->"); this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
 break;
-case 8: return "INVALID"; 
+case 8: this.unput("|"); this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
 break;
-case 9: this.begin("NAME"); name = yy_.yytext; 
+case 9: this.unput("."); this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
 break;
-case 10: this.unput("->"); this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
+case 10: yy_.yytext = name; return "NAME"; 
 break;
-case 11: this.unput("|"); this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
+case 11: this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
 break;
-case 12: this.unput("."); this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
+case 12: name += yy_.yytext; 
 break;
-case 13: yy_.yytext = name; return "NAME"; 
+case 13: this.begin("INITIAL"); 
 break;
-case 14: this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
-break;
-case 15: name += yy_.yytext[1]; 
-break;
-case 16: return "INVALID"; 
-break;
-case 17: this.begin("PRIMES"); name += "'"; 
-break;
-case 18: name += yy_.yytext; 
-break;
-case 19: name += "'"; 
-break;
-case 20: this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
-break;
-case 21: this.unput("->"); this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
-break;
-case 22: this.unput("|"); this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
-break;
-case 23: this.unput("."); this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
-break;
-case 24: yy_.yytext = name; return "NAME"; 
-break;
-case 25: return "INVALID"; 
-break;
-case 26: return "INVALID"; 
+case 14: 
 break;
 }
 };
-lexer.rules = [/^(?:"(\\.|[^\\"])*")/,/^(?:'(\\.|[^\\'])*')/,/^(?:\s+)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:\\.)/,/^(?:[\"\'])/,/^(?:.)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:\s+)/,/^(?:\\.)/,/^(?:")/,/^(?:')/,/^(?:.)/,/^(?:')/,/^(?:\s+)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:.)/,/^(?:.)/];
-lexer.conditions = {"PRIMES":{"rules":[19,20,21,22,23,24,25],"inclusive":true},"NAME":{"rules":[10,11,12,13,14,15,16,17,18],"inclusive":true},"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,26],"inclusive":true}};
+lexer.rules = [/^(?:\s+)/,/^(?:#)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:.)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:\s+)/,/^(?:.)/,/^(?:\n\b)/,/^(?:.)/];
+lexer.conditions = {"COMMENT":{"rules":[13,14],"inclusive":true},"NAME":{"rules":[7,8,9,10,11,12],"inclusive":true},"INITIAL":{"rules":[0,1,2,3,4,5,6],"inclusive":true}};
 return lexer;})()
 parser.lexer = lexer;function Parser () { this.yy = {}; }Parser.prototype = parser;parser.Parser = Parser;
 return new Parser;
