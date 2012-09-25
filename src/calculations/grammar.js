@@ -251,7 +251,7 @@
     
       // Look through the productions of this nonterminal for
       // productions which are nullable. If we find more than
-      // one, return them as an array.
+      // one, return them as an array (in order).
     
       found = undefined;
     
@@ -264,7 +264,7 @@
           if (grammar.productions[i].length == 1) {
           
             if (typeof found !== "undefined")
-              return [i, found];
+              return i < found ? [i, found] : [found, i];
             else
               found = i;
           
@@ -284,7 +284,7 @@
           if (j == grammar.productions[i].length) {
           
             if (typeof found !== "undefined")
-              return [i, found];
+              return i < found ? [i, found] : [found, i];
             else
               found = i;
           
