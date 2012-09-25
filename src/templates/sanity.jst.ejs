@@ -43,7 +43,11 @@
   <% if (typeof ambiguous !== "undefined") { %>
     <li>
       The grammar is ambiguous: the sentence
-      <%= Helpers.formatSymbols(ambiguous, info).join(" ") %>
+      <% if (ambiguous.length === 0) { %>
+        <u>&epsilon;</u>
+      <% } else { %>
+        <%= Helpers.formatSymbols(ambiguous, info).join(" ") %>
+      <% } %>
       has an ambiguous derivation.
     </li>
   <% } %>
