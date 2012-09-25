@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Grammar Sanity Checks Test</title>
+    <script src="./evidence.js"></script>
+    <script src="/assets/application.js"></script>
+  </head>
+  <body>
+    
+    <script>
+    (function(){
+      
+      function calculate(productions, calculation) {
+        
+        return new Grammar(productions).calculate(calculation);
+        
+      }
+      
+      function isSetEqual(a, b) {
+        
+        return Set.count(Set.intersection(a, b)) === Set.count(a);
+        
+      }
+      
+      Evidence.Assertions.assertSetEqual = function(expected, actual, message) {
+        
+        this._assertExpression(
+          isSetEqual(expected, actual),
+          message || 'Failed assertion.',
+          'Expected %o, got %o.', expected, actual
+        )
+        
+      }
+      
+      Evidence.Assertions.assertArrayEqual = function(expected, actual, message) {
+        
+        var passed, i;
+        
+        if (expected.length !== actual.length) {
+          passed = false;
+        } else {
+          for (i = 0, passed = true; i < expected.length && passed; i++)
+            passed = expected[i] === actual[i];
+        }
+        
+        this._assertExpression(
+          passed,
+          message || 'Failed assertion.',
+          'Expected %o, got %o.', expected, actual
+        )
+        
+      }
+
+      Evidence("GrammarSanityChecksTest", {
+        
+        testUnreachable: function(t) {
+          
+          t.assertSetEqual({ "C": true, "D": true }, calculate([["A", "B"], ["B"], ["C", "D"], ["D"]], "grammar.unreachable"));
+          
+        },
+        
+        testUnrealizable: function(t) {
+          
+          t.assertSetEqual({ "A": true, "B": true }, calculate([["A", "B"], ["B", "y", "B"]], "grammar.unrealizable"));
+          
+        },
+        
+        testCycles: function(t) {
+          
+          t.assertArrayEqual(["A", "B", "C", "A"], calculate([["A", "B"], ["B", "C"], ["C", "A"]], "grammar.cycle"));
+          t.assertArrayEqual(["A", "A"], calculate([["A", "A"]], "grammar.cycle"));
+          
+        },
+        
+        testNullAmbiguity: function(t) {
+          
+          t.assertArrayEqual([0, 1], calculate([["A", "B"], ["A"], ["B"]], "grammar.nullAmbiguity"));
+          
+        },
+        
+        testAmbiguity: function(t) {
+          
+          t.assertArrayEqual(["a"], calculate([["A", "a", "C"], ["A", "B", "a"], ["B", "a", "B"], ["B"], ["C", "a", "C"], ["C"]], "grammar.ambiguous"));
+          
+        }
+        
+      });
+      
+    })();
+    </script>
+    
+  </body>
+</html>
