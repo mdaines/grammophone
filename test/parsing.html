@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Grammar Parsing test</title>
+    <script src="./evidence.js"></script>
+    <script src="/assets/application.js"></script>
+  </head>
+  <body>
+    
+    <script>
+    (function(){
+      
+      function productionsEqual(a, b) {
+        
+        var i, j;
+        
+        if (a.length !== b.length)
+          return false;
+        
+        for (i = 0; i < a.length; i++) {
+          if (a[i].length !== b[i].length)
+            return false;
+          
+          for (j = 0; j < a[i].length; j++) {
+            if (a[i][j] !== b[i][j])
+              return false;
+          }
+        }
+        
+        return true;
+        
+      }
+      
+      Evidence.Assertions.assertParseProductions = function(expected, spec, message) {
+        
+        var parse = Grammar.parse(spec);
+        
+        if (parse.error)
+          throw parse.error;
+          
+        var actual = parse.grammar.productions;
+        
+        this._assertExpression(
+          productionsEqual(expected, actual),
+          message || 'Failed assertion.',
+          'Expected %o, got %o.', expected, actual
+        )
+        
+      }
+      
+      Evidence.Assertions.assertParseError = function(spec, message) {
+        
+        var parse = Grammar.parse(spec);
+        
+        this._assertExpression(
+          typeof parse.error !== "undefined",
+          message || 'Failed assertion.',
+          'Expected parse error for spec: %o.', spec
+        )
+        
+      }
+
+      Evidence("GrammarParsingTest", {
+        
+        testBasics: function(t) {
+          
+          t.assertParseProductions([["A", "a"]], "A -> a .");
+          t.assertParseProductions([["A", "a"], ["A", "b"]], "A -> a | b .");
+          t.assertParseProductions([["A"]], "A -> .");
+          t.assertParseProductions([["A", "a"], ["B", "b"], ["A", "c"]], "A -> a. B -> b. A -> c.");
+          
+        },
+        
+        testSpacing: function(t) {
+          
+          t.assertParseProductions([["A", "a"]], "A->a.");
+          t.assertParseProductions([["A", "a"], ["A", "b"]], "A->a|b.");
+          t.assertParseProductions([["A"]], "A->.");
+          
+        },
+        
+        testOtherChars: function(t) {
+          
+          t.assertParseProductions([["A", "x", "-", ">", "y"]], "A -> x - > y.");
+          t.assertParseProductions([["A'", "a"], ["A''", "a"]], "A' -> a. A'' -> a.");
+          t.assertParseProductions([["A", "something-something"]], "A -> something-something.");
+          t.assertParseProductions([["-", "-"]], "-->-.");
+          t.assertParseProductions([["A", "1"], ["A", "2"], ["A", "3"]], "A -> 1 | 2 | 3.");
+          t.assertParseProductions([["A", "\"", "'"]], "A -> \" \'.");
+          t.assertParseProductions([["A", "\"a", "\""]], "A -> \"a \".");
+          
+        },
+        
+        testMultipleLines: function(t) {
+          
+          t.assertParseProductions([["A", "a"], ["A", "b"]], "A -> a |\n  b\n  .");
+          
+        },
+        
+        testComments: function(t) {
+          
+          t.assertParseProductions([["A", "b"]], "# A -> a .\nA -> b .");
+          
+        },
+        
+        testParseErrors: function(t) {
+          
+          t.assertParseError("A -> a. B");
+          t.assertParseError("A B -> a.");
+          t.assertParseError("A -> a. ->");
+          t.assertParseError("-> X");
+          t.assertParseError("A");
+          t.assertParseError("A.y -> a.");
+          t.assertParseError("A -> x.y .");
+          
+        }
+        
+      });
+      
+    })();
+    </script>
+    
+  </body>
+</html>
