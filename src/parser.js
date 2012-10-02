@@ -309,15 +309,15 @@ lexer.performAction = function anonymous(yy,yy_,$avoiding_name_collisions,YY_STA
 
 var YYSTATE=YY_START
 switch($avoiding_name_collisions) {
-case 0: 
+case 0: this.begin("COMMENT"); 
 break;
-case 1: this.begin("COMMENT"); 
+case 1: return "ARROW"; 
 break;
-case 2: return "ARROW"; 
+case 2: return "CHOICE"; 
 break;
-case 3: return "CHOICE"; 
+case 3: return "STOP"; 
 break;
-case 4: return "STOP"; 
+case 4: 
 break;
 case 5: 
 break;
@@ -341,7 +341,7 @@ case 14:
 break;
 }
 };
-lexer.rules = [/^(?:\s+)/,/^(?:#)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:.)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:\s+)/,/^(?:.)/,/^(?:\n\b)/,/^(?:.)/];
+lexer.rules = [/^(?:#)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:\s+)/,/^(?:.)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:\s+)/,/^(?:.)/,/^(?:\n\b)/,/^(?:.)/];
 lexer.conditions = {"COMMENT":{"rules":[13,14],"inclusive":true},"NAME":{"rules":[7,8,9,10,11,12],"inclusive":true},"INITIAL":{"rules":[0,1,2,3,4,5,6],"inclusive":true}};
 return lexer;})()
 parser.lexer = lexer;function Parser () { this.yy = {}; }Parser.prototype = parser;parser.Parser = Parser;
