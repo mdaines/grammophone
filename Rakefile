@@ -4,6 +4,7 @@ require "sprockets"
 GRAMMAR_ASSETS = [
   "application.js",
   "zepto.js",
+  "jquery.js",
   "viz.js",
   "application.css"
 ]
