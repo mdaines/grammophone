@@ -70,7 +70,7 @@ var ApplicationController = function(element) {
   
   window.location.hash = "";
   
-  window.addEventListener("hashchange", function() {
+  $(window).on("hashchange", function() {
     this._hashChanged();
   }.bind(this), false);
   
