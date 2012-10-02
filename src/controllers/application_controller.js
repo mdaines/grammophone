@@ -72,7 +72,7 @@ var ApplicationController = function(element) {
   
   window.addEventListener("hashchange", function() {
     this._hashChanged();
-  }.bind(this));
+  }.bind(this), false);
   
   // set initial path and parse, and reload children
   
