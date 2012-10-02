@@ -1,6 +1,13 @@
 require "rubygems"
 require "sprockets"
 
+GRAMMAR_ASSETS = [
+  "application.js",
+  "zepto.js",
+  "viz.js",
+  "application.css"
+]
+
 task :default do
   
   environment = Sprockets::Environment.new
@@ -10,7 +17,7 @@ task :default do
   
   FileUtils.mkdir_p("./assets")
   
-  ["application.js", "application.css"].each do |asset|
+  GRAMMAR_ASSETS.each do |asset|
     File.open("./assets/#{asset}", "w+") do |f|
       f << environment.find_asset(asset).to_s
     end
@@ -20,8 +27,9 @@ end
 
 task :clean do
   
-  FileUtils.rm("./assets/application.js")
-  FileUtils.rm("./assets/application.css")
+  GRAMMAR_ASSETS.each do |asset|
+    FileUtils.rm_f("./assets/#{asset}")
+  end
   
 end
 
