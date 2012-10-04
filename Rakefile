@@ -29,9 +29,11 @@ task :default => "src/parser.js" do
 end
 
 task :clean do
-  FileUtils.rm_f("src/parser.js")
-  
   GRAMMAR_ASSETS.each do |asset|
     FileUtils.rm_f("assets/#{asset}")
   end
+end
+
+task :clobber => :clean do
+  FileUtils.rm_f("src/parser.js")
 end
