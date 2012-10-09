@@ -10,17 +10,18 @@ var name;
 <INITIAL>"|"     { return "CHOICE"; }
 <INITIAL>"."     { return "STOP"; }
 <INITIAL><<EOF>> { }
-<INITIAL>\s+     { }
+<INITIAL>[\s\n]  { }
 <INITIAL>.       { this.begin("NAME"); name = yytext; }
 
 <NAME>"->"    { this.unput("->"); this.begin("INITIAL"); yytext = name; return "NAME"; }
 <NAME>"|"     { this.unput("|"); this.begin("INITIAL"); yytext = name; return "NAME"; }
 <NAME>"."     { this.unput("."); this.begin("INITIAL"); yytext = name; return "NAME"; }
 <NAME><<EOF>> { yytext = name; return "NAME"; }
-<NAME>\s+     { this.begin("INITIAL"); yytext = name; return "NAME"; }
+<NAME>[\s\n]  { this.begin("INITIAL"); yytext = name; return "NAME"; }
 <NAME>.       { name += yytext; }
 
-<COMMENT>\n { this.begin("INITIAL"); }
-<COMMENT>.  { }
+<COMMENT>[\n] { this.begin("INITIAL"); }
+<COMMENT>[\s] { }
+<COMMENT>.    { }
 
 %%

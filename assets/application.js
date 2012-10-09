@@ -2584,31 +2584,33 @@ var parser = {trace: function trace() { },
 yy: {},
 symbols_: {"error":2,"spec":3,"rules":4,"rule":5,"STOP":6,"NAME":7,"ARROW":8,"productions":9,"tokens":10,"CHOICE":11,"$accept":0,"$end":1},
 terminals_: {2:"error",6:"STOP",7:"NAME",8:"ARROW",11:"CHOICE"},
-productions_: [0,[3,1],[4,3],[4,2],[5,3],[9,1],[9,3],[10,2],[10,0]],
+productions_: [0,[3,1],[3,0],[4,3],[4,2],[5,3],[9,1],[9,3],[10,2],[10,0]],
 performAction: function anonymous(yytext,yyleng,yylineno,yy,yystate,$$,_$) {
 
 var $0 = $$.length - 1;
 switch (yystate) {
 case 1: return this.$ = $$[$0]; 
 break;
-case 2: this.$ = $$[$0]; $$[$0].unshift($$[$0-2]); 
+case 2: return []; 
 break;
-case 3: this.$ = [$$[$0-1]]; 
+case 3: this.$ = $$[$0]; $$[$0].unshift($$[$0-2]); 
 break;
-case 4: this.$ = { nt: $$[$0-2], p: $$[$0] }; 
+case 4: this.$ = [$$[$0-1]]; 
 break;
-case 5: this.$ = [$$[$0]]; 
+case 5: this.$ = { nt: $$[$0-2], p: $$[$0] }; 
 break;
-case 6: this.$ = $$[$0]; $$[$0].unshift($$[$0-2]); 
+case 6: this.$ = [$$[$0]]; 
 break;
-case 7: this.$ = $$[$0]; $$[$0].unshift($$[$0-1]); 
+case 7: this.$ = $$[$0]; $$[$0].unshift($$[$0-2]); 
 break;
-case 8: this.$ = []; 
+case 8: this.$ = $$[$0]; $$[$0].unshift($$[$0-1]); 
+break;
+case 9: this.$ = []; 
 break;
 }
 },
-table: [{3:1,4:2,5:3,7:[1,4]},{1:[3]},{1:[2,1]},{6:[1,5]},{8:[1,6]},{1:[2,3],4:7,5:3,7:[1,4]},{6:[2,8],7:[1,10],9:8,10:9,11:[2,8]},{1:[2,2]},{6:[2,4]},{6:[2,5],11:[1,11]},{6:[2,8],7:[1,10],10:12,11:[2,8]},{6:[2,8],7:[1,10],9:13,10:9,11:[2,8]},{6:[2,7],11:[2,7]},{6:[2,6]}],
-defaultActions: {2:[2,1],7:[2,2],8:[2,4],13:[2,6]},
+table: [{1:[2,2],3:1,4:2,5:3,7:[1,4]},{1:[3]},{1:[2,1]},{6:[1,5]},{8:[1,6]},{1:[2,4],4:7,5:3,7:[1,4]},{6:[2,9],7:[1,10],9:8,10:9,11:[2,9]},{1:[2,3]},{6:[2,5]},{6:[2,6],11:[1,11]},{6:[2,9],7:[1,10],10:12,11:[2,9]},{6:[2,9],7:[1,10],9:13,10:9,11:[2,9]},{6:[2,8],11:[2,8]},{6:[2,7]}],
+defaultActions: {2:[2,1],7:[2,3],8:[2,5],13:[2,7]},
 parseError: function parseError(str, hash) {
     throw new Error(str);
 },
@@ -2919,10 +2921,12 @@ case 13: this.begin("INITIAL");
 break;
 case 14: 
 break;
+case 15: 
+break;
 }
 };
-lexer.rules = [/^(?:#)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:\s+)/,/^(?:.)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:\s+)/,/^(?:.)/,/^(?:\n\b)/,/^(?:.)/];
-lexer.conditions = {"COMMENT":{"rules":[13,14],"inclusive":true},"NAME":{"rules":[7,8,9,10,11,12],"inclusive":true},"INITIAL":{"rules":[0,1,2,3,4,5,6],"inclusive":true}};
+lexer.rules = [/^(?:#)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:[\s\n])/,/^(?:.)/,/^(?:->)/,/^(?:\|)/,/^(?:\.)/,/^(?:$)/,/^(?:[\s\n])/,/^(?:.)/,/^(?:[\n])/,/^(?:[\s])/,/^(?:.)/];
+lexer.conditions = {"COMMENT":{"rules":[13,14,15],"inclusive":true},"NAME":{"rules":[7,8,9,10,11,12],"inclusive":true},"INITIAL":{"rules":[0,1,2,3,4,5,6],"inclusive":true}};
 return lexer;})()
 parser.lexer = lexer;function Parser () { this.yy = {}; }Parser.prototype = parser;parser.Parser = Parser;
 return new Parser;
@@ -3145,7 +3149,7 @@ var Grammar = function() {
       for (j = 1; j < this.productions[i].length; j++)
         result += " " + this.productions[i][j];
       
-      result += ".\n";
+      result += " .\n";
       
     }
     
@@ -3209,7 +3213,7 @@ HeaderView.prototype.reload = function() {
 ;
 (function() {
   this.JST || (this.JST = {});
-  this.JST["templates/blank_slate"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<section>\n  <h1>Enter a context-free grammar</h1>\n\n  <p>For example:</p>\n\n  <pre>\nS -> id | V assign E .\nV -> id .\nE -> V | num .</pre>\n</section>\n\n<section>\n  <h1>Analyze the grammar</h1>\n\n  <p>Click Analyze to run the analysis.</p>\n\n  <p>This does basic sanity checks, computes properties of nonterminals, and classifies the grammar according to parsing algorithm. You can also generate parsing tables and automata diagrams.</p>\n</section>\n\n<section>\n  <h1>Transform the grammar</h1>\n  \n  <p>Click Transform to switch to transformation mode.</p>\n\n  <p>Apply grammar transformations interactively: remove immediate left recursion, left-factor productions, perform epsilon-separation, and remove unreachable nonterminals.</p>\n</section>\n');}return __p.join('');};
+  this.JST["templates/blank_slate"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<section>\n  \n  <p>This is <b>Grammophone</b>, a tool for analyzing and transforming context-free grammars. To start, type a grammar in the box to the left and click Analyze or Transform.</p>\n  \n  <p>Grammars are written like this:</p>\n  \n  <pre>S -> a S b .\nS -> .</pre>\n\n  <p>This grammar generates the language a<sup>n</sup>&nbsp;b<sup>n</sup>, where n&nbsp;≧&nbsp;0.</p>\n        \n</section>\n');}return __p.join('');};
 }).call(this);
 
 var BlankSlateView = function(element) {
@@ -4124,6 +4128,8 @@ var ApplicationController = function(element) {
   
   Helpers.setDelegate(this);
   
+  // master
+  
   this._masterElement = document.createElement("div");
   this._masterElement.id = "master";
   this._element.appendChild(this._masterElement);
@@ -4152,6 +4158,14 @@ var ApplicationController = function(element) {
   this._errorController = new ErrorController(this._errorElement);
   this._errorController.setDelegate(this);
   
+  // transform
+  
+  this._transformElement = document.createElement("section");
+  this._masterElement.appendChild(this._transformElement);
+  
+  this._transformController = new TransformController(this._transformElement);
+  this._transformController.setDelegate(this);
+  
   // analysis
   
   this._analysisElement = document.createElement("section");
@@ -4159,14 +4173,6 @@ var ApplicationController = function(element) {
   
   this._analysisController = new AnalysisController(this._analysisElement);
   this._analysisController.setDelegate(this);
-  
-  // analysis
-  
-  this._transformElement = document.createElement("section");
-  this._masterElement.appendChild(this._transformElement);
-  
-  this._transformController = new TransformController(this._transformElement);
-  this._transformController.setDelegate(this);
   
   // listen for hashchange events
   
@@ -4179,7 +4185,7 @@ var ApplicationController = function(element) {
   // set initial path and parse, and reload children
   
   this._path = "/";
-  this._parse = { spec: "" };
+  this._parse = { spec: "# Type a grammar here:\n\n" };
   this._mode = "edit";
   
   this._analysisController.reload();

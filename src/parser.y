@@ -4,6 +4,7 @@
 
 spec
   : rules { return $$ = $1; }
+  | { return []; }
   ;
 
 rules

@@ -77,6 +77,22 @@
 .lr1-table td.conflict u {
   background: #dcc;
 }
+.blank-slate {
+  margin: 3em;
+  padding: 0.5em 1.5em;
+  background: #eee;
+  border: 10px solid #ccc;
+  border-radius: 20px;
+  font: 12pt helvetica;
+}
+
+.blank-slate pre {
+  background: #fff;
+  font: 14pt courier;
+  padding: 0.5em;
+  border: 1px solid #ddd;
+  margin: 0.5em -0.5em;
+}
 #edit .spec-wrap {
   position: absolute;
   top: 0;
@@ -174,6 +190,7 @@
   opacity: 0;
   font-size: 10pt;
 }
+
 
 
 
