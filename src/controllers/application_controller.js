@@ -22,6 +22,8 @@ var ApplicationController = function(element) {
   
   Helpers.setDelegate(this);
   
+  // master
+  
   this._masterElement = document.createElement("div");
   this._masterElement.id = "master";
   this._element.appendChild(this._masterElement);
@@ -50,6 +52,14 @@ var ApplicationController = function(element) {
   this._errorController = new ErrorController(this._errorElement);
   this._errorController.setDelegate(this);
   
+  // transform
+  
+  this._transformElement = document.createElement("section");
+  this._masterElement.appendChild(this._transformElement);
+  
+  this._transformController = new TransformController(this._transformElement);
+  this._transformController.setDelegate(this);
+  
   // analysis
   
   this._analysisElement = document.createElement("section");
@@ -57,14 +67,6 @@ var ApplicationController = function(element) {
   
   this._analysisController = new AnalysisController(this._analysisElement);
   this._analysisController.setDelegate(this);
-  
-  // analysis
-  
-  this._transformElement = document.createElement("section");
-  this._masterElement.appendChild(this._transformElement);
-  
-  this._transformController = new TransformController(this._transformElement);
-  this._transformController.setDelegate(this);
   
   // listen for hashchange events
   
