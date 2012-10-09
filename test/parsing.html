@@ -104,6 +104,9 @@
           
           t.assertParseProductions([["A", "b"]], "# A -> a .\nA -> b .");
           
+          t.assertParseProductions([["A", "b"]], "# abc\n\nA -> b .");
+          t.assertParseProductions([], "# 123\n\n");
+          
         },
         
         testParseErrors: function(t) {
