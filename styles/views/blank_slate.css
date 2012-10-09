@@ -1,0 +1,16 @@
+.blank-slate {
+  margin: 3em;
+  padding: 0.5em 1.5em;
+  background: #eee;
+  border: 10px solid #ccc;
+  border-radius: 20px;
+  font: 12pt helvetica;
+}
+
+.blank-slate pre {
+  background: #fff;
+  font: 14pt courier;
+  padding: 0.5em;
+  border: 1px solid #ddd;
+  margin: 0.5em -0.5em;
+}
