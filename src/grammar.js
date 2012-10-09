@@ -216,7 +216,7 @@ var Grammar = function() {
       for (j = 1; j < this.productions[i].length; j++)
         result += " " + this.productions[i][j];
       
-      result += ".\n";
+      result += " .\n";
       
     }
     
