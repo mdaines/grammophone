@@ -3213,7 +3213,7 @@ HeaderView.prototype.reload = function() {
 ;
 (function() {
   this.JST || (this.JST = {});
-  this.JST["templates/blank_slate"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<section>\n  \n  <p>This is <b>Grammophone</b>, a tool for analyzing and transforming context-free grammars. To start, type a grammar in the box to the left and click Analyze or Transform.</p>\n  \n  <p>Grammars are written like this:</p>\n  \n  <pre>S -> a S b .\nS -> .</pre>\n\n  <p>This grammar generates the language a<sup>n</sup>&nbsp;b<sup>n</sup>, where n&nbsp;≧&nbsp;0.</p>\n        \n</section>\n');}return __p.join('');};
+  this.JST["templates/blank_slate"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<section>\n  \n  <p>This is a tool for analyzing and transforming context-free grammars. To start, type a grammar in the box to the left and click Analyze or Transform.</p>\n  \n  <p>Grammars are written like this:</p>\n  \n  <pre>S -> a S b .\nS -> .</pre>\n\n  <p>This grammar generates the language a<sup>n</sup>&nbsp;b<sup>n</sup>, where n&nbsp;≧&nbsp;0.</p>\n        \n</section>\n');}return __p.join('');};
 }).call(this);
 
 var BlankSlateView = function(element) {
