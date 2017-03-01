@@ -4,6 +4,12 @@ Grammophone
 This is a client-side web app for analyzing and transforming context-free grammars. It was developed with the support and guidance of [Robin Cockett](http://pages.cpsc.ucalgary.ca/~robin/) at the [Univerity of Calgary](http://ucalgary.ca), and it's based on his [Context Free Grammar Checker](http://smlweb.cpsc.ucalgary.ca).
 
 
+Become a Patron
+---------------
+
+Help make Grammophone better by [supporting me on Patreon](https://patreon.com/mdaines). Thank you!
+
+
 Building the app
 ----------------
 
