@@ -9,11 +9,11 @@ GRAMMAR_ASSETS = [
   "application.css"
 ]
 
-file "src/parser.js" => ["src/parser.l", "src/parser.y"] do
-  system "jison src/parser.y src/parser.l --module-type=js --output-file=src/Parser.js && mv src/Parser.js src/parser.js"
+file "src/grammar.js" => "grammar/bundle.js" do
+  FileUtils.cp "grammar/bundle.js", "src/grammar.js"
 end
 
-task :default => "src/parser.js" do
+task :default => "src/grammar.js" do
   environment = Sprockets::Environment.new
   environment.append_path "src"
   environment.append_path "lib"

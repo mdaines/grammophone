@@ -1,6 +1,4 @@
-// From the original smlweb.cpsc.ucalgary.ca code.
-
-var EXAMPLE_GRAMMARS = {
+module.exports = {
   "ll0-lr0-0.cfg": "S -> b A i B. \
 A -> . \
 B -> r C. \
@@ -398,4 +396,4 @@ C -> D. \
 D -> E. \
 T -> X. \
 X -> ."
-}
+};

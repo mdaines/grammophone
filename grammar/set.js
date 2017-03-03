@@ -38,3 +38,5 @@ var Set = {
   }
   
 };
+
+module.exports = Set;

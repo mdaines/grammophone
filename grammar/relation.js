@@ -124,3 +124,5 @@ var Relation = {
   }
   
 };
+
+module.exports = Relation;
