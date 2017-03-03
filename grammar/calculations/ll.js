@@ -1,22 +1,22 @@
+'use strict';
+
 const END = require('../symbols').END;
 const Sets = require('../sets');
 
 module.exports["parsing.ll.ll1_classification"] = function(grammar) {
   
-  var p, i, j, k, l, s;
-  var head, body, first;
-  
-  var nullAmbiguity = grammar.calculate("grammar.nullAmbiguity");
+  let nullAmbiguity = grammar.calculate("grammar.nullAmbiguity");
   
   // We can return immediately if the grammar contains a null ambiguity.
   
-  if (nullAmbiguity.length > 0)
+  if (nullAmbiguity.length > 0) {
     return { member: false, reason: "it contains a null ambiguity" };
+  }
   
-  var follow = grammar.calculate("grammar.follow");
-  var terminals = grammar.calculate("grammar.terminals");
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var nullable = grammar.calculate("grammar.nullable");
+  let follow = grammar.calculate("grammar.follow");
+  let terminals = grammar.calculate("grammar.terminals");
+  let nonterminals = grammar.calculate("grammar.nonterminals");
+  let nullable = grammar.calculate("grammar.nullable");
   
   // Check for first set clashes. Instead of checking intersections of
   // first sets of all productions alpha_i for a given nonterminal A,
@@ -25,27 +25,29 @@ module.exports["parsing.ll.ll1_classification"] = function(grammar) {
   // come upon an entry that has already been set, there is a first
   // set clash.
   
-  var table = {};
+  let table = {};
     
-  for (k in nonterminals) {
+  for (let k in nonterminals) {
   
     table[k] = {};
   
-    for (l in terminals)
+    for (let l in terminals) {
       table[k][l] = false;
+    }
   
   }
     
-  for (i = 0; i < grammar.productions.length; i++) {
+  for (let i = 0; i < grammar.productions.length; i++) {
   
-    head = grammar.productions[i][0];
-    body = grammar.productions[i].slice(1);
+    let head = grammar.productions[i][0];
+    let body = grammar.productions[i].slice(1);
   
-    first = grammar.getFirst(body);
+    let first = grammar.getFirst(body);
     
-    for (s in first) {
-      if (table[head][s])
+    for (let s in first) {
+      if (table[head][s]) {
         return { member: false, reason: "it contains a first set clash" };
+      }
         
       table[head][s] = true;
     }
@@ -55,37 +57,37 @@ module.exports["parsing.ll.ll1_classification"] = function(grammar) {
   // Check for first/follow set clashes. That is, check that every nullable
   // production has disjoint first and follow sets.
   
-  first = grammar.calculate("grammar.first");
+  let first = grammar.calculate("grammar.first");
   
-  for (k in nullable) {
+  for (let k in nullable) {
     
-    if (Sets.any(Sets.intersection(first[k], follow[k])))
+    if (Sets.any(Sets.intersection(first[k], follow[k]))) {
       return { member: false, reason: "it contains a first/follow set clash" };
+    }
     
   }
   
   return { member: true };
   
-}
+};
 
 module.exports["parsing.ll.ll1_table"] = function(grammar) {
 
-  var i, k, l, s;
-  var table = {};
-  var head, body, first;
+  let table = {};
 
-  var terminals = grammar.calculate("grammar.terminals");
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var follow = grammar.calculate("grammar.follow");
+  let terminals = grammar.calculate("grammar.terminals");
+  let nonterminals = grammar.calculate("grammar.nonterminals");
+  let follow = grammar.calculate("grammar.follow");
 
   // Populate table with blank arrays
 
-  for (k in nonterminals) {
+  for (let k in nonterminals) {
   
     table[k] = {};
   
-    for (l in terminals)
+    for (let l in terminals) {
       table[k][l] = [];
+    }
   
     table[k][END] = [];
   
@@ -93,28 +95,30 @@ module.exports["parsing.ll.ll1_table"] = function(grammar) {
 
   // Collect moves
 
-  for (i = 0; i < grammar.productions.length; i++) {
+  for (let i = 0; i < grammar.productions.length; i++) {
   
-    head = grammar.productions[i][0];
-    body = grammar.productions[i].slice(1);
+    let head = grammar.productions[i][0];
+    let body = grammar.productions[i].slice(1);
   
     // Get the first set of the production's body
   
-    first = grammar.getFirst(body);
+    let first = grammar.getFirst(body);
 
     // For each symbol s in first(body), add the production
     // to table[nonterminal][s].
 
-    for (s in first)
+    for (let s in first) {
       table[head][s].push(i);
+    }
   
     // If the production is nullable, for each symbol s of follow(head),
     // add this production to table[head][s].
     
     if (grammar.isNullable(body)) {
     
-      for (s in follow[head])
+      for (let s in follow[head]) {
         table[head][s].push(i);
+      }
     
     }
     

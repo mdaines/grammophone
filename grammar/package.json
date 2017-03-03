@@ -3,7 +3,7 @@
     "test": "mocha \"test/**/*-test.js\"",
     "generate-parser": "jison parser.y parser.l --module-type=commonjs --outfile=parser.js",
     "bundle": "browserify index.js -o bundle.js --standalone Grammar --transform [ babelify --ignore parser.js --presets [ es2015 ] ]",
-    "lint": "jshint --exclude ./node_modules,parser.js,bundle.js ."
+    "lint": "jshint --exclude ./node_modules,parser.js,bundle.js,calculations/lr.js ."
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.22.0",
