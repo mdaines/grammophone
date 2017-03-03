@@ -1,0 +1,111 @@
+{
+  "ll0-lr0-0.cfg": "S -> b A i B. \nA -> . \nB -> r C. \nC -> d.",
+
+  "ll0-lr0-1.cfg": "A -> a b B C. \nB -> C x. \nC -> z.",
+
+  "ll0-lr0-2.cfg": "S -> mary Owns Object. \nOwns -> had. \nObject -> a Animal. \nAnimal -> Adverb Adjective Noun. \nAdverb -> . \nAdjective -> little. \nNoun -> lamb.",
+
+  "ll1-lalr1-0.cfg": "S -> id S'. \nS' -> V assign E \n    | . \nV -> . \nE -> id V \n   | num.",
+
+  "ll1-lalr1-1.cfg": "L -> V + L | num. \nV -> Var ( Var + V ) \n   | . \nVar -> .",
+
+  "ll1-lalr1-2.cfg": "P -> M * \n   | . \nM -> Q StarM \n   | . \nStarM -> (* M *) \n       | ( Q * ). \nQ -> o \n   | .",
+
+  "ll1-lr0-0.cfg": "A -> B | x C | y A. \nB -> C B. \nC -> r.",
+
+  "ll1-lr0-1.cfg": "A -> y B | x | B C. \nB -> z B | u. \nC -> s.",
+
+  "ll1-lr0-2.cfg": "S -> ( Ses ) \n   | (* *). \nSes -> S SL. \nSL -> ; SL | S.",
+
+  "ll1-lr1-0.cfg": "S -> a A \n   | b B. \nA -> C a \n   | D b. \nB -> C b \n   | D a. \nC -> E. \nD -> E. \nE -> .",
+
+  "ll1-lr1-1.cfg": "S -> ( X \n   | E sq) \n   | F ). \n \nX -> E ) \n   | F sq). \n \nE -> A. \nF -> A. \nA -> .",
+
+  "ll1-lr1-2.cfg": "E -> id + D \n   | ( E * R ) \n   | . \nD -> V * E \n   | L ! E. \nR -> V ! E \n   | L * E. \nV -> Z \n   | num. \nL -> Z \n   | ( E ). \nZ -> .",
+
+  "ll1-slr1-0.cfg": "A -> B c \n   | d n A B fo. \n \nB -> r \n   | .",
+
+  "ll1-slr1-1.cfg": "S -> for ( ExprOpt ; ExprOpt ; ExprOpt ) S \n   | expr ;. \nExprOpt -> expr \n         | .",
+
+  "ll1-slr1-2.cfg": "Decl -> DeclSpecifiers Declarator. \nDeclSpecifiers -> StorageClassSpecifier DeclSpecifiersOpt \n                | TypeSpecifier DeclSpecifiersOpt \n                | TypeQualifier DeclSpecifiersOpt. \nDeclSpecifiersOpt -> DeclSpecifiers | . \nStorageClassSpecifier -> typedef | static. \nTypeSpecifier -> void | short | int. \nTypeQualifier -> const | volatile. \nDeclarator -> PointerOpt DirectDeclarator. \nDirectDeclarator -> id. \nPointerOpt -> * TypeQualifierList PointerOpt \n            | . \nTypeQualifierList -> TypeQualifier TypeQualifierList \n                   | .",
+
+  "ll2-lalr1-0.cfg": "S -> id \n   | V assign E. \nV -> id. \nE -> V \n   | num.",
+
+  "ll2-lalr1-1.cfg": "S' -> S. \nS -> L assign R | R. \nL -> * R | id. \nR -> L.",
+
+  "ll2-lalr1-2.cfg": "S -> A x B x. \nS -> B y A y. \nA -> w. \nB -> w.",
+
+  "ll2-lr0-0.cfg": "S -> Block \n   | ( ). \nBlock -> ( stmt ).",
+
+  "ll2-lr0-1.cfg": "S -> Assign \n   | Inc. \nAssign -> Lv equals Rv. \nInc -> Lv ++ \n     | Lv //. \nRv -> Lv | num. \nLv -> id.",
+
+  "ll2-lr0-2.cfg": "Emoticon -> Happy \n          | Sad. \nHappy -> : ). \nSad -> : (.",
+
+  "ll2-lr1-0.cfg": "S -> a a A \n   | a b B. \nA -> C a \n   | D b. \nB -> C b \n   | D a. \nC -> E. \nD -> E. \nE -> .",
+
+  "ll2-lr1-1.cfg": "Value -> number V \n       | number. \nV -> f Real | i Int. \nReal -> IOpt dot \n      | BOpt +. \nInt -> IOpt + \n     | BOpt dot. \nBOpt -> Opt. \nIOpt -> Opt. \nOpt -> .",
+
+  "ll2-lr1-2.cfg": "S -> ' Q | P. \nQ -> T W \n   | E ;. \nP -> T ; \n   | E W. \nT -> U. \nE -> U. \nU -> '. \nW -> * W | 8 W | .",
+
+  "ll2-lr2-0.cfg": "S -> ( X \n   | E sq) \n   | F (. \n \nX -> E ) \n   | F sq). \n \nE -> A. \nF -> A. \nA -> .",
+
+  "ll2-lr2-1.cfg": "A -> E B SL E \n   | b e. \n \nB -> b \n   | o r. \n \nE -> e | . \n \nSL -> s SL | s.",
+
+  "ll2-lr2-2.cfg": "S -> X a. \nX -> a | .",
+
+  "ll2-lr2-3.cfg": "A -> B a. \nB -> b C | c. \nC -> a B | .",
+
+  "ll2-lr2-4.cfg": "A -> B C D E. \nE -> a. \nD -> b | . \nC -> c | . \nB -> a B | .",
+
+  "ll2-slr1-0.cfg": "A -> a B \n   | a A C \n   | . \nB -> d B | e. \nC -> c A.",
+
+  "ll2-slr1-1.cfg": "TERM -> id \n      | id INDEX \n      | let LEXP. \nLEXP -> INDEX LEXP \n      | id. \nINDEX -> lpar TERM rpar.",
+
+  "ll2-slr1-2.cfg": "Line -> Op | Label. \nOp -> Inst Operands. \nLabel -> id :. \nOperands -> Src Src Dest. \nDest -> id | reg | ( Src ). \nSrc -> Dest | num. \nInst -> pneumonic | Macro. \nMacro -> id.",
+
+  "oth-lalr1-0.cfg": "S -> S ; T \n   | T. \nT -> id \n   | V assign E. \nV -> id. \nE -> V \n   | num.",
+
+  "oth-lalr1-1.cfg": "L -> V ( args ) \n   | L equals Var ( ). \nV -> Var + V \n   | id. \nVar -> id.",
+
+  "oth-lalr1-2.cfg": "E -> O : OL \n   | O. \nO -> id \n   | OL l. \nOL -> id \n    | ( O : OL ).",
+
+  "oth-lalr1-3.cfg": "S -> a g d \n   | a A c \n   | b A d \n   | b g c. \nA -> B. \nB -> g.",
+
+  "oth-lr0-0.cfg": "A -> C \n   | B. \nC -> a C a \n   | b. \nB -> a B \n   | c.",
+
+  "oth-lr0-1.cfg": "S -> A | B. \nA -> x A | a. \nB -> x B | b.",
+
+  "oth-lr0-2.cfg": "S -> Parens | StarParens. \nParens -> ( Parens ) \n        | ( ). \nStarParens -> ( StarParens *) \n            | ( *).",
+
+  "oth-lr0-3.cfg": "S -> T | A. \nA -> B. \nB -> C. \nD -> d | d D | .",
+
+  "oth-lr1-0.cfg": "E -> d D | D | F. \nF -> e C | C. \nD -> d e B b | e A c. \nC -> e d B c | d A b. \nB -> a. \nA -> a.",
+
+  "oth-lr1-1.cfg": "S -> S R | . \nR -> s StructVar | u NVar. \nStructVar -> Var ; \n           | Subvar :. \nNVar -> Var : \n          | Subvar ;. \nVar -> V. \nSubvar -> V. \nV -> id.",
+
+  "oth-lr1-2.cfg": "S -> S ; C \n   | ( C ) \n   | * D *. \nC -> A x \n   | B y. \nD -> A y \n   | B x. \nA -> E | id. \nB -> E | num. \nE -> ! | ( S ).",
+
+  "oth-lr2-0.cfg": "S -> ( X \n   | ( ) S \n   | E sq) \n   | F (. \n \nX -> E ) \n   | F sq). \n \nE -> A. \nF -> A. \nA -> .",
+
+  "oth-lr2-1.cfg": "S -> A B C D. \nA -> a S | . \nB -> b | C. \nC -> c | D. \nD -> d | a B.",
+
+  "oth-lr2-2.cfg": "B -> A x y \n   | C. \nA -> \n   | x z. \nC -> C w \n   | v.",
+
+  "oth-oth-0.cfg": "S -> A d. \nA -> a B \n   | b B c. \nB -> d A \n   | .",
+
+  "oth-oth-1.cfg": "A -> a C \n   | B a. \nB -> a B | . \nC -> a C | b.",
+
+  "oth-oth-2.cfg": "EXPR -> EXPR mult EXPR \n      | TERM. \n \nTERM -> TERM add TERM \n      | FACTOR. \n \nFACTOR -> num \n        | lpar EXPR rpar \n | star EXPR.",
+
+  "oth-oth-3.cfg": "A -> a C \n   | B a. \nB -> a B \n   | . \nC -> a C \n   | .",
+
+  "oth-oth-4.cfg": "A -> A B | B C. \nB -> x A | A y | C n. \nC -> z | r.",
+
+  "oth-oth-5.cfg": "A -> b F. \n \nF -> A x \n   | B. \n \nB -> x G. \n \nG -> x B \n   | .",
+
+  "oth-slr1-0.cfg": "A -> A b | c.",
+
+  "oth-slr1-1.cfg": "EXP -> EXP add TERM \n     | TERM. \nTERM -> id \n      | id INDEX \n      | let STMTS in EXP end. \nSTMTS -> STMTS STMT \n       | . \nSTMT -> LEXP assign EXP semi. \nLEXP -> LEXP INDEX \n      | id. \nINDEX -> lpar EXP rpar.",
+
+  "oth-slr1-2.cfg": "S -> E. \nE -> B + T | B * T | T. \nB -> C. \nC -> D. \nD -> E. \nT -> X. \nX -> ."
+}
