@@ -10,14 +10,13 @@ function parse(spec) {
 }
 
 function classifications(grammar) {
-  var classification = grammar.calculate("grammar.classification");
-  var k, result;
+  let classification = grammar.calculate("grammar.classification");
+  let result = {};
   
-  result = {};
-  
-  for (k in classification) {
-    if (classification[k].member)
+  for (let k in classification) {
+    if (classification.hasOwnProperty(k) && classification[k].member) {
       result[k] = true;
+    }
   }
   
   return result;
@@ -31,14 +30,13 @@ function assertSetEqual(expected, actual, message) {
   assert.ok(isSetEqual(expected, actual), message);
 }
 
-var SUPPORTED_CLASSIFICATIONS = {
+const SUPPORTED_CLASSIFICATIONS = {
   ll1: true, lr0: true, slr1: true,
-  lr1: true, lr1: true, lalr1: true
-}
+  lr1: true, lalr1: true
+};
 
 function assertExampleClassifications(expected, name) {
-  var actual = Sets.intersection(classifications(parse(EXAMPLE_GRAMMARS[name])), SUPPORTED_CLASSIFICATIONS);
-  
+  let actual = Sets.intersection(classifications(parse(EXAMPLE_GRAMMARS[name])), SUPPORTED_CLASSIFICATIONS);
   assertSetEqual(expected, actual, name);
 }
 

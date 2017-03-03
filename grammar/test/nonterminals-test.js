@@ -17,14 +17,14 @@ function isSetEqual(a, b) {
 }
 
 function isRelationEqual(a, b) {
-  var k;
-  
-  if (Sets.count(a) !== Sets.count(b))
+  if (Sets.count(a) !== Sets.count(b)) {
     return false;
+  }
   
-  for (k in a) {
-    if (!isSetEqual(a[k], b[k]))
+  for (let k in a) {
+    if (a.hasOwnProperty(k) && !isSetEqual(a[k], b[k])) {
       return false;
+    }
   }
   
   return true;
@@ -38,7 +38,7 @@ function assertSetEqual(expected, actual, message) {
   assert.ok(isSetEqual(expected, actual), message);
 }
 
-var Fixtures = {
+const Fixtures = {
   // Louden, p.170
   expressions: `exp -> exp addop term | term.
 addop -> + | -.
