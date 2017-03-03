@@ -2,14 +2,14 @@
 
 const assert = require('assert');
 const Grammar = require('../index');
-const Set = require('../set');
+const Sets = require('../sets');
 
 function calculate(productions, calculation) {
   return new Grammar(productions).calculate(calculation);
 }
 
 function isSetEqual(a, b) {
-  return Set.count(Set.intersection(a, b)) === Set.count(a);
+  return Sets.count(Sets.intersection(a, b)) === Sets.count(a);
 }
 
 function assertSetEqual(expected, actual) {

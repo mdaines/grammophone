@@ -1,5 +1,5 @@
 const END = require('../symbols').END;
-const Set = require('../set');
+const Sets = require('../sets');
 
 module.exports["parsing.ll.ll1_classification"] = function(grammar) {
   
@@ -59,7 +59,7 @@ module.exports["parsing.ll.ll1_classification"] = function(grammar) {
   
   for (k in nullable) {
     
-    if (Set.any(Set.intersection(first[k], follow[k])))
+    if (Sets.any(Sets.intersection(first[k], follow[k])))
       return { member: false, reason: "it contains a first/follow set clash" };
     
   }
