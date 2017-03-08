@@ -9,11 +9,7 @@ GRAMMAR_ASSETS = [
   "application.css"
 ]
 
-file "src/grammar.js" => "grammar/bundle.js" do
-  FileUtils.cp "grammar/bundle.js", "src/grammar.js"
-end
-
-task :default => "src/grammar.js" do
+task :default do
   environment = Sprockets::Environment.new
   environment.append_path "src"
   environment.append_path "lib"

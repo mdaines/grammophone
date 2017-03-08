@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const Grammar = require('../index');
+const Grammar = require('../src/grammar/index');
 
 function assertParseProductions(expected, spec) {
   let parse = Grammar.parse(spec);

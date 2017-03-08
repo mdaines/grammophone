@@ -1,8 +1,8 @@
 'use strict';
 
 const assert = require('assert');
-const Grammar = require('../index');
-const Sets = require('../sets');
+const Grammar = require('../src/grammar/index');
+const Sets = require('../src/grammar/sets');
 
 function calculate(grammar, calculation) {
   return grammar.calculate(calculation);
