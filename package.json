@@ -3,6 +3,7 @@
     "test": "mocha \"test/**/*-test.js\"",
     "generate-parser": "jison src/grammar/parser.y src/grammar/parser.l --module-type=commonjs --outfile=src/grammar/parser.js",
     "bundle": "browserify src/application.js -o assets/application.js --standalone ApplicationController --transform ejsify --transform [ babelify --ignore parser.js --presets [ es2015 ] ]",
+    "watch": "watchify src/application.js -o assets/application.js --standalone ApplicationController --transform ejsify --transform [ babelify --ignore parser.js --presets [ es2015 ] ]",
     "lint": "jshint --exclude ./node_modules,parser.js,bundle.js,calculations/lr.js src/grammar"
   },
   "devDependencies": {
@@ -12,6 +13,7 @@
     "ejsify": "^1.0.0",
     "jison": "^0.4.17",
     "jshint": "^2.9.4",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "watchify": "^3.9.0"
   }
 }
