@@ -4,8 +4,8 @@ const Sets = {
   count: function(set) {
     let result = 0;
     
-    /* jshint unused: false */
     for (let n in set) {
+      /* jshint unused: false */
       result++;
     }
       
@@ -14,8 +14,8 @@ const Sets = {
   },
   
   any: function(set) {
-    /* jshint unused: false */
     for (let n in set) {
+      /* jshint unused: false */
       return true;
     }
     
