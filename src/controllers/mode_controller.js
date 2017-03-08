@@ -1,11 +1,13 @@
 //= require templates/mode
 
+const modeTemplate = require('../templates/mode.ejs');
+
 var ModeController = function(element) {
   
   this._element = element;
   this._element.id = "mode";
   
-  this._element.innerHTML = JST["templates/mode"]();
+  this._element.innerHTML = modeTemplate();
   
   $(this._element).find("#mode-edit").on("change", function(e) {
     if (e.target.checked)
@@ -46,3 +48,5 @@ ModeController.prototype.reload = function() {
   }
   
 }
+
+module.exports = ModeController;

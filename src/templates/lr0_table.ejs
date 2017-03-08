@@ -3,36 +3,36 @@
     <col>
   </colgroup>
   <colgroup class="t">
-    <%= Helpers.repeatString("<col>", Set.count(info.terminals)) %>
+    <%- Helpers.repeatString("<col>", Set.count(info.terminals)) %>
   </colgroup>
   <colgroup class="nt">
-    <%= Helpers.repeatString("<col>", Set.count(info.nonterminals)) %>
+    <%- Helpers.repeatString("<col>", Set.count(info.nonterminals)) %>
   </colgroup>
   
   <tr>
     <th>State</th>
     <% info.terminalOrder.forEach(function(symbol) { %>
-      <th><%= Helpers.formatSymbol(symbol, info) %></th>
+      <th><%- Helpers.formatSymbol(symbol, info) %></th>
     <% }) %>
     <% info.nonterminalOrder.forEach(function(symbol) { %>
-      <th><%= Helpers.formatSymbol(symbol, info) %></th>
+      <th><%- Helpers.formatSymbol(symbol, info) %></th>
     <% }) %>
   </tr>
   
   <% table.forEach(function(state, index) { %>
     <tr>
-      <th scope="row"><%= index %></td>
+      <th scope="row"><%- index %></td>
       <% info.terminalOrder.forEach(function(s) { %>
-        <td class="<%= (typeof state.shift[s] === "undefined" ? 0 : 1) + state.reduce.length > 1 ? "conflict" : "" %>">
+        <td class="<%- (typeof state.shift[s] === "undefined" ? 0 : 1) + state.reduce.length > 1 ? "conflict" : "" %>">
           <ul>
             <% if (typeof state.shift[s] !== "undefined") { %>
-              <li>shift(<%= state.shift[s] %>)</li>
+              <li>shift(<%- state.shift[s] %>)</li>
             <% } %>
             <% state.reduce.forEach(function(p) { %>
               <% if (p === -1) { %>
                 <li>accept</li>
               <% } else { %>
-                <li>reduce(<%= Helpers.formatProduction(productions[p], info) %>)</li>
+                <li>reduce(<%- Helpers.formatProduction(productions[p], info) %>)</li>
               <% } %>
             <% }) %>
           </ul>
@@ -42,7 +42,7 @@
         <td>
           <ul>
             <% if (typeof state.shift[s] !== "undefined") { %>
-              <li><%= state.shift[s] %></li>
+              <li><%- state.shift[s] %></li>
             <% } %>
           </ul>
         </td>

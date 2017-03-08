@@ -7,11 +7,11 @@
   
   <% automaton.forEach(function(state, index) { %>
     <tr>
-      <td><%= index %></td>
+      <td><%- index %></td>
       <td>
         <ul>
           <% state.items.forEach(function(item) { %>
-            <li><%= Helpers.formatItem(item, start, productions, info) %></li>
+            <li><%- Helpers.formatItem(item, start, productions, info) %></li>
           <% }) %>
         </ul>
       </td>
@@ -19,7 +19,7 @@
         <ul>
           <% info.terminalOrder.concat(info.nonterminalOrder).concat(Grammar.END).forEach(function(s) { %>
             <% if (typeof state.transitions[s] !== "undefined") { %>
-              <li><%= Helpers.formatSymbol(s, info) %> &rArr; <%= state.transitions[s] %></li>
+              <li><%- Helpers.formatSymbol(s, info) %> &rArr; <%- state.transitions[s] %></li>
             <% } %>
           <% }) %>
         </ul>

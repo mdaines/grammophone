@@ -3,12 +3,12 @@
 <% if (sentences.length > 0) { %>
   <ul class="symbols">
     <% sentences.forEach(function(sentence) { %>
-      <li><%= sentence.length === 0 ? "<u>&epsilon;</u>" : Helpers.formatSymbols(sentence, info).join(" ") %></li>
+      <li><%- sentence.length === 0 ? "<u>&epsilon;</u>" : Helpers.formatSymbols(sentence, info).join(" ") %></li>
     <% }); %>
   </ul>
   
   <% if (more) { %>
-    <p><a href="<%= Helpers.buildHref("/sentences") %>">More example sentences</a></p>
+    <p><a href="<%- Helpers.buildHref("/sentences") %>">More example sentences</a></p>
   <% } %>
 <% } else { %>
   <p>No example sentences could be generated.</p>

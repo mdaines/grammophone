@@ -1,5 +1,8 @@
 //= require templates/sentences
 
+const template = require('../templates/sentences.ejs');
+const Helpers = require('../helpers');
+
 var SentencesView = function(element) {
   
   this._element = element;
@@ -14,10 +17,13 @@ SentencesView.prototype.setDelegate = function(delegate) {
 
 SentencesView.prototype.reload = function() {
   
-  this._element.innerHTML = JST["templates/sentences"]({
+  this._element.innerHTML = template({
     sentences: this._delegate.getCalculation("grammar.sentences"),
     info: this._delegate.getCalculation("grammar.symbolInfo"),
-    more: false
+    more: false,
+    Helpers
   });
   
 }
+
+module.exports = SentencesView;

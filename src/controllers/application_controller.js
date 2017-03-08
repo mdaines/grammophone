@@ -5,6 +5,14 @@
 //= require controllers/error_controller
 //= require controllers/transform_controller
 
+const AnalysisController = require('./analysis_controller');
+const EditController = require('./edit_controller');
+const TransformController = require('./transform_controller');
+const ModeController = require('./mode_controller');
+const ErrorController = require('./error_controller');
+const Helpers = require('../helpers');
+const Grammar = require('../grammar');
+
 Function.prototype.bind = function(context) {
   var fn = this;
   return function() { return fn.apply(context, arguments); };
@@ -225,3 +233,5 @@ ApplicationController.prototype.buildHref = function(path) {
   return "#" + path;
   
 }
+
+module.exports = ApplicationController;

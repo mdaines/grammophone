@@ -1,18 +1,18 @@
-//= require views/header_view
-//= require views/blank_slate_view
-//= require views/sanity_view
-//= require views/sentences_view
-//= require views/short_sentences_view
-//= require views/nonterminals_view
-//= require views/parsing_view
-//= require views/ll1_table_view
-//= require views/lr0_automaton_view
-//= require views/lr0_table_view
-//= require views/slr1_table_view
-//= require views/lr1_automaton_view
-//= require views/lr1_table_view
-//= require views/lalr1_automaton_view
-//= require views/lalr1_table_view
+const HeaderView = require('../views/header_view');
+const BlankSlateView = require('../views/blank_slate_view');
+const SanityView = require('../views/sanity_view');
+const SentencesView = require('../views/sentences_view');
+const ShortSentencesView = require('../views/short_sentences_view');
+const NonterminalsView = require('../views/nonterminals_view');
+const ParsingView = require('../views/parsing_view');
+const LL1TableView = require('../views/ll1_table_view');
+const LR0AutomatonView = require('../views/lr0_automaton_view');
+const LR0TableView = require('../views/lr0_table_view');
+const SLR1TableView = require('../views/slr1_table_view');
+const LR1AutomatonView = require('../views/lr1_automaton_view');
+const LR1TableView = require('../views/lr1_table_view');
+const LALR1AutomatonView = require('../views/lalr1_automaton_view');
+const LALR1TableView = require('../views/lalr1_table_view');
 
 var AnalysisController = function(element) {
   
@@ -218,3 +218,5 @@ AnalysisController.prototype.getPathComponents = function() {
   return this._routes[this._path].path;
   
 }
+
+module.exports = AnalysisController;

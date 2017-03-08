@@ -1,5 +1,8 @@
 //= require templates/parsing
 
+const template = require('../templates/parsing.ejs');
+const Helpers = require('../helpers');
+
 var ParsingView = function(element) {
   
   this._element = element;
@@ -14,8 +17,11 @@ ParsingView.prototype.setDelegate = function(delegate) {
 
 ParsingView.prototype.reload = function() {
   
-  this._element.innerHTML = JST["templates/parsing"]({
-    classification: this._delegate.getCalculation("grammar.classification")
+  this._element.innerHTML = template({
+    classification: this._delegate.getCalculation("grammar.classification"),
+    Helpers
   });
   
 }
+
+module.exports = ParsingView;

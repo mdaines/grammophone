@@ -1,5 +1,7 @@
 //= require views/transform_view
 
+const TransformView = require('../views/transform_view');
+
 var TransformController = function(element) {
   
   this._element = element;
@@ -107,3 +109,5 @@ TransformController.prototype.transform = function(transformation) {
   this._delegate.grammarChanged(this._stack[this._index].grammar);
   
 }
+
+module.exports = TransformController;

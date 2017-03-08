@@ -1,3 +1,5 @@
+const END = require('./grammar/symbols').END;
+
 var Helpers = function() {
   
   // class
@@ -12,8 +14,8 @@ var Helpers = function() {
         result.push(order[i]);
     }
     
-    if (set[Grammar.END])
-      result.push(Grammar.END);
+    if (set[END])
+      result.push(END);
     
     return result;
     
@@ -27,7 +29,7 @@ var Helpers = function() {
   
   function formatSymbol(symbol, info) {
     
-    if (symbol == Grammar.END)
+    if (symbol == END)
       return "<u>$</u>";
     else if (info.nonterminals[symbol])
       return "<i>" + prettifySymbol(escapeHTML(symbol)) + "</i>";
@@ -40,7 +42,7 @@ var Helpers = function() {
   
   function bareFormatSymbol(symbol, info) {
     
-    if (symbol == Grammar.END)
+    if (symbol == END)
       return "$";
     else if (info.nonterminals[symbol] || info.terminals[symbol])
       return prettifySymbol(escapeHTML(symbol));
@@ -247,3 +249,5 @@ var Helpers = function() {
   return klass;
   
 }();
+
+module.exports = Helpers;

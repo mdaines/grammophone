@@ -21,3 +21,5 @@ ErrorController.prototype.reload = function() {
     this._element.innerHTML = "";
   
 }
+
+module.exports = ErrorController;

@@ -3,26 +3,26 @@
     <col>
   </colgroup>
   <colgroup class="t">
-    <%= Helpers.repeatString("<col>", Set.count(info.terminals) + 1) %>
+    <%- Helpers.repeatString("<col>", Set.count(info.terminals) + 1) %>
   </colgroup>
   
   <tr>
     <th></th>
     <% info.terminalOrder.forEach(function(symbol) { %>
-      <th><%= Helpers.formatSymbol(symbol, info) %></th>
+      <th><%- Helpers.formatSymbol(symbol, info) %></th>
     <% }) %>
-    <th><%= Helpers.formatSymbol(Grammar.END, info) %></th>
+    <th><%- Helpers.formatSymbol(Grammar.END, info) %></th>
   </tr>
   
   <% info.productionOrder.forEach(function(nt) { %>
     <tr>
-      <th scope="row"><%= Helpers.formatSymbol(nt, info) %></th>
+      <th scope="row"><%- Helpers.formatSymbol(nt, info) %></th>
       <% info.terminalOrder.concat(Grammar.END).forEach(function(t) { %>
         <% if (typeof table[nt][t] !== "undefined") { %>
-          <td class="<%= table[nt][t].length > 1 ? "conflict" : "" %>">
+          <td class="<%- table[nt][t].length > 1 ? "conflict" : "" %>">
             <ul>
               <% table[nt][t].forEach(function(p) { %>
-                <li><%= Helpers.formatProduction(productions[p], info) %>
+                <li><%- Helpers.formatProduction(productions[p], info) %>
               <% }) %>
             </ul>
           </td>

@@ -1,5 +1,8 @@
 //= require templates/transform
 
+const template = require('../templates/transform.ejs');
+const Helpers = require('../helpers');
+
 var TransformView = function(element) {
   
   this._element = $(element);
@@ -59,13 +62,16 @@ TransformView.prototype.reload = function() {
     });
   }
   
-  this._element.get(0).innerHTML = JST["templates/transform"]({
+  this._element.get(0).innerHTML = template({
     productions: productions,
     info: info,
     previousInfo: this._delegate.getPreviousSymbolInfo(),
     transformations: transformations,
     undoTransformation: this._delegate.getUndoTransformation(),
-    redoTransformation: this._delegate.getRedoTransformation()
+    redoTransformation: this._delegate.getRedoTransformation(),
+    Helpers
   });
   
 }
+
+module.exports = TransformView;
