@@ -1,20 +1,20 @@
-//= require templates/sanity
+'use strict';
 
 const template = require('../templates/sanity.ejs');
 const Helpers = require('../helpers');
 const Sets = require('../sets');
 
-var SanityView = function(element) {
+const SanityView = function(element) {
   
   this._element = element;
   
-}
+};
 
 SanityView.prototype.setDelegate = function(delegate) {
   
   this._delegate = delegate;
   
-}
+};
 
 SanityView.prototype.reload = function() {
   
@@ -30,6 +30,6 @@ SanityView.prototype.reload = function() {
     Sets
   });
   
-}
+};
 
 module.exports = SanityView;

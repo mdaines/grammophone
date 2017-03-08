@@ -1,20 +1,20 @@
-//= require templates/lr0_table
+'use strict';
 
 const template = require('../templates/lr0_table.ejs');
 const Helpers = require('../helpers');
 const Sets = require('../sets');
 
-var LR0TableView = function(element) {
+const LR0TableView = function(element) {
   
   this._element = element;
   
-}
+};
 
 LR0TableView.prototype.setDelegate = function(delegate) {
   
   this._delegate = delegate;
   
-}
+};
 
 LR0TableView.prototype.reload = function() {
   
@@ -28,6 +28,6 @@ LR0TableView.prototype.reload = function() {
     Sets
   });
   
-}
+};
 
 module.exports = LR0TableView;

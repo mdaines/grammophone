@@ -1,9 +1,4 @@
-//= require controllers/analysis_controller
-//= require controllers/edit_controller
-//= require controllers/transform_controller
-//= require controllers/mode_controller
-//= require controllers/error_controller
-//= require controllers/transform_controller
+'use strict';
 
 const AnalysisController = require('./analysis_controller');
 const EditController = require('./edit_controller');
@@ -14,15 +9,15 @@ const Helpers = require('../helpers');
 const Grammar = require('../grammar');
 
 Function.prototype.bind = function(context) {
-  var fn = this;
+  let fn = this;
   return function() { return fn.apply(context, arguments); };
-}
+};
 
 Function.prototype.defer = function() {
   setTimeout(this, 0);
-}
+};
 
-var ApplicationController = function(element) {
+const ApplicationController = function(element) {
   
   this._element = element;
   
@@ -94,14 +89,15 @@ var ApplicationController = function(element) {
   this._editController.reload();
   this._modeController.reload();
   
-  if (this._mode === "edit")
+  if (this._mode === "edit") {
     this._errorController.reload();
-  else
+  } else {
     this._transformController.reload();
+  }
   
   this._layout();
   
-}
+};
 
 ApplicationController.prototype._hashChanged = function() {
   
@@ -109,14 +105,15 @@ ApplicationController.prototype._hashChanged = function() {
   
   this._path = window.location.hash.slice(1);
   
-  if (this._path == "")
+  if (this._path === "") {
     this._path = "/";
+  }
   
   // update controllers
   
   this._analysisController.reload();
   
-}
+};
 
 ApplicationController.prototype._layout = function() {
   
@@ -148,37 +145,37 @@ ApplicationController.prototype._layout = function() {
     
   }
   
-}
+};
 
 ApplicationController.prototype.getPath = function() {
   
   return this._path;
   
-}
+};
 
 ApplicationController.prototype.getGrammar = function() {
   
   return this._parse.grammar;
   
-}
+};
 
 ApplicationController.prototype.getSpec = function() {
   
   return this._parse.spec;
   
-}
+};
 
 ApplicationController.prototype.getError = function() {
   
   return this._parse.error;
   
-}
+};
 
 ApplicationController.prototype.getMode = function() {
   
   return this._mode;
   
-}
+};
 
 ApplicationController.prototype.grammarChanged = function(grammar) {
   
@@ -187,19 +184,20 @@ ApplicationController.prototype.grammarChanged = function(grammar) {
   this._analysisController.reload();
   this._layout();
   
-}
+};
 
 ApplicationController.prototype.analyze = function() {
   
   this._parse = Grammar.parse(this._editController.getSpec());
   
-  if (typeof this._parse.error === "undefined")
+  if (typeof this._parse.error === "undefined") {
     this._analysisController.reload();
+  }
   
   this._errorController.reload();
   this._layout();
   
-}
+};
 
 ApplicationController.prototype.transform = function() {
   
@@ -215,7 +213,7 @@ ApplicationController.prototype.transform = function() {
   this._modeController.reload();
   this._layout();
   
-}
+};
 
 ApplicationController.prototype.edit = function() {
   
@@ -226,12 +224,12 @@ ApplicationController.prototype.edit = function() {
   this._modeController.reload();
   this._layout();
   
-}
+};
 
 ApplicationController.prototype.buildHref = function(path) {
   
   return "#" + path;
   
-}
+};
 
 module.exports = ApplicationController;

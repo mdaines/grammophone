@@ -1,19 +1,19 @@
-//= require templates/sentences
+'use strict';
 
 const template = require('../templates/sentences.ejs');
 const Helpers = require('../helpers');
 
-var ShortSentencesView = function(element) {
+const ShortSentencesView = function(element) {
   
   this._element = element;
   
-}
+};
 
 ShortSentencesView.prototype.setDelegate = function(delegate) {
   
   this._delegate = delegate;
   
-}
+};
 
 ShortSentencesView.prototype.reload = function() {
   
@@ -24,6 +24,6 @@ ShortSentencesView.prototype.reload = function() {
     Helpers
   });
   
-}
+};
 
 module.exports = ShortSentencesView;

@@ -1,19 +1,19 @@
-//= require templates/nonterminals
+'use strict';
 
 const template = require('../templates/nonterminals.ejs');
 const Helpers = require('../helpers');
 
-var NonterminalsView = function(element) {
+const NonterminalsView = function(element) {
   
   this._element = element;
   
-}
+};
 
 NonterminalsView.prototype.setDelegate = function(delegate) {
   
   this._delegate = delegate;
   
-}
+};
 
 NonterminalsView.prototype.reload = function() {
   
@@ -26,6 +26,6 @@ NonterminalsView.prototype.reload = function() {
     Helpers
   });
   
-}
+};
 
 module.exports = NonterminalsView;

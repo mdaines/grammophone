@@ -1,60 +1,60 @@
-//= require templates/transform
+'use strict';
 
 const template = require('../templates/transform.ejs');
 const Helpers = require('../helpers');
 
-var TransformView = function(element) {
+const TransformView = function(element) {
   
   this._element = $(element);
   
-}
+};
 
 TransformView.prototype.setDelegate = function(delegate) {
   
   this._delegate = delegate;
   
-}
+};
 
 TransformView.prototype.setup = function() {
   
   this._element.on("click", "button", function(e) {
     
-    if ($(e.target).data("action") === "undo")
+    if ($(e.target).data("action") === "undo") {
       this._delegate.undo();
-    else if ($(e.target).data("action") === "redo")
+    } else if ($(e.target).data("action") === "redo") {
       this._delegate.redo();
+    }
     
   }.bind(this));
   
   this._element.on("change", function(e) {
     
-    var index = parseInt(e.target.value);
+    let index = parseInt(e.target.value);
     this._delegate.transform(this._transformations[index]);
     
   }.bind(this));
   
-}
+};
 
 TransformView.prototype.reload = function() {
   
-  var productions = this._delegate.getProductions();
-  var info = this._delegate.getSymbolInfo();
+  let productions = this._delegate.getProductions();
+  let info = this._delegate.getSymbolInfo();
   
   this._transformations = this._delegate.getTransformations();
   
-  var transformations = [];
-  var i, j;
+  let transformations = [];
   
-  for (i = 0; i < productions.length; i++) {
+  for (let i = 0; i < productions.length; i++) {
     transformations[i] = [];
-    for (j = 0; j < productions[i].length; j++) {
+    for (let j = 0; j < productions[i].length; j++) {
       transformations[i][j] = [];
     }
   }
   
-  var transformation;
+  let transformation;
   
-  for (i = 0; i < this._transformations.length; i++) {
+  for (let i = 0; i < this._transformations.length; i++) {
     transformation = this._transformations[i];
     transformations[transformation.production][transformation.symbol].push({
       index: i,
@@ -72,6 +72,6 @@ TransformView.prototype.reload = function() {
     Helpers
   });
   
-}
+};
 
 module.exports = TransformView;

@@ -1,20 +1,21 @@
-//= require templates/lr1_table
+'use strict';
 
 const template = require('../templates/lr1_table.ejs');
 const Helpers = require('../helpers');
 const Sets = require('../sets');
+const END = require('../grammar/symbols').END;
 
-var SLR1TableView = function(element) {
+const SLR1TableView = function(element) {
   
   this._element = element;
   
-}
+};
 
 SLR1TableView.prototype.setDelegate = function(delegate) {
   
   this._delegate = delegate;
   
-}
+};
 
 SLR1TableView.prototype.reload = function() {
   
@@ -23,9 +24,10 @@ SLR1TableView.prototype.reload = function() {
     table: this._delegate.getCalculation("parsing.lr.slr1_table"),
     productions: this._delegate.getCalculation("grammar.productions"),
     Helpers,
-    Sets
+    Sets,
+    END
   });
   
-}
+};
 
 module.exports = SLR1TableView;

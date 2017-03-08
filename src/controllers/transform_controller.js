@@ -1,8 +1,8 @@
-//= require views/transform_view
+'use strict';
 
 const TransformView = require('../views/transform_view');
 
-var TransformController = function(element) {
+const TransformController = function(element) {
   
   this._element = element;
   this._element.id = "transform";
@@ -13,16 +13,17 @@ var TransformController = function(element) {
   this._transformView = new TransformView(this._transformElement);
   this._transformView.setDelegate(this);
   
-  if (this._transformView.setup)
+  if (this._transformView.setup) {
     this._transformView.setup();
+  }
   
-}
+};
 
 TransformController.prototype.setDelegate = function(delegate) {
   
   this._delegate = delegate;
   
-}
+};
 
 TransformController.prototype.reload = function() {
   
@@ -31,72 +32,77 @@ TransformController.prototype.reload = function() {
   
   this._transformView.reload();
   
-}
+};
 
 TransformController.prototype.getProductions = function() {
   
   return this._stack[this._index].grammar.productions;
   
-}
+};
 
 TransformController.prototype.getSymbolInfo = function() {
   
   return this._stack[this._index].grammar.calculate("grammar.symbolInfo");
   
-}
+};
 
 TransformController.prototype.getPreviousSymbolInfo = function() {
   
-  if (this._index > 0)
+  if (this._index > 0) {
     return this._stack[this._index - 1].grammar.calculate("grammar.symbolInfo");
+  }
   
-}
+};
 
-TransformController.prototype.getTransformations = function(productionIndex, symbolIndex) {
+TransformController.prototype.getTransformations = function() {
   
   return this._stack[this._index].grammar.calculate("transformations");
   
-}
+};
 
 TransformController.prototype.getUndoTransformation = function() {
   
-  if (this._index > 0)
+  if (this._index > 0) {
     return this._stack[this._index].transformation;
+  }
   
-}
+};
 
 TransformController.prototype.getRedoTransformation = function() {
   
-  if (this._index < this._stack.length - 1)
+  if (this._index < this._stack.length - 1) {
     return this._stack[this._index + 1].transformation;
+  }
   
-}
+};
 
 TransformController.prototype.undo = function() {
   
-  if (this._index > 0)
+  if (this._index > 0) {
     this._index--;
+  }
   
   this._transformView.reload();
   
   this._delegate.grammarChanged(this._stack[this._index].grammar);
   
-}
+};
 
 TransformController.prototype.redo = function() {
   
-  if (this._index < this._stack.length - 1)
+  if (this._index < this._stack.length - 1) {
     this._index++;
+  }
   
   this._transformView.reload();
   
   this._delegate.grammarChanged(this._stack[this._index].grammar);
   
-}
+};
 
 TransformController.prototype.transform = function(transformation) {
   
-  var item = {
+  let item = {
     grammar: this._stack[this._index].grammar.transform(transformation),
     transformation: transformation
   };
@@ -108,6 +114,6 @@ TransformController.prototype.transform = function(transformation) {
   
   this._delegate.grammarChanged(this._stack[this._index].grammar);
   
-}
+};
 
 module.exports = TransformController;

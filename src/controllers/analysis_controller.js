@@ -1,3 +1,5 @@
+'use strict';
+
 const HeaderView = require('../views/header_view');
 const BlankSlateView = require('../views/blank_slate_view');
 const SanityView = require('../views/sanity_view');
@@ -14,7 +16,7 @@ const LR1TableView = require('../views/lr1_table_view');
 const LALR1AutomatonView = require('../views/lalr1_automaton_view');
 const LALR1TableView = require('../views/lalr1_table_view');
 
-var AnalysisController = function(element) {
+const AnalysisController = function(element) {
   
   this._element = element;
   this._element.id = "analysis";
@@ -119,34 +121,32 @@ var AnalysisController = function(element) {
   
   this._views = [];
   
-}
+};
 
 AnalysisController.prototype.setDelegate = function(delegate) {
   
   this._delegate = delegate;
   
-}
+};
 
 AnalysisController.prototype.reload = function() {
-  
-  var i;
-  var path, pathChanged;
   
   // get grammar and path
   
   this._grammar = this._delegate.getGrammar();
   
-  path = this._delegate.getPath();
-  pathChanged = path !== this._path;
+  let path = this._delegate.getPath();
+  let pathChanged = path !== this._path;
   this._path = path;
   
   // if we have views, clear them
   
   if (this._views.length > 0) {
   
-    for (i = 0; i < this._views.length; i++) {
-      if (this._views[i].instance.teardown)
+    for (let i = 0; i < this._views.length; i++) {
+      if (this._views[i].instance.teardown) {
         this._views[i].instance.teardown();
+      }
     
       this._element.removeChild(this._views[i].element);
     }
@@ -159,22 +159,24 @@ AnalysisController.prototype.reload = function() {
   
   if (typeof this._grammar !== "undefined") {
   
-    var route = this._routes[this._path];
+    let route = this._routes[this._path];
 
-    for (i = 0; i < route.views.length; i++) {
+    for (let i = 0; i < route.views.length; i++) {
   
-      var element = document.createElement("article");
+      let element = document.createElement("article");
       element.id = route.views[i].id;
       this._element.appendChild(element);
 
-      var instance = new route.views[i].constructor(element);
+      let instance = new route.views[i].constructor(element);
       instance.setDelegate(this);
 
-      if (instance.setup)
+      if (instance.setup) {
         instance.setup();
+      }
 
-      if (instance.reload)
+      if (instance.reload) {
         instance.reload();
+      }
 
       this._views[i] = {
         instance: instance,
@@ -205,18 +207,18 @@ AnalysisController.prototype.reload = function() {
     
   }
   
-}
+};
 
 AnalysisController.prototype.getCalculation = function(name) {
   
   return this._grammar.calculate(name);
 
-}
+};
 
 AnalysisController.prototype.getPathComponents = function() {
   
   return this._routes[this._path].path;
   
-}
+};
 
 module.exports = AnalysisController;

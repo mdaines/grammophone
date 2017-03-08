@@ -1,8 +1,8 @@
-//= require templates/mode
+'use strict';
 
 const modeTemplate = require('../templates/mode.ejs');
 
-var ModeController = function(element) {
+const ModeController = function(element) {
   
   this._element = element;
   this._element.id = "mode";
@@ -10,30 +10,32 @@ var ModeController = function(element) {
   this._element.innerHTML = modeTemplate();
   
   $(this._element).find("#mode-edit").on("change", function(e) {
-    if (e.target.checked)
+    if (e.target.checked) {
       this._delegate.edit();
+    }
   }.bind(this));
   
   $(this._element).find("#mode-transform").on("change", function(e) {
-    if (e.target.checked)
+    if (e.target.checked) {
       this._delegate.transform();
+    }
   }.bind(this));
   
-  $(this._element).find("#mode-analyze").on("click", function(e) {
+  $(this._element).find("#mode-analyze").on("click", function() {
     this._delegate.analyze();
   }.bind(this));
   
-}
+};
 
 ModeController.prototype.setDelegate = function(delegate) {
   
   this._delegate = delegate;
   
-}
+};
 
 ModeController.prototype.reload = function() {
   
-  var mode = this._delegate.getMode();
+  let mode = this._delegate.getMode();
   
   if (mode === "edit") {
     
@@ -47,6 +49,6 @@ ModeController.prototype.reload = function() {
     
   }
   
-}
+};
 
 module.exports = ModeController;

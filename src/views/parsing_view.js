@@ -1,19 +1,19 @@
-//= require templates/parsing
+'use strict';
 
 const template = require('../templates/parsing.ejs');
 const Helpers = require('../helpers');
 
-var ParsingView = function(element) {
+const ParsingView = function(element) {
   
   this._element = element;
   
-}
+};
 
 ParsingView.prototype.setDelegate = function(delegate) {
   
   this._delegate = delegate;
   
-}
+};
 
 ParsingView.prototype.reload = function() {
   
@@ -22,6 +22,6 @@ ParsingView.prototype.reload = function() {
     Helpers
   });
   
-}
+};
 
 module.exports = ParsingView;
