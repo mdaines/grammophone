@@ -2,7 +2,7 @@
 
 const template = require('../templates/sanity.ejs');
 const Helpers = require('../helpers');
-const Set = require('../set');
+const Sets = require('../sets');
 
 var SanityView = function(element) {
   
@@ -27,7 +27,7 @@ SanityView.prototype.reload = function() {
     productions: this._delegate.getCalculation("grammar.productions"),
     info: this._delegate.getCalculation("grammar.symbolInfo"),
     Helpers,
-    Set
+    Sets
   });
   
 }

@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 const Grammar = require('../src/grammar/index');
-const Sets = require('../src/grammar/sets');
+const Sets = require('../src/sets');
 
 function calculate(productions, calculation) {
   return new Grammar(productions).calculate(calculation);

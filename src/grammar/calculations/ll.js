@@ -1,7 +1,7 @@
 'use strict';
 
 const END = require('../symbols').END;
-const Sets = require('../sets');
+const Sets = require('../../sets');
 
 module.exports["parsing.ll.ll1_classification"] = function(grammar) {
   

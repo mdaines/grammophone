@@ -2,7 +2,7 @@
 
 <ul class="symbols">
   <li>
-    <% if (Set.any(unreachable)) { %>
+    <% if (Sets.any(unreachable)) { %>
       The grammar has unreachable nonterminals:
       <%- Helpers.formatSentence(Helpers.formatSymbols(Helpers.listSymbols(unreachable, info.productionOrder), info)) %>.
     <% } else { %>
@@ -11,7 +11,7 @@
   </li>
   
   <li>
-    <% if (Set.any(unrealizable)) { %>
+    <% if (Sets.any(unrealizable)) { %>
       The grammar has unrealizable nonterminals:
       <%- Helpers.formatSentence(Helpers.formatSymbols(Helpers.listSymbols(unrealizable, info.productionOrder), info)) %>.
     <% } else { %>

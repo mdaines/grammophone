@@ -2,7 +2,7 @@
 
 const template = require('../templates/lr0_table.ejs');
 const Helpers = require('../helpers');
-const Set = require('../set');
+const Sets = require('../sets');
 
 var LR0TableView = function(element) {
   
@@ -25,7 +25,7 @@ LR0TableView.prototype.reload = function() {
     table: this._delegate.getCalculation("parsing.lr.lr0_table"),
     productions: this._delegate.getCalculation("grammar.productions"),
     Helpers,
-    Set
+    Sets
   });
   
 }
