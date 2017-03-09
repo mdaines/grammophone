@@ -5,29 +5,27 @@ const Helpers = require('../helpers');
 const Sets = require('../sets');
 const END = require('../grammar/symbols').END;
 
-const SLR1TableView = function(element) {
-  
-  this._element = element;
-  
-};
+class SLR1TableView {
 
-SLR1TableView.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-};
+  constructor(element) {
+    this._element = element;
+  }
 
-SLR1TableView.prototype.reload = function() {
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
+
+  reload() {
+    this._element.innerHTML = template({
+      info: this._delegate.getCalculation("grammar.symbolInfo"),
+      table: this._delegate.getCalculation("parsing.lr.slr1_table"),
+      productions: this._delegate.getCalculation("grammar.productions"),
+      Helpers,
+      Sets,
+      END
+    });
+  }
   
-  this._element.innerHTML = template({
-    info: this._delegate.getCalculation("grammar.symbolInfo"),
-    table: this._delegate.getCalculation("parsing.lr.slr1_table"),
-    productions: this._delegate.getCalculation("grammar.productions"),
-    Helpers,
-    Sets,
-    END
-  });
-  
-};
+}
 
 module.exports = SLR1TableView;

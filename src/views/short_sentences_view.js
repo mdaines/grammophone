@@ -3,27 +3,25 @@
 const template = require('../templates/sentences.ejs');
 const Helpers = require('../helpers');
 
-const ShortSentencesView = function(element) {
+class ShortSentencesView {
   
-  this._element = element;
-  
-};
+  constructor(element) {
+    this._element = element;
+  }
 
-ShortSentencesView.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-};
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
 
-ShortSentencesView.prototype.reload = function() {
+  reload() {
+    this._element.innerHTML = template({
+      sentences: this._delegate.getCalculation("grammar.sentences").slice(0, 10),
+      info: this._delegate.getCalculation("grammar.symbolInfo"),
+      more: this._delegate.getCalculation("grammar.sentences").length > 10,
+      Helpers
+    });
+  }
   
-  this._element.innerHTML = template({
-    sentences: this._delegate.getCalculation("grammar.sentences").slice(0, 10),
-    info: this._delegate.getCalculation("grammar.symbolInfo"),
-    more: this._delegate.getCalculation("grammar.sentences").length > 10,
-    Helpers
-  });
-  
-};
+}
 
 module.exports = ShortSentencesView;

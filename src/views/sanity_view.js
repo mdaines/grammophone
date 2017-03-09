@@ -4,32 +4,30 @@ const template = require('../templates/sanity.ejs');
 const Helpers = require('../helpers');
 const Sets = require('../sets');
 
-const SanityView = function(element) {
+class SanityView {
   
-  this._element = element;
-  
-};
+  constructor(element) {
+    this._element = element;
+  }
 
-SanityView.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-};
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
 
-SanityView.prototype.reload = function() {
+  reload() {
+    this._element.innerHTML = template({
+      unreachable: this._delegate.getCalculation("grammar.unreachable"),
+      unrealizable: this._delegate.getCalculation("grammar.unrealizable"),
+      cycle: this._delegate.getCalculation("grammar.cycle"),
+      nullAmbiguity: this._delegate.getCalculation("grammar.nullAmbiguity"),
+      ambiguous: this._delegate.getCalculation("grammar.ambiguous"),
+      productions: this._delegate.getCalculation("grammar.productions"),
+      info: this._delegate.getCalculation("grammar.symbolInfo"),
+      Helpers,
+      Sets
+    });
+  }
   
-  this._element.innerHTML = template({
-    unreachable: this._delegate.getCalculation("grammar.unreachable"),
-    unrealizable: this._delegate.getCalculation("grammar.unrealizable"),
-    cycle: this._delegate.getCalculation("grammar.cycle"),
-    nullAmbiguity: this._delegate.getCalculation("grammar.nullAmbiguity"),
-    ambiguous: this._delegate.getCalculation("grammar.ambiguous"),
-    productions: this._delegate.getCalculation("grammar.productions"),
-    info: this._delegate.getCalculation("grammar.symbolInfo"),
-    Helpers,
-    Sets
-  });
-  
-};
+}
 
 module.exports = SanityView;

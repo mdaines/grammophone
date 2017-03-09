@@ -3,25 +3,23 @@
 const template = require('../templates/parsing.ejs');
 const Helpers = require('../helpers');
 
-const ParsingView = function(element) {
+class ParsingView {
   
-  this._element = element;
-  
-};
+  constructor(element) {
+    this._element = element;
+  }
 
-ParsingView.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-};
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
 
-ParsingView.prototype.reload = function() {
+  reload() {
+    this._element.innerHTML = template({
+      classification: this._delegate.getCalculation("grammar.classification"),
+      Helpers
+    });
+  }
   
-  this._element.innerHTML = template({
-    classification: this._delegate.getCalculation("grammar.classification"),
-    Helpers
-  });
-  
-};
+}
 
 module.exports = ParsingView;

@@ -3,27 +3,25 @@
 const template = require('../templates/sentences.ejs');
 const Helpers = require('../helpers');
 
-const SentencesView = function(element) {
+class SentencesView {
   
-  this._element = element;
-  
-};
+  constructor(element) {
+    this._element = element;
+  }
 
-SentencesView.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-};
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
 
-SentencesView.prototype.reload = function() {
+  reload() {
+    this._element.innerHTML = template({
+      sentences: this._delegate.getCalculation("grammar.sentences"),
+      info: this._delegate.getCalculation("grammar.symbolInfo"),
+      more: false,
+      Helpers
+    });
+  }
   
-  this._element.innerHTML = template({
-    sentences: this._delegate.getCalculation("grammar.sentences"),
-    info: this._delegate.getCalculation("grammar.symbolInfo"),
-    more: false,
-    Helpers
-  });
-  
-};
+}
 
 module.exports = SentencesView;
