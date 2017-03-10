@@ -3,13 +3,11 @@
 const assert = require('assert');
 const Grammar = require('../src/grammar/index');
 const Sets = require('../src/sets');
+const assertSetEqual = require('./test-helpers').assertSetEqual;
 const EXAMPLE_GRAMMARS = require('./fixtures/example_grammars');
 
-function parse(spec) {
-  return Grammar.parse(spec).grammar;
-}
-
-function classifications(grammar) {
+function classifications(spec) {
+  let grammar = Grammar.parse(spec).grammar;
   let classification = grammar.calculate("grammar.classification");
   let result = {};
   
@@ -22,21 +20,13 @@ function classifications(grammar) {
   return result;
 }
 
-function isSetEqual(a, b) {
-  return Sets.count(Sets.intersection(a, b)) === Sets.count(a);
-}
-
-function assertSetEqual(expected, actual, message) {
-  assert.ok(isSetEqual(expected, actual), message);
-}
-
 const SUPPORTED_CLASSIFICATIONS = {
   ll1: true, lr0: true, slr1: true,
   lr1: true, lalr1: true
 };
 
 function assertExampleClassifications(expected, name) {
-  let actual = Sets.intersection(classifications(parse(EXAMPLE_GRAMMARS[name])), SUPPORTED_CLASSIFICATIONS);
+  let actual = Sets.intersection(classifications(EXAMPLE_GRAMMARS[name]), SUPPORTED_CLASSIFICATIONS);
   assertSetEqual(expected, actual, name);
 }
 

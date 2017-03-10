@@ -1,6 +1,6 @@
 'use strict';
 
-const Relation = require('../../relation');
+const Relations = require('../../../relations');
 
 module.exports["grammar.unreachable"] = function(grammar) {
   
@@ -10,13 +10,13 @@ module.exports["grammar.unreachable"] = function(grammar) {
   // Build relation:
   // (x,y) | x -> a y b where a and b are strings of terminals or nonterminals
 
-  let relation = Relation.create();
+  let relation = Relations.create();
 
   for (let i = 0; i < grammar.productions.length; i++) {
     for (let j = 1; j < grammar.productions[i].length; j++) {
     
       if (nonterminals[grammar.productions[i][j]]) {
-        Relation.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
+        Relations.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
       }
     
     }
@@ -24,7 +24,7 @@ module.exports["grammar.unreachable"] = function(grammar) {
 
   // Obtain the closure of the relation
 
-  let closure = Relation.closure(relation);
+  let closure = Relations.closure(relation);
 
   // Collect unreachable nonterminals
 

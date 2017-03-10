@@ -1,14 +1,14 @@
 'use strict';
 
-const Relation = require('../../relation');
+const Relations = require('../../../relations');
 
 module.exports["grammar.first"] = function(grammar) {
 
   const nullable = grammar.calculate("grammar.nullable");
   const nonterminals = grammar.calculate("grammar.nonterminals");
 
-  let immediate = Relation.create();
-  let propagation = Relation.create();
+  let immediate = Relations.create();
+  let propagation = Relations.create();
 
   // For each production, add the first terminal symbol after a sequence of nullable symbols.
 
@@ -30,7 +30,7 @@ module.exports["grammar.first"] = function(grammar) {
     // of this nonterminal.
 
     if (j < grammar.productions[i].length && !nonterminals[grammar.productions[i][j]]) {
-      Relation.add(immediate, grammar.productions[i][0], grammar.productions[i][j]);
+      Relations.add(immediate, grammar.productions[i][0], grammar.productions[i][j]);
     }
 
   }
@@ -44,7 +44,7 @@ module.exports["grammar.first"] = function(grammar) {
       // Is it a nonterminal? Add it.
   
       if (nonterminals[grammar.productions[i][j]]) {
-        Relation.add(propagation, grammar.productions[i][0], grammar.productions[i][j]);
+        Relations.add(propagation, grammar.productions[i][0], grammar.productions[i][j]);
       }
   
       // Is it not nullable? Stop.
@@ -58,7 +58,7 @@ module.exports["grammar.first"] = function(grammar) {
 
   // Propagate the relation.
 
-  let result = Relation.propagate(immediate, propagation);
+  let result = Relations.propagate(immediate, propagation);
   
   // Ensure that all nonterminals are present as keys, even if that particular follow set is empty.
   

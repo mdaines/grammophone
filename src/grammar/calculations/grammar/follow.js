@@ -1,6 +1,6 @@
 'use strict';
 
-const Relation = require('../../relation');
+const Relations = require('../../../relations');
 const END = require('../../symbols').END;
 
 module.exports["grammar.follow"] = function(grammar) {
@@ -11,12 +11,12 @@ module.exports["grammar.follow"] = function(grammar) {
   const nonterminals = grammar.calculate("grammar.nonterminals");
   const start = grammar.calculate("grammar.start");
 
-  immediate = Relation.create();
-  propagation = Relation.create();
+  immediate = Relations.create();
+  propagation = Relations.create();
 
   // Add the end of input symbol to the immediate follow set of the grammar's start symbol.
 
-  Relation.add(immediate, start, END);
+  Relations.add(immediate, start, END);
 
   // Given a production X -> ... A β, follow(A) includes first(β), except for the empty string.
 
@@ -35,14 +35,14 @@ module.exports["grammar.follow"] = function(grammar) {
           // If this symbol is a terminal, add it, and then stop adding.
       
           if (!nonterminals[grammar.productions[i][k]]) {
-            Relation.add(immediate, grammar.productions[i][j], grammar.productions[i][k]);
+            Relations.add(immediate, grammar.productions[i][j], grammar.productions[i][k]);
             break;
           }
       
           // If it is a nonterminal, add the first set of that nonterminal.
     
           for (let s in first[grammar.productions[i][k]]) {
-            Relation.add(immediate, grammar.productions[i][j], s);
+            Relations.add(immediate, grammar.productions[i][j], s);
           }
         
           // Stop if it isn't nullable.
@@ -70,7 +70,7 @@ module.exports["grammar.follow"] = function(grammar) {
       // If the symbol is a nonterminal, add the left side.
   
       if (nonterminals[grammar.productions[i][j]]) {
-        Relation.add(propagation, grammar.productions[i][j], grammar.productions[i][0]);
+        Relations.add(propagation, grammar.productions[i][j], grammar.productions[i][0]);
       }
     
       // If it isn't nullable, stop.
@@ -85,7 +85,7 @@ module.exports["grammar.follow"] = function(grammar) {
 
   // Propagate the relation
 
-  result = Relation.propagate(immediate, propagation);
+  result = Relations.propagate(immediate, propagation);
   
   // Ensure that all nonterminals are present as keys, even if that particular follow set is empty.
   

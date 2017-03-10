@@ -1,6 +1,8 @@
 'use strict';
 
-const Relation = {
+const Sets = require('./sets');
+
+const Relations = {
   create: function() {
     return {};
   },
@@ -109,7 +111,21 @@ const Relation = {
     }
   
     return undefined;
+  },
+  
+  equal: function(a, b) {
+    if (Sets.count(a) !== Sets.count(b)) {
+      return false;
+    }
+  
+    for (let k in a) {
+      if (a.hasOwnProperty(k) && !Sets.equal(a[k], b[k])) {
+        return false;
+      }
+    }
+  
+    return true;
   }
 };
 
-module.exports = Relation;
+module.exports = Relations;

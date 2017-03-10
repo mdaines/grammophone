@@ -32,6 +32,10 @@ const Sets = {
     }
     
     return result;
+  },
+  
+  equal: function(a, b) {
+    return Sets.count(Sets.intersection(a, b)) === Sets.count(a);
   }
 };
 

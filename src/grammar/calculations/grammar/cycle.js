@@ -1,6 +1,6 @@
 'use strict';
 
-const Relation = require('../../relation');
+const Relations = require('../../../relations');
 
 module.exports["grammar.cycle"] = function(grammar) {
 
@@ -10,7 +10,7 @@ module.exports["grammar.cycle"] = function(grammar) {
   // Build relation
   // (x,y) | x -> a y b, y a nonterminal, a and b nullable
 
-  let relation = Relation.create();
+  let relation = Relations.create();
 
   for (let i = 0; i < grammar.productions.length; i++) {
     for (let j = 1; j < grammar.productions[i].length; j++) {
@@ -32,7 +32,7 @@ module.exports["grammar.cycle"] = function(grammar) {
         }
       
         if (k === grammar.productions[i].length) {
-          Relation.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
+          Relations.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
         }
       
       }
@@ -42,6 +42,6 @@ module.exports["grammar.cycle"] = function(grammar) {
 
   // Find a cycle if there is one
 
-  return Relation.cycle(relation);
+  return Relations.cycle(relation);
 
 };
