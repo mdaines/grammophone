@@ -4,7 +4,7 @@
     "generate-parser": "jison src/grammar/parser.y src/grammar/parser.l --module-type=commonjs --outfile=src/grammar/parser.js",
     "bundle": "browserify src/application.js -o assets/application.js --standalone ApplicationController --transform ejsify --transform [ babelify --ignore parser.js --presets [ es2015 ] ]",
     "watch": "watchify src/application.js -o assets/application.js --standalone ApplicationController --transform ejsify --transform [ babelify --ignore parser.js --presets [ es2015 ] ]",
-    "lint": "jshint --exclude ./node_modules,parser.js,bundle.js,calculations/lr.js src/grammar"
+    "lint": "jshint --exclude ./node_modules,src/grammar/parser.js src"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.22.0",
