@@ -1,9 +1,11 @@
+'use strict';
+
 const automaton = require('./utils').automaton;
 const kernelsEqual = require('./utils').kernelsEqual;
 const END = require('../../symbols').END;
 
-var build = {
-
+const build = {
+  
   initial: function() {
   
     return [ { production: -1, index: 0, lookahead: END } ];
@@ -12,27 +14,27 @@ var build = {
 
   closure: function(grammar, kernel) {
   
-    var i, j, k, l;
-    var item, remaining, symbol, lookaheads;
-    var start = grammar.calculate("grammar.start");
+    const start = grammar.calculate("grammar.start");
   
     // Which items were added in a given iteration?
   
-    var added;
+    let added;
   
     // Which productions/lookaheads have we already used for the closure?
   
-    var used = {};
+    let used = {};
   
-    for (i = 0; i < grammar.productions.length; i++)
+    for (let i = 0; i < grammar.productions.length; i++) {
       used[i] = {};
+    }
   
     // Copy the kernel as the initial list of items
   
-    var result = [];
+    let result = [];
   
-    for (i = 0; i < kernel.length; i++)
+    for (let i = 0; i < kernel.length; i++) {
       result.push({ production: kernel[i].production, index: kernel[i].index, lookahead: kernel[i].lookahead });
+    }
     
     // While we cannot add more items...
   
@@ -42,43 +44,47 @@ var build = {
     
       // For each item we have...
     
-      for (i = 0; i < result.length; i++) {
+      for (let i = 0; i < result.length; i++) {
       
-        item = result[i];
+        let item = result[i];
       
         // Find the nonterminal symbol...
       
         // Find the stuff "after the dot" (taking into account the augmented grammar)
+
+        let remaining;
       
-        if (item.production === -1)
+        if (item.production === -1) {
           remaining = [start].slice(item.index);
-        else
+        } else {
           remaining = grammar.productions[item.production].slice(item.index + 1);
+        }
         
         // Go to next item if this one is completed
         
-        if (remaining.length == 0)
+        if (remaining.length === 0) {
           continue;
+        }
         
         // the nonterminal symbol is the first thing after the dot
       
-        symbol = remaining[0];
+        let symbol = remaining[0];
       
         // lookaheads
         // first(gamma a) where the item is [A -> alpha . B gamma, a]
       
-        lookaheads = grammar.getFirst(remaining.slice(1).concat(item.lookahead));
+        let lookaheads = grammar.getFirst(remaining.slice(1).concat(item.lookahead));
       
         // Add items for matching productions/lookaheads (which are not already
         // used for the closure)
       
-        for (j = 0; j < grammar.productions.length; j++) {
+        for (let j = 0; j < grammar.productions.length; j++) {
         
-          if (grammar.productions[j][0] == symbol) {
+          if (grammar.productions[j][0] === symbol) {
           
             // Add an item for every lookahead...
           
-            for (l in lookaheads) {
+            for (let l in lookaheads) {
             
               if (!used[j][l]) {
                 added.push({ production: j, index: 0, lookahead: l });
@@ -93,8 +99,9 @@ var build = {
       
       }
     
-      for (i = 0; i < added.length; i++)
+      for (let i = 0; i < added.length; i++) {
         result.push(added[i]);
+      }
     
     } while (added.length > 0);
   
@@ -107,31 +114,33 @@ var build = {
 
   transitions: function(grammar, closure) {
   
-    var result = {};
-    var i;
-    var item, symbol;
-    var start = grammar.calculate("grammar.start");
+    let result = {};
+    const start = grammar.calculate("grammar.start");
   
     // For each item...
   
-    for (i = 0; i < closure.length; i++) {
+    for (let i = 0; i < closure.length; i++) {
     
-      item = closure[i];
+      let item = closure[i];
     
       // Calculate the leaving symbol by looking in the grammar's productions,
       // handling the augmented grammar production as above.
     
-      if (item.production === -1)
+      let symbol;
+    
+      if (item.production === -1) {
         symbol = [start][item.index];
-      else
+      } else {
         symbol = grammar.productions[item.production][item.index + 1];
+      }
       
       // If there is a leaving symbol, add the next item.
     
-      if (typeof symbol != "undefined") {
+      if (typeof symbol !== "undefined") {
       
-        if (!result[symbol])
+        if (!result[symbol]) {
           result[symbol] = [];
+        }
         
         // copy it!
       
@@ -149,21 +158,21 @@ var build = {
     return kernelsEqual(a, b, true);
   }
 
-}
+};
 
 function classifyLR1(table) {
   
-  var i, s;
-  
-  for (i = 0; i < table.length; i++) {
+  for (let i = 0; i < table.length; i++) {
     
-    for (s in table[i]) {
+    for (let s in table[i]) {
       
-      if (typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 1)
+      if (typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 1) {
         return { member: false, reason: "it contains a reduce-reduce conflict" };
+      }
       
-      if (typeof table[i][s].shift !== "undefined" && typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 0)
+      if (typeof table[i][s].shift !== "undefined" && typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 0) {
         return { member: false, reason: "it contains a shift-reduce conflict" };
+      }
       
     }
     
@@ -175,11 +184,13 @@ function classifyLR1(table) {
 
 function addReduceAction(actions, symbol, production) {
   
-  if (typeof actions[symbol] === "undefined")
+  if (typeof actions[symbol] === "undefined") {
     actions[symbol] = { reduce: [] };
+  }
 
-  if (typeof actions[symbol].reduce === "undefined")
+  if (typeof actions[symbol].reduce === "undefined") {
     actions[symbol].reduce = [];
+  }
 
   actions[symbol].reduce.push(production);
   
@@ -189,39 +200,40 @@ module.exports["parsing.lr.slr1_classification"] = function(grammar) {
   
   return classifyLR1(grammar.calculate("parsing.lr.slr1_table"));
   
-}
+};
 
 module.exports["parsing.lr.slr1_table"] = function(grammar) {
   
-  var i, j, s;
-  var state, actions, item;
-  var table = [];
-  var automaton = grammar.calculate("parsing.lr.lr0_automaton");
-  var follow = grammar.calculate("grammar.follow");
+  let table = [];
+  const automaton = grammar.calculate("parsing.lr.lr0_automaton");
+  const follow = grammar.calculate("grammar.follow");
   
-  for (i = 0; i < automaton.length; i++) {
+  for (let i = 0; i < automaton.length; i++) {
     
-    state = automaton[i];
-    actions = {};
+    let state = automaton[i];
+    let actions = {};
     
-    for (s in state.transitions)
+    for (let s in state.transitions) {
       actions[s] = { shift: state.transitions[s] };
+    }
     
-    for (j = 0; j < state.items.length; j++) {
+    for (let j = 0; j < state.items.length; j++) {
       
-      item = state.items[j];
+      let item = state.items[j];
       
       if (item.production === -1) {
         
-        if (item.index === 1)
+        if (item.index === 1) {
           addReduceAction(actions, END, item.production);
+        }
         
       } else {
         
-        if (item.index == grammar.productions[item.production].length - 1) {
+        if (item.index === grammar.productions[item.production].length - 1) {
           
-          for (s in follow[grammar.productions[item.production][0]])
+          for (let s in follow[grammar.productions[item.production][0]]) {
             addReduceAction(actions, s, item.production);
+          }
           
         }
         
@@ -235,48 +247,49 @@ module.exports["parsing.lr.slr1_table"] = function(grammar) {
   
   return table;
   
-}
+};
 
 module.exports["parsing.lr.lr1_automaton"] = function(grammar) {
   
   return automaton(grammar, build);
 
-}
+};
 
 module.exports["parsing.lr.lr1_classification"] = function(grammar) {
   
   return classifyLR1(grammar.calculate("parsing.lr.lr1_table"));
   
-}
+};
 
 module.exports["parsing.lr.lr1_table"] = function(grammar) {
   
-  var i, j, s;
-  var state, actions, item;
-  var table = [];
-  var automaton = grammar.calculate("parsing.lr.lr1_automaton");
+  let table = [];
+  const automaton = grammar.calculate("parsing.lr.lr1_automaton");
   
-  for (i = 0; i < automaton.length; i++) {
+  for (let i = 0; i < automaton.length; i++) {
     
-    state = automaton[i];
-    actions = {};
+    let state = automaton[i];
+    let actions = {};
     
-    for (s in state.transitions)
+    for (let s in state.transitions) {
       actions[s] = { shift: state.transitions[s] };
+    }
     
-    for (j = 0; j < state.items.length; j++) {
+    for (let j = 0; j < state.items.length; j++) {
       
-      item = state.items[j];
+      let item = state.items[j];
       
       if (item.production === -1) {
         
-        if (item.index === 1)
+        if (item.index === 1) {
           addReduceAction(actions, END, item.production);
+        }
         
       } else {
         
-        if (item.index == grammar.productions[item.production].length - 1)
+        if (item.index === grammar.productions[item.production].length - 1) {
           addReduceAction(actions, item.lookahead, item.production);
+        }
         
       }
       
@@ -288,37 +301,40 @@ module.exports["parsing.lr.lr1_table"] = function(grammar) {
   
   return table;
 
-}
+};
 
 // Collapse a list of LR1 items' lookaheads so that distinct
 // items' lookaheads are arrays.
 
 function collapseLookaheads(items) {
   
-  var i, p, x, l;
-  var table = {};
+  let table = {};
   
-  for (i = 0; i < items.length; i++) {
+  for (let i = 0; i < items.length; i++) {
     
-    p = items[i].production;
-    x = items[i].index;
-    l = items[i].lookahead;
+    let p = items[i].production;
+    let x = items[i].index;
+    let l = items[i].lookahead;
     
-    if (!table[p])
+    if (!table[p]) {
       table[p] = [];
+    }
     
-    if (!table[p][x])
+    if (!table[p][x]) {
       table[p][x] = [];
+    }
     
     table[p][x].push(l);
     
   }
   
-  var result = [];
+  let result = [];
   
-  for (p in table)
-    for (x in table[p])
+  for (let p in table) {
+    for (let x in table[p]) {
       result.push({ production: parseInt(p), index: parseInt(x), lookaheads: table[p][x] });
+    }
+  }
   
   return result;
   
@@ -329,28 +345,28 @@ function collapseLookaheads(items) {
 
 function mergeItems(a, b) {
   
-  var result = [];
-  var item;
-  var i, j, k;
+  let result = [];
   
-  for (i = 0; i < a.length; i++) {
+  for (let i = 0; i < a.length; i++) {
     
-    item = { production: a[i].production, index: a[i].index, lookaheads: [] };
+    let item = { production: a[i].production, index: a[i].index, lookaheads: [] };
     
     // Add lookaheads from a
     
-    for (j = 0; j < a[i].lookaheads.length; j++)
+    for (let j = 0; j < a[i].lookaheads.length; j++) {
       item.lookaheads.push(a[i].lookaheads[j]);
+    }
     
     // Find matching items in b and add their lookaheads if they aren't already present
     
-    for (j = 0; j < b.length; j++) {
+    for (let j = 0; j < b.length; j++) {
       
-      if (b[j].production == a[i].production && b[j].index == a[i].index) {
+      if (b[j].production === a[i].production && b[j].index === a[i].index) {
         
-        for (k = 0; k < b[j].lookaheads.length; k++) {
-          if (item.lookaheads.indexOf(b[j].lookaheads[k]) === -1)
+        for (let k = 0; k < b[j].lookaheads.length; k++) {
+          if (item.lookaheads.indexOf(b[j].lookaheads[k]) === -1) {
             item.lookaheads.push(b[j].lookaheads[k]);
+          }
         }
         
       }
@@ -369,19 +385,17 @@ module.exports["parsing.lr.lalr1_classification"] = function(grammar) {
   
   return classifyLR1(grammar.calculate("parsing.lr.lalr1_table"));
   
-}
+};
 
 module.exports["parsing.lr.lalr1_automaton"] = function(grammar) {
   
-  var i, j;
-  
   // Get the LR1 automaton.
   
-  var automaton = grammar.calculate("parsing.lr.lr1_automaton");
+  const automaton = grammar.calculate("parsing.lr.lr1_automaton");
   
   // Collapse lookaheads.
   
-  for (i = 0; i < automaton.length; i++) {
+  for (let i = 0; i < automaton.length; i++) {
     
     automaton[i].kernel = collapseLookaheads(automaton[i].kernel);
     automaton[i].items = collapseLookaheads(automaton[i].items);
@@ -398,21 +412,22 @@ module.exports["parsing.lr.lalr1_automaton"] = function(grammar) {
   //
   // states can be merged if they have the same items, not considering lookaheads.
   
-  var used = [];
-  var merge = [];
+  let used = [];
+  let merge = [];
   
-  for (i = 0; i < automaton.length; i++) {
+  for (let i = 0; i < automaton.length; i++) {
     
     // If this state has been used already for merging, skip it.
     
-    if (used[i])
+    if (used[i]) {
       continue;
+    }
     
     // Otherwise, find the states (including the current state) which can be merged with it.
     
-    var m = [];
+    let m = [];
     
-    for (j = 0; j < automaton.length; j++) {
+    for (let j = 0; j < automaton.length; j++) {
       
       if (!used[j] && kernelsEqual(automaton[i].kernel, automaton[j].kernel, false)) {
         
@@ -433,10 +448,10 @@ module.exports["parsing.lr.lalr1_automaton"] = function(grammar) {
   //
   // where transition[i] is the new index for the original state i.
   
-  var transition = [];
+  let transition = [];
   
-  for (i = 0; i < merge.length; i++) {
-    for (j = 0; j < merge[i].length; j++) {
+  for (let i = 0; i < merge.length; i++) {
+    for (let j = 0; j < merge[i].length; j++) {
       
       transition[merge[i][j]] = i;
       
@@ -445,15 +460,15 @@ module.exports["parsing.lr.lalr1_automaton"] = function(grammar) {
   
   // Produce new states
   
-  var states = [];
+  let states = [];
   
-  for (i = 0; i < merge.length; i++) {
+  for (let i = 0; i < merge.length; i++) {
     
-    var state = { kernel: [], items: [], transitions: {} };
+    let state = { kernel: [], items: [], transitions: {} };
     
     // Merge items
     
-    for (j = 0; j < merge[i].length; j++) {
+    for (let j = 0; j < merge[i].length; j++) {
       
       state.kernel = mergeItems(automaton[merge[i][j]].kernel, state.kernel);
       state.items = mergeItems(automaton[merge[i][j]].items, state.items);
@@ -462,11 +477,11 @@ module.exports["parsing.lr.lalr1_automaton"] = function(grammar) {
     
     // Add transitions (just use the first merge index)
     
-    var original = automaton[merge[i][0]].transitions;
-    var s;
+    let original = automaton[merge[i][0]].transitions;
     
-    for (s in original)
+    for (let s in original) {
       state.transitions[s] = transition[original[s]];
+    }
       
     // Add the new state
     
@@ -476,38 +491,39 @@ module.exports["parsing.lr.lalr1_automaton"] = function(grammar) {
   
   return states;
 
-}
+};
 
 module.exports["parsing.lr.lalr1_table"] = function(grammar) {
   
-  var i, j, k, s;
-  var state, actions, item;
-  var table = [];
-  var automaton = grammar.calculate("parsing.lr.lalr1_automaton");
+  let table = [];
+  const automaton = grammar.calculate("parsing.lr.lalr1_automaton");
   
-  for (i = 0; i < automaton.length; i++) {
+  for (let i = 0; i < automaton.length; i++) {
     
-    state = automaton[i];
-    actions = {};
+    let state = automaton[i];
+    let actions = {};
     
-    for (s in state.transitions)
+    for (let s in state.transitions) {
       actions[s] = { shift: state.transitions[s] };
+    }
     
-    for (j = 0; j < state.items.length; j++) {
+    for (let j = 0; j < state.items.length; j++) {
       
-      item = state.items[j];
+      let item = state.items[j];
       
       if (item.production === -1) {
         
-        if (item.index === 1)
+        if (item.index === 1) {
           addReduceAction(actions, END, item.production);
+        }
         
       } else {
         
-        if (item.index == grammar.productions[item.production].length - 1) {
+        if (item.index === grammar.productions[item.production].length - 1) {
           
-          for (k = 0; k < item.lookaheads.length; k++)
+          for (let k = 0; k < item.lookaheads.length; k++) {
             addReduceAction(actions, item.lookaheads[k], item.production);
+          }
           
         }
         
@@ -521,4 +537,4 @@ module.exports["parsing.lr.lalr1_table"] = function(grammar) {
   
   return table;
 
-}
+};

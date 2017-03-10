@@ -1,7 +1,9 @@
+'use strict';
+
 const automaton = require('./utils').automaton;
 const kernelsEqual = require('./utils').kernelsEqual;
 
-var build = {
+const build = {
 
   // What is the initial item?
 
@@ -19,24 +21,23 @@ var build = {
 
   closure: function(grammar, kernel) {
   
-    var i, j;
-    var item, symbol;
-    var start = grammar.calculate("grammar.start");
+    const start = grammar.calculate("grammar.start");
   
     // Which items were added?
   
-    var added;
+    let added;
   
     // Which productions have been used?
   
-    var used = {};
+    let used = {};
   
     // Copy the kernel as the initial list of items
   
-    var result = [];
+    let result = [];
   
-    for (i = 0; i < kernel.length; i++)
+    for (let i = 0; i < kernel.length; i++) {
       result.push({ production: kernel[i].production, index: kernel[i].index });
+    }
   
     // While we cannot add more items...
   
@@ -46,27 +47,30 @@ var build = {
     
       // For each item we have...
     
-      for (i = 0; i < result.length; i++) {
+      for (let i = 0; i < result.length; i++) {
       
         // Find the nonterminal symbol...
       
-        item = result[i];
+        let item = result[i];
       
         // If the production is the augmented start production, we're looking
         // for the original start symbol. Otherwise, use the grammar's productions
         // to find the symbol, but add one to account for the left-hand side of
         // the production.
+        
+        let symbol;
       
-        if (item.production === -1)
+        if (item.production === -1) {
           symbol = [start][item.index];
-        else
+        } else {
           symbol = grammar.productions[item.production][item.index + 1];
+        }
       
         // Find unused matching productions and add them.
       
-        for (j = 0; j < grammar.productions.length; j++) {
+        for (let j = 0; j < grammar.productions.length; j++) {
         
-          if (!used[j] && grammar.productions[j][0] == symbol) {
+          if (!used[j] && grammar.productions[j][0] === symbol) {
             added.push({ production: j, index: 0 });
             used[j] = true;
           }
@@ -75,8 +79,9 @@ var build = {
       
       }
     
-      for (i = 0; i < added.length; i++)
+      for (let i = 0; i < added.length; i++) {
         result.push(added[i]);
+      }
     
     } while (added.length > 0);
   
@@ -90,31 +95,33 @@ var build = {
 
   transitions: function(grammar, closure) {
   
-    var result = {};
-    var i;
-    var item, symbol;
-    var start = grammar.calculate("grammar.start");
+    let result = {};
+    const start = grammar.calculate("grammar.start");
   
     // For each item...
   
-    for (i = 0; i < closure.length; i++) {
+    for (let i = 0; i < closure.length; i++) {
     
-      item = closure[i];
+      let item = closure[i];
     
       // Calculate the leaving symbol by looking in the grammar's productions,
       // handling the augmented grammar production as above.
     
-      if (item.production === -1)
+      let symbol;
+    
+      if (item.production === -1) {
         symbol = [start][item.index];
-      else
+      } else {
         symbol = grammar.productions[item.production][item.index + 1];
+      }
       
       // If there is a leaving symbol, add the next item.
     
-      if (typeof symbol != "undefined") {
+      if (typeof symbol !== "undefined") {
       
-        if (!result[symbol])
+        if (!result[symbol]) {
           result[symbol] = [];
+        }
       
         result[symbol].push({ production: item.production, index: item.index + 1 });
       
@@ -132,23 +139,24 @@ var build = {
     return kernelsEqual(a, b, false);
   }
 
-}
+};
 
 module.exports["parsing.lr.lr0_classification"] = function(grammar) {
   
-  var i, s;
-  var table = grammar.calculate("parsing.lr.lr0_table");
-  var terminals = grammar.calculate("grammar.terminals");
+  const table = grammar.calculate("parsing.lr.lr0_table");
+  const terminals = grammar.calculate("grammar.terminals");
   
-  for (i = 0; i < table.length; i++) {
+  for (let i = 0; i < table.length; i++) {
       
-    if (table[i].reduce.length > 1)
+    if (table[i].reduce.length > 1) {
       return { member: false, reason: "it contains a reduce-reduce conflict" };
+    }
       
     if (table[i].reduce.length > 0) {
-      for (s in table[i].shift) {
-        if (terminals[s])
+      for (let s in table[i].shift) {
+        if (terminals[s]) {
           return { member: false, reason: "it contains a shift-reduce conflict" };
+        }
       }
     }
     
@@ -156,43 +164,44 @@ module.exports["parsing.lr.lr0_classification"] = function(grammar) {
   
   return { member: true };
   
-}
+};
 
 module.exports["parsing.lr.lr0_automaton"] = function(grammar) {
   
   return automaton(grammar, build);
   
-}
+};
 
 module.exports["parsing.lr.lr0_table"] = function(grammar) {
   
-  var i, j, s;
-  var state, item, actions;
-  var table = [];
-  var automaton = grammar.calculate("parsing.lr.lr0_automaton");
+  let table = [];
+  const automaton = grammar.calculate("parsing.lr.lr0_automaton");
   
-  for (i = 0; i < automaton.length; i++) {
+  for (let i = 0; i < automaton.length; i++) {
     
-    state = automaton[i];
-    actions = { shift: {}, reduce: [] };
+    let state = automaton[i];
+    let actions = { shift: {}, reduce: [] };
     
     // add shift actions for transitions
     
-    for (s in state.transitions)
+    for (let s in state.transitions) {
       actions.shift[s] = state.transitions[s];
+    }
     
     // add reduce actions for completed items
     
-    for (j = 0; j < state.items.length; j++) {
+    for (let j = 0; j < state.items.length; j++) {
       
-      item = state.items[j];
+      let item = state.items[j];
       
       if (item.production === -1) {
-        if (item.index === 1)
+        if (item.index === 1) {
           actions.reduce.push(item.production);
+        }
       } else {
-        if (item.index == grammar.productions[item.production].length - 1)
+        if (item.index === grammar.productions[item.production].length - 1) {
           actions.reduce.push(item.production);
+        }
       }
       
     }
@@ -203,4 +212,4 @@ module.exports["parsing.lr.lr0_table"] = function(grammar) {
   
   return table;
 
-}
+};
