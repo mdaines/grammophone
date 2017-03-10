@@ -8,15 +8,6 @@ const ErrorController = require('./error_controller');
 const Helpers = require('../helpers');
 const Grammar = require('../grammar');
 
-Function.prototype.bind = function(context) {
-  let fn = this;
-  return function() { return fn.apply(context, arguments); };
-};
-
-Function.prototype.defer = function() {
-  setTimeout(this, 0);
-};
-
 class ApplicationController {
   
   constructor(element) {
@@ -76,9 +67,9 @@ class ApplicationController {
   
     window.location.hash = "";
   
-    $(window).on("hashchange", function() {
+    $(window).on("hashchange", () => {
       this._hashChanged();
-    }.bind(this), false);
+    }, false);
   
     // set initial path and parse, and reload children
   

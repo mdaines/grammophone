@@ -14,18 +14,18 @@ class TransformView {
   }
 
   setup() {
-    this._element.on("click", "button", function(e) {
+    this._element.on("click", "button", (e) => {
       if ($(e.target).data("action") === "undo") {
         this._delegate.undo();
       } else if ($(e.target).data("action") === "redo") {
         this._delegate.redo();
       }
-    }.bind(this));
+    });
   
-    this._element.on("change", function(e) {
+    this._element.on("change", (e) => {
       let index = parseInt(e.target.value);
       this._delegate.transform(this._transformations[index]);
-    }.bind(this));
+    });
   }
 
   reload() {

@@ -10,21 +10,21 @@ class ModeController {
   
     this._element.innerHTML = modeTemplate();
   
-    $(this._element).find("#mode-edit").on("change", function(e) {
+    $(this._element).find("#mode-edit").on("change", (e) => {
       if (e.target.checked) {
         this._delegate.edit();
       }
-    }.bind(this));
+    });
   
-    $(this._element).find("#mode-transform").on("change", function(e) {
+    $(this._element).find("#mode-transform").on("change", (e) => {
       if (e.target.checked) {
         this._delegate.transform();
       }
-    }.bind(this));
+    });
   
-    $(this._element).find("#mode-analyze").on("click", function() {
+    $(this._element).find("#mode-analyze").on("click", () => {
       this._delegate.analyze();
-    }.bind(this));
+    });
   }
 
   setDelegate(delegate) {
