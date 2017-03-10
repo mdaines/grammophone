@@ -1,28 +1,26 @@
 'use strict';
 
-const ErrorController = function(element) {
+class ErrorController {
   
-  this._element = element;
-  this._element.id = "error";
-  
-};
+  constructor(element) {
+    this._element = element;
+    this._element.id = "error";
+  }
 
-ErrorController.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-};
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
 
-ErrorController.prototype.reload = function() {
+  reload() {
+    let error = this._delegate.getError();
   
-  let error = this._delegate.getError();
-  
-  if (typeof error !== "undefined") {
-    this._element.innerHTML = "<pre>" + this._delegate.getError() + "</pre>";
-  } else {
-    this._element.innerHTML = "";
+    if (typeof error !== "undefined") {
+      this._element.innerHTML = "<pre>" + this._delegate.getError() + "</pre>";
+    } else {
+      this._element.innerHTML = "";
+    }
   }
   
-};
+}
 
 module.exports = ErrorController;

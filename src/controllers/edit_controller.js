@@ -2,31 +2,27 @@
 
 const editTemplate = require('../templates/edit.ejs');
 
-const EditController = function(element) {
+class EditController {
   
-  this._element = element;
-  this._element.id = "edit";
+  constructor(element) {
+    this._element = element;
+    this._element.id = "edit";
   
-  this._element.innerHTML = editTemplate();
-  
-};
+    this._element.innerHTML = editTemplate();  
+  }
 
-EditController.prototype.getSpec = function() {
-  
-  return $(this._element).find(".spec").get(0).value;
-  
-};
+  getSpec() {
+    return $(this._element).find(".spec").get(0).value;
+  }
 
-EditController.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-};
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
 
-EditController.prototype.reload = function() {
+  reload() {
+    $(this._element).find(".spec").get(0).value = this._delegate.getSpec();
+  }
   
-  $(this._element).find(".spec").get(0).value = this._delegate.getSpec();
-  
-};
+}
 
 module.exports = EditController;

@@ -2,118 +2,98 @@
 
 const TransformView = require('../views/transform_view');
 
-const TransformController = function(element) {
+class TransformController {
   
-  this._element = element;
-  this._element.id = "transform";
+  constructor(element) {
+    this._element = element;
+    this._element.id = "transform";
   
-  this._transformElement = document.createElement("article");
-  this._element.appendChild(this._transformElement);
+    this._transformElement = document.createElement("article");
+    this._element.appendChild(this._transformElement);
   
-  this._transformView = new TransformView(this._transformElement);
-  this._transformView.setDelegate(this);
+    this._transformView = new TransformView(this._transformElement);
+    this._transformView.setDelegate(this);
   
-  if (this._transformView.setup) {
-    this._transformView.setup();
+    if (this._transformView.setup) {
+      this._transformView.setup();
+    }
   }
-  
-};
 
-TransformController.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-};
-
-TransformController.prototype.reload = function() {
-  
-  this._index = 0;
-  this._stack = [ { grammar: this._delegate.getGrammar() } ];
-  
-  this._transformView.reload();
-  
-};
-
-TransformController.prototype.getProductions = function() {
-  
-  return this._stack[this._index].grammar.productions;
-  
-};
-
-TransformController.prototype.getSymbolInfo = function() {
-  
-  return this._stack[this._index].grammar.calculate("grammar.symbolInfo");
-  
-};
-
-TransformController.prototype.getPreviousSymbolInfo = function() {
-  
-  if (this._index > 0) {
-    return this._stack[this._index - 1].grammar.calculate("grammar.symbolInfo");
+  setDelegate(delegate) {
+    this._delegate = delegate;
   }
-  
-};
 
-TransformController.prototype.getTransformations = function() {
+  reload() {
+    this._index = 0;
+    this._stack = [ { grammar: this._delegate.getGrammar() } ];
   
-  return this._stack[this._index].grammar.calculate("transformations");
-  
-};
-
-TransformController.prototype.getUndoTransformation = function() {
-  
-  if (this._index > 0) {
-    return this._stack[this._index].transformation;
+    this._transformView.reload();
   }
-  
-};
 
-TransformController.prototype.getRedoTransformation = function() {
-  
-  if (this._index < this._stack.length - 1) {
-    return this._stack[this._index + 1].transformation;
+  getProductions() {
+    return this._stack[this._index].grammar.productions;
   }
-  
-};
 
-TransformController.prototype.undo = function() {
-  
-  if (this._index > 0) {
-    this._index--;
+  getSymbolInfo() {
+    return this._stack[this._index].grammar.calculate("grammar.symbolInfo");
   }
-  
-  this._transformView.reload();
-  
-  this._delegate.grammarChanged(this._stack[this._index].grammar);
-  
-};
 
-TransformController.prototype.redo = function() {
+  getPreviousSymbolInfo() {
+    if (this._index > 0) {
+      return this._stack[this._index - 1].grammar.calculate("grammar.symbolInfo");
+    }
+  }
+
+  getTransformations() {
+    return this._stack[this._index].grammar.calculate("transformations");
+  }
+
+  getUndoTransformation() {
+    if (this._index > 0) {
+      return this._stack[this._index].transformation;
+    }
+  }
+
+  getRedoTransformation() {
+    if (this._index < this._stack.length - 1) {
+      return this._stack[this._index + 1].transformation;
+    }
+  }
+
+  undo() {
+    if (this._index > 0) {
+      this._index--;
+    }
   
-  if (this._index < this._stack.length - 1) {
+    this._transformView.reload();
+  
+    this._delegate.grammarChanged(this._stack[this._index].grammar);
+  }
+
+  redo() {
+    if (this._index < this._stack.length - 1) {
+      this._index++;
+    }
+  
+    this._transformView.reload();
+  
+    this._delegate.grammarChanged(this._stack[this._index].grammar);
+  }
+
+  transform(transformation) {
+    let item = {
+      grammar: this._stack[this._index].grammar.transform(transformation),
+      transformation: transformation
+    };
+  
     this._index++;
+    this._stack.splice(this._index, this._stack.length - this._index, item);
+  
+    this._transformView.reload();
+  
+    this._delegate.grammarChanged(this._stack[this._index].grammar);
   }
   
-  this._transformView.reload();
-  
-  this._delegate.grammarChanged(this._stack[this._index].grammar);
-  
-};
-
-TransformController.prototype.transform = function(transformation) {
-  
-  let item = {
-    grammar: this._stack[this._index].grammar.transform(transformation),
-    transformation: transformation
-  };
-  
-  this._index++;
-  this._stack.splice(this._index, this._stack.length - this._index, item);
-  
-  this._transformView.reload();
-  
-  this._delegate.grammarChanged(this._stack[this._index].grammar);
-  
-};
+}
 
 module.exports = TransformController;
