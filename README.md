@@ -13,14 +13,24 @@ Help make Grammophone better by [supporting me on Patreon](https://patreon.com/m
 Building the app
 ----------------
 
-Rake and Sprockets are used to concatenate the JavaScript source files, compile templates, etc. Install sprockets with `gem install sprockets` and build the app with the default rake task, just `rake`.
+Grammophone uses [Yarn](https://yarnpkg.com/) to handle its build system and development dependencies. [How to install Yarn](https://yarnpkg.com/en/docs/install).
 
-[jison](http://zaach.github.com/jison/) is used to build the app's grammar specification parser, but the parser (src/parser.js) is checked into the repository, so you don't have to install jison.
+To bundle the JavaScript and CSS:
 
-For development, a Rack application is provided which rebuilds the application on every request (see `config.ru`). Install Rack with `gem install rack` and use the `rackup` command to start. By default, the application is available at [http://localhost:9292/](http://localhost:9292).
+    yarn run bundle
+
+To rebuild JavaScript and CSS as files are changed:
+
+    yarn run watch
+
+[Jison](http://zaach.github.com/jison/) is used to build the app's grammar specification parser, but the parser (src/grammar/parser.js) is checked into the repository. To generate the parser:
+
+    yarn run generate-parser
 
 
 Tests
 -----
 
-Tests can be run by starting the development Rack application with `rackup`, and then opening one of the test pages with your web browser. For example, [http://localhost:9292/test/parsing.html](http://localhost:9292/test/parsing.html) runs the parser tests. Results appear in the browser console.
+Currently only the routines in grammar/ have tests. (There are no controller or view tests yet.) To run these:
+
+    yarn test
