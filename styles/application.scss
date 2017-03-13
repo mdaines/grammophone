@@ -1,11 +1,11 @@
-/*= require views/parsing */
-/*= require views/ll1_table */
-/*= require views/lr0_table */
-/*= require views/lr1_table */
-/*= require views/blank_slate */
-/*= require edit */
-/*= require analysis */
-/*= require transform */
+@import "views/parsing";
+@import "views/ll1_table";
+@import "views/lr0_table";
+@import "views/lr1_table";
+@import "views/blank_slate";
+@import "edit";
+@import "analysis";
+@import "transform";
 
 body {
   background: #fff;
