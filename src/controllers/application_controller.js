@@ -111,18 +111,18 @@ class ApplicationController {
   
       if (typeof this._parse.error === "undefined") {
         $(this._errorElement).hide();
-        $(this._editElement).css({ top: $(this._modeElement).height() + "px" });
+        $(this._editElement).css({ top: $(this._modeElement).outerHeight() + "px" });
       } else {
         $(this._errorElement).show();
-        $(this._errorElement).css({ top: $(this._modeElement).height() + "px" });
-        $(this._editElement).css({ top: $(this._modeElement).height() + $(this._errorElement).height() + "px" });
+        $(this._errorElement).css({ top: $(this._modeElement).outerHeight() + "px" });
+        $(this._editElement).css({ top: $(this._modeElement).outerHeight() + $(this._errorElement).outerHeight() + "px" });
       }
     } else {
       $(this._editElement).hide();
       $(this._errorElement).hide();
       $(this._transformElement).show();
   
-      $(this._transformElement).css({ top: $(this._modeElement).height() + "px" });
+      $(this._transformElement).css({ top: $(this._modeElement).outerHeight() + "px" });
     }
   }
 
