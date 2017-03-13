@@ -3,12 +3,13 @@
     "test": "mocha \"test/**/*-test.js\"",
     "lint": "jshint --exclude ./node_modules,src/grammar/parser.js src",
     "generate-parser": "jison src/grammar/parser.y src/grammar/parser.l --module-type=commonjs --outfile=src/grammar/parser.js",
+    "copy-vendor": "cp node_modules/jquery/dist/jquery.slim.min.js dist/jquery.js && cp node_modules/viz.js/viz.js dist/viz.js",
     "bundle-src": "browserify src/application.js -o dist/application.js --standalone ApplicationController --transform ejsify --transform [ babelify --ignore parser.js --presets [ es2015 ] ]",
     "watch-src": "watchify src/application.js -o dist/application.js --standalone ApplicationController --transform ejsify --transform [ babelify --ignore parser.js --presets [ es2015 ] ]",
     "bundle-styles": "node-sass styles/application.scss dist/application.css",
     "watch-styles": "node-sass --watch styles/application.scss dist/application.css",
-    "bundle": "npm-run-all bundle-src bundle-styles",
-    "watch": "npm-run-all --parallel watch-src watch-styles"
+    "watch": "npm-run-all --parallel watch-src watch-styles",
+    "dist": "npm-run-all copy-vendor bundle-src bundle-styles"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.22.0",
@@ -19,7 +20,11 @@
     "jshint": "^2.9.4",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
-    "watchify": "^3.9.0",
-    "npm-run-all": "^3.1.1"
+    "npm-run-all": "^3.1.1",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "viz.js": "^1.7.1"
   }
 }
