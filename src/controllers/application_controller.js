@@ -69,7 +69,7 @@ class ApplicationController {
   
     $(window).on("hashchange", () => {
       this._hashChanged();
-    }, false);
+    });
   
     // set initial path and parse, and reload children
   
