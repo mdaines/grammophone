@@ -39,7 +39,7 @@ const Helpers = function() {
     } else if (info.terminals[symbol]) {
       return "<b>" + prettifySymbol(escapeHTML(symbol)) + "</b>";
     } else {
-      throw "Unknown symbol: " + symbol;
+      throw new Error("Unknown symbol: " + symbol);
     }
     
   }
@@ -51,7 +51,7 @@ const Helpers = function() {
     } else if (info.nonterminals[symbol] || info.terminals[symbol]) {
       return prettifySymbol(escapeHTML(symbol));
     } else {
-      throw "Unknown symbol: " + symbol;
+      throw new Error("Unknown symbol: " + symbol);
     }
     
   }

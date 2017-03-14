@@ -53,11 +53,11 @@ class Grammar {
       for (let j = 0; j < productions[i].length; j++) {
     
         if (productions[i][j].match(/^Grammar\./)) {
-          throw "Reserved symbol " + productions[i][j] + " may not be part of a production";
+          throw new Error("Reserved symbol " + productions[i][j] + " may not be part of a production");
         }
       
         if (productions[i][j] === "") {
-          throw "An empty symbol may not be part of a production";
+          throw new Error("An empty symbol may not be part of a production");
         }
     
       }
@@ -76,7 +76,7 @@ class Grammar {
   calculate(name) {
   
     if (typeof Calculations[name] === "undefined") {
-      throw "Undefined grammar calculation " + name;
+      throw new Error("Undefined grammar calculation " + name);
     }
 
     if (typeof this.calculations[name] === "undefined") {
@@ -140,7 +140,7 @@ class Grammar {
     
       } else {
     
-        throw "Unexpected symbol " + s;
+        throw new Error("Unexpected symbol " + s);
     
       }
   
@@ -172,7 +172,7 @@ class Grammar {
     
       } else {
     
-        throw "Unexpected symbol " + s;
+        throw new Error("Unexpected symbol " + s);
     
       }
   
