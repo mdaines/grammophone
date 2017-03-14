@@ -30,7 +30,7 @@ stmt -> s.`
 };
 
 describe("Nonterminals", function() {
-  it('testFirst', function() {
+  it('should calculate first sets', function() {
     assertRelationEqual({
       "exp": { "(": true, "number": true },
       "term": { "(": true, "number": true },
@@ -53,7 +53,7 @@ describe("Nonterminals", function() {
     }, parse(Fixtures.statements).calculate("grammar.first"));
   });
   
-  it('testFollow', function() {
+  it('should calculate follow sets', function() {
     assertRelationEqual({
       "exp": { "Grammar.END": true, "+": true, "-": true },
       "term": { "Grammar.END": true, "+": true, "-": true, "*": true, ")": true },
@@ -76,7 +76,7 @@ describe("Nonterminals", function() {
     }, parse(Fixtures.statements).calculate("grammar.follow"));
   });
   
-  it('testNullable', function() {
+  it('should calculate nullable nonterminals', function() {
     assertSetEqual({ }, parse(Fixtures.expressions).calculate("grammar.nullable"));
     assertSetEqual({ "else-part": true }, parse(Fixtures.ifelse).calculate("grammar.nullable"));
     assertSetEqual({ "stmt-seq'": true }, parse(Fixtures.statements).calculate("grammar.nullable"));

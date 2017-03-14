@@ -19,20 +19,20 @@ function assertParseError(spec) {
 }
 
 describe('Parsing', function() {
-  it('testBasic', function() {
+  it('should parse basic grammars', function() {
     assertParseProductions([["A", "a"]], "A -> a .");
     assertParseProductions([["A", "a"], ["A", "b"]], "A -> a | b .");
     assertParseProductions([["A"]], "A -> .");
     assertParseProductions([["A", "a"], ["B", "b"], ["A", "c"]], "A -> a. B -> b. A -> c.");
   });
 
-  it('testSpacing', function() {
+  it('should parse variations in spacing', function() {
     assertParseProductions([["A", "a"]], "A->a.");
     assertParseProductions([["A", "a"], ["A", "b"]], "A->a|b.");
     assertParseProductions([["A"]], "A->.");
   });
 
-  it('testOtherChars', function() {
+  it('should accept certain non-letter characters as symbols', function() {
     assertParseProductions([["A", "x", "-", ">", "y"]], "A -> x - > y.");
     assertParseProductions([["A'", "a"], ["A''", "a"]], "A' -> a. A'' -> a.");
     assertParseProductions([["A", "something-something"]], "A -> something-something.");
@@ -42,17 +42,17 @@ describe('Parsing', function() {
     assertParseProductions([["A", "\"a", "\""]], "A -> \"a \".");
   });
 
-  it('testMultipleLines', function() {
+  it('should parse multiple lines', function() {
     assertParseProductions([["A", "a"], ["A", "b"]], "A -> a |\n  b\n  .");
   });
 
-  it('testComments', function() {
+  it('should ignore comments', function() {
     assertParseProductions([["A", "b"]], "# A -> a .\nA -> b .");
     assertParseProductions([["A", "b"]], "# abc\n\nA -> b .");
     assertParseProductions([], "# 123\n\n");
   });
 
-  it('testParseErrors', function() {
+  it('should correctly emit parse errors', function() {
     assertParseError("A -> a. B");
     assertParseError("A B -> a.");
     assertParseError("A -> a. ->");

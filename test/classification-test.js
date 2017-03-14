@@ -31,7 +31,7 @@ function assertExampleClassifications(expected, name) {
 }
 
 describe("Classification", function() {
-  it('testAgreement', function() {
+  it('should agree with smlweb', function() {
     assertExampleClassifications({ "lr0": true }, "ll0-lr0-0.cfg");
     assertExampleClassifications({ "lr0": true }, "ll0-lr0-1.cfg");
     assertExampleClassifications({ "lr0": true }, "ll0-lr0-2.cfg");
