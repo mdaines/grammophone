@@ -5,7 +5,7 @@ const Sets = require('../../sets');
 
 module.exports["parsing.ll.ll1_classification"] = function(grammar) {
   
-  let nullAmbiguity = grammar.calculate("grammar.nullAmbiguity");
+  const nullAmbiguity = grammar.calculate("grammar.nullAmbiguity");
   
   // We can return immediately if the grammar contains a null ambiguity.
   
@@ -13,10 +13,10 @@ module.exports["parsing.ll.ll1_classification"] = function(grammar) {
     return { member: false, reason: "it contains a null ambiguity" };
   }
   
-  let follow = grammar.calculate("grammar.follow");
-  let terminals = grammar.calculate("grammar.terminals");
-  let nonterminals = grammar.calculate("grammar.nonterminals");
-  let nullable = grammar.calculate("grammar.nullable");
+  const follow = grammar.calculate("grammar.follow");
+  const terminals = grammar.calculate("grammar.terminals");
+  const nonterminals = grammar.calculate("grammar.nonterminals");
+  const nullable = grammar.calculate("grammar.nullable");
   const productions = grammar.calculate("grammar.productions");
   
   // Check for first set clashes. Instead of checking intersections of
@@ -58,7 +58,7 @@ module.exports["parsing.ll.ll1_classification"] = function(grammar) {
   // Check for first/follow set clashes. That is, check that every nullable
   // production has disjoint first and follow sets.
   
-  let first = grammar.calculate("grammar.first");
+  const first = grammar.calculate("grammar.first");
   
   for (let k in nullable) {
     
@@ -76,9 +76,9 @@ module.exports["parsing.ll.ll1_table"] = function(grammar) {
 
   let table = {};
 
-  let terminals = grammar.calculate("grammar.terminals");
-  let nonterminals = grammar.calculate("grammar.nonterminals");
-  let follow = grammar.calculate("grammar.follow");
+  const terminals = grammar.calculate("grammar.terminals");
+  const nonterminals = grammar.calculate("grammar.nonterminals");
+  const follow = grammar.calculate("grammar.follow");
   const productions = grammar.calculate("grammar.productions");
 
   // Populate table with blank arrays
