@@ -1,22 +1,25 @@
-//= require templates/header
+'use strict';
 
-var HeaderView = function(element) {
+const template = require('../templates/header.ejs');
+const Helpers = require('../helpers');
+
+class HeaderView {
   
-  this._element = element;
-  this._element.className = "header";
+  constructor(element) {
+    this._element = element;
+    this._element.className = "header";
+  }
+
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
+
+  reload() {
+    let path = this._delegate.getPathComponents();
+    
+    this._element.innerHTML = template({ path: path, Helpers });
+  }
   
 }
 
-HeaderView.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-}
-
-HeaderView.prototype.reload = function() {
-  
-  var path = this._delegate.getPathComponents();
-  
-  this._element.innerHTML = JST["templates/header"]({ path: path });
-  
-}
+module.exports = HeaderView;

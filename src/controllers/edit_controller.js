@@ -1,28 +1,28 @@
-//= require templates/edit
+'use strict';
 
-var EditController = function(element) {
+const editTemplate = require('../templates/edit.ejs');
+
+class EditController {
   
-  this._element = element;
-  this._element.id = "edit";
+  constructor(element) {
+    this._element = element;
+    this._element.id = "edit";
   
-  this._element.innerHTML = JST["templates/edit"]();
+    this._element.innerHTML = editTemplate();  
+  }
+
+  getSpec() {
+    return $(this._element).find(".spec").get(0).value;
+  }
+
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
+
+  reload() {
+    $(this._element).find(".spec").get(0).value = this._delegate.getSpec();
+  }
   
 }
 
-EditController.prototype.getSpec = function() {
-  
-  return $(this._element).find(".spec").get(0).value;
-  
-}
-
-EditController.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-}
-
-EditController.prototype.reload = function() {
-  
-  $(this._element).find(".spec").get(0).value = this._delegate.getSpec();
-  
-}
+module.exports = EditController;

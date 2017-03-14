@@ -1,21 +1,25 @@
-//= require templates/parsing
+'use strict';
 
-var ParsingView = function(element) {
+const template = require('../templates/parsing.ejs');
+const Helpers = require('../helpers');
+
+class ParsingView {
   
-  this._element = element;
+  constructor(element) {
+    this._element = element;
+  }
+
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
+
+  reload() {
+    this._element.innerHTML = template({
+      classification: this._delegate.getCalculation("grammar.classification"),
+      Helpers
+    });
+  }
   
 }
 
-ParsingView.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-}
-
-ParsingView.prototype.reload = function() {
-  
-  this._element.innerHTML = JST["templates/parsing"]({
-    classification: this._delegate.getCalculation("grammar.classification")
-  });
-  
-}
+module.exports = ParsingView;

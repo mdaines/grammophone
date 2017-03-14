@@ -1,20 +1,21 @@
-//= require templates/blank_slate
+'use strict';
 
-var BlankSlateView = function(element) {
+const template = require('../templates/blank_slate.ejs');
+
+class BlankSlateView {
   
-  this._element = element;
-  this._element.className = "blank-slate";
-  
+  constructor(element) {
+    this._element = element;
+    this._element.className = "blank-slate"; 
+  }
+
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
+
+  reload() {
+    this._element.innerHTML = template({});
+  }
 }
 
-BlankSlateView.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-}
-
-BlankSlateView.prototype.reload = function() {
-  
-  this._element.innerHTML = JST["templates/blank_slate"]({});
-  
-}
+module.exports = BlankSlateView;

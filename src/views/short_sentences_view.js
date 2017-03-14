@@ -1,23 +1,27 @@
-//= require templates/sentences
+'use strict';
 
-var ShortSentencesView = function(element) {
+const template = require('../templates/sentences.ejs');
+const Helpers = require('../helpers');
+
+class ShortSentencesView {
   
-  this._element = element;
+  constructor(element) {
+    this._element = element;
+  }
+
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
+
+  reload() {
+    this._element.innerHTML = template({
+      sentences: this._delegate.getCalculation("grammar.sentences").slice(0, 10),
+      info: this._delegate.getCalculation("grammar.symbolInfo"),
+      more: this._delegate.getCalculation("grammar.sentences").length > 10,
+      Helpers
+    });
+  }
   
 }
 
-ShortSentencesView.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-}
-
-ShortSentencesView.prototype.reload = function() {
-  
-  this._element.innerHTML = JST["templates/sentences"]({
-    sentences: this._delegate.getCalculation("grammar.sentences").slice(0, 10),
-    info: this._delegate.getCalculation("grammar.symbolInfo"),
-    more: this._delegate.getCalculation("grammar.sentences").length > 10
-  });
-  
-}
+module.exports = ShortSentencesView;

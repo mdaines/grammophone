@@ -1,25 +1,29 @@
-//= require templates/nonterminals
+'use strict';
 
-var NonterminalsView = function(element) {
+const template = require('../templates/nonterminals.ejs');
+const Helpers = require('../helpers');
+
+class NonterminalsView {
   
-  this._element = element;
+  constructor(element) {
+    this._element = element;
+  }
+
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
+
+  reload() {
+    this._element.innerHTML = template({
+      nullable: this._delegate.getCalculation("grammar.nullable"),
+      endable: this._delegate.getCalculation("grammar.endable"),
+      first: this._delegate.getCalculation("grammar.first"),
+      follow: this._delegate.getCalculation("grammar.follow"),
+      info: this._delegate.getCalculation("grammar.symbolInfo"),
+      Helpers
+    });
+  }
   
 }
 
-NonterminalsView.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-}
-
-NonterminalsView.prototype.reload = function() {
-  
-  this._element.innerHTML = JST["templates/nonterminals"]({
-    nullable: this._delegate.getCalculation("grammar.nullable"),
-    endable: this._delegate.getCalculation("grammar.endable"),
-    first: this._delegate.getCalculation("grammar.first"),
-    follow: this._delegate.getCalculation("grammar.follow"),
-    info: this._delegate.getCalculation("grammar.symbolInfo")
-  });
-  
-}
+module.exports = NonterminalsView;

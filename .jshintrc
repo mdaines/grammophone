@@ -1,0 +1,14 @@
+{
+  "node": true,
+  "esversion": 6,
+  
+  "curly": true,
+  "eqeqeq": true,
+  "noarg": true,
+  "nonew": true,
+  "strict": true,
+  "sub": true,
+  "undef": true,
+  "unused": true,
+  "varstmt": true
+}

@@ -1,23 +1,31 @@
-//= require templates/lr1_table
+'use strict';
 
-var LALR1TableView = function(element) {
+const template = require('../templates/lr1_table.ejs');
+const Helpers = require('../helpers');
+const Sets = require('../sets');
+const END = require('../grammar/symbols').END;
+
+class LALR1TableView {
   
-  this._element = element;
+  constructor(element) {
+    this._element = element;
+  }
+
+  setDelegate(delegate) {
+    this._delegate = delegate;
+  }
+
+  reload() {
+    this._element.innerHTML = template({
+      info: this._delegate.getCalculation("grammar.symbolInfo"),
+      table: this._delegate.getCalculation("parsing.lr.lalr1_table"),
+      productions: this._delegate.getCalculation("grammar.productions"),
+      Helpers,
+      Sets,
+      END
+    });
+  }
   
 }
 
-LALR1TableView.prototype.setDelegate = function(delegate) {
-  
-  this._delegate = delegate;
-  
-}
-
-LALR1TableView.prototype.reload = function() {
-  
-  this._element.innerHTML = JST["templates/lr1_table"]({
-    info: this._delegate.getCalculation("grammar.symbolInfo"),
-    table: this._delegate.getCalculation("parsing.lr.lalr1_table"),
-    productions: this._delegate.getCalculation("grammar.productions")
-  });
-  
-}
+module.exports = LALR1TableView;

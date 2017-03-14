@@ -1,0 +1,63 @@
+<%
+  function formatClassification(cs, c, n) {
+    if (cs[c].member)
+      return "The grammar is " + n + ".";
+    else
+      return "<span class=\"conflict\">Not " + n + " &mdash; " + cs[c].reason + ".</span></td>";
+  }
+%>
+
+<h1>Parsing Algorithms</h1>
+
+<table class="parsing-algorithm-table">
+  <tr>
+    <th scope="row">LL(1)</th>
+    <td class="classification">
+      <%- formatClassification(classification, "ll1", "LL(1)") %>
+    </td>
+    <td>
+      <a href="<%- Helpers.buildHref("/ll1-table") %>">Parsing table</a>
+    </td>
+  </tr>
+  
+  <tr>
+    <th scope="row">LR(0)</th>
+    <td class="classification">
+      <%- formatClassification(classification, "lr0", "LR(0)") %>
+    </td>
+    <td>
+      <a href="<%- Helpers.buildHref("/lr0-automaton") %>">Automaton</a>,
+      <a href="<%- Helpers.buildHref("/lr0-table") %>">Parsing table</a>
+    </td>
+  </tr>
+  
+  <tr>
+    <th scope="row">SLR(1)</th>
+    <td class="classification">
+      <%- formatClassification(classification, "slr1", "SLR(1)") %>
+    </td>
+    <td><a href="<%- Helpers.buildHref("/slr1-table") %>">Parsing table</a></td>
+  </tr>
+  
+  <tr>
+    <th scope="row">LR(1)</th>
+    <td class="classification">
+      <%- formatClassification(classification, "lr1", "LR(1)") %>
+    </td>
+    <td>
+      <a href="<%- Helpers.buildHref("/lr1-automaton") %>">Automaton</a>,
+      <a href="<%- Helpers.buildHref("/lr1-table") %>">Parsing table</a>
+    </td>
+  </tr>
+  
+  <tr>
+    <th scope="row">LALR(1)</th>
+    <td class="classification">
+      <%- formatClassification(classification, "lalr1", "LALR(1)") %>
+    </td>
+    <td>
+      <a href="<%- Helpers.buildHref("/lalr1-automaton") %>">Automaton</a>,
+      <a href="<%- Helpers.buildHref("/lalr1-table") %>">Parsing table</a>
+    </td>
+  </tr>
+</table>
