@@ -3,10 +3,11 @@
 function epsilonSeparate(grammar, group, epsilon) {
   
   const nonterminals = grammar.calculate("grammar.nonterminals");
+  const productions = grammar.calculate("grammar.productions");
 
   // Find a new symbol...
 
-  let symbol = grammar.productions[group[0]][0];
+  let symbol = productions[group[0]][0];
 
   do {
     symbol += "*";
@@ -17,7 +18,7 @@ function epsilonSeparate(grammar, group, epsilon) {
   let changes = [];
   let offset = 0;
 
-  for (let i = 0; i < grammar.productions.length; i++) {
+  for (let i = 0; i < productions.length; i++) {
   
     if (group.indexOf(i) !== -1 || i === epsilon) {
       changes.push({ index: i + offset, operation: "delete" });
@@ -29,13 +30,13 @@ function epsilonSeparate(grammar, group, epsilon) {
   // Add the separated version of the original rule
 
   changes.push({
-    production: [grammar.productions[group[0]][0], symbol],
+    production: [productions[group[0]][0], symbol],
     operation: "insert",
     index: group[0]
   });
 
   changes.push({
-    production: [grammar.productions[group[0]][0]],
+    production: [productions[group[0]][0]],
     operation: "insert",
     index: group[0] + 1
   });
@@ -44,7 +45,7 @@ function epsilonSeparate(grammar, group, epsilon) {
 
   for (let i = 0; i < group.length; i++) {
     changes.push({
-      production: [symbol].concat(grammar.productions[group[i]].slice(1)),
+      production: [symbol].concat(productions[group[i]].slice(1)),
       operation: "insert",
       index: group[0] + i + 2
     });
@@ -57,6 +58,7 @@ function epsilonSeparate(grammar, group, epsilon) {
 module.exports["transformations.epsilonSeparate"] = function(grammar) {
   
   const nonterminals = grammar.calculate("grammar.nonterminals");
+  const productions = grammar.calculate("grammar.productions");
   let result = [];
   
   // For each nonterminal, determine if it is unambiguously nullable,
@@ -69,11 +71,11 @@ module.exports["transformations.epsilonSeparate"] = function(grammar) {
     let epsilon = -1;
     let i;
     
-    for (i = 0; i < grammar.productions.length; i++) {
+    for (i = 0; i < productions.length; i++) {
       
-      if (grammar.productions[i][0] === nt) {
+      if (productions[i][0] === nt) {
       
-        if (grammar.productions[i].length === 1) {
+        if (productions[i].length === 1) {
           if (epsilon !== -1) {
             break;
           }
@@ -86,7 +88,7 @@ module.exports["transformations.epsilonSeparate"] = function(grammar) {
       
     }
     
-    if (i === grammar.productions.length && epsilon !== -1) {
+    if (i === productions.length && epsilon !== -1) {
       
       result.push({
         name: "epsilonSeparate",

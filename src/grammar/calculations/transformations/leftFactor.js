@@ -7,10 +7,11 @@
 function leftFactor(grammar, group, prefix) {
   
   const nonterminals = grammar.calculate("grammar.nonterminals");
+  const productions = grammar.calculate("grammar.productions");
 
   // Find a new symbol...
 
-  let symbol = grammar.productions[group[0]][0];
+  let symbol = productions[group[0]][0];
 
   do {
     symbol += "'";
@@ -21,7 +22,7 @@ function leftFactor(grammar, group, prefix) {
   let changes = [];
   let offset = 0;
 
-  for (let i = 0; i < grammar.productions.length; i++) {
+  for (let i = 0; i < productions.length; i++) {
   
     if (group.indexOf(i) !== -1) {
       changes.push({ index: i + offset, operation: "delete" });
@@ -33,7 +34,7 @@ function leftFactor(grammar, group, prefix) {
   // Add the reference to the new symbol with the factored prefix
 
   changes.push({
-    production: grammar.productions[group[0]].slice(0, prefix + 1).concat(symbol),
+    production: productions[group[0]].slice(0, prefix + 1).concat(symbol),
     operation: "insert",
     index: group[0]
   });
@@ -42,7 +43,7 @@ function leftFactor(grammar, group, prefix) {
 
   for (let i = 0; i < group.length; i++) {
     changes.push({
-      production: [symbol].concat(grammar.productions[group[i]].slice(prefix + 1)),
+      production: [symbol].concat(productions[group[i]].slice(prefix + 1)),
       operation: "insert",
       index: group[0] + i + 1
     });
@@ -111,29 +112,31 @@ class Trie {
 
 module.exports["transformations.leftFactor"] = function(grammar) {
 
+  const productions = grammar.calculate("grammar.productions");
+
   let result = [];
   
   // Build tries for each nonterminal's productions
   
-  let productions = {};
+  let nonterminalProductions = {};
   
-  for (let i = 0; i < grammar.productions.length; i++) {
+  for (let i = 0; i < productions.length; i++) {
     
-    let nt = grammar.productions[i][0];
+    let nt = productions[i][0];
     
-    if (typeof productions[nt] === "undefined") {
-      productions[nt] = new Trie();
+    if (typeof nonterminalProductions[nt] === "undefined") {
+      nonterminalProductions[nt] = new Trie();
     }
     
-    productions[nt].insert(grammar.productions[i].slice(1), i);
+    nonterminalProductions[nt].insert(productions[i].slice(1), i);
     
   }
   
   // Get factorable prefixes and their corresponding productions
   
-  for (let nt in productions) {
+  for (let nt in nonterminalProductions) {
     
-    let factorable = productions[nt].getFactorablePrefixes();
+    let factorable = nonterminalProductions[nt].getFactorablePrefixes();
     
     for (let i = 0; i < factorable.length; i++) {
       

@@ -5,9 +5,11 @@ function removeUnreachable(grammar, group) {
   let changes = [];
   let offset = 0;
   
+  const productions = grammar.calculate("grammar.productions");
+  
   // Remove all productions in the group.
 
-  for (let i = 0; i < grammar.productions.length; i++) {
+  for (let i = 0; i < productions.length; i++) {
   
     if (group.indexOf(i) !== -1) {
       changes.push({ index: i + offset, operation: "delete" });
@@ -23,15 +25,17 @@ function removeUnreachable(grammar, group) {
 module.exports["transformations.removeUnreachable"] = function(grammar) {
   
   const unreachable = grammar.calculate("grammar.unreachable");
+  const productions = grammar.calculate("grammar.productions");
+  
   let result = [];
   
   for (let nt in unreachable) {
     
     let group = [];
     
-    for (let i = 0; i < grammar.productions.length; i++) {
+    for (let i = 0; i < productions.length; i++) {
       
-      if (grammar.productions[i][0] === nt) {
+      if (productions[i][0] === nt) {
         group.push(i);
       }
       

@@ -17,6 +17,7 @@ module.exports["parsing.ll.ll1_classification"] = function(grammar) {
   let terminals = grammar.calculate("grammar.terminals");
   let nonterminals = grammar.calculate("grammar.nonterminals");
   let nullable = grammar.calculate("grammar.nullable");
+  const productions = grammar.calculate("grammar.productions");
   
   // Check for first set clashes. Instead of checking intersections of
   // first sets of all productions alpha_i for a given nonterminal A,
@@ -37,10 +38,10 @@ module.exports["parsing.ll.ll1_classification"] = function(grammar) {
   
   }
     
-  for (let i = 0; i < grammar.productions.length; i++) {
+  for (let i = 0; i < productions.length; i++) {
   
-    let head = grammar.productions[i][0];
-    let body = grammar.productions[i].slice(1);
+    let head = productions[i][0];
+    let body = productions[i].slice(1);
   
     let first = grammar.getFirst(body);
     
@@ -78,6 +79,7 @@ module.exports["parsing.ll.ll1_table"] = function(grammar) {
   let terminals = grammar.calculate("grammar.terminals");
   let nonterminals = grammar.calculate("grammar.nonterminals");
   let follow = grammar.calculate("grammar.follow");
+  const productions = grammar.calculate("grammar.productions");
 
   // Populate table with blank arrays
 
@@ -95,10 +97,10 @@ module.exports["parsing.ll.ll1_table"] = function(grammar) {
 
   // Collect moves
 
-  for (let i = 0; i < grammar.productions.length; i++) {
+  for (let i = 0; i < productions.length; i++) {
   
-    let head = grammar.productions[i][0];
-    let body = grammar.productions[i].slice(1);
+    let head = productions[i][0];
+    let body = productions[i].slice(1);
   
     // Get the first set of the production's body
   

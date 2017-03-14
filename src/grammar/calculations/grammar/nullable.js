@@ -2,6 +2,8 @@
 
 module.exports["grammar.nullable"] = function(grammar) {
 
+  const productions = grammar.calculate("grammar.productions");
+
   let nullable = {};
   let added;
 
@@ -9,19 +11,19 @@ module.exports["grammar.nullable"] = function(grammar) {
 
     added = [];
 
-    for (let i = 0; i < grammar.productions.length; i++) {
+    for (let i = 0; i < productions.length; i++) {
       
       let j;
 
-      for (j = 1; j < grammar.productions[i].length; j++) {
-        if (!nullable[grammar.productions[i][j]]) {
+      for (j = 1; j < productions[i].length; j++) {
+        if (!nullable[productions[i][j]]) {
           break;
         }
       }
 
-      let head = grammar.productions[i][0];
+      let head = productions[i][0];
 
-      if (j === grammar.productions[i].length && !nullable[head]) {
+      if (j === productions[i].length && !nullable[head]) {
         nullable[head] = true;
         added.push(head);
       }

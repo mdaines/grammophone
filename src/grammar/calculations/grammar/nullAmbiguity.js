@@ -4,6 +4,7 @@ module.exports["grammar.nullAmbiguity"] = function(grammar) {
 
   const nonterminals = grammar.calculate("grammar.nonterminals");
   const nullable = grammar.calculate("grammar.nullable");
+  const productions = grammar.calculate("grammar.productions");
 
   // For each nonterminal...
 
@@ -15,13 +16,13 @@ module.exports["grammar.nullAmbiguity"] = function(grammar) {
   
     let found;
   
-    for (let i = 0; i < grammar.productions.length; i++) {
+    for (let i = 0; i < productions.length; i++) {
     
-      if (grammar.productions[i][0] === nt) {
+      if (productions[i][0] === nt) {
       
         // An empty production is nullable.
       
-        if (grammar.productions[i].length === 1) {
+        if (productions[i].length === 1) {
         
           if (typeof found !== "undefined") {
             return i < found ? [i, found] : [found, i];
@@ -37,15 +38,15 @@ module.exports["grammar.nullAmbiguity"] = function(grammar) {
     
         let j;
     
-        for (j = 1; j < grammar.productions[i].length; j++) {
+        for (j = 1; j < productions[i].length; j++) {
       
-          if (!nullable[grammar.productions[i][j]]) {
+          if (!nullable[productions[i][j]]) {
             break;
           }
       
         }
         
-        if (j === grammar.productions[i].length) {
+        if (j === productions[i].length) {
         
           if (typeof found !== "undefined") {
             return i < found ? [i, found] : [found, i];

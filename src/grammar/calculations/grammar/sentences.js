@@ -12,6 +12,7 @@ function expandSentenceNode(node, grammar) {
   let expanded = [];
   const nonterminals = grammar.calculate("grammar.nonterminals");
   const unrealizable = grammar.calculate("grammar.unrealizable");
+  const productions = grammar.calculate("grammar.productions");
   
   // expand the first realizable nonterminal.
   
@@ -19,11 +20,11 @@ function expandSentenceNode(node, grammar) {
     
     if (nonterminals[node.sentence[i]] && !unrealizable[node.sentence[i]]) {
       
-      for (let j = 0; j < grammar.productions.length; j++) {
+      for (let j = 0; j < productions.length; j++) {
         
-        if (grammar.productions[j][0] === node.sentence[i]) {
+        if (productions[j][0] === node.sentence[i]) {
           
-          let replacement = grammar.productions[j].slice(1);
+          let replacement = productions[j].slice(1);
           let nonterminalCount = 0;
           
           for (let k = 0; k < replacement.length; k++) {

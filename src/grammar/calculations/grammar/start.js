@@ -1,7 +1,9 @@
 'use strict';
 
 module.exports["grammar.start"] = function(grammar) {
+  
+  const productions = grammar.calculate("grammar.productions");
 
-  return grammar.productions[0][0];
+  return productions[0][0];
 
 };

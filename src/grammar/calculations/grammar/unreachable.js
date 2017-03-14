@@ -6,17 +6,18 @@ module.exports["grammar.unreachable"] = function(grammar) {
   
   const nonterminals = grammar.calculate("grammar.nonterminals");
   const start = grammar.calculate("grammar.start");
+  const productions = grammar.calculate("grammar.productions");
 
   // Build relation:
   // (x,y) | x -> a y b where a and b are strings of terminals or nonterminals
 
   let relation = Relations.create();
 
-  for (let i = 0; i < grammar.productions.length; i++) {
-    for (let j = 1; j < grammar.productions[i].length; j++) {
+  for (let i = 0; i < productions.length; i++) {
+    for (let j = 1; j < productions[i].length; j++) {
     
-      if (nonterminals[grammar.productions[i][j]]) {
-        Relations.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
+      if (nonterminals[productions[i][j]]) {
+        Relations.add(relation, productions[i][0], productions[i][j]);
       }
     
     }

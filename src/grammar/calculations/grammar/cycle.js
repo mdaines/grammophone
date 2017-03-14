@@ -6,33 +6,34 @@ module.exports["grammar.cycle"] = function(grammar) {
 
   const nonterminals = grammar.calculate("grammar.nonterminals");
   const nullable = grammar.calculate("grammar.nullable");
+  const productions = grammar.calculate("grammar.productions");
 
   // Build relation
   // (x,y) | x -> a y b, y a nonterminal, a and b nullable
 
   let relation = Relations.create();
 
-  for (let i = 0; i < grammar.productions.length; i++) {
-    for (let j = 1; j < grammar.productions[i].length; j++) {
+  for (let i = 0; i < productions.length; i++) {
+    for (let j = 1; j < productions[i].length; j++) {
     
-      if (nonterminals[grammar.productions[i][j]]) {
+      if (nonterminals[productions[i][j]]) {
         
         let k;
       
-        for (k = 1; k < grammar.productions[i].length; k++) {
+        for (k = 1; k < productions[i].length; k++) {
         
           if (j === k) {
             continue;
           }
         
-          if (!nonterminals[grammar.productions[i][k]] || !nullable[grammar.productions[i][k]]) {
+          if (!nonterminals[productions[i][k]] || !nullable[productions[i][k]]) {
             break;
           }
         
         }
       
-        if (k === grammar.productions[i].length) {
-          Relations.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
+        if (k === productions[i].length) {
+          Relations.add(relation, productions[i][0], productions[i][j]);
         }
       
       }

@@ -22,6 +22,7 @@ const build = {
   closure: function(grammar, kernel) {
   
     const start = grammar.calculate("grammar.start");
+    const productions = grammar.calculate("grammar.productions");
   
     // Which items were added?
   
@@ -63,14 +64,14 @@ const build = {
         if (item.production === -1) {
           symbol = [start][item.index];
         } else {
-          symbol = grammar.productions[item.production][item.index + 1];
+          symbol = productions[item.production][item.index + 1];
         }
       
         // Find unused matching productions and add them.
       
-        for (let j = 0; j < grammar.productions.length; j++) {
+        for (let j = 0; j < productions.length; j++) {
         
-          if (!used[j] && grammar.productions[j][0] === symbol) {
+          if (!used[j] && productions[j][0] === symbol) {
             added.push({ production: j, index: 0 });
             used[j] = true;
           }
@@ -97,6 +98,7 @@ const build = {
   
     let result = {};
     const start = grammar.calculate("grammar.start");
+    const productions = grammar.calculate("grammar.productions");
   
     // For each item...
   
@@ -112,7 +114,7 @@ const build = {
       if (item.production === -1) {
         symbol = [start][item.index];
       } else {
-        symbol = grammar.productions[item.production][item.index + 1];
+        symbol = productions[item.production][item.index + 1];
       }
       
       // If there is a leaving symbol, add the next item.
@@ -176,6 +178,7 @@ module.exports["parsing.lr.lr0_table"] = function(grammar) {
   
   let table = [];
   const automaton = grammar.calculate("parsing.lr.lr0_automaton");
+  const productions = grammar.calculate("grammar.productions");
   
   for (let i = 0; i < automaton.length; i++) {
     
@@ -199,7 +202,7 @@ module.exports["parsing.lr.lr0_table"] = function(grammar) {
           actions.reduce.push(item.production);
         }
       } else {
-        if (item.index === grammar.productions[item.production].length - 1) {
+        if (item.index === productions[item.production].length - 1) {
           actions.reduce.push(item.production);
         }
       }

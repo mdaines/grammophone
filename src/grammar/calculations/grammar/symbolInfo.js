@@ -8,18 +8,19 @@ module.exports["grammar.symbolInfo"] = function(grammar) {
   
   const nonterminals = grammar.calculate("grammar.nonterminals");
   const terminals = grammar.calculate("grammar.terminals");
+  const productions = grammar.calculate("grammar.productions");
 
-  for (let i = 0; i < grammar.productions.length; i++) {
+  for (let i = 0; i < productions.length; i++) {
     
-    let s = grammar.productions[i][0];
+    let s = productions[i][0];
     
     if (productionOrder.indexOf(s) === -1) {
       productionOrder.push(s);
     }
       
-    for (let j = 0; j < grammar.productions[i].length; j++) {
+    for (let j = 0; j < productions[i].length; j++) {
       
-      let s = grammar.productions[i][j];
+      let s = productions[i][j];
     
       if (nonterminals[s] && nonterminalOrder.indexOf(s) === -1) {
         nonterminalOrder.push(s);

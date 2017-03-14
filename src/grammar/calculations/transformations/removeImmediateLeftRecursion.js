@@ -3,11 +3,12 @@
 function removeImmediateLeftRecursion(grammar, base, recursive) {
   
   const nonterminals = grammar.calculate("grammar.nonterminals");
+  const productions = grammar.calculate("grammar.productions");
 
   // Find a new symbol for the right recursive production by adding primes
   // to the existing symbol.
 
-  let symbol = grammar.productions[recursive[0]][0];
+  let symbol = productions[recursive[0]][0];
 
   do {
     symbol += "'";
@@ -19,7 +20,7 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
   let first;
   let offset = 0;
 
-  for (let i = 0; i < grammar.productions.length; i++) {
+  for (let i = 0; i < productions.length; i++) {
   
     if (base.indexOf(i) !== -1 || recursive.indexOf(i) !== -1) {
       
@@ -43,8 +44,8 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
   
     let production = [];
   
-    for (let j = 0; j < grammar.productions[base[i]].length; j++) {
-      production.push(grammar.productions[base[i]][j]);
+    for (let j = 0; j < productions[base[i]].length; j++) {
+      production.push(productions[base[i]][j]);
     }
     
     production.push(symbol);
@@ -62,8 +63,8 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
   
     production.push(symbol);
   
-    for (let j = 2; j < grammar.productions[recursive[i]].length; j++) {
-      production.push(grammar.productions[recursive[i]][j]);
+    for (let j = 2; j < productions[recursive[i]].length; j++) {
+      production.push(productions[recursive[i]][j]);
     }
   
     production.push(symbol);
@@ -84,6 +85,8 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
 module.exports["transformations.removeImmediateLeftRecursion"] = function(grammar) {
  
   const nonterminals = grammar.calculate("grammar.nonterminals");
+  const productions = grammar.calculate("grammar.productions");
+  
   let result = [];
   
   let candidates = {};
@@ -98,10 +101,10 @@ module.exports["transformations.removeImmediateLeftRecursion"] = function(gramma
     candidates[nt] = { recursive: [], base: [] };
   }
   
-  for (let i = 0; i < grammar.productions.length; i++) {
-    let nt = grammar.productions[i][0];
+  for (let i = 0; i < productions.length; i++) {
+    let nt = productions[i][0];
   
-    if (nt === grammar.productions[i][1]) {
+    if (nt === productions[i][1]) {
       candidates[nt].recursive.push(i);
     } else {
       candidates[nt].base.push(i);
