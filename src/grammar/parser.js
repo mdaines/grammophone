@@ -84,28 +84,28 @@ performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* actio
 var $0 = $$.length - 1;
 switch (yystate) {
 case 1:
- return this.$ = $$[$0]; 
+ return this.$ = $$[$0];
 break;
 case 2:
- return []; 
+ return [];
 break;
 case 3: case 7:
- this.$ = $$[$0]; $$[$0].unshift($$[$0-2]); 
+ this.$ = $$[$0]; $$[$0].unshift($$[$0-2]);
 break;
 case 4:
- this.$ = [$$[$0-1]]; 
+ this.$ = [$$[$0-1]];
 break;
 case 5:
- this.$ = { nt: $$[$0-2], p: $$[$0] }; 
+ this.$ = { nt: $$[$0-2], p: $$[$0] };
 break;
 case 6:
- this.$ = [$$[$0]]; 
+ this.$ = [$$[$0]];
 break;
 case 8:
- this.$ = $$[$0]; $$[$0].unshift($$[$0-1]); 
+ this.$ = $$[$0]; $$[$0].unshift($$[$0-1]);
 break;
 case 9:
- this.$ = []; 
+ this.$ = [];
 break;
 }
 },
@@ -589,37 +589,37 @@ options: {},
 performAction: function anonymous(yy,yy_,$avoiding_name_collisions,YY_START) {
 var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
-case 0: this.begin("COMMENT"); 
+case 0: this.begin("COMMENT");
 break;
-case 1: return "ARROW"; 
+case 1: return "ARROW";
 break;
-case 2: return "CHOICE"; 
+case 2: return "CHOICE";
 break;
-case 3: return "STOP"; 
+case 3: return "STOP";
 break;
-case 4: 
+case 4:
 break;
-case 5: 
+case 5:
 break;
-case 6: this.begin("NAME"); name = yy_.yytext; 
+case 6: this.begin("NAME"); name = yy_.yytext;
 break;
-case 7: this.unput("->"); this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
+case 7: this.unput("->"); this.begin("INITIAL"); yy_.yytext = name; return "NAME";
 break;
-case 8: this.unput("|"); this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
+case 8: this.unput("|"); this.begin("INITIAL"); yy_.yytext = name; return "NAME";
 break;
-case 9: this.unput("."); this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
+case 9: this.unput("."); this.begin("INITIAL"); yy_.yytext = name; return "NAME";
 break;
-case 10: yy_.yytext = name; return "NAME"; 
+case 10: yy_.yytext = name; return "NAME";
 break;
-case 11: this.begin("INITIAL"); yy_.yytext = name; return "NAME"; 
+case 11: this.begin("INITIAL"); yy_.yytext = name; return "NAME";
 break;
-case 12: name += yy_.yytext; 
+case 12: name += yy_.yytext;
 break;
-case 13: this.begin("INITIAL"); 
+case 13: this.begin("INITIAL");
 break;
-case 14: 
+case 14:
 break;
-case 15: 
+case 15:
 break;
 }
 },

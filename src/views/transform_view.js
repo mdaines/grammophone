@@ -4,7 +4,7 @@ const template = require('../templates/transform.ejs');
 const Helpers = require('../helpers');
 
 class TransformView {
-  
+
   constructor(element) {
     this._element = $(element);
   }
@@ -21,7 +21,7 @@ class TransformView {
         this._delegate.redo();
       }
     });
-  
+
     this._element.on("change", (e) => {
       let index = parseInt(e.target.value);
       this._delegate.transform(this._transformations[index]);
@@ -31,20 +31,20 @@ class TransformView {
   reload() {
     let productions = this._delegate.getProductions();
     let info = this._delegate.getSymbolInfo();
-  
+
     this._transformations = this._delegate.getTransformations();
-  
+
     let transformations = [];
-  
+
     for (let i = 0; i < productions.length; i++) {
       transformations[i] = [];
       for (let j = 0; j < productions[i].length; j++) {
         transformations[i][j] = [];
       }
     }
-  
+
     let transformation;
-  
+
     for (let i = 0; i < this._transformations.length; i++) {
       transformation = this._transformations[i];
       transformations[transformation.production][transformation.symbol].push({
@@ -52,7 +52,7 @@ class TransformView {
         transformation: transformation
       });
     }
-  
+
     this._element.get(0).innerHTML = template({
       productions: productions,
       info: info,
@@ -63,7 +63,7 @@ class TransformView {
       Helpers
     });
   }
-  
+
 }
 
 module.exports = TransformView;

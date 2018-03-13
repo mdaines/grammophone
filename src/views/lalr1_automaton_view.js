@@ -4,7 +4,7 @@ const template = require('../templates/lr_automaton_graph.ejs');
 const Helpers = require('../helpers');
 
 class LALR1AutomatonView {
-  
+
   constructor(element) {
     this._element = element;
   }
@@ -22,9 +22,9 @@ class LALR1AutomatonView {
       title: "LALR(1) Automaton",
       Helpers
     });
-  
+
     this._element.innerHTML = Viz(dot);
-  }  
+  }
 }
 
 module.exports = LALR1AutomatonView;

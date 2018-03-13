@@ -4,7 +4,7 @@ const template = require('../templates/sentences.ejs');
 const Helpers = require('../helpers');
 
 class SentencesView {
-  
+
   constructor(element) {
     this._element = element;
   }
@@ -21,7 +21,7 @@ class SentencesView {
       Helpers
     });
   }
-  
+
 }
 
 module.exports = SentencesView;

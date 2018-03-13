@@ -16,15 +16,15 @@ module.exports["grammar.first"] = function(grammar) {
   for (let i = 0; i < productions.length; i++) {
 
     // Skip nullable symbols...
-    
+
     let j;
 
     for (j = 1; j < productions[i].length; j++) {
-  
+
       if (!nullable[productions[i][j]]) {
         break;
       }
-  
+
     }
 
     // If the first non-nullable symbol is a terminal, add it to the immediate first set
@@ -41,34 +41,34 @@ module.exports["grammar.first"] = function(grammar) {
 
   for (let i = 0; i < productions.length; i++) {
     for (let j = 1; j < productions[i].length; j++) {
-  
+
       // Is it a nonterminal? Add it.
-  
+
       if (nonterminals[productions[i][j]]) {
         Relations.add(propagation, productions[i][0], productions[i][j]);
       }
-  
+
       // Is it not nullable? Stop.
-  
+
       if (!nullable[productions[i][j]]) {
         break;
       }
-  
+
     }
   }
 
   // Propagate the relation.
 
   let result = Relations.propagate(immediate, propagation);
-  
+
   // Ensure that all nonterminals are present as keys, even if that particular follow set is empty.
-  
+
   for (let k in nonterminals) {
     if (typeof result[k] === "undefined") {
       result[k] = {};
     }
   }
-  
+
   return result;
 
 };

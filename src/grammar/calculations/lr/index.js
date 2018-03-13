@@ -15,7 +15,7 @@
 // representing the entries in the parsing table for that state.
 //
 // Rows for LR(0) parsing tables:
-// 
+//
 //   { shift: { ... }, reduce: [ ... ] }
 //
 // Examples:
@@ -24,7 +24,7 @@
 //   { reduce: -1 }
 //
 // -1 = augmented start state production.
-// 
+//
 // Rows for SLR(1), LR(1), and LALR(1) tables:
 //
 //   { "symbol": { shift: 6, reduce: [3] }, ... }

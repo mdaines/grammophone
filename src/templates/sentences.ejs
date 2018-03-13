@@ -6,7 +6,7 @@
       <li><%- sentence.length === 0 ? "<u>&epsilon;</u>" : Helpers.formatSymbols(sentence, info).join(" ") %></li>
     <% }); %>
   </ul>
-  
+
   <% if (more) { %>
     <p><a href="<%- Helpers.buildHref("/sentences") %>">More example sentences</a></p>
   <% } %>

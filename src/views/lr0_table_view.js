@@ -5,7 +5,7 @@ const Helpers = require('../helpers');
 const Sets = require('../sets');
 
 class LR0TableView {
-  
+
   constructor(element) {
     this._element = element;
   }
@@ -25,7 +25,7 @@ class LR0TableView {
       Sets
     });
   }
-  
+
 }
 
 module.exports = LR0TableView;

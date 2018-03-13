@@ -5,7 +5,7 @@
   <colgroup class="t">
     <%- Helpers.repeatString("<col>", Sets.count(info.terminals) + 1) %>
   </colgroup>
-  
+
   <tr>
     <th></th>
     <% info.terminalOrder.forEach(function(symbol) { %>
@@ -13,7 +13,7 @@
     <% }) %>
     <th><%- Helpers.formatSymbol(END, info) %></th>
   </tr>
-  
+
   <% info.productionOrder.forEach(function(nt) { %>
     <tr>
       <th scope="row"><%- Helpers.formatSymbol(nt, info) %></th>

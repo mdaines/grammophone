@@ -8,7 +8,7 @@
   <colgroup class="nt">
     <%- Helpers.repeatString("<col>", Sets.count(info.nonterminals)) %>
   </colgroup>
-  
+
   <tr>
     <th>State</th>
     <% info.terminalOrder.forEach(function(symbol) { %>
@@ -18,7 +18,7 @@
       <th><%- Helpers.formatSymbol(symbol, info) %></th>
     <% }) %>
   </tr>
-  
+
   <% table.forEach(function(state, index) { %>
     <tr>
       <th scope="row"><%- index %></td>

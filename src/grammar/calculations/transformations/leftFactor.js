@@ -5,7 +5,7 @@
 // the production) to factor.
 
 function leftFactor(grammar, group, prefix) {
-  
+
   const nonterminals = grammar.calculate("grammar.nonterminals");
   const productions = grammar.calculate("grammar.productions");
 
@@ -23,12 +23,12 @@ function leftFactor(grammar, group, prefix) {
   let offset = 0;
 
   for (let i = 0; i < productions.length; i++) {
-  
+
     if (group.indexOf(i) !== -1) {
       changes.push({ index: i + offset, operation: "delete" });
       offset--;
     }
-  
+
   }
 
   // Add the reference to the new symbol with the factored prefix
@@ -50,13 +50,13 @@ function leftFactor(grammar, group, prefix) {
   }
 
   return changes;
-  
+
 }
 
 // Mini trie implementation for finding factorable prefixes.
 
 class Trie {
-  
+
   constructor() {
     this.root = {
       children: {},
@@ -65,9 +65,9 @@ class Trie {
   }
 
   insert(production, value) {
-  
+
     let node = this.root;
-  
+
     for (let i = 0; i < production.length; i++) {
       let s = production[i];
       if (typeof node.children[s] === "undefined") {
@@ -75,37 +75,37 @@ class Trie {
       }
       node = node.children[s];
     }
-  
+
     node.values.push(value);
-  
+
   }
 
   getFactorablePrefixes() {
-  
+
     let groups = [];
-  
+
     function _values(length, node) {
-    
+
       let values = [];
-    
+
       values = values.concat(node.values);
-    
+
       for (let symbol in node.children) {
         values = values.concat(_values(length + 1, node.children[symbol]));
       }
-    
+
       if (length > 0 && values.length >= 2) {
         groups.push({ length: length, group: values });
       }
-        
+
       return values;
-    
+
     }
-  
+
     _values(0, this.root);
-  
+
     return groups;
-  
+
   }
 
 }
@@ -115,35 +115,35 @@ module.exports["transformations.leftFactor"] = function(grammar) {
   const productions = grammar.calculate("grammar.productions");
 
   let result = [];
-  
+
   // Build tries for each nonterminal's productions
-  
+
   let nonterminalProductions = {};
-  
+
   for (let i = 0; i < productions.length; i++) {
-    
+
     let nt = productions[i][0];
-    
+
     if (typeof nonterminalProductions[nt] === "undefined") {
       nonterminalProductions[nt] = new Trie();
     }
-    
+
     nonterminalProductions[nt].insert(productions[i].slice(1), i);
-    
+
   }
-  
+
   // Get factorable prefixes and their corresponding productions
-  
+
   for (let nt in nonterminalProductions) {
-    
+
     let factorable = nonterminalProductions[nt].getFactorablePrefixes();
-    
+
     for (let i = 0; i < factorable.length; i++) {
-      
+
       let length = factorable[i].length;
       let group = factorable[i].group;
       group.sort();
-      
+
       result.push({
         name: "leftFactor",
         production: group[0],
@@ -151,9 +151,9 @@ module.exports["transformations.leftFactor"] = function(grammar) {
         length: length,
         changes: leftFactor(grammar, group, length)
       });
-      
+
     }
-    
+
   }
 
   return result;

@@ -6,7 +6,7 @@ const Sets = require('../sets');
 const END = require('../grammar/symbols').END;
 
 class LALR1TableView {
-  
+
   constructor(element) {
     this._element = element;
   }
@@ -25,7 +25,7 @@ class LALR1TableView {
       END
     });
   }
-  
+
 }
 
 module.exports = LALR1TableView;
