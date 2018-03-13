@@ -9,7 +9,7 @@
       All nonterminals are reachable.
     <% } %>
   </li>
-  
+
   <li>
     <% if (Sets.any(unrealizable)) { %>
       The grammar has unrealizable nonterminals:
@@ -18,7 +18,7 @@
       All nonterminals are realizable.
     <% } %>
   </li>
-  
+
   <li>
     <% if (typeof cycle !== "undefined") { %>
       The grammar is cyclic:
@@ -27,7 +27,7 @@
       The grammar contains no cycles.
     <% } %>
   </li>
-  
+
   <li>
     <% if (nullAmbiguity.length > 0) { %>
       The grammar contains a null ambiguity:
@@ -39,7 +39,7 @@
       The grammar is null unambiguous.
     <% } %>
   </li>
-  
+
   <% if (typeof ambiguous !== "undefined") { %>
     <li>
       The grammar is ambiguous: the sentence

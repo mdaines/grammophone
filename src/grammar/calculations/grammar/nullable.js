@@ -12,7 +12,7 @@ module.exports["grammar.nullable"] = function(grammar) {
     added = [];
 
     for (let i = 0; i < productions.length; i++) {
-      
+
       let j;
 
       for (j = 1; j < productions[i].length; j++) {

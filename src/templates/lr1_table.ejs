@@ -8,7 +8,7 @@
   <colgroup class="nt">
     <%- Helpers.repeatString("<col>", Sets.count(info.nonterminals)) %>
   </colgroup>
-  
+
   <tr>
     <th>State</th>
     <% info.terminalOrder.forEach(function(symbol) { %>
@@ -19,14 +19,14 @@
       <th><%- Helpers.formatSymbol(symbol, info) %></th>
     <% }) %>
   </tr>
-  
+
   <% table.forEach(function(state, index) { %>
     <tr>
       <th scope="row"><%- index %></td>
       <% info.terminalOrder.concat(END).forEach(function(s) { %>
         <% if (typeof state[s] === "undefined") { %>
           <td></td>
-        <% } else { %>        
+        <% } else { %>
           <td class="<%- (typeof state[s].shift === "undefined" ? 0 : 1) + (typeof state[s].reduce !== "undefined" ? state[s].reduce.length : 0) > 1 ? "conflict" : "" %>">
             <ul>
               <% if (typeof state[s].shift !== "undefined") { %>

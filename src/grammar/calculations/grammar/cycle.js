@@ -15,29 +15,29 @@ module.exports["grammar.cycle"] = function(grammar) {
 
   for (let i = 0; i < productions.length; i++) {
     for (let j = 1; j < productions[i].length; j++) {
-    
+
       if (nonterminals[productions[i][j]]) {
-        
+
         let k;
-      
+
         for (k = 1; k < productions[i].length; k++) {
-        
+
           if (j === k) {
             continue;
           }
-        
+
           if (!nonterminals[productions[i][k]] || !nullable[productions[i][k]]) {
             break;
           }
-        
+
         }
-      
+
         if (k === productions[i].length) {
           Relations.add(relation, productions[i][0], productions[i][j]);
         }
-      
+
       }
-    
+
     }
   }
 

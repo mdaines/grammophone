@@ -4,7 +4,7 @@ const template = require('../templates/parsing.ejs');
 const Helpers = require('../helpers');
 
 class ParsingView {
-  
+
   constructor(element) {
     this._element = element;
   }
@@ -19,7 +19,7 @@ class ParsingView {
       Helpers
     });
   }
-  
+
 }
 
 module.exports = ParsingView;

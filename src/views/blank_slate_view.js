@@ -3,10 +3,10 @@
 const template = require('../templates/blank_slate.ejs');
 
 class BlankSlateView {
-  
+
   constructor(element) {
     this._element = element;
-    this._element.className = "blank-slate"; 
+    this._element.className = "blank-slate";
   }
 
   setDelegate(delegate) {

@@ -3,17 +3,17 @@
 const TransformView = require('../views/transform_view');
 
 class TransformController {
-  
+
   constructor(element) {
     this._element = element;
     this._element.id = "transform";
-  
+
     this._transformElement = document.createElement("article");
     this._element.appendChild(this._transformElement);
-  
+
     this._transformView = new TransformView(this._transformElement);
     this._transformView.setDelegate(this);
-  
+
     if (this._transformView.setup) {
       this._transformView.setup();
     }
@@ -26,7 +26,7 @@ class TransformController {
   reload() {
     this._index = 0;
     this._stack = [ { grammar: this._delegate.getGrammar() } ];
-  
+
     this._transformView.reload();
   }
 
@@ -64,9 +64,9 @@ class TransformController {
     if (this._index > 0) {
       this._index--;
     }
-  
+
     this._transformView.reload();
-  
+
     this._delegate.grammarChanged(this._stack[this._index].grammar);
   }
 
@@ -74,9 +74,9 @@ class TransformController {
     if (this._index < this._stack.length - 1) {
       this._index++;
     }
-  
+
     this._transformView.reload();
-  
+
     this._delegate.grammarChanged(this._stack[this._index].grammar);
   }
 
@@ -85,15 +85,15 @@ class TransformController {
       grammar: this._stack[this._index].grammar.transform(transformation),
       transformation: transformation
     };
-  
+
     this._index++;
     this._stack.splice(this._index, this._stack.length - this._index, item);
-  
+
     this._transformView.reload();
-  
+
     this._delegate.grammarChanged(this._stack[this._index].grammar);
   }
-  
+
 }
 
 module.exports = TransformController;

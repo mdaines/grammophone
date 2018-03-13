@@ -2,7 +2,7 @@
   <% if (typeof undoTransformation !== "undefined") { %>
     <button data-action="undo" class="undo">Undo <%- Helpers.formatTransformation(undoTransformation, productions, info) %></button>
   <% } %>
-  
+
   <% if (typeof redoTransformation !== "undefined") { %>
     <button data-action="redo" class="redo">Redo <%- Helpers.formatTransformation(redoTransformation, productions, info) %></button>
   <% } %>

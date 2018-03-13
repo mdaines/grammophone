@@ -4,7 +4,7 @@ const template = require('../templates/nonterminals.ejs');
 const Helpers = require('../helpers');
 
 class NonterminalsView {
-  
+
   constructor(element) {
     this._element = element;
   }
@@ -23,7 +23,7 @@ class NonterminalsView {
       Helpers
     });
   }
-  
+
 }
 
 module.exports = NonterminalsView;

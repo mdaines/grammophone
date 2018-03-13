@@ -8,11 +8,11 @@ module.exports["grammar.terminals"] = function(grammar) {
 
   for (let i = 0; i < productions.length; i++) {
     for (let j = 1; j < productions[i].length; j++) {
-  
+
       if (!nonterminals[productions[i][j]]) {
         terminals[productions[i][j]] = true;
       }
-    
+
     }
   }
 

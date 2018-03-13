@@ -25,7 +25,7 @@ class SLR1TableView {
       END
     });
   }
-  
+
 }
 
 module.exports = SLR1TableView;

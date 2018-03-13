@@ -5,7 +5,7 @@ const Helpers = require('../helpers');
 const Sets = require('../sets');
 
 class SanityView {
-  
+
   constructor(element) {
     this._element = element;
   }
@@ -27,7 +27,7 @@ class SanityView {
       Sets
     });
   }
-  
+
 }
 
 module.exports = SanityView;
