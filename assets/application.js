@@ -2578,7 +2578,6 @@ var Relation = {
 
 
 /* Jison generated parser */
-
 var Parser = (function(){
 var parser = {trace: function trace() { },
 yy: {},
@@ -3207,8 +3206,7 @@ HeaderView.prototype.reload = function() {
   
   this._element.innerHTML = JST["templates/header"]({ path: path });
   
-}
-;
+};
 (function() { this.JST || (this.JST = {}); this.JST["templates/blank_slate"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<section>\n  <p><b>Grammophone</b> is a tool for analyzing and transforming context-free grammars. To start, type a grammar in the box to the left and click Analyze or Transform.</p>\n  \n  <p>Grammars are written like this:</p>\n  \n  <pre>S -> a S b .\nS -> .</pre>\n\n  <p>This grammar generates the language a<sup>n</sup>&nbsp;b<sup>n</sup>, where n&nbsp;≥&nbsp;0.</p>\n        \n</section>\n');}return __p.join('');};
 }).call(this);
 
@@ -3229,8 +3227,7 @@ BlankSlateView.prototype.reload = function() {
   
   this._element.innerHTML = JST["templates/blank_slate"]({});
   
-}
-;
+};
 (function() { this.JST || (this.JST = {}); this.JST["templates/sanity"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h1>Sanity Checks</h1>\n\n<ul class="symbols">\n  <li>\n    ');  if (Set.any(unreachable)) { ; __p.push('\n      The grammar has unreachable nonterminals:\n      ',  Helpers.formatSentence(Helpers.formatSymbols(Helpers.listSymbols(unreachable, info.productionOrder), info)) ,'.\n    ');  } else { ; __p.push('\n      All nonterminals are reachable.\n    ');  } ; __p.push('\n  </li>\n  \n  <li>\n    ');  if (Set.any(unrealizable)) { ; __p.push('\n      The grammar has unrealizable nonterminals:\n      ',  Helpers.formatSentence(Helpers.formatSymbols(Helpers.listSymbols(unrealizable, info.productionOrder), info)) ,'.\n    ');  } else { ; __p.push('\n      All nonterminals are realizable.\n    ');  } ; __p.push('\n  </li>\n  \n  <li>\n    ');  if (typeof cycle !== "undefined") { ; __p.push('\n      The grammar is cyclic:\n      ',  Helpers.formatSymbols(cycle, info).join(" &rArr; ") ,' is a cycle.\n    ');  } else { ; __p.push('\n      The grammar contains no cycles.\n    ');  } ; __p.push('\n  </li>\n  \n  <li>\n    ');  if (nullAmbiguity.length > 0) { ; __p.push('\n      The grammar contains a null ambiguity:\n      ',  Helpers.formatProduction(productions[nullAmbiguity[0]], info) ,'\n      and\n      ',  Helpers.formatProduction(productions[nullAmbiguity[1]], info) ,'\n      are ambiguously nullable.\n    ');  } else { ; __p.push('\n      The grammar is null unambiguous.\n    ');  } ; __p.push('\n  </li>\n  \n  ');  if (typeof ambiguous !== "undefined") { ; __p.push('\n    <li>\n      The grammar is ambiguous: the sentence\n      ');  if (ambiguous.length === 0) { ; __p.push('\n        <u>&epsilon;</u>\n      ');  } else { ; __p.push('\n        ',  Helpers.formatSymbols(ambiguous, info).join(" ") ,'\n      ');  } ; __p.push('\n      has an ambiguous derivation.\n    </li>\n  ');  } ; __p.push('\n</ul>\n');}return __p.join('');};
 }).call(this);
 
@@ -3258,9 +3255,8 @@ SanityView.prototype.reload = function() {
     info: this._delegate.getCalculation("grammar.symbolInfo")
   });
   
-}
-;
-(function() { this.JST || (this.JST = {}); this.JST["templates/sentences"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h1>Example Sentences</h1>\n\n');  if (sentences.length > 0) { ; __p.push('\n  <ul class="symbols">\n    ');  sentences.forEach(function(sentence) { ; __p.push('\n      <li>',  sentence.length === 0 ? "<u>&epsilon;</u>" : Helpers.formatSymbols(sentence, info).join(" ") ,'</li>\n    ');  }); ; __p.push('\n  </ul>\n  \n  ');  if (more) { ; __p.push('\n    <p><a href="',  Helpers.buildHref("/sentences") ,'">More example sentences</a></p>\n  ');  } ; __p.push('\n');  } else { ; __p.push('\n  <p>No example sentences could be generated.</p>\n');  } ; __p.push('\n');}return __p.join('');};
+};
+(function() { this.JST || (this.JST = {}); this.JST["templates/sentences"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h1>Example Sentences</h1>\n\n');  if (sentences.length > 0) { ; __p.push('\n  <ul class="symbols">\n    ');  sentences.forEach(function(sentence) { ; __p.push('\n      <li>',  sentence.length === 0 ? "<u>&epsilon;</u>" : Helpers.formatSymbols(sentence, info).join(" ") ,'</li>\n    ');  }); ; __p.push('\n  </ul>\n  \n  ');  if (more) { ; __p.push('\n    <p><a href="',  Helpers.buildHref("/sentences") ,'">More example sentences</a></p>\n  ');  } ; __p.push('\n');  } else { ; __p.push('\n  <p>No example sentences could be generated.</p>\n');  } ; __p.push('');}return __p.join('');};
 }).call(this);
 
 var SentencesView = function(element) {
@@ -3283,8 +3279,7 @@ SentencesView.prototype.reload = function() {
     more: false
   });
   
-}
-;
+};
 
 var ShortSentencesView = function(element) {
   
@@ -3306,8 +3301,7 @@ ShortSentencesView.prototype.reload = function() {
     more: this._delegate.getCalculation("grammar.sentences").length > 10
   });
   
-}
-;
+};
 (function() { this.JST || (this.JST = {}); this.JST["templates/nonterminals"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h1>Nonterminals</h1>\n\n<table class="symbols">\n  <tr>\n    <th>Symbol</th>\n    <th>Nullable?</th>\n    <th>Endable?</th>\n    <th>First set</th>\n    <th>Follow set</th>\n  </tr>\n  ');  info.productionOrder.forEach(function(symbol) { ; __p.push('\n    <tr>\n      <td>',  Helpers.formatSymbol(symbol, info) ,'</td>\n      <td>',  nullable[symbol] ? "Nullable" : "" ,'</td>\n      <td>',  endable[symbol] ? "Endable" : "" ,'</td>\n      <td>',  Helpers.formatSymbols(Helpers.listSymbols(first[symbol] || {}, info.terminalOrder), info).join(", ") ,'</td>\n      <td>',  Helpers.formatSymbols(Helpers.listSymbols(follow[symbol] || {}, info.terminalOrder), info).join(", ") ,'</td>\n    </tr>\n  ');  }); ; __p.push('\n</table>\n');}return __p.join('');};
 }).call(this);
 
@@ -3333,8 +3327,7 @@ NonterminalsView.prototype.reload = function() {
     info: this._delegate.getCalculation("grammar.symbolInfo")
   });
   
-}
-;
+};
 (function() { this.JST || (this.JST = {}); this.JST["templates/parsing"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push(''); 
     function formatClassification(cs, c, n) {
       if (cs[c].member)
@@ -3363,8 +3356,7 @@ ParsingView.prototype.reload = function() {
     classification: this._delegate.getCalculation("grammar.classification")
   });
   
-}
-;
+};
 (function() { this.JST || (this.JST = {}); this.JST["templates/ll1_table"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<table class="symbols ll1-table">\n  <colgroup>\n    <col>\n  </colgroup>\n  <colgroup class="t">\n    ',  Helpers.repeatString("<col>", Set.count(info.terminals) + 1) ,'\n  </colgroup>\n  \n  <tr>\n    <th></th>\n    ');  info.terminalOrder.forEach(function(symbol) { ; __p.push('\n      <th>',  Helpers.formatSymbol(symbol, info) ,'</th>\n    ');  }) ; __p.push('\n    <th>',  Helpers.formatSymbol(Grammar.END, info) ,'</th>\n  </tr>\n  \n  ');  info.productionOrder.forEach(function(nt) { ; __p.push('\n    <tr>\n      <th scope="row">',  Helpers.formatSymbol(nt, info) ,'</th>\n      ');  info.terminalOrder.concat(Grammar.END).forEach(function(t) { ; __p.push('\n        ');  if (typeof table[nt][t] !== "undefined") { ; __p.push('\n          <td class="',  table[nt][t].length > 1 ? "conflict" : "" ,'">\n            <ul>\n              ');  table[nt][t].forEach(function(p) { ; __p.push('\n                <li>',  Helpers.formatProduction(productions[p], info) ,'\n              ');  }) ; __p.push('\n            </ul>\n          </td>\n        ');  } else { ; __p.push('\n          <td></td>\n        ');  } ; __p.push('\n      ');  }) ; __p.push('\n    </tr>\n  ');  }) ; __p.push('\n</table>\n');}return __p.join('');};
 }).call(this);
 
@@ -3388,8 +3380,7 @@ LL1TableView.prototype.reload = function() {
     productions: this._delegate.getCalculation("grammar.productions")
   });
   
-}
-;
+};
 (function() { this.JST || (this.JST = {}); this.JST["templates/lr_automaton_graph"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('digraph "',  title ,'" {\n  \n  graph [rankdir=LR];\n  node [shape=record];\n  \n  ');  automaton.forEach(function(state, index) { ; __p.push('\n    s',  index ,' [label="',  index ,' | ',  state.items.map(function(item) { return Helpers.bareFormatItem(item, start, productions, info); }).join("\\n") ,'"];\n  ');  }); ; __p.push('\n  \n  ');  automaton.forEach(function(state, index) { ; __p.push('\n    ');  var s; ; __p.push('\n    ');  for (s in state.transitions) { ; __p.push('\n      s',  index ,' -> s',  state.transitions[s] ,' [label="',  Helpers.escapeHTML(s) ,'"];\n    ');  } ; __p.push('\n  ');  }); ; __p.push('\n  \n}\n');}return __p.join('');};
 }).call(this);
 
@@ -3417,8 +3408,7 @@ LR0AutomatonView.prototype.reload = function() {
   
   this._element.innerHTML = Viz(dot);
   
-}
-;
+};
 (function() { this.JST || (this.JST = {}); this.JST["templates/lr0_table"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<table class="symbols lr0-table">\n  <colgroup>\n    <col>\n  </colgroup>\n  <colgroup class="t">\n    ',  Helpers.repeatString("<col>", Set.count(info.terminals)) ,'\n  </colgroup>\n  <colgroup class="nt">\n    ',  Helpers.repeatString("<col>", Set.count(info.nonterminals)) ,'\n  </colgroup>\n  \n  <tr>\n    <th>State</th>\n    ');  info.terminalOrder.forEach(function(symbol) { ; __p.push('\n      <th>',  Helpers.formatSymbol(symbol, info) ,'</th>\n    ');  }) ; __p.push('\n    ');  info.nonterminalOrder.forEach(function(symbol) { ; __p.push('\n      <th>',  Helpers.formatSymbol(symbol, info) ,'</th>\n    ');  }) ; __p.push('\n  </tr>\n  \n  ');  table.forEach(function(state, index) { ; __p.push('\n    <tr>\n      <th scope="row">',  index ,'</td>\n      ');  info.terminalOrder.forEach(function(s) { ; __p.push('\n        <td class="',  (typeof state.shift[s] === "undefined" ? 0 : 1) + state.reduce.length > 1 ? "conflict" : "" ,'">\n          <ul>\n            ');  if (typeof state.shift[s] !== "undefined") { ; __p.push('\n              <li>shift(',  state.shift[s] ,')</li>\n            ');  } ; __p.push('\n            ');  state.reduce.forEach(function(p) { ; __p.push('\n              ');  if (p === -1) { ; __p.push('\n                <li>accept</li>\n              ');  } else { ; __p.push('\n                <li>reduce(',  Helpers.formatProduction(productions[p], info) ,')</li>\n              ');  } ; __p.push('\n            ');  }) ; __p.push('\n          </ul>\n        </td>\n      ');  }) ; __p.push('\n      ');  info.nonterminalOrder.forEach(function(s) { ; __p.push('\n        <td>\n          <ul>\n            ');  if (typeof state.shift[s] !== "undefined") { ; __p.push('\n              <li>',  state.shift[s] ,'</li>\n            ');  } ; __p.push('\n          </ul>\n        </td>\n      ');  }) ; __p.push('\n    </tr>\n  ');  }) ; __p.push('\n</table>\n');}return __p.join('');};
 }).call(this);
 
@@ -3444,8 +3434,7 @@ LR0TableView.prototype.reload = function() {
     productions: this._delegate.getCalculation("grammar.productions")
   });
   
-}
-;
+};
 (function() { this.JST || (this.JST = {}); this.JST["templates/lr1_table"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<table class="symbols lr1-table">\n  <colgroup>\n    <col>\n  </colgroup>\n  <colgroup class="t">\n    ',  Helpers.repeatString("<col>", Set.count(info.terminals) + 1) ,'\n  </colgroup>\n  <colgroup class="nt">\n    ',  Helpers.repeatString("<col>", Set.count(info.nonterminals)) ,'\n  </colgroup>\n  \n  <tr>\n    <th>State</th>\n    ');  info.terminalOrder.forEach(function(symbol) { ; __p.push('\n      <th>',  Helpers.formatSymbol(symbol, info) ,'</th>\n    ');  }) ; __p.push('\n    <th>',  Helpers.formatSymbol(Grammar.END, info) ,'</th>\n    ');  info.nonterminalOrder.forEach(function(symbol) { ; __p.push('\n      <th>',  Helpers.formatSymbol(symbol, info) ,'</th>\n    ');  }) ; __p.push('\n  </tr>\n  \n  ');  table.forEach(function(state, index) { ; __p.push('\n    <tr>\n      <th scope="row">',  index ,'</td>\n      ');  info.terminalOrder.concat(Grammar.END).forEach(function(s) { ; __p.push('\n        ');  if (typeof state[s] === "undefined") { print("<td></td>"); return; } ; __p.push('\n        \n        <td class="',  (typeof state[s].shift === "undefined" ? 0 : 1) + (typeof state[s].reduce !== "undefined" ? state[s].reduce.length : 0) > 1 ? "conflict" : "" ,'">\n          <ul>\n            ');  if (typeof state[s].shift !== "undefined") { ; __p.push('\n              <li>shift(',  state[s].shift ,')</li>\n            ');  } ; __p.push('\n            ');  if (typeof state[s].reduce !== "undefined") { ; __p.push('\n              ');  state[s].reduce.forEach(function(p) { ; __p.push('\n                ');  if (p === -1) { ; __p.push('\n                  <li>accept</li>\n                ');  } else { ; __p.push('\n                  <li>reduce(',  Helpers.formatProduction(productions[p], info) ,')</li>\n                ');  } ; __p.push('\n              ');  }) ; __p.push('\n            ');  } ; __p.push('\n          </ul>\n        </td>\n      ');  }) ; __p.push('\n      ');  info.nonterminalOrder.forEach(function(s) { ; __p.push('\n        ');  if (typeof state[s] === "undefined") { print("<td></td>"); return; } ; __p.push('\n        \n        <td>\n          <ul>\n            ');  if (typeof state[s].shift !== "undefined") { ; __p.push('\n              <li>',  state[s].shift ,'</li>\n            ');  } ; __p.push('\n          </ul>\n        </td>\n      ');  }) ; __p.push('\n    </tr>\n  ');  }) ; __p.push('\n</table>\n');}return __p.join('');};
 }).call(this);
 
@@ -3469,8 +3458,7 @@ SLR1TableView.prototype.reload = function() {
     productions: this._delegate.getCalculation("grammar.productions")
   });
   
-}
-;
+};
 
 var LR1AutomatonView = function(element) {
   
@@ -3496,8 +3484,7 @@ LR1AutomatonView.prototype.reload = function() {
   
   this._element.innerHTML = Viz(dot);
   
-}
-;
+};
 
 var LR1TableView = function(element) {
   
@@ -3519,8 +3506,7 @@ LR1TableView.prototype.reload = function() {
     productions: this._delegate.getCalculation("grammar.productions")
   });
   
-}
-;
+};
 
 var LALR1AutomatonView = function(element) {
   
@@ -3546,8 +3532,7 @@ LALR1AutomatonView.prototype.reload = function() {
   
   this._element.innerHTML = Viz(dot);
   
-}
-;
+};
 
 var LALR1TableView = function(element) {
   
@@ -3569,8 +3554,7 @@ LALR1TableView.prototype.reload = function() {
     productions: this._delegate.getCalculation("grammar.productions")
   });
   
-}
-;
+};
 
 
 
@@ -3790,8 +3774,7 @@ AnalysisController.prototype.getPathComponents = function() {
   
   return this._routes[this._path].path;
   
-}
-;
+};
 (function() { this.JST || (this.JST = {}); this.JST["templates/edit"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<div class="spec-wrap">\n  <textarea class="spec"></textarea>\n</div>\n');}return __p.join('');};
 }).call(this);
 
@@ -3820,8 +3803,7 @@ EditController.prototype.reload = function() {
   
   $(this._element).find(".spec").get(0).value = this._delegate.getSpec();
   
-}
-;
+};
 (function() { this.JST || (this.JST = {}); this.JST["templates/transform"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<div class="buttons">\n  ');  if (typeof undoTransformation !== "undefined") { ; __p.push('\n    <button data-action="undo" class="undo">Undo ',  Helpers.formatTransformation(undoTransformation, productions, info) ,'</button>\n  ');  } ; __p.push('\n  \n  ');  if (typeof redoTransformation !== "undefined") { ; __p.push('\n    <button data-action="redo" class="redo">Redo ',  Helpers.formatTransformation(redoTransformation, productions, info) ,'</button>\n  ');  } ; __p.push('\n</div>\n\n<table class="symbols productions">\n  ');  productions.forEach(function(production, i) { ; __p.push('\n    <tr>\n      <td>\n        ');  production.forEach(function(symbol, j) { ; __p.push('\n          ');  if (transformations[i][j].length > 0) { ; __p.push('\n            <span class="pill">',  Helpers.formatSymbol(symbol, info) ,'<select><option disabled selected>',  symbol ,'</option>');  transformations[i][j].forEach(function(t) { ; __p.push('<option value="',  t.index ,'">',  Helpers.formatTransformation(t.transformation, productions, info) ,'</option>');  }) ; __p.push('</select></span>\n          ');  } else { ; __p.push('\n            ',  Helpers.formatSymbol(symbol, info) ,'\n          ');  } ; __p.push('\n          ');  if (j === 0) { ; __p.push('\n            &rarr;\n          ');  } ; __p.push('\n        ');  }) ; __p.push('\n        ');  if (production.length === 1) { ; __p.push('\n          <u>&epsilon;</u>\n        ');  } ; __p.push('\n      </td>\n    </tr>\n  ');  }); ; __p.push('\n</table>\n');}return __p.join('');};
 }).call(this);
 
@@ -3893,8 +3875,7 @@ TransformView.prototype.reload = function() {
     redoTransformation: this._delegate.getRedoTransformation()
   });
   
-}
-;
+};
 
 var TransformController = function(element) {
   
@@ -4002,9 +3983,8 @@ TransformController.prototype.transform = function(transformation) {
   
   this._delegate.grammarChanged(this._stack[this._index].grammar);
   
-}
-;
-(function() { this.JST || (this.JST = {}); this.JST["templates/mode"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<input type="radio" id="mode-edit" name="mode" value="edit" checked><label for="mode-edit" class="left">Edit</label><input type="radio" id="mode-transform" name="mode" value="transform"><label for="mode-transform" class="right">Transform</label>\n<button id="mode-analyze">Analyze</button>\n');}return __p.join('');};
+};
+(function() { this.JST || (this.JST = {}); this.JST["templates/mode"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<input type="radio" id="mode-edit" name="mode" value="edit" checked><label for="mode-edit" class="left">Edit</label><input type="radio" id="mode-transform" name="mode" value="transform"><label for="mode-transform" class="right">Transform</label>\n<button id="mode-analyze">Analyze</button>');}return __p.join('');};
 }).call(this);
 
 var ModeController = function(element) {
@@ -4052,8 +4032,7 @@ ModeController.prototype.reload = function() {
     
   }
   
-}
-;
+};
 var ErrorController = function(element) {
   
   this._element = element;
@@ -4076,8 +4055,7 @@ ErrorController.prototype.reload = function() {
   else
     this._element.innerHTML = "";
   
-}
-;
+};
 
 
 
@@ -4304,9 +4282,7 @@ ApplicationController.prototype.buildHref = function(path) {
   
   return "#" + path;
   
-}
-;
-
+};
 
 
 
