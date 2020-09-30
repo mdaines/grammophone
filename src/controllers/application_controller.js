@@ -72,7 +72,7 @@ var ApplicationController = function(element) {
   
   window.location.hash = "";
   
-  $(window).on("hashchange", function() {
+  window.addEventListener("hashchange", function() {
     this._hashChanged();
   }.bind(this), false);
   
@@ -114,29 +114,29 @@ ApplicationController.prototype._layout = function() {
   
   if (this._mode === "edit") {
     
-    $(this._editElement).show();
-    $(this._transformElement).hide();
+    this._editElement.style.display = '';
+    this._transformElement.style.display = 'none';
   
     if (typeof this._parse.error === "undefined") {
     
-      $(this._errorElement).hide();
-      $(this._editElement).css({ top: $(this._modeElement).height() + "px" });
+      this._errorElement.style.display = 'none';
+      this._editElement.style.top = this._modeElement.offsetHeight + "px";
     
     } else {
     
-      $(this._errorElement).show();
-      $(this._errorElement).css({ top: $(this._modeElement).height() + "px" });
-      $(this._editElement).css({ top: $(this._modeElement).height() + $(this._errorElement).height() + "px" });
+      this._errorElement.style.display = '';
+      this._errorElement.style.top = this._modeElement.offsetHeight + "px";
+      this._editElement.style.top = (this._modeElement.offsetHeight + this._errorElement.offsetHeight) + "px";
     
     }
     
   } else {
     
-    $(this._editElement).hide();
-    $(this._errorElement).hide();
-    $(this._transformElement).show();
+    this._editElement.style.display = 'none';
+    this._errorElement.style.display = 'none';
+    this._transformElement.style.display = '';
   
-    $(this._transformElement).css({ top: $(this._modeElement).height() + "px" });
+    this._transformElement.style.top = this._modeElement.offsetHeight + "px";
     
   }
   

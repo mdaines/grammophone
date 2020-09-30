@@ -2,7 +2,7 @@
 
 var TransformView = function(element) {
   
-  this._element = $(element);
+  this._element = element;
   
 }
 
@@ -14,16 +14,16 @@ TransformView.prototype.setDelegate = function(delegate) {
 
 TransformView.prototype.setup = function() {
   
-  this._element.on("click", "button", function(e) {
+  this._element.addEventListener("click", function(e) {
     
-    if ($(e.target).data("action") === "undo")
+    if (e.target.dataset.action === "undo")
       this._delegate.undo();
-    else if ($(e.target).data("action") === "redo")
+    else if (e.target.dataset.action === "redo")
       this._delegate.redo();
     
   }.bind(this));
   
-  this._element.on("change", function(e) {
+  this._element.addEventListener("change", function(e) {
     
     var index = parseInt(e.target.value);
     this._delegate.transform(this._transformations[index]);
@@ -59,7 +59,7 @@ TransformView.prototype.reload = function() {
     });
   }
   
-  this._element.get(0).innerHTML = JST["templates/transform"]({
+  this._element.innerHTML = JST["templates/transform"]({
     productions: productions,
     info: info,
     previousInfo: this._delegate.getPreviousSymbolInfo(),

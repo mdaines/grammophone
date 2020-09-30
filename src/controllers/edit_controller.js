@@ -11,7 +11,7 @@ var EditController = function(element) {
 
 EditController.prototype.getSpec = function() {
   
-  return $(this._element).find(".spec").get(0).value;
+  return this._element.querySelector(".spec").value;
   
 }
 
@@ -23,6 +23,6 @@ EditController.prototype.setDelegate = function(delegate) {
 
 EditController.prototype.reload = function() {
   
-  $(this._element).find(".spec").get(0).value = this._delegate.getSpec();
+  this._element.querySelector(".spec").value = this._delegate.getSpec();
   
 }

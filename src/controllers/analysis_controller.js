@@ -183,13 +183,13 @@ AnalysisController.prototype.reload = function() {
   
     }
     
-    $(this._headerElement).show();
-    $(this._blankSlateElement).hide();
+    this._headerElement.style.display = '';
+    this._blankSlateElement.style.display = 'none';
     
   } else {
     
-    $(this._headerElement).hide();
-    $(this._blankSlateElement).show();
+    this._headerElement.style.display = 'none';
+    this._blankSlateElement.style.display = '';
     
   }
   

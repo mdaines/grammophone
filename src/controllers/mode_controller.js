@@ -7,17 +7,17 @@ var ModeController = function(element) {
   
   this._element.innerHTML = JST["templates/mode"]();
   
-  $(this._element).find("#mode-edit").on("change", function(e) {
+  this._element.querySelector("#mode-edit").addEventListener("change", function(e) {
     if (e.target.checked)
       this._delegate.edit();
   }.bind(this));
   
-  $(this._element).find("#mode-transform").on("change", function(e) {
+  this._element.querySelector("#mode-transform").addEventListener("change", function(e) {
     if (e.target.checked)
       this._delegate.transform();
   }.bind(this));
   
-  $(this._element).find("#mode-analyze").on("click", function(e) {
+  this._element.querySelector("#mode-analyze").addEventListener("click", function(e) {
     this._delegate.analyze();
   }.bind(this));
   
@@ -35,13 +35,13 @@ ModeController.prototype.reload = function() {
   
   if (mode === "edit") {
     
-    $(this._element).find("#mode-edit").get(0).checked = true;
-    $(this._element).find("#mode-analyze").get(0).disabled = false;
+    this._element.querySelector("#mode-edit").checked = true;
+    this._element.querySelector("#mode-analyze").disabled = false;
     
   } else {
     
-    $(this._element).find("#mode-transform").get(0).checked = true;
-    $(this._element).find("#mode-analyze").get(0).disabled = true;
+    this._element.querySelector("#mode-transform").checked = true;
+    this._element.querySelector("#mode-analyze").disabled = true;
     
   }
   
