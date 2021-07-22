@@ -1,4 +1,5 @@
 //= require relation
+//= require priorityqueue
 
 (function() {
   this.Calculations || (this.Calculations = {});
@@ -565,13 +566,13 @@
     
     var i, j;
     var sentences = [];
-    var queue = [{ sentence: [start], steps: 0, nonterminals: 1 }];
+    var queue = new PriorityQueue();
+    queue.push({ sentence: [start], steps: 0, nonterminals: 1 }, 1);
     var node;
     var expanded;
     
     do {
-    
-      node = queue.shift();
+      node = queue.pop();
       expanded = expandSentenceNode(node, grammar);
     
       for (i = 0; i < expanded.length; i++) {
@@ -579,20 +580,13 @@
         if (expanded[i].nonterminals === 0)
           sentences.push(expanded[i].sentence);
         else
-          queue.push(expanded[i]);
+          queue.push(expanded[i], expanded[i].nonterminals + expanded[i].steps);
+          // queue.push(expanded[i]);
         
         if (sentences.length >= MAX_SENTENCES)
           break;
         
-      }
-      
-      // Sort the queue so that the next sentence is the one with the
-      // fewest nonterminals and steps.
-      
-      queue = queue.sort(function(a, b) {
-        return (a.nonterminals + a.steps) - (b.nonterminals + b.steps);
-      });
-      
+      }      
     } while (queue.length > 0 && sentences.length < MAX_SENTENCES);
     
     return sentences.sort(function(a, b) {
