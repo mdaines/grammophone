@@ -1,4 +1,4 @@
-const Grammar = require("../src/index");
+const Grammar = require("../src/grammar");
 
 function productionsEqual(a, b) {
 

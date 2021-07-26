@@ -1,7 +1,7 @@
 {
   "private": true,
   "version": "0.0.0",
-  "name": "grammar",
+  "name": "grammophone",
   "devDependencies": {
     "jest": "*",
     "browserify": "*",

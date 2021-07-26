@@ -1,6 +1,6 @@
-const Grammar = require("../src/index");
-const Sets = require("../src/sets");
-const Relation = require("../src/relation");
+const Grammar = require("../src/grammar");
+const Sets = require("../src/grammar/sets");
+const Relation = require("../src/grammar/relation");
 
 function calculate(grammar, calculation) {
 
