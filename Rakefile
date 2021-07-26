@@ -10,8 +10,10 @@ GRAMMAR_ASSETS = [
   "application.css"
 ]
 
-file "src/grammar.js" => "grammar/bundle.js" do
-  FileUtils.cp "grammar/bundle.js", "src/grammar.js"
+file "src/grammar.js" do
+  Dir.chdir "grammar" do
+    system "yarn build --outfile ../src/grammar.js"
+  end
 end
 
 task :default => "src/grammar.js" do
@@ -36,5 +38,5 @@ task :clean do
 end
 
 task :clobber => :clean do
-  FileUtils.rm_f("src/parser.js")
+  FileUtils.rm_f("src/grammar.js")
 end
