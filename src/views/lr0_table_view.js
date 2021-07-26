@@ -1,6 +1,6 @@
 const template = require('../templates/lr0_table.ejs');
 const Helpers = require('../helpers');
-const Sets = require('../grammar/sets');
+const Sets = require('../sets');
 
 var LR0TableView = function(element) {
 

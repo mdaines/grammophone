@@ -1,6 +1,6 @@
 const template = require('../templates/lr1_table.ejs');
 const Helpers = require('../helpers');
-const Sets = require('../grammar/sets');
+const Sets = require('../sets');
 
 var LALR1TableView = function(element) {
 

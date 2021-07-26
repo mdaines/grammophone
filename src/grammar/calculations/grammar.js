@@ -1,4 +1,4 @@
-const Relation = require('../relation');
+const Relation = require('../../relation');
 const END = require("../symbols").END;
 
 

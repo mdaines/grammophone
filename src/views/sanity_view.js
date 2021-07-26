@@ -1,6 +1,6 @@
 const template = require("../templates/sanity.ejs");
 const Helpers = require('../helpers');
-const Sets = require('../grammar/sets');
+const Sets = require('../sets');
 
 var SanityView = function(element) {
 
