@@ -1,6 +1,6 @@
 <% if (path.length > 0) { %>
   <nav>
-    <%= path.map(function(p) {
+    <%- path.map(function(p) {
       if (p.path) {
         return "<a href=\"" + Helpers.buildHref(p.path, p.fragment) + "\">" + p.title + "</a>";
       } else {

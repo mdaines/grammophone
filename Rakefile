@@ -2,7 +2,6 @@ require "rubygems"
 require "sprockets"
 
 GRAMMAR_ASSETS = [
-  "application.js",
   "grammar.js",
   "viz.js",
   "application.css"
@@ -16,7 +15,6 @@ end
 
 task :default => "src/grammar.js" do
   environment = Sprockets::Environment.new
-  environment.append_path "src"
   environment.append_path "lib"
   environment.append_path "styles"
 
@@ -33,8 +31,4 @@ task :clean do
   GRAMMAR_ASSETS.each do |asset|
     FileUtils.rm_f("assets/#{asset}")
   end
-end
-
-task :clobber => :clean do
-  FileUtils.rm_f("src/grammar.js")
 end
