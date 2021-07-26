@@ -1,6 +1,6 @@
 const Calculations = require("./calculations");
 const Parser = require("./parser");
-
+const END = require("./symbols").END;
 
 
   // class
@@ -45,7 +45,7 @@ const Parser = require("./parser");
 
   }
 
-  var END = "Grammar.END";
+
 
   // instance
 

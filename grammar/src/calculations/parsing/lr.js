@@ -35,6 +35,7 @@
 //   { "if": { shift: 4 }, "other": { shift: 3 }, "S": { shift: 7 }, "I": { shift: 2 } }
 
 
+const END = require("../../symbols").END;
 
 
   // Build an LR automaton for the grammar, using the provided "build" functions.
@@ -267,7 +268,7 @@
 
     initial: function() {
 
-      return [ { production: -1, index: 0, lookahead: Grammar.END } ];
+      return [ { production: -1, index: 0, lookahead: END } ];
 
     },
 
@@ -567,7 +568,7 @@
         if (item.production === -1) {
 
           if (item.index === 1)
-            addReduceAction(actions, Grammar.END, item.production);
+            addReduceAction(actions, END, item.production);
 
         } else {
 
@@ -624,7 +625,7 @@
         if (item.production === -1) {
 
           if (item.index === 1)
-            addReduceAction(actions, Grammar.END, item.production);
+            addReduceAction(actions, END, item.production);
 
         } else {
 
@@ -853,7 +854,7 @@
         if (item.production === -1) {
 
           if (item.index === 1)
-            addReduceAction(actions, Grammar.END, item.production);
+            addReduceAction(actions, END, item.production);
 
         } else {
 

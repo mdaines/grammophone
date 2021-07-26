@@ -1,5 +1,5 @@
-//= require relation
-
+const Relation = require('../relation');
+const END = require("../symbols").END;
 
 
 
@@ -411,7 +411,7 @@
 
     // Add the end of input symbol to the immediate follow set of the grammar's start symbol.
 
-    Relation.add(immediate, start, Grammar.END);
+    Relation.add(immediate, start, END);
 
     // Given a production X -> ... A β, follow(A) includes first(β), except for the empty string.
 
@@ -496,7 +496,7 @@
     var follow = grammar.calculate("grammar.follow");
 
     for (s in follow) {
-      if (follow[s][Grammar.END])
+      if (follow[s][END])
         endable[s] = true;
     }
 

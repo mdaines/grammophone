@@ -1,4 +1,5 @@
-
+const Set = require("../../set");
+const END = require("../../symbols").END;
 
 
   module.exports["parsing.ll.ll1_classification"] = function(grammar) {
@@ -87,7 +88,7 @@
       for (l in terminals)
         table[k][l] = [];
 
-      table[k][Grammar.END] = [];
+      table[k][END] = [];
 
     }
 
