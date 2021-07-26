@@ -1,5 +1,5 @@
 const Grammar = require("../src/index");
-const Set = require("../src/set");
+const Sets = require("../src/sets");
 const EXAMPLE_GRAMMARS = require("./fixtures/example_grammars.js");
 
 function parse(spec) {
@@ -26,7 +26,7 @@ function classifications(grammar) {
 
 function isSetEqual(a, b) {
 
-  return Set.count(Set.intersection(a, b)) === Set.count(a);
+  return Sets.count(Sets.intersection(a, b)) === Sets.count(a);
 
 }
 
@@ -37,7 +37,7 @@ var SUPPORTED_CLASSIFICATIONS = {
 
 function assertExampleClassifications(expected, name) {
 
-  var actual = Set.intersection(classifications(parse(EXAMPLE_GRAMMARS[name])), SUPPORTED_CLASSIFICATIONS);
+  var actual = Sets.intersection(classifications(parse(EXAMPLE_GRAMMARS[name])), SUPPORTED_CLASSIFICATIONS);
 
   expect(isSetEqual(expected, actual)).toBe(true);
 

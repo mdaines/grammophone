@@ -1,5 +1,5 @@
 const Grammar = require("../src/index");
-const Set = require("../src/set");
+const Sets = require("../src/sets");
 
 function calculate(productions, calculation) {
 
@@ -9,7 +9,7 @@ function calculate(productions, calculation) {
 
 function isSetEqual(a, b) {
 
-  return Set.count(Set.intersection(a, b)) === Set.count(a);
+  return Sets.count(Sets.intersection(a, b)) === Sets.count(a);
 
 }
 

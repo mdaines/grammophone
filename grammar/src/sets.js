@@ -1,4 +1,4 @@
-var Set = {
+var Sets = {
 
   count: function(set) {
 
@@ -39,4 +39,4 @@ var Set = {
 
 };
 
-module.exports = Set;
+module.exports = Sets;

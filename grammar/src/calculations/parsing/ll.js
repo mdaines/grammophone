@@ -1,4 +1,4 @@
-const Set = require("../../set");
+const Sets = require("../../sets");
 const END = require("../../symbols").END;
 
 
@@ -60,7 +60,7 @@ const END = require("../../symbols").END;
 
     for (k in nullable) {
 
-      if (Set.any(Set.intersection(first[k], follow[k])))
+      if (Sets.any(Sets.intersection(first[k], follow[k])))
         return { member: false, reason: "it contains a first/follow set clash" };
 
     }

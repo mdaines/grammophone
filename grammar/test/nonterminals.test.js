@@ -1,5 +1,5 @@
 const Grammar = require("../src/index");
-const Set = require("../src/set");
+const Sets = require("../src/sets");
 const Relation = require("../src/relation");
 
 function calculate(grammar, calculation) {
@@ -16,7 +16,7 @@ function parse(spec) {
 
 function isSetEqual(a, b) {
 
-  return Set.count(Set.intersection(a, b)) === Set.count(a);
+  return Sets.count(Sets.intersection(a, b)) === Sets.count(a);
 
 }
 
@@ -24,7 +24,7 @@ function isRelationEqual(a, b) {
 
   var k;
 
-  if (Set.count(a) !== Set.count(b))
+  if (Sets.count(a) !== Sets.count(b))
     return false;
 
   for (k in a) {
