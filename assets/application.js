@@ -2488,7 +2488,7 @@ var Relation = {
         
       }
       
-      if (i === grammar.productions.length && epsilon !== -1) {
+      if (i === grammar.productions.length && group.length > 0 && epsilon !== -1) {
         
         result.push({
           name: "epsilonSeparate",
