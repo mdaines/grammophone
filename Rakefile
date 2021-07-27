@@ -2,18 +2,11 @@ require "rubygems"
 require "sprockets"
 
 GRAMMAR_ASSETS = [
-  "grammar.js",
   "viz.js",
   "application.css"
 ]
 
-file "src/grammar.js" do
-  Dir.chdir "grammar" do
-    system "yarn build --outfile ../src/grammar.js"
-  end
-end
-
-task :default => "src/grammar.js" do
+task :default do
   environment = Sprockets::Environment.new
   environment.append_path "lib"
   environment.append_path "styles"
@@ -25,10 +18,14 @@ task :default => "src/grammar.js" do
       f << environment.find_asset(asset).to_s
     end
   end
+
+  system "yarn build --outfile assets/application.js"
 end
 
 task :clean do
   GRAMMAR_ASSETS.each do |asset|
     FileUtils.rm_f("assets/#{asset}")
   end
+
+  FileUtils.rm_f("assets/application.js")
 end
