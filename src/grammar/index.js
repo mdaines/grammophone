@@ -35,7 +35,7 @@ const END = require("./symbols").END;
         }
       }
 
-      return { grammar: new klass(productions), spec: spec };
+      return { grammar: new Grammar(productions), spec: spec };
 
     } catch (e) {
 
@@ -226,18 +226,18 @@ const END = require("./symbols").END;
 
   // export
 
-  var klass = initialize;
+  var Grammar = initialize;
 
-  klass.parse = parse;
-  klass.END = END;
+  Grammar.parse = parse;
+  Grammar.END = END;
 
-  klass.prototype.calculate = calculate;
-  klass.prototype.transform = transform;
-  klass.prototype.getFirst = getFirst;
-  klass.prototype.isNullable = isNullable;
-  klass.prototype.copyProductions = copyProductions;
-  klass.prototype.toString = toString;
+  Grammar.prototype.calculate = calculate;
+  Grammar.prototype.transform = transform;
+  Grammar.prototype.getFirst = getFirst;
+  Grammar.prototype.isNullable = isNullable;
+  Grammar.prototype.copyProductions = copyProductions;
+  Grammar.prototype.toString = toString;
 
-  module.exports = klass;
+  module.exports = Grammar;
 
 
