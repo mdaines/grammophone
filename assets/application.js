@@ -3740,13 +3740,13 @@ AnalysisController.prototype.reload = function() {
   
     }
     
-    $(this._headerElement).show();
-    $(this._blankSlateElement).hide();
+    this._headerElement.style.display = '';
+    this._blankSlateElement.style.display = 'none';
     
   } else {
     
-    $(this._headerElement).hide();
-    $(this._blankSlateElement).show();
+    this._headerElement.style.display = 'none';
+    this._blankSlateElement.style.display = '';
     
   }
   
@@ -3789,7 +3789,7 @@ var EditController = function(element) {
 
 EditController.prototype.getSpec = function() {
   
-  return $(this._element).find(".spec").get(0).value;
+  return this._element.querySelector(".spec").value;
   
 }
 
@@ -3801,7 +3801,7 @@ EditController.prototype.setDelegate = function(delegate) {
 
 EditController.prototype.reload = function() {
   
-  $(this._element).find(".spec").get(0).value = this._delegate.getSpec();
+  this._element.querySelector(".spec").value = this._delegate.getSpec();
   
 };
 (function() { this.JST || (this.JST = {}); this.JST["templates/transform"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<div class="buttons">\n  ');  if (typeof undoTransformation !== "undefined") { ; __p.push('\n    <button data-action="undo" class="undo">Undo ',  Helpers.formatTransformation(undoTransformation, productions, info) ,'</button>\n  ');  } ; __p.push('\n  \n  ');  if (typeof redoTransformation !== "undefined") { ; __p.push('\n    <button data-action="redo" class="redo">Redo ',  Helpers.formatTransformation(redoTransformation, productions, info) ,'</button>\n  ');  } ; __p.push('\n</div>\n\n<table class="symbols productions">\n  ');  productions.forEach(function(production, i) { ; __p.push('\n    <tr>\n      <td>\n        ');  production.forEach(function(symbol, j) { ; __p.push('\n          ');  if (transformations[i][j].length > 0) { ; __p.push('\n            <span class="pill">',  Helpers.formatSymbol(symbol, info) ,'<select><option disabled selected>',  symbol ,'</option>');  transformations[i][j].forEach(function(t) { ; __p.push('<option value="',  t.index ,'">',  Helpers.formatTransformation(t.transformation, productions, info) ,'</option>');  }) ; __p.push('</select></span>\n          ');  } else { ; __p.push('\n            ',  Helpers.formatSymbol(symbol, info) ,'\n          ');  } ; __p.push('\n          ');  if (j === 0) { ; __p.push('\n            &rarr;\n          ');  } ; __p.push('\n        ');  }) ; __p.push('\n        ');  if (production.length === 1) { ; __p.push('\n          <u>&epsilon;</u>\n        ');  } ; __p.push('\n      </td>\n    </tr>\n  ');  }); ; __p.push('\n</table>\n');}return __p.join('');};
@@ -3809,7 +3809,7 @@ EditController.prototype.reload = function() {
 
 var TransformView = function(element) {
   
-  this._element = $(element);
+  this._element = element;
   
 }
 
@@ -3821,16 +3821,16 @@ TransformView.prototype.setDelegate = function(delegate) {
 
 TransformView.prototype.setup = function() {
   
-  this._element.on("click", "button", function(e) {
+  this._element.addEventListener("click", function(e) {
     
-    if ($(e.target).data("action") === "undo")
+    if (e.target.dataset.action === "undo")
       this._delegate.undo();
-    else if ($(e.target).data("action") === "redo")
+    else if (e.target.dataset.action === "redo")
       this._delegate.redo();
     
   }.bind(this));
   
-  this._element.on("change", function(e) {
+  this._element.addEventListener("change", function(e) {
     
     var index = parseInt(e.target.value);
     this._delegate.transform(this._transformations[index]);
@@ -3866,7 +3866,7 @@ TransformView.prototype.reload = function() {
     });
   }
   
-  this._element.get(0).innerHTML = JST["templates/transform"]({
+  this._element.innerHTML = JST["templates/transform"]({
     productions: productions,
     info: info,
     previousInfo: this._delegate.getPreviousSymbolInfo(),
@@ -3994,17 +3994,17 @@ var ModeController = function(element) {
   
   this._element.innerHTML = JST["templates/mode"]();
   
-  $(this._element).find("#mode-edit").on("change", function(e) {
+  this._element.querySelector("#mode-edit").addEventListener("change", function(e) {
     if (e.target.checked)
       this._delegate.edit();
   }.bind(this));
   
-  $(this._element).find("#mode-transform").on("change", function(e) {
+  this._element.querySelector("#mode-transform").addEventListener("change", function(e) {
     if (e.target.checked)
       this._delegate.transform();
   }.bind(this));
   
-  $(this._element).find("#mode-analyze").on("click", function(e) {
+  this._element.querySelector("#mode-analyze").addEventListener("click", function(e) {
     this._delegate.analyze();
   }.bind(this));
   
@@ -4022,13 +4022,13 @@ ModeController.prototype.reload = function() {
   
   if (mode === "edit") {
     
-    $(this._element).find("#mode-edit").get(0).checked = true;
-    $(this._element).find("#mode-analyze").get(0).disabled = false;
+    this._element.querySelector("#mode-edit").checked = true;
+    this._element.querySelector("#mode-analyze").disabled = false;
     
   } else {
     
-    $(this._element).find("#mode-transform").get(0).checked = true;
-    $(this._element).find("#mode-analyze").get(0).disabled = true;
+    this._element.querySelector("#mode-transform").checked = true;
+    this._element.querySelector("#mode-analyze").disabled = true;
     
   }
   
@@ -4130,7 +4130,7 @@ var ApplicationController = function(element) {
   
   window.location.hash = "";
   
-  $(window).on("hashchange", function() {
+  window.addEventListener("hashchange", function() {
     this._hashChanged();
   }.bind(this), false);
   
@@ -4172,29 +4172,29 @@ ApplicationController.prototype._layout = function() {
   
   if (this._mode === "edit") {
     
-    $(this._editElement).show();
-    $(this._transformElement).hide();
+    this._editElement.style.display = '';
+    this._transformElement.style.display = 'none';
   
     if (typeof this._parse.error === "undefined") {
     
-      $(this._errorElement).hide();
-      $(this._editElement).css({ top: $(this._modeElement).height() + "px" });
+      this._errorElement.style.display = 'none';
+      this._editElement.style.top = this._modeElement.offsetHeight + "px";
     
     } else {
     
-      $(this._errorElement).show();
-      $(this._errorElement).css({ top: $(this._modeElement).height() + "px" });
-      $(this._editElement).css({ top: $(this._modeElement).height() + $(this._errorElement).height() + "px" });
+      this._errorElement.style.display = '';
+      this._errorElement.style.top = this._modeElement.offsetHeight + "px";
+      this._editElement.style.top = (this._modeElement.offsetHeight + this._errorElement.offsetHeight) + "px";
     
     }
     
   } else {
     
-    $(this._editElement).hide();
-    $(this._errorElement).hide();
-    $(this._transformElement).show();
+    this._editElement.style.display = 'none';
+    this._errorElement.style.display = 'none';
+    this._transformElement.style.display = '';
   
-    $(this._transformElement).css({ top: $(this._modeElement).height() + "px" });
+    this._transformElement.style.top = this._modeElement.offsetHeight + "px";
     
   }
   
