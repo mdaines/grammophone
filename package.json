@@ -6,11 +6,13 @@
     "browserify": "*",
     "ejsify": "*",
     "jest": "*",
-    "jison": "^0.4.18"
+    "jison": "^0.4.18",
+    "jshint": "*"
   },
   "scripts": {
     "test": "jest",
     "generate-parser": "jison src/parser.y src/parser.l --module-type=commonjs --outfile=src/parser.js",
-    "build": "browserify src/application.js --outfile assets/application.js --standalone ApplicationController --transform ejsify"
+    "build": "browserify src/application.js --outfile assets/application.js --standalone ApplicationController --transform ejsify",
+    "lint": "yarn jshint --exclude assets,node_modules,lib,src/grammar/parser.js ."
   }
 }
