@@ -13,8 +13,8 @@ const END = require('./grammar/symbols').END;
         result.push(order[i]);
     }
 
-    if (set[Grammar.END])
-      result.push(Grammar.END);
+    if (set[END])
+      result.push(END);
 
     return result;
 
@@ -28,7 +28,7 @@ const END = require('./grammar/symbols').END;
 
   function formatSymbol(symbol, info) {
 
-    if (symbol == Grammar.END)
+    if (symbol == END)
       return "<u>$</u>";
     else if (info.nonterminals[symbol])
       return "<i>" + prettifySymbol(escapeHTML(symbol)) + "</i>";
@@ -41,7 +41,7 @@ const END = require('./grammar/symbols').END;
 
   function bareFormatSymbol(symbol, info) {
 
-    if (symbol == Grammar.END)
+    if (symbol == END)
       return "$";
     else if (info.nonterminals[symbol] || info.terminals[symbol])
       return prettifySymbol(escapeHTML(symbol));
