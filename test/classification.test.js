@@ -31,9 +31,12 @@ function isSetEqual(a, b) {
 }
 
 var SUPPORTED_CLASSIFICATIONS = {
-  ll1: true, lr0: true, slr1: true,
-  lr1: true, lr1: true, lalr1: true
-}
+  ll1: true,
+  lr0: true,
+  slr1: true,
+  lr1: true,
+  lalr1: true
+};
 
 function assertExampleClassifications(expected, name) {
 
