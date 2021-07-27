@@ -23,18 +23,7 @@ function assertSetEqual(expected, actual, message) {
 
 function assertArrayEqual(expected, actual, message) {
 
-  var passed, i;
-
-  if (expected.length !== actual.length) {
-    passed = false;
-  } else {
-    for (i = 0, passed = true; i < expected.length && passed; i++)
-      passed = expected[i] === actual[i];
-  }
-
-  expect(
-    passed
-  ).toBe(true);
+  expect(actual).toStrictEqual(expected);
 
 }
 
