@@ -54,23 +54,23 @@ function assertSetEqual(expected, actual, message) {
 
 var Fixtures = {
   // Louden, p.170
-  expressions: "exp -> exp addop term | term. \
-addop -> + | -. \
-term -> term mulop factor | factor. \
-mulop -> *. \
-factor -> ( exp ) | number.",
+  expressions: `exp -> exp addop term | term.
+addop -> + | -.
+term -> term mulop factor | factor.
+mulop -> *.
+factor -> ( exp ) | number.`,
 
   // Louden, p.171
-  ifelse: "statement -> if-stmt | other. \
-if-stmt -> if ( exp ) statement else-part. \
-else-part -> else statement | . \
-exp -> 0 | 1.",
+  ifelse: `statement -> if-stmt | other.
+if-stmt -> if ( exp ) statement else-part.
+else-part -> else statement | .
+exp -> 0 | 1.`,
 
   // Louden, p.173
-  statements: "stmt-sequence -> stmt stmt-seq' . \
-stmt-seq' -> ; stmt-sequence | . \
-stmt -> s."
-}
+  statements: `stmt-sequence -> stmt stmt-seq' .
+stmt-seq' -> ; stmt-sequence | .
+stmt -> s.`
+};
 
 describe("GrammarNonterminalsTest", function() {
 
