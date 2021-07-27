@@ -1,6 +1,7 @@
 const template = require('../templates/ll1_table.ejs');
 const Helpers = require('../helpers');
 const Sets = require('../sets');
+const END = require("../grammar/symbols").END;
 
 var LL1TableView = function(element) {
 
@@ -21,7 +22,8 @@ LL1TableView.prototype.reload = function() {
     table: this._delegate.getCalculation("parsing.ll.ll1_table"),
     productions: this._delegate.getCalculation("grammar.productions"),
     Helpers: Helpers,
-    Sets: Sets
+    Sets: Sets,
+    END: END
   });
 
 }

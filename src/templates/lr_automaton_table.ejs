@@ -17,7 +17,7 @@
       </td>
       <td>
         <ul>
-          <% info.terminalOrder.concat(info.nonterminalOrder).concat(Grammar.END).forEach(function(s) { %>
+          <% info.terminalOrder.concat(info.nonterminalOrder).concat(END).forEach(function(s) { %>
             <% if (typeof state.transitions[s] !== "undefined") { %>
               <li><%- Helpers.formatSymbol(s, info) %> &rArr; <%= state.transitions[s] %></li>
             <% } %>

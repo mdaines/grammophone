@@ -14,7 +14,7 @@
     <% info.terminalOrder.forEach(function(symbol) { %>
       <th><%- Helpers.formatSymbol(symbol, info) %></th>
     <% }) %>
-    <th><%- Helpers.formatSymbol(Grammar.END, info) %></th>
+    <th><%- Helpers.formatSymbol(END, info) %></th>
     <% info.nonterminalOrder.forEach(function(symbol) { %>
       <th><%- Helpers.formatSymbol(symbol, info) %></th>
     <% }) %>
@@ -23,7 +23,7 @@
   <% table.forEach(function(state, index) { %>
     <tr>
       <th scope="row"><%- index %></td>
-      <% info.terminalOrder.concat(Grammar.END).forEach(function(s) { %>
+      <% info.terminalOrder.concat(END).forEach(function(s) { %>
         <% if (typeof state[s] === "undefined") { %>
           <td></td>
         <% } else { %>
