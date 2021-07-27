@@ -80,7 +80,7 @@ const END = require("../../symbols").END;
           // index to the transition table for the symbol. If not, create a
           // new state.
 
-          var kernel = transitions[symbol];
+          kernel = transitions[symbol];
 
           for (i = 0; i < states.length; i++) {
 

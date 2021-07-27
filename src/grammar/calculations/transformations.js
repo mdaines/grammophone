@@ -66,6 +66,7 @@
 
     var i, j;
     var nonterminals = grammar.calculate("grammar.nonterminals");
+    var production;
 
     // Find a new symbol for the right recursive production by adding primes
     // to the existing symbol.
@@ -97,7 +98,7 @@
 
     // Create the new productions...
 
-    var offset = 0;
+    offset = 0;
 
     // Base rules
 
@@ -105,7 +106,7 @@
 
     for (i = 0; i < base.length; i++) {
 
-      var production = [];
+      production = [];
 
       for (j = 0; j < grammar.productions[base[i]].length; j++)
         production.push(grammar.productions[base[i]][j]);
@@ -121,7 +122,7 @@
 
     for (i = 0; i < recursive.length; i++) {
 
-      var production = [];
+      production = [];
 
       production.push(symbol);
 

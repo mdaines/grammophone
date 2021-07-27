@@ -103,7 +103,8 @@ var Relation = {
             return v.concat(k).concat(l);
         }
 
-        if (w = dfs(l, v.concat(k)))
+        w = dfs(l, v.concat(k));
+        if (w)
           return w;
 
       }
@@ -115,7 +116,8 @@ var Relation = {
     var v, k;
 
     for (k in relation) {
-      if (v = dfs(k, []))
+      v = dfs(k, []);
+      if (v)
         return v;
     }
 
