@@ -1,31 +1,27 @@
-require "rubygems"
-require "sprockets"
+styles = Rake::FileList["styles/**/*.css"]
 
-GRAMMAR_ASSETS = [
-  "viz.js",
-  "application.css"
-]
-
-task :default do
-  environment = Sprockets::Environment.new
-  environment.append_path "lib"
-  environment.append_path "styles"
-
-  FileUtils.mkdir_p("assets")
-
-  GRAMMAR_ASSETS.each do |asset|
-    File.open("assets/#{asset}", "w+") do |f|
-      f << environment.find_asset(asset).to_s
+file "assets/application.css" => styles do |t|
+  File.open("assets/application.css", "w+") do |f|
+    t.prereqs.each do |p|
+      f << File.read(p) << "\n"
     end
   end
+end
 
+file "assets/viz.js" => "lib/viz.js" do
+  FileUtils.cp "lib/viz.js", "assets/viz.js"
+end
+
+src = Rake::FileList["src/**/*.{js,ejs}"]
+
+file "assets/application.js" => src do
   system "yarn build --outfile assets/application.js"
 end
 
-task :clean do
-  GRAMMAR_ASSETS.each do |asset|
-    FileUtils.rm_f("assets/#{asset}")
-  end
+assets = ["assets/application.css", "assets/viz.js", "assets/application.js"]
 
-  FileUtils.rm_f("assets/application.js")
+task :default => assets
+
+task :clean do
+  FileUtils.rm_f assets
 end
