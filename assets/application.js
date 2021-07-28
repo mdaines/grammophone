@@ -1408,631 +1408,627 @@ module.exports = TransformController;
 const Relation = require('../../relation');
 const END = require("../symbols").END;
 
+module.exports["grammar.classification"] = function(grammar) {
 
-
-  module.exports["grammar.classification"] = function(grammar) {
-
-    return {
-      "ll1": grammar.calculate("parsing.ll.ll1_classification"),
-      "lr0": grammar.calculate("parsing.lr.lr0_classification"),
-      "slr1": grammar.calculate("parsing.lr.slr1_classification"),
-      "lr1": grammar.calculate("parsing.lr.lr1_classification"),
-      "lalr1": grammar.calculate("parsing.lr.lalr1_classification")
-    };
-
+  return {
+    "ll1": grammar.calculate("parsing.ll.ll1_classification"),
+    "lr0": grammar.calculate("parsing.lr.lr0_classification"),
+    "slr1": grammar.calculate("parsing.lr.slr1_classification"),
+    "lr1": grammar.calculate("parsing.lr.lr1_classification"),
+    "lalr1": grammar.calculate("parsing.lr.lalr1_classification")
   };
 
-  module.exports["grammar.nonterminals"] = function(grammar) {
+};
 
-    var i;
-    var nonterminals = {};
+module.exports["grammar.nonterminals"] = function(grammar) {
 
-    for (i = 0; i < grammar.productions.length; i++)
-      nonterminals[grammar.productions[i][0]] = true;
+  var i;
+  var nonterminals = {};
 
-    return nonterminals;
+  for (i = 0; i < grammar.productions.length; i++)
+    nonterminals[grammar.productions[i][0]] = true;
 
-  };
+  return nonterminals;
 
-  module.exports["grammar.terminals"] = function(grammar) {
+};
 
-    var i, j;
-    var terminals = {};
-    var nonterminals = grammar.calculate("grammar.nonterminals");
+module.exports["grammar.terminals"] = function(grammar) {
 
-    for (i = 0; i < grammar.productions.length; i++) {
-      for (j = 1; j < grammar.productions[i].length; j++) {
+  var i, j;
+  var terminals = {};
+  var nonterminals = grammar.calculate("grammar.nonterminals");
 
-        if (!nonterminals[grammar.productions[i][j]])
-          terminals[grammar.productions[i][j]] = true;
+  for (i = 0; i < grammar.productions.length; i++) {
+    for (j = 1; j < grammar.productions[i].length; j++) {
 
-      }
+      if (!nonterminals[grammar.productions[i][j]])
+        terminals[grammar.productions[i][j]] = true;
+
     }
+  }
 
-    return terminals;
+  return terminals;
 
-  };
+};
 
-  module.exports["grammar.symbolInfo"] = function(grammar) {
+module.exports["grammar.symbolInfo"] = function(grammar) {
 
-    var i, j, s;
+  var i, j, s;
 
-    var terminalOrder = [];
-    var nonterminalOrder = [];
-    var productionOrder = [];
+  var terminalOrder = [];
+  var nonterminalOrder = [];
+  var productionOrder = [];
 
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    var terminals = grammar.calculate("grammar.terminals");
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var terminals = grammar.calculate("grammar.terminals");
 
-    for (i = 0; i < grammar.productions.length; i++) {
+  for (i = 0; i < grammar.productions.length; i++) {
 
-      s = grammar.productions[i][0];
+    s = grammar.productions[i][0];
 
-      if (productionOrder.indexOf(s) === -1)
-        productionOrder.push(s);
+    if (productionOrder.indexOf(s) === -1)
+      productionOrder.push(s);
 
-      for (j = 0; j < grammar.productions[i].length; j++) {
+    for (j = 0; j < grammar.productions[i].length; j++) {
 
-        s = grammar.productions[i][j];
+      s = grammar.productions[i][j];
 
-        if (nonterminals[s] && nonterminalOrder.indexOf(s) === -1)
-          nonterminalOrder.push(s);
+      if (nonterminals[s] && nonterminalOrder.indexOf(s) === -1)
+        nonterminalOrder.push(s);
 
-        if (terminals[s] && terminalOrder.indexOf(s) === -1)
-          terminalOrder.push(s);
-
-      }
+      if (terminals[s] && terminalOrder.indexOf(s) === -1)
+        terminalOrder.push(s);
 
     }
 
-    return {
-      terminalOrder: terminalOrder,
-      nonterminalOrder: nonterminalOrder,
-      productionOrder: productionOrder,
+  }
 
-      nonterminals: nonterminals,
-      terminals: terminals
-    };
+  return {
+    terminalOrder: terminalOrder,
+    nonterminalOrder: nonterminalOrder,
+    productionOrder: productionOrder,
 
+    nonterminals: nonterminals,
+    terminals: terminals
   };
 
-  module.exports["grammar.start"] = function(grammar) {
+};
 
-    return grammar.productions[0][0];
+module.exports["grammar.start"] = function(grammar) {
 
-  };
+  return grammar.productions[0][0];
 
-  module.exports["grammar.productions"] = function(grammar) {
+};
 
-    return grammar.productions;
+module.exports["grammar.productions"] = function(grammar) {
 
-  };
+  return grammar.productions;
 
-  module.exports["grammar.unreachable"] = function(grammar) {
+};
 
-    var relation, closure, unreachable;
-    var i, j, s;
+module.exports["grammar.unreachable"] = function(grammar) {
 
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    var start = grammar.calculate("grammar.start");
+  var relation, closure, unreachable;
+  var i, j, s;
 
-    // Build relation:
-    // (x,y) | x -> a y b where a and b are strings of terminals or nonterminals
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var start = grammar.calculate("grammar.start");
 
-    relation = Relation.create();
+  // Build relation:
+  // (x,y) | x -> a y b where a and b are strings of terminals or nonterminals
+
+  relation = Relation.create();
+
+  for (i = 0; i < grammar.productions.length; i++) {
+    for (j = 1; j < grammar.productions[i].length; j++) {
+
+      if (nonterminals[grammar.productions[i][j]])
+        Relation.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
+
+    }
+  }
+
+  // Obtain the closure of the relation
+
+  closure = Relation.closure(relation);
+
+  // Collect unreachable nonterminals
+
+  unreachable = {};
+
+  for (s in nonterminals) {
+
+    if (s != start && (!closure[start] || !closure[start][s]))
+      unreachable[s] = true;
+
+  }
+
+  return unreachable;
+
+};
+
+module.exports["grammar.unrealizable"] = function(grammar) {
+
+  var marked, added, unrealizable;
+  var i, j, s;
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+
+  // Is a particular nonterminal realizable?
+
+  marked = {};
+
+  do {
+
+    added = [];
 
     for (i = 0; i < grammar.productions.length; i++) {
+
+      // Are there any unmarked nonterminals? Break at the first one.
+
       for (j = 1; j < grammar.productions[i].length; j++) {
 
-        if (nonterminals[grammar.productions[i][j]])
+        if (!marked[grammar.productions[i][j]] && nonterminals[grammar.productions[i][j]])
+          break;
+
+      }
+
+      // If the head of this production is not marked, and all of the symbols in
+      // the body of the production were not unmarked nonterminals (ie, they were
+      // either marked or terminals), mark the head and record
+      // that we marked it in this step.
+
+      if (!marked[grammar.productions[i][0]] && j == grammar.productions[i].length) {
+        marked[grammar.productions[i][0]] = true;
+        added.push(grammar.productions[i][0]);
+      }
+
+    }
+
+  } while (added.length > 0);
+
+  // Collect nonterminals which were not marked.
+
+  unrealizable = {};
+
+  for (s in nonterminals) {
+
+    if (!marked[s])
+      unrealizable[s] = true;
+
+  }
+
+  return unrealizable;
+
+};
+
+module.exports["grammar.cycle"] = function(grammar) {
+
+  var relation;
+  var i, j, k;
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var nullable = grammar.calculate("grammar.nullable");
+
+  // Build relation
+  // (x,y) | x -> a y b, y a nonterminal, a and b nullable
+
+  relation = Relation.create();
+
+  for (i = 0; i < grammar.productions.length; i++) {
+    for (j = 1; j < grammar.productions[i].length; j++) {
+
+      if (nonterminals[grammar.productions[i][j]]) {
+
+        for (k = 1; k < grammar.productions[i].length; k++) {
+
+          if (j === k)
+            continue;
+
+          if (!nonterminals[grammar.productions[i][k]] || !nullable[grammar.productions[i][k]])
+            break;
+
+        }
+
+        if (k === grammar.productions[i].length)
           Relation.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
 
       }
-    }
-
-    // Obtain the closure of the relation
-
-    closure = Relation.closure(relation);
-
-    // Collect unreachable nonterminals
-
-    unreachable = {};
-
-    for (s in nonterminals) {
-
-      if (s != start && (!closure[start] || !closure[start][s]))
-        unreachable[s] = true;
 
     }
-
-    return unreachable;
-
-  };
-
-  module.exports["grammar.unrealizable"] = function(grammar) {
-
-    var marked, added, unrealizable;
-    var i, j, s;
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-
-    // Is a particular nonterminal realizable?
-
-    marked = {};
-
-    do {
-
-      added = [];
-
-      for (i = 0; i < grammar.productions.length; i++) {
-
-        // Are there any unmarked nonterminals? Break at the first one.
-
-        for (j = 1; j < grammar.productions[i].length; j++) {
-
-          if (!marked[grammar.productions[i][j]] && nonterminals[grammar.productions[i][j]])
-            break;
-
-        }
-
-        // If the head of this production is not marked, and all of the symbols in
-        // the body of the production were not unmarked nonterminals (ie, they were
-        // either marked or terminals), mark the head and record
-        // that we marked it in this step.
-
-        if (!marked[grammar.productions[i][0]] && j == grammar.productions[i].length) {
-          marked[grammar.productions[i][0]] = true;
-          added.push(grammar.productions[i][0]);
-        }
-
-      }
-
-    } while (added.length > 0);
-
-    // Collect nonterminals which were not marked.
-
-    unrealizable = {};
-
-    for (s in nonterminals) {
-
-      if (!marked[s])
-        unrealizable[s] = true;
-
-    }
-
-    return unrealizable;
-
-  };
-
-  module.exports["grammar.cycle"] = function(grammar) {
-
-    var relation;
-    var i, j, k;
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    var nullable = grammar.calculate("grammar.nullable");
-
-    // Build relation
-    // (x,y) | x -> a y b, y a nonterminal, a and b nullable
-
-    relation = Relation.create();
-
-    for (i = 0; i < grammar.productions.length; i++) {
-      for (j = 1; j < grammar.productions[i].length; j++) {
-
-        if (nonterminals[grammar.productions[i][j]]) {
-
-          for (k = 1; k < grammar.productions[i].length; k++) {
-
-            if (j === k)
-              continue;
-
-            if (!nonterminals[grammar.productions[i][k]] || !nullable[grammar.productions[i][k]])
-              break;
-
-          }
-
-          if (k === grammar.productions[i].length)
-            Relation.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
-
-        }
-
-      }
-    }
-
-    // Find a cycle if there is one
-
-    return Relation.cycle(relation);
-
-  };
-
-  module.exports["grammar.nullAmbiguity"] = function(grammar) {
-
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    var nullable = grammar.calculate("grammar.nullable");
-    var found;
-    var nt;
-    var i, j;
-
-    // For each nonterminal...
-
-    for (nt in nonterminals) {
-
-      // Look through the productions of this nonterminal for
-      // productions which are nullable. If we find more than
-      // one, return them as an array (in order).
-
-      found = undefined;
-
-      for (i = 0; i < grammar.productions.length; i++) {
-
-        if (grammar.productions[i][0] == nt) {
-
-          // An empty production is nullable.
-
-          if (grammar.productions[i].length == 1) {
-
-            if (typeof found !== "undefined")
-              return i < found ? [i, found] : [found, i];
-            else
-              found = i;
-
-            continue;
-
-          }
-
-          // A production is nullable if all of its symbols are nullable.
-
-          for (j = 1; j < grammar.productions[i].length; j++) {
-
-            if (!nullable[grammar.productions[i][j]])
-              break;
-
-          }
-
-          if (j == grammar.productions[i].length) {
-
-            if (typeof found !== "undefined")
-              return i < found ? [i, found] : [found, i];
-            else
-              found = i;
-
-          }
-
-        }
-
-      }
-
-    }
-
-    return [];
-
   }
 
-  module.exports["grammar.nullable"] = function(grammar) {
+  // Find a cycle if there is one
 
-    var nullable = {};
-    var added;
-    var i, j, head;
+  return Relation.cycle(relation);
 
-    do {
+};
 
-      added = [];
+module.exports["grammar.nullAmbiguity"] = function(grammar) {
 
-      for (i = 0; i < grammar.productions.length; i++) {
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var nullable = grammar.calculate("grammar.nullable");
+  var found;
+  var nt;
+  var i, j;
+
+  // For each nonterminal...
+
+  for (nt in nonterminals) {
+
+    // Look through the productions of this nonterminal for
+    // productions which are nullable. If we find more than
+    // one, return them as an array (in order).
+
+    found = undefined;
+
+    for (i = 0; i < grammar.productions.length; i++) {
+
+      if (grammar.productions[i][0] == nt) {
+
+        // An empty production is nullable.
+
+        if (grammar.productions[i].length == 1) {
+
+          if (typeof found !== "undefined")
+            return i < found ? [i, found] : [found, i];
+          else
+            found = i;
+
+          continue;
+
+        }
+
+        // A production is nullable if all of its symbols are nullable.
 
         for (j = 1; j < grammar.productions[i].length; j++) {
+
           if (!nullable[grammar.productions[i][j]])
             break;
+
         }
 
-        head = grammar.productions[i][0];
+        if (j == grammar.productions[i].length) {
 
-        if (j == grammar.productions[i].length && !nullable[head]) {
-          nullable[head] = true;
-          added.push(head);
+          if (typeof found !== "undefined")
+            return i < found ? [i, found] : [found, i];
+          else
+            found = i;
+
         }
 
       }
 
-    } while (added.length > 0);
+    }
 
-    return nullable;
+  }
 
-  };
+  return [];
 
-  module.exports["grammar.first"] = function(grammar) {
+}
 
-    var immediate, propagation, result;
-    var i, j, k;
-    var nullable = grammar.calculate("grammar.nullable");
-    var nonterminals = grammar.calculate("grammar.nonterminals");
+module.exports["grammar.nullable"] = function(grammar) {
 
-    immediate = Relation.create();
-    propagation = Relation.create();
+  var nullable = {};
+  var added;
+  var i, j, head;
 
-    // For each production, add the first terminal symbol after a sequence of nullable symbols.
+  do {
+
+    added = [];
 
     for (i = 0; i < grammar.productions.length; i++) {
-
-      // Skip nullable symbols...
 
       for (j = 1; j < grammar.productions[i].length; j++) {
-
         if (!nullable[grammar.productions[i][j]])
           break;
-
       }
 
-      // If the first non-nullable symbol is a terminal, add it to the immediate first set
-      // of this nonterminal.
+      head = grammar.productions[i][0];
 
-      if (j < grammar.productions[i].length && !nonterminals[grammar.productions[i][j]])
-        Relation.add(immediate, grammar.productions[i][0], grammar.productions[i][j]);
-
-    }
-
-    // For each production, add the prefix of nullable nonterminals, and then the next symbol
-    // if it is also a nonterminal.
-
-    for (i = 0; i < grammar.productions.length; i++) {
-      for (j = 1; j < grammar.productions[i].length; j++) {
-
-        // Is it a nonterminal? Add it.
-
-        if (nonterminals[grammar.productions[i][j]])
-          Relation.add(propagation, grammar.productions[i][0], grammar.productions[i][j]);
-
-        // Is it not nullable? Stop.
-
-        if (!nullable[grammar.productions[i][j]])
-          break;
-
-      }
-    }
-
-    // Propagate the relation.
-
-    result = Relation.propagate(immediate, propagation);
-
-    // Ensure that all nonterminals are present as keys, even if that particular follow set is empty.
-
-    for (k in nonterminals) {
-      if (typeof result[k] === "undefined")
-        result[k] = {};
-    }
-
-    return result;
-
-  };
-
-  module.exports["grammar.follow"] = function(grammar) {
-
-    var immediate, propagation, result;
-    var i, j, k, s;
-    var first = grammar.calculate("grammar.first");
-    var nullable = grammar.calculate("grammar.nullable");
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    var start = grammar.calculate("grammar.start");
-
-    immediate = Relation.create();
-    propagation = Relation.create();
-
-    // Add the end of input symbol to the immediate follow set of the grammar's start symbol.
-
-    Relation.add(immediate, start, END);
-
-    // Given a production X -> ... A β, follow(A) includes first(β), except for the empty string.
-
-    for (i = 0; i < grammar.productions.length; i++) {
-
-      for (j = 1; j < grammar.productions[i].length - 1; j++) {
-
-        // If the symbol is a nonterminal...
-
-        if (nonterminals[grammar.productions[i][j]]) {
-
-          // Add the first set of the remaining symbols to the follow set of the symbol
-
-          for (k = j + 1; k < grammar.productions[i].length; k++) {
-
-            // If this symbol is a terminal, add it, and then stop adding.
-
-            if (!nonterminals[grammar.productions[i][k]]) {
-              Relation.add(immediate, grammar.productions[i][j], grammar.productions[i][k]);
-              break;
-            }
-
-            // If it is a nonterminal, add the first set of that nonterminal.
-
-            for (s in first[grammar.productions[i][k]])
-              Relation.add(immediate, grammar.productions[i][j], s);
-
-            // Stop if it isn't nullable.
-
-            if (!nullable[grammar.productions[i][k]])
-              break;
-
-          }
-
-        }
-
+      if (j == grammar.productions[i].length && !nullable[head]) {
+        nullable[head] = true;
+        added.push(head);
       }
 
     }
 
-    // Given a production B -> ... A β where β is nullable or is the empty string, follow(A) includes follow(B)
+  } while (added.length > 0);
 
-    for (i = 0; i < grammar.productions.length; i++) {
+  return nullable;
 
-      // Scan from the end of the right side of the production to the beginning...
+};
 
-      for (j = grammar.productions[i].length - 1; j > 0; j--) {
+module.exports["grammar.first"] = function(grammar) {
 
-        // If the symbol is a nonterminal, add the left side.
+  var immediate, propagation, result;
+  var i, j, k;
+  var nullable = grammar.calculate("grammar.nullable");
+  var nonterminals = grammar.calculate("grammar.nonterminals");
 
-        if (nonterminals[grammar.productions[i][j]])
-          Relation.add(propagation, grammar.productions[i][j], grammar.productions[i][0]);
+  immediate = Relation.create();
+  propagation = Relation.create();
 
-        // If it isn't nullable, stop.
+  // For each production, add the first terminal symbol after a sequence of nullable symbols.
 
-        if (!nullable[grammar.productions[i][j]])
-          break;
+  for (i = 0; i < grammar.productions.length; i++) {
 
-      }
+    // Skip nullable symbols...
 
-    }
+    for (j = 1; j < grammar.productions[i].length; j++) {
 
-    // Propagate the relation
-
-    result = Relation.propagate(immediate, propagation);
-
-    // Ensure that all nonterminals are present as keys, even if that particular follow set is empty.
-
-    for (k in nonterminals) {
-      if (typeof result[k] === "undefined")
-        result[k] = {};
-    }
-
-    return result;
-
-  };
-
-  module.exports["grammar.endable"] = function(grammar) {
-
-    var s;
-    var endable = {};
-    var follow = grammar.calculate("grammar.follow");
-
-    for (s in follow) {
-      if (follow[s][END])
-        endable[s] = true;
-    }
-
-    return endable;
-
-  };
-
-  // Given a "sentence node" and a grammar, expand the sentence's first
-  // realizable nonterminal and return the resulting list of sentence nodes
-  // (which may be empty).
-  //
-  // Each sentence node's "step" member is incremented and its "nonterminals"
-  // member adjusted.
-
-  function expandSentenceNode(node, grammar) {
-
-    var i, j;
-    var expanded = [];
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    var unrealizable = grammar.calculate("grammar.unrealizable");
-    var sentence, replacement, nonterminalCount;
-
-    // expand the first realizable nonterminal.
-
-    for (i = 0; i < node.sentence.length; i++) {
-
-      if (nonterminals[node.sentence[i]] && !unrealizable[node.sentence[i]]) {
-
-        for (j = 0; j < grammar.productions.length; j++) {
-
-          if (grammar.productions[j][0] === node.sentence[i]) {
-
-            replacement = grammar.productions[j].slice(1);
-            nonterminalCount = 0;
-
-            for (k = 0; k < replacement.length; k++) {
-              if (nonterminals[replacement[k]])
-                nonterminalCount++;
-            }
-
-            expanded.push({
-              sentence: node.sentence.slice(0, i).concat(replacement).concat(node.sentence.slice(i+1)),
-              steps: node.steps + 1,
-              nonterminals: node.nonterminals - 1 + nonterminalCount
-            });
-
-          }
-
-        }
-
+      if (!nullable[grammar.productions[i][j]])
         break;
 
+    }
+
+    // If the first non-nullable symbol is a terminal, add it to the immediate first set
+    // of this nonterminal.
+
+    if (j < grammar.productions[i].length && !nonterminals[grammar.productions[i][j]])
+      Relation.add(immediate, grammar.productions[i][0], grammar.productions[i][j]);
+
+  }
+
+  // For each production, add the prefix of nullable nonterminals, and then the next symbol
+  // if it is also a nonterminal.
+
+  for (i = 0; i < grammar.productions.length; i++) {
+    for (j = 1; j < grammar.productions[i].length; j++) {
+
+      // Is it a nonterminal? Add it.
+
+      if (nonterminals[grammar.productions[i][j]])
+        Relation.add(propagation, grammar.productions[i][0], grammar.productions[i][j]);
+
+      // Is it not nullable? Stop.
+
+      if (!nullable[grammar.productions[i][j]])
+        break;
+
+    }
+  }
+
+  // Propagate the relation.
+
+  result = Relation.propagate(immediate, propagation);
+
+  // Ensure that all nonterminals are present as keys, even if that particular follow set is empty.
+
+  for (k in nonterminals) {
+    if (typeof result[k] === "undefined")
+      result[k] = {};
+  }
+
+  return result;
+
+};
+
+module.exports["grammar.follow"] = function(grammar) {
+
+  var immediate, propagation, result;
+  var i, j, k, s;
+  var first = grammar.calculate("grammar.first");
+  var nullable = grammar.calculate("grammar.nullable");
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var start = grammar.calculate("grammar.start");
+
+  immediate = Relation.create();
+  propagation = Relation.create();
+
+  // Add the end of input symbol to the immediate follow set of the grammar's start symbol.
+
+  Relation.add(immediate, start, END);
+
+  // Given a production X -> ... A β, follow(A) includes first(β), except for the empty string.
+
+  for (i = 0; i < grammar.productions.length; i++) {
+
+    for (j = 1; j < grammar.productions[i].length - 1; j++) {
+
+      // If the symbol is a nonterminal...
+
+      if (nonterminals[grammar.productions[i][j]]) {
+
+        // Add the first set of the remaining symbols to the follow set of the symbol
+
+        for (k = j + 1; k < grammar.productions[i].length; k++) {
+
+          // If this symbol is a terminal, add it, and then stop adding.
+
+          if (!nonterminals[grammar.productions[i][k]]) {
+            Relation.add(immediate, grammar.productions[i][j], grammar.productions[i][k]);
+            break;
+          }
+
+          // If it is a nonterminal, add the first set of that nonterminal.
+
+          for (s in first[grammar.productions[i][k]])
+            Relation.add(immediate, grammar.productions[i][j], s);
+
+          // Stop if it isn't nullable.
+
+          if (!nullable[grammar.productions[i][k]])
+            break;
+
+        }
+
       }
 
     }
 
-    return expanded;
+  }
+
+  // Given a production B -> ... A β where β is nullable or is the empty string, follow(A) includes follow(B)
+
+  for (i = 0; i < grammar.productions.length; i++) {
+
+    // Scan from the end of the right side of the production to the beginning...
+
+    for (j = grammar.productions[i].length - 1; j > 0; j--) {
+
+      // If the symbol is a nonterminal, add the left side.
+
+      if (nonterminals[grammar.productions[i][j]])
+        Relation.add(propagation, grammar.productions[i][j], grammar.productions[i][0]);
+
+      // If it isn't nullable, stop.
+
+      if (!nullable[grammar.productions[i][j]])
+        break;
+
+    }
 
   }
 
-  var MAX_SENTENCES = 30;
+  // Propagate the relation
 
-  module.exports["grammar.sentences"] = function(grammar) {
+  result = Relation.propagate(immediate, propagation);
 
-    var start = grammar.calculate("grammar.start");
+  // Ensure that all nonterminals are present as keys, even if that particular follow set is empty.
 
-    var i, j;
-    var sentences = [];
-    var queue = [{ sentence: [start], steps: 0, nonterminals: 1 }];
-    var node;
-    var expanded;
+  for (k in nonterminals) {
+    if (typeof result[k] === "undefined")
+      result[k] = {};
+  }
 
-    do {
+  return result;
 
-      node = queue.shift();
-      expanded = expandSentenceNode(node, grammar);
+};
 
-      for (i = 0; i < expanded.length; i++) {
+module.exports["grammar.endable"] = function(grammar) {
 
-        if (expanded[i].nonterminals === 0)
-          sentences.push(expanded[i].sentence);
-        else
-          queue.push(expanded[i]);
+  var s;
+  var endable = {};
+  var follow = grammar.calculate("grammar.follow");
 
-        if (sentences.length >= MAX_SENTENCES)
-          break;
+  for (s in follow) {
+    if (follow[s][END])
+      endable[s] = true;
+  }
+
+  return endable;
+
+};
+
+// Given a "sentence node" and a grammar, expand the sentence's first
+// realizable nonterminal and return the resulting list of sentence nodes
+// (which may be empty).
+//
+// Each sentence node's "step" member is incremented and its "nonterminals"
+// member adjusted.
+
+function expandSentenceNode(node, grammar) {
+
+  var i, j;
+  var expanded = [];
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var unrealizable = grammar.calculate("grammar.unrealizable");
+  var sentence, replacement, nonterminalCount;
+
+  // expand the first realizable nonterminal.
+
+  for (i = 0; i < node.sentence.length; i++) {
+
+    if (nonterminals[node.sentence[i]] && !unrealizable[node.sentence[i]]) {
+
+      for (j = 0; j < grammar.productions.length; j++) {
+
+        if (grammar.productions[j][0] === node.sentence[i]) {
+
+          replacement = grammar.productions[j].slice(1);
+          nonterminalCount = 0;
+
+          for (k = 0; k < replacement.length; k++) {
+            if (nonterminals[replacement[k]])
+              nonterminalCount++;
+          }
+
+          expanded.push({
+            sentence: node.sentence.slice(0, i).concat(replacement).concat(node.sentence.slice(i+1)),
+            steps: node.steps + 1,
+            nonterminals: node.nonterminals - 1 + nonterminalCount
+          });
+
+        }
 
       }
 
-      // Sort the queue so that the next sentence is the one with the
-      // fewest nonterminals and steps.
+      break;
 
-      queue = queue.sort(function(a, b) {
-        return (a.nonterminals + a.steps) - (b.nonterminals + b.steps);
-      });
+    }
 
-    } while (queue.length > 0 && sentences.length < MAX_SENTENCES);
+  }
 
-    return sentences.sort(function(a, b) {
-      if (a.length === b.length)
-        return a < b;
+  return expanded;
+
+}
+
+var MAX_SENTENCES = 30;
+
+module.exports["grammar.sentences"] = function(grammar) {
+
+  var start = grammar.calculate("grammar.start");
+
+  var i, j;
+  var sentences = [];
+  var queue = [{ sentence: [start], steps: 0, nonterminals: 1 }];
+  var node;
+  var expanded;
+
+  do {
+
+    node = queue.shift();
+    expanded = expandSentenceNode(node, grammar);
+
+    for (i = 0; i < expanded.length; i++) {
+
+      if (expanded[i].nonterminals === 0)
+        sentences.push(expanded[i].sentence);
       else
-        return a.length - b.length;
+        queue.push(expanded[i]);
+
+      if (sentences.length >= MAX_SENTENCES)
+        break;
+
+    }
+
+    // Sort the queue so that the next sentence is the one with the
+    // fewest nonterminals and steps.
+
+    queue = queue.sort(function(a, b) {
+      return (a.nonterminals + a.steps) - (b.nonterminals + b.steps);
     });
 
-  };
+  } while (queue.length > 0 && sentences.length < MAX_SENTENCES);
 
-  module.exports["grammar.ambiguous"] = function(grammar) {
+  return sentences.sort(function(a, b) {
+    if (a.length === b.length)
+      return a < b;
+    else
+      return a.length - b.length;
+  });
 
-    var i, j;
-    var sentences = grammar.calculate("grammar.sentences");
-    var ambiguous = [];
+};
 
-    for (i = 0; i < sentences.length - 1; i++) {
-      if (sentences[i].length != sentences[i+1].length)
-        continue;
+module.exports["grammar.ambiguous"] = function(grammar) {
 
-      for (j = 0; j < sentences[i].length; j++) {
-        if (sentences[i][j] !== sentences[i+1][j])
-          break;
-      }
+  var i, j;
+  var sentences = grammar.calculate("grammar.sentences");
+  var ambiguous = [];
 
-      if (j === sentences[i].length)
-        return sentences[i];
+  for (i = 0; i < sentences.length - 1; i++) {
+    if (sentences[i].length != sentences[i+1].length)
+      continue;
+
+    for (j = 0; j < sentences[i].length; j++) {
+      if (sentences[i][j] !== sentences[i+1][j])
+        break;
     }
 
+    if (j === sentences[i].length)
+      return sentences[i];
   }
 
-
+}
 
 },{"../../relation":21,"../symbols":19}],12:[function(require,module,exports){
 const grammar = require('./grammar');
@@ -2058,131 +2054,128 @@ module.exports = Object.assign({},
 const Sets = require("../../../sets");
 const END = require("../../symbols").END;
 
+module.exports["parsing.ll.ll1_classification"] = function(grammar) {
 
-  module.exports["parsing.ll.ll1_classification"] = function(grammar) {
+  var p, i, j, k, l, s;
+  var head, body, first;
 
-    var p, i, j, k, l, s;
-    var head, body, first;
+  var nullAmbiguity = grammar.calculate("grammar.nullAmbiguity");
 
-    var nullAmbiguity = grammar.calculate("grammar.nullAmbiguity");
+  // We can return immediately if the grammar contains a null ambiguity.
 
-    // We can return immediately if the grammar contains a null ambiguity.
+  if (nullAmbiguity.length > 0)
+    return { member: false, reason: "it contains a null ambiguity" };
 
-    if (nullAmbiguity.length > 0)
-      return { member: false, reason: "it contains a null ambiguity" };
+  var follow = grammar.calculate("grammar.follow");
+  var terminals = grammar.calculate("grammar.terminals");
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var nullable = grammar.calculate("grammar.nullable");
 
-    var follow = grammar.calculate("grammar.follow");
-    var terminals = grammar.calculate("grammar.terminals");
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    var nullable = grammar.calculate("grammar.nullable");
+  // Check for first set clashes. Instead of checking intersections of
+  // first sets of all productions alpha_i for a given nonterminal A,
+  // set the [A, a] entry of a table for every a in first(alpha_i) for
+  // all A and alpha_i in A -> alpha_1 | alpha_2 | ... | alpha_n. If we
+  // come upon an entry that has already been set, there is a first
+  // set clash.
 
-    // Check for first set clashes. Instead of checking intersections of
-    // first sets of all productions alpha_i for a given nonterminal A,
-    // set the [A, a] entry of a table for every a in first(alpha_i) for
-    // all A and alpha_i in A -> alpha_1 | alpha_2 | ... | alpha_n. If we
-    // come upon an entry that has already been set, there is a first
-    // set clash.
+  var table = {};
 
-    var table = {};
+  for (k in nonterminals) {
 
-    for (k in nonterminals) {
+    table[k] = {};
 
-      table[k] = {};
-
-      for (l in terminals)
-        table[k][l] = false;
-
-    }
-
-    for (i = 0; i < grammar.productions.length; i++) {
-
-      head = grammar.productions[i][0];
-      body = grammar.productions[i].slice(1);
-
-      first = grammar.getFirst(body);
-
-      for (s in first) {
-        if (table[head][s])
-          return { member: false, reason: "it contains a first set clash" };
-
-        table[head][s] = true;
-      }
-
-    }
-
-    // Check for first/follow set clashes. That is, check that every nullable
-    // production has disjoint first and follow sets.
-
-    first = grammar.calculate("grammar.first");
-
-    for (k in nullable) {
-
-      if (Sets.any(Sets.intersection(first[k], follow[k])))
-        return { member: false, reason: "it contains a first/follow set clash" };
-
-    }
-
-    return { member: true };
+    for (l in terminals)
+      table[k][l] = false;
 
   }
 
-  module.exports["parsing.ll.ll1_table"] = function(grammar) {
+  for (i = 0; i < grammar.productions.length; i++) {
 
-    var i, k, l, s;
-    var table = {};
-    var head, body, first;
+    head = grammar.productions[i][0];
+    body = grammar.productions[i].slice(1);
 
-    var terminals = grammar.calculate("grammar.terminals");
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    var follow = grammar.calculate("grammar.follow");
+    first = grammar.getFirst(body);
 
-    // Populate table with blank arrays
+    for (s in first) {
+      if (table[head][s])
+        return { member: false, reason: "it contains a first set clash" };
 
-    for (k in nonterminals) {
-
-      table[k] = {};
-
-      for (l in terminals)
-        table[k][l] = [];
-
-      table[k][END] = [];
-
+      table[head][s] = true;
     }
 
-    // Collect moves
+  }
 
-    for (i = 0; i < grammar.productions.length; i++) {
+  // Check for first/follow set clashes. That is, check that every nullable
+  // production has disjoint first and follow sets.
 
-      head = grammar.productions[i][0];
-      body = grammar.productions[i].slice(1);
+  first = grammar.calculate("grammar.first");
 
-      // Get the first set of the production's body
+  for (k in nullable) {
 
-      first = grammar.getFirst(body);
+    if (Sets.any(Sets.intersection(first[k], follow[k])))
+      return { member: false, reason: "it contains a first/follow set clash" };
 
-      // For each symbol s in first(body), add the production
-      // to table[nonterminal][s].
+  }
 
-      for (s in first)
+  return { member: true };
+
+}
+
+module.exports["parsing.ll.ll1_table"] = function(grammar) {
+
+  var i, k, l, s;
+  var table = {};
+  var head, body, first;
+
+  var terminals = grammar.calculate("grammar.terminals");
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var follow = grammar.calculate("grammar.follow");
+
+  // Populate table with blank arrays
+
+  for (k in nonterminals) {
+
+    table[k] = {};
+
+    for (l in terminals)
+      table[k][l] = [];
+
+    table[k][END] = [];
+
+  }
+
+  // Collect moves
+
+  for (i = 0; i < grammar.productions.length; i++) {
+
+    head = grammar.productions[i][0];
+    body = grammar.productions[i].slice(1);
+
+    // Get the first set of the production's body
+
+    first = grammar.getFirst(body);
+
+    // For each symbol s in first(body), add the production
+    // to table[nonterminal][s].
+
+    for (s in first)
+      table[head][s].push(i);
+
+    // If the production is nullable, for each symbol s of follow(head),
+    // add this production to table[head][s].
+
+    if (grammar.isNullable(body)) {
+
+      for (s in follow[head])
         table[head][s].push(i);
 
-      // If the production is nullable, for each symbol s of follow(head),
-      // add this production to table[head][s].
-
-      if (grammar.isNullable(body)) {
-
-        for (s in follow[head])
-          table[head][s].push(i);
-
-      }
-
     }
 
-    return table;
+  }
 
-  };
+  return table;
 
-
+};
 
 },{"../../../sets":22,"../../symbols":19}],15:[function(require,module,exports){
 // Calculations for building LR(0), LR(1), SLR(1), and LALR(1)
@@ -2221,69 +2214,65 @@ const END = require("../../symbols").END;
 //   { "else": { shift: 6, reduce: [3] } }
 //   { "if": { shift: 4 }, "other": { shift: 3 }, "S": { shift: 7 }, "I": { shift: 2 } }
 
-
 const END = require("../../symbols").END;
 
+// Build an LR automaton for the grammar, using the provided "build" functions.
 
-  // Build an LR automaton for the grammar, using the provided "build" functions.
+function automaton(grammar, build) {
 
-  function automaton(grammar, build) {
+  var states = [ { kernel: build.initial() } ];
 
-    var states = [ { kernel: build.initial() } ];
+  var state;
+  var l;
+  var s = 0;
 
-    var state;
-    var l;
-    var s = 0;
+  var transitions, symbol, kernel;
+  var i;
 
-    var transitions, symbol, kernel;
-    var i;
+  // While no more states have been added... (outer loop)
 
-    // While no more states have been added... (outer loop)
+  while (s < states.length) {
 
-    while (s < states.length) {
+    // Process existing states... (inner loop)
 
-      // Process existing states... (inner loop)
+    for (l = states.length; s < l; s++) {
 
-      for (l = states.length; s < l; s++) {
+      state = states[s];
 
-        state = states[s];
+      // Find the closure of the state's kernel
 
-        // Find the closure of the state's kernel
+      state.items = build.closure(grammar, state.kernel);
 
-        state.items = build.closure(grammar, state.kernel);
+      // Find the transitions out of the state (a map from symbol to kernel)
 
-        // Find the transitions out of the state (a map from symbol to kernel)
+      transitions = build.transitions(grammar, state.items);
 
-        transitions = build.transitions(grammar, state.items);
+      // Build the state's list of transitions...
 
-        // Build the state's list of transitions...
+      state.transitions = {};
 
-        state.transitions = {};
+      for (symbol in transitions) {
 
-        for (symbol in transitions) {
+        // Given a symbol and kernel in the transition map, find out if we've
+        // already added the kernel as a state. If we have, assign that state's
+        // index to the transition table for the symbol. If not, create a
+        // new state.
 
-          // Given a symbol and kernel in the transition map, find out if we've
-          // already added the kernel as a state. If we have, assign that state's
-          // index to the transition table for the symbol. If not, create a
-          // new state.
+        kernel = transitions[symbol];
 
-          kernel = transitions[symbol];
+        for (i = 0; i < states.length; i++) {
 
-          for (i = 0; i < states.length; i++) {
-
-            if (build.same(states[i].kernel, kernel)) {
-              state.transitions[symbol] = i;
-              break;
-            }
-
+          if (build.same(states[i].kernel, kernel)) {
+            state.transitions[symbol] = i;
+            break;
           }
 
-          if (i === states.length) {
+        }
 
-            state.transitions[symbol] = states.length;
-            states.push({ kernel: kernel });
+        if (i === states.length) {
 
-          }
+          state.transitions[symbol] = states.length;
+          states.push({ kernel: kernel });
 
         }
 
@@ -2291,249 +2280,249 @@ const END = require("../../symbols").END;
 
     }
 
-    return states;
-
   }
 
-  // lr0 and lr1 objects define the "build" functions for forming LR automata.
+  return states;
 
-  var lr0 = {
+}
 
-    // What is the initial item?
+// lr0 and lr1 objects define the "build" functions for forming LR automata.
 
-    initial: function() {
+var lr0 = {
 
-      // production is an index into the grammar's list of productions,
-      // index is the distinguished position in that production,
-      // -1 is the production added by augmenting the grammar.
+  // What is the initial item?
 
-      return [ { production: -1, index: 0 } ];
+  initial: function() {
 
-    },
+    // production is an index into the grammar's list of productions,
+    // index is the distinguished position in that production,
+    // -1 is the production added by augmenting the grammar.
 
-    // Given an item's kernel, find its epsilon closure of items.
+    return [ { production: -1, index: 0 } ];
 
-    closure: function(grammar, kernel) {
+  },
 
-      var i, j;
-      var item, symbol;
-      var start = grammar.calculate("grammar.start");
+  // Given an item's kernel, find its epsilon closure of items.
 
-      // Which items were added?
+  closure: function(grammar, kernel) {
 
-      var added;
+    var i, j;
+    var item, symbol;
+    var start = grammar.calculate("grammar.start");
 
-      // Which productions have been used?
+    // Which items were added?
 
-      var used = {};
+    var added;
 
-      // Copy the kernel as the initial list of items
+    // Which productions have been used?
 
-      var result = [];
+    var used = {};
 
-      for (i = 0; i < kernel.length; i++)
-        result.push({ production: kernel[i].production, index: kernel[i].index });
+    // Copy the kernel as the initial list of items
 
-      // While we cannot add more items...
+    var result = [];
 
-      do {
+    for (i = 0; i < kernel.length; i++)
+      result.push({ production: kernel[i].production, index: kernel[i].index });
 
-        added = [];
+    // While we cannot add more items...
 
-        // For each item we have...
+    do {
 
-        for (i = 0; i < result.length; i++) {
+      added = [];
 
-          // Find the nonterminal symbol...
+      // For each item we have...
 
-          item = result[i];
+      for (i = 0; i < result.length; i++) {
 
-          // If the production is the augmented start production, we're looking
-          // for the original start symbol. Otherwise, use the grammar's productions
-          // to find the symbol, but add one to account for the left-hand side of
-          // the production.
+        // Find the nonterminal symbol...
 
-          if (item.production === -1)
-            symbol = [start][item.index];
-          else
-            symbol = grammar.productions[item.production][item.index + 1];
+        item = result[i];
 
-          // Find unused matching productions and add them.
-
-          for (j = 0; j < grammar.productions.length; j++) {
-
-            if (!used[j] && grammar.productions[j][0] == symbol) {
-              added.push({ production: j, index: 0 });
-              used[j] = true;
-            }
-
-          }
-
-        }
-
-        for (i = 0; i < added.length; i++)
-          result.push(added[i]);
-
-      } while (added.length > 0);
-
-      return result;
-
-    },
-
-    // For the given list of (closure) items, return a map from symbol to kernel
-    // representing the transitions that can be taken out of the
-    // corresponding state.
-
-    transitions: function(grammar, closure) {
-
-      var result = {};
-      var i;
-      var item, symbol;
-      var start = grammar.calculate("grammar.start");
-
-      // For each item...
-
-      for (i = 0; i < closure.length; i++) {
-
-        item = closure[i];
-
-        // Calculate the leaving symbol by looking in the grammar's productions,
-        // handling the augmented grammar production as above.
+        // If the production is the augmented start production, we're looking
+        // for the original start symbol. Otherwise, use the grammar's productions
+        // to find the symbol, but add one to account for the left-hand side of
+        // the production.
 
         if (item.production === -1)
           symbol = [start][item.index];
         else
           symbol = grammar.productions[item.production][item.index + 1];
 
-        // If there is a leaving symbol, add the next item.
+        // Find unused matching productions and add them.
 
-        if (typeof symbol != "undefined") {
+        for (j = 0; j < grammar.productions.length; j++) {
 
-          if (!result[symbol])
-            result[symbol] = [];
-
-          result[symbol].push({ production: item.production, index: item.index + 1 });
+          if (!used[j] && grammar.productions[j][0] == symbol) {
+            added.push({ production: j, index: 0 });
+            used[j] = true;
+          }
 
         }
 
       }
 
-      return result;
+      for (i = 0; i < added.length; i++)
+        result.push(added[i]);
 
-    },
+    } while (added.length > 0);
 
-    // Are the two kernels equal?
+    return result;
 
-    same: function(a, b) {
+  },
 
-      var i, j;
+  // For the given list of (closure) items, return a map from symbol to kernel
+  // representing the transitions that can be taken out of the
+  // corresponding state.
 
-      if (a.length !== b.length)
-        return false;
+  transitions: function(grammar, closure) {
 
-      for (i = 0; i < a.length; i++) {
+    var result = {};
+    var i;
+    var item, symbol;
+    var start = grammar.calculate("grammar.start");
 
-        for (j = 0; j < b.length; j++) {
+    // For each item...
 
-          if (a[i].production === b[j].production && a[i].index === b[j].index)
-            break;
+    for (i = 0; i < closure.length; i++) {
 
-        }
+      item = closure[i];
 
-        if (j === b.length)
-          return false;
+      // Calculate the leaving symbol by looking in the grammar's productions,
+      // handling the augmented grammar production as above.
+
+      if (item.production === -1)
+        symbol = [start][item.index];
+      else
+        symbol = grammar.productions[item.production][item.index + 1];
+
+      // If there is a leaving symbol, add the next item.
+
+      if (typeof symbol != "undefined") {
+
+        if (!result[symbol])
+          result[symbol] = [];
+
+        result[symbol].push({ production: item.production, index: item.index + 1 });
 
       }
-
-      return true;
 
     }
 
+    return result;
+
+  },
+
+  // Are the two kernels equal?
+
+  same: function(a, b) {
+
+    var i, j;
+
+    if (a.length !== b.length)
+      return false;
+
+    for (i = 0; i < a.length; i++) {
+
+      for (j = 0; j < b.length; j++) {
+
+        if (a[i].production === b[j].production && a[i].index === b[j].index)
+          break;
+
+      }
+
+      if (j === b.length)
+        return false;
+
+    }
+
+    return true;
+
   }
 
-  var lr1 = {
+}
 
-    initial: function() {
+var lr1 = {
 
-      return [ { production: -1, index: 0, lookahead: END } ];
+  initial: function() {
 
-    },
+    return [ { production: -1, index: 0, lookahead: END } ];
 
-    closure: function(grammar, kernel) {
+  },
 
-      var i, j, k, l;
-      var item, remaining, symbol, lookaheads;
-      var start = grammar.calculate("grammar.start");
+  closure: function(grammar, kernel) {
 
-      // Which items were added in a given iteration?
+    var i, j, k, l;
+    var item, remaining, symbol, lookaheads;
+    var start = grammar.calculate("grammar.start");
 
-      var added;
+    // Which items were added in a given iteration?
 
-      // Which productions/lookaheads have we already used for the closure?
+    var added;
 
-      var used = {};
+    // Which productions/lookaheads have we already used for the closure?
 
-      for (i = 0; i < grammar.productions.length; i++)
-        used[i] = {};
+    var used = {};
 
-      // Copy the kernel as the initial list of items
+    for (i = 0; i < grammar.productions.length; i++)
+      used[i] = {};
 
-      var result = [];
+    // Copy the kernel as the initial list of items
 
-      for (i = 0; i < kernel.length; i++)
-        result.push({ production: kernel[i].production, index: kernel[i].index, lookahead: kernel[i].lookahead });
+    var result = [];
 
-      // While we cannot add more items...
+    for (i = 0; i < kernel.length; i++)
+      result.push({ production: kernel[i].production, index: kernel[i].index, lookahead: kernel[i].lookahead });
 
-      do {
+    // While we cannot add more items...
 
-        added = [];
+    do {
 
-        // For each item we have...
+      added = [];
 
-        for (i = 0; i < result.length; i++) {
+      // For each item we have...
 
-          item = result[i];
+      for (i = 0; i < result.length; i++) {
 
-          // Find the nonterminal symbol...
+        item = result[i];
 
-          // Find the stuff "after the dot" (taking into account the augmented grammar)
+        // Find the nonterminal symbol...
 
-          if (item.production === -1)
-            remaining = [start].slice(item.index);
-          else
-            remaining = grammar.productions[item.production].slice(item.index + 1);
+        // Find the stuff "after the dot" (taking into account the augmented grammar)
 
-          // Go to next item if this one is completed
+        if (item.production === -1)
+          remaining = [start].slice(item.index);
+        else
+          remaining = grammar.productions[item.production].slice(item.index + 1);
 
-          if (remaining.length == 0)
-            continue;
+        // Go to next item if this one is completed
 
-          // the nonterminal symbol is the first thing after the dot
+        if (remaining.length == 0)
+          continue;
 
-          symbol = remaining[0];
+        // the nonterminal symbol is the first thing after the dot
 
-          // lookaheads
-          // first(gamma a) where the item is [A -> alpha . B gamma, a]
+        symbol = remaining[0];
 
-          lookaheads = grammar.getFirst(remaining.slice(1).concat(item.lookahead));
+        // lookaheads
+        // first(gamma a) where the item is [A -> alpha . B gamma, a]
 
-          // Add items for matching productions/lookaheads (which are not already
-          // used for the closure)
+        lookaheads = grammar.getFirst(remaining.slice(1).concat(item.lookahead));
 
-          for (j = 0; j < grammar.productions.length; j++) {
+        // Add items for matching productions/lookaheads (which are not already
+        // used for the closure)
 
-            if (grammar.productions[j][0] == symbol) {
+        for (j = 0; j < grammar.productions.length; j++) {
 
-              // Add an item for every lookahead...
+          if (grammar.productions[j][0] == symbol) {
 
-              for (l in lookaheads) {
+            // Add an item for every lookahead...
 
-                if (!used[j][l]) {
-                  added.push({ production: j, index: 0, lookahead: l });
-                  used[j][l] = true;
-                }
+            for (l in lookaheads) {
 
+              if (!used[j][l]) {
+                added.push({ production: j, index: 0, lookahead: l });
+                used[j][l] = true;
               }
 
             }
@@ -2542,1241 +2531,78 @@ const END = require("../../symbols").END;
 
         }
 
-        for (i = 0; i < added.length; i++)
-          result.push(added[i]);
-
-      } while (added.length > 0);
-
-      return result;
-
-    },
-
-    // this is basically identical to the LR0 version...
-    // could have a "copy" function for items?
-
-    transitions: function(grammar, closure) {
-
-      var result = {};
-      var i;
-      var item, symbol;
-      var start = grammar.calculate("grammar.start");
-
-      // For each item...
-
-      for (i = 0; i < closure.length; i++) {
-
-        item = closure[i];
-
-        // Calculate the leaving symbol by looking in the grammar's productions,
-        // handling the augmented grammar production as above.
-
-        if (item.production === -1)
-          symbol = [start][item.index];
-        else
-          symbol = grammar.productions[item.production][item.index + 1];
-
-        // If there is a leaving symbol, add the next item.
-
-        if (typeof symbol != "undefined") {
-
-          if (!result[symbol])
-            result[symbol] = [];
-
-          // copy it!
-
-          result[symbol].push({ production: item.production, index: item.index + 1, lookahead: item.lookahead });
-
-        }
-
       }
 
-      return result;
+      for (i = 0; i < added.length; i++)
+        result.push(added[i]);
 
-    },
-
-    same: function(a, b) {
-
-      var i, j;
-
-      if (a.length !== b.length)
-        return false;
-
-      for (i = 0; i < a.length; i++) {
-
-        for (j = 0; j < b.length; j++) {
-
-          if (a[i].production === b[j].production && a[i].index === b[j].index && a[i].lookahead === b[j].lookahead)
-            break;
-
-        }
-
-        if (j === b.length)
-          return false;
-
-      }
-
-      return true;
-
-    }
-
-  }
-
-  module.exports["parsing.lr.lr0_classification"] = function(grammar) {
-
-    var i, s;
-    var table = grammar.calculate("parsing.lr.lr0_table");
-    var terminals = grammar.calculate("grammar.terminals");
-
-    for (i = 0; i < table.length; i++) {
-
-      if (table[i].reduce.length > 1)
-        return { member: false, reason: "it contains a reduce-reduce conflict" };
-
-      if (table[i].reduce.length > 0) {
-        for (s in table[i].shift) {
-          if (terminals[s])
-            return { member: false, reason: "it contains a shift-reduce conflict" };
-        }
-      }
-
-    }
-
-    return { member: true };
-
-  }
-
-  module.exports["parsing.lr.lr0_automaton"] = function(grammar) {
-
-    return automaton(grammar, lr0);
-
-  }
-
-  module.exports["parsing.lr.lr0_table"] = function(grammar) {
-
-    var i, j, s;
-    var state, item, actions;
-    var table = [];
-    var automaton = grammar.calculate("parsing.lr.lr0_automaton");
-
-    for (i = 0; i < automaton.length; i++) {
-
-      state = automaton[i];
-      actions = { shift: {}, reduce: [] };
-
-      // add shift actions for transitions
-
-      for (s in state.transitions)
-        actions.shift[s] = state.transitions[s];
-
-      // add reduce actions for completed items
-
-      for (j = 0; j < state.items.length; j++) {
-
-        item = state.items[j];
-
-        if (item.production === -1) {
-          if (item.index === 1)
-            actions.reduce.push(item.production);
-        } else {
-          if (item.index == grammar.productions[item.production].length - 1)
-            actions.reduce.push(item.production);
-        }
-
-      }
-
-      table.push(actions);
-
-    }
-
-    return table;
-
-  }
-
-  function classifyLR1(table) {
-
-    var i, s;
-
-    for (i = 0; i < table.length; i++) {
-
-      for (s in table[i]) {
-
-        if (typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 1)
-          return { member: false, reason: "it contains a reduce-reduce conflict" };
-
-        if (typeof table[i][s].shift !== "undefined" && typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 0)
-          return { member: false, reason: "it contains a shift-reduce conflict" };
-
-      }
-
-    }
-
-    return { member: true };
-
-  }
-
-  function addReduceAction(actions, symbol, production) {
-
-    if (typeof actions[symbol] === "undefined")
-      actions[symbol] = { reduce: [] };
-
-    if (typeof actions[symbol].reduce === "undefined")
-      actions[symbol].reduce = [];
-
-    actions[symbol].reduce.push(production);
-
-  }
-
-  module.exports["parsing.lr.slr1_classification"] = function(grammar) {
-
-    return classifyLR1(grammar.calculate("parsing.lr.slr1_table"));
-
-  }
-
-  module.exports["parsing.lr.slr1_table"] = function(grammar) {
-
-    var i, j, s;
-    var state, actions, item;
-    var table = [];
-    var automaton = grammar.calculate("parsing.lr.lr0_automaton");
-    var follow = grammar.calculate("grammar.follow");
-
-    for (i = 0; i < automaton.length; i++) {
-
-      state = automaton[i];
-      actions = {};
-
-      for (s in state.transitions)
-        actions[s] = { shift: state.transitions[s] };
-
-      for (j = 0; j < state.items.length; j++) {
-
-        item = state.items[j];
-
-        if (item.production === -1) {
-
-          if (item.index === 1)
-            addReduceAction(actions, END, item.production);
-
-        } else {
-
-          if (item.index == grammar.productions[item.production].length - 1) {
-
-            for (s in follow[grammar.productions[item.production][0]])
-              addReduceAction(actions, s, item.production);
-
-          }
-
-        }
-
-      }
-
-      table.push(actions);
-
-    }
-
-    return table;
-
-  }
-
-  module.exports["parsing.lr.lr1_automaton"] = function(grammar) {
-
-    return automaton(grammar, lr1);
-
-  }
-
-  module.exports["parsing.lr.lr1_classification"] = function(grammar) {
-
-    return classifyLR1(grammar.calculate("parsing.lr.lr1_table"));
-
-  }
-
-  module.exports["parsing.lr.lr1_table"] = function(grammar) {
-
-    var i, j, s;
-    var state, actions, item;
-    var table = [];
-    var automaton = grammar.calculate("parsing.lr.lr1_automaton");
-
-    for (i = 0; i < automaton.length; i++) {
-
-      state = automaton[i];
-      actions = {};
-
-      for (s in state.transitions)
-        actions[s] = { shift: state.transitions[s] };
-
-      for (j = 0; j < state.items.length; j++) {
-
-        item = state.items[j];
-
-        if (item.production === -1) {
-
-          if (item.index === 1)
-            addReduceAction(actions, END, item.production);
-
-        } else {
-
-          if (item.index == grammar.productions[item.production].length - 1)
-            addReduceAction(actions, item.lookahead, item.production);
-
-        }
-
-      }
-
-      table.push(actions);
-
-    }
-
-    return table;
-
-  }
-
-  // Collapse a list of LR1 items' lookaheads so that distinct
-  // items' lookaheads are arrays.
-
-  function collapseLookaheads(items) {
-
-    var i, p, x, l;
-    var table = {};
-
-    for (i = 0; i < items.length; i++) {
-
-      p = items[i].production;
-      x = items[i].index;
-      l = items[i].lookahead;
-
-      if (!table[p])
-        table[p] = [];
-
-      if (!table[p][x])
-        table[p][x] = [];
-
-      table[p][x].push(l);
-
-    }
-
-    var result = [];
-
-    for (p in table)
-      for (x in table[p])
-        result.push({ production: parseInt(p), index: parseInt(x), lookaheads: table[p][x] });
+    } while (added.length > 0);
 
     return result;
 
-  }
+  },
 
-  // Return the union of the items in two LALR1 states.
-  // For each item in the first state, add lookaheads from the second state's corresponding items.
+  // this is basically identical to the LR0 version...
+  // could have a "copy" function for items?
 
-  function mergeItems(a, b) {
+  transitions: function(grammar, closure) {
 
-    var result = [];
-    var item;
-    var i, j, k;
+    var result = {};
+    var i;
+    var item, symbol;
+    var start = grammar.calculate("grammar.start");
+
+    // For each item...
+
+    for (i = 0; i < closure.length; i++) {
+
+      item = closure[i];
+
+      // Calculate the leaving symbol by looking in the grammar's productions,
+      // handling the augmented grammar production as above.
+
+      if (item.production === -1)
+        symbol = [start][item.index];
+      else
+        symbol = grammar.productions[item.production][item.index + 1];
+
+      // If there is a leaving symbol, add the next item.
+
+      if (typeof symbol != "undefined") {
+
+        if (!result[symbol])
+          result[symbol] = [];
+
+        // copy it!
+
+        result[symbol].push({ production: item.production, index: item.index + 1, lookahead: item.lookahead });
+
+      }
+
+    }
+
+    return result;
+
+  },
+
+  same: function(a, b) {
+
+    var i, j;
+
+    if (a.length !== b.length)
+      return false;
 
     for (i = 0; i < a.length; i++) {
 
-      item = { production: a[i].production, index: a[i].index, lookaheads: [] };
-
-      // Add lookaheads from a
-
-      for (j = 0; j < a[i].lookaheads.length; j++)
-        item.lookaheads.push(a[i].lookaheads[j]);
-
-      // Find matching items in b and add their lookaheads if they aren't already present
-
       for (j = 0; j < b.length; j++) {
 
-        if (b[j].production == a[i].production && b[j].index == a[i].index) {
-
-          for (k = 0; k < b[j].lookaheads.length; k++) {
-            if (item.lookaheads.indexOf(b[j].lookaheads[k]) === -1)
-              item.lookaheads.push(b[j].lookaheads[k]);
-          }
-
-        }
-
-      }
-
-      result.push(item);
-
-    }
-
-    return result;
-
-  }
-
-  module.exports["parsing.lr.lalr1_classification"] = function(grammar) {
-
-    return classifyLR1(grammar.calculate("parsing.lr.lalr1_table"));
-
-  }
-
-  module.exports["parsing.lr.lalr1_automaton"] = function(grammar) {
-
-    var i, j;
-
-    // Get the LR1 automaton.
-
-    var automaton = grammar.calculate("parsing.lr.lr1_automaton");
-
-    // Collapse lookaheads.
-
-    for (i = 0; i < automaton.length; i++) {
-
-      automaton[i].kernel = collapseLookaheads(automaton[i].kernel);
-      automaton[i].items = collapseLookaheads(automaton[i].items);
-
-    }
-
-    // Find states to merge.
-    //
-    // Produce a list like this:
-    //
-    //   merge = [[0], [1, 2], [3, 5], [4]]
-    //
-    // where merge[i] is a list of indices in the dfa that can be merged.
-    //
-    // states can be merged if they have the same items, not considering lookaheads.
-
-    var used = [];
-    var merge = [];
-
-    for (i = 0; i < automaton.length; i++) {
-
-      // If this state has been used already for merging, skip it.
-
-      if (used[i])
-        continue;
-
-      // Otherwise, find the states (including the current state) which can be merged with it.
-
-      var m = [];
-
-      for (j = 0; j < automaton.length; j++) {
-
-        if (!used[j] && lr0.same(automaton[i].kernel, automaton[j].kernel)) {
-
-          m.push(j);
-          used[j] = true;
-
-        }
-
-      }
-
-      merge.push(m);
-
-    }
-
-    // for fixing transitions. looks like:
-    //
-    //   transition = [0, 1, 1, 3, 4, 3]
-    //
-    // where transition[i] is the new index for the original state i.
-
-    var transition = [];
-
-    for (i = 0; i < merge.length; i++) {
-      for (j = 0; j < merge[i].length; j++) {
-
-        transition[merge[i][j]] = i;
-
-      }
-    }
-
-    // Produce new states
-
-    var states = [];
-
-    for (i = 0; i < merge.length; i++) {
-
-      var state = { kernel: [], items: [], transitions: {} };
-
-      // Merge items
-
-      for (j = 0; j < merge[i].length; j++) {
-
-        state.kernel = mergeItems(automaton[merge[i][j]].kernel, state.kernel);
-        state.items = mergeItems(automaton[merge[i][j]].items, state.items);
-
-      }
-
-      // Add transitions (just use the first merge index)
-
-      var original = automaton[merge[i][0]].transitions;
-      var s;
-
-      for (s in original)
-        state.transitions[s] = transition[original[s]];
-
-      // Add the new state
-
-      states.push(state);
-
-    }
-
-    return states;
-
-  }
-
-  module.exports["parsing.lr.lalr1_table"] = function(grammar) {
-
-    var i, j, k, s;
-    var state, actions, item;
-    var table = [];
-    var automaton = grammar.calculate("parsing.lr.lalr1_automaton");
-
-    for (i = 0; i < automaton.length; i++) {
-
-      state = automaton[i];
-      actions = {};
-
-      for (s in state.transitions)
-        actions[s] = { shift: state.transitions[s] };
-
-      for (j = 0; j < state.items.length; j++) {
-
-        item = state.items[j];
-
-        if (item.production === -1) {
-
-          if (item.index === 1)
-            addReduceAction(actions, END, item.production);
-
-        } else {
-
-          if (item.index == grammar.productions[item.production].length - 1) {
-
-            for (k = 0; k < item.lookaheads.length; k++)
-              addReduceAction(actions, item.lookaheads[k], item.production);
-
-          }
-
-        }
-
-      }
-
-      table.push(actions);
-
-    }
-
-    return table;
-
-  }
-
-
-
-},{"../../symbols":19}],16:[function(require,module,exports){
-
-
-
-  function expand(grammar, production, symbol) {
-
-    var changes = [];
-
-    // Remove the existing production
-
-    changes.push({ operation: "delete", index: production });
-
-    // Add new productions
-
-    var offset = 0;
-
-    for (i = 0; i < grammar.productions.length; i++) {
-
-      if (grammar.productions[i][0] === grammar.productions[production][symbol]) {
-
-        var p = grammar.productions[production].slice();
-        var b = grammar.productions[i].slice(1);
-        Array.prototype.splice.apply(p, [symbol, 1].concat(b));
-
-        changes.push({ production: p, operation: "insert", index: production + offset });
-        offset++;
-
-      }
-
-    }
-
-    return changes;
-
-  }
-
-  module.exports["transformations.expand"] = function(grammar) {
-
-    var i, j;
-
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    var result = [];
-
-    // Are there any nonterminals we can expand?
-
-    for (i = 0; i < grammar.productions.length; i++) {
-      for (j = 1; j < grammar.productions[i].length; j++) {
-
-        if (nonterminals[grammar.productions[i][j]]) {
-
-          result.push({
-            name: "expand",
-            production: i,
-            symbol: j,
-            changes: expand(grammar, i, j)
-          });
-
-        }
-
-      }
-    }
-
-    return result;
-
-  }
-
-  function removeImmediateLeftRecursion(grammar, base, recursive) {
-
-    var i, j;
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    var production;
-
-    // Find a new symbol for the right recursive production by adding primes
-    // to the existing symbol.
-
-    var symbol = grammar.productions[recursive[0]][0];
-
-    do {
-      symbol += "'";
-    } while (typeof nonterminals[symbol] !== "undefined");
-
-    // Copy productions to changes, marking those we're removing.
-
-    var changes = [];
-    var first;
-    var offset = 0;
-
-    for (i = 0; i < grammar.productions.length; i++) {
-
-      if (base.indexOf(i) !== -1 || recursive.indexOf(i) !== -1) {
-
-        changes.push({ index: i + offset, operation: "delete" });
-        offset--;
-
-        if (typeof first === "undefined")
-          first = i;
-      }
-
-    }
-
-    // Create the new productions...
-
-    offset = 0;
-
-    // Base rules
-
-    var added = [];
-
-    for (i = 0; i < base.length; i++) {
-
-      production = [];
-
-      for (j = 0; j < grammar.productions[base[i]].length; j++)
-        production.push(grammar.productions[base[i]][j]);
-
-      production.push(symbol);
-
-      changes.push({ production: production, operation: "insert", index: first + offset });
-      offset++;
-
-    }
-
-    // Recursive rules
-
-    for (i = 0; i < recursive.length; i++) {
-
-      production = [];
-
-      production.push(symbol);
-
-      for (j = 2; j < grammar.productions[recursive[i]].length; j++)
-        production.push(grammar.productions[recursive[i]][j]);
-
-      production.push(symbol);
-
-      changes.push({ production: production, operation: "insert", index: first + offset });
-      offset++;
-
-    }
-
-    // Epsilon
-
-    changes.push({ production: [symbol], operation: "insert", index: first + offset });
-
-    return changes;
-
-  }
-
-  module.exports["transformations.removeImmediateLeftRecursion"] = function(grammar) {
-
-    var i, j;
-
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    var result = [];
-
-    var candidates = {};
-    var nt;
-
-    // Are there any rules of this form...
-    //
-    //   A -> A a_1 | A a_2 | ... | A a_m | b_1 | ... | b_n
-    //
-    // where m, n > 0?
-
-    for (nt in nonterminals)
-      candidates[nt] = { recursive: [], base: [] };
-
-    for (i = 0; i < grammar.productions.length; i++) {
-      nt = grammar.productions[i][0];
-
-      if (nt == grammar.productions[i][1])
-        candidates[nt].recursive.push(i);
-      else
-        candidates[nt].base.push(i);
-    }
-
-    for (nt in candidates) {
-
-      if (candidates[nt].recursive.length > 0 && candidates[nt].base.length > 0) {
-
-        result.push({
-          name: "removeImmediateLeftRecursion",
-          production: candidates[nt].recursive[0],
-          symbol: 0,
-          changes: removeImmediateLeftRecursion(grammar, candidates[nt].base, candidates[nt].recursive)
-        });
-
-      }
-
-    }
-
-    return result;
-
-  }
-
-  // Perform the left-factoring transformation. Group is an array of production
-  // indices, and prefix is the number of symbols (not counting the head of
-  // the production) to factor.
-
-  function leftFactor(grammar, group, prefix) {
-
-    var i, j;
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-
-    // Find a new symbol...
-
-    var symbol = grammar.productions[group[0]][0];
-
-    do {
-      symbol += "'";
-    } while (typeof nonterminals[symbol] !== "undefined");
-
-    // Copy productions to changes, marking those we're removing.
-
-    var changes = [];
-    var offset = 0;
-
-    for (i = 0; i < grammar.productions.length; i++) {
-
-      if (group.indexOf(i) !== -1) {
-        changes.push({ index: i + offset, operation: "delete" });
-        offset--;
-      }
-
-    }
-
-    // Add the reference to the new symbol with the factored prefix
-
-    changes.push({
-      production: grammar.productions[group[0]].slice(0, prefix + 1).concat(symbol),
-      operation: "insert",
-      index: group[0]
-    });
-
-    // Add the productions in the group
-
-    for (i = 0; i < group.length; i++) {
-      changes.push({
-        production: [symbol].concat(grammar.productions[group[i]].slice(prefix + 1)),
-        operation: "insert",
-        index: group[0] + i + 1
-      });
-    }
-
-    return changes;
-
-  }
-
-  // Mini trie implementation for finding factorable prefixes.
-
-  function Trie() {
-
-    this.root = {
-      children: {},
-      values: []
-    };
-
-  }
-
-  Trie.prototype.insert = function(production, value) {
-
-    var node = this.root;
-    var i, s;
-
-    for (i = 0; i < production.length; i++) {
-      s = production[i];
-      if (typeof node.children[s] === "undefined")
-        node.children[s] = { children: {}, values: [] };
-      node = node.children[s];
-    }
-
-    node.values.push(value);
-
-  }
-
-  Trie.prototype.getFactorablePrefixes = function() {
-
-    var groups = [];
-
-    function _values(length, node) {
-
-      var symbol;
-      var values = [];
-
-      values = values.concat(node.values);
-
-      for (symbol in node.children)
-        values = values.concat(_values(length + 1, node.children[symbol]));
-
-      if (length > 0 && values.length >= 2)
-        groups.push({ length: length, group: values });
-
-      return values;
-
-    }
-
-    _values(0, this.root);
-
-    return groups;
-
-  }
-
-  module.exports["transformations.leftFactor"] = function(grammar) {
-
-    var i, j;
-    var result = [];
-    var nt;
-    var prefix;
-
-    // Build tries for each nonterminal's productions
-
-    var productions = {};
-
-    for (i = 0; i < grammar.productions.length; i++) {
-
-      nt = grammar.productions[i][0];
-
-      if (typeof productions[nt] === "undefined")
-        productions[nt] = new Trie();
-
-      productions[nt].insert(grammar.productions[i].slice(1), i);
-
-    }
-
-    // Get factorable prefixes and their corresponding productions
-
-    var factorable;
-
-    for (nt in productions) {
-
-      factorable = productions[nt].getFactorablePrefixes();
-
-      for (i = 0; i < factorable.length; i++) {
-
-        var length = factorable[i].length;
-        var group = factorable[i].group;
-        group.sort();
-
-        result.push({
-          name: "leftFactor",
-          production: group[0],
-          symbol: 0,
-          length: length,
-          changes: leftFactor(grammar, group, length)
-        });
-
-      }
-
-    }
-
-    return result;
-
-  }
-
-  function epsilonSeparate(grammar, group, epsilon) {
-
-    var i;
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-
-    // Find a new symbol...
-
-    var symbol = grammar.productions[group[0]][0];
-
-    do {
-      symbol += "*";
-    } while (typeof nonterminals[symbol] !== "undefined");
-
-    // Copy productions to changes, marking those we're removing.
-
-    var changes = [];
-    var offset = 0;
-
-    for (i = 0; i < grammar.productions.length; i++) {
-
-      if (group.indexOf(i) !== -1 || i === epsilon) {
-        changes.push({ index: i + offset, operation: "delete" });
-        offset--;
-      }
-
-    }
-
-    // Add the separated version of the original rule
-
-    changes.push({
-      production: [grammar.productions[group[0]][0], symbol],
-      operation: "insert",
-      index: group[0]
-    });
-
-    changes.push({
-      production: [grammar.productions[group[0]][0]],
-      operation: "insert",
-      index: group[0] + 1
-    });
-
-    // Add the non-epsilon production bodies with the new head
-
-    for (i = 0; i < group.length; i++) {
-      changes.push({
-        production: [symbol].concat(grammar.productions[group[i]].slice(1)),
-        operation: "insert",
-        index: group[0] + i + 2
-      });
-    }
-
-    return changes;
-
-  }
-
-  module.exports["transformations.epsilonSeparate"] = function(grammar) {
-
-    var nt, i;
-    var nonterminals = grammar.calculate("grammar.nonterminals");
-    var nullable = grammar.calculate("grammar.nullable");
-    var result = [];
-    var group;
-    var epsilon;
-
-    // For each nonterminal, determine if it is unambiguously nullable,
-    // while collecting its non-null productions and its null (epsilon)
-    // production. If it is unambiguously nullable, add it to the result.
-
-    for (nt in nonterminals) {
-
-      group = [];
-      epsilon = -1;
-
-      for (i = 0; i < grammar.productions.length; i++) {
-
-        if (grammar.productions[i][0] === nt) {
-
-          if (grammar.productions[i].length === 1) {
-            if (epsilon !== -1)
-              break;
-            epsilon = i;
-          } else {
-            group.push(i);
-          }
-
-        }
-
-      }
-
-      if (i === grammar.productions.length && epsilon !== -1) {
-
-        result.push({
-          name: "epsilonSeparate",
-          production: group[0],
-          symbol: 0,
-          changes: epsilonSeparate(grammar, group, epsilon)
-        });
-
-      }
-
-    }
-
-    return result;
-
-  }
-
-  function removeUnreachable(grammar, group) {
-
-    var i;
-
-    var changes = [];
-    var offset = 0;
-
-    // Remove all productions in the group.
-
-    for (i = 0; i < grammar.productions.length; i++) {
-
-      if (group.indexOf(i) !== -1) {
-        changes.push({ index: i + offset, operation: "delete" });
-        offset--;
-      }
-
-    }
-
-    return changes;
-
-  }
-
-  module.exports["transformations.removeUnreachable"] = function(grammar) {
-
-    var unreachable = grammar.calculate("grammar.unreachable");
-    var nt;
-    var i;
-    var result = [];
-    var group;
-
-    for (nt in unreachable) {
-
-      group = [];
-
-      for (i = 0; i < grammar.productions.length; i++) {
-
-        if (grammar.productions[i][0] === nt)
-          group.push(i);
-
-      }
-
-      if (group.length > 0) {
-
-        result.push({
-          name: "removeUnreachable",
-          production: group[0],
-          symbol: 0,
-          changes: removeUnreachable(grammar, group)
-        });
-
-      }
-
-    }
-
-    return result;
-
-  }
-
-  module.exports["transformations"] = function(grammar) {
-
-    return [].concat(grammar.calculate("transformations.expand"))
-             .concat(grammar.calculate("transformations.removeImmediateLeftRecursion"))
-             .concat(grammar.calculate("transformations.leftFactor"))
-             .concat(grammar.calculate("transformations.epsilonSeparate"))
-             .concat(grammar.calculate("transformations.removeUnreachable"));
-
-  }
-
-
-
-},{}],17:[function(require,module,exports){
-const Calculations = require("./calculations");
-const Parser = require("./parser");
-const END = require("./symbols").END;
-
-
-  // class
-
-  function parse(spec) {
-
-    var i, j;
-
-    if (spec.match(/^\s*$/))
-      return { spec: spec };
-
-    try {
-
-      // Parser gives us rules in the following form:
-      //
-      //   { nt: "A", p: [["a", "b"], []] }
-      //
-      // We want an array of productions in this form:
-      //
-      //   [["A", "a", "b"], ["A"]]
-      //
-      // Note that depending on the grammar specification, productions
-      // for a particular nonterminal may be at different places in the
-      // list. We want to preserve the order in the user's input.
-
-      var rules = Parser.parse(spec);
-      var productions = [];
-
-      for (i = 0; i < rules.length; i++) {
-        for (j = 0; j < rules[i].p.length; j++) {
-          productions.push([rules[i].nt].concat(rules[i].p[j]));
-        }
-      }
-
-      return { grammar: new Grammar(productions), spec: spec };
-
-    } catch (e) {
-
-      return { error: e, spec: spec };
-
-    }
-
-  }
-
-
-
-  // instance
-
-  function initialize(productions) {
-
-    // Check for reserved and empty symbols
-
-    var i, j;
-
-    for (i = 0; i < productions.length; i++) {
-      for (j = 0; j < productions[i].length; j++) {
-
-        if (productions[i][j].match(/^Grammar\./))
-          throw "Reserved symbol " + productions[i][j] + " may not be part of a production";
-
-        if (productions[i][j] === "")
-          throw "An empty symbol may not be part of a production";
-
-      }
-    }
-
-    // Assign productions
-
-    this.productions = productions;
-
-    // Initialize calculations memoization
-
-    this.calculations = {};
-
-  }
-
-  function calculate(name) {
-
-    if (typeof Calculations[name] === "undefined")
-      throw "Undefined grammar calculation " + name;
-
-    if (typeof this.calculations[name] === "undefined")
-      this.calculations[name] = Calculations[name](this);
-
-    return this.calculations[name];
-
-  }
-
-  function transform(transformation) {
-
-    var productions = this.productions.slice();
-
-    transformation.changes.forEach(function(change) {
-
-      if (change.operation === "delete")
-        productions.splice(change.index, 1);
-      else if (change.operation === "insert")
-        productions.splice(change.index, 0, change.production);
-
-    });
-
-    return new Grammar(productions);
-
-  }
-
-  function getFirst(symbols) {
-
-    var i, k;
-    var s, t;
-    var result;
-
-    var first = this.calculate("grammar.first");
-    var nullable = this.calculate("grammar.nullable");
-    var terminals = this.calculate("grammar.terminals");
-    var nonterminals = this.calculate("grammar.nonterminals");
-
-    result = {};
-
-    for (i = 0; i < symbols.length; i++) {
-
-      s = symbols[i];
-
-      if (s === END) {
-
-        result[s] = true;
-        break;
-
-      } else if (terminals[s]) {
-
-        result[s] = true;
-        break;
-
-      } else if (nonterminals[s]) {
-
-        for (k in first[s])
-          result[k] = true;
-
-        if (!nullable[s])
+        if (a[i].production === b[j].production && a[i].index === b[j].index && a[i].lookahead === b[j].lookahead)
           break;
 
-      } else {
-
-        throw "Unexpected symbol " + s;
-
       }
 
-    }
-
-    return result;
-
-  }
-
-  function isNullable(symbols) {
-
-    var i;
-
-    var nullable = this.calculate("grammar.nullable");
-    var terminals = this.calculate("grammar.terminals");
-    var nonterminals = this.calculate("grammar.nonterminals");
-
-    for (i = 0; i < symbols.length; i++) {
-
-      s = symbols[i];
-
-      if (nonterminals[s]) {
-
-        if (!nullable[s])
-          return false;
-
-      } else if (terminals[s]) {
-
+      if (j === b.length)
         return false;
-
-      } else {
-
-        throw "Unexpected symbol " + s;
-
-      }
 
     }
 
@@ -3784,61 +2610,1216 @@ const END = require("./symbols").END;
 
   }
 
-  function copyProductions() {
+}
 
-    var i, j;
-    var result = [];
+module.exports["parsing.lr.lr0_classification"] = function(grammar) {
 
-    for (i = 0; i < this.productions.length; i++) {
-      result[i] = [];
+  var i, s;
+  var table = grammar.calculate("parsing.lr.lr0_table");
+  var terminals = grammar.calculate("grammar.terminals");
 
-      for (j = 0; j < this.productions[i].length; j++) {
-        result[i][j] = this.productions[i][j];
+  for (i = 0; i < table.length; i++) {
+
+    if (table[i].reduce.length > 1)
+      return { member: false, reason: "it contains a reduce-reduce conflict" };
+
+    if (table[i].reduce.length > 0) {
+      for (s in table[i].shift) {
+        if (terminals[s])
+          return { member: false, reason: "it contains a shift-reduce conflict" };
       }
     }
 
-    return result;
-
   }
 
-  function toString() {
+  return { member: true };
 
-    var i, j;
-    var result = "";
+}
 
-    for (i = 0; i < this.productions.length; i++) {
+module.exports["parsing.lr.lr0_automaton"] = function(grammar) {
 
-      result += this.productions[i][0];
-      result += " ->";
+  return automaton(grammar, lr0);
 
-      for (j = 1; j < this.productions[i].length; j++)
-        result += " " + this.productions[i][j];
+}
 
-      result += " .\n";
+module.exports["parsing.lr.lr0_table"] = function(grammar) {
+
+  var i, j, s;
+  var state, item, actions;
+  var table = [];
+  var automaton = grammar.calculate("parsing.lr.lr0_automaton");
+
+  for (i = 0; i < automaton.length; i++) {
+
+    state = automaton[i];
+    actions = { shift: {}, reduce: [] };
+
+    // add shift actions for transitions
+
+    for (s in state.transitions)
+      actions.shift[s] = state.transitions[s];
+
+    // add reduce actions for completed items
+
+    for (j = 0; j < state.items.length; j++) {
+
+      item = state.items[j];
+
+      if (item.production === -1) {
+        if (item.index === 1)
+          actions.reduce.push(item.production);
+      } else {
+        if (item.index == grammar.productions[item.production].length - 1)
+          actions.reduce.push(item.production);
+      }
 
     }
 
-    return result;
+    table.push(actions);
 
   }
 
-  // export
+  return table;
 
-  var Grammar = initialize;
+}
 
-  Grammar.parse = parse;
-  Grammar.END = END;
+function classifyLR1(table) {
 
-  Grammar.prototype.calculate = calculate;
-  Grammar.prototype.transform = transform;
-  Grammar.prototype.getFirst = getFirst;
-  Grammar.prototype.isNullable = isNullable;
-  Grammar.prototype.copyProductions = copyProductions;
-  Grammar.prototype.toString = toString;
+  var i, s;
 
-  module.exports = Grammar;
+  for (i = 0; i < table.length; i++) {
+
+    for (s in table[i]) {
+
+      if (typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 1)
+        return { member: false, reason: "it contains a reduce-reduce conflict" };
+
+      if (typeof table[i][s].shift !== "undefined" && typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 0)
+        return { member: false, reason: "it contains a shift-reduce conflict" };
+
+    }
+
+  }
+
+  return { member: true };
+
+}
+
+function addReduceAction(actions, symbol, production) {
+
+  if (typeof actions[symbol] === "undefined")
+    actions[symbol] = { reduce: [] };
+
+  if (typeof actions[symbol].reduce === "undefined")
+    actions[symbol].reduce = [];
+
+  actions[symbol].reduce.push(production);
+
+}
+
+module.exports["parsing.lr.slr1_classification"] = function(grammar) {
+
+  return classifyLR1(grammar.calculate("parsing.lr.slr1_table"));
+
+}
+
+module.exports["parsing.lr.slr1_table"] = function(grammar) {
+
+  var i, j, s;
+  var state, actions, item;
+  var table = [];
+  var automaton = grammar.calculate("parsing.lr.lr0_automaton");
+  var follow = grammar.calculate("grammar.follow");
+
+  for (i = 0; i < automaton.length; i++) {
+
+    state = automaton[i];
+    actions = {};
+
+    for (s in state.transitions)
+      actions[s] = { shift: state.transitions[s] };
+
+    for (j = 0; j < state.items.length; j++) {
+
+      item = state.items[j];
+
+      if (item.production === -1) {
+
+        if (item.index === 1)
+          addReduceAction(actions, END, item.production);
+
+      } else {
+
+        if (item.index == grammar.productions[item.production].length - 1) {
+
+          for (s in follow[grammar.productions[item.production][0]])
+            addReduceAction(actions, s, item.production);
+
+        }
+
+      }
+
+    }
+
+    table.push(actions);
+
+  }
+
+  return table;
+
+}
+
+module.exports["parsing.lr.lr1_automaton"] = function(grammar) {
+
+  return automaton(grammar, lr1);
+
+}
+
+module.exports["parsing.lr.lr1_classification"] = function(grammar) {
+
+  return classifyLR1(grammar.calculate("parsing.lr.lr1_table"));
+
+}
+
+module.exports["parsing.lr.lr1_table"] = function(grammar) {
+
+  var i, j, s;
+  var state, actions, item;
+  var table = [];
+  var automaton = grammar.calculate("parsing.lr.lr1_automaton");
+
+  for (i = 0; i < automaton.length; i++) {
+
+    state = automaton[i];
+    actions = {};
+
+    for (s in state.transitions)
+      actions[s] = { shift: state.transitions[s] };
+
+    for (j = 0; j < state.items.length; j++) {
+
+      item = state.items[j];
+
+      if (item.production === -1) {
+
+        if (item.index === 1)
+          addReduceAction(actions, END, item.production);
+
+      } else {
+
+        if (item.index == grammar.productions[item.production].length - 1)
+          addReduceAction(actions, item.lookahead, item.production);
+
+      }
+
+    }
+
+    table.push(actions);
+
+  }
+
+  return table;
+
+}
+
+// Collapse a list of LR1 items' lookaheads so that distinct
+// items' lookaheads are arrays.
+
+function collapseLookaheads(items) {
+
+  var i, p, x, l;
+  var table = {};
+
+  for (i = 0; i < items.length; i++) {
+
+    p = items[i].production;
+    x = items[i].index;
+    l = items[i].lookahead;
+
+    if (!table[p])
+      table[p] = [];
+
+    if (!table[p][x])
+      table[p][x] = [];
+
+    table[p][x].push(l);
+
+  }
+
+  var result = [];
+
+  for (p in table)
+    for (x in table[p])
+      result.push({ production: parseInt(p), index: parseInt(x), lookaheads: table[p][x] });
+
+  return result;
+
+}
+
+// Return the union of the items in two LALR1 states.
+// For each item in the first state, add lookaheads from the second state's corresponding items.
+
+function mergeItems(a, b) {
+
+  var result = [];
+  var item;
+  var i, j, k;
+
+  for (i = 0; i < a.length; i++) {
+
+    item = { production: a[i].production, index: a[i].index, lookaheads: [] };
+
+    // Add lookaheads from a
+
+    for (j = 0; j < a[i].lookaheads.length; j++)
+      item.lookaheads.push(a[i].lookaheads[j]);
+
+    // Find matching items in b and add their lookaheads if they aren't already present
+
+    for (j = 0; j < b.length; j++) {
+
+      if (b[j].production == a[i].production && b[j].index == a[i].index) {
+
+        for (k = 0; k < b[j].lookaheads.length; k++) {
+          if (item.lookaheads.indexOf(b[j].lookaheads[k]) === -1)
+            item.lookaheads.push(b[j].lookaheads[k]);
+        }
+
+      }
+
+    }
+
+    result.push(item);
+
+  }
+
+  return result;
+
+}
+
+module.exports["parsing.lr.lalr1_classification"] = function(grammar) {
+
+  return classifyLR1(grammar.calculate("parsing.lr.lalr1_table"));
+
+}
+
+module.exports["parsing.lr.lalr1_automaton"] = function(grammar) {
+
+  var i, j;
+
+  // Get the LR1 automaton.
+
+  var automaton = grammar.calculate("parsing.lr.lr1_automaton");
+
+  // Collapse lookaheads.
+
+  for (i = 0; i < automaton.length; i++) {
+
+    automaton[i].kernel = collapseLookaheads(automaton[i].kernel);
+    automaton[i].items = collapseLookaheads(automaton[i].items);
+
+  }
+
+  // Find states to merge.
+  //
+  // Produce a list like this:
+  //
+  //   merge = [[0], [1, 2], [3, 5], [4]]
+  //
+  // where merge[i] is a list of indices in the dfa that can be merged.
+  //
+  // states can be merged if they have the same items, not considering lookaheads.
+
+  var used = [];
+  var merge = [];
+
+  for (i = 0; i < automaton.length; i++) {
+
+    // If this state has been used already for merging, skip it.
+
+    if (used[i])
+      continue;
+
+    // Otherwise, find the states (including the current state) which can be merged with it.
+
+    var m = [];
+
+    for (j = 0; j < automaton.length; j++) {
+
+      if (!used[j] && lr0.same(automaton[i].kernel, automaton[j].kernel)) {
+
+        m.push(j);
+        used[j] = true;
+
+      }
+
+    }
+
+    merge.push(m);
+
+  }
+
+  // for fixing transitions. looks like:
+  //
+  //   transition = [0, 1, 1, 3, 4, 3]
+  //
+  // where transition[i] is the new index for the original state i.
+
+  var transition = [];
+
+  for (i = 0; i < merge.length; i++) {
+    for (j = 0; j < merge[i].length; j++) {
+
+      transition[merge[i][j]] = i;
+
+    }
+  }
+
+  // Produce new states
+
+  var states = [];
+
+  for (i = 0; i < merge.length; i++) {
+
+    var state = { kernel: [], items: [], transitions: {} };
+
+    // Merge items
+
+    for (j = 0; j < merge[i].length; j++) {
+
+      state.kernel = mergeItems(automaton[merge[i][j]].kernel, state.kernel);
+      state.items = mergeItems(automaton[merge[i][j]].items, state.items);
+
+    }
+
+    // Add transitions (just use the first merge index)
+
+    var original = automaton[merge[i][0]].transitions;
+    var s;
+
+    for (s in original)
+      state.transitions[s] = transition[original[s]];
+
+    // Add the new state
+
+    states.push(state);
+
+  }
+
+  return states;
+
+}
+
+module.exports["parsing.lr.lalr1_table"] = function(grammar) {
+
+  var i, j, k, s;
+  var state, actions, item;
+  var table = [];
+  var automaton = grammar.calculate("parsing.lr.lalr1_automaton");
+
+  for (i = 0; i < automaton.length; i++) {
+
+    state = automaton[i];
+    actions = {};
+
+    for (s in state.transitions)
+      actions[s] = { shift: state.transitions[s] };
+
+    for (j = 0; j < state.items.length; j++) {
+
+      item = state.items[j];
+
+      if (item.production === -1) {
+
+        if (item.index === 1)
+          addReduceAction(actions, END, item.production);
+
+      } else {
+
+        if (item.index == grammar.productions[item.production].length - 1) {
+
+          for (k = 0; k < item.lookaheads.length; k++)
+            addReduceAction(actions, item.lookaheads[k], item.production);
+
+        }
+
+      }
+
+    }
+
+    table.push(actions);
+
+  }
+
+  return table;
+
+}
+
+},{"../../symbols":19}],16:[function(require,module,exports){
+function expand(grammar, production, symbol) {
+
+  var changes = [];
+
+  // Remove the existing production
+
+  changes.push({ operation: "delete", index: production });
+
+  // Add new productions
+
+  var offset = 0;
+
+  for (i = 0; i < grammar.productions.length; i++) {
+
+    if (grammar.productions[i][0] === grammar.productions[production][symbol]) {
+
+      var p = grammar.productions[production].slice();
+      var b = grammar.productions[i].slice(1);
+      Array.prototype.splice.apply(p, [symbol, 1].concat(b));
+
+      changes.push({ production: p, operation: "insert", index: production + offset });
+      offset++;
+
+    }
+
+  }
+
+  return changes;
+
+}
+
+module.exports["transformations.expand"] = function(grammar) {
+
+  var i, j;
+
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var result = [];
+
+  // Are there any nonterminals we can expand?
+
+  for (i = 0; i < grammar.productions.length; i++) {
+    for (j = 1; j < grammar.productions[i].length; j++) {
+
+      if (nonterminals[grammar.productions[i][j]]) {
+
+        result.push({
+          name: "expand",
+          production: i,
+          symbol: j,
+          changes: expand(grammar, i, j)
+        });
+
+      }
+
+    }
+  }
+
+  return result;
+
+}
+
+function removeImmediateLeftRecursion(grammar, base, recursive) {
+
+  var i, j;
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var production;
+
+  // Find a new symbol for the right recursive production by adding primes
+  // to the existing symbol.
+
+  var symbol = grammar.productions[recursive[0]][0];
+
+  do {
+    symbol += "'";
+  } while (typeof nonterminals[symbol] !== "undefined");
+
+  // Copy productions to changes, marking those we're removing.
+
+  var changes = [];
+  var first;
+  var offset = 0;
+
+  for (i = 0; i < grammar.productions.length; i++) {
+
+    if (base.indexOf(i) !== -1 || recursive.indexOf(i) !== -1) {
+
+      changes.push({ index: i + offset, operation: "delete" });
+      offset--;
+
+      if (typeof first === "undefined")
+        first = i;
+    }
+
+  }
+
+  // Create the new productions...
+
+  offset = 0;
+
+  // Base rules
+
+  var added = [];
+
+  for (i = 0; i < base.length; i++) {
+
+    production = [];
+
+    for (j = 0; j < grammar.productions[base[i]].length; j++)
+      production.push(grammar.productions[base[i]][j]);
+
+    production.push(symbol);
+
+    changes.push({ production: production, operation: "insert", index: first + offset });
+    offset++;
+
+  }
+
+  // Recursive rules
+
+  for (i = 0; i < recursive.length; i++) {
+
+    production = [];
+
+    production.push(symbol);
+
+    for (j = 2; j < grammar.productions[recursive[i]].length; j++)
+      production.push(grammar.productions[recursive[i]][j]);
+
+    production.push(symbol);
+
+    changes.push({ production: production, operation: "insert", index: first + offset });
+    offset++;
+
+  }
+
+  // Epsilon
+
+  changes.push({ production: [symbol], operation: "insert", index: first + offset });
+
+  return changes;
+
+}
+
+module.exports["transformations.removeImmediateLeftRecursion"] = function(grammar) {
+
+  var i, j;
+
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var result = [];
+
+  var candidates = {};
+  var nt;
+
+  // Are there any rules of this form...
+  //
+  //   A -> A a_1 | A a_2 | ... | A a_m | b_1 | ... | b_n
+  //
+  // where m, n > 0?
+
+  for (nt in nonterminals)
+    candidates[nt] = { recursive: [], base: [] };
+
+  for (i = 0; i < grammar.productions.length; i++) {
+    nt = grammar.productions[i][0];
+
+    if (nt == grammar.productions[i][1])
+      candidates[nt].recursive.push(i);
+    else
+      candidates[nt].base.push(i);
+  }
+
+  for (nt in candidates) {
+
+    if (candidates[nt].recursive.length > 0 && candidates[nt].base.length > 0) {
+
+      result.push({
+        name: "removeImmediateLeftRecursion",
+        production: candidates[nt].recursive[0],
+        symbol: 0,
+        changes: removeImmediateLeftRecursion(grammar, candidates[nt].base, candidates[nt].recursive)
+      });
+
+    }
+
+  }
+
+  return result;
+
+}
+
+// Perform the left-factoring transformation. Group is an array of production
+// indices, and prefix is the number of symbols (not counting the head of
+// the production) to factor.
+
+function leftFactor(grammar, group, prefix) {
+
+  var i, j;
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+
+  // Find a new symbol...
+
+  var symbol = grammar.productions[group[0]][0];
+
+  do {
+    symbol += "'";
+  } while (typeof nonterminals[symbol] !== "undefined");
+
+  // Copy productions to changes, marking those we're removing.
+
+  var changes = [];
+  var offset = 0;
+
+  for (i = 0; i < grammar.productions.length; i++) {
+
+    if (group.indexOf(i) !== -1) {
+      changes.push({ index: i + offset, operation: "delete" });
+      offset--;
+    }
+
+  }
+
+  // Add the reference to the new symbol with the factored prefix
+
+  changes.push({
+    production: grammar.productions[group[0]].slice(0, prefix + 1).concat(symbol),
+    operation: "insert",
+    index: group[0]
+  });
+
+  // Add the productions in the group
+
+  for (i = 0; i < group.length; i++) {
+    changes.push({
+      production: [symbol].concat(grammar.productions[group[i]].slice(prefix + 1)),
+      operation: "insert",
+      index: group[0] + i + 1
+    });
+  }
+
+  return changes;
+
+}
+
+// Mini trie implementation for finding factorable prefixes.
+
+function Trie() {
+
+  this.root = {
+    children: {},
+    values: []
+  };
+
+}
+
+Trie.prototype.insert = function(production, value) {
+
+  var node = this.root;
+  var i, s;
+
+  for (i = 0; i < production.length; i++) {
+    s = production[i];
+    if (typeof node.children[s] === "undefined")
+      node.children[s] = { children: {}, values: [] };
+    node = node.children[s];
+  }
+
+  node.values.push(value);
+
+}
+
+Trie.prototype.getFactorablePrefixes = function() {
+
+  var groups = [];
+
+  function _values(length, node) {
+
+    var symbol;
+    var values = [];
+
+    values = values.concat(node.values);
+
+    for (symbol in node.children)
+      values = values.concat(_values(length + 1, node.children[symbol]));
+
+    if (length > 0 && values.length >= 2)
+      groups.push({ length: length, group: values });
+
+    return values;
+
+  }
+
+  _values(0, this.root);
+
+  return groups;
+
+}
+
+module.exports["transformations.leftFactor"] = function(grammar) {
+
+  var i, j;
+  var result = [];
+  var nt;
+  var prefix;
+
+  // Build tries for each nonterminal's productions
+
+  var productions = {};
+
+  for (i = 0; i < grammar.productions.length; i++) {
+
+    nt = grammar.productions[i][0];
+
+    if (typeof productions[nt] === "undefined")
+      productions[nt] = new Trie();
+
+    productions[nt].insert(grammar.productions[i].slice(1), i);
+
+  }
+
+  // Get factorable prefixes and their corresponding productions
+
+  var factorable;
+
+  for (nt in productions) {
+
+    factorable = productions[nt].getFactorablePrefixes();
+
+    for (i = 0; i < factorable.length; i++) {
+
+      var length = factorable[i].length;
+      var group = factorable[i].group;
+      group.sort();
+
+      result.push({
+        name: "leftFactor",
+        production: group[0],
+        symbol: 0,
+        length: length,
+        changes: leftFactor(grammar, group, length)
+      });
+
+    }
+
+  }
+
+  return result;
+
+}
+
+function epsilonSeparate(grammar, group, epsilon) {
+
+  var i;
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+
+  // Find a new symbol...
+
+  var symbol = grammar.productions[group[0]][0];
+
+  do {
+    symbol += "*";
+  } while (typeof nonterminals[symbol] !== "undefined");
+
+  // Copy productions to changes, marking those we're removing.
+
+  var changes = [];
+  var offset = 0;
+
+  for (i = 0; i < grammar.productions.length; i++) {
+
+    if (group.indexOf(i) !== -1 || i === epsilon) {
+      changes.push({ index: i + offset, operation: "delete" });
+      offset--;
+    }
+
+  }
+
+  // Add the separated version of the original rule
+
+  changes.push({
+    production: [grammar.productions[group[0]][0], symbol],
+    operation: "insert",
+    index: group[0]
+  });
+
+  changes.push({
+    production: [grammar.productions[group[0]][0]],
+    operation: "insert",
+    index: group[0] + 1
+  });
+
+  // Add the non-epsilon production bodies with the new head
+
+  for (i = 0; i < group.length; i++) {
+    changes.push({
+      production: [symbol].concat(grammar.productions[group[i]].slice(1)),
+      operation: "insert",
+      index: group[0] + i + 2
+    });
+  }
+
+  return changes;
+
+}
+
+module.exports["transformations.epsilonSeparate"] = function(grammar) {
+
+  var nt, i;
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var nullable = grammar.calculate("grammar.nullable");
+  var result = [];
+  var group;
+  var epsilon;
+
+  // For each nonterminal, determine if it is unambiguously nullable,
+  // while collecting its non-null productions and its null (epsilon)
+  // production. If it is unambiguously nullable, add it to the result.
+
+  for (nt in nonterminals) {
+
+    group = [];
+    epsilon = -1;
+
+    for (i = 0; i < grammar.productions.length; i++) {
+
+      if (grammar.productions[i][0] === nt) {
+
+        if (grammar.productions[i].length === 1) {
+          if (epsilon !== -1)
+            break;
+          epsilon = i;
+        } else {
+          group.push(i);
+        }
+
+      }
+
+    }
+
+    if (i === grammar.productions.length && epsilon !== -1) {
+
+      result.push({
+        name: "epsilonSeparate",
+        production: group[0],
+        symbol: 0,
+        changes: epsilonSeparate(grammar, group, epsilon)
+      });
+
+    }
+
+  }
+
+  return result;
+
+}
+
+function removeUnreachable(grammar, group) {
+
+  var i;
+
+  var changes = [];
+  var offset = 0;
+
+  // Remove all productions in the group.
+
+  for (i = 0; i < grammar.productions.length; i++) {
+
+    if (group.indexOf(i) !== -1) {
+      changes.push({ index: i + offset, operation: "delete" });
+      offset--;
+    }
+
+  }
+
+  return changes;
+
+}
+
+module.exports["transformations.removeUnreachable"] = function(grammar) {
+
+  var unreachable = grammar.calculate("grammar.unreachable");
+  var nt;
+  var i;
+  var result = [];
+  var group;
+
+  for (nt in unreachable) {
+
+    group = [];
+
+    for (i = 0; i < grammar.productions.length; i++) {
+
+      if (grammar.productions[i][0] === nt)
+        group.push(i);
+
+    }
+
+    if (group.length > 0) {
+
+      result.push({
+        name: "removeUnreachable",
+        production: group[0],
+        symbol: 0,
+        changes: removeUnreachable(grammar, group)
+      });
+
+    }
+
+  }
+
+  return result;
+
+}
+
+module.exports["transformations"] = function(grammar) {
+
+  return [].concat(grammar.calculate("transformations.expand"))
+           .concat(grammar.calculate("transformations.removeImmediateLeftRecursion"))
+           .concat(grammar.calculate("transformations.leftFactor"))
+           .concat(grammar.calculate("transformations.epsilonSeparate"))
+           .concat(grammar.calculate("transformations.removeUnreachable"));
+
+}
+
+},{}],17:[function(require,module,exports){
+const Calculations = require("./calculations");
+const Parser = require("./parser");
+const END = require("./symbols").END;
+
+// class
+
+function parse(spec) {
+
+  var i, j;
+
+  if (spec.match(/^\s*$/))
+    return { spec: spec };
+
+  try {
+
+    // Parser gives us rules in the following form:
+    //
+    //   { nt: "A", p: [["a", "b"], []] }
+    //
+    // We want an array of productions in this form:
+    //
+    //   [["A", "a", "b"], ["A"]]
+    //
+    // Note that depending on the grammar specification, productions
+    // for a particular nonterminal may be at different places in the
+    // list. We want to preserve the order in the user's input.
+
+    var rules = Parser.parse(spec);
+    var productions = [];
+
+    for (i = 0; i < rules.length; i++) {
+      for (j = 0; j < rules[i].p.length; j++) {
+        productions.push([rules[i].nt].concat(rules[i].p[j]));
+      }
+    }
+
+    return { grammar: new Grammar(productions), spec: spec };
+
+  } catch (e) {
+
+    return { error: e, spec: spec };
+
+  }
+
+}
 
 
+
+// instance
+
+function initialize(productions) {
+
+  // Check for reserved and empty symbols
+
+  var i, j;
+
+  for (i = 0; i < productions.length; i++) {
+    for (j = 0; j < productions[i].length; j++) {
+
+      if (productions[i][j].match(/^Grammar\./))
+        throw "Reserved symbol " + productions[i][j] + " may not be part of a production";
+
+      if (productions[i][j] === "")
+        throw "An empty symbol may not be part of a production";
+
+    }
+  }
+
+  // Assign productions
+
+  this.productions = productions;
+
+  // Initialize calculations memoization
+
+  this.calculations = {};
+
+}
+
+function calculate(name) {
+
+  if (typeof Calculations[name] === "undefined")
+    throw "Undefined grammar calculation " + name;
+
+  if (typeof this.calculations[name] === "undefined")
+    this.calculations[name] = Calculations[name](this);
+
+  return this.calculations[name];
+
+}
+
+function transform(transformation) {
+
+  var productions = this.productions.slice();
+
+  transformation.changes.forEach(function(change) {
+
+    if (change.operation === "delete")
+      productions.splice(change.index, 1);
+    else if (change.operation === "insert")
+      productions.splice(change.index, 0, change.production);
+
+  });
+
+  return new Grammar(productions);
+
+}
+
+function getFirst(symbols) {
+
+  var i, k;
+  var s, t;
+  var result;
+
+  var first = this.calculate("grammar.first");
+  var nullable = this.calculate("grammar.nullable");
+  var terminals = this.calculate("grammar.terminals");
+  var nonterminals = this.calculate("grammar.nonterminals");
+
+  result = {};
+
+  for (i = 0; i < symbols.length; i++) {
+
+    s = symbols[i];
+
+    if (s === END) {
+
+      result[s] = true;
+      break;
+
+    } else if (terminals[s]) {
+
+      result[s] = true;
+      break;
+
+    } else if (nonterminals[s]) {
+
+      for (k in first[s])
+        result[k] = true;
+
+      if (!nullable[s])
+        break;
+
+    } else {
+
+      throw "Unexpected symbol " + s;
+
+    }
+
+  }
+
+  return result;
+
+}
+
+function isNullable(symbols) {
+
+  var i;
+
+  var nullable = this.calculate("grammar.nullable");
+  var terminals = this.calculate("grammar.terminals");
+  var nonterminals = this.calculate("grammar.nonterminals");
+
+  for (i = 0; i < symbols.length; i++) {
+
+    s = symbols[i];
+
+    if (nonterminals[s]) {
+
+      if (!nullable[s])
+        return false;
+
+    } else if (terminals[s]) {
+
+      return false;
+
+    } else {
+
+      throw "Unexpected symbol " + s;
+
+    }
+
+  }
+
+  return true;
+
+}
+
+function copyProductions() {
+
+  var i, j;
+  var result = [];
+
+  for (i = 0; i < this.productions.length; i++) {
+    result[i] = [];
+
+    for (j = 0; j < this.productions[i].length; j++) {
+      result[i][j] = this.productions[i][j];
+    }
+  }
+
+  return result;
+
+}
+
+function toString() {
+
+  var i, j;
+  var result = "";
+
+  for (i = 0; i < this.productions.length; i++) {
+
+    result += this.productions[i][0];
+    result += " ->";
+
+    for (j = 1; j < this.productions[i].length; j++)
+      result += " " + this.productions[i][j];
+
+    result += " .\n";
+
+  }
+
+  return result;
+
+}
+
+// export
+
+var Grammar = initialize;
+
+Grammar.parse = parse;
+Grammar.END = END;
+
+Grammar.prototype.calculate = calculate;
+Grammar.prototype.transform = transform;
+Grammar.prototype.getFirst = getFirst;
+Grammar.prototype.isNullable = isNullable;
+Grammar.prototype.copyProductions = copyProductions;
+Grammar.prototype.toString = toString;
+
+module.exports = Grammar;
 
 },{"./calculations":12,"./parser":18,"./symbols":19}],18:[function(require,module,exports){
 (function (process){(function (){
@@ -4502,254 +4483,251 @@ module.exports = {
 },{}],20:[function(require,module,exports){
 const END = require('./grammar/symbols').END;
 
+// class
 
-  // class
+function listSymbols(set, order) {
 
-  function listSymbols(set, order) {
+  var i;
+  var result = [];
 
-    var i;
-    var result = [];
-
-    for (i = 0; i < order.length; i++) {
-      if (set[order[i]])
-        result.push(order[i]);
-    }
-
-    if (set[END])
-      result.push(END);
-
-    return result;
-
+  for (i = 0; i < order.length; i++) {
+    if (set[order[i]])
+      result.push(order[i]);
   }
 
-  function prettifySymbol(symbol) {
+  if (set[END])
+    result.push(END);
 
-    return symbol.replace(/'/g, "&prime;");
+  return result;
 
-  }
+}
 
-  function formatSymbol(symbol, info) {
+function prettifySymbol(symbol) {
 
-    if (symbol == END)
-      return "<u>$</u>";
-    else if (info.nonterminals[symbol])
-      return "<i>" + prettifySymbol(escapeHTML(symbol)) + "</i>";
-    else if (info.terminals[symbol])
-      return "<b>" + prettifySymbol(escapeHTML(symbol)) + "</b>";
+  return symbol.replace(/'/g, "&prime;");
+
+}
+
+function formatSymbol(symbol, info) {
+
+  if (symbol == END)
+    return "<u>$</u>";
+  else if (info.nonterminals[symbol])
+    return "<i>" + prettifySymbol(escapeHTML(symbol)) + "</i>";
+  else if (info.terminals[symbol])
+    return "<b>" + prettifySymbol(escapeHTML(symbol)) + "</b>";
+  else
+    throw "Unknown symbol: " + symbol;
+
+}
+
+function bareFormatSymbol(symbol, info) {
+
+  if (symbol == END)
+    return "$";
+  else if (info.nonterminals[symbol] || info.terminals[symbol])
+    return prettifySymbol(escapeHTML(symbol));
+  else
+    throw "Unknown symbol: " + symbol;
+
+}
+
+function formatSymbols(symbols, info) {
+
+  var i;
+  var result = [];
+
+  for (i = 0; i < symbols.length; i++)
+    result[i] = formatSymbol(symbols[i], info);
+
+  return result;
+
+}
+
+function bareFormatSymbols(symbols, info) {
+
+  var i;
+  var result = [];
+
+  for (i = 0; i < symbols.length; i++)
+    result[i] = bareFormatSymbol(symbols[i], info);
+
+  return result;
+
+}
+
+function formatProduction(production, info) {
+
+  var result = "";
+  var i;
+
+  result += formatSymbol(production[0], info);
+  result += " &rarr; ";
+
+  if (production.length > 1)
+    result += formatSymbols(production.slice(1), info).join(" ");
+  else
+    result += "<u>&epsilon;</u>";
+
+  return result;
+
+}
+
+function formatSentence(strings) {
+
+  if (strings.length == 0)
+    return "";
+  else if (strings.length == 1)
+    return strings[0];
+  else if (strings.length == 2)
+    return strings.join(" and ");
+  else
+    return strings.slice(0, -1).concat("and " + strings[strings.length-1]).join(", ");
+
+}
+
+function formatItem(item, start, productions, info) {
+
+  var production;
+
+  if (item.production === -1) {
+
+    if (item.index === 0)
+      production = "&bull; " + formatSymbol(start, info);
     else
-      throw "Unknown symbol: " + symbol;
+      production = formatSymbol(start, info) + " &bull;";
+
+  } else {
+
+    var symbols = formatSymbols(productions[item.production].slice(1), info);
+    symbols.splice(item.index, 0, "&bull;");
+
+    production = formatSymbol(productions[item.production][0], info) + " &rarr; " + symbols.join(" ");
 
   }
 
-  function bareFormatSymbol(symbol, info) {
+  if (item.lookaheads)
+    return "[" + production + ", " + formatSymbols(item.lookaheads, info).join(" / ") + "]";
+  else if (item.lookahead)
+    return "[" + production + ", " + formatSymbol(item.lookahead, info) + "]";
+  else
+    return production;
 
-    if (symbol == END)
-      return "$";
-    else if (info.nonterminals[symbol] || info.terminals[symbol])
-      return prettifySymbol(escapeHTML(symbol));
+}
+
+function bareFormatItem(item, start, productions, info) {
+
+  var production;
+
+  if (item.production === -1) {
+
+    if (item.index === 0)
+      production = "&bull; " + bareFormatSymbol(start, info);
     else
-      throw "Unknown symbol: " + symbol;
+      production = bareFormatSymbol(start, info) + " &bull;";
+
+  } else {
+
+    var symbols = bareFormatSymbols(productions[item.production].slice(1), info);
+    symbols.splice(item.index, 0, "&bull;");
+
+    production = bareFormatSymbol(productions[item.production][0], info) + " &rarr; " + symbols.join(" ");
 
   }
 
-  function formatSymbols(symbols, info) {
+  if (item.lookaheads)
+    return "[" + production + ", " + bareFormatSymbols(item.lookaheads, info).join(" / ") + "]";
+  else if (item.lookahead)
+    return "[" + production + ", " + bareFormatSymbol(item.lookahead, info) + "]";
+  else
+    return production;
 
-    var i;
-    var result = [];
+}
 
-    for (i = 0; i < symbols.length; i++)
-      result[i] = formatSymbol(symbols[i], info);
+var TRANSFORMATION_FORMATTERS = {
+  expand: function(transformation, productions, info) {
+    return "Expand Nonterminal";
+  },
 
-    return result;
+  removeImmediateLeftRecursion: function(transformation, productions, info) {
+    return "Remove Immediate Left Recursion";
 
+  },
+
+  leftFactor: function(transformation, productions, info) {
+    return "Left Factor " +
+      bareFormatSymbols(productions[transformation.production].slice(1, transformation.length + 1), info).join(" ");
+  },
+
+  epsilonSeparate: function(transformation, productions, info) {
+    return "Epsilon-Separate";
+  },
+
+  removeUnreachable: function(transformation, productions, info) {
+    return "Remove Unreachable Nonterminal"
   }
+}
 
-  function bareFormatSymbols(symbols, info) {
+function formatTransformation(transformation, productions, info) {
 
-    var i;
-    var result = [];
+  return TRANSFORMATION_FORMATTERS[transformation.name](transformation, productions, info) || transformation.name;
 
-    for (i = 0; i < symbols.length; i++)
-      result[i] = bareFormatSymbol(symbols[i], info);
+}
 
-    return result;
+function repeatString(string, times) {
 
-  }
+  var result = "";
+  var i;
 
-  function formatProduction(production, info) {
+  for (i = 0; i < times; i++)
+    result += string;
 
-    var result = "";
-    var i;
+  return result;
 
-    result += formatSymbol(production[0], info);
-    result += " &rarr; ";
+}
 
-    if (production.length > 1)
-      result += formatSymbols(production.slice(1), info).join(" ");
-    else
-      result += "<u>&epsilon;</u>";
+// From Prototype
 
-    return result;
+function escapeHTML(string) {
 
-  }
+  return string.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;");
 
-  function formatSentence(strings) {
+}
 
-    if (strings.length == 0)
-      return "";
-    else if (strings.length == 1)
-      return strings[0];
-    else if (strings.length == 2)
-      return strings.join(" and ");
-    else
-      return strings.slice(0, -1).concat("and " + strings[strings.length-1]).join(", ");
+// application delegate
 
-  }
+function setDelegate(delegate) {
 
-  function formatItem(item, start, productions, info) {
+  this._delegate = delegate;
 
-    var production;
+}
 
-    if (item.production === -1) {
+function buildHref(path, fragment) {
 
-      if (item.index === 0)
-        production = "&bull; " + formatSymbol(start, info);
-      else
-        production = formatSymbol(start, info) + " &bull;";
+  return this._delegate.buildHref(path, fragment);
 
-    } else {
+}
 
-      var symbols = formatSymbols(productions[item.production].slice(1), info);
-      symbols.splice(item.index, 0, "&bull;");
+// export
 
-      production = formatSymbol(productions[item.production][0], info) + " &rarr; " + symbols.join(" ");
+var klass = {};
 
-    }
+klass.listSymbols = listSymbols;
+klass.formatSymbol = formatSymbol;
+klass.bareFormatSymbol = bareFormatSymbol;
+klass.formatSymbols = formatSymbols;
+klass.bareFormatSymbols = bareFormatSymbols;
+klass.formatProduction = formatProduction;
+klass.formatSentence = formatSentence;
+klass.formatItem = formatItem;
+klass.bareFormatItem = bareFormatItem;
+klass.formatTransformation = formatTransformation;
+klass.repeatString = repeatString;
+klass.escapeHTML = escapeHTML;
+klass.setDelegate = setDelegate;
+klass.buildHref = buildHref;
 
-    if (item.lookaheads)
-      return "[" + production + ", " + formatSymbols(item.lookaheads, info).join(" / ") + "]";
-    else if (item.lookahead)
-      return "[" + production + ", " + formatSymbol(item.lookahead, info) + "]";
-    else
-      return production;
-
-  }
-
-  function bareFormatItem(item, start, productions, info) {
-
-    var production;
-
-    if (item.production === -1) {
-
-      if (item.index === 0)
-        production = "&bull; " + bareFormatSymbol(start, info);
-      else
-        production = bareFormatSymbol(start, info) + " &bull;";
-
-    } else {
-
-      var symbols = bareFormatSymbols(productions[item.production].slice(1), info);
-      symbols.splice(item.index, 0, "&bull;");
-
-      production = bareFormatSymbol(productions[item.production][0], info) + " &rarr; " + symbols.join(" ");
-
-    }
-
-    if (item.lookaheads)
-      return "[" + production + ", " + bareFormatSymbols(item.lookaheads, info).join(" / ") + "]";
-    else if (item.lookahead)
-      return "[" + production + ", " + bareFormatSymbol(item.lookahead, info) + "]";
-    else
-      return production;
-
-  }
-
-  var TRANSFORMATION_FORMATTERS = {
-    expand: function(transformation, productions, info) {
-      return "Expand Nonterminal";
-    },
-
-    removeImmediateLeftRecursion: function(transformation, productions, info) {
-      return "Remove Immediate Left Recursion";
-
-    },
-
-    leftFactor: function(transformation, productions, info) {
-      return "Left Factor " +
-        bareFormatSymbols(productions[transformation.production].slice(1, transformation.length + 1), info).join(" ");
-    },
-
-    epsilonSeparate: function(transformation, productions, info) {
-      return "Epsilon-Separate";
-    },
-
-    removeUnreachable: function(transformation, productions, info) {
-      return "Remove Unreachable Nonterminal"
-    }
-  }
-
-  function formatTransformation(transformation, productions, info) {
-
-    return TRANSFORMATION_FORMATTERS[transformation.name](transformation, productions, info) || transformation.name;
-
-  }
-
-  function repeatString(string, times) {
-
-    var result = "";
-    var i;
-
-    for (i = 0; i < times; i++)
-      result += string;
-
-    return result;
-
-  }
-
-  // From Prototype
-
-  function escapeHTML(string) {
-
-    return string.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;");
-
-  }
-
-  // application delegate
-
-  function setDelegate(delegate) {
-
-    this._delegate = delegate;
-
-  }
-
-  function buildHref(path, fragment) {
-
-    return this._delegate.buildHref(path, fragment);
-
-  }
-
-  // export
-
-  var klass = {};
-
-  klass.listSymbols = listSymbols;
-  klass.formatSymbol = formatSymbol;
-  klass.bareFormatSymbol = bareFormatSymbol;
-  klass.formatSymbols = formatSymbols;
-  klass.bareFormatSymbols = bareFormatSymbols;
-  klass.formatProduction = formatProduction;
-  klass.formatSentence = formatSentence;
-  klass.formatItem = formatItem;
-  klass.bareFormatItem = bareFormatItem;
-  klass.formatTransformation = formatTransformation;
-  klass.repeatString = repeatString;
-  klass.escapeHTML = escapeHTML;
-  klass.setDelegate = setDelegate;
-  klass.buildHref = buildHref;
-
-  module.exports = klass;
-
-
+module.exports = klass;
 
 },{"./grammar/symbols":19}],21:[function(require,module,exports){
 var Relation = {
