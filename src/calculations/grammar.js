@@ -558,6 +558,7 @@
   }
   
   var MAX_SENTENCES = 30;
+  var MAX_DEPTH = 100;
   
   this.Calculations["grammar.sentences"] = function(grammar) {
     
@@ -582,6 +583,9 @@
           queue.push(expanded[i]);
         
         if (sentences.length >= MAX_SENTENCES)
+          break;
+
+        if (queue.length >= MAX_DEPTH)
           break;
         
       }
