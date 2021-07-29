@@ -1963,6 +1963,7 @@ function expandSentenceNode(node, grammar) {
 }
 
 var MAX_SENTENCES = 30;
+var MAX_DEPTH = 100;
 
 module.exports["grammar.sentences"] = function(grammar) {
 
@@ -1987,6 +1988,9 @@ module.exports["grammar.sentences"] = function(grammar) {
         queue.push(expanded[i]);
 
       if (sentences.length >= MAX_SENTENCES)
+        break;
+
+      if (queue.length >= MAX_DEPTH)
         break;
 
     }
@@ -3494,7 +3498,7 @@ module.exports["transformations.epsilonSeparate"] = function(grammar) {
 
     }
 
-    if (i === grammar.productions.length && epsilon !== -1) {
+    if (i === grammar.productions.length && group.length > 0 && epsilon !== -1) {
 
       result.push({
         name: "epsilonSeparate",
