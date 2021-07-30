@@ -720,26 +720,26 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],4:[function(require,module,exports){
-const ApplicationController = require("./controllers/application_controller");
+var ApplicationController = require("./controllers/application_controller");
 
 module.exports = ApplicationController;
 
 },{"./controllers/application_controller":6}],5:[function(require,module,exports){
-const HeaderView = require("../views/header_view");
-const BlankSlateView = require("../views/blank_slate_view");
-const SanityView = require("../views/sanity_view");
-const SentencesView = require("../views/sentences_view");
-const ShortSentencesView = require("../views/short_sentences_view");
-const NonterminalsView = require("../views/nonterminals_view");
-const ParsingView = require("../views/parsing_view");
-const LL1TableView = require("../views/ll1_table_view");
-const LR0AutomatonView = require("../views/lr0_automaton_view");
-const LR0TableView = require("../views/lr0_table_view");
-const SLR1TableView = require("../views/slr1_table_view");
-const LR1AutomatonView = require("../views/lr1_automaton_view");
-const LR1TableView = require("../views/lr1_table_view");
-const LALR1AutomatonView = require("../views/lalr1_automaton_view");
-const LALR1TableView = require("../views/lalr1_table_view");
+var HeaderView = require("../views/header_view");
+var BlankSlateView = require("../views/blank_slate_view");
+var SanityView = require("../views/sanity_view");
+var SentencesView = require("../views/sentences_view");
+var ShortSentencesView = require("../views/short_sentences_view");
+var NonterminalsView = require("../views/nonterminals_view");
+var ParsingView = require("../views/parsing_view");
+var LL1TableView = require("../views/ll1_table_view");
+var LR0AutomatonView = require("../views/lr0_automaton_view");
+var LR0TableView = require("../views/lr0_table_view");
+var SLR1TableView = require("../views/slr1_table_view");
+var LR1AutomatonView = require("../views/lr1_automaton_view");
+var LR1TableView = require("../views/lr1_table_view");
+var LALR1AutomatonView = require("../views/lalr1_automaton_view");
+var LALR1TableView = require("../views/lalr1_table_view");
 
 var AnalysisController = function(element) {
 
@@ -949,22 +949,13 @@ AnalysisController.prototype.getPathComponents = function() {
 module.exports = AnalysisController;
 
 },{"../views/blank_slate_view":36,"../views/header_view":37,"../views/lalr1_automaton_view":38,"../views/lalr1_table_view":39,"../views/ll1_table_view":40,"../views/lr0_automaton_view":41,"../views/lr0_table_view":42,"../views/lr1_automaton_view":43,"../views/lr1_table_view":44,"../views/nonterminals_view":45,"../views/parsing_view":46,"../views/sanity_view":47,"../views/sentences_view":48,"../views/short_sentences_view":49,"../views/slr1_table_view":50}],6:[function(require,module,exports){
-const AnalysisController = require("./analysis_controller");
-const EditController = require("./edit_controller");
-const TransformController = require("./transform_controller");
-const ModeController = require("./mode_controller");
-const ErrorController = require("./error_controller");
-const Helpers = require("../helpers");
-const Grammar = require("../grammar");
-
-Function.prototype.bind = function(context) {
-  var fn = this;
-  return function() { return fn.apply(context, arguments); };
-}
-
-Function.prototype.defer = function() {
-  setTimeout(this, 0);
-}
+var AnalysisController = require("./analysis_controller");
+var EditController = require("./edit_controller");
+var TransformController = require("./transform_controller");
+var ModeController = require("./mode_controller");
+var ErrorController = require("./error_controller");
+var Helpers = require("../helpers");
+var Grammar = require("../grammar");
 
 var ApplicationController = function(element) {
 
@@ -1181,7 +1172,7 @@ ApplicationController.prototype.buildHref = function(path) {
 module.exports = ApplicationController;
 
 },{"../grammar":17,"../helpers":20,"./analysis_controller":5,"./edit_controller":7,"./error_controller":8,"./mode_controller":9,"./transform_controller":10}],7:[function(require,module,exports){
-const editTemplate = require("../templates/edit.ejs");
+var editTemplate = require("../templates/edit.ejs");
 
 var EditController = function(element) {
 
@@ -1240,7 +1231,7 @@ ErrorController.prototype.reload = function() {
 module.exports = ErrorController;
 
 },{}],9:[function(require,module,exports){
-const modeTemplate = require('../templates/mode.ejs');
+var modeTemplate = require('../templates/mode.ejs');
 
 var ModeController = function(element) {
 
@@ -1292,7 +1283,7 @@ ModeController.prototype.reload = function() {
 module.exports = ModeController;
 
 },{"../templates/mode.ejs":30}],10:[function(require,module,exports){
-const TransformView = require('../views/transform_view');
+var TransformView = require('../views/transform_view');
 
 var TransformController = function(element) {
 
@@ -1405,8 +1396,8 @@ TransformController.prototype.transform = function(transformation) {
 module.exports = TransformController;
 
 },{"../views/transform_view":51}],11:[function(require,module,exports){
-const Relation = require('../../relation');
-const END = require("../symbols").END;
+var Relation = require('../../relation');
+var END = require("../symbols").END;
 
 module.exports["grammar.classification"] = function(grammar) {
 
@@ -2035,9 +2026,9 @@ module.exports["grammar.ambiguous"] = function(grammar) {
 }
 
 },{"../../relation":21,"../symbols":19}],12:[function(require,module,exports){
-const grammar = require('./grammar');
-const parsing = require('./parsing');
-const transformations = require('./transformations');
+var grammar = require('./grammar');
+var parsing = require('./parsing');
+var transformations = require('./transformations');
 
 module.exports = Object.assign({},
   grammar,
@@ -2046,8 +2037,8 @@ module.exports = Object.assign({},
 );
 
 },{"./grammar":11,"./parsing":13,"./transformations":16}],13:[function(require,module,exports){
-const ll = require('./ll');
-const lr = require('./lr');
+var ll = require('./ll');
+var lr = require('./lr');
 
 module.exports = Object.assign({},
   ll,
@@ -2055,8 +2046,8 @@ module.exports = Object.assign({},
 );
 
 },{"./ll":14,"./lr":15}],14:[function(require,module,exports){
-const Sets = require("../../../sets");
-const END = require("../../symbols").END;
+var Sets = require("../../../sets");
+var END = require("../../symbols").END;
 
 module.exports["parsing.ll.ll1_classification"] = function(grammar) {
 
@@ -2218,7 +2209,7 @@ module.exports["parsing.ll.ll1_table"] = function(grammar) {
 //   { "else": { shift: 6, reduce: [3] } }
 //   { "if": { shift: 4 }, "other": { shift: 3 }, "S": { shift: 7 }, "I": { shift: 2 } }
 
-const END = require("../../symbols").END;
+var END = require("../../symbols").END;
 
 // Build an LR automaton for the grammar, using the provided "build" functions.
 
@@ -3584,9 +3575,9 @@ module.exports["transformations"] = function(grammar) {
 }
 
 },{}],17:[function(require,module,exports){
-const Calculations = require("./calculations");
-const Parser = require("./parser");
-const END = require("./symbols").END;
+var Calculations = require("./calculations");
+var Parser = require("./parser");
+var END = require("./symbols").END;
 
 // class
 
@@ -4485,7 +4476,7 @@ module.exports = {
 };
 
 },{}],20:[function(require,module,exports){
-const END = require('./grammar/symbols').END;
+var END = require('./grammar/symbols').END;
 
 // class
 
@@ -5149,7 +5140,7 @@ with (locals || {}) { (function(){
 return buf.join('');
 })
 },{}],36:[function(require,module,exports){
-const template = require('../templates/blank_slate.ejs');
+var template = require('../templates/blank_slate.ejs');
 
 var BlankSlateView = function(element) {
 
@@ -5173,8 +5164,8 @@ BlankSlateView.prototype.reload = function() {
 module.exports = BlankSlateView;
 
 },{"../templates/blank_slate.ejs":23}],37:[function(require,module,exports){
-const template = require('../templates/header.ejs');
-const Helpers = require('../helpers');
+var template = require('../templates/header.ejs');
+var Helpers = require('../helpers');
 
 var HeaderView = function(element) {
 
@@ -5200,8 +5191,8 @@ HeaderView.prototype.reload = function() {
 module.exports = HeaderView;
 
 },{"../helpers":20,"../templates/header.ejs":25}],38:[function(require,module,exports){
-const template = require('../templates/lr_automaton_graph.ejs');
-const Helpers = require('../helpers');
+var template = require('../templates/lr_automaton_graph.ejs');
+var Helpers = require('../helpers');
 
 var LALR1AutomatonView = function(element) {
 
@@ -5233,10 +5224,10 @@ LALR1AutomatonView.prototype.reload = function() {
 module.exports = LALR1AutomatonView;
 
 },{"../helpers":20,"../templates/lr_automaton_graph.ejs":29}],39:[function(require,module,exports){
-const template = require('../templates/lr1_table.ejs');
-const Helpers = require('../helpers');
-const Sets = require('../sets');
-const END = require("../grammar/symbols").END;
+var template = require('../templates/lr1_table.ejs');
+var Helpers = require('../helpers');
+var Sets = require('../sets');
+var END = require("../grammar/symbols").END;
 
 var LALR1TableView = function(element) {
 
@@ -5266,10 +5257,10 @@ LALR1TableView.prototype.reload = function() {
 module.exports = LALR1TableView;
 
 },{"../grammar/symbols":19,"../helpers":20,"../sets":22,"../templates/lr1_table.ejs":28}],40:[function(require,module,exports){
-const template = require('../templates/ll1_table.ejs');
-const Helpers = require('../helpers');
-const Sets = require('../sets');
-const END = require("../grammar/symbols").END;
+var template = require('../templates/ll1_table.ejs');
+var Helpers = require('../helpers');
+var Sets = require('../sets');
+var END = require("../grammar/symbols").END;
 
 var LL1TableView = function(element) {
 
@@ -5299,8 +5290,8 @@ LL1TableView.prototype.reload = function() {
 module.exports = LL1TableView;
 
 },{"../grammar/symbols":19,"../helpers":20,"../sets":22,"../templates/ll1_table.ejs":26}],41:[function(require,module,exports){
-const template = require('../templates/lr_automaton_graph.ejs');
-const Helpers = require('../helpers');
+var template = require('../templates/lr_automaton_graph.ejs');
+var Helpers = require('../helpers');
 
 var LR0AutomatonView = function(element) {
 
@@ -5332,9 +5323,9 @@ LR0AutomatonView.prototype.reload = function() {
 module.exports = LR0AutomatonView;
 
 },{"../helpers":20,"../templates/lr_automaton_graph.ejs":29}],42:[function(require,module,exports){
-const template = require('../templates/lr0_table.ejs');
-const Helpers = require('../helpers');
-const Sets = require('../sets');
+var template = require('../templates/lr0_table.ejs');
+var Helpers = require('../helpers');
+var Sets = require('../sets');
 
 var LR0TableView = function(element) {
 
@@ -5365,8 +5356,8 @@ LR0TableView.prototype.reload = function() {
 module.exports = LR0TableView;
 
 },{"../helpers":20,"../sets":22,"../templates/lr0_table.ejs":27}],43:[function(require,module,exports){
-const template = require('../templates/lr_automaton_graph.ejs');
-const Helpers = require('../helpers');
+var template = require('../templates/lr_automaton_graph.ejs');
+var Helpers = require('../helpers');
 
 var LR1AutomatonView = function(element) {
 
@@ -5398,10 +5389,10 @@ LR1AutomatonView.prototype.reload = function() {
 module.exports = LR1AutomatonView;
 
 },{"../helpers":20,"../templates/lr_automaton_graph.ejs":29}],44:[function(require,module,exports){
-const template = require("../templates/lr1_table.ejs");
-const Helpers = require('../helpers');
-const Sets = require('../sets');
-const END = require("../grammar/symbols").END;
+var template = require("../templates/lr1_table.ejs");
+var Helpers = require('../helpers');
+var Sets = require('../sets');
+var END = require("../grammar/symbols").END;
 
 var LR1TableView = function(element) {
 
@@ -5431,8 +5422,8 @@ LR1TableView.prototype.reload = function() {
 module.exports = LR1TableView;
 
 },{"../grammar/symbols":19,"../helpers":20,"../sets":22,"../templates/lr1_table.ejs":28}],45:[function(require,module,exports){
-const template = require("../templates/nonterminals.ejs");
-const Helpers = require('../helpers');
+var template = require("../templates/nonterminals.ejs");
+var Helpers = require('../helpers');
 
 var NonterminalsView = function(element) {
 
@@ -5462,8 +5453,8 @@ NonterminalsView.prototype.reload = function() {
 module.exports = NonterminalsView;
 
 },{"../helpers":20,"../templates/nonterminals.ejs":31}],46:[function(require,module,exports){
-const template = require("../templates/parsing.ejs");
-const Helpers = require('../helpers');
+var template = require("../templates/parsing.ejs");
+var Helpers = require('../helpers');
 
 var ParsingView = function(element) {
 
@@ -5489,9 +5480,9 @@ ParsingView.prototype.reload = function() {
 module.exports = ParsingView;
 
 },{"../helpers":20,"../templates/parsing.ejs":32}],47:[function(require,module,exports){
-const template = require("../templates/sanity.ejs");
-const Helpers = require('../helpers');
-const Sets = require('../sets');
+var template = require("../templates/sanity.ejs");
+var Helpers = require('../helpers');
+var Sets = require('../sets');
 
 var SanityView = function(element) {
 
@@ -5524,8 +5515,8 @@ SanityView.prototype.reload = function() {
 module.exports = SanityView;
 
 },{"../helpers":20,"../sets":22,"../templates/sanity.ejs":33}],48:[function(require,module,exports){
-const template = require("../templates/sentences.ejs");
-const Helpers = require('../helpers');
+var template = require("../templates/sentences.ejs");
+var Helpers = require('../helpers');
 
 var SentencesView = function(element) {
 
@@ -5553,8 +5544,8 @@ SentencesView.prototype.reload = function() {
 module.exports = SentencesView;
 
 },{"../helpers":20,"../templates/sentences.ejs":34}],49:[function(require,module,exports){
-const template = require("../templates/sentences.ejs");
-const Helpers = require('../helpers');
+var template = require("../templates/sentences.ejs");
+var Helpers = require('../helpers');
 
 var ShortSentencesView = function(element) {
 
@@ -5582,10 +5573,10 @@ ShortSentencesView.prototype.reload = function() {
 module.exports = ShortSentencesView;
 
 },{"../helpers":20,"../templates/sentences.ejs":34}],50:[function(require,module,exports){
-const template = require("../templates/lr1_table.ejs");
-const Helpers = require('../helpers');
-const Sets = require('../sets');
-const END = require("../grammar/symbols").END;
+var template = require("../templates/lr1_table.ejs");
+var Helpers = require('../helpers');
+var Sets = require('../sets');
+var END = require("../grammar/symbols").END;
 
 var SLR1TableView = function(element) {
 
@@ -5615,8 +5606,8 @@ SLR1TableView.prototype.reload = function() {
 module.exports = SLR1TableView;
 
 },{"../grammar/symbols":19,"../helpers":20,"../sets":22,"../templates/lr1_table.ejs":28}],51:[function(require,module,exports){
-const template = require("../templates/transform.ejs");
-const Helpers = require('../helpers');
+var template = require("../templates/transform.ejs");
+var Helpers = require('../helpers');
 
 var TransformView = function(element) {
 
