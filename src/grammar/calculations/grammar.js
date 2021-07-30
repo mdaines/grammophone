@@ -1,5 +1,5 @@
-const Relation = require('../../relation');
-const END = require("../symbols").END;
+var Relation = require('../../relation');
+var END = require("../symbols").END;
 
 module.exports["grammar.classification"] = function(grammar) {
 

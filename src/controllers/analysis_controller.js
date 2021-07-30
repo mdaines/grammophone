@@ -1,18 +1,18 @@
-const HeaderView = require("../views/header_view");
-const BlankSlateView = require("../views/blank_slate_view");
-const SanityView = require("../views/sanity_view");
-const SentencesView = require("../views/sentences_view");
-const ShortSentencesView = require("../views/short_sentences_view");
-const NonterminalsView = require("../views/nonterminals_view");
-const ParsingView = require("../views/parsing_view");
-const LL1TableView = require("../views/ll1_table_view");
-const LR0AutomatonView = require("../views/lr0_automaton_view");
-const LR0TableView = require("../views/lr0_table_view");
-const SLR1TableView = require("../views/slr1_table_view");
-const LR1AutomatonView = require("../views/lr1_automaton_view");
-const LR1TableView = require("../views/lr1_table_view");
-const LALR1AutomatonView = require("../views/lalr1_automaton_view");
-const LALR1TableView = require("../views/lalr1_table_view");
+var HeaderView = require("../views/header_view");
+var BlankSlateView = require("../views/blank_slate_view");
+var SanityView = require("../views/sanity_view");
+var SentencesView = require("../views/sentences_view");
+var ShortSentencesView = require("../views/short_sentences_view");
+var NonterminalsView = require("../views/nonterminals_view");
+var ParsingView = require("../views/parsing_view");
+var LL1TableView = require("../views/ll1_table_view");
+var LR0AutomatonView = require("../views/lr0_automaton_view");
+var LR0TableView = require("../views/lr0_table_view");
+var SLR1TableView = require("../views/slr1_table_view");
+var LR1AutomatonView = require("../views/lr1_automaton_view");
+var LR1TableView = require("../views/lr1_table_view");
+var LALR1AutomatonView = require("../views/lalr1_automaton_view");
+var LALR1TableView = require("../views/lalr1_table_view");
 
 var AnalysisController = function(element) {
 

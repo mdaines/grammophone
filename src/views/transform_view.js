@@ -1,5 +1,5 @@
-const template = require("../templates/transform.ejs");
-const Helpers = require('../helpers');
+var template = require("../templates/transform.ejs");
+var Helpers = require('../helpers');
 
 var TransformView = function(element) {
 

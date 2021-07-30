@@ -1,5 +1,5 @@
-const template = require("../templates/parsing.ejs");
-const Helpers = require('../helpers');
+var template = require("../templates/parsing.ejs");
+var Helpers = require('../helpers');
 
 var ParsingView = function(element) {
 

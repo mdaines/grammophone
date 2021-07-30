@@ -1,4 +1,4 @@
-const END = require('./grammar/symbols').END;
+var END = require('./grammar/symbols').END;
 
 // class
 

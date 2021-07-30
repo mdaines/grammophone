@@ -1,7 +1,7 @@
-const template = require('../templates/ll1_table.ejs');
-const Helpers = require('../helpers');
-const Sets = require('../sets');
-const END = require("../grammar/symbols").END;
+var template = require('../templates/ll1_table.ejs');
+var Helpers = require('../helpers');
+var Sets = require('../sets');
+var END = require("../grammar/symbols").END;
 
 var LL1TableView = function(element) {
 

@@ -1,5 +1,5 @@
-const ll = require('./ll');
-const lr = require('./lr');
+var ll = require('./ll');
+var lr = require('./lr');
 
 module.exports = Object.assign({},
   ll,

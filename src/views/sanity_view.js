@@ -1,6 +1,6 @@
-const template = require("../templates/sanity.ejs");
-const Helpers = require('../helpers');
-const Sets = require('../sets');
+var template = require("../templates/sanity.ejs");
+var Helpers = require('../helpers');
+var Sets = require('../sets');
 
 var SanityView = function(element) {
 

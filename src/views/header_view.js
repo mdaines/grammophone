@@ -1,5 +1,5 @@
-const template = require('../templates/header.ejs');
-const Helpers = require('../helpers');
+var template = require('../templates/header.ejs');
+var Helpers = require('../helpers');
 
 var HeaderView = function(element) {
 

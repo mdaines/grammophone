@@ -1,19 +1,10 @@
-const AnalysisController = require("./analysis_controller");
-const EditController = require("./edit_controller");
-const TransformController = require("./transform_controller");
-const ModeController = require("./mode_controller");
-const ErrorController = require("./error_controller");
-const Helpers = require("../helpers");
-const Grammar = require("../grammar");
-
-Function.prototype.bind = function(context) {
-  var fn = this;
-  return function() { return fn.apply(context, arguments); };
-}
-
-Function.prototype.defer = function() {
-  setTimeout(this, 0);
-}
+var AnalysisController = require("./analysis_controller");
+var EditController = require("./edit_controller");
+var TransformController = require("./transform_controller");
+var ModeController = require("./mode_controller");
+var ErrorController = require("./error_controller");
+var Helpers = require("../helpers");
+var Grammar = require("../grammar");
 
 var ApplicationController = function(element) {
 

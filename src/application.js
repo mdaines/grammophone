@@ -1,3 +1,3 @@
-const ApplicationController = require("./controllers/application_controller");
+var ApplicationController = require("./controllers/application_controller");
 
 module.exports = ApplicationController;

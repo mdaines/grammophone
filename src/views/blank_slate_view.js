@@ -1,4 +1,4 @@
-const template = require('../templates/blank_slate.ejs');
+var template = require('../templates/blank_slate.ejs');
 
 var BlankSlateView = function(element) {
 

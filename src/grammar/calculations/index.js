@@ -1,6 +1,6 @@
-const grammar = require('./grammar');
-const parsing = require('./parsing');
-const transformations = require('./transformations');
+var grammar = require('./grammar');
+var parsing = require('./parsing');
+var transformations = require('./transformations');
 
 module.exports = Object.assign({},
   grammar,

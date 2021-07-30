@@ -1,5 +1,5 @@
-const template = require("../templates/sentences.ejs");
-const Helpers = require('../helpers');
+var template = require("../templates/sentences.ejs");
+var Helpers = require('../helpers');
 
 var ShortSentencesView = function(element) {
 

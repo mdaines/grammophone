@@ -1,5 +1,5 @@
-const template = require("../templates/nonterminals.ejs");
-const Helpers = require('../helpers');
+var template = require("../templates/nonterminals.ejs");
+var Helpers = require('../helpers');
 
 var NonterminalsView = function(element) {
 

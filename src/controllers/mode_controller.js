@@ -1,4 +1,4 @@
-const modeTemplate = require('../templates/mode.ejs');
+var modeTemplate = require('../templates/mode.ejs');
 
 var ModeController = function(element) {
 

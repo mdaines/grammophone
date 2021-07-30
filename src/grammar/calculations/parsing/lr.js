@@ -34,7 +34,7 @@
 //   { "else": { shift: 6, reduce: [3] } }
 //   { "if": { shift: 4 }, "other": { shift: 3 }, "S": { shift: 7 }, "I": { shift: 2 } }
 
-const END = require("../../symbols").END;
+var END = require("../../symbols").END;
 
 // Build an LR automaton for the grammar, using the provided "build" functions.
 

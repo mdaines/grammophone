@@ -1,5 +1,5 @@
-const template = require('../templates/lr_automaton_graph.ejs');
-const Helpers = require('../helpers');
+var template = require('../templates/lr_automaton_graph.ejs');
+var Helpers = require('../helpers');
 
 var LALR1AutomatonView = function(element) {
 

@@ -1,5 +1,5 @@
-const Sets = require("../../../sets");
-const END = require("../../symbols").END;
+var Sets = require("../../../sets");
+var END = require("../../symbols").END;
 
 module.exports["parsing.ll.ll1_classification"] = function(grammar) {
 

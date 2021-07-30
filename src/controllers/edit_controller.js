@@ -1,4 +1,4 @@
-const editTemplate = require("../templates/edit.ejs");
+var editTemplate = require("../templates/edit.ejs");
 
 var EditController = function(element) {
 

@@ -1,4 +1,4 @@
-const TransformView = require('../views/transform_view');
+var TransformView = require('../views/transform_view');
 
 var TransformController = function(element) {
 
