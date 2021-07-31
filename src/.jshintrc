@@ -1,5 +1,4 @@
 {
   "extends": "../.jshintrc",
-  "browserify": true,
-  "esversion": 5
+  "browserify": true
 }
