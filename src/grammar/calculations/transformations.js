@@ -1,5 +1,7 @@
 function expand(grammar, production, symbol) {
 
+  var i;
+
   var changes = [];
 
   // Remove the existing production

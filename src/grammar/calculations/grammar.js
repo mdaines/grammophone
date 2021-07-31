@@ -511,7 +511,7 @@ module.exports["grammar.endable"] = function(grammar) {
 
 function expandSentenceNode(node, grammar) {
 
-  var i, j;
+  var i, j, k;
   var expanded = [];
   var nonterminals = grammar.calculate("grammar.nonterminals");
   var unrealizable = grammar.calculate("grammar.unrealizable");

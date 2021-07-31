@@ -154,7 +154,7 @@ function getFirst(symbols) {
 
 function isNullable(symbols) {
 
-  var i;
+  var i, s;
 
   var nullable = this.calculate("grammar.nullable");
   var terminals = this.calculate("grammar.terminals");
