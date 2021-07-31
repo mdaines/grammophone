@@ -101,8 +101,6 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
 
   // Base rules
 
-  var added = [];
-
   for (i = 0; i < base.length; i++) {
 
     production = [];
@@ -145,7 +143,7 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
 
 module.exports["transformations.removeImmediateLeftRecursion"] = function(grammar) {
 
-  var i, j;
+  var i;
 
   var nonterminals = grammar.calculate("grammar.nonterminals");
   var result = [];
@@ -196,7 +194,7 @@ module.exports["transformations.removeImmediateLeftRecursion"] = function(gramma
 
 function leftFactor(grammar, group, prefix) {
 
-  var i, j;
+  var i;
   var nonterminals = grammar.calculate("grammar.nonterminals");
 
   // Find a new symbol...
@@ -299,10 +297,9 @@ Trie.prototype.getFactorablePrefixes = function() {
 
 module.exports["transformations.leftFactor"] = function(grammar) {
 
-  var i, j;
+  var i;
   var result = [];
   var nt;
-  var prefix;
 
   // Build tries for each nonterminal's productions
 
@@ -408,7 +405,6 @@ module.exports["transformations.epsilonSeparate"] = function(grammar) {
 
   var nt, i;
   var nonterminals = grammar.calculate("grammar.nonterminals");
-  var nullable = grammar.calculate("grammar.nullable");
   var result = [];
   var group;
   var epsilon;

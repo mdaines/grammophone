@@ -76,7 +76,6 @@ function bareFormatSymbols(symbols, info) {
 function formatProduction(production, info) {
 
   var result = "";
-  var i;
 
   result += formatSymbol(production[0], info);
   result += " &rarr; ";

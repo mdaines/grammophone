@@ -515,7 +515,7 @@ function expandSentenceNode(node, grammar) {
   var expanded = [];
   var nonterminals = grammar.calculate("grammar.nonterminals");
   var unrealizable = grammar.calculate("grammar.unrealizable");
-  var sentence, replacement, nonterminalCount;
+  var replacement, nonterminalCount;
 
   // expand the first realizable nonterminal.
 
@@ -562,7 +562,7 @@ module.exports["grammar.sentences"] = function(grammar) {
 
   var start = grammar.calculate("grammar.start");
 
-  var i, j;
+  var i;
   var sentences = [];
   var queue = [{ sentence: [start], steps: 0, nonterminals: 1 }];
   var node;
@@ -610,7 +610,6 @@ module.exports["grammar.ambiguous"] = function(grammar) {
 
   var i, j;
   var sentences = grammar.calculate("grammar.sentences");
-  var ambiguous = [];
 
   for (i = 0; i < sentences.length - 1; i++) {
     if (sentences[i].length != sentences[i+1].length)

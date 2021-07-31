@@ -3,7 +3,7 @@ var END = require("../../symbols").END;
 
 module.exports["parsing.ll.ll1_classification"] = function(grammar) {
 
-  var p, i, j, k, l, s;
+  var i, k, l, s;
   var head, body, first;
 
   var nullAmbiguity = grammar.calculate("grammar.nullAmbiguity");

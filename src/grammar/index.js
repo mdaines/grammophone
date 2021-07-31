@@ -108,7 +108,7 @@ function transform(transformation) {
 function getFirst(symbols) {
 
   var i, k;
-  var s, t;
+  var s;
   var result;
 
   var first = this.calculate("grammar.first");

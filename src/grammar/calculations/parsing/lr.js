@@ -272,7 +272,7 @@ var lr1 = {
 
   closure: function(grammar, kernel) {
 
-    var i, j, k, l;
+    var i, j, l;
     var item, remaining, symbol, lookaheads;
     var start = grammar.calculate("grammar.start");
 
