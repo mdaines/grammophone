@@ -3,5 +3,6 @@
   "esversion": 6,
   "sub": true,
   "asi": true,
-  "undef": true
+  "undef": true,
+  "unused": "vars"
 }
