@@ -4,5 +4,6 @@
   "sub": true,
   "asi": true,
   "undef": true,
-  "unused": "vars"
+  "unused": "vars",
+  "curly": true
 }
