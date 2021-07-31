@@ -8,8 +8,9 @@ function parse(spec) {
 
   var i, j;
 
-  if (spec.match(/^\s*$/))
+  if (spec.match(/^\s*$/)) {
     return { spec: spec };
+  }
 
   try {
 
@@ -57,11 +58,13 @@ function initialize(productions) {
   for (i = 0; i < productions.length; i++) {
     for (j = 0; j < productions[i].length; j++) {
 
-      if (productions[i][j].match(/^Grammar\./))
+      if (productions[i][j].match(/^Grammar\./)) {
         throw "Reserved symbol " + productions[i][j] + " may not be part of a production";
+      }
 
-      if (productions[i][j] === "")
+      if (productions[i][j] === "") {
         throw "An empty symbol may not be part of a production";
+      }
 
     }
   }
@@ -78,11 +81,13 @@ function initialize(productions) {
 
 function calculate(name) {
 
-  if (typeof Calculations[name] === "undefined")
+  if (typeof Calculations[name] === "undefined") {
     throw "Undefined grammar calculation " + name;
+  }
 
-  if (typeof this.calculations[name] === "undefined")
+  if (typeof this.calculations[name] === "undefined") {
     this.calculations[name] = Calculations[name](this);
+  }
 
   return this.calculations[name];
 
@@ -94,10 +99,11 @@ function transform(transformation) {
 
   transformation.changes.forEach(function(change) {
 
-    if (change.operation === "delete")
+    if (change.operation === "delete") {
       productions.splice(change.index, 1);
-    else if (change.operation === "insert")
+    } else if (change.operation === "insert") {
       productions.splice(change.index, 0, change.production);
+    }
 
   });
 
@@ -134,11 +140,13 @@ function getFirst(symbols) {
 
     } else if (nonterminals[s]) {
 
-      for (k in first[s])
+      for (k in first[s]) {
         result[k] = true;
+      }
 
-      if (!nullable[s])
+      if (!nullable[s]) {
         break;
+      }
 
     } else {
 
@@ -166,8 +174,9 @@ function isNullable(symbols) {
 
     if (nonterminals[s]) {
 
-      if (!nullable[s])
+      if (!nullable[s]) {
         return false;
+      }
 
     } else if (terminals[s]) {
 
@@ -212,8 +221,9 @@ function toString() {
     result += this.productions[i][0];
     result += " ->";
 
-    for (j = 1; j < this.productions[i].length; j++)
+    for (j = 1; j < this.productions[i].length; j++) {
       result += " " + this.productions[i][j];
+    }
 
     result += " .\n";
 

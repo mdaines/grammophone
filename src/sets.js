@@ -5,8 +5,9 @@ var Sets = {
     var n;
     var result = 0;
 
-    for (n in set)
+    for (n in set) {
       result++;
+    }
 
     return result;
 
@@ -16,8 +17,9 @@ var Sets = {
 
     var n;
 
-    for (n in set)
+    for (n in set) {
       return true;
+    }
 
     return false;
 
@@ -29,8 +31,9 @@ var Sets = {
     var k;
 
     for (k in a) {
-      if (b[k])
+      if (b[k]) {
         result[k] = true;
+      }
     }
 
     return result;

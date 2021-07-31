@@ -8,12 +8,14 @@ function listSymbols(set, order) {
   var result = [];
 
   for (i = 0; i < order.length; i++) {
-    if (set[order[i]])
+    if (set[order[i]]) {
       result.push(order[i]);
+    }
   }
 
-  if (set[END])
+  if (set[END]) {
     result.push(END);
+  }
 
   return result;
 
@@ -27,25 +29,27 @@ function prettifySymbol(symbol) {
 
 function formatSymbol(symbol, info) {
 
-  if (symbol == END)
+  if (symbol == END) {
     return "<u>$</u>";
-  else if (info.nonterminals[symbol])
+  } else if (info.nonterminals[symbol]) {
     return "<i>" + prettifySymbol(escapeHTML(symbol)) + "</i>";
-  else if (info.terminals[symbol])
+  } else if (info.terminals[symbol]) {
     return "<b>" + prettifySymbol(escapeHTML(symbol)) + "</b>";
-  else
+  } else {
     throw "Unknown symbol: " + symbol;
+  }
 
 }
 
 function bareFormatSymbol(symbol, info) {
 
-  if (symbol == END)
+  if (symbol == END) {
     return "$";
-  else if (info.nonterminals[symbol] || info.terminals[symbol])
+  } else if (info.nonterminals[symbol] || info.terminals[symbol]) {
     return prettifySymbol(escapeHTML(symbol));
-  else
+  } else {
     throw "Unknown symbol: " + symbol;
+  }
 
 }
 
@@ -54,8 +58,9 @@ function formatSymbols(symbols, info) {
   var i;
   var result = [];
 
-  for (i = 0; i < symbols.length; i++)
+  for (i = 0; i < symbols.length; i++) {
     result[i] = formatSymbol(symbols[i], info);
+  }
 
   return result;
 
@@ -66,8 +71,9 @@ function bareFormatSymbols(symbols, info) {
   var i;
   var result = [];
 
-  for (i = 0; i < symbols.length; i++)
+  for (i = 0; i < symbols.length; i++) {
     result[i] = bareFormatSymbol(symbols[i], info);
+  }
 
   return result;
 
@@ -80,10 +86,11 @@ function formatProduction(production, info) {
   result += formatSymbol(production[0], info);
   result += " &rarr; ";
 
-  if (production.length > 1)
+  if (production.length > 1) {
     result += formatSymbols(production.slice(1), info).join(" ");
-  else
+  } else {
     result += "<u>&epsilon;</u>";
+  }
 
   return result;
 
@@ -91,14 +98,15 @@ function formatProduction(production, info) {
 
 function formatSentence(strings) {
 
-  if (strings.length == 0)
+  if (strings.length == 0) {
     return "";
-  else if (strings.length == 1)
+  } else if (strings.length == 1) {
     return strings[0];
-  else if (strings.length == 2)
+  } else if (strings.length == 2) {
     return strings.join(" and ");
-  else
+  } else {
     return strings.slice(0, -1).concat("and " + strings[strings.length-1]).join(", ");
+  }
 
 }
 
@@ -108,10 +116,11 @@ function formatItem(item, start, productions, info) {
 
   if (item.production === -1) {
 
-    if (item.index === 0)
+    if (item.index === 0) {
       production = "&bull; " + formatSymbol(start, info);
-    else
+    } else {
       production = formatSymbol(start, info) + " &bull;";
+    }
 
   } else {
 
@@ -122,12 +131,13 @@ function formatItem(item, start, productions, info) {
 
   }
 
-  if (item.lookaheads)
+  if (item.lookaheads) {
     return "[" + production + ", " + formatSymbols(item.lookaheads, info).join(" / ") + "]";
-  else if (item.lookahead)
+  } else if (item.lookahead) {
     return "[" + production + ", " + formatSymbol(item.lookahead, info) + "]";
-  else
+  } else {
     return production;
+  }
 
 }
 
@@ -137,10 +147,11 @@ function bareFormatItem(item, start, productions, info) {
 
   if (item.production === -1) {
 
-    if (item.index === 0)
+    if (item.index === 0) {
       production = "&bull; " + bareFormatSymbol(start, info);
-    else
+    } else {
       production = bareFormatSymbol(start, info) + " &bull;";
+    }
 
   } else {
 
@@ -151,12 +162,13 @@ function bareFormatItem(item, start, productions, info) {
 
   }
 
-  if (item.lookaheads)
+  if (item.lookaheads) {
     return "[" + production + ", " + bareFormatSymbols(item.lookaheads, info).join(" / ") + "]";
-  else if (item.lookahead)
+  } else if (item.lookahead) {
     return "[" + production + ", " + bareFormatSymbol(item.lookahead, info) + "]";
-  else
+  } else {
     return production;
+  }
 
 }
 
@@ -167,7 +179,6 @@ var TRANSFORMATION_FORMATTERS = {
 
   removeImmediateLeftRecursion: function(transformation, productions, info) {
     return "Remove Immediate Left Recursion";
-
   },
 
   leftFactor: function(transformation, productions, info) {
@@ -195,8 +206,9 @@ function repeatString(string, times) {
   var result = "";
   var i;
 
-  for (i = 0; i < times; i++)
+  for (i = 0; i < times; i++) {
     result += string;
+  }
 
   return result;
 

@@ -78,10 +78,11 @@ var ApplicationController = function(element) {
   this._editController.reload();
   this._modeController.reload();
 
-  if (this._mode === "edit")
+  if (this._mode === "edit") {
     this._errorController.reload();
-  else
+  } else {
     this._transformController.reload();
+  }
 
   this._layout();
 
@@ -93,8 +94,9 @@ ApplicationController.prototype._hashChanged = function() {
 
   this._path = window.location.hash.slice(1);
 
-  if (this._path == "")
+  if (this._path == "") {
     this._path = "/";
+  }
 
   // update controllers
 
@@ -177,8 +179,9 @@ ApplicationController.prototype.analyze = function() {
 
   this._parse = Grammar.parse(this._editController.getSpec());
 
-  if (typeof this._parse.error === "undefined")
+  if (typeof this._parse.error === "undefined") {
     this._analysisController.reload();
+  }
 
   this._errorController.reload();
   this._layout();

@@ -4,16 +4,19 @@ function productionsEqual(a, b) {
 
   var i, j;
 
-  if (a.length !== b.length)
+  if (a.length !== b.length) {
     return false;
+  }
 
   for (i = 0; i < a.length; i++) {
-    if (a[i].length !== b[i].length)
+    if (a[i].length !== b[i].length) {
       return false;
+    }
 
     for (j = 0; j < a[i].length; j++) {
-      if (a[i][j] !== b[i][j])
+      if (a[i][j] !== b[i][j]) {
         return false;
+      }
     }
   }
 
@@ -25,8 +28,9 @@ function assertParseProductions(expected, spec, message) {
 
   var parse = Grammar.parse(spec);
 
-  if (parse.error)
+  if (parse.error) {
     throw parse.error;
+  }
 
   var actual = parse.grammar.productions;
 

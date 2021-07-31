@@ -17,10 +17,11 @@ TransformView.prototype.setup = function() {
 
   this._element.addEventListener("click", function(e) {
 
-    if (e.target.dataset.action === "undo")
+    if (e.target.dataset.action === "undo") {
       this._delegate.undo();
-    else if (e.target.dataset.action === "redo")
+    } else if (e.target.dataset.action === "redo") {
       this._delegate.redo();
+    }
 
   }.bind(this));
 

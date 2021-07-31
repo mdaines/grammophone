@@ -145,8 +145,9 @@ AnalysisController.prototype.reload = function() {
   if (this._views.length > 0) {
 
     for (i = 0; i < this._views.length; i++) {
-      if (this._views[i].instance.teardown)
+      if (this._views[i].instance.teardown) {
         this._views[i].instance.teardown();
+      }
 
       this._element.removeChild(this._views[i].element);
     }
@@ -170,11 +171,13 @@ AnalysisController.prototype.reload = function() {
       var instance = new route.views[i].constructor(element);
       instance.setDelegate(this);
 
-      if (instance.setup)
+      if (instance.setup) {
         instance.setup();
+      }
 
-      if (instance.reload)
+      if (instance.reload) {
         instance.reload();
+      }
 
       this._views[i] = {
         instance: instance,

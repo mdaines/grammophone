@@ -142,8 +142,9 @@ var lr0 = {
 
     var result = [];
 
-    for (i = 0; i < kernel.length; i++)
+    for (i = 0; i < kernel.length; i++) {
       result.push({ production: kernel[i].production, index: kernel[i].index });
+    }
 
     // While we cannot add more items...
 
@@ -164,10 +165,11 @@ var lr0 = {
         // to find the symbol, but add one to account for the left-hand side of
         // the production.
 
-        if (item.production === -1)
+        if (item.production === -1) {
           symbol = [start][item.index];
-        else
+        } else {
           symbol = grammar.productions[item.production][item.index + 1];
+        }
 
         // Find unused matching productions and add them.
 
@@ -182,8 +184,9 @@ var lr0 = {
 
       }
 
-      for (i = 0; i < added.length; i++)
+      for (i = 0; i < added.length; i++) {
         result.push(added[i]);
+      }
 
     } while (added.length > 0);
 
@@ -211,17 +214,19 @@ var lr0 = {
       // Calculate the leaving symbol by looking in the grammar's productions,
       // handling the augmented grammar production as above.
 
-      if (item.production === -1)
+      if (item.production === -1) {
         symbol = [start][item.index];
-      else
+      } else {
         symbol = grammar.productions[item.production][item.index + 1];
+      }
 
       // If there is a leaving symbol, add the next item.
 
       if (typeof symbol != "undefined") {
 
-        if (!result[symbol])
+        if (!result[symbol]) {
           result[symbol] = [];
+        }
 
         result[symbol].push({ production: item.production, index: item.index + 1 });
 
@@ -239,20 +244,23 @@ var lr0 = {
 
     var i, j;
 
-    if (a.length !== b.length)
+    if (a.length !== b.length) {
       return false;
+    }
 
     for (i = 0; i < a.length; i++) {
 
       for (j = 0; j < b.length; j++) {
 
-        if (a[i].production === b[j].production && a[i].index === b[j].index)
+        if (a[i].production === b[j].production && a[i].index === b[j].index) {
           break;
+        }
 
       }
 
-      if (j === b.length)
+      if (j === b.length) {
         return false;
+      }
 
     }
 
@@ -284,15 +292,17 @@ var lr1 = {
 
     var used = {};
 
-    for (i = 0; i < grammar.productions.length; i++)
+    for (i = 0; i < grammar.productions.length; i++) {
       used[i] = {};
+    }
 
     // Copy the kernel as the initial list of items
 
     var result = [];
 
-    for (i = 0; i < kernel.length; i++)
+    for (i = 0; i < kernel.length; i++) {
       result.push({ production: kernel[i].production, index: kernel[i].index, lookahead: kernel[i].lookahead });
+    }
 
     // While we cannot add more items...
 
@@ -310,15 +320,17 @@ var lr1 = {
 
         // Find the stuff "after the dot" (taking into account the augmented grammar)
 
-        if (item.production === -1)
+        if (item.production === -1) {
           remaining = [start].slice(item.index);
-        else
+        } else {
           remaining = grammar.productions[item.production].slice(item.index + 1);
+        }
 
         // Go to next item if this one is completed
 
-        if (remaining.length == 0)
+        if (remaining.length == 0) {
           continue;
+        }
 
         // the nonterminal symbol is the first thing after the dot
 
@@ -353,8 +365,9 @@ var lr1 = {
 
       }
 
-      for (i = 0; i < added.length; i++)
+      for (i = 0; i < added.length; i++) {
         result.push(added[i]);
+      }
 
     } while (added.length > 0);
 
@@ -381,17 +394,19 @@ var lr1 = {
       // Calculate the leaving symbol by looking in the grammar's productions,
       // handling the augmented grammar production as above.
 
-      if (item.production === -1)
+      if (item.production === -1) {
         symbol = [start][item.index];
-      else
+      } else {
         symbol = grammar.productions[item.production][item.index + 1];
+      }
 
       // If there is a leaving symbol, add the next item.
 
       if (typeof symbol != "undefined") {
 
-        if (!result[symbol])
+        if (!result[symbol]) {
           result[symbol] = [];
+        }
 
         // copy it!
 
@@ -409,20 +424,23 @@ var lr1 = {
 
     var i, j;
 
-    if (a.length !== b.length)
+    if (a.length !== b.length) {
       return false;
+    }
 
     for (i = 0; i < a.length; i++) {
 
       for (j = 0; j < b.length; j++) {
 
-        if (a[i].production === b[j].production && a[i].index === b[j].index && a[i].lookahead === b[j].lookahead)
+        if (a[i].production === b[j].production && a[i].index === b[j].index && a[i].lookahead === b[j].lookahead) {
           break;
+        }
 
       }
 
-      if (j === b.length)
+      if (j === b.length) {
         return false;
+      }
 
     }
 
@@ -440,13 +458,15 @@ module.exports["parsing.lr.lr0_classification"] = function(grammar) {
 
   for (i = 0; i < table.length; i++) {
 
-    if (table[i].reduce.length > 1)
+    if (table[i].reduce.length > 1) {
       return { member: false, reason: "it contains a reduce-reduce conflict" };
+    }
 
     if (table[i].reduce.length > 0) {
       for (s in table[i].shift) {
-        if (terminals[s])
+        if (terminals[s]) {
           return { member: false, reason: "it contains a shift-reduce conflict" };
+        }
       }
     }
 
@@ -476,8 +496,9 @@ module.exports["parsing.lr.lr0_table"] = function(grammar) {
 
     // add shift actions for transitions
 
-    for (s in state.transitions)
+    for (s in state.transitions) {
       actions.shift[s] = state.transitions[s];
+    }
 
     // add reduce actions for completed items
 
@@ -486,11 +507,13 @@ module.exports["parsing.lr.lr0_table"] = function(grammar) {
       item = state.items[j];
 
       if (item.production === -1) {
-        if (item.index === 1)
+        if (item.index === 1) {
           actions.reduce.push(item.production);
+        }
       } else {
-        if (item.index == grammar.productions[item.production].length - 1)
+        if (item.index == grammar.productions[item.production].length - 1) {
           actions.reduce.push(item.production);
+        }
       }
 
     }
@@ -511,11 +534,13 @@ function classifyLR1(table) {
 
     for (s in table[i]) {
 
-      if (typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 1)
+      if (typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 1) {
         return { member: false, reason: "it contains a reduce-reduce conflict" };
+      }
 
-      if (typeof table[i][s].shift !== "undefined" && typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 0)
+      if (typeof table[i][s].shift !== "undefined" && typeof table[i][s].reduce !== "undefined" && table[i][s].reduce.length > 0) {
         return { member: false, reason: "it contains a shift-reduce conflict" };
+      }
 
     }
 
@@ -527,11 +552,13 @@ function classifyLR1(table) {
 
 function addReduceAction(actions, symbol, production) {
 
-  if (typeof actions[symbol] === "undefined")
+  if (typeof actions[symbol] === "undefined") {
     actions[symbol] = { reduce: [] };
+  }
 
-  if (typeof actions[symbol].reduce === "undefined")
+  if (typeof actions[symbol].reduce === "undefined") {
     actions[symbol].reduce = [];
+  }
 
   actions[symbol].reduce.push(production);
 
@@ -556,8 +583,9 @@ module.exports["parsing.lr.slr1_table"] = function(grammar) {
     state = automaton[i];
     actions = {};
 
-    for (s in state.transitions)
+    for (s in state.transitions) {
       actions[s] = { shift: state.transitions[s] };
+    }
 
     for (j = 0; j < state.items.length; j++) {
 
@@ -565,15 +593,17 @@ module.exports["parsing.lr.slr1_table"] = function(grammar) {
 
       if (item.production === -1) {
 
-        if (item.index === 1)
+        if (item.index === 1) {
           addReduceAction(actions, END, item.production);
+        }
 
       } else {
 
         if (item.index == grammar.productions[item.production].length - 1) {
 
-          for (s in follow[grammar.productions[item.production][0]])
+          for (s in follow[grammar.productions[item.production][0]]) {
             addReduceAction(actions, s, item.production);
+          }
 
         }
 
@@ -613,8 +643,9 @@ module.exports["parsing.lr.lr1_table"] = function(grammar) {
     state = automaton[i];
     actions = {};
 
-    for (s in state.transitions)
+    for (s in state.transitions) {
       actions[s] = { shift: state.transitions[s] };
+    }
 
     for (j = 0; j < state.items.length; j++) {
 
@@ -622,13 +653,15 @@ module.exports["parsing.lr.lr1_table"] = function(grammar) {
 
       if (item.production === -1) {
 
-        if (item.index === 1)
+        if (item.index === 1) {
           addReduceAction(actions, END, item.production);
+        }
 
       } else {
 
-        if (item.index == grammar.productions[item.production].length - 1)
+        if (item.index == grammar.productions[item.production].length - 1) {
           addReduceAction(actions, item.lookahead, item.production);
+        }
 
       }
 
@@ -656,11 +689,13 @@ function collapseLookaheads(items) {
     x = items[i].index;
     l = items[i].lookahead;
 
-    if (!table[p])
+    if (!table[p]) {
       table[p] = [];
+    }
 
-    if (!table[p][x])
+    if (!table[p][x]) {
       table[p][x] = [];
+    }
 
     table[p][x].push(l);
 
@@ -668,9 +703,11 @@ function collapseLookaheads(items) {
 
   var result = [];
 
-  for (p in table)
-    for (x in table[p])
+  for (p in table) {
+    for (x in table[p]) {
       result.push({ production: parseInt(p), index: parseInt(x), lookaheads: table[p][x] });
+    }
+  }
 
   return result;
 
@@ -691,8 +728,9 @@ function mergeItems(a, b) {
 
     // Add lookaheads from a
 
-    for (j = 0; j < a[i].lookaheads.length; j++)
+    for (j = 0; j < a[i].lookaheads.length; j++) {
       item.lookaheads.push(a[i].lookaheads[j]);
+    }
 
     // Find matching items in b and add their lookaheads if they aren't already present
 
@@ -701,8 +739,9 @@ function mergeItems(a, b) {
       if (b[j].production == a[i].production && b[j].index == a[i].index) {
 
         for (k = 0; k < b[j].lookaheads.length; k++) {
-          if (item.lookaheads.indexOf(b[j].lookaheads[k]) === -1)
+          if (item.lookaheads.indexOf(b[j].lookaheads[k]) === -1) {
             item.lookaheads.push(b[j].lookaheads[k]);
+          }
         }
 
       }
@@ -757,8 +796,9 @@ module.exports["parsing.lr.lalr1_automaton"] = function(grammar) {
 
     // If this state has been used already for merging, skip it.
 
-    if (used[i])
+    if (used[i]) {
       continue;
+    }
 
     // Otherwise, find the states (including the current state) which can be merged with it.
 
@@ -817,8 +857,9 @@ module.exports["parsing.lr.lalr1_automaton"] = function(grammar) {
     var original = automaton[merge[i][0]].transitions;
     var s;
 
-    for (s in original)
+    for (s in original) {
       state.transitions[s] = transition[original[s]];
+    }
 
     // Add the new state
 
@@ -842,8 +883,9 @@ module.exports["parsing.lr.lalr1_table"] = function(grammar) {
     state = automaton[i];
     actions = {};
 
-    for (s in state.transitions)
+    for (s in state.transitions) {
       actions[s] = { shift: state.transitions[s] };
+    }
 
     for (j = 0; j < state.items.length; j++) {
 
@@ -851,15 +893,17 @@ module.exports["parsing.lr.lalr1_table"] = function(grammar) {
 
       if (item.production === -1) {
 
-        if (item.index === 1)
+        if (item.index === 1) {
           addReduceAction(actions, END, item.production);
+        }
 
       } else {
 
         if (item.index == grammar.productions[item.production].length - 1) {
 
-          for (k = 0; k < item.lookaheads.length; k++)
+          for (k = 0; k < item.lookaheads.length; k++) {
             addReduceAction(actions, item.lookaheads[k], item.production);
+          }
 
         }
 

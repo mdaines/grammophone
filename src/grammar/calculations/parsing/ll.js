@@ -10,8 +10,9 @@ module.exports["parsing.ll.ll1_classification"] = function(grammar) {
 
   // We can return immediately if the grammar contains a null ambiguity.
 
-  if (nullAmbiguity.length > 0)
+  if (nullAmbiguity.length > 0) {
     return { member: false, reason: "it contains a null ambiguity" };
+  }
 
   var follow = grammar.calculate("grammar.follow");
   var terminals = grammar.calculate("grammar.terminals");
@@ -31,8 +32,9 @@ module.exports["parsing.ll.ll1_classification"] = function(grammar) {
 
     table[k] = {};
 
-    for (l in terminals)
+    for (l in terminals) {
       table[k][l] = false;
+    }
 
   }
 
@@ -44,8 +46,9 @@ module.exports["parsing.ll.ll1_classification"] = function(grammar) {
     first = grammar.getFirst(body);
 
     for (s in first) {
-      if (table[head][s])
+      if (table[head][s]) {
         return { member: false, reason: "it contains a first set clash" };
+      }
 
       table[head][s] = true;
     }
@@ -59,8 +62,9 @@ module.exports["parsing.ll.ll1_classification"] = function(grammar) {
 
   for (k in nullable) {
 
-    if (Sets.any(Sets.intersection(first[k], follow[k])))
+    if (Sets.any(Sets.intersection(first[k], follow[k]))) {
       return { member: false, reason: "it contains a first/follow set clash" };
+    }
 
   }
 
@@ -84,8 +88,9 @@ module.exports["parsing.ll.ll1_table"] = function(grammar) {
 
     table[k] = {};
 
-    for (l in terminals)
+    for (l in terminals) {
       table[k][l] = [];
+    }
 
     table[k][END] = [];
 
@@ -105,16 +110,18 @@ module.exports["parsing.ll.ll1_table"] = function(grammar) {
     // For each symbol s in first(body), add the production
     // to table[nonterminal][s].
 
-    for (s in first)
+    for (s in first) {
       table[head][s].push(i);
+    }
 
     // If the production is nullable, for each symbol s of follow(head),
     // add this production to table[head][s].
 
     if (grammar.isNullable(body)) {
 
-      for (s in follow[head])
+      for (s in follow[head]) {
         table[head][s].push(i);
+      }
 
     }
 

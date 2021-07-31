@@ -23,12 +23,14 @@ function isRelationEqual(a, b) {
 
   var k;
 
-  if (Sets.count(a) !== Sets.count(b))
+  if (Sets.count(a) !== Sets.count(b)) {
     return false;
+  }
 
   for (k in a) {
-    if (!isSetEqual(a[k], b[k]))
+    if (!isSetEqual(a[k], b[k])) {
       return false;
+    }
   }
 
   return true;

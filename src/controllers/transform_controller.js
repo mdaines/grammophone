@@ -11,8 +11,9 @@ var TransformController = function(element) {
   this._transformView = new TransformView(this._transformElement);
   this._transformView.setDelegate(this);
 
-  if (this._transformView.setup)
+  if (this._transformView.setup) {
     this._transformView.setup();
+  }
 
 }
 
@@ -45,8 +46,9 @@ TransformController.prototype.getSymbolInfo = function() {
 
 TransformController.prototype.getPreviousSymbolInfo = function() {
 
-  if (this._index > 0)
+  if (this._index > 0) {
     return this._stack[this._index - 1].grammar.calculate("grammar.symbolInfo");
+  }
 
 }
 
@@ -58,22 +60,25 @@ TransformController.prototype.getTransformations = function(productionIndex, sym
 
 TransformController.prototype.getUndoTransformation = function() {
 
-  if (this._index > 0)
+  if (this._index > 0) {
     return this._stack[this._index].transformation;
+  }
 
 }
 
 TransformController.prototype.getRedoTransformation = function() {
 
-  if (this._index < this._stack.length - 1)
+  if (this._index < this._stack.length - 1) {
     return this._stack[this._index + 1].transformation;
+  }
 
 }
 
 TransformController.prototype.undo = function() {
 
-  if (this._index > 0)
+  if (this._index > 0) {
     this._index--;
+  }
 
   this._transformView.reload();
 
@@ -83,8 +88,9 @@ TransformController.prototype.undo = function() {
 
 TransformController.prototype.redo = function() {
 
-  if (this._index < this._stack.length - 1)
+  if (this._index < this._stack.length - 1) {
     this._index++;
+  }
 
   this._transformView.reload();
 

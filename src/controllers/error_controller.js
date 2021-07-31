@@ -15,10 +15,11 @@ ErrorController.prototype.reload = function() {
 
   var error = this._delegate.getError();
 
-  if (typeof error !== "undefined")
+  if (typeof error !== "undefined") {
     this._element.innerHTML = "<pre>" + this._delegate.getError() + "</pre>";
-  else
+  } else {
     this._element.innerHTML = "";
+  }
 
 }
 

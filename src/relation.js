@@ -46,8 +46,9 @@ var Relation = {
     for (k in keys) {
       for (i in keys) {
         for (j in keys) {
-          if (result[i][j] || (result[i][k] && result[k][j]))
+          if (result[i][j] || (result[i][k] && result[k][j])) {
             result[i][j] = true;
+          }
         }
       }
     }
@@ -97,15 +98,17 @@ var Relation = {
       for (l in relation[k]) {
 
         if (v.indexOf(l) != -1) {
-          if (l == k)
+          if (l == k) {
             return v.concat(k);
-          else
+          } else {
             return v.concat(k).concat(l);
+          }
         }
 
         w = dfs(l, v.concat(k));
-        if (w)
+        if (w) {
           return w;
+        }
 
       }
 
@@ -117,8 +120,9 @@ var Relation = {
 
     for (k in relation) {
       v = dfs(k, []);
-      if (v)
+      if (v) {
         return v;
+      }
     }
 
     return undefined;

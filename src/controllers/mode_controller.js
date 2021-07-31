@@ -8,13 +8,15 @@ var ModeController = function(element) {
   this._element.innerHTML = modeTemplate();
 
   this._element.querySelector("#mode-edit").addEventListener("change", function(e) {
-    if (e.target.checked)
+    if (e.target.checked) {
       this._delegate.edit();
+    }
   }.bind(this));
 
   this._element.querySelector("#mode-transform").addEventListener("change", function(e) {
-    if (e.target.checked)
+    if (e.target.checked) {
       this._delegate.transform();
+    }
   }.bind(this));
 
   this._element.querySelector("#mode-analyze").addEventListener("click", function(e) {

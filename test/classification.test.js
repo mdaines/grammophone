@@ -16,8 +16,9 @@ function classifications(grammar) {
   result = {};
 
   for (k in classification) {
-    if (classification[k].member)
+    if (classification[k].member) {
       result[k] = true;
+    }
   }
 
   return result;

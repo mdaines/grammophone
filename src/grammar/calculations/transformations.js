@@ -89,8 +89,9 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
       changes.push({ index: i + offset, operation: "delete" });
       offset--;
 
-      if (typeof first === "undefined")
+      if (typeof first === "undefined") {
         first = i;
+      }
     }
 
   }
@@ -105,8 +106,9 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
 
     production = [];
 
-    for (j = 0; j < grammar.productions[base[i]].length; j++)
+    for (j = 0; j < grammar.productions[base[i]].length; j++) {
       production.push(grammar.productions[base[i]][j]);
+    }
 
     production.push(symbol);
 
@@ -123,8 +125,9 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
 
     production.push(symbol);
 
-    for (j = 2; j < grammar.productions[recursive[i]].length; j++)
+    for (j = 2; j < grammar.productions[recursive[i]].length; j++) {
       production.push(grammar.productions[recursive[i]][j]);
+    }
 
     production.push(symbol);
 
@@ -157,16 +160,18 @@ module.exports["transformations.removeImmediateLeftRecursion"] = function(gramma
   //
   // where m, n > 0?
 
-  for (nt in nonterminals)
+  for (nt in nonterminals) {
     candidates[nt] = { recursive: [], base: [] };
+  }
 
   for (i = 0; i < grammar.productions.length; i++) {
     nt = grammar.productions[i][0];
 
-    if (nt == grammar.productions[i][1])
+    if (nt == grammar.productions[i][1]) {
       candidates[nt].recursive.push(i);
-    else
+    } else {
       candidates[nt].base.push(i);
+    }
   }
 
   for (nt in candidates) {
@@ -259,8 +264,9 @@ Trie.prototype.insert = function(production, value) {
 
   for (i = 0; i < production.length; i++) {
     s = production[i];
-    if (typeof node.children[s] === "undefined")
+    if (typeof node.children[s] === "undefined") {
       node.children[s] = { children: {}, values: [] };
+    }
     node = node.children[s];
   }
 
@@ -279,11 +285,13 @@ Trie.prototype.getFactorablePrefixes = function() {
 
     values = values.concat(node.values);
 
-    for (symbol in node.children)
+    for (symbol in node.children) {
       values = values.concat(_values(length + 1, node.children[symbol]));
+    }
 
-    if (length > 0 && values.length >= 2)
+    if (length > 0 && values.length >= 2) {
       groups.push({ length: length, group: values });
+    }
 
     return values;
 
@@ -309,8 +317,9 @@ module.exports["transformations.leftFactor"] = function(grammar) {
 
     nt = grammar.productions[i][0];
 
-    if (typeof productions[nt] === "undefined")
+    if (typeof productions[nt] === "undefined") {
       productions[nt] = new Trie();
+    }
 
     productions[nt].insert(grammar.productions[i].slice(1), i);
 
@@ -423,8 +432,9 @@ module.exports["transformations.epsilonSeparate"] = function(grammar) {
       if (grammar.productions[i][0] === nt) {
 
         if (grammar.productions[i].length === 1) {
-          if (epsilon !== -1)
+          if (epsilon !== -1) {
             break;
+          }
           epsilon = i;
         } else {
           group.push(i);
@@ -487,8 +497,9 @@ module.exports["transformations.removeUnreachable"] = function(grammar) {
 
     for (i = 0; i < grammar.productions.length; i++) {
 
-      if (grammar.productions[i][0] === nt)
+      if (grammar.productions[i][0] === nt) {
         group.push(i);
+      }
 
     }
 
