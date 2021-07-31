@@ -2,5 +2,6 @@
   "browserify": true,
   "esversion": 6,
   "sub": true,
-  "asi": true
+  "asi": true,
+  "undef": true
 }
