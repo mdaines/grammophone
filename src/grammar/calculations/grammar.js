@@ -584,7 +584,7 @@ function expandSentenceNode(node, grammar) {
 }
 
 var MAX_SENTENCES = 30;
-var MAX_DEPTH = 100;
+var MAX_DEPTH = 200;
 
 module.exports["grammar.sentences"] = function(grammar) {
 
@@ -613,10 +613,6 @@ module.exports["grammar.sentences"] = function(grammar) {
         break;
       }
 
-      if (queue.length >= MAX_DEPTH) {
-        break;
-      }
-
     }
 
     // Sort the queue so that the next sentence is the one with the
@@ -626,7 +622,7 @@ module.exports["grammar.sentences"] = function(grammar) {
       return (a.nonterminals + a.steps) - (b.nonterminals + b.steps);
     });
 
-  } while (queue.length > 0 && sentences.length < MAX_SENTENCES);
+  } while (queue.length > 0 && sentences.length < MAX_SENTENCES && queue.length < MAX_DEPTH);
 
   return sentences.sort(function(a, b) {
     if (a.length === b.length) {
