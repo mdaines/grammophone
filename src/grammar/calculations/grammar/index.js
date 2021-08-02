@@ -1,0 +1,16 @@
+module.exports["grammar.classification"] = require("./classification");
+module.exports["grammar.nonterminals"] = require("./nonterminals");
+module.exports["grammar.terminals"] = require("./terminals");
+module.exports["grammar.symbolInfo"] = require("./symbolInfo");
+module.exports["grammar.start"] = require("./start");
+module.exports["grammar.productions"] = require("./productions");
+module.exports["grammar.unreachable"] = require("./unreachable");
+module.exports["grammar.unrealizable"] = require("./unrealizable");
+module.exports["grammar.cycle"] = require("./cycle");
+module.exports["grammar.nullAmbiguity"] = require("./nullAmbiguity");
+module.exports["grammar.nullable"] = require("./nullable");
+module.exports["grammar.first"] = require("./first");
+module.exports["grammar.follow"] = require("./follow");
+module.exports["grammar.endable"] = require("./endable");
+module.exports["grammar.sentences"] = require("./sentences");
+module.exports["grammar.ambiguous"] = require("./ambiguous");
