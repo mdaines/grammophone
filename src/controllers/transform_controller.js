@@ -54,7 +54,7 @@ TransformController.prototype.getPreviousSymbolInfo = function() {
 
 TransformController.prototype.getTransformations = function(productionIndex, symbolIndex) {
 
-  return this._stack[this._index].grammar.calculate("transformations");
+  return this._stack[this._index].grammar.calculate("transformations.all");
 
 }
 
