@@ -59,11 +59,11 @@ function initialize(productions) {
     for (j = 0; j < productions[i].length; j++) {
 
       if (productions[i][j].match(/^Grammar\./)) {
-        throw "Reserved symbol " + productions[i][j] + " may not be part of a production";
+        throw new Error("Reserved symbol " + productions[i][j] + " may not be part of a production");
       }
 
       if (productions[i][j] === "") {
-        throw "An empty symbol may not be part of a production";
+        throw new Error("An empty symbol may not be part of a production");
       }
 
     }
@@ -82,7 +82,7 @@ function initialize(productions) {
 function calculate(name) {
 
   if (typeof Calculations[name] === "undefined") {
-    throw "Undefined grammar calculation " + name;
+    throw new Error("Undefined grammar calculation " + name);
   }
 
   if (typeof this.calculations[name] === "undefined") {
@@ -150,7 +150,7 @@ function getFirst(symbols) {
 
     } else {
 
-      throw "Unexpected symbol " + s;
+      throw new Error("Unexpected symbol " + s);
 
     }
 
@@ -184,7 +184,7 @@ function isNullable(symbols) {
 
     } else {
 
-      throw "Unexpected symbol " + s;
+      throw new Error("Unexpected symbol " + s);
 
     }
 
