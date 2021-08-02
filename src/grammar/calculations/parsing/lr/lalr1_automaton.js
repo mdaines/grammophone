@@ -1,5 +1,5 @@
 var collapseLookaheads = require("./helpers").collapseLookaheads;
-var lr0 = require("./helpers").lr0;
+var lr0 = require("./build/lr0");
 var mergeItems = require("./helpers").mergeItems;
 
 module.exports = function(grammar) {

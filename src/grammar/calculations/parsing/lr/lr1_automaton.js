@@ -1,5 +1,5 @@
 var automaton = require("./helpers").automaton;
-var lr1 = require("./helpers").lr1;
+var lr1 = require("./build/lr1");
 
 module.exports = function(grammar) {
 
