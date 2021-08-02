@@ -1,9 +1,35 @@
-var grammar = require('./grammar');
-var parsing = require('./parsing');
-var transformations = require('./transformations');
-
-module.exports = Object.assign({},
-  grammar,
-  parsing,
-  transformations
-);
+module.exports["grammar.classification"] = require("./grammar/classification");
+module.exports["grammar.nonterminals"] = require("./grammar/nonterminals");
+module.exports["grammar.terminals"] = require("./grammar/terminals");
+module.exports["grammar.symbolInfo"] = require("./grammar/symbolInfo");
+module.exports["grammar.start"] = require("./grammar/start");
+module.exports["grammar.productions"] = require("./grammar/productions");
+module.exports["grammar.unreachable"] = require("./grammar/unreachable");
+module.exports["grammar.unrealizable"] = require("./grammar/unrealizable");
+module.exports["grammar.cycle"] = require("./grammar/cycle");
+module.exports["grammar.nullAmbiguity"] = require("./grammar/nullAmbiguity");
+module.exports["grammar.nullable"] = require("./grammar/nullable");
+module.exports["grammar.first"] = require("./grammar/first");
+module.exports["grammar.follow"] = require("./grammar/follow");
+module.exports["grammar.endable"] = require("./grammar/endable");
+module.exports["grammar.sentences"] = require("./grammar/sentences");
+module.exports["grammar.ambiguous"] = require("./grammar/ambiguous");
+module.exports["parsing.ll.ll1_classification"] = require("./parsing/ll/ll1_classification");
+module.exports["parsing.ll.ll1_table"] = require("./parsing/ll/ll1_table");
+module.exports["parsing.lr.lr0_classification"] = require("./parsing/lr/lr0_classification");
+module.exports["parsing.lr.lr0_automaton"] = require("./parsing/lr/lr0_automaton");
+module.exports["parsing.lr.lr0_table"] = require("./parsing/lr/lr0_table");
+module.exports["parsing.lr.slr1_classification"] = require("./parsing/lr/slr1_classification");
+module.exports["parsing.lr.slr1_table"] = require("./parsing/lr/slr1_table");
+module.exports["parsing.lr.lr1_automaton"] = require("./parsing/lr/lr1_automaton");
+module.exports["parsing.lr.lr1_classification"] = require("./parsing/lr/lr1_classification");
+module.exports["parsing.lr.lr1_table"] = require("./parsing/lr/lr1_table");
+module.exports["parsing.lr.lalr1_classification"] = require("./parsing/lr/lalr1_classification");
+module.exports["parsing.lr.lalr1_automaton"] = require("./parsing/lr/lalr1_automaton");
+module.exports["parsing.lr.lalr1_table"] = require("./parsing/lr/lalr1_table");
+module.exports["transformations.expand"] = require("./transformations/expand");
+module.exports["transformations.removeImmediateLeftRecursion"] = require("./transformations/removeImmediateLeftRecursion");
+module.exports["transformations.leftFactor"] = require("./transformations/leftFactor");
+module.exports["transformations.epsilonSeparate"] = require("./transformations/epsilonSeparate");
+module.exports["transformations.removeUnreachable"] = require("./transformations/removeUnreachable");
+module.exports["transformations.all"] = require("./transformations/all");
