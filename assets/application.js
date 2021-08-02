@@ -951,7 +951,7 @@ AnalysisController.prototype.getPathComponents = function() {
 
 module.exports = AnalysisController;
 
-},{"../views/blank_slate_view":36,"../views/header_view":37,"../views/lalr1_automaton_view":38,"../views/lalr1_table_view":39,"../views/ll1_table_view":40,"../views/lr0_automaton_view":41,"../views/lr0_table_view":42,"../views/lr1_automaton_view":43,"../views/lr1_table_view":44,"../views/nonterminals_view":45,"../views/parsing_view":46,"../views/sanity_view":47,"../views/sentences_view":48,"../views/short_sentences_view":49,"../views/slr1_table_view":50}],6:[function(require,module,exports){
+},{"../views/blank_slate_view":69,"../views/header_view":70,"../views/lalr1_automaton_view":71,"../views/lalr1_table_view":72,"../views/ll1_table_view":73,"../views/lr0_automaton_view":74,"../views/lr0_table_view":75,"../views/lr1_automaton_view":76,"../views/lr1_table_view":77,"../views/nonterminals_view":78,"../views/parsing_view":79,"../views/sanity_view":80,"../views/sentences_view":81,"../views/short_sentences_view":82,"../views/slr1_table_view":83}],6:[function(require,module,exports){
 var AnalysisController = require("./analysis_controller");
 var EditController = require("./edit_controller");
 var TransformController = require("./transform_controller");
@@ -1177,7 +1177,7 @@ ApplicationController.prototype.buildHref = function(path) {
 
 module.exports = ApplicationController;
 
-},{"../grammar":17,"../helpers":20,"./analysis_controller":5,"./edit_controller":7,"./error_controller":8,"./mode_controller":9,"./transform_controller":10}],7:[function(require,module,exports){
+},{"../grammar":50,"../helpers":53,"./analysis_controller":5,"./edit_controller":7,"./error_controller":8,"./mode_controller":9,"./transform_controller":10}],7:[function(require,module,exports){
 var editTemplate = require("../templates/edit.ejs");
 
 var EditController = function(element) {
@@ -1209,7 +1209,7 @@ EditController.prototype.reload = function() {
 
 module.exports = EditController;
 
-},{"../templates/edit.ejs":24}],8:[function(require,module,exports){
+},{"../templates/edit.ejs":57}],8:[function(require,module,exports){
 var ErrorController = function(element) {
 
   this._element = element;
@@ -1291,7 +1291,7 @@ ModeController.prototype.reload = function() {
 
 module.exports = ModeController;
 
-},{"../templates/mode.ejs":30}],10:[function(require,module,exports){
+},{"../templates/mode.ejs":63}],10:[function(require,module,exports){
 var TransformView = require('../views/transform_view');
 
 var TransformController = function(element) {
@@ -1348,7 +1348,7 @@ TransformController.prototype.getPreviousSymbolInfo = function() {
 
 TransformController.prototype.getTransformations = function(productionIndex, symbolIndex) {
 
-  return this._stack[this._index].grammar.calculate("transformations");
+  return this._stack[this._index].grammar.calculate("transformations.all");
 
 }
 
@@ -1410,11 +1410,32 @@ TransformController.prototype.transform = function(transformation) {
 
 module.exports = TransformController;
 
-},{"../views/transform_view":51}],11:[function(require,module,exports){
-var Relation = require('../../relation');
-var END = require("../symbols").END;
+},{"../views/transform_view":84}],11:[function(require,module,exports){
+module.exports = function(grammar) {
 
-module.exports["grammar.classification"] = function(grammar) {
+  var i, j;
+  var sentences = grammar.calculate("grammar.sentences");
+
+  for (i = 0; i < sentences.length - 1; i++) {
+    if (sentences[i].length != sentences[i+1].length) {
+      continue;
+    }
+
+    for (j = 0; j < sentences[i].length; j++) {
+      if (sentences[i][j] !== sentences[i+1][j]) {
+        break;
+      }
+    }
+
+    if (j === sentences[i].length) {
+      return sentences[i];
+    }
+  }
+
+}
+
+},{}],12:[function(require,module,exports){
+module.exports = function(grammar) {
 
   return {
     "ll1": grammar.calculate("parsing.ll.ll1_classification"),
@@ -1426,197 +1447,10 @@ module.exports["grammar.classification"] = function(grammar) {
 
 };
 
-module.exports["grammar.nonterminals"] = function(grammar) {
+},{}],13:[function(require,module,exports){
+var Relation = require('../../../relation');
 
-  var i;
-  var nonterminals = {};
-
-  for (i = 0; i < grammar.productions.length; i++) {
-    nonterminals[grammar.productions[i][0]] = true;
-  }
-
-  return nonterminals;
-
-};
-
-module.exports["grammar.terminals"] = function(grammar) {
-
-  var i, j;
-  var terminals = {};
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-
-  for (i = 0; i < grammar.productions.length; i++) {
-    for (j = 1; j < grammar.productions[i].length; j++) {
-
-      if (!nonterminals[grammar.productions[i][j]]) {
-        terminals[grammar.productions[i][j]] = true;
-      }
-
-    }
-  }
-
-  return terminals;
-
-};
-
-module.exports["grammar.symbolInfo"] = function(grammar) {
-
-  var i, j, s;
-
-  var terminalOrder = [];
-  var nonterminalOrder = [];
-  var productionOrder = [];
-
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var terminals = grammar.calculate("grammar.terminals");
-
-  for (i = 0; i < grammar.productions.length; i++) {
-
-    s = grammar.productions[i][0];
-
-    if (productionOrder.indexOf(s) === -1) {
-      productionOrder.push(s);
-    }
-
-    for (j = 0; j < grammar.productions[i].length; j++) {
-
-      s = grammar.productions[i][j];
-
-      if (nonterminals[s] && nonterminalOrder.indexOf(s) === -1) {
-        nonterminalOrder.push(s);
-      }
-
-      if (terminals[s] && terminalOrder.indexOf(s) === -1) {
-        terminalOrder.push(s);
-      }
-
-    }
-
-  }
-
-  return {
-    terminalOrder: terminalOrder,
-    nonterminalOrder: nonterminalOrder,
-    productionOrder: productionOrder,
-
-    nonterminals: nonterminals,
-    terminals: terminals
-  };
-
-};
-
-module.exports["grammar.start"] = function(grammar) {
-
-  return grammar.productions[0][0];
-
-};
-
-module.exports["grammar.productions"] = function(grammar) {
-
-  return grammar.productions;
-
-};
-
-module.exports["grammar.unreachable"] = function(grammar) {
-
-  var relation, closure, unreachable;
-  var i, j, s;
-
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var start = grammar.calculate("grammar.start");
-
-  // Build relation:
-  // (x,y) | x -> a y b where a and b are strings of terminals or nonterminals
-
-  relation = Relation.create();
-
-  for (i = 0; i < grammar.productions.length; i++) {
-    for (j = 1; j < grammar.productions[i].length; j++) {
-
-      if (nonterminals[grammar.productions[i][j]]) {
-        Relation.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
-      }
-
-    }
-  }
-
-  // Obtain the closure of the relation
-
-  closure = Relation.closure(relation);
-
-  // Collect unreachable nonterminals
-
-  unreachable = {};
-
-  for (s in nonterminals) {
-
-    if (s != start && (!closure[start] || !closure[start][s])) {
-      unreachable[s] = true;
-    }
-
-  }
-
-  return unreachable;
-
-};
-
-module.exports["grammar.unrealizable"] = function(grammar) {
-
-  var marked, added, unrealizable;
-  var i, j, s;
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-
-  // Is a particular nonterminal realizable?
-
-  marked = {};
-
-  do {
-
-    added = [];
-
-    for (i = 0; i < grammar.productions.length; i++) {
-
-      // Are there any unmarked nonterminals? Break at the first one.
-
-      for (j = 1; j < grammar.productions[i].length; j++) {
-
-        if (!marked[grammar.productions[i][j]] && nonterminals[grammar.productions[i][j]]) {
-          break;
-        }
-
-      }
-
-      // If the head of this production is not marked, and all of the symbols in
-      // the body of the production were not unmarked nonterminals (ie, they were
-      // either marked or terminals), mark the head and record
-      // that we marked it in this step.
-
-      if (!marked[grammar.productions[i][0]] && j == grammar.productions[i].length) {
-        marked[grammar.productions[i][0]] = true;
-        added.push(grammar.productions[i][0]);
-      }
-
-    }
-
-  } while (added.length > 0);
-
-  // Collect nonterminals which were not marked.
-
-  unrealizable = {};
-
-  for (s in nonterminals) {
-
-    if (!marked[s]) {
-      unrealizable[s] = true;
-    }
-
-  }
-
-  return unrealizable;
-
-};
-
-module.exports["grammar.cycle"] = function(grammar) {
+module.exports = function(grammar) {
 
   var relation;
   var i, j, k;
@@ -1660,106 +1494,29 @@ module.exports["grammar.cycle"] = function(grammar) {
 
 };
 
-module.exports["grammar.nullAmbiguity"] = function(grammar) {
+},{"../../../relation":54}],14:[function(require,module,exports){
+var END = require("../../symbols").END;
 
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var nullable = grammar.calculate("grammar.nullable");
-  var found;
-  var nt;
-  var i, j;
+module.exports = function(grammar) {
 
-  // For each nonterminal...
+  var s;
+  var endable = {};
+  var follow = grammar.calculate("grammar.follow");
 
-  for (nt in nonterminals) {
-
-    // Look through the productions of this nonterminal for
-    // productions which are nullable. If we find more than
-    // one, return them as an array (in order).
-
-    found = undefined;
-
-    for (i = 0; i < grammar.productions.length; i++) {
-
-      if (grammar.productions[i][0] == nt) {
-
-        // An empty production is nullable.
-
-        if (grammar.productions[i].length == 1) {
-
-          if (typeof found !== "undefined") {
-            return i < found ? [i, found] : [found, i];
-          } else {
-            found = i;
-          }
-
-          continue;
-
-        }
-
-        // A production is nullable if all of its symbols are nullable.
-
-        for (j = 1; j < grammar.productions[i].length; j++) {
-
-          if (!nullable[grammar.productions[i][j]]) {
-            break;
-          }
-
-        }
-
-        if (j == grammar.productions[i].length) {
-
-          if (typeof found !== "undefined") {
-            return i < found ? [i, found] : [found, i];
-          } else {
-            found = i;
-          }
-
-        }
-
-      }
-
+  for (s in follow) {
+    if (follow[s][END]) {
+      endable[s] = true;
     }
-
   }
 
-  return [];
-
-}
-
-module.exports["grammar.nullable"] = function(grammar) {
-
-  var nullable = {};
-  var added;
-  var i, j, head;
-
-  do {
-
-    added = [];
-
-    for (i = 0; i < grammar.productions.length; i++) {
-
-      for (j = 1; j < grammar.productions[i].length; j++) {
-        if (!nullable[grammar.productions[i][j]]) {
-          break;
-        }
-      }
-
-      head = grammar.productions[i][0];
-
-      if (j == grammar.productions[i].length && !nullable[head]) {
-        nullable[head] = true;
-        added.push(head);
-      }
-
-    }
-
-  } while (added.length > 0);
-
-  return nullable;
+  return endable;
 
 };
 
-module.exports["grammar.first"] = function(grammar) {
+},{"../../symbols":52}],15:[function(require,module,exports){
+var Relation = require('../../../relation');
+
+module.exports = function(grammar) {
 
   var immediate, propagation, result;
   var i, j, k;
@@ -1829,7 +1586,11 @@ module.exports["grammar.first"] = function(grammar) {
 
 };
 
-module.exports["grammar.follow"] = function(grammar) {
+},{"../../../relation":54}],16:[function(require,module,exports){
+var Relation = require('../../../relation');
+var END = require("../../symbols").END;
+
+module.exports = function(grammar) {
 
   var immediate, propagation, result;
   var i, j, k, s;
@@ -1926,22 +1687,129 @@ module.exports["grammar.follow"] = function(grammar) {
 
 };
 
-module.exports["grammar.endable"] = function(grammar) {
+},{"../../../relation":54,"../../symbols":52}],17:[function(require,module,exports){
+module.exports = function(grammar) {
 
-  var s;
-  var endable = {};
-  var follow = grammar.calculate("grammar.follow");
+  var i;
+  var nonterminals = {};
 
-  for (s in follow) {
-    if (follow[s][END]) {
-      endable[s] = true;
-    }
+  for (i = 0; i < grammar.productions.length; i++) {
+    nonterminals[grammar.productions[i][0]] = true;
   }
 
-  return endable;
+  return nonterminals;
 
 };
 
+},{}],18:[function(require,module,exports){
+module.exports = function(grammar) {
+
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var nullable = grammar.calculate("grammar.nullable");
+  var found;
+  var nt;
+  var i, j;
+
+  // For each nonterminal...
+
+  for (nt in nonterminals) {
+
+    // Look through the productions of this nonterminal for
+    // productions which are nullable. If we find more than
+    // one, return them as an array (in order).
+
+    found = undefined;
+
+    for (i = 0; i < grammar.productions.length; i++) {
+
+      if (grammar.productions[i][0] == nt) {
+
+        // An empty production is nullable.
+
+        if (grammar.productions[i].length == 1) {
+
+          if (typeof found !== "undefined") {
+            return i < found ? [i, found] : [found, i];
+          } else {
+            found = i;
+          }
+
+          continue;
+
+        }
+
+        // A production is nullable if all of its symbols are nullable.
+
+        for (j = 1; j < grammar.productions[i].length; j++) {
+
+          if (!nullable[grammar.productions[i][j]]) {
+            break;
+          }
+
+        }
+
+        if (j == grammar.productions[i].length) {
+
+          if (typeof found !== "undefined") {
+            return i < found ? [i, found] : [found, i];
+          } else {
+            found = i;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  return [];
+
+};
+
+},{}],19:[function(require,module,exports){
+module.exports = function(grammar) {
+
+  var nullable = {};
+  var added;
+  var i, j, head;
+
+  do {
+
+    added = [];
+
+    for (i = 0; i < grammar.productions.length; i++) {
+
+      for (j = 1; j < grammar.productions[i].length; j++) {
+        if (!nullable[grammar.productions[i][j]]) {
+          break;
+        }
+      }
+
+      head = grammar.productions[i][0];
+
+      if (j == grammar.productions[i].length && !nullable[head]) {
+        nullable[head] = true;
+        added.push(head);
+      }
+
+    }
+
+  } while (added.length > 0);
+
+  return nullable;
+
+};
+
+},{}],20:[function(require,module,exports){
+module.exports = function(grammar) {
+
+  return grammar.productions;
+
+};
+
+},{}],21:[function(require,module,exports){
 // Given a "sentence node" and a grammar, expand the sentence's first
 // realizable nonterminal and return the resulting list of sentence nodes
 // (which may be empty).
@@ -1999,7 +1867,7 @@ function expandSentenceNode(node, grammar) {
 var MAX_SENTENCES = 30;
 var MAX_DEPTH = 200;
 
-module.exports["grammar.sentences"] = function(grammar) {
+module.exports = function(grammar) {
 
   var start = grammar.calculate("grammar.start");
 
@@ -2047,54 +1915,225 @@ module.exports["grammar.sentences"] = function(grammar) {
 
 };
 
-module.exports["grammar.ambiguous"] = function(grammar) {
+},{}],22:[function(require,module,exports){
+module.exports = function(grammar) {
+
+  return grammar.productions[0][0];
+
+};
+
+},{}],23:[function(require,module,exports){
+module.exports = function(grammar) {
+
+  var i, j, s;
+
+  var terminalOrder = [];
+  var nonterminalOrder = [];
+  var productionOrder = [];
+
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var terminals = grammar.calculate("grammar.terminals");
+
+  for (i = 0; i < grammar.productions.length; i++) {
+
+    s = grammar.productions[i][0];
+
+    if (productionOrder.indexOf(s) === -1) {
+      productionOrder.push(s);
+    }
+
+    for (j = 0; j < grammar.productions[i].length; j++) {
+
+      s = grammar.productions[i][j];
+
+      if (nonterminals[s] && nonterminalOrder.indexOf(s) === -1) {
+        nonterminalOrder.push(s);
+      }
+
+      if (terminals[s] && terminalOrder.indexOf(s) === -1) {
+        terminalOrder.push(s);
+      }
+
+    }
+
+  }
+
+  return {
+    terminalOrder: terminalOrder,
+    nonterminalOrder: nonterminalOrder,
+    productionOrder: productionOrder,
+
+    nonterminals: nonterminals,
+    terminals: terminals
+  };
+
+};
+
+},{}],24:[function(require,module,exports){
+module.exports = function(grammar) {
 
   var i, j;
-  var sentences = grammar.calculate("grammar.sentences");
+  var terminals = {};
+  var nonterminals = grammar.calculate("grammar.nonterminals");
 
-  for (i = 0; i < sentences.length - 1; i++) {
-    if (sentences[i].length != sentences[i+1].length) {
-      continue;
-    }
+  for (i = 0; i < grammar.productions.length; i++) {
+    for (j = 1; j < grammar.productions[i].length; j++) {
 
-    for (j = 0; j < sentences[i].length; j++) {
-      if (sentences[i][j] !== sentences[i+1][j]) {
-        break;
+      if (!nonterminals[grammar.productions[i][j]]) {
+        terminals[grammar.productions[i][j]] = true;
       }
-    }
 
-    if (j === sentences[i].length) {
-      return sentences[i];
     }
   }
 
-}
+  return terminals;
 
-},{"../../relation":21,"../symbols":19}],12:[function(require,module,exports){
-var grammar = require('./grammar');
-var parsing = require('./parsing');
-var transformations = require('./transformations');
+};
 
-module.exports = Object.assign({},
-  grammar,
-  parsing,
-  transformations
-);
+},{}],25:[function(require,module,exports){
+var Relation = require('../../../relation');
 
-},{"./grammar":11,"./parsing":13,"./transformations":16}],13:[function(require,module,exports){
-var ll = require('./ll');
-var lr = require('./lr');
+module.exports = function(grammar) {
 
-module.exports = Object.assign({},
-  ll,
-  lr
-);
+  var relation, closure, unreachable;
+  var i, j, s;
 
-},{"./ll":14,"./lr":15}],14:[function(require,module,exports){
-var Sets = require("../../../sets");
-var END = require("../../symbols").END;
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var start = grammar.calculate("grammar.start");
 
-module.exports["parsing.ll.ll1_classification"] = function(grammar) {
+  // Build relation:
+  // (x,y) | x -> a y b where a and b are strings of terminals or nonterminals
+
+  relation = Relation.create();
+
+  for (i = 0; i < grammar.productions.length; i++) {
+    for (j = 1; j < grammar.productions[i].length; j++) {
+
+      if (nonterminals[grammar.productions[i][j]]) {
+        Relation.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
+      }
+
+    }
+  }
+
+  // Obtain the closure of the relation
+
+  closure = Relation.closure(relation);
+
+  // Collect unreachable nonterminals
+
+  unreachable = {};
+
+  for (s in nonterminals) {
+
+    if (s != start && (!closure[start] || !closure[start][s])) {
+      unreachable[s] = true;
+    }
+
+  }
+
+  return unreachable;
+
+};
+
+},{"../../../relation":54}],26:[function(require,module,exports){
+module.exports = function(grammar) {
+
+  var marked, added, unrealizable;
+  var i, j, s;
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+
+  // Is a particular nonterminal realizable?
+
+  marked = {};
+
+  do {
+
+    added = [];
+
+    for (i = 0; i < grammar.productions.length; i++) {
+
+      // Are there any unmarked nonterminals? Break at the first one.
+
+      for (j = 1; j < grammar.productions[i].length; j++) {
+
+        if (!marked[grammar.productions[i][j]] && nonterminals[grammar.productions[i][j]]) {
+          break;
+        }
+
+      }
+
+      // If the head of this production is not marked, and all of the symbols in
+      // the body of the production were not unmarked nonterminals (ie, they were
+      // either marked or terminals), mark the head and record
+      // that we marked it in this step.
+
+      if (!marked[grammar.productions[i][0]] && j == grammar.productions[i].length) {
+        marked[grammar.productions[i][0]] = true;
+        added.push(grammar.productions[i][0]);
+      }
+
+    }
+
+  } while (added.length > 0);
+
+  // Collect nonterminals which were not marked.
+
+  unrealizable = {};
+
+  for (s in nonterminals) {
+
+    if (!marked[s]) {
+      unrealizable[s] = true;
+    }
+
+  }
+
+  return unrealizable;
+
+};
+
+},{}],27:[function(require,module,exports){
+module.exports["grammar.classification"] = require("./grammar/classification");
+module.exports["grammar.nonterminals"] = require("./grammar/nonterminals");
+module.exports["grammar.terminals"] = require("./grammar/terminals");
+module.exports["grammar.symbolInfo"] = require("./grammar/symbolInfo");
+module.exports["grammar.start"] = require("./grammar/start");
+module.exports["grammar.productions"] = require("./grammar/productions");
+module.exports["grammar.unreachable"] = require("./grammar/unreachable");
+module.exports["grammar.unrealizable"] = require("./grammar/unrealizable");
+module.exports["grammar.cycle"] = require("./grammar/cycle");
+module.exports["grammar.nullAmbiguity"] = require("./grammar/nullAmbiguity");
+module.exports["grammar.nullable"] = require("./grammar/nullable");
+module.exports["grammar.first"] = require("./grammar/first");
+module.exports["grammar.follow"] = require("./grammar/follow");
+module.exports["grammar.endable"] = require("./grammar/endable");
+module.exports["grammar.sentences"] = require("./grammar/sentences");
+module.exports["grammar.ambiguous"] = require("./grammar/ambiguous");
+module.exports["parsing.ll.ll1_classification"] = require("./parsing/ll/ll1_classification");
+module.exports["parsing.ll.ll1_table"] = require("./parsing/ll/ll1_table");
+module.exports["parsing.lr.lr0_classification"] = require("./parsing/lr/lr0_classification");
+module.exports["parsing.lr.lr0_automaton"] = require("./parsing/lr/lr0_automaton");
+module.exports["parsing.lr.lr0_table"] = require("./parsing/lr/lr0_table");
+module.exports["parsing.lr.slr1_classification"] = require("./parsing/lr/slr1_classification");
+module.exports["parsing.lr.slr1_table"] = require("./parsing/lr/slr1_table");
+module.exports["parsing.lr.lr1_automaton"] = require("./parsing/lr/lr1_automaton");
+module.exports["parsing.lr.lr1_classification"] = require("./parsing/lr/lr1_classification");
+module.exports["parsing.lr.lr1_table"] = require("./parsing/lr/lr1_table");
+module.exports["parsing.lr.lalr1_classification"] = require("./parsing/lr/lalr1_classification");
+module.exports["parsing.lr.lalr1_automaton"] = require("./parsing/lr/lalr1_automaton");
+module.exports["parsing.lr.lalr1_table"] = require("./parsing/lr/lalr1_table");
+module.exports["transformations.expand"] = require("./transformations/expand");
+module.exports["transformations.removeImmediateLeftRecursion"] = require("./transformations/removeImmediateLeftRecursion");
+module.exports["transformations.leftFactor"] = require("./transformations/leftFactor");
+module.exports["transformations.epsilonSeparate"] = require("./transformations/epsilonSeparate");
+module.exports["transformations.removeUnreachable"] = require("./transformations/removeUnreachable");
+module.exports["transformations.all"] = require("./transformations/all");
+
+},{"./grammar/ambiguous":11,"./grammar/classification":12,"./grammar/cycle":13,"./grammar/endable":14,"./grammar/first":15,"./grammar/follow":16,"./grammar/nonterminals":17,"./grammar/nullAmbiguity":18,"./grammar/nullable":19,"./grammar/productions":20,"./grammar/sentences":21,"./grammar/start":22,"./grammar/symbolInfo":23,"./grammar/terminals":24,"./grammar/unreachable":25,"./grammar/unrealizable":26,"./parsing/ll/ll1_classification":28,"./parsing/ll/ll1_table":29,"./parsing/lr/lalr1_automaton":33,"./parsing/lr/lalr1_classification":34,"./parsing/lr/lalr1_table":35,"./parsing/lr/lr0_automaton":36,"./parsing/lr/lr0_classification":37,"./parsing/lr/lr0_table":38,"./parsing/lr/lr1_automaton":39,"./parsing/lr/lr1_classification":40,"./parsing/lr/lr1_table":41,"./parsing/lr/slr1_classification":42,"./parsing/lr/slr1_table":43,"./transformations/all":44,"./transformations/epsilonSeparate":45,"./transformations/expand":46,"./transformations/leftFactor":47,"./transformations/removeImmediateLeftRecursion":48,"./transformations/removeUnreachable":49}],28:[function(require,module,exports){
+var Sets = require("../../../../sets");
+
+module.exports = function(grammar) {
 
   var i, k, l, s;
   var head, body, first;
@@ -2165,7 +2204,10 @@ module.exports["parsing.ll.ll1_classification"] = function(grammar) {
 
 }
 
-module.exports["parsing.ll.ll1_table"] = function(grammar) {
+},{"../../../../sets":55}],29:[function(require,module,exports){
+var END = require("../../../symbols").END;
+
+module.exports = function(grammar) {
 
   var i, k, l, s;
   var table = {};
@@ -2224,118 +2266,8 @@ module.exports["parsing.ll.ll1_table"] = function(grammar) {
 
 };
 
-},{"../../../sets":22,"../../symbols":19}],15:[function(require,module,exports){
-// Calculations for building LR(0), LR(1), SLR(1), and LALR(1)
-// automata and parsing tables.
-//
-// Automata are lists of states like this:
-//
-//   { kernel: [ ... ], items: [ ... ], transitions: { ... } }
-//
-// Items:
-//
-//   LR0: { production: -1, index: 0 }
-//   LR1: { production: -1, index: 0, lookahead: Grammar.END }
-//   LALR1: { production: -1, index: 0, lookaheads: [ Grammar.END, "XYZ" ] }
-//
-// Parsing tables are also lists of states, each of which are objects
-// representing the entries in the parsing table for that state.
-//
-// Rows for LR(0) parsing tables:
-//
-//   { shift: { ... }, reduce: [ ... ] }
-//
-// Examples:
-//
-//   { shift: { "(": 3, "a": 2, "A": 1 } }
-//   { reduce: -1 }
-//
-// -1 = augmented start state production.
-//
-// Rows for SLR(1), LR(1), and LALR(1) tables:
-//
-//   { "symbol": { shift: 6, reduce: [3] }, ... }
-//
-// Examples:
-//
-//   { "else": { shift: 6, reduce: [3] } }
-//   { "if": { shift: 4 }, "other": { shift: 3 }, "S": { shift: 7 }, "I": { shift: 2 } }
-
-var END = require("../../symbols").END;
-
-// Build an LR automaton for the grammar, using the provided "build" functions.
-
-function automaton(grammar, build) {
-
-  var states = [ { kernel: build.initial() } ];
-
-  var state;
-  var l;
-  var s = 0;
-
-  var transitions, symbol, kernel;
-  var i;
-
-  // While no more states have been added... (outer loop)
-
-  while (s < states.length) {
-
-    // Process existing states... (inner loop)
-
-    for (l = states.length; s < l; s++) {
-
-      state = states[s];
-
-      // Find the closure of the state's kernel
-
-      state.items = build.closure(grammar, state.kernel);
-
-      // Find the transitions out of the state (a map from symbol to kernel)
-
-      transitions = build.transitions(grammar, state.items);
-
-      // Build the state's list of transitions...
-
-      state.transitions = {};
-
-      for (symbol in transitions) {
-
-        // Given a symbol and kernel in the transition map, find out if we've
-        // already added the kernel as a state. If we have, assign that state's
-        // index to the transition table for the symbol. If not, create a
-        // new state.
-
-        kernel = transitions[symbol];
-
-        for (i = 0; i < states.length; i++) {
-
-          if (build.same(states[i].kernel, kernel)) {
-            state.transitions[symbol] = i;
-            break;
-          }
-
-        }
-
-        if (i === states.length) {
-
-          state.transitions[symbol] = states.length;
-          states.push({ kernel: kernel });
-
-        }
-
-      }
-
-    }
-
-  }
-
-  return states;
-
-}
-
-// lr0 and lr1 objects define the "build" functions for forming LR automata.
-
-var lr0 = {
+},{"../../../symbols":52}],30:[function(require,module,exports){
+module.exports = {
 
   // What is the initial item?
 
@@ -2497,7 +2429,10 @@ var lr0 = {
 
 }
 
-var lr1 = {
+},{}],31:[function(require,module,exports){
+var END = require("../../../../symbols").END;
+
+module.exports = {
 
   initial: function() {
 
@@ -2677,79 +2612,110 @@ var lr1 = {
 
 }
 
-module.exports["parsing.lr.lr0_classification"] = function(grammar) {
+},{"../../../../symbols":52}],32:[function(require,module,exports){
+// Calculations for building LR(0), LR(1), SLR(1), and LALR(1)
+// automata and parsing tables.
+//
+// Automata are lists of states like this:
+//
+//   { kernel: [ ... ], items: [ ... ], transitions: { ... } }
+//
+// Items:
+//
+//   LR0: { production: -1, index: 0 }
+//   LR1: { production: -1, index: 0, lookahead: Grammar.END }
+//   LALR1: { production: -1, index: 0, lookaheads: [ Grammar.END, "XYZ" ] }
+//
+// Parsing tables are also lists of states, each of which are objects
+// representing the entries in the parsing table for that state.
+//
+// Rows for LR(0) parsing tables:
+//
+//   { shift: { ... }, reduce: [ ... ] }
+//
+// Examples:
+//
+//   { shift: { "(": 3, "a": 2, "A": 1 } }
+//   { reduce: -1 }
+//
+// -1 = augmented start state production.
+//
+// Rows for SLR(1), LR(1), and LALR(1) tables:
+//
+//   { "symbol": { shift: 6, reduce: [3] }, ... }
+//
+// Examples:
+//
+//   { "else": { shift: 6, reduce: [3] } }
+//   { "if": { shift: 4 }, "other": { shift: 3 }, "S": { shift: 7 }, "I": { shift: 2 } }
 
-  var i, s;
-  var table = grammar.calculate("parsing.lr.lr0_table");
-  var terminals = grammar.calculate("grammar.terminals");
+// Build an LR automaton for the grammar, using the provided "build" functions.
 
-  for (i = 0; i < table.length; i++) {
+function automaton(grammar, build) {
 
-    if (table[i].reduce.length > 1) {
-      return { member: false, reason: "it contains a reduce-reduce conflict" };
-    }
+  var states = [ { kernel: build.initial() } ];
 
-    if (table[i].reduce.length > 0) {
-      for (s in table[i].shift) {
-        if (terminals[s]) {
-          return { member: false, reason: "it contains a shift-reduce conflict" };
+  var state;
+  var l;
+  var s = 0;
+
+  var transitions, symbol, kernel;
+  var i;
+
+  // While no more states have been added... (outer loop)
+
+  while (s < states.length) {
+
+    // Process existing states... (inner loop)
+
+    for (l = states.length; s < l; s++) {
+
+      state = states[s];
+
+      // Find the closure of the state's kernel
+
+      state.items = build.closure(grammar, state.kernel);
+
+      // Find the transitions out of the state (a map from symbol to kernel)
+
+      transitions = build.transitions(grammar, state.items);
+
+      // Build the state's list of transitions...
+
+      state.transitions = {};
+
+      for (symbol in transitions) {
+
+        // Given a symbol and kernel in the transition map, find out if we've
+        // already added the kernel as a state. If we have, assign that state's
+        // index to the transition table for the symbol. If not, create a
+        // new state.
+
+        kernel = transitions[symbol];
+
+        for (i = 0; i < states.length; i++) {
+
+          if (build.same(states[i].kernel, kernel)) {
+            state.transitions[symbol] = i;
+            break;
+          }
+
         }
+
+        if (i === states.length) {
+
+          state.transitions[symbol] = states.length;
+          states.push({ kernel: kernel });
+
+        }
+
       }
+
     }
 
   }
 
-  return { member: true };
-
-}
-
-module.exports["parsing.lr.lr0_automaton"] = function(grammar) {
-
-  return automaton(grammar, lr0);
-
-}
-
-module.exports["parsing.lr.lr0_table"] = function(grammar) {
-
-  var i, j, s;
-  var state, item, actions;
-  var table = [];
-  var automaton = grammar.calculate("parsing.lr.lr0_automaton");
-
-  for (i = 0; i < automaton.length; i++) {
-
-    state = automaton[i];
-    actions = { shift: {}, reduce: [] };
-
-    // add shift actions for transitions
-
-    for (s in state.transitions) {
-      actions.shift[s] = state.transitions[s];
-    }
-
-    // add reduce actions for completed items
-
-    for (j = 0; j < state.items.length; j++) {
-
-      item = state.items[j];
-
-      if (item.production === -1) {
-        if (item.index === 1) {
-          actions.reduce.push(item.production);
-        }
-      } else {
-        if (item.index == grammar.productions[item.production].length - 1) {
-          actions.reduce.push(item.production);
-        }
-      }
-
-    }
-
-    table.push(actions);
-
-  }
-
-  return table;
+  return states;
 
 }
 
@@ -2788,117 +2754,6 @@ function addReduceAction(actions, symbol, production) {
   }
 
   actions[symbol].reduce.push(production);
-
-}
-
-module.exports["parsing.lr.slr1_classification"] = function(grammar) {
-
-  return classifyLR1(grammar.calculate("parsing.lr.slr1_table"));
-
-}
-
-module.exports["parsing.lr.slr1_table"] = function(grammar) {
-
-  var i, j, s;
-  var state, actions, item;
-  var table = [];
-  var automaton = grammar.calculate("parsing.lr.lr0_automaton");
-  var follow = grammar.calculate("grammar.follow");
-
-  for (i = 0; i < automaton.length; i++) {
-
-    state = automaton[i];
-    actions = {};
-
-    for (s in state.transitions) {
-      actions[s] = { shift: state.transitions[s] };
-    }
-
-    for (j = 0; j < state.items.length; j++) {
-
-      item = state.items[j];
-
-      if (item.production === -1) {
-
-        if (item.index === 1) {
-          addReduceAction(actions, END, item.production);
-        }
-
-      } else {
-
-        if (item.index == grammar.productions[item.production].length - 1) {
-
-          for (s in follow[grammar.productions[item.production][0]]) {
-            addReduceAction(actions, s, item.production);
-          }
-
-        }
-
-      }
-
-    }
-
-    table.push(actions);
-
-  }
-
-  return table;
-
-}
-
-module.exports["parsing.lr.lr1_automaton"] = function(grammar) {
-
-  return automaton(grammar, lr1);
-
-}
-
-module.exports["parsing.lr.lr1_classification"] = function(grammar) {
-
-  return classifyLR1(grammar.calculate("parsing.lr.lr1_table"));
-
-}
-
-module.exports["parsing.lr.lr1_table"] = function(grammar) {
-
-  var i, j, s;
-  var state, actions, item;
-  var table = [];
-  var automaton = grammar.calculate("parsing.lr.lr1_automaton");
-
-  for (i = 0; i < automaton.length; i++) {
-
-    state = automaton[i];
-    actions = {};
-
-    for (s in state.transitions) {
-      actions[s] = { shift: state.transitions[s] };
-    }
-
-    for (j = 0; j < state.items.length; j++) {
-
-      item = state.items[j];
-
-      if (item.production === -1) {
-
-        if (item.index === 1) {
-          addReduceAction(actions, END, item.production);
-        }
-
-      } else {
-
-        if (item.index == grammar.productions[item.production].length - 1) {
-          addReduceAction(actions, item.lookahead, item.production);
-        }
-
-      }
-
-    }
-
-    table.push(actions);
-
-  }
-
-  return table;
 
 }
 
@@ -2983,13 +2838,18 @@ function mergeItems(a, b) {
 
 }
 
-module.exports["parsing.lr.lalr1_classification"] = function(grammar) {
+module.exports.automaton = automaton;
+module.exports.classifyLR1 = classifyLR1;
+module.exports.addReduceAction = addReduceAction;
+module.exports.collapseLookaheads = collapseLookaheads;
+module.exports.mergeItems = mergeItems;
 
-  return classifyLR1(grammar.calculate("parsing.lr.lalr1_table"));
+},{}],33:[function(require,module,exports){
+var collapseLookaheads = require("./helpers").collapseLookaheads;
+var lr0 = require("./build/lr0");
+var mergeItems = require("./helpers").mergeItems;
 
-}
-
-module.exports["parsing.lr.lalr1_automaton"] = function(grammar) {
+module.exports = function(grammar) {
 
   var i, j;
 
@@ -3098,7 +2958,20 @@ module.exports["parsing.lr.lalr1_automaton"] = function(grammar) {
 
 }
 
-module.exports["parsing.lr.lalr1_table"] = function(grammar) {
+},{"./build/lr0":30,"./helpers":32}],34:[function(require,module,exports){
+var classifyLR1 = require("./helpers").classifyLR1;
+
+module.exports = function(grammar) {
+
+  return classifyLR1(grammar.calculate("parsing.lr.lalr1_table"));
+
+}
+
+},{"./helpers":32}],35:[function(require,module,exports){
+var addReduceAction = require("./helpers").addReduceAction;
+var END = require("../../../symbols").END;
+
+module.exports = function(grammar) {
 
   var i, j, k, s;
   var state, actions, item;
@@ -3146,7 +3019,334 @@ module.exports["parsing.lr.lalr1_table"] = function(grammar) {
 
 }
 
-},{"../../symbols":19}],16:[function(require,module,exports){
+},{"../../../symbols":52,"./helpers":32}],36:[function(require,module,exports){
+var automaton = require("./helpers").automaton;
+var lr0 = require("./build/lr0");
+
+module.exports = function(grammar) {
+
+  return automaton(grammar, lr0);
+
+}
+
+},{"./build/lr0":30,"./helpers":32}],37:[function(require,module,exports){
+module.exports = function(grammar) {
+
+  var i, s;
+  var table = grammar.calculate("parsing.lr.lr0_table");
+  var terminals = grammar.calculate("grammar.terminals");
+
+  for (i = 0; i < table.length; i++) {
+
+    if (table[i].reduce.length > 1) {
+      return { member: false, reason: "it contains a reduce-reduce conflict" };
+    }
+
+    if (table[i].reduce.length > 0) {
+      for (s in table[i].shift) {
+        if (terminals[s]) {
+          return { member: false, reason: "it contains a shift-reduce conflict" };
+        }
+      }
+    }
+
+  }
+
+  return { member: true };
+
+}
+
+},{}],38:[function(require,module,exports){
+module.exports = function(grammar) {
+
+  var i, j, s;
+  var state, item, actions;
+  var table = [];
+  var automaton = grammar.calculate("parsing.lr.lr0_automaton");
+
+  for (i = 0; i < automaton.length; i++) {
+
+    state = automaton[i];
+    actions = { shift: {}, reduce: [] };
+
+    // add shift actions for transitions
+
+    for (s in state.transitions) {
+      actions.shift[s] = state.transitions[s];
+    }
+
+    // add reduce actions for completed items
+
+    for (j = 0; j < state.items.length; j++) {
+
+      item = state.items[j];
+
+      if (item.production === -1) {
+        if (item.index === 1) {
+          actions.reduce.push(item.production);
+        }
+      } else {
+        if (item.index == grammar.productions[item.production].length - 1) {
+          actions.reduce.push(item.production);
+        }
+      }
+
+    }
+
+    table.push(actions);
+
+  }
+
+  return table;
+
+}
+
+},{}],39:[function(require,module,exports){
+var automaton = require("./helpers").automaton;
+var lr1 = require("./build/lr1");
+
+module.exports = function(grammar) {
+
+  return automaton(grammar, lr1);
+
+}
+
+},{"./build/lr1":31,"./helpers":32}],40:[function(require,module,exports){
+var classifyLR1 = require("./helpers").classifyLR1;
+
+module.exports = function(grammar) {
+
+  return classifyLR1(grammar.calculate("parsing.lr.lr1_table"));
+
+}
+
+},{"./helpers":32}],41:[function(require,module,exports){
+var END = require("../../../symbols").END;
+var addReduceAction = require("./helpers").addReduceAction;
+
+module.exports = function(grammar) {
+
+  var i, j, s;
+  var state, actions, item;
+  var table = [];
+  var automaton = grammar.calculate("parsing.lr.lr1_automaton");
+
+  for (i = 0; i < automaton.length; i++) {
+
+    state = automaton[i];
+    actions = {};
+
+    for (s in state.transitions) {
+      actions[s] = { shift: state.transitions[s] };
+    }
+
+    for (j = 0; j < state.items.length; j++) {
+
+      item = state.items[j];
+
+      if (item.production === -1) {
+
+        if (item.index === 1) {
+          addReduceAction(actions, END, item.production);
+        }
+
+      } else {
+
+        if (item.index == grammar.productions[item.production].length - 1) {
+          addReduceAction(actions, item.lookahead, item.production);
+        }
+
+      }
+
+    }
+
+    table.push(actions);
+
+  }
+
+  return table;
+
+}
+
+},{"../../../symbols":52,"./helpers":32}],42:[function(require,module,exports){
+var classifyLR1 = require("./helpers").classifyLR1;
+
+module.exports = function(grammar) {
+
+  return classifyLR1(grammar.calculate("parsing.lr.slr1_table"));
+
+}
+
+},{"./helpers":32}],43:[function(require,module,exports){
+var END = require("../../../symbols").END;
+var addReduceAction = require("./helpers").addReduceAction;
+
+module.exports = function(grammar) {
+
+  var i, j, s;
+  var state, actions, item;
+  var table = [];
+  var automaton = grammar.calculate("parsing.lr.lr0_automaton");
+  var follow = grammar.calculate("grammar.follow");
+
+  for (i = 0; i < automaton.length; i++) {
+
+    state = automaton[i];
+    actions = {};
+
+    for (s in state.transitions) {
+      actions[s] = { shift: state.transitions[s] };
+    }
+
+    for (j = 0; j < state.items.length; j++) {
+
+      item = state.items[j];
+
+      if (item.production === -1) {
+
+        if (item.index === 1) {
+          addReduceAction(actions, END, item.production);
+        }
+
+      } else {
+
+        if (item.index == grammar.productions[item.production].length - 1) {
+
+          for (s in follow[grammar.productions[item.production][0]]) {
+            addReduceAction(actions, s, item.production);
+          }
+
+        }
+
+      }
+
+    }
+
+    table.push(actions);
+
+  }
+
+  return table;
+
+}
+
+},{"../../../symbols":52,"./helpers":32}],44:[function(require,module,exports){
+module.exports = function(grammar) {
+  return [].concat(grammar.calculate("transformations.expand"))
+           .concat(grammar.calculate("transformations.removeImmediateLeftRecursion"))
+           .concat(grammar.calculate("transformations.leftFactor"))
+           .concat(grammar.calculate("transformations.epsilonSeparate"))
+           .concat(grammar.calculate("transformations.removeUnreachable"));
+}
+
+},{}],45:[function(require,module,exports){
+function epsilonSeparate(grammar, group, epsilon) {
+
+  var i;
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+
+  // Find a new symbol...
+
+  var symbol = grammar.productions[group[0]][0];
+
+  do {
+    symbol += "*";
+  } while (typeof nonterminals[symbol] !== "undefined");
+
+  // Copy productions to changes, marking those we're removing.
+
+  var changes = [];
+  var offset = 0;
+
+  for (i = 0; i < grammar.productions.length; i++) {
+
+    if (group.indexOf(i) !== -1 || i === epsilon) {
+      changes.push({ index: i + offset, operation: "delete" });
+      offset--;
+    }
+
+  }
+
+  // Add the separated version of the original rule
+
+  changes.push({
+    production: [grammar.productions[group[0]][0], symbol],
+    operation: "insert",
+    index: group[0]
+  });
+
+  changes.push({
+    production: [grammar.productions[group[0]][0]],
+    operation: "insert",
+    index: group[0] + 1
+  });
+
+  // Add the non-epsilon production bodies with the new head
+
+  for (i = 0; i < group.length; i++) {
+    changes.push({
+      production: [symbol].concat(grammar.productions[group[i]].slice(1)),
+      operation: "insert",
+      index: group[0] + i + 2
+    });
+  }
+
+  return changes;
+
+}
+
+module.exports = function(grammar) {
+
+  var nt, i;
+  var nonterminals = grammar.calculate("grammar.nonterminals");
+  var result = [];
+  var group;
+  var epsilon;
+
+  // For each nonterminal, determine if it is unambiguously nullable,
+  // while collecting its non-null productions and its null (epsilon)
+  // production. If it is unambiguously nullable, add it to the result.
+
+  for (nt in nonterminals) {
+
+    group = [];
+    epsilon = -1;
+
+    for (i = 0; i < grammar.productions.length; i++) {
+
+      if (grammar.productions[i][0] === nt) {
+
+        if (grammar.productions[i].length === 1) {
+          if (epsilon !== -1) {
+            break;
+          }
+          epsilon = i;
+        } else {
+          group.push(i);
+        }
+
+      }
+
+    }
+
+    if (i === grammar.productions.length && group.length > 0 && epsilon !== -1) {
+
+      result.push({
+        name: "epsilonSeparate",
+        production: group[0],
+        symbol: 0,
+        changes: epsilonSeparate(grammar, group, epsilon)
+      });
+
+    }
+
+  }
+
+  return result;
+
+}
+
+},{}],46:[function(require,module,exports){
 function expand(grammar, production, symbol) {
 
   var i;
@@ -3180,7 +3380,7 @@ function expand(grammar, production, symbol) {
 
 }
 
-module.exports["transformations.expand"] = function(grammar) {
+module.exports = function(grammar) {
 
   var i, j;
 
@@ -3210,138 +3410,7 @@ module.exports["transformations.expand"] = function(grammar) {
 
 }
 
-function removeImmediateLeftRecursion(grammar, base, recursive) {
-
-  var i, j;
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var production;
-
-  // Find a new symbol for the right recursive production by adding primes
-  // to the existing symbol.
-
-  var symbol = grammar.productions[recursive[0]][0];
-
-  do {
-    symbol += "'";
-  } while (typeof nonterminals[symbol] !== "undefined");
-
-  // Copy productions to changes, marking those we're removing.
-
-  var changes = [];
-  var first;
-  var offset = 0;
-
-  for (i = 0; i < grammar.productions.length; i++) {
-
-    if (base.indexOf(i) !== -1 || recursive.indexOf(i) !== -1) {
-
-      changes.push({ index: i + offset, operation: "delete" });
-      offset--;
-
-      if (typeof first === "undefined") {
-        first = i;
-      }
-    }
-
-  }
-
-  // Create the new productions...
-
-  offset = 0;
-
-  // Base rules
-
-  for (i = 0; i < base.length; i++) {
-
-    production = [];
-
-    for (j = 0; j < grammar.productions[base[i]].length; j++) {
-      production.push(grammar.productions[base[i]][j]);
-    }
-
-    production.push(symbol);
-
-    changes.push({ production: production, operation: "insert", index: first + offset });
-    offset++;
-
-  }
-
-  // Recursive rules
-
-  for (i = 0; i < recursive.length; i++) {
-
-    production = [];
-
-    production.push(symbol);
-
-    for (j = 2; j < grammar.productions[recursive[i]].length; j++) {
-      production.push(grammar.productions[recursive[i]][j]);
-    }
-
-    production.push(symbol);
-
-    changes.push({ production: production, operation: "insert", index: first + offset });
-    offset++;
-
-  }
-
-  // Epsilon
-
-  changes.push({ production: [symbol], operation: "insert", index: first + offset });
-
-  return changes;
-
-}
-
-module.exports["transformations.removeImmediateLeftRecursion"] = function(grammar) {
-
-  var i;
-
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var result = [];
-
-  var candidates = {};
-  var nt;
-
-  // Are there any rules of this form...
-  //
-  //   A -> A a_1 | A a_2 | ... | A a_m | b_1 | ... | b_n
-  //
-  // where m, n > 0?
-
-  for (nt in nonterminals) {
-    candidates[nt] = { recursive: [], base: [] };
-  }
-
-  for (i = 0; i < grammar.productions.length; i++) {
-    nt = grammar.productions[i][0];
-
-    if (nt == grammar.productions[i][1]) {
-      candidates[nt].recursive.push(i);
-    } else {
-      candidates[nt].base.push(i);
-    }
-  }
-
-  for (nt in candidates) {
-
-    if (candidates[nt].recursive.length > 0 && candidates[nt].base.length > 0) {
-
-      result.push({
-        name: "removeImmediateLeftRecursion",
-        production: candidates[nt].recursive[0],
-        symbol: 0,
-        changes: removeImmediateLeftRecursion(grammar, candidates[nt].base, candidates[nt].recursive)
-      });
-
-    }
-
-  }
-
-  return result;
-
-}
-
+},{}],47:[function(require,module,exports){
 // Perform the left-factoring transformation. Group is an array of production
 // indices, and prefix is the number of symbols (not counting the head of
 // the production) to factor.
@@ -3452,7 +3521,7 @@ Trie.prototype.getFactorablePrefixes = function() {
 
 }
 
-module.exports["transformations.leftFactor"] = function(grammar) {
+module.exports = function(grammar) {
 
   var i;
   var result = [];
@@ -3504,102 +3573,129 @@ module.exports["transformations.leftFactor"] = function(grammar) {
 
 }
 
-function epsilonSeparate(grammar, group, epsilon) {
+},{}],48:[function(require,module,exports){
+function removeImmediateLeftRecursion(grammar, base, recursive) {
 
-  var i;
+  var i, j;
   var nonterminals = grammar.calculate("grammar.nonterminals");
+  var production;
 
-  // Find a new symbol...
+  // Find a new symbol for the right recursive production by adding primes
+  // to the existing symbol.
 
-  var symbol = grammar.productions[group[0]][0];
+  var symbol = grammar.productions[recursive[0]][0];
 
   do {
-    symbol += "*";
+    symbol += "'";
   } while (typeof nonterminals[symbol] !== "undefined");
 
   // Copy productions to changes, marking those we're removing.
 
   var changes = [];
+  var first;
   var offset = 0;
 
   for (i = 0; i < grammar.productions.length; i++) {
 
-    if (group.indexOf(i) !== -1 || i === epsilon) {
+    if (base.indexOf(i) !== -1 || recursive.indexOf(i) !== -1) {
+
       changes.push({ index: i + offset, operation: "delete" });
       offset--;
+
+      if (typeof first === "undefined") {
+        first = i;
+      }
     }
 
   }
 
-  // Add the separated version of the original rule
+  // Create the new productions...
 
-  changes.push({
-    production: [grammar.productions[group[0]][0], symbol],
-    operation: "insert",
-    index: group[0]
-  });
+  offset = 0;
 
-  changes.push({
-    production: [grammar.productions[group[0]][0]],
-    operation: "insert",
-    index: group[0] + 1
-  });
+  // Base rules
 
-  // Add the non-epsilon production bodies with the new head
+  for (i = 0; i < base.length; i++) {
 
-  for (i = 0; i < group.length; i++) {
-    changes.push({
-      production: [symbol].concat(grammar.productions[group[i]].slice(1)),
-      operation: "insert",
-      index: group[0] + i + 2
-    });
+    production = [];
+
+    for (j = 0; j < grammar.productions[base[i]].length; j++) {
+      production.push(grammar.productions[base[i]][j]);
+    }
+
+    production.push(symbol);
+
+    changes.push({ production: production, operation: "insert", index: first + offset });
+    offset++;
+
   }
+
+  // Recursive rules
+
+  for (i = 0; i < recursive.length; i++) {
+
+    production = [];
+
+    production.push(symbol);
+
+    for (j = 2; j < grammar.productions[recursive[i]].length; j++) {
+      production.push(grammar.productions[recursive[i]][j]);
+    }
+
+    production.push(symbol);
+
+    changes.push({ production: production, operation: "insert", index: first + offset });
+    offset++;
+
+  }
+
+  // Epsilon
+
+  changes.push({ production: [symbol], operation: "insert", index: first + offset });
 
   return changes;
 
 }
 
-module.exports["transformations.epsilonSeparate"] = function(grammar) {
+module.exports = function(grammar) {
 
-  var nt, i;
+  var i;
+
   var nonterminals = grammar.calculate("grammar.nonterminals");
   var result = [];
-  var group;
-  var epsilon;
 
-  // For each nonterminal, determine if it is unambiguously nullable,
-  // while collecting its non-null productions and its null (epsilon)
-  // production. If it is unambiguously nullable, add it to the result.
+  var candidates = {};
+  var nt;
+
+  // Are there any rules of this form...
+  //
+  //   A -> A a_1 | A a_2 | ... | A a_m | b_1 | ... | b_n
+  //
+  // where m, n > 0?
 
   for (nt in nonterminals) {
+    candidates[nt] = { recursive: [], base: [] };
+  }
 
-    group = [];
-    epsilon = -1;
+  for (i = 0; i < grammar.productions.length; i++) {
+    nt = grammar.productions[i][0];
 
-    for (i = 0; i < grammar.productions.length; i++) {
-
-      if (grammar.productions[i][0] === nt) {
-
-        if (grammar.productions[i].length === 1) {
-          if (epsilon !== -1) {
-            break;
-          }
-          epsilon = i;
-        } else {
-          group.push(i);
-        }
-
-      }
-
+    if (nt == grammar.productions[i][1]) {
+      candidates[nt].recursive.push(i);
+    } else {
+      candidates[nt].base.push(i);
     }
+  }
 
-    if (i === grammar.productions.length && group.length > 0 && epsilon !== -1) {
+  for (nt in candidates) {
+
+    if (candidates[nt].recursive.length > 0 && candidates[nt].base.length > 0) {
 
       result.push({
-        name: "epsilonSeparate",
-        production: group[0],
+        name: "removeImmediateLeftRecursion",
+        production: candidates[nt].recursive[0],
         symbol: 0,
-        changes: epsilonSeparate(grammar, group, epsilon)
+        changes: removeImmediateLeftRecursion(grammar, candidates[nt].base, candidates[nt].recursive)
       });
 
     }
@@ -3610,6 +3706,7 @@ module.exports["transformations.epsilonSeparate"] = function(grammar) {
 
 }
 
+},{}],49:[function(require,module,exports){
 function removeUnreachable(grammar, group) {
 
   var i;
@@ -3632,7 +3729,7 @@ function removeUnreachable(grammar, group) {
 
 }
 
-module.exports["transformations.removeUnreachable"] = function(grammar) {
+module.exports = function(grammar) {
 
   var unreachable = grammar.calculate("grammar.unreachable");
   var nt;
@@ -3669,17 +3766,7 @@ module.exports["transformations.removeUnreachable"] = function(grammar) {
 
 }
 
-module.exports["transformations"] = function(grammar) {
-
-  return [].concat(grammar.calculate("transformations.expand"))
-           .concat(grammar.calculate("transformations.removeImmediateLeftRecursion"))
-           .concat(grammar.calculate("transformations.leftFactor"))
-           .concat(grammar.calculate("transformations.epsilonSeparate"))
-           .concat(grammar.calculate("transformations.removeUnreachable"));
-
-}
-
-},{}],17:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 var Calculations = require("./calculations");
 var Parser = require("./parser");
 var END = require("./symbols").END;
@@ -3741,11 +3828,11 @@ function initialize(productions) {
     for (j = 0; j < productions[i].length; j++) {
 
       if (productions[i][j].match(/^Grammar\./)) {
-        throw "Reserved symbol " + productions[i][j] + " may not be part of a production";
+        throw new Error("Reserved symbol " + productions[i][j] + " may not be part of a production");
       }
 
       if (productions[i][j] === "") {
-        throw "An empty symbol may not be part of a production";
+        throw new Error("An empty symbol may not be part of a production");
       }
 
     }
@@ -3764,7 +3851,7 @@ function initialize(productions) {
 function calculate(name) {
 
   if (typeof Calculations[name] === "undefined") {
-    throw "Undefined grammar calculation " + name;
+    throw new Error("Undefined grammar calculation " + name);
   }
 
   if (typeof this.calculations[name] === "undefined") {
@@ -3832,7 +3919,7 @@ function getFirst(symbols) {
 
     } else {
 
-      throw "Unexpected symbol " + s;
+      throw new Error("Unexpected symbol " + s);
 
     }
 
@@ -3866,7 +3953,7 @@ function isNullable(symbols) {
 
     } else {
 
-      throw "Unexpected symbol " + s;
+      throw new Error("Unexpected symbol " + s);
 
     }
 
@@ -3931,7 +4018,7 @@ Grammar.prototype.toString = toString;
 
 module.exports = Grammar;
 
-},{"./calculations":12,"./parser":18,"./symbols":19}],18:[function(require,module,exports){
+},{"./calculations":27,"./parser":51,"./symbols":52}],51:[function(require,module,exports){
 (function (process){(function (){
 /* parser generated by jison 0.4.18 */
 /*
@@ -4585,12 +4672,12 @@ if (typeof module !== 'undefined' && require.main === module) {
 }
 }
 }).call(this)}).call(this,require('_process'))
-},{"_process":3,"fs":1,"path":2}],19:[function(require,module,exports){
+},{"_process":3,"fs":1,"path":2}],52:[function(require,module,exports){
 module.exports = {
   END: "Grammar.END"
 };
 
-},{}],20:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 var END = require('./grammar/symbols').END;
 
 // class
@@ -4629,7 +4716,7 @@ function formatSymbol(symbol, info) {
   } else if (info.terminals[symbol]) {
     return "<b>" + prettifySymbol(escapeHTML(symbol)) + "</b>";
   } else {
-    throw "Unknown symbol: " + symbol;
+    throw new Error("Unknown symbol: " + symbol);
   }
 
 }
@@ -4641,7 +4728,7 @@ function bareFormatSymbol(symbol, info) {
   } else if (info.nonterminals[symbol] || info.terminals[symbol]) {
     return prettifySymbol(escapeHTML(symbol));
   } else {
-    throw "Unknown symbol: " + symbol;
+    throw new Error("Unknown symbol: " + symbol);
   }
 
 }
@@ -4850,7 +4937,7 @@ klass.buildHref = buildHref;
 
 module.exports = klass;
 
-},{"./grammar/symbols":19}],21:[function(require,module,exports){
+},{"./grammar/symbols":52}],54:[function(require,module,exports){
 var Relation = {
 
   create: function() {
@@ -4986,7 +5073,7 @@ var Relation = {
 
 module.exports = Relation;
 
-},{}],22:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 var Sets = {
 
   count: function(set) {
@@ -5033,7 +5120,7 @@ var Sets = {
 
 module.exports = Sets;
 
-},{}],23:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5050,7 +5137,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],24:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5067,7 +5154,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],25:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5095,7 +5182,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],26:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5112,7 +5199,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],27:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5129,7 +5216,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],28:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5146,7 +5233,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],29:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5163,7 +5250,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],30:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5180,7 +5267,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],31:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5197,7 +5284,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],32:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5221,7 +5308,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],33:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5238,7 +5325,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],34:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5255,7 +5342,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],35:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 module.exports = (function anonymous(locals, filters, escape, rethrow
 ) {
 escape = escape || function(html){
@@ -5272,7 +5359,7 @@ with (locals || {}) { (function(){
 } 
 return buf.join('');
 })
-},{}],36:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 var template = require('../templates/blank_slate.ejs');
 
 var BlankSlateView = function(element) {
@@ -5296,7 +5383,7 @@ BlankSlateView.prototype.reload = function() {
 
 module.exports = BlankSlateView;
 
-},{"../templates/blank_slate.ejs":23}],37:[function(require,module,exports){
+},{"../templates/blank_slate.ejs":56}],70:[function(require,module,exports){
 var template = require('../templates/header.ejs');
 var Helpers = require('../helpers');
 
@@ -5323,7 +5410,7 @@ HeaderView.prototype.reload = function() {
 
 module.exports = HeaderView;
 
-},{"../helpers":20,"../templates/header.ejs":25}],38:[function(require,module,exports){
+},{"../helpers":53,"../templates/header.ejs":58}],71:[function(require,module,exports){
 var template = require('../templates/lr_automaton_graph.ejs');
 var Helpers = require('../helpers');
 
@@ -5356,7 +5443,7 @@ LALR1AutomatonView.prototype.reload = function() {
 
 module.exports = LALR1AutomatonView;
 
-},{"../helpers":20,"../templates/lr_automaton_graph.ejs":29}],39:[function(require,module,exports){
+},{"../helpers":53,"../templates/lr_automaton_graph.ejs":62}],72:[function(require,module,exports){
 var template = require('../templates/lr1_table.ejs');
 var Helpers = require('../helpers');
 var Sets = require('../sets');
@@ -5389,7 +5476,7 @@ LALR1TableView.prototype.reload = function() {
 
 module.exports = LALR1TableView;
 
-},{"../grammar/symbols":19,"../helpers":20,"../sets":22,"../templates/lr1_table.ejs":28}],40:[function(require,module,exports){
+},{"../grammar/symbols":52,"../helpers":53,"../sets":55,"../templates/lr1_table.ejs":61}],73:[function(require,module,exports){
 var template = require('../templates/ll1_table.ejs');
 var Helpers = require('../helpers');
 var Sets = require('../sets');
@@ -5422,7 +5509,7 @@ LL1TableView.prototype.reload = function() {
 
 module.exports = LL1TableView;
 
-},{"../grammar/symbols":19,"../helpers":20,"../sets":22,"../templates/ll1_table.ejs":26}],41:[function(require,module,exports){
+},{"../grammar/symbols":52,"../helpers":53,"../sets":55,"../templates/ll1_table.ejs":59}],74:[function(require,module,exports){
 var template = require('../templates/lr_automaton_graph.ejs');
 var Helpers = require('../helpers');
 
@@ -5455,7 +5542,7 @@ LR0AutomatonView.prototype.reload = function() {
 
 module.exports = LR0AutomatonView;
 
-},{"../helpers":20,"../templates/lr_automaton_graph.ejs":29}],42:[function(require,module,exports){
+},{"../helpers":53,"../templates/lr_automaton_graph.ejs":62}],75:[function(require,module,exports){
 var template = require('../templates/lr0_table.ejs');
 var Helpers = require('../helpers');
 var Sets = require('../sets');
@@ -5488,7 +5575,7 @@ LR0TableView.prototype.reload = function() {
 
 module.exports = LR0TableView;
 
-},{"../helpers":20,"../sets":22,"../templates/lr0_table.ejs":27}],43:[function(require,module,exports){
+},{"../helpers":53,"../sets":55,"../templates/lr0_table.ejs":60}],76:[function(require,module,exports){
 var template = require('../templates/lr_automaton_graph.ejs');
 var Helpers = require('../helpers');
 
@@ -5521,7 +5608,7 @@ LR1AutomatonView.prototype.reload = function() {
 
 module.exports = LR1AutomatonView;
 
-},{"../helpers":20,"../templates/lr_automaton_graph.ejs":29}],44:[function(require,module,exports){
+},{"../helpers":53,"../templates/lr_automaton_graph.ejs":62}],77:[function(require,module,exports){
 var template = require("../templates/lr1_table.ejs");
 var Helpers = require('../helpers');
 var Sets = require('../sets');
@@ -5554,7 +5641,7 @@ LR1TableView.prototype.reload = function() {
 
 module.exports = LR1TableView;
 
-},{"../grammar/symbols":19,"../helpers":20,"../sets":22,"../templates/lr1_table.ejs":28}],45:[function(require,module,exports){
+},{"../grammar/symbols":52,"../helpers":53,"../sets":55,"../templates/lr1_table.ejs":61}],78:[function(require,module,exports){
 var template = require("../templates/nonterminals.ejs");
 var Helpers = require('../helpers');
 
@@ -5585,7 +5672,7 @@ NonterminalsView.prototype.reload = function() {
 
 module.exports = NonterminalsView;
 
-},{"../helpers":20,"../templates/nonterminals.ejs":31}],46:[function(require,module,exports){
+},{"../helpers":53,"../templates/nonterminals.ejs":64}],79:[function(require,module,exports){
 var template = require("../templates/parsing.ejs");
 var Helpers = require('../helpers');
 
@@ -5612,7 +5699,7 @@ ParsingView.prototype.reload = function() {
 
 module.exports = ParsingView;
 
-},{"../helpers":20,"../templates/parsing.ejs":32}],47:[function(require,module,exports){
+},{"../helpers":53,"../templates/parsing.ejs":65}],80:[function(require,module,exports){
 var template = require("../templates/sanity.ejs");
 var Helpers = require('../helpers');
 var Sets = require('../sets');
@@ -5647,7 +5734,7 @@ SanityView.prototype.reload = function() {
 
 module.exports = SanityView;
 
-},{"../helpers":20,"../sets":22,"../templates/sanity.ejs":33}],48:[function(require,module,exports){
+},{"../helpers":53,"../sets":55,"../templates/sanity.ejs":66}],81:[function(require,module,exports){
 var template = require("../templates/sentences.ejs");
 var Helpers = require('../helpers');
 
@@ -5676,7 +5763,7 @@ SentencesView.prototype.reload = function() {
 
 module.exports = SentencesView;
 
-},{"../helpers":20,"../templates/sentences.ejs":34}],49:[function(require,module,exports){
+},{"../helpers":53,"../templates/sentences.ejs":67}],82:[function(require,module,exports){
 var template = require("../templates/sentences.ejs");
 var Helpers = require('../helpers');
 
@@ -5705,7 +5792,7 @@ ShortSentencesView.prototype.reload = function() {
 
 module.exports = ShortSentencesView;
 
-},{"../helpers":20,"../templates/sentences.ejs":34}],50:[function(require,module,exports){
+},{"../helpers":53,"../templates/sentences.ejs":67}],83:[function(require,module,exports){
 var template = require("../templates/lr1_table.ejs");
 var Helpers = require('../helpers');
 var Sets = require('../sets');
@@ -5738,7 +5825,7 @@ SLR1TableView.prototype.reload = function() {
 
 module.exports = SLR1TableView;
 
-},{"../grammar/symbols":19,"../helpers":20,"../sets":22,"../templates/lr1_table.ejs":28}],51:[function(require,module,exports){
+},{"../grammar/symbols":52,"../helpers":53,"../sets":55,"../templates/lr1_table.ejs":61}],84:[function(require,module,exports){
 var template = require("../templates/transform.ejs");
 var Helpers = require('../helpers');
 
@@ -5816,5 +5903,5 @@ TransformView.prototype.reload = function() {
 
 module.exports = TransformView;
 
-},{"../helpers":20,"../templates/transform.ejs":35}]},{},[4])(4)
+},{"../helpers":53,"../templates/transform.ejs":68}]},{},[4])(4)
 });
