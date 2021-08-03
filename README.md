@@ -12,6 +12,8 @@ Currently the app is built using both Browserify and Rake. Install the JavaScrip
     yarn install
     rake
 
+Open `build/index.html` to use the app.
+
 To run tests:
 
     yarn test
