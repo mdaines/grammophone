@@ -1,26 +1,26 @@
-var ErrorController = function(element) {
+module.exports = class ErrorController {
+  constructor(element) {
 
-  this._element = element;
-  this._element.id = "error";
+    this._element = element;
+    this._element.id = "error";
 
-}
-
-ErrorController.prototype.setDelegate = function(delegate) {
-
-  this._delegate = delegate;
-
-}
-
-ErrorController.prototype.reload = function() {
-
-  var error = this._delegate.getError();
-
-  if (typeof error !== "undefined") {
-    this._element.innerHTML = "<pre>" + this._delegate.getError() + "</pre>";
-  } else {
-    this._element.innerHTML = "";
   }
 
-}
+  setDelegate(delegate) {
 
-module.exports = ErrorController;
+    this._delegate = delegate;
+
+  }
+
+  reload() {
+
+    var error = this._delegate.getError();
+
+    if (typeof error !== "undefined") {
+      this._element.innerHTML = "<pre>" + this._delegate.getError() + "</pre>";
+    } else {
+      this._element.innerHTML = "";
+    }
+
+  }
+}
