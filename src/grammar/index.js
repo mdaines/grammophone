@@ -45,206 +45,193 @@ function parse(spec) {
 
 }
 
+class Grammar {
+  constructor(productions) {
 
+    // Check for reserved and empty symbols
 
-// instance
+    var i, j;
 
-function initialize(productions) {
+    for (i = 0; i < productions.length; i++) {
+      for (j = 0; j < productions[i].length; j++) {
 
-  // Check for reserved and empty symbols
+        if (productions[i][j].match(/^Grammar\./)) {
+          throw new Error("Reserved symbol " + productions[i][j] + " may not be part of a production");
+        }
 
-  var i, j;
+        if (productions[i][j] === "") {
+          throw new Error("An empty symbol may not be part of a production");
+        }
 
-  for (i = 0; i < productions.length; i++) {
-    for (j = 0; j < productions[i].length; j++) {
-
-      if (productions[i][j].match(/^Grammar\./)) {
-        throw new Error("Reserved symbol " + productions[i][j] + " may not be part of a production");
       }
-
-      if (productions[i][j] === "") {
-        throw new Error("An empty symbol may not be part of a production");
-      }
-
-    }
-  }
-
-  // Assign productions
-
-  this.productions = productions;
-
-  // Initialize calculations memoization
-
-  this.calculations = {};
-
-}
-
-function calculate(name) {
-
-  if (typeof Calculations[name] === "undefined") {
-    throw new Error("Undefined grammar calculation " + name);
-  }
-
-  if (typeof this.calculations[name] === "undefined") {
-    this.calculations[name] = Calculations[name](this);
-  }
-
-  return this.calculations[name];
-
-}
-
-function transform(transformation) {
-
-  var productions = this.productions.slice();
-
-  transformation.changes.forEach(function(change) {
-
-    if (change.operation === "delete") {
-      productions.splice(change.index, 1);
-    } else if (change.operation === "insert") {
-      productions.splice(change.index, 0, change.production);
     }
 
-  });
+    // Assign productions
 
-  return new Grammar(productions);
+    this.productions = productions;
 
-}
+    // Initialize calculations memoization
 
-function getFirst(symbols) {
+    this.calculations = {};
 
-  var i, k;
-  var s;
-  var result;
+  }
 
-  var first = this.calculate("grammar.first");
-  var nullable = this.calculate("grammar.nullable");
-  var terminals = this.calculate("grammar.terminals");
-  var nonterminals = this.calculate("grammar.nonterminals");
+  calculate(name) {
 
-  result = {};
+    if (typeof Calculations[name] === "undefined") {
+      throw new Error("Undefined grammar calculation " + name);
+    }
 
-  for (i = 0; i < symbols.length; i++) {
+    if (typeof this.calculations[name] === "undefined") {
+      this.calculations[name] = Calculations[name](this);
+    }
 
-    s = symbols[i];
+    return this.calculations[name];
 
-    if (s === END) {
+  }
 
-      result[s] = true;
-      break;
+  transform(transformation) {
 
-    } else if (terminals[s]) {
+    var productions = this.productions.slice();
 
-      result[s] = true;
-      break;
+    transformation.changes.forEach(function(change) {
 
-    } else if (nonterminals[s]) {
-
-      for (k in first[s]) {
-        result[k] = true;
+      if (change.operation === "delete") {
+        productions.splice(change.index, 1);
+      } else if (change.operation === "insert") {
+        productions.splice(change.index, 0, change.production);
       }
 
-      if (!nullable[s]) {
+    });
+
+    return new Grammar(productions);
+
+  }
+
+  getFirst(symbols) {
+
+    var i, k;
+    var s;
+    var result;
+
+    var first = this.calculate("grammar.first");
+    var nullable = this.calculate("grammar.nullable");
+    var terminals = this.calculate("grammar.terminals");
+    var nonterminals = this.calculate("grammar.nonterminals");
+
+    result = {};
+
+    for (i = 0; i < symbols.length; i++) {
+
+      s = symbols[i];
+
+      if (s === END) {
+
+        result[s] = true;
         break;
+
+      } else if (terminals[s]) {
+
+        result[s] = true;
+        break;
+
+      } else if (nonterminals[s]) {
+
+        for (k in first[s]) {
+          result[k] = true;
+        }
+
+        if (!nullable[s]) {
+          break;
+        }
+
+      } else {
+
+        throw new Error("Unexpected symbol " + s);
+
       }
-
-    } else {
-
-      throw new Error("Unexpected symbol " + s);
 
     }
 
+    return result;
+
   }
 
-  return result;
+  isNullable(symbols) {
 
-}
+    var i, s;
 
-function isNullable(symbols) {
+    var nullable = this.calculate("grammar.nullable");
+    var terminals = this.calculate("grammar.terminals");
+    var nonterminals = this.calculate("grammar.nonterminals");
 
-  var i, s;
+    for (i = 0; i < symbols.length; i++) {
 
-  var nullable = this.calculate("grammar.nullable");
-  var terminals = this.calculate("grammar.terminals");
-  var nonterminals = this.calculate("grammar.nonterminals");
+      s = symbols[i];
 
-  for (i = 0; i < symbols.length; i++) {
+      if (nonterminals[s]) {
 
-    s = symbols[i];
+        if (!nullable[s]) {
+          return false;
+        }
 
-    if (nonterminals[s]) {
+      } else if (terminals[s]) {
 
-      if (!nullable[s]) {
         return false;
+
+      } else {
+
+        throw new Error("Unexpected symbol " + s);
+
       }
 
-    } else if (terminals[s]) {
-
-      return false;
-
-    } else {
-
-      throw new Error("Unexpected symbol " + s);
-
     }
+
+    return true;
 
   }
 
-  return true;
+  copyProductions() {
 
-}
+    var i, j;
+    var result = [];
 
-function copyProductions() {
+    for (i = 0; i < this.productions.length; i++) {
+      result[i] = [];
 
-  var i, j;
-  var result = [];
-
-  for (i = 0; i < this.productions.length; i++) {
-    result[i] = [];
-
-    for (j = 0; j < this.productions[i].length; j++) {
-      result[i][j] = this.productions[i][j];
-    }
-  }
-
-  return result;
-
-}
-
-function toString() {
-
-  var i, j;
-  var result = "";
-
-  for (i = 0; i < this.productions.length; i++) {
-
-    result += this.productions[i][0];
-    result += " ->";
-
-    for (j = 1; j < this.productions[i].length; j++) {
-      result += " " + this.productions[i][j];
+      for (j = 0; j < this.productions[i].length; j++) {
+        result[i][j] = this.productions[i][j];
+      }
     }
 
-    result += " .\n";
+    return result;
 
   }
 
-  return result;
+  toString() {
 
+    var i, j;
+    var result = "";
+
+    for (i = 0; i < this.productions.length; i++) {
+
+      result += this.productions[i][0];
+      result += " ->";
+
+      for (j = 1; j < this.productions[i].length; j++) {
+        result += " " + this.productions[i][j];
+      }
+
+      result += " .\n";
+
+    }
+
+    return result;
+
+  }
 }
-
-// export
-
-var Grammar = initialize;
 
 Grammar.parse = parse;
 Grammar.END = END;
-
-Grammar.prototype.calculate = calculate;
-Grammar.prototype.transform = transform;
-Grammar.prototype.getFirst = getFirst;
-Grammar.prototype.isNullable = isNullable;
-Grammar.prototype.copyProductions = copyProductions;
-Grammar.prototype.toString = toString;
 
 module.exports = Grammar;
