@@ -17,7 +17,7 @@ end
 
 file "build/assets/application.js" => "build/assets"
 file "build/assets/application.js" => javascript_files do
-  system "yarn build --outfile build/assets/application.js"
+  system "yarn --silent build | yarn --silent uglifyjs --compress --mangle --output build/assets/application.js"
 end
 
 file "build/assets/viz.js" => "build/assets"

@@ -7,7 +7,8 @@
     "ejsify": "*",
     "jest": "*",
     "jison": "^0.4.18",
-    "jshint": "*"
+    "jshint": "*",
+    "uglify-js": "*"
   },
   "scripts": {
     "test": "jest",
