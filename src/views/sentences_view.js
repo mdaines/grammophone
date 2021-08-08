@@ -4,25 +4,25 @@ var Helpers = require('../helpers');
 module.exports = class SentencesView {
   constructor(element) {
 
-  this._element = element;
+    this._element = element;
 
-}
+  }
 
-setDelegate(delegate) {
+  setDelegate(delegate) {
 
-  this._delegate = delegate;
+    this._delegate = delegate;
 
-}
+  }
 
-reload() {
+  reload() {
 
-  this._element.innerHTML = template({
-    sentences: this._delegate.getCalculation("grammar.sentences"),
-    info: this._delegate.getCalculation("grammar.symbolInfo"),
-    more: false,
-    Helpers: Helpers
-  });
+    this._element.innerHTML = template({
+      sentences: this._delegate.getCalculation("grammar.sentences"),
+      info: this._delegate.getCalculation("grammar.symbolInfo"),
+      more: false,
+      Helpers: Helpers
+    });
 
-}
+  }
 
 }

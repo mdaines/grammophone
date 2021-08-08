@@ -6,27 +6,27 @@ var END = require("../grammar/symbols").END;
 module.exports = class SLR1TableView {
   constructor(element) {
 
-  this._element = element;
+    this._element = element;
 
-}
+  }
 
-setDelegate(delegate) {
+  setDelegate(delegate) {
 
-  this._delegate = delegate;
+    this._delegate = delegate;
 
-}
+  }
 
-reload() {
+  reload() {
 
-  this._element.innerHTML = template({
-    info: this._delegate.getCalculation("grammar.symbolInfo"),
-    table: this._delegate.getCalculation("parsing.lr.slr1_table"),
-    productions: this._delegate.getCalculation("grammar.productions"),
-    Helpers: Helpers,
-    Sets: Sets,
-    END: END
-  });
+    this._element.innerHTML = template({
+      info: this._delegate.getCalculation("grammar.symbolInfo"),
+      table: this._delegate.getCalculation("parsing.lr.slr1_table"),
+      productions: this._delegate.getCalculation("grammar.productions"),
+      Helpers: Helpers,
+      Sets: Sets,
+      END: END
+    });
 
-}
+  }
 
 }

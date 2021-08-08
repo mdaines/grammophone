@@ -4,25 +4,25 @@ var Helpers = require('../helpers');
 module.exports = class ShortSentencesView {
   constructor(element) {
 
-  this._element = element;
+    this._element = element;
 
-}
+  }
 
-setDelegate(delegate) {
+  setDelegate(delegate) {
 
-  this._delegate = delegate;
+    this._delegate = delegate;
 
-}
+  }
 
-reload() {
+  reload() {
 
-  this._element.innerHTML = template({
-    sentences: this._delegate.getCalculation("grammar.sentences").slice(0, 10),
-    info: this._delegate.getCalculation("grammar.symbolInfo"),
-    more: this._delegate.getCalculation("grammar.sentences").length > 10,
-    Helpers: Helpers
-  });
+    this._element.innerHTML = template({
+      sentences: this._delegate.getCalculation("grammar.sentences").slice(0, 10),
+      info: this._delegate.getCalculation("grammar.symbolInfo"),
+      more: this._delegate.getCalculation("grammar.sentences").length > 10,
+      Helpers: Helpers
+    });
 
-}
+  }
 
 }

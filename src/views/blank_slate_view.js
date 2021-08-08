@@ -3,21 +3,21 @@ var template = require('../templates/blank_slate.ejs');
 module.exports = class BlankSlateView {
   constructor(element) {
 
-  this._element = element;
-  this._element.className = "blank-slate";
+    this._element = element;
+    this._element.className = "blank-slate";
 
-}
+  }
 
-setDelegate(delegate) {
+  setDelegate(delegate) {
 
-  this._delegate = delegate;
+    this._delegate = delegate;
 
-}
+  }
 
-reload() {
+  reload() {
 
-  this._element.innerHTML = template({});
+    this._element.innerHTML = template({});
 
-}
+  }
 
 }

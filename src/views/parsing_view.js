@@ -4,23 +4,23 @@ var Helpers = require('../helpers');
 module.exports = class ParsingView {
   constructor(element) {
 
-  this._element = element;
+    this._element = element;
 
-}
+  }
 
-setDelegate(delegate) {
+  setDelegate(delegate) {
 
-  this._delegate = delegate;
+    this._delegate = delegate;
 
-}
+  }
 
-reload() {
+  reload() {
 
-  this._element.innerHTML = template({
-    classification: this._delegate.getCalculation("grammar.classification"),
-    Helpers: Helpers
-  });
+    this._element.innerHTML = template({
+      classification: this._delegate.getCalculation("grammar.classification"),
+      Helpers: Helpers
+    });
 
-}
+  }
 
 }
