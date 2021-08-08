@@ -1,19 +1,20 @@
 var template = require("../templates/sentences.ejs");
 var Helpers = require('../helpers');
 
-var ShortSentencesView = function(element) {
+module.exports = class ShortSentencesView {
+  constructor(element) {
 
   this._element = element;
 
 }
 
-ShortSentencesView.prototype.setDelegate = function(delegate) {
+setDelegate(delegate) {
 
   this._delegate = delegate;
 
 }
 
-ShortSentencesView.prototype.reload = function() {
+reload() {
 
   this._element.innerHTML = template({
     sentences: this._delegate.getCalculation("grammar.sentences").slice(0, 10),
@@ -24,4 +25,4 @@ ShortSentencesView.prototype.reload = function() {
 
 }
 
-module.exports = ShortSentencesView;
+}

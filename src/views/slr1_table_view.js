@@ -3,19 +3,20 @@ var Helpers = require('../helpers');
 var Sets = require('../sets');
 var END = require("../grammar/symbols").END;
 
-var SLR1TableView = function(element) {
+module.exports = class SLR1TableView {
+  constructor(element) {
 
   this._element = element;
 
 }
 
-SLR1TableView.prototype.setDelegate = function(delegate) {
+setDelegate(delegate) {
 
   this._delegate = delegate;
 
 }
 
-SLR1TableView.prototype.reload = function() {
+reload() {
 
   this._element.innerHTML = template({
     info: this._delegate.getCalculation("grammar.symbolInfo"),
@@ -28,4 +29,4 @@ SLR1TableView.prototype.reload = function() {
 
 }
 
-module.exports = SLR1TableView;
+}

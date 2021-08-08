@@ -2,19 +2,20 @@ var template = require('../templates/lr0_table.ejs');
 var Helpers = require('../helpers');
 var Sets = require('../sets');
 
-var LR0TableView = function(element) {
+module.exports = class LR0TableView {
+  constructor(element) {
 
   this._element = element;
 
 }
 
-LR0TableView.prototype.setDelegate = function(delegate) {
+setDelegate(delegate) {
 
   this._delegate = delegate;
 
 }
 
-LR0TableView.prototype.reload = function() {
+reload() {
 
   this._element.innerHTML = template({
     info: this._delegate.getCalculation("grammar.symbolInfo"),
@@ -28,4 +29,4 @@ LR0TableView.prototype.reload = function() {
 
 }
 
-module.exports = LR0TableView;
+}

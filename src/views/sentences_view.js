@@ -1,19 +1,20 @@
 var template = require("../templates/sentences.ejs");
 var Helpers = require('../helpers');
 
-var SentencesView = function(element) {
+module.exports = class SentencesView {
+  constructor(element) {
 
   this._element = element;
 
 }
 
-SentencesView.prototype.setDelegate = function(delegate) {
+setDelegate(delegate) {
 
   this._delegate = delegate;
 
 }
 
-SentencesView.prototype.reload = function() {
+reload() {
 
   this._element.innerHTML = template({
     sentences: this._delegate.getCalculation("grammar.sentences"),
@@ -24,4 +25,4 @@ SentencesView.prototype.reload = function() {
 
 }
 
-module.exports = SentencesView;
+}

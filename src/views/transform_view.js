@@ -1,19 +1,20 @@
 var template = require("../templates/transform.ejs");
 var Helpers = require('../helpers');
 
-var TransformView = function(element) {
+module.exports = class TransformView {
+  constructor(element) {
 
   this._element = element;
 
 }
 
-TransformView.prototype.setDelegate = function(delegate) {
+setDelegate(delegate) {
 
   this._delegate = delegate;
 
 }
 
-TransformView.prototype.setup = function() {
+setup() {
 
   this._element.addEventListener("click", function(e) {
 
@@ -34,7 +35,7 @@ TransformView.prototype.setup = function() {
 
 }
 
-TransformView.prototype.reload = function() {
+reload() {
 
   var productions = this._delegate.getProductions();
   var info = this._delegate.getSymbolInfo();
@@ -73,4 +74,4 @@ TransformView.prototype.reload = function() {
 
 }
 
-module.exports = TransformView;
+}

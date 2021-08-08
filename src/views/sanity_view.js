@@ -2,19 +2,20 @@ var template = require("../templates/sanity.ejs");
 var Helpers = require('../helpers');
 var Sets = require('../sets');
 
-var SanityView = function(element) {
+module.exports = class SanityView {
+  constructor(element) {
 
   this._element = element;
 
 }
 
-SanityView.prototype.setDelegate = function(delegate) {
+setDelegate(delegate) {
 
   this._delegate = delegate;
 
 }
 
-SanityView.prototype.reload = function() {
+reload() {
 
   this._element.innerHTML = template({
     unreachable: this._delegate.getCalculation("grammar.unreachable"),
@@ -30,4 +31,4 @@ SanityView.prototype.reload = function() {
 
 }
 
-module.exports = SanityView;
+}

@@ -1,20 +1,21 @@
 var template = require('../templates/header.ejs');
 var Helpers = require('../helpers');
 
-var HeaderView = function(element) {
+module.exports = class HeaderView {
+  constructor(element) {
 
   this._element = element;
   this._element.className = "header";
 
 }
 
-HeaderView.prototype.setDelegate = function(delegate) {
+setDelegate(delegate) {
 
   this._delegate = delegate;
 
 }
 
-HeaderView.prototype.reload = function() {
+reload() {
 
   var path = this._delegate.getPathComponents();
 
@@ -22,4 +23,4 @@ HeaderView.prototype.reload = function() {
 
 }
 
-module.exports = HeaderView;
+}

@@ -1,19 +1,20 @@
 var template = require('../templates/lr_automaton_graph.ejs');
 var Helpers = require('../helpers');
 
-var LALR1AutomatonView = function(element) {
+module.exports = class LALR1AutomatonView {
+  constructor(element) {
 
   this._element = element;
 
 }
 
-LALR1AutomatonView.prototype.setDelegate = function(delegate) {
+setDelegate(delegate) {
 
   this._delegate = delegate;
 
 }
 
-LALR1AutomatonView.prototype.reload = function() {
+reload() {
 
   var dot = template({
     info: this._delegate.getCalculation("grammar.symbolInfo"),
@@ -28,4 +29,4 @@ LALR1AutomatonView.prototype.reload = function() {
 
 }
 
-module.exports = LALR1AutomatonView;
+}

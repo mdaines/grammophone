@@ -1,22 +1,23 @@
 var template = require('../templates/blank_slate.ejs');
 
-var BlankSlateView = function(element) {
+module.exports = class BlankSlateView {
+  constructor(element) {
 
   this._element = element;
   this._element.className = "blank-slate";
 
 }
 
-BlankSlateView.prototype.setDelegate = function(delegate) {
+setDelegate(delegate) {
 
   this._delegate = delegate;
 
 }
 
-BlankSlateView.prototype.reload = function() {
+reload() {
 
   this._element.innerHTML = template({});
 
 }
 
-module.exports = BlankSlateView;
+}

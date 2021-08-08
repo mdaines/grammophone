@@ -1,19 +1,20 @@
 var template = require("../templates/nonterminals.ejs");
 var Helpers = require('../helpers');
 
-var NonterminalsView = function(element) {
+module.exports = class NonterminalsView {
+  constructor(element) {
 
   this._element = element;
 
 }
 
-NonterminalsView.prototype.setDelegate = function(delegate) {
+setDelegate(delegate) {
 
   this._delegate = delegate;
 
 }
 
-NonterminalsView.prototype.reload = function() {
+reload() {
 
   this._element.innerHTML = template({
     nullable: this._delegate.getCalculation("grammar.nullable"),
@@ -26,4 +27,4 @@ NonterminalsView.prototype.reload = function() {
 
 }
 
-module.exports = NonterminalsView;
+}
