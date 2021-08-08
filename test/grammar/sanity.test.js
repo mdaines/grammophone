@@ -1,5 +1,5 @@
-const Grammar = require("../src/grammar");
-const Sets = require("../src/sets");
+const Grammar = require("../../src/grammar");
+const Sets = require("../../src/sets");
 
 function calculate(productions, calculation) {
 

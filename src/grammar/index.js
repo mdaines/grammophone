@@ -1,59 +1,31 @@
 var Calculations = require("./calculations");
-var Parser = require("./parser");
 var END = require("./symbols").END;
 
-// class
-
-function parse(spec) {
-
-  var i, j;
-
-  if (spec.match(/^\s*$/)) {
-    return { spec: spec };
-  }
-
-  try {
-
-    // Parser gives us rules in the following form:
-    //
-    //   { nt: "A", p: [["a", "b"], []] }
-    //
-    // We want an array of productions in this form:
-    //
-    //   [["A", "a", "b"], ["A"]]
-    //
-    // Note that depending on the grammar specification, productions
-    // for a particular nonterminal may be at different places in the
-    // list. We want to preserve the order in the user's input.
-
-    var rules = Parser.parse(spec);
-    var productions = [];
-
-    for (i = 0; i < rules.length; i++) {
-      for (j = 0; j < rules[i].p.length; j++) {
-        productions.push([rules[i].nt].concat(rules[i].p[j]));
-      }
-    }
-
-    return { grammar: new Grammar(productions), spec: spec };
-
-  } catch (e) {
-
-    return { error: e, spec: spec };
-
-  }
-
-}
-
-class Grammar {
+module.exports = class Grammar {
   constructor(productions) {
-
-    // Check for reserved and empty symbols
-
     var i, j;
 
+    if (!(productions instanceof Array)) {
+      throw new Error("List of productions must be an array");
+    }
+
+    if (productions.length < 1) {
+      throw new Error("A grammar must have at least one production");
+    }
+
     for (i = 0; i < productions.length; i++) {
+      if (!(productions[i] instanceof Array)) {
+        throw new Error("Productions must be arrays");
+      }
+
+      if (productions[i].length < 1) {
+        throw new Error("Productions must have at least one symbol");
+      }
+
       for (j = 0; j < productions[i].length; j++) {
+        if (typeof productions[i][j] !== "string") {
+          throw new Error("Production symbols must be strings");
+        }
 
         if (productions[i][j].match(/^Grammar\./)) {
           throw new Error("Reserved symbol " + productions[i][j] + " may not be part of a production");
@@ -62,18 +34,11 @@ class Grammar {
         if (productions[i][j] === "") {
           throw new Error("An empty symbol may not be part of a production");
         }
-
       }
     }
 
-    // Assign productions
-
     this.productions = productions;
-
-    // Initialize calculations memoization
-
     this.calculations = {};
-
   }
 
   calculate(name) {
@@ -230,8 +195,3 @@ class Grammar {
 
   }
 }
-
-Grammar.parse = parse;
-Grammar.END = END;
-
-module.exports = Grammar;

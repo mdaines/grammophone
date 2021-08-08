@@ -1,15 +1,8 @@
-const Grammar = require("../src/grammar");
-const Sets = require("../src/sets");
-const EXAMPLE_GRAMMARS = require("./fixtures/example_grammars.js");
-
-function parse(spec) {
-
-  return Grammar.parse(spec).grammar;
-
-}
+const Sets = require("../../src/sets");
+const EXAMPLE_GRAMMARS = require("../fixtures/example_grammars.js");
+const Grammar = require("../../src/grammar");
 
 function classifications(grammar) {
-
   var classification = grammar.calculate("grammar.classification");
   var k, result;
 
@@ -22,13 +15,10 @@ function classifications(grammar) {
   }
 
   return result;
-
 }
 
 function isSetEqual(a, b) {
-
   return Sets.count(Sets.intersection(a, b)) === Sets.count(a);
-
 }
 
 var SUPPORTED_CLASSIFICATIONS = {
@@ -40,17 +30,14 @@ var SUPPORTED_CLASSIFICATIONS = {
 };
 
 function assertExampleClassifications(expected, name) {
-
-  var actual = Sets.intersection(classifications(parse(EXAMPLE_GRAMMARS[name])), SUPPORTED_CLASSIFICATIONS);
+  var grammar = new Grammar(EXAMPLE_GRAMMARS[name]);
+  var actual = Sets.intersection(classifications(grammar), SUPPORTED_CLASSIFICATIONS);
 
   expect(isSetEqual(expected, actual)).toBe(true);
-
 }
 
-describe("GrammarClassificationTest", function() {
-
-  it("testAgreement", function() {
-
+describe("grammar.classification", function() {
+  it("agrees with smlweb", function() {
     assertExampleClassifications({ "lr0": true }, "ll0-lr0-0.cfg");
     assertExampleClassifications({ "lr0": true }, "ll0-lr0-1.cfg");
     assertExampleClassifications({ "lr0": true }, "ll0-lr0-2.cfg");
@@ -121,7 +108,5 @@ describe("GrammarClassificationTest", function() {
     assertExampleClassifications({ }, "oth-oth-3.cfg");
     assertExampleClassifications({ }, "oth-oth-4.cfg");
     assertExampleClassifications({ }, "oth-oth-5.cfg");
-
   });
-
 });

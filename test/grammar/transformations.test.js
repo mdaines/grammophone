@@ -1,13 +1,13 @@
-const Grammar = require("../src/grammar");
+const Grammar = require("../../src/grammar");
 
 describe("transformations.epsilonSeparate", function() {
   it("returns the expected result", function() {
-    let spec = `
-    A -> a .
-    A -> .
-    `;
+    let productions = [
+      ["A", "a"],
+      ["A"]
+    ];
 
-    let grammar = Grammar.parse(spec).grammar;
+    let grammar = new Grammar(productions);
     expect(grammar.calculate("transformations.epsilonSeparate")).toEqual([
       {
         name: "epsilonSeparate",
@@ -43,11 +43,11 @@ describe("transformations.epsilonSeparate", function() {
   });
 
   it("result is empty when a nonterminal only produces epsilon", function() {
-    let spec = `
-    A -> .
-    `;
+    let productions = [
+      ["A"]
+    ];
 
-    let grammar = Grammar.parse(spec).grammar;
+    let grammar = new Grammar(productions);
     expect(grammar.calculate("transformations.epsilonSeparate")).toEqual([]);
   });
 });
