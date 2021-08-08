@@ -222,17 +222,9 @@ function escapeHTML(string) {
 
 }
 
-// application delegate
-
-function setDelegate(delegate) {
-
-  this._delegate = delegate;
-
-}
-
 function buildHref(path, fragment) {
 
-  return this._delegate.buildHref(path, fragment);
+  return "#" + path;
 
 }
 
@@ -252,7 +244,6 @@ klass.bareFormatItem = bareFormatItem;
 klass.formatTransformation = formatTransformation;
 klass.repeatString = repeatString;
 klass.escapeHTML = escapeHTML;
-klass.setDelegate = setDelegate;
 klass.buildHref = buildHref;
 
 module.exports = klass;

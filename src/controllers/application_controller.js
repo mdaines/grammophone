@@ -3,16 +3,11 @@ var EditController = require("./edit_controller");
 var TransformController = require("./transform_controller");
 var ModeController = require("./mode_controller");
 var ErrorController = require("./error_controller");
-var Helpers = require("../helpers");
 var Grammar = require("../grammar");
 
 var ApplicationController = function(element) {
 
   this._element = element;
-
-  // helpers
-
-  Helpers.setDelegate(this);
 
   // master
 
@@ -212,12 +207,6 @@ ApplicationController.prototype.edit = function() {
   this._editController.reload();
   this._modeController.reload();
   this._layout();
-
-}
-
-ApplicationController.prototype.buildHref = function(path) {
-
-  return "#" + path;
 
 }
 
