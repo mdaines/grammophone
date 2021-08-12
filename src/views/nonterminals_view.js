@@ -1,30 +1,24 @@
-var template = require("../templates/nonterminals.ejs");
-var Helpers = require('../helpers');
+const m = require("mithril");
+const template = require("../templates/nonterminals");
 
 module.exports = class NonterminalsView {
   constructor(element) {
-
     this._element = element;
-
   }
 
   setDelegate(delegate) {
-
     this._delegate = delegate;
-
   }
 
   reload() {
-
-    this._element.innerHTML = template({
+    let vnode = template({
       nullable: this._delegate.getCalculation("grammar.nullable"),
       endable: this._delegate.getCalculation("grammar.endable"),
       first: this._delegate.getCalculation("grammar.first"),
       follow: this._delegate.getCalculation("grammar.follow"),
-      info: this._delegate.getCalculation("grammar.symbolInfo"),
-      Helpers: Helpers
+      info: this._delegate.getCalculation("grammar.symbolInfo")
     });
 
+    m.render(this._element, vnode);
   }
-
 }

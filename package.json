@@ -10,6 +10,9 @@
     "jshint": "*",
     "uglify-js": "*"
   },
+  "dependencies": {
+    "mithril": "*"
+  },
   "scripts": {
     "test": "jest",
     "generate-parser": "jison src/parser.y src/parser.l --module-type=commonjs --outfile=src/parser.js",

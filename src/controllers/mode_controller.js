@@ -1,52 +1,35 @@
-var modeTemplate = require('../templates/mode.ejs');
+const m = require("mithril");
+const template = require("../templates/mode");
 
 module.exports = class ModeController {
   constructor(element) {
-
     this._element = element;
     this._element.id = "mode";
 
-    this._element.innerHTML = modeTemplate();
-
-    this._element.querySelector("#mode-edit").addEventListener("change", function(e) {
-      if (e.target.checked) {
+    this._element.addEventListener("change", function(e) {
+      if (e.target.value === "edit") {
         this._delegate.edit();
-      }
-    }.bind(this));
-
-    this._element.querySelector("#mode-transform").addEventListener("change", function(e) {
-      if (e.target.checked) {
+      } else if (e.target.value === "transform") {
         this._delegate.transform();
       }
     }.bind(this));
 
-    this._element.querySelector("#mode-analyze").addEventListener("click", function(e) {
-      this._delegate.analyze();
+    this._element.addEventListener("click", function(e) {
+      if (e.target.id === "mode-analyze") {
+        this._delegate.analyze();
+      }
     }.bind(this));
-
   }
 
   setDelegate(delegate) {
-
     this._delegate = delegate;
-
   }
 
   reload() {
+    let vnode = template({
+      mode: this._delegate.getMode()
+    });
 
-    var mode = this._delegate.getMode();
-
-    if (mode === "edit") {
-
-      this._element.querySelector("#mode-edit").checked = true;
-      this._element.querySelector("#mode-analyze").disabled = false;
-
-    } else {
-
-      this._element.querySelector("#mode-transform").checked = true;
-      this._element.querySelector("#mode-analyze").disabled = true;
-
-    }
-
+    m.render(this._element, vnode);
   }
 }

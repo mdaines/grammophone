@@ -1,30 +1,25 @@
-var editTemplate = require("../templates/edit.ejs");
+const m = require("mithril");
+const template = require("../templates/edit");
 
 module.exports = class EditController {
   constructor(element) {
-
     this._element = element;
     this._element.id = "edit";
-
-    this._element.innerHTML = editTemplate();
-
   }
 
   getSpec() {
-
     return this._element.querySelector(".spec").value;
-
   }
 
   setDelegate(delegate) {
-
     this._delegate = delegate;
-
   }
 
   reload() {
+    let vnode = template({
+      spec: this._delegate.getSpec()
+    });
 
-    this._element.querySelector(".spec").value = this._delegate.getSpec();
-
+    m.render(this._element, vnode);
   }
 }
