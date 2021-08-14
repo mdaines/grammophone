@@ -1,7 +1,7 @@
 require "rake/clean"
 
 css_files = Rake::FileList["styles/**/*.css"]
-javascript_files = Rake::FileList["src/**/*.{js,ejs}"]
+javascript_files = Rake::FileList["src/**/*.js"]
 
 directory "build"
 directory "build/assets"
