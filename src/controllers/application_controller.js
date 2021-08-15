@@ -4,6 +4,19 @@ var TransformController = require("./transform_controller");
 var ModeController = require("./mode_controller");
 var ErrorController = require("./error_controller");
 var Grammar = require("../grammar");
+var parser = require("../parser");
+
+function parse(spec) {
+  if (spec.match(/^\s*$/)) {
+    return { spec: spec };
+  }
+
+  try {
+    return { grammar: new Grammar(parser(spec)), spec: spec };
+  } catch (e) {
+    return { error: e, spec: spec };
+  }
+}
 
 module.exports = class ApplicationController {
   constructor(element) {
@@ -173,7 +186,7 @@ module.exports = class ApplicationController {
 
   analyze() {
 
-    this._parse = Grammar.parse(this._editController.getSpec());
+    this._parse = parse(this._editController.getSpec());
 
     if (typeof this._parse.error === "undefined") {
       this._analysisController.reload();
@@ -186,7 +199,7 @@ module.exports = class ApplicationController {
 
   transform() {
 
-    this._parse = Grammar.parse(this._editController.getSpec());
+    this._parse = parse(this._editController.getSpec());
 
     if (typeof this._parse.error === "undefined" && typeof this._parse.grammar !== "undefined") {
       this._mode = "transform";

@@ -1,15 +1,9 @@
-const Grammar = require("../src/grammar");
-const Sets = require("../src/sets");
+const Grammar = require("../../src/grammar");
+const Sets = require("../../src/sets");
 
 function calculate(grammar, calculation) {
 
   return grammar.calculate(calculation);
-
-}
-
-function parse(spec) {
-
-  return Grammar.parse(spec).grammar;
 
 }
 
@@ -55,22 +49,36 @@ function assertSetEqual(expected, actual, message) {
 
 var Fixtures = {
   // Louden, p.170
-  expressions: `exp -> exp addop term | term.
-addop -> + | -.
-term -> term mulop factor | factor.
-mulop -> *.
-factor -> ( exp ) | number.`,
+  expressions: [
+    [ 'exp', 'exp', 'addop', 'term' ],
+    [ 'exp', 'term' ],
+    [ 'addop', '+' ],
+    [ 'addop', '-' ],
+    [ 'term', 'term', 'mulop', 'factor' ],
+    [ 'term', 'factor' ],
+    [ 'mulop', '*' ],
+    [ 'factor', '(', 'exp', ')' ],
+    [ 'factor', 'number' ]
+  ],
 
   // Louden, p.171
-  ifelse: `statement -> if-stmt | other.
-if-stmt -> if ( exp ) statement else-part.
-else-part -> else statement | .
-exp -> 0 | 1.`,
+  ifelse: [
+    [ 'statement', 'if-stmt' ],
+    [ 'statement', 'other' ],
+    [ 'if-stmt', 'if', '(', 'exp', ')', 'statement', 'else-part' ],
+    [ 'else-part', 'else', 'statement' ],
+    [ 'else-part' ],
+    [ 'exp', '0' ],
+    [ 'exp', '1' ]
+  ],
 
   // Louden, p.173
-  statements: `stmt-sequence -> stmt stmt-seq' .
-stmt-seq' -> ; stmt-sequence | .
-stmt -> s.`
+  statements: [
+    [ 'stmt-sequence', 'stmt', "stmt-seq'" ],
+    [ "stmt-seq'", ';', 'stmt-sequence' ],
+    [ "stmt-seq'" ],
+    [ 'stmt', 's' ]
+  ]
 };
 
 describe("GrammarNonterminalsTest", function() {
@@ -83,20 +91,20 @@ describe("GrammarNonterminalsTest", function() {
       "factor": { "(": true, "number": true },
       "addop": { "+": true, "-": true },
       "mulop": { "*": true }
-    }, calculate(parse(Fixtures.expressions), "grammar.first"));
+    }, calculate(new Grammar(Fixtures.expressions), "grammar.first"));
 
     assertRelationEqual({
       "statement": { "if": true, "other": true },
       "if-stmt": { "if": true },
       "else-part": { "else": true },
       "exp": { "0": true, "1": true }
-    }, calculate(parse(Fixtures.ifelse), "grammar.first"));
+    }, calculate(new Grammar(Fixtures.ifelse), "grammar.first"));
 
     assertRelationEqual({
       "stmt-sequence": { "s": true },
       "stmt-seq'": { ";": true },
       "stmt": { "s": true }
-    }, calculate(parse(Fixtures.statements), "grammar.first"));
+    }, calculate(new Grammar(Fixtures.statements), "grammar.first"));
 
   });
 
@@ -108,28 +116,28 @@ describe("GrammarNonterminalsTest", function() {
       "factor": { "Grammar.END": true, "+": true, "-": true, "*": true, ")": true },
       "addop": { "(": true, "number": true },
       "mulop": { "(": true, "number": true }
-    }, calculate(parse(Fixtures.expressions), "grammar.follow"));
+    }, calculate(new Grammar(Fixtures.expressions), "grammar.follow"));
 
     assertRelationEqual({
       "statement": { "Grammar.END": true, "else": true },
       "if-stmt": { "Grammar.END": true, "else": true },
       "else-part": { "Grammar.END": true, "else": true },
       "exp": { ")": true }
-    }, calculate(parse(Fixtures.ifelse), "grammar.follow"));
+    }, calculate(new Grammar(Fixtures.ifelse), "grammar.follow"));
 
     assertRelationEqual({
       "stmt-sequence": { "Grammar.END": true },
       "stmt-seq'": { "Grammar.END": true },
       "stmt": { ";": true, "Grammar.END": true }
-    }, calculate(parse(Fixtures.statements), "grammar.follow"));
+    }, calculate(new Grammar(Fixtures.statements), "grammar.follow"));
 
   });
 
   it("testNullable", function() {
 
-    assertSetEqual({ }, calculate(parse(Fixtures.expressions), "grammar.nullable"));
-    assertSetEqual({ "else-part": true }, calculate(parse(Fixtures.ifelse), "grammar.nullable"));
-    assertSetEqual({ "stmt-seq'": true }, calculate(parse(Fixtures.statements), "grammar.nullable"));
+    assertSetEqual({ }, calculate(new Grammar(Fixtures.expressions), "grammar.nullable"));
+    assertSetEqual({ "else-part": true }, calculate(new Grammar(Fixtures.ifelse), "grammar.nullable"));
+    assertSetEqual({ "stmt-seq'": true }, calculate(new Grammar(Fixtures.statements), "grammar.nullable"));
 
   });
 

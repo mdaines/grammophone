@@ -1,0 +1,20 @@
+@top rules { Rule* }
+
+Rule { Head "->" productions "." }
+
+Head { symbolChars }
+
+productions { Production | productions "|" Production }
+
+Production { Symbol* }
+
+Symbol { symbolChars }
+
+@skip { space | comment }
+
+@external tokens getSymbolChars from "./tokens" { symbolChars }
+
+@tokens {
+  space { std.whitespace+ }
+  comment { "#" ![\n]* }
+}
