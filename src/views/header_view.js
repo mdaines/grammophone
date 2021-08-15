@@ -1,26 +1,21 @@
-var template = require('../templates/header.ejs');
-var Helpers = require('../helpers');
+const m = require("mithril");
+const template = require("../templates/header");
 
 module.exports = class HeaderView {
   constructor(element) {
-
     this._element = element;
     this._element.className = "header";
-
   }
 
   setDelegate(delegate) {
-
     this._delegate = delegate;
-
   }
 
   reload() {
+    let vnode = template({
+      path: this._delegate.getPathComponents()
+    });
 
-    var path = this._delegate.getPathComponents();
-
-    this._element.innerHTML = template({ path: path, Helpers: Helpers });
-
+    m.render(this._element, vnode);
   }
-
 }

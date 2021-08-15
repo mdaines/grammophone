@@ -1,28 +1,22 @@
-var template = require("../templates/sentences.ejs");
-var Helpers = require('../helpers');
+const m = require("mithril");
+const template = require("../templates/sentences");
 
 module.exports = class ShortSentencesView {
   constructor(element) {
-
     this._element = element;
-
   }
 
   setDelegate(delegate) {
-
     this._delegate = delegate;
-
   }
 
   reload() {
-
-    this._element.innerHTML = template({
+    let vnode = template({
       sentences: this._delegate.getCalculation("grammar.sentences").slice(0, 10),
       info: this._delegate.getCalculation("grammar.symbolInfo"),
-      more: this._delegate.getCalculation("grammar.sentences").length > 10,
-      Helpers: Helpers
+      more: this._delegate.getCalculation("grammar.sentences").length > 10
     });
 
+    m.render(this._element, vnode);
   }
-
 }

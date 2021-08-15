@@ -1,13 +1,21 @@
-var END = require('./grammar/symbols').END;
+const m = require("mithril");
+const END = require("./grammar/symbols").END;
 
-// class
+const ARROW = "\u2192";
+const EPSILON = "\u03B5";
+
+function fillArray(count, value) {
+  let array = [];
+  for (let i = 0; i < count; i++) {
+    array.push(value);
+  }
+  return array;
+}
 
 function listSymbols(set, order) {
+  let result = [];
 
-  var i;
-  var result = [];
-
-  for (i = 0; i < order.length; i++) {
+  for (let i = 0; i < order.length; i++) {
     if (set[order[i]]) {
       result.push(order[i]);
     }
@@ -18,148 +26,125 @@ function listSymbols(set, order) {
   }
 
   return result;
-
 }
 
-function prettifySymbol(symbol) {
+function formatSymbolList(symbols, info, separator) {
+  if (typeof separator === "undefined") {
+    separator = ", ";
+  }
 
-  return symbol.replace(/'/g, "&prime;");
+  let result = [];
 
+  for (let i = 0; i < symbols.length; i++) {
+    if (i > 0) {
+      result.push(separator);
+    }
+    result.push(formatSymbol(symbols[i], info));
+  }
+
+  return result;
 }
 
 function formatSymbol(symbol, info) {
-
   if (symbol == END) {
-    return "<u>$</u>";
+    return m("u", "$");
   } else if (info.nonterminals[symbol]) {
-    return "<i>" + prettifySymbol(escapeHTML(symbol)) + "</i>";
+    return m("i", symbol);
   } else if (info.terminals[symbol]) {
-    return "<b>" + prettifySymbol(escapeHTML(symbol)) + "</b>";
+    return m("b", symbol);
   } else {
     throw new Error("Unknown symbol: " + symbol);
   }
-
-}
-
-function bareFormatSymbol(symbol, info) {
-
-  if (symbol == END) {
-    return "$";
-  } else if (info.nonterminals[symbol] || info.terminals[symbol]) {
-    return prettifySymbol(escapeHTML(symbol));
-  } else {
-    throw new Error("Unknown symbol: " + symbol);
-  }
-
-}
-
-function formatSymbols(symbols, info) {
-
-  var i;
-  var result = [];
-
-  for (i = 0; i < symbols.length; i++) {
-    result[i] = formatSymbol(symbols[i], info);
-  }
-
-  return result;
-
-}
-
-function bareFormatSymbols(symbols, info) {
-
-  var i;
-  var result = [];
-
-  for (i = 0; i < symbols.length; i++) {
-    result[i] = bareFormatSymbol(symbols[i], info);
-  }
-
-  return result;
-
 }
 
 function formatProduction(production, info) {
+  let result = [];
 
-  var result = "";
-
-  result += formatSymbol(production[0], info);
-  result += " &rarr; ";
+  result.push(formatSymbol(production[0], info));
+  result.push(" ");
+  result.push(ARROW);
+  result.push(" ");
 
   if (production.length > 1) {
-    result += formatSymbols(production.slice(1), info).join(" ");
+    production.slice(1).forEach(function(symbol, index) {
+      if (index > 0) {
+        result.push(" ");
+      }
+      result.push(formatSymbol(symbol, info));
+    });
   } else {
-    result += "<u>&epsilon;</u>";
+    result.push(m("u", EPSILON));
   }
 
   return result;
-
 }
 
-function formatSentence(strings) {
+function formatSentence(sentence, info) {
+  let result = [];
 
-  if (strings.length == 0) {
-    return "";
-  } else if (strings.length == 1) {
-    return strings[0];
-  } else if (strings.length == 2) {
-    return strings.join(" and ");
+  if (sentence.length > 1) {
+    sentence.forEach(function(symbol, index) {
+      if (index > 0) {
+        result.push(" ");
+      }
+      result.push(formatSymbol(symbol, info));
+    });
   } else {
-    return strings.slice(0, -1).concat("and " + strings[strings.length-1]).join(", ");
+    result.push(m("u", EPSILON));
   }
 
+  return result;
 }
 
-function formatItem(item, start, productions, info) {
+const ESCAPE = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  "\"": "&quot;"
+};
 
-  var production;
+function escapeChar(char) {
+  return ESCAPE[char];
+}
 
-  if (item.production === -1) {
+function escapeString(string) {
+  return string.replace(/[&<>"]/g, escapeChar);
+}
 
-    if (item.index === 0) {
-      production = "&bull; " + formatSymbol(start, info);
-    } else {
-      production = formatSymbol(start, info) + " &bull;";
-    }
-
+function bareFormatSymbol(symbol, info) {
+  if (symbol == END) {
+    return "$";
+  } else if (info.nonterminals[symbol] || info.terminals[symbol]) {
+    return escapeString(symbol);
   } else {
+    throw new Error("Unknown symbol: " + symbol);
+  }
+}
 
-    var symbols = formatSymbols(productions[item.production].slice(1), info);
-    symbols.splice(item.index, 0, "&bull;");
+function bareFormatSymbols(symbols, info) {
+  let result = [];
 
-    production = formatSymbol(productions[item.production][0], info) + " &rarr; " + symbols.join(" ");
-
+  for (let i = 0; i < symbols.length; i++) {
+    result.push(bareFormatSymbol(symbols[i], info));
   }
 
-  if (item.lookaheads) {
-    return "[" + production + ", " + formatSymbols(item.lookaheads, info).join(" / ") + "]";
-  } else if (item.lookahead) {
-    return "[" + production + ", " + formatSymbol(item.lookahead, info) + "]";
-  } else {
-    return production;
-  }
-
+  return result;
 }
 
 function bareFormatItem(item, start, productions, info) {
-
-  var production;
+  let production;
 
   if (item.production === -1) {
-
     if (item.index === 0) {
       production = "&bull; " + bareFormatSymbol(start, info);
     } else {
       production = bareFormatSymbol(start, info) + " &bull;";
     }
-
   } else {
-
-    var symbols = bareFormatSymbols(productions[item.production].slice(1), info);
+    let symbols = bareFormatSymbols(productions[item.production].slice(1), info);
     symbols.splice(item.index, 0, "&bull;");
 
     production = bareFormatSymbol(productions[item.production][0], info) + " &rarr; " + symbols.join(" ");
-
   }
 
   if (item.lookaheads) {
@@ -169,81 +154,15 @@ function bareFormatItem(item, start, productions, info) {
   } else {
     return production;
   }
-
 }
 
-var TRANSFORMATION_FORMATTERS = {
-  expand: function(transformation, productions, info) {
-    return "Expand Nonterminal";
-  },
-
-  removeImmediateLeftRecursion: function(transformation, productions, info) {
-    return "Remove Immediate Left Recursion";
-  },
-
-  leftFactor: function(transformation, productions, info) {
-    return "Left Factor " +
-      bareFormatSymbols(productions[transformation.production].slice(1, transformation.length + 1), info).join(" ");
-  },
-
-  epsilonSeparate: function(transformation, productions, info) {
-    return "Epsilon-Separate";
-  },
-
-  removeUnreachable: function(transformation, productions, info) {
-    return "Remove Unreachable Nonterminal"
-  }
-}
-
-function formatTransformation(transformation, productions, info) {
-
-  return TRANSFORMATION_FORMATTERS[transformation.name](transformation, productions, info) || transformation.name;
-
-}
-
-function repeatString(string, times) {
-
-  var result = "";
-  var i;
-
-  for (i = 0; i < times; i++) {
-    result += string;
-  }
-
-  return result;
-
-}
-
-// From Prototype
-
-function escapeHTML(string) {
-
-  return string.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;");
-
-}
-
-function buildHref(path, fragment) {
-
-  return "#" + path;
-
-}
-
-// export
-
-var klass = {};
-
-klass.listSymbols = listSymbols;
-klass.formatSymbol = formatSymbol;
-klass.bareFormatSymbol = bareFormatSymbol;
-klass.formatSymbols = formatSymbols;
-klass.bareFormatSymbols = bareFormatSymbols;
-klass.formatProduction = formatProduction;
-klass.formatSentence = formatSentence;
-klass.formatItem = formatItem;
-klass.bareFormatItem = bareFormatItem;
-klass.formatTransformation = formatTransformation;
-klass.repeatString = repeatString;
-klass.escapeHTML = escapeHTML;
-klass.buildHref = buildHref;
-
-module.exports = klass;
+module.exports.fillArray = fillArray;
+module.exports.listSymbols = listSymbols;
+module.exports.formatSymbolList = formatSymbolList;
+module.exports.formatSymbol = formatSymbol;
+module.exports.formatProduction = formatProduction;
+module.exports.formatSentence = formatSentence;
+module.exports.escapeString = escapeString;
+module.exports.bareFormatSymbol = bareFormatSymbol;
+module.exports.bareFormatSymbols = bareFormatSymbols;
+module.exports.bareFormatItem = bareFormatItem;
