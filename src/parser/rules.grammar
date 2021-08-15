@@ -2,19 +2,19 @@
 
 Rule { Head "->" productions "." }
 
-Head { name }
+Head { symbolChars }
 
 productions { Production | productions "|" Production }
 
 Production { Symbol* }
 
-Symbol { name }
+Symbol { symbolChars }
 
 @skip { space | comment }
 
+@external tokens getSymbolChars from "./tokens" { symbolChars }
+
 @tokens {
-  name { std.asciiLetter+ "'"* }
-  
   space { std.whitespace+ }
   comment { "#" ![\n]* }
 }

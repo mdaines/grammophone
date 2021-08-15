@@ -30,20 +30,16 @@ describe("parser", function() {
     expect(parser("ab-cd -> xy-z .")).toEqual([["ab-cd", "xy-z"]]);
   });
 
+  it("non-letter symbols", function() {
+    expect(parser("A -> ; + = .")).toEqual([["A", ";", "+", "="]]);
+  });
+
   it("nonterminals don't need to be capitalized", function() {
     expect(parser("a -> b .")).toEqual([["a", "b"]]);
   });
 
   it("terminals can be capitalized", function() {
     expect(parser("a -> B .")).toEqual([["a", "B"]]);
-  });
-
-  it("quoted symbols", function() {
-    expect(parser("\".\" -> \"->\" '#' .")).toEqual([[".", "->", "#"]]);
-  });
-
-  it("colon and semicolon can be used to define rules", function() {
-    expect(parser("A : a ; B -> b .")).toEqual([["A", "a"], ["B", "b"]]);
   });
 
   it("multiple lines", function() {
@@ -74,15 +70,6 @@ describe("parser", function() {
     it("stop that looks like part of a symbol", function() {
       expect(function() { parser("A.y -> a."); }).toThrowError();
       expect(function() { parser("A -> x.y ."); }).toThrowError();
-    });
-
-    it("empty string symbol", function() {
-      expect(function() { parser("A -> '' ."); }).toThrowError();
-      expect(function() { parser("A -> X '' ."); }).toThrowError();
-    });
-
-    it("non-symbol characters", function() {
-      expect(function() { parser("A -> ; + = ."); }).toThrowError();
     });
   });
 });
