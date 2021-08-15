@@ -14,14 +14,36 @@ describe("parser", function() {
     expect(parser("A->.")).toEqual([["A"]]);
   });
 
-  it("other characters", function() {
-    // expect(parser("A -> x - > y.")).toEqual([["A", "x", "-", ">", "y"]]);
-    expect(parser("A' -> a. A'' -> a.")).toEqual([["A'", "a"], ["A''", "a"]]);
-    // expect(parser("A -> something-something.")).toEqual([["A", "something-something"]]);
-    // expect(parser("-->-.")).toEqual([["-", "-"]]);
-    // expect(parser("A -> 1 | 2 | 3.")).toEqual([["A", "1"], ["A", "2"], ["A", "3"]]);
-    // expect(parser("A -> \" \'.")).toEqual([["A", "\"", "'"]]);
-    // expect(parser("A -> \"a \".")).toEqual([["A", "\"a", "\""]]);
+  it("symbols can end in one or more single quotes (primes)", function() {
+    expect(parser("A' -> a . A'' -> a''' .")).toEqual([["A'", "a"], ["A''", "a'''"]]);
+  });
+
+  it("symbols can contain numbers", function() {
+    expect(parser("A -> a1 .")).toEqual([["A", "a1"]]);
+  });
+
+  it("symbols can be numbers", function() {
+    expect(parser("A -> 1 | 2 | 3.")).toEqual([["A", "1"], ["A", "2"], ["A", "3"]]);
+  });
+
+  it("symbols can contain hyphens", function() {
+    expect(parser("ab-cd -> xy-z .")).toEqual([["ab-cd", "xy-z"]]);
+  });
+
+  it("nonterminals don't need to be capitalized", function() {
+    expect(parser("a -> b .")).toEqual([["a", "b"]]);
+  });
+
+  it("terminals can be capitalized", function() {
+    expect(parser("a -> B .")).toEqual([["a", "B"]]);
+  });
+
+  it("quoted symbols", function() {
+    expect(parser("\".\" -> \"->\" '#' .")).toEqual([[".", "->", "#"]]);
+  });
+
+  it("colon and semicolon can be used to define rules", function() {
+    expect(parser("A : a ; B -> b .")).toEqual([["A", "a"], ["B", "b"]]);
   });
 
   it("multiple lines", function() {
@@ -34,13 +56,33 @@ describe("parser", function() {
     expect(parser("# 123\n\n")).toEqual([]);
   });
 
-  it("errors", function() {
-    expect(function() { parser("A -> a. B"); }).toThrowError();
-    expect(function() { parser("A B -> a."); }).toThrowError();
-    expect(function() { parser("A -> a. ->"); }).toThrowError();
-    expect(function() { parser("-> X"); }).toThrowError();
-    expect(function() { parser("A"); }).toThrowError();
-    expect(function() { parser("A.y -> a."); }).toThrowError();
-    expect(function() { parser("A -> x.y ."); }).toThrowError();
+  describe("errors", function() {
+    it("missing arrow", function() {
+      expect(function() { parser("A -> a. B"); }).toThrowError();
+      expect(function() { parser("A"); }).toThrowError();
+    });
+
+    it("missing nonterminal", function() {
+      expect(function() { parser("A -> a. ->"); }).toThrowError();
+      expect(function() { parser("-> X"); }).toThrowError();
+    });
+
+    it("multiple nonterminals", function() {
+      expect(function() { parser("A B -> a."); }).toThrowError();
+    });
+
+    it("stop that looks like part of a symbol", function() {
+      expect(function() { parser("A.y -> a."); }).toThrowError();
+      expect(function() { parser("A -> x.y ."); }).toThrowError();
+    });
+
+    it("empty string symbol", function() {
+      expect(function() { parser("A -> '' ."); }).toThrowError();
+      expect(function() { parser("A -> X '' ."); }).toThrowError();
+    });
+
+    it("non-symbol characters", function() {
+      expect(function() { parser("A -> ; + = ."); }).toThrowError();
+    });
   });
 });
