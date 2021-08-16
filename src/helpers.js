@@ -165,6 +165,33 @@ function bareFormatItem(item, start, productions, info) {
   }
 }
 
+const TRANSFORMATION_FORMATTERS = {
+  expand: function(transformation, productions, info) {
+    return "Expand Nonterminal";
+  },
+
+  removeImmediateLeftRecursion: function(transformation, productions, info) {
+    return "Remove Immediate Left Recursion";
+  },
+
+  leftFactor: function(transformation, productions, info) {
+    return "Left Factor " +
+      bareFormatSymbols(productions[transformation.production].slice(1, transformation.length + 1), info).join(" ");
+  },
+
+  epsilonSeparate: function(transformation, productions, info) {
+    return "Epsilon-Separate";
+  },
+
+  removeUnreachable: function(transformation, productions, info) {
+    return "Remove Unreachable Nonterminal"
+  }
+}
+
+function formatTransformation(transformation, productions, info) {
+  return TRANSFORMATION_FORMATTERS[transformation.name](transformation, productions, info) || transformation.name;
+}
+
 module.exports.fillArray = fillArray;
 module.exports.listSymbols = listSymbols;
 module.exports.formatSymbolList = formatSymbolList;
@@ -175,3 +202,4 @@ module.exports.escapeString = escapeString;
 module.exports.bareFormatSymbol = bareFormatSymbol;
 module.exports.bareFormatSymbols = bareFormatSymbols;
 module.exports.bareFormatItem = bareFormatItem;
+module.exports.formatTransformation = formatTransformation;
