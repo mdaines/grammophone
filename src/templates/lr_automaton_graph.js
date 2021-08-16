@@ -1,27 +1,33 @@
 const Helpers = require('../helpers');
 
 module.exports = function(input) {
+  let info = input.info;
+  let automaton = input.automaton;
+  let productions = input.productions;
+  let start = input.start;
+  let title = input.title;
+
   let result = [];
 
   result.push(
     "digraph \"",
-    input.title,
+    title,
     "\" {\n  graph [rankdir=LR];\n  node [shape=record];\n"
   );
 
-  input.automaton.forEach(function(state, index) {
+  automaton.forEach(function(state, index) {
     result.push(
       "  s",
       index,
       " [label=\"",
       index,
       " | ",
-      state.items.map(function(item) { return Helpers.bareFormatItem(item, input.start, input.productions, input.info); }).join("\\n"),
+      state.items.map(function(item) { return Helpers.bareFormatItem(item, start, productions, info); }).join("\\n"),
       "\"];\n"
     );
   });
 
-  input.automaton.forEach(function(state, index) {
+  automaton.forEach(function(state, index) {
     var s;
     for (s in state.transitions) {
       result.push(
