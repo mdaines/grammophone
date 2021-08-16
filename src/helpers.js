@@ -87,15 +87,15 @@ function formatProduction(production, info) {
 function formatSentence(sentence, info) {
   let result = [];
 
-  if (sentence.length > 1) {
+  if (sentence.length === 0) {
+    result.push(m("u", EPSILON));
+  } else {
     sentence.forEach(function(symbol, index) {
       if (index > 0) {
         result.push(" ");
       }
       result.push(formatSymbol(symbol, info));
     });
-  } else {
-    result.push(m("u", EPSILON));
   }
 
   return result;
