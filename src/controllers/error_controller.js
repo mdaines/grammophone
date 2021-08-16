@@ -17,7 +17,7 @@ module.exports = class ErrorController {
     var error = this._delegate.getError();
 
     if (typeof error !== "undefined") {
-      this._element.innerHTML = "<pre>" + this._delegate.getError() + "</pre>";
+      this._element.innerHTML = "<code>" + this._delegate.getError() + "</code>";
     } else {
       this._element.innerHTML = "";
     }
