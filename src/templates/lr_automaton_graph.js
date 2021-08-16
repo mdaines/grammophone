@@ -30,7 +30,7 @@ module.exports = function(input) {
         " -> s",
         state.transitions[s],
         " [label=\"",
-        Helpers.escapeString(s),
+        Helpers.bareFormatSymbol(s, input.info),
         "\"];\n"
       );
     }

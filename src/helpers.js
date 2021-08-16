@@ -3,6 +3,7 @@ const END = require("./grammar/symbols").END;
 
 const ARROW = "\u2192";
 const EPSILON = "\u03B5";
+const PRIME = "\u2032";
 
 function fillArray(count, value) {
   let array = [];
@@ -45,13 +46,17 @@ function formatSymbolList(symbols, info, separator) {
   return result;
 }
 
+function prettifySymbol(symbol) {
+  return symbol.replace("'", PRIME);
+}
+
 function formatSymbol(symbol, info) {
   if (symbol == END) {
     return m("u", "$");
   } else if (info.nonterminals[symbol]) {
-    return m("i", symbol);
+    return m("i", prettifySymbol(symbol));
   } else if (info.terminals[symbol]) {
-    return m("b", symbol);
+    return m("b", prettifySymbol(symbol));
   } else {
     throw new Error("Unknown symbol: " + symbol);
   }
@@ -111,11 +116,15 @@ function escapeString(string) {
   return string.replace(/[&<>"]/g, escapeChar);
 }
 
+function barePrettifySymbol(symbol) {
+  return symbol.replace("'", "&prime;");
+}
+
 function bareFormatSymbol(symbol, info) {
   if (symbol == END) {
     return "$";
   } else if (info.nonterminals[symbol] || info.terminals[symbol]) {
-    return escapeString(symbol);
+    return barePrettifySymbol(escapeString(symbol));
   } else {
     throw new Error("Unknown symbol: " + symbol);
   }
