@@ -4,7 +4,7 @@ const Helpers = require("../helpers");
 module.exports = function(input) {
   let sentences = input.sentences;
   let info = input.info;
-  let more = input.more;
+  let limit = input.limit;
 
   let result = [];
 
@@ -13,13 +13,13 @@ module.exports = function(input) {
   if (sentences.length > 0) {
     result.push(
       m("ul.symbols",
-        sentences.map(function(sentence) {
+        sentences.slice(0, limit).map(function(sentence) {
           return m("li", Helpers.formatSentence(sentence, info));
         })
       )
     );
 
-    if (more) {
+    if (sentences.length > limit) {
       result.push(m("p", m("a", { href: "#/sentences" }, "More example sentences")));
     }
   } else {

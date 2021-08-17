@@ -12,9 +12,9 @@ module.exports = class ShortSentencesView {
 
   reload() {
     let vnode = template({
-      sentences: this._delegate.getCalculation("grammar.sentences").slice(0, 10),
+      sentences: this._delegate.getCalculation("grammar.sentences"),
       info: this._delegate.getCalculation("grammar.symbolInfo"),
-      more: this._delegate.getCalculation("grammar.sentences").length > 10
+      limit: 10
     });
 
     render(this._element, vnode);

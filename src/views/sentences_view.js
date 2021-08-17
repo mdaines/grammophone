@@ -13,8 +13,7 @@ module.exports = class SentencesView {
   reload() {
     let vnode = template({
       sentences: this._delegate.getCalculation("grammar.sentences"),
-      info: this._delegate.getCalculation("grammar.symbolInfo"),
-      more: false
+      info: this._delegate.getCalculation("grammar.symbolInfo")
     });
 
     render(this._element, vnode);
