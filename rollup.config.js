@@ -5,7 +5,12 @@ import UglifyJS from "uglify-js";
 function uglify(options = {}) {
   return {
     renderChunk(code) {
-      return UglifyJS.minify(code);
+      return UglifyJS.minify(code, {
+        sourceMap: {
+          filename: "application.js",
+          url: "application.js.map"
+        }
+      });
     }
   };
 }
@@ -15,7 +20,8 @@ export default {
   output: {
     file: "build/assets/application.js",
     format: "iife",
-    name: "ApplicationController"
+    name: "ApplicationController",
+    sourcemap: true
   },
   plugins: [
     nodeResolve(),
