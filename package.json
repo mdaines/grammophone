@@ -6,11 +6,14 @@
     "@lezer/lr": "*"
   },
   "devDependencies": {
-    "browserify": "*",
     "jest": "*",
     "jshint": "*",
     "uglify-js": "*",
-    "@lezer/generator": "*"
+    "@lezer/generator": "*",
+    "rollup": "*",
+    "@rollup/plugin-commonjs": "*",
+    "@rollup/plugin-node-resolve": "*",
+    "rollup-plugin-uglify": "*"
   },
   "dependencies": {
     "mithril": "*"
@@ -18,7 +21,7 @@
   "scripts": {
     "test": "jest",
     "generate-lezer-parser": "yarn lezer-generator --cjs --output src/parser/rules.js src/parser/rules.grammar",
-    "build": "browserify src/application.js --standalone ApplicationController",
+    "build": "rollup -c",
     "lint": "yarn jshint --exclude build,node_modules,lib ."
   }
 }
