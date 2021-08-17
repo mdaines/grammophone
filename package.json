@@ -13,7 +13,7 @@
     "jest": "*",
     "jshint": "*",
     "rollup": "*",
-    "rollup-plugin-uglify": "*"
+    "uglify-js": "*"
   },
   "scripts": {
     "test": "jest",
