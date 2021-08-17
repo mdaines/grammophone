@@ -500,6 +500,13 @@
     "@lezer/common" "^0.15.0"
     "@lezer/lr" "^0.15.0"
 
+"@lezer/lr@*":
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/@lezer/lr/-/lr-0.15.1.tgz#a4f7fac3a13b76955a4a6d5da3c8a6ea4a0da7f0"
+  integrity sha512-NnFhj1zyiyFqrZWFEBdxHoqtlFLTbXumMXLTO8oFSfR0jUaRSW+bQKwLqfNig1twyKEuSGpvkk2D27oEPFzFog==
+  dependencies:
+    "@lezer/common" "^0.15.0"
+
 "@lezer/lr@^0.15.0":
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/@lezer/lr/-/lr-0.15.0.tgz#74ba244586e489f27e2e998272fc7cfcf2e57ba6"
@@ -2635,7 +2642,7 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-uglify-js@*, uglify-js@^3.4.9:
+uglify-js@^3.4.9:
   version "3.14.1"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.14.1.tgz#e2cb9fe34db9cb4cf7e35d1d26dfea28e09a7d06"
   integrity sha512-JhS3hmcVaXlp/xSo3PKY5R0JqKs5M3IV+exdLHW99qKvKivPO4Z8qbej6mte17SOPqAOVMjt/XGgWacnFSzM3g==

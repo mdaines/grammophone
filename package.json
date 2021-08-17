@@ -3,20 +3,17 @@
   "version": "0.0.0",
   "name": "grammophone",
   "dependencies": {
-    "@lezer/lr": "*"
+    "@lezer/lr": "*",
+    "mithril": "*"
   },
   "devDependencies": {
-    "jest": "*",
-    "jshint": "*",
-    "uglify-js": "*",
     "@lezer/generator": "*",
-    "rollup": "*",
     "@rollup/plugin-commonjs": "*",
     "@rollup/plugin-node-resolve": "*",
+    "jest": "*",
+    "jshint": "*",
+    "rollup": "*",
     "rollup-plugin-uglify": "*"
-  },
-  "dependencies": {
-    "mithril": "*"
   },
   "scripts": {
     "test": "jest",
