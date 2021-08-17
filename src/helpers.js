@@ -1,4 +1,4 @@
-const m = require("mithril");
+const m = require("mithril/hyperscript");
 const END = require("./grammar/symbols").END;
 
 const ARROW = "\u2192";

@@ -1,4 +1,4 @@
-const m = require("mithril");
+const trust = require("mithril/render/trust");
 
 module.exports = function() {
   let result = [];
@@ -12,5 +12,5 @@ module.exports = function() {
     "</section>"
   );
 
-  return m.trust(result.join(""));
+  return trust(result.join(""));
 }

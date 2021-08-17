@@ -1,4 +1,4 @@
-const m = require("mithril");
+const render = require("mithril/render");
 const template = require("../templates/transform");
 
 module.exports = class TransformView {
@@ -36,7 +36,7 @@ module.exports = class TransformView {
       transformations: this._transformations
     });
 
-    m.render(this._element, vnode);
+    render(this._element, vnode);
   }
 
 }

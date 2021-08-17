@@ -1,4 +1,4 @@
-const m = require("mithril");
+const m = require("mithril/hyperscript");
 
 const MDASH = "\u2014";
 

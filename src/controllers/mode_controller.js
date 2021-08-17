@@ -1,4 +1,4 @@
-const m = require("mithril");
+const render = require("mithril/render");
 const template = require("../templates/mode");
 
 module.exports = class ModeController {
@@ -30,6 +30,6 @@ module.exports = class ModeController {
       mode: this._delegate.getMode()
     });
 
-    m.render(this._element, vnode);
+    render(this._element, vnode);
   }
 }

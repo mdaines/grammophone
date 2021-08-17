@@ -1,4 +1,4 @@
-const m = require("mithril");
+const render = require("mithril/render");
 const template = require("../templates/nonterminals");
 
 module.exports = class NonterminalsView {
@@ -19,6 +19,6 @@ module.exports = class NonterminalsView {
       info: this._delegate.getCalculation("grammar.symbolInfo")
     });
 
-    m.render(this._element, vnode);
+    render(this._element, vnode);
   }
 }

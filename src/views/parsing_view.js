@@ -1,4 +1,4 @@
-const m = require("mithril");
+const render = require("mithril/render");
 const template = require("../templates/parsing");
 
 module.exports = class ParsingView {
@@ -15,6 +15,6 @@ module.exports = class ParsingView {
       classification: this._delegate.getCalculation("grammar.classification")
     });
 
-    m.render(this._element, vnode);
+    render(this._element, vnode);
   }
 }

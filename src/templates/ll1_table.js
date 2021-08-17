@@ -1,4 +1,4 @@
-const m = require("mithril");
+const m = require("mithril/hyperscript");
 const Sets = require("../sets");
 const END = require("../grammar/symbols").END;
 const Helpers = require("../helpers");

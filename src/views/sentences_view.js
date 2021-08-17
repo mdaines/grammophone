@@ -1,4 +1,4 @@
-const m = require("mithril");
+const render = require("mithril/render");
 const template = require("../templates/sentences");
 
 module.exports = class SentencesView {
@@ -17,6 +17,6 @@ module.exports = class SentencesView {
       more: false
     });
 
-    m.render(this._element, vnode);
+    render(this._element, vnode);
   }
 }

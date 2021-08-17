@@ -1,4 +1,4 @@
-const m = require("mithril");
+const render = require("mithril/render");
 const template = require("../templates/edit");
 
 module.exports = class EditController {
@@ -20,6 +20,6 @@ module.exports = class EditController {
       spec: this._delegate.getSpec()
     });
 
-    m.render(this._element, vnode);
+    render(this._element, vnode);
   }
 }

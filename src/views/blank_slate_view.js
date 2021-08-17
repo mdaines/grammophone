@@ -1,4 +1,4 @@
-const m = require("mithril");
+const render = require("mithril/render");
 const template = require("../templates/blank_slate");
 
 module.exports = class BlankSlateView {
@@ -14,6 +14,6 @@ module.exports = class BlankSlateView {
   reload() {
     let vnode = template({});
 
-    m.render(this._element, vnode);
+    render(this._element, vnode);
   }
 }

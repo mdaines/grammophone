@@ -1,4 +1,4 @@
-const m = require("mithril");
+const m = require("mithril/hyperscript");
 const Helpers = require("../helpers");
 const Sets = require("../sets");
 

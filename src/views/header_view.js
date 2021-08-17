@@ -1,4 +1,4 @@
-const m = require("mithril");
+const render = require("mithril/render");
 const template = require("../templates/header");
 
 module.exports = class HeaderView {
@@ -16,6 +16,6 @@ module.exports = class HeaderView {
       path: this._delegate.getPathComponents()
     });
 
-    m.render(this._element, vnode);
+    render(this._element, vnode);
   }
 }

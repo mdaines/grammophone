@@ -1,4 +1,4 @@
-const m = require("mithril");
+const render = require("mithril/render");
 const template = require("../templates/sanity");
 
 module.exports = class SanityView {
@@ -21,6 +21,6 @@ module.exports = class SanityView {
       info: this._delegate.getCalculation("grammar.symbolInfo")
     });
 
-    m.render(this._element, vnode);
+    render(this._element, vnode);
   }
 }

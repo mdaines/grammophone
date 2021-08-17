@@ -1,4 +1,4 @@
-const m = require('mithril');
+const m = require("mithril/hyperscript");
 
 module.exports = function(input) {
   let path = input.path;

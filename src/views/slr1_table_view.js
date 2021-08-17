@@ -1,4 +1,4 @@
-const m = require("mithril");
+const render = require("mithril/render");
 const template = require("../templates/lr1_table");
 
 module.exports = class SLR1TableView {
@@ -17,6 +17,6 @@ module.exports = class SLR1TableView {
       productions: this._delegate.getCalculation("grammar.productions")
     });
 
-    m.render(this._element, vnode);
+    render(this._element, vnode);
   }
 }

@@ -1,4 +1,4 @@
-const m = require("mithril");
+const render = require("mithril/render");
 const template = require("../templates/sentences");
 
 module.exports = class ShortSentencesView {
@@ -17,6 +17,6 @@ module.exports = class ShortSentencesView {
       more: this._delegate.getCalculation("grammar.sentences").length > 10
     });
 
-    m.render(this._element, vnode);
+    render(this._element, vnode);
   }
 }
