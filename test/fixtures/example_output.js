@@ -20,18 +20,18 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "A": true,
-      "B": true,
-      "C": true
-    },
-    "grammar.terminals": {
-      "b": true,
-      "i": true,
-      "r": true,
-      "d": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "A",
+      "B",
+      "C"
+    ],
+    "grammar.terminals": [
+      "b",
+      "i",
+      "r",
+      "d"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "b",
@@ -51,18 +51,18 @@ module.exports = {
         "B",
         "C"
       ],
-      "nonterminals": {
-        "S": true,
-        "A": true,
-        "B": true,
-        "C": true
-      },
-      "terminals": {
-        "b": true,
-        "i": true,
-        "r": true,
-        "d": true
-      }
+      "nonterminals": [
+        "S",
+        "A",
+        "B",
+        "C"
+      ],
+      "terminals": [
+        "b",
+        "i",
+        "r",
+        "d"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -86,12 +86,12 @@ module.exports = {
         "d"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "A": true
-    },
+    "grammar.nullable": [
+      "A"
+    ],
     "grammar.first": {
       "S": {
         "b": true
@@ -118,11 +118,11 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "B": true,
-      "C": true
-    },
+    "grammar.endable": [
+      "S",
+      "B",
+      "C"
+    ],
     "grammar.sentences": [
       [
         "b",
@@ -1237,17 +1237,17 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "B": true,
-      "C": true
-    },
-    "grammar.terminals": {
-      "a": true,
-      "b": true,
-      "x": true,
-      "z": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "B",
+      "C"
+    ],
+    "grammar.terminals": [
+      "a",
+      "b",
+      "x",
+      "z"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "a",
@@ -1265,17 +1265,17 @@ module.exports = {
         "B",
         "C"
       ],
-      "nonterminals": {
-        "A": true,
-        "B": true,
-        "C": true
-      },
-      "terminals": {
-        "a": true,
-        "b": true,
-        "x": true,
-        "z": true
-      }
+      "nonterminals": [
+        "A",
+        "B",
+        "C"
+      ],
+      "terminals": [
+        "a",
+        "b",
+        "x",
+        "z"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -1296,10 +1296,10 @@ module.exports = {
         "z"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "A": {
         "a": true
@@ -1323,10 +1323,10 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "A": true,
-      "C": true
-    },
+    "grammar.endable": [
+      "A",
+      "C"
+    ],
     "grammar.sentences": [
       [
         "a",
@@ -2471,22 +2471,22 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "Owns": true,
-      "Object": true,
-      "Animal": true,
-      "Adverb": true,
-      "Adjective": true,
-      "Noun": true
-    },
-    "grammar.terminals": {
-      "mary": true,
-      "had": true,
-      "a": true,
-      "little": true,
-      "lamb": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "Owns",
+      "Object",
+      "Animal",
+      "Adverb",
+      "Adjective",
+      "Noun"
+    ],
+    "grammar.terminals": [
+      "mary",
+      "had",
+      "a",
+      "little",
+      "lamb"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "mary",
@@ -2513,22 +2513,22 @@ module.exports = {
         "Adjective",
         "Noun"
       ],
-      "nonterminals": {
-        "S": true,
-        "Owns": true,
-        "Object": true,
-        "Animal": true,
-        "Adverb": true,
-        "Adjective": true,
-        "Noun": true
-      },
-      "terminals": {
-        "mary": true,
-        "had": true,
-        "a": true,
-        "little": true,
-        "lamb": true
-      }
+      "nonterminals": [
+        "S",
+        "Owns",
+        "Object",
+        "Animal",
+        "Adverb",
+        "Adjective",
+        "Noun"
+      ],
+      "terminals": [
+        "mary",
+        "had",
+        "a",
+        "little",
+        "lamb"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -2565,12 +2565,12 @@ module.exports = {
         "lamb"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "Adverb": true
-    },
+    "grammar.nullable": [
+      "Adverb"
+    ],
     "grammar.first": {
       "S": {
         "mary": true
@@ -2615,12 +2615,12 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "Object": true,
-      "Animal": true,
-      "Noun": true
-    },
+    "grammar.endable": [
+      "S",
+      "Object",
+      "Animal",
+      "Noun"
+    ],
     "grammar.sentences": [
       [
         "mary",
@@ -4327,17 +4327,17 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "S'": true,
-      "V": true,
-      "E": true
-    },
-    "grammar.terminals": {
-      "id": true,
-      "assign": true,
-      "num": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "S'",
+      "V",
+      "E"
+    ],
+    "grammar.terminals": [
+      "id",
+      "assign",
+      "num"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "id",
@@ -4356,17 +4356,17 @@ module.exports = {
         "V",
         "E"
       ],
-      "nonterminals": {
-        "S": true,
-        "S'": true,
-        "V": true,
-        "E": true
-      },
-      "terminals": {
-        "id": true,
-        "assign": true,
-        "num": true
-      }
+      "nonterminals": [
+        "S",
+        "S'",
+        "V",
+        "E"
+      ],
+      "terminals": [
+        "id",
+        "assign",
+        "num"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -4397,13 +4397,13 @@ module.exports = {
         "num"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "S'": true,
-      "V": true
-    },
+    "grammar.nullable": [
+      "S'",
+      "V"
+    ],
     "grammar.first": {
       "S": {
         "id": true
@@ -4432,12 +4432,12 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "V": true,
-      "S'": true,
-      "E": true
-    },
+    "grammar.endable": [
+      "S",
+      "V",
+      "S'",
+      "E"
+    ],
     "grammar.sentences": [
       [
         "id"
@@ -5910,17 +5910,17 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "L": true,
-      "V": true,
-      "Var": true
-    },
-    "grammar.terminals": {
-      "+": true,
-      "num": true,
-      "(": true,
-      ")": true
-    },
+    "grammar.nonterminals": [
+      "L",
+      "V",
+      "Var"
+    ],
+    "grammar.terminals": [
+      "+",
+      "num",
+      "(",
+      ")"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "+",
@@ -5938,17 +5938,17 @@ module.exports = {
         "V",
         "Var"
       ],
-      "nonterminals": {
-        "L": true,
-        "V": true,
-        "Var": true
-      },
-      "terminals": {
-        "+": true,
-        "num": true,
-        "(": true,
-        ")": true
-      }
+      "nonterminals": [
+        "L",
+        "V",
+        "Var"
+      ],
+      "terminals": [
+        "+",
+        "num",
+        "(",
+        ")"
+      ]
     },
     "grammar.start": "L",
     "grammar.productions": [
@@ -5978,13 +5978,13 @@ module.exports = {
         "Var"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "V": true,
-      "Var": true
-    },
+    "grammar.nullable": [
+      "V",
+      "Var"
+    ],
     "grammar.first": {
       "L": {
         "+": true,
@@ -6009,9 +6009,9 @@ module.exports = {
         "+": true
       }
     },
-    "grammar.endable": {
-      "L": true
-    },
+    "grammar.endable": [
+      "L"
+    ],
     "grammar.sentences": [
       [
         "num"
@@ -8519,20 +8519,20 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "P": true,
-      "M": true,
-      "StarM": true,
-      "Q": true
-    },
-    "grammar.terminals": {
-      "*": true,
-      "(*": true,
-      "*)": true,
-      "(": true,
-      ")": true,
-      "o": true
-    },
+    "grammar.nonterminals": [
+      "P",
+      "M",
+      "StarM",
+      "Q"
+    ],
+    "grammar.terminals": [
+      "*",
+      "(*",
+      "*)",
+      "(",
+      ")",
+      "o"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "*",
@@ -8554,20 +8554,20 @@ module.exports = {
         "StarM",
         "Q"
       ],
-      "nonterminals": {
-        "P": true,
-        "M": true,
-        "StarM": true,
-        "Q": true
-      },
-      "terminals": {
-        "*": true,
-        "(*": true,
-        "*)": true,
-        "(": true,
-        ")": true,
-        "o": true
-      }
+      "nonterminals": [
+        "P",
+        "M",
+        "StarM",
+        "Q"
+      ],
+      "terminals": [
+        "*",
+        "(*",
+        "*)",
+        "(",
+        ")",
+        "o"
+      ]
     },
     "grammar.start": "P",
     "grammar.productions": [
@@ -8608,14 +8608,14 @@ module.exports = {
         "Q"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "P": true,
-      "M": true,
-      "Q": true
-    },
+    "grammar.nullable": [
+      "P",
+      "M",
+      "Q"
+    ],
     "grammar.first": {
       "P": {
         "*": true,
@@ -8654,9 +8654,9 @@ module.exports = {
         "*)": true
       }
     },
-    "grammar.endable": {
-      "P": true
-    },
+    "grammar.endable": [
+      "P"
+    ],
     "grammar.sentences": [
       [],
       [
@@ -11750,16 +11750,16 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "B": true,
-      "C": true
-    },
-    "grammar.terminals": {
-      "x": true,
-      "y": true,
-      "r": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "B",
+      "C"
+    ],
+    "grammar.terminals": [
+      "x",
+      "y",
+      "r"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "x",
@@ -11776,16 +11776,16 @@ module.exports = {
         "B",
         "C"
       ],
-      "nonterminals": {
-        "A": true,
-        "B": true,
-        "C": true
-      },
-      "terminals": {
-        "x": true,
-        "y": true,
-        "r": true
-      }
+      "nonterminals": [
+        "A",
+        "B",
+        "C"
+      ],
+      "terminals": [
+        "x",
+        "y",
+        "r"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -11813,12 +11813,12 @@ module.exports = {
         "r"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {
-      "B": true
-    },
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [
+      "B"
+    ],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "A": {
         "x": true,
@@ -11844,11 +11844,11 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "A": true,
-      "C": true,
-      "B": true
-    },
+    "grammar.endable": [
+      "A",
+      "C",
+      "B"
+    ],
     "grammar.sentences": [
       [
         "x",
@@ -14017,18 +14017,18 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "B": true,
-      "C": true
-    },
-    "grammar.terminals": {
-      "y": true,
-      "x": true,
-      "z": true,
-      "u": true,
-      "s": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "B",
+      "C"
+    ],
+    "grammar.terminals": [
+      "y",
+      "x",
+      "z",
+      "u",
+      "s"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "y",
@@ -14047,18 +14047,18 @@ module.exports = {
         "B",
         "C"
       ],
-      "nonterminals": {
-        "A": true,
-        "B": true,
-        "C": true
-      },
-      "terminals": {
-        "y": true,
-        "x": true,
-        "z": true,
-        "u": true,
-        "s": true
-      }
+      "nonterminals": [
+        "A",
+        "B",
+        "C"
+      ],
+      "terminals": [
+        "y",
+        "x",
+        "z",
+        "u",
+        "s"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -14090,10 +14090,10 @@ module.exports = {
         "s"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "A": {
         "y": true,
@@ -14121,11 +14121,11 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "A": true,
-      "B": true,
-      "C": true
-    },
+    "grammar.endable": [
+      "A",
+      "B",
+      "C"
+    ],
     "grammar.sentences": [
       [
         "x"
@@ -16127,18 +16127,18 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "Ses": true,
-      "SL": true
-    },
-    "grammar.terminals": {
-      "(": true,
-      ")": true,
-      "(*": true,
-      "*)": true,
-      ";": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "Ses",
+      "SL"
+    ],
+    "grammar.terminals": [
+      "(",
+      ")",
+      "(*",
+      "*)",
+      ";"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "(",
@@ -16157,18 +16157,18 @@ module.exports = {
         "Ses",
         "SL"
       ],
-      "nonterminals": {
-        "S": true,
-        "Ses": true,
-        "SL": true
-      },
-      "terminals": {
-        "(": true,
-        ")": true,
-        "(*": true,
-        "*)": true,
-        ";": true
-      }
+      "nonterminals": [
+        "S",
+        "Ses",
+        "SL"
+      ],
+      "terminals": [
+        "(",
+        ")",
+        "(*",
+        "*)",
+        ";"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -16198,10 +16198,10 @@ module.exports = {
         "S"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "S": {
         "(": true,
@@ -16232,9 +16232,9 @@ module.exports = {
         ")": true
       }
     },
-    "grammar.endable": {
-      "S": true
-    },
+    "grammar.endable": [
+      "S"
+    ],
     "grammar.sentences": [
       [
         "(*",
@@ -18949,18 +18949,18 @@ module.exports = {
         "reason": "it contains a reduce-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "A": true,
-      "B": true,
-      "C": true,
-      "D": true,
-      "E": true
-    },
-    "grammar.terminals": {
-      "a": true,
-      "b": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "grammar.terminals": [
+      "a",
+      "b"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "a",
@@ -18982,18 +18982,18 @@ module.exports = {
         "D",
         "E"
       ],
-      "nonterminals": {
-        "S": true,
-        "A": true,
-        "B": true,
-        "C": true,
-        "D": true,
-        "E": true
-      },
-      "terminals": {
-        "a": true,
-        "b": true
-      }
+      "nonterminals": [
+        "S",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "terminals": [
+        "a",
+        "b"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -19039,14 +19039,14 @@ module.exports = {
         "E"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "E": true,
-      "C": true,
-      "D": true
-    },
+    "grammar.nullable": [
+      "E",
+      "C",
+      "D"
+    ],
     "grammar.first": {
       "S": {
         "a": true,
@@ -19087,11 +19087,11 @@ module.exports = {
         "b": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "A": true,
-      "B": true
-    },
+    "grammar.endable": [
+      "S",
+      "A",
+      "B"
+    ],
     "grammar.sentences": [
       [
         "a",
@@ -21339,18 +21339,18 @@ module.exports = {
         "reason": "it contains a reduce-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "X": true,
-      "E": true,
-      "F": true,
-      "A": true
-    },
-    "grammar.terminals": {
-      "(": true,
-      "sq)": true,
-      ")": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "X",
+      "E",
+      "F",
+      "A"
+    ],
+    "grammar.terminals": [
+      "(",
+      "sq)",
+      ")"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "(",
@@ -21371,18 +21371,18 @@ module.exports = {
         "F",
         "A"
       ],
-      "nonterminals": {
-        "S": true,
-        "X": true,
-        "E": true,
-        "F": true,
-        "A": true
-      },
-      "terminals": {
-        "(": true,
-        "sq)": true,
-        ")": true
-      }
+      "nonterminals": [
+        "S",
+        "X",
+        "E",
+        "F",
+        "A"
+      ],
+      "terminals": [
+        "(",
+        "sq)",
+        ")"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -21423,14 +21423,14 @@ module.exports = {
         "A"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "A": true,
-      "E": true,
-      "F": true
-    },
+    "grammar.nullable": [
+      "A",
+      "E",
+      "F"
+    ],
     "grammar.first": {
       "S": {
         "(": true,
@@ -21465,10 +21465,10 @@ module.exports = {
         ")": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "X": true
-    },
+    "grammar.endable": [
+      "S",
+      "X"
+    ],
     "grammar.sentences": [
       [
         "sq)"
@@ -23451,23 +23451,23 @@ module.exports = {
         "reason": "it contains a reduce-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "E": true,
-      "D": true,
-      "R": true,
-      "V": true,
-      "L": true,
-      "Z": true
-    },
-    "grammar.terminals": {
-      "id": true,
-      "+": true,
-      "(": true,
-      "*": true,
-      ")": true,
-      "!": true,
-      "num": true
-    },
+    "grammar.nonterminals": [
+      "E",
+      "D",
+      "R",
+      "V",
+      "L",
+      "Z"
+    ],
+    "grammar.terminals": [
+      "id",
+      "+",
+      "(",
+      "*",
+      ")",
+      "!",
+      "num"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "id",
@@ -23494,23 +23494,23 @@ module.exports = {
         "L",
         "Z"
       ],
-      "nonterminals": {
-        "E": true,
-        "D": true,
-        "R": true,
-        "V": true,
-        "L": true,
-        "Z": true
-      },
-      "terminals": {
-        "id": true,
-        "+": true,
-        "(": true,
-        "*": true,
-        ")": true,
-        "!": true,
-        "num": true
-      }
+      "nonterminals": [
+        "E",
+        "D",
+        "R",
+        "V",
+        "L",
+        "Z"
+      ],
+      "terminals": [
+        "id",
+        "+",
+        "(",
+        "*",
+        ")",
+        "!",
+        "num"
+      ]
     },
     "grammar.start": "E",
     "grammar.productions": [
@@ -23577,15 +23577,15 @@ module.exports = {
         "Z"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "E": true,
-      "Z": true,
-      "V": true,
-      "L": true
-    },
+    "grammar.nullable": [
+      "E",
+      "Z",
+      "V",
+      "L"
+    ],
     "grammar.first": {
       "E": {
         "id": true,
@@ -23638,10 +23638,10 @@ module.exports = {
         "!": true
       }
     },
-    "grammar.endable": {
-      "E": true,
-      "D": true
-    },
+    "grammar.endable": [
+      "E",
+      "D"
+    ],
     "grammar.sentences": [
       [],
       [
@@ -30352,17 +30352,17 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "B": true
-    },
-    "grammar.terminals": {
-      "c": true,
-      "d": true,
-      "n": true,
-      "fo": true,
-      "r": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "B"
+    ],
+    "grammar.terminals": [
+      "c",
+      "d",
+      "n",
+      "fo",
+      "r"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "c",
@@ -30379,17 +30379,17 @@ module.exports = {
         "A",
         "B"
       ],
-      "nonterminals": {
-        "A": true,
-        "B": true
-      },
-      "terminals": {
-        "c": true,
-        "d": true,
-        "n": true,
-        "fo": true,
-        "r": true
-      }
+      "nonterminals": [
+        "A",
+        "B"
+      ],
+      "terminals": [
+        "c",
+        "d",
+        "n",
+        "fo",
+        "r"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -30414,12 +30414,12 @@ module.exports = {
         "B"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "B": true
-    },
+    "grammar.nullable": [
+      "B"
+    ],
     "grammar.first": {
       "A": {
         "c": true,
@@ -30441,9 +30441,9 @@ module.exports = {
         "fo": true
       }
     },
-    "grammar.endable": {
-      "A": true
-    },
+    "grammar.endable": [
+      "A"
+    ],
     "grammar.sentences": [
       [
         "c"
@@ -32737,17 +32737,17 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "ExprOpt": true
-    },
-    "grammar.terminals": {
-      "for": true,
-      "(": true,
-      ";": true,
-      ")": true,
-      "expr": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "ExprOpt"
+    ],
+    "grammar.terminals": [
+      "for",
+      "(",
+      ";",
+      ")",
+      "expr"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "for",
@@ -32764,17 +32764,17 @@ module.exports = {
         "S",
         "ExprOpt"
       ],
-      "nonterminals": {
-        "S": true,
-        "ExprOpt": true
-      },
-      "terminals": {
-        "for": true,
-        "(": true,
-        ";": true,
-        ")": true,
-        "expr": true
-      }
+      "nonterminals": [
+        "S",
+        "ExprOpt"
+      ],
+      "terminals": [
+        "for",
+        "(",
+        ";",
+        ")",
+        "expr"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -32803,12 +32803,12 @@ module.exports = {
         "ExprOpt"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "ExprOpt": true
-    },
+    "grammar.nullable": [
+      "ExprOpt"
+    ],
     "grammar.first": {
       "S": {
         "for": true,
@@ -32827,9 +32827,9 @@ module.exports = {
         ")": true
       }
     },
-    "grammar.endable": {
-      "S": true
-    },
+    "grammar.endable": [
+      "S"
+    ],
     "grammar.sentences": [
       [
         "expr",
@@ -35370,29 +35370,29 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "Decl": true,
-      "DeclSpecifiers": true,
-      "DeclSpecifiersOpt": true,
-      "StorageClassSpecifier": true,
-      "TypeSpecifier": true,
-      "TypeQualifier": true,
-      "Declarator": true,
-      "DirectDeclarator": true,
-      "PointerOpt": true,
-      "TypeQualifierList": true
-    },
-    "grammar.terminals": {
-      "typedef": true,
-      "static": true,
-      "void": true,
-      "short": true,
-      "int": true,
-      "const": true,
-      "volatile": true,
-      "id": true,
-      "*": true
-    },
+    "grammar.nonterminals": [
+      "Decl",
+      "DeclSpecifiers",
+      "DeclSpecifiersOpt",
+      "StorageClassSpecifier",
+      "TypeSpecifier",
+      "TypeQualifier",
+      "Declarator",
+      "DirectDeclarator",
+      "PointerOpt",
+      "TypeQualifierList"
+    ],
+    "grammar.terminals": [
+      "typedef",
+      "static",
+      "void",
+      "short",
+      "int",
+      "const",
+      "volatile",
+      "id",
+      "*"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "typedef",
@@ -35429,29 +35429,29 @@ module.exports = {
         "PointerOpt",
         "TypeQualifierList"
       ],
-      "nonterminals": {
-        "Decl": true,
-        "DeclSpecifiers": true,
-        "DeclSpecifiersOpt": true,
-        "StorageClassSpecifier": true,
-        "TypeSpecifier": true,
-        "TypeQualifier": true,
-        "Declarator": true,
-        "DirectDeclarator": true,
-        "PointerOpt": true,
-        "TypeQualifierList": true
-      },
-      "terminals": {
-        "typedef": true,
-        "static": true,
-        "void": true,
-        "short": true,
-        "int": true,
-        "const": true,
-        "volatile": true,
-        "id": true,
-        "*": true
-      }
+      "nonterminals": [
+        "Decl",
+        "DeclSpecifiers",
+        "DeclSpecifiersOpt",
+        "StorageClassSpecifier",
+        "TypeSpecifier",
+        "TypeQualifier",
+        "Declarator",
+        "DirectDeclarator",
+        "PointerOpt",
+        "TypeQualifierList"
+      ],
+      "terminals": [
+        "typedef",
+        "static",
+        "void",
+        "short",
+        "int",
+        "const",
+        "volatile",
+        "id",
+        "*"
+      ]
     },
     "grammar.start": "Decl",
     "grammar.productions": [
@@ -35537,14 +35537,14 @@ module.exports = {
         "TypeQualifierList"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "DeclSpecifiersOpt": true,
-      "PointerOpt": true,
-      "TypeQualifierList": true
-    },
+    "grammar.nullable": [
+      "DeclSpecifiersOpt",
+      "PointerOpt",
+      "TypeQualifierList"
+    ],
     "grammar.first": {
       "StorageClassSpecifier": {
         "typedef": true,
@@ -35660,11 +35660,11 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "Decl": true,
-      "Declarator": true,
-      "DirectDeclarator": true
-    },
+    "grammar.endable": [
+      "Decl",
+      "Declarator",
+      "DirectDeclarator"
+    ],
     "grammar.sentences": [
       [
         "typedef",
@@ -43059,16 +43059,16 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "V": true,
-      "E": true
-    },
-    "grammar.terminals": {
-      "id": true,
-      "assign": true,
-      "num": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "V",
+      "E"
+    ],
+    "grammar.terminals": [
+      "id",
+      "assign",
+      "num"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "id",
@@ -43085,16 +43085,16 @@ module.exports = {
         "V",
         "E"
       ],
-      "nonterminals": {
-        "S": true,
-        "V": true,
-        "E": true
-      },
-      "terminals": {
-        "id": true,
-        "assign": true,
-        "num": true
-      }
+      "nonterminals": [
+        "S",
+        "V",
+        "E"
+      ],
+      "terminals": [
+        "id",
+        "assign",
+        "num"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -43121,10 +43121,10 @@ module.exports = {
         "num"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "S": {
         "id": true
@@ -43149,11 +43149,11 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "V": true,
-      "E": true
-    },
+    "grammar.endable": [
+      "S",
+      "V",
+      "E"
+    ],
     "grammar.sentences": [
       [
         "id"
@@ -44389,17 +44389,17 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S'": true,
-      "S": true,
-      "L": true,
-      "R": true
-    },
-    "grammar.terminals": {
-      "assign": true,
-      "*": true,
-      "id": true
-    },
+    "grammar.nonterminals": [
+      "S'",
+      "S",
+      "L",
+      "R"
+    ],
+    "grammar.terminals": [
+      "assign",
+      "*",
+      "id"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "assign",
@@ -44418,17 +44418,17 @@ module.exports = {
         "L",
         "R"
       ],
-      "nonterminals": {
-        "S'": true,
-        "S": true,
-        "L": true,
-        "R": true
-      },
-      "terminals": {
-        "assign": true,
-        "*": true,
-        "id": true
-      }
+      "nonterminals": [
+        "S'",
+        "S",
+        "L",
+        "R"
+      ],
+      "terminals": [
+        "assign",
+        "*",
+        "id"
+      ]
     },
     "grammar.start": "S'",
     "grammar.productions": [
@@ -44460,10 +44460,10 @@ module.exports = {
         "L"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "L": {
         "*": true,
@@ -44498,12 +44498,12 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "S'": true,
-      "L": true,
-      "S": true,
-      "R": true
-    },
+    "grammar.endable": [
+      "S'",
+      "L",
+      "S",
+      "R"
+    ],
     "grammar.sentences": [
       [
         "id"
@@ -46704,16 +46704,16 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "A": true,
-      "B": true
-    },
-    "grammar.terminals": {
-      "x": true,
-      "y": true,
-      "w": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "A",
+      "B"
+    ],
+    "grammar.terminals": [
+      "x",
+      "y",
+      "w"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "x",
@@ -46730,16 +46730,16 @@ module.exports = {
         "A",
         "B"
       ],
-      "nonterminals": {
-        "S": true,
-        "A": true,
-        "B": true
-      },
-      "terminals": {
-        "x": true,
-        "y": true,
-        "w": true
-      }
+      "nonterminals": [
+        "S",
+        "A",
+        "B"
+      ],
+      "terminals": [
+        "x",
+        "y",
+        "w"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -46766,10 +46766,10 @@ module.exports = {
         "w"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "A": {
         "w": true
@@ -46794,9 +46794,9 @@ module.exports = {
         "y": true
       }
     },
-    "grammar.endable": {
-      "S": true
-    },
+    "grammar.endable": [
+      "S"
+    ],
     "grammar.sentences": [
       [
         "w",
@@ -48403,15 +48403,15 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "Block": true
-    },
-    "grammar.terminals": {
-      "(": true,
-      ")": true,
-      "stmt": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "Block"
+    ],
+    "grammar.terminals": [
+      "(",
+      ")",
+      "stmt"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "(",
@@ -48426,15 +48426,15 @@ module.exports = {
         "S",
         "Block"
       ],
-      "nonterminals": {
-        "S": true,
-        "Block": true
-      },
-      "terminals": {
-        "(": true,
-        ")": true,
-        "stmt": true
-      }
+      "nonterminals": [
+        "S",
+        "Block"
+      ],
+      "terminals": [
+        "(",
+        ")",
+        "stmt"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -48454,10 +48454,10 @@ module.exports = {
         ")"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "S": {
         "(": true
@@ -48474,10 +48474,10 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "Block": true
-    },
+    "grammar.endable": [
+      "S",
+      "Block"
+    ],
     "grammar.sentences": [
       [
         "(",
@@ -49325,20 +49325,20 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "Assign": true,
-      "Inc": true,
-      "Rv": true,
-      "Lv": true
-    },
-    "grammar.terminals": {
-      "equals": true,
-      "++": true,
-      "//": true,
-      "num": true,
-      "id": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "Assign",
+      "Inc",
+      "Rv",
+      "Lv"
+    ],
+    "grammar.terminals": [
+      "equals",
+      "++",
+      "//",
+      "num",
+      "id"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "equals",
@@ -49361,20 +49361,20 @@ module.exports = {
         "Rv",
         "Lv"
       ],
-      "nonterminals": {
-        "S": true,
-        "Assign": true,
-        "Inc": true,
-        "Rv": true,
-        "Lv": true
-      },
-      "terminals": {
-        "equals": true,
-        "++": true,
-        "//": true,
-        "num": true,
-        "id": true
-      }
+      "nonterminals": [
+        "S",
+        "Assign",
+        "Inc",
+        "Rv",
+        "Lv"
+      ],
+      "terminals": [
+        "equals",
+        "++",
+        "//",
+        "num",
+        "id"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -49415,10 +49415,10 @@ module.exports = {
         "id"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "Rv": {
         "num": true,
@@ -49457,13 +49457,13 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "Lv": true,
-      "Assign": true,
-      "Inc": true,
-      "Rv": true
-    },
+    "grammar.endable": [
+      "S",
+      "Lv",
+      "Assign",
+      "Inc",
+      "Rv"
+    ],
     "grammar.sentences": [
       [
         "id",
@@ -51444,16 +51444,16 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "Emoticon": true,
-      "Happy": true,
-      "Sad": true
-    },
-    "grammar.terminals": {
-      ":": true,
-      ")": true,
-      "(": true
-    },
+    "grammar.nonterminals": [
+      "Emoticon",
+      "Happy",
+      "Sad"
+    ],
+    "grammar.terminals": [
+      ":",
+      ")",
+      "("
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         ":",
@@ -51470,16 +51470,16 @@ module.exports = {
         "Happy",
         "Sad"
       ],
-      "nonterminals": {
-        "Emoticon": true,
-        "Happy": true,
-        "Sad": true
-      },
-      "terminals": {
-        ":": true,
-        ")": true,
-        "(": true
-      }
+      "nonterminals": [
+        "Emoticon",
+        "Happy",
+        "Sad"
+      ],
+      "terminals": [
+        ":",
+        ")",
+        "("
+      ]
     },
     "grammar.start": "Emoticon",
     "grammar.productions": [
@@ -51502,10 +51502,10 @@ module.exports = {
         "("
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "Happy": {
         ":": true
@@ -51528,11 +51528,11 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "Emoticon": true,
-      "Happy": true,
-      "Sad": true
-    },
+    "grammar.endable": [
+      "Emoticon",
+      "Happy",
+      "Sad"
+    ],
     "grammar.sentences": [
       [
         ":",
@@ -52459,18 +52459,18 @@ module.exports = {
         "reason": "it contains a reduce-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "A": true,
-      "B": true,
-      "C": true,
-      "D": true,
-      "E": true
-    },
-    "grammar.terminals": {
-      "a": true,
-      "b": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "grammar.terminals": [
+      "a",
+      "b"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "a",
@@ -52492,18 +52492,18 @@ module.exports = {
         "D",
         "E"
       ],
-      "nonterminals": {
-        "S": true,
-        "A": true,
-        "B": true,
-        "C": true,
-        "D": true,
-        "E": true
-      },
-      "terminals": {
-        "a": true,
-        "b": true
-      }
+      "nonterminals": [
+        "S",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "terminals": [
+        "a",
+        "b"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -52551,14 +52551,14 @@ module.exports = {
         "E"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "E": true,
-      "C": true,
-      "D": true
-    },
+    "grammar.nullable": [
+      "E",
+      "C",
+      "D"
+    ],
     "grammar.first": {
       "S": {
         "a": true
@@ -52598,11 +52598,11 @@ module.exports = {
         "b": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "A": true,
-      "B": true
-    },
+    "grammar.endable": [
+      "S",
+      "A",
+      "B"
+    ],
     "grammar.sentences": [
       [
         "a",
@@ -55070,22 +55070,22 @@ module.exports = {
         "reason": "it contains a reduce-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "Value": true,
-      "V": true,
-      "Real": true,
-      "Int": true,
-      "BOpt": true,
-      "IOpt": true,
-      "Opt": true
-    },
-    "grammar.terminals": {
-      "number": true,
-      "f": true,
-      "i": true,
-      "dot": true,
-      "+": true
-    },
+    "grammar.nonterminals": [
+      "Value",
+      "V",
+      "Real",
+      "Int",
+      "BOpt",
+      "IOpt",
+      "Opt"
+    ],
+    "grammar.terminals": [
+      "number",
+      "f",
+      "i",
+      "dot",
+      "+"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "number",
@@ -55112,22 +55112,22 @@ module.exports = {
         "IOpt",
         "Opt"
       ],
-      "nonterminals": {
-        "Value": true,
-        "V": true,
-        "Real": true,
-        "Int": true,
-        "BOpt": true,
-        "IOpt": true,
-        "Opt": true
-      },
-      "terminals": {
-        "number": true,
-        "f": true,
-        "i": true,
-        "dot": true,
-        "+": true
-      }
+      "nonterminals": [
+        "Value",
+        "V",
+        "Real",
+        "Int",
+        "BOpt",
+        "IOpt",
+        "Opt"
+      ],
+      "terminals": [
+        "number",
+        "f",
+        "i",
+        "dot",
+        "+"
+      ]
     },
     "grammar.start": "Value",
     "grammar.productions": [
@@ -55182,14 +55182,14 @@ module.exports = {
         "Opt"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "Opt": true,
-      "BOpt": true,
-      "IOpt": true
-    },
+    "grammar.nullable": [
+      "Opt",
+      "BOpt",
+      "IOpt"
+    ],
     "grammar.first": {
       "Value": {
         "number": true
@@ -55236,12 +55236,12 @@ module.exports = {
         "dot": true
       }
     },
-    "grammar.endable": {
-      "Value": true,
-      "V": true,
-      "Real": true,
-      "Int": true
-    },
+    "grammar.endable": [
+      "Value",
+      "V",
+      "Real",
+      "Int"
+    ],
     "grammar.sentences": [
       [
         "number"
@@ -57940,21 +57940,21 @@ module.exports = {
         "reason": "it contains a reduce-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "Q": true,
-      "P": true,
-      "T": true,
-      "E": true,
-      "U": true,
-      "W": true
-    },
-    "grammar.terminals": {
-      "8": true,
-      "'": true,
-      ";": true,
-      "*": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "Q",
+      "P",
+      "T",
+      "E",
+      "U",
+      "W"
+    ],
+    "grammar.terminals": [
+      "'",
+      ";",
+      "*",
+      "8"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "'",
@@ -57980,21 +57980,21 @@ module.exports = {
         "U",
         "W"
       ],
-      "nonterminals": {
-        "S": true,
-        "Q": true,
-        "P": true,
-        "T": true,
-        "E": true,
-        "U": true,
-        "W": true
-      },
-      "terminals": {
-        "8": true,
-        "'": true,
-        ";": true,
-        "*": true
-      }
+      "nonterminals": [
+        "S",
+        "Q",
+        "P",
+        "T",
+        "E",
+        "U",
+        "W"
+      ],
+      "terminals": [
+        "'",
+        ";",
+        "*",
+        "8"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -58053,12 +58053,12 @@ module.exports = {
         "W"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "W": true
-    },
+    "grammar.nullable": [
+      "W"
+    ],
     "grammar.first": {
       "S": {
         "'": true
@@ -58115,15 +58115,15 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "T": true,
-      "E": true,
-      "Q": true,
-      "P": true,
-      "W": true,
-      "U": true
-    },
+    "grammar.endable": [
+      "S",
+      "T",
+      "E",
+      "Q",
+      "P",
+      "W",
+      "U"
+    ],
     "grammar.sentences": [
       [
         "'"
@@ -61877,18 +61877,18 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "X": true,
-      "E": true,
-      "F": true,
-      "A": true
-    },
-    "grammar.terminals": {
-      "(": true,
-      "sq)": true,
-      ")": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "X",
+      "E",
+      "F",
+      "A"
+    ],
+    "grammar.terminals": [
+      "(",
+      "sq)",
+      ")"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "(",
@@ -61909,18 +61909,18 @@ module.exports = {
         "F",
         "A"
       ],
-      "nonterminals": {
-        "S": true,
-        "X": true,
-        "E": true,
-        "F": true,
-        "A": true
-      },
-      "terminals": {
-        "(": true,
-        "sq)": true,
-        ")": true
-      }
+      "nonterminals": [
+        "S",
+        "X",
+        "E",
+        "F",
+        "A"
+      ],
+      "terminals": [
+        "(",
+        "sq)",
+        ")"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -61961,14 +61961,14 @@ module.exports = {
         "A"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "A": true,
-      "E": true,
-      "F": true
-    },
+    "grammar.nullable": [
+      "A",
+      "E",
+      "F"
+    ],
     "grammar.first": {
       "S": {
         "(": true,
@@ -62003,10 +62003,10 @@ module.exports = {
         "(": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "X": true
-    },
+    "grammar.endable": [
+      "S",
+      "X"
+    ],
     "grammar.sentences": [
       [
         "sq)"
@@ -64006,19 +64006,19 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "B": true,
-      "E": true,
-      "SL": true
-    },
-    "grammar.terminals": {
-      "b": true,
-      "e": true,
-      "o": true,
-      "r": true,
-      "s": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "B",
+      "E",
+      "SL"
+    ],
+    "grammar.terminals": [
+      "b",
+      "e",
+      "o",
+      "r",
+      "s"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "b",
@@ -64039,19 +64039,19 @@ module.exports = {
         "E",
         "SL"
       ],
-      "nonterminals": {
-        "A": true,
-        "B": true,
-        "E": true,
-        "SL": true
-      },
-      "terminals": {
-        "b": true,
-        "e": true,
-        "o": true,
-        "r": true,
-        "s": true
-      }
+      "nonterminals": [
+        "A",
+        "B",
+        "E",
+        "SL"
+      ],
+      "terminals": [
+        "b",
+        "e",
+        "o",
+        "r",
+        "s"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -64093,12 +64093,12 @@ module.exports = {
         "s"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "E": true
-    },
+    "grammar.nullable": [
+      "E"
+    ],
     "grammar.first": {
       "A": {
         "b": true,
@@ -64133,11 +64133,11 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "A": true,
-      "E": true,
-      "SL": true
-    },
+    "grammar.endable": [
+      "A",
+      "E",
+      "SL"
+    ],
     "grammar.sentences": [
       [
         "b",
@@ -66668,13 +66668,13 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "X": true
-    },
-    "grammar.terminals": {
-      "a": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "X"
+    ],
+    "grammar.terminals": [
+      "a"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "a"
@@ -66687,13 +66687,13 @@ module.exports = {
         "S",
         "X"
       ],
-      "nonterminals": {
-        "S": true,
-        "X": true
-      },
-      "terminals": {
-        "a": true
-      }
+      "nonterminals": [
+        "S",
+        "X"
+      ],
+      "terminals": [
+        "a"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -66710,12 +66710,12 @@ module.exports = {
         "X"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "X": true
-    },
+    "grammar.nullable": [
+      "X"
+    ],
     "grammar.first": {
       "S": {
         "a": true
@@ -66732,9 +66732,9 @@ module.exports = {
         "a": true
       }
     },
-    "grammar.endable": {
-      "S": true
-    },
+    "grammar.endable": [
+      "S"
+    ],
     "grammar.sentences": [
       [
         "a"
@@ -67469,16 +67469,16 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "B": true,
-      "C": true
-    },
-    "grammar.terminals": {
-      "a": true,
-      "b": true,
-      "c": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "B",
+      "C"
+    ],
+    "grammar.terminals": [
+      "a",
+      "b",
+      "c"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "a",
@@ -67495,16 +67495,16 @@ module.exports = {
         "B",
         "C"
       ],
-      "nonterminals": {
-        "A": true,
-        "B": true,
-        "C": true
-      },
-      "terminals": {
-        "a": true,
-        "b": true,
-        "c": true
-      }
+      "nonterminals": [
+        "A",
+        "B",
+        "C"
+      ],
+      "terminals": [
+        "a",
+        "b",
+        "c"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -67531,12 +67531,12 @@ module.exports = {
         "C"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "C": true
-    },
+    "grammar.nullable": [
+      "C"
+    ],
     "grammar.first": {
       "B": {
         "b": true,
@@ -67561,9 +67561,9 @@ module.exports = {
         "a": true
       }
     },
-    "grammar.endable": {
-      "A": true
-    },
+    "grammar.endable": [
+      "A"
+    ],
     "grammar.sentences": [
       [
         "c",
@@ -69431,18 +69431,18 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "E": true,
-      "D": true,
-      "C": true,
-      "B": true
-    },
-    "grammar.terminals": {
-      "a": true,
-      "b": true,
-      "c": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "E",
+      "D",
+      "C",
+      "B"
+    ],
+    "grammar.terminals": [
+      "a",
+      "b",
+      "c"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "a",
@@ -69463,18 +69463,18 @@ module.exports = {
         "C",
         "B"
       ],
-      "nonterminals": {
-        "A": true,
-        "E": true,
-        "D": true,
-        "C": true,
-        "B": true
-      },
-      "terminals": {
-        "a": true,
-        "b": true,
-        "c": true
-      }
+      "nonterminals": [
+        "A",
+        "E",
+        "D",
+        "C",
+        "B"
+      ],
+      "terminals": [
+        "a",
+        "b",
+        "c"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -69512,14 +69512,14 @@ module.exports = {
         "B"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "D": true,
-      "C": true,
-      "B": true
-    },
+    "grammar.nullable": [
+      "D",
+      "C",
+      "B"
+    ],
     "grammar.first": {
       "E": {
         "a": true
@@ -69559,10 +69559,10 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "A": true,
-      "E": true
-    },
+    "grammar.endable": [
+      "A",
+      "E"
+    ],
     "grammar.sentences": [
       [
         "a"
@@ -71829,17 +71829,17 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "B": true,
-      "C": true
-    },
-    "grammar.terminals": {
-      "a": true,
-      "d": true,
-      "e": true,
-      "c": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "B",
+      "C"
+    ],
+    "grammar.terminals": [
+      "a",
+      "d",
+      "e",
+      "c"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "a",
@@ -71857,17 +71857,17 @@ module.exports = {
         "B",
         "C"
       ],
-      "nonterminals": {
-        "A": true,
-        "B": true,
-        "C": true
-      },
-      "terminals": {
-        "a": true,
-        "d": true,
-        "e": true,
-        "c": true
-      }
+      "nonterminals": [
+        "A",
+        "B",
+        "C"
+      ],
+      "terminals": [
+        "a",
+        "d",
+        "e",
+        "c"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -71900,12 +71900,12 @@ module.exports = {
         "A"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "A": true
-    },
+    "grammar.nullable": [
+      "A"
+    ],
     "grammar.first": {
       "A": {
         "a": true
@@ -71932,11 +71932,11 @@ module.exports = {
         "c": true
       }
     },
-    "grammar.endable": {
-      "A": true,
-      "B": true,
-      "C": true
-    },
+    "grammar.endable": [
+      "A",
+      "B",
+      "C"
+    ],
     "grammar.sentences": [
       [],
       [
@@ -74642,17 +74642,17 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "TERM": true,
-      "LEXP": true,
-      "INDEX": true
-    },
-    "grammar.terminals": {
-      "id": true,
-      "let": true,
-      "lpar": true,
-      "rpar": true
-    },
+    "grammar.nonterminals": [
+      "TERM",
+      "LEXP",
+      "INDEX"
+    ],
+    "grammar.terminals": [
+      "id",
+      "let",
+      "lpar",
+      "rpar"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "id",
@@ -74670,17 +74670,17 @@ module.exports = {
         "LEXP",
         "INDEX"
       ],
-      "nonterminals": {
-        "TERM": true,
-        "LEXP": true,
-        "INDEX": true
-      },
-      "terminals": {
-        "id": true,
-        "let": true,
-        "lpar": true,
-        "rpar": true
-      }
+      "nonterminals": [
+        "TERM",
+        "LEXP",
+        "INDEX"
+      ],
+      "terminals": [
+        "id",
+        "let",
+        "lpar",
+        "rpar"
+      ]
     },
     "grammar.start": "TERM",
     "grammar.productions": [
@@ -74714,10 +74714,10 @@ module.exports = {
         "rpar"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "TERM": {
         "id": true,
@@ -74747,11 +74747,11 @@ module.exports = {
         "rpar": true
       }
     },
-    "grammar.endable": {
-      "TERM": true,
-      "INDEX": true,
-      "LEXP": true
-    },
+    "grammar.endable": [
+      "TERM",
+      "INDEX",
+      "LEXP"
+    ],
     "grammar.sentences": [
       [
         "id"
@@ -77642,25 +77642,25 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "Line": true,
-      "Op": true,
-      "Label": true,
-      "Operands": true,
-      "Dest": true,
-      "Src": true,
-      "Inst": true,
-      "Macro": true
-    },
-    "grammar.terminals": {
-      "id": true,
-      ":": true,
-      "reg": true,
-      "(": true,
-      ")": true,
-      "num": true,
-      "pneumonic": true
-    },
+    "grammar.nonterminals": [
+      "Line",
+      "Op",
+      "Label",
+      "Operands",
+      "Dest",
+      "Src",
+      "Inst",
+      "Macro"
+    ],
+    "grammar.terminals": [
+      "id",
+      ":",
+      "reg",
+      "(",
+      ")",
+      "num",
+      "pneumonic"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "id",
@@ -77691,25 +77691,25 @@ module.exports = {
         "Inst",
         "Macro"
       ],
-      "nonterminals": {
-        "Line": true,
-        "Op": true,
-        "Label": true,
-        "Operands": true,
-        "Dest": true,
-        "Src": true,
-        "Inst": true,
-        "Macro": true
-      },
-      "terminals": {
-        "id": true,
-        ":": true,
-        "reg": true,
-        "(": true,
-        ")": true,
-        "num": true,
-        "pneumonic": true
-      }
+      "nonterminals": [
+        "Line",
+        "Op",
+        "Label",
+        "Operands",
+        "Dest",
+        "Src",
+        "Inst",
+        "Macro"
+      ],
+      "terminals": [
+        "id",
+        ":",
+        "reg",
+        "(",
+        ")",
+        "num",
+        "pneumonic"
+      ]
     },
     "grammar.start": "Line",
     "grammar.productions": [
@@ -77772,10 +77772,10 @@ module.exports = {
         "id"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "Label": {
         "id": true
@@ -77854,13 +77854,13 @@ module.exports = {
         "(": true
       }
     },
-    "grammar.endable": {
-      "Line": true,
-      "Op": true,
-      "Label": true,
-      "Operands": true,
-      "Dest": true
-    },
+    "grammar.endable": [
+      "Line",
+      "Op",
+      "Label",
+      "Operands",
+      "Dest"
+    ],
     "grammar.sentences": [
       [
         "id",
@@ -82762,18 +82762,18 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "T": true,
-      "V": true,
-      "E": true
-    },
-    "grammar.terminals": {
-      ";": true,
-      "id": true,
-      "assign": true,
-      "num": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "T",
+      "V",
+      "E"
+    ],
+    "grammar.terminals": [
+      ";",
+      "id",
+      "assign",
+      "num"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         ";",
@@ -82793,18 +82793,18 @@ module.exports = {
         "V",
         "E"
       ],
-      "nonterminals": {
-        "S": true,
-        "T": true,
-        "V": true,
-        "E": true
-      },
-      "terminals": {
-        ";": true,
-        "id": true,
-        "assign": true,
-        "num": true
-      }
+      "nonterminals": [
+        "S",
+        "T",
+        "V",
+        "E"
+      ],
+      "terminals": [
+        ";",
+        "id",
+        "assign",
+        "num"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -82841,10 +82841,10 @@ module.exports = {
         "num"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "T": {
         "id": true
@@ -82879,12 +82879,12 @@ module.exports = {
         ";": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "V": true,
-      "T": true,
-      "E": true
-    },
+    "grammar.endable": [
+      "S",
+      "V",
+      "T",
+      "E"
+    ],
     "grammar.sentences": [
       [
         "id"
@@ -85257,19 +85257,19 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "L": true,
-      "V": true,
-      "Var": true
-    },
-    "grammar.terminals": {
-      "(": true,
-      "args": true,
-      ")": true,
-      "equals": true,
-      "+": true,
-      "id": true
-    },
+    "grammar.nonterminals": [
+      "L",
+      "V",
+      "Var"
+    ],
+    "grammar.terminals": [
+      "(",
+      "args",
+      ")",
+      "equals",
+      "+",
+      "id"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "(",
@@ -85289,19 +85289,19 @@ module.exports = {
         "V",
         "Var"
       ],
-      "nonterminals": {
-        "L": true,
-        "V": true,
-        "Var": true
-      },
-      "terminals": {
-        "(": true,
-        "args": true,
-        ")": true,
-        "equals": true,
-        "+": true,
-        "id": true
-      }
+      "nonterminals": [
+        "L",
+        "V",
+        "Var"
+      ],
+      "terminals": [
+        "(",
+        "args",
+        ")",
+        "equals",
+        "+",
+        "id"
+      ]
     },
     "grammar.start": "L",
     "grammar.productions": [
@@ -85335,10 +85335,10 @@ module.exports = {
         "id"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "V": {
         "id": true
@@ -85363,9 +85363,9 @@ module.exports = {
         "+": true
       }
     },
-    "grammar.endable": {
-      "L": true
-    },
+    "grammar.endable": [
+      "L"
+    ],
     "grammar.sentences": [
       [
         "id",
@@ -88095,18 +88095,18 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "E": true,
-      "O": true,
-      "OL": true
-    },
-    "grammar.terminals": {
-      ":": true,
-      "id": true,
-      "l": true,
-      "(": true,
-      ")": true
-    },
+    "grammar.nonterminals": [
+      "E",
+      "O",
+      "OL"
+    ],
+    "grammar.terminals": [
+      ":",
+      "id",
+      "l",
+      "(",
+      ")"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         ":",
@@ -88125,18 +88125,18 @@ module.exports = {
         "O",
         "OL"
       ],
-      "nonterminals": {
-        "E": true,
-        "O": true,
-        "OL": true
-      },
-      "terminals": {
-        ":": true,
-        "id": true,
-        "l": true,
-        "(": true,
-        ")": true
-      }
+      "nonterminals": [
+        "E",
+        "O",
+        "OL"
+      ],
+      "terminals": [
+        ":",
+        "id",
+        "l",
+        "(",
+        ")"
+      ]
     },
     "grammar.start": "E",
     "grammar.productions": [
@@ -88172,10 +88172,10 @@ module.exports = {
         ")"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "O": {
         "id": true,
@@ -88204,11 +88204,11 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "E": true,
-      "O": true,
-      "OL": true
-    },
+    "grammar.endable": [
+      "E",
+      "O",
+      "OL"
+    ],
     "grammar.sentences": [
       [
         "id"
@@ -91474,18 +91474,18 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "A": true,
-      "B": true
-    },
-    "grammar.terminals": {
-      "a": true,
-      "g": true,
-      "d": true,
-      "c": true,
-      "b": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "A",
+      "B"
+    ],
+    "grammar.terminals": [
+      "a",
+      "g",
+      "d",
+      "c",
+      "b"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "a",
@@ -91504,18 +91504,18 @@ module.exports = {
         "A",
         "B"
       ],
-      "nonterminals": {
-        "S": true,
-        "A": true,
-        "B": true
-      },
-      "terminals": {
-        "a": true,
-        "g": true,
-        "d": true,
-        "c": true,
-        "b": true
-      }
+      "nonterminals": [
+        "S",
+        "A",
+        "B"
+      ],
+      "terminals": [
+        "a",
+        "g",
+        "d",
+        "c",
+        "b"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -91552,10 +91552,10 @@ module.exports = {
         "g"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "S": {
         "a": true,
@@ -91581,9 +91581,9 @@ module.exports = {
         "d": true
       }
     },
-    "grammar.endable": {
-      "S": true
-    },
+    "grammar.endable": [
+      "S"
+    ],
     "grammar.sentences": [
       [
         "a",
@@ -93535,16 +93535,16 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "C": true,
-      "B": true
-    },
-    "grammar.terminals": {
-      "a": true,
-      "b": true,
-      "c": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "C",
+      "B"
+    ],
+    "grammar.terminals": [
+      "a",
+      "b",
+      "c"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "a",
@@ -93561,16 +93561,16 @@ module.exports = {
         "C",
         "B"
       ],
-      "nonterminals": {
-        "A": true,
-        "C": true,
-        "B": true
-      },
-      "terminals": {
-        "a": true,
-        "b": true,
-        "c": true
-      }
+      "nonterminals": [
+        "A",
+        "C",
+        "B"
+      ],
+      "terminals": [
+        "a",
+        "b",
+        "c"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -93602,10 +93602,10 @@ module.exports = {
         "c"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "C": {
         "a": true,
@@ -93633,11 +93633,11 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "A": true,
-      "C": true,
-      "B": true
-    },
+    "grammar.endable": [
+      "A",
+      "C",
+      "B"
+    ],
     "grammar.sentences": [
       [
         "b"
@@ -95749,16 +95749,16 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "A": true,
-      "B": true
-    },
-    "grammar.terminals": {
-      "x": true,
-      "a": true,
-      "b": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "A",
+      "B"
+    ],
+    "grammar.terminals": [
+      "x",
+      "a",
+      "b"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "x",
@@ -95775,16 +95775,16 @@ module.exports = {
         "A",
         "B"
       ],
-      "nonterminals": {
-        "S": true,
-        "A": true,
-        "B": true
-      },
-      "terminals": {
-        "x": true,
-        "a": true,
-        "b": true
-      }
+      "nonterminals": [
+        "S",
+        "A",
+        "B"
+      ],
+      "terminals": [
+        "x",
+        "a",
+        "b"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -95815,10 +95815,10 @@ module.exports = {
         "b"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "A": {
         "x": true,
@@ -95845,11 +95845,11 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "A": true,
-      "B": true
-    },
+    "grammar.endable": [
+      "S",
+      "A",
+      "B"
+    ],
     "grammar.sentences": [
       [
         "a"
@@ -97566,16 +97566,16 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "Parens": true,
-      "StarParens": true
-    },
-    "grammar.terminals": {
-      "(": true,
-      ")": true,
-      "*)": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "Parens",
+      "StarParens"
+    ],
+    "grammar.terminals": [
+      "(",
+      ")",
+      "*)"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "(",
@@ -97592,16 +97592,16 @@ module.exports = {
         "Parens",
         "StarParens"
       ],
-      "nonterminals": {
-        "S": true,
-        "Parens": true,
-        "StarParens": true
-      },
-      "terminals": {
-        "(": true,
-        ")": true,
-        "*)": true
-      }
+      "nonterminals": [
+        "S",
+        "Parens",
+        "StarParens"
+      ],
+      "terminals": [
+        "(",
+        ")",
+        "*)"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -97636,10 +97636,10 @@ module.exports = {
         "*)"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "Parens": {
         "(": true
@@ -97664,11 +97664,11 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "Parens": true,
-      "StarParens": true
-    },
+    "grammar.endable": [
+      "S",
+      "Parens",
+      "StarParens"
+    ],
     "grammar.sentences": [
       [
         "(",
@@ -100368,17 +100368,17 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "A": true,
-      "B": true,
-      "D": true
-    },
-    "grammar.terminals": {
-      "T": true,
-      "C": true,
-      "d": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "A",
+      "B",
+      "D"
+    ],
+    "grammar.terminals": [
+      "T",
+      "C",
+      "d"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "T",
@@ -100397,17 +100397,17 @@ module.exports = {
         "B",
         "D"
       ],
-      "nonterminals": {
-        "S": true,
-        "A": true,
-        "B": true,
-        "D": true
-      },
-      "terminals": {
-        "T": true,
-        "C": true,
-        "d": true
-      }
+      "nonterminals": [
+        "S",
+        "A",
+        "B",
+        "D"
+      ],
+      "terminals": [
+        "T",
+        "C",
+        "d"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -100440,14 +100440,14 @@ module.exports = {
         "D"
       ]
     ],
-    "grammar.unreachable": {
-      "D": true
-    },
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [
+      "D"
+    ],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "D": true
-    },
+    "grammar.nullable": [
+      "D"
+    ],
     "grammar.first": {
       "S": {
         "T": true,
@@ -100475,11 +100475,11 @@ module.exports = {
       },
       "D": {}
     },
-    "grammar.endable": {
-      "S": true,
-      "A": true,
-      "B": true
-    },
+    "grammar.endable": [
+      "S",
+      "A",
+      "B"
+    ],
     "grammar.sentences": [
       [
         "T"
@@ -101589,21 +101589,21 @@ module.exports = {
         "reason": "it contains a reduce-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "E": true,
-      "F": true,
-      "D": true,
-      "C": true,
-      "B": true,
-      "A": true
-    },
-    "grammar.terminals": {
-      "d": true,
-      "e": true,
-      "b": true,
-      "c": true,
-      "a": true
-    },
+    "grammar.nonterminals": [
+      "E",
+      "F",
+      "D",
+      "C",
+      "B",
+      "A"
+    ],
+    "grammar.terminals": [
+      "d",
+      "e",
+      "b",
+      "c",
+      "a"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "d",
@@ -101628,21 +101628,21 @@ module.exports = {
         "B",
         "A"
       ],
-      "nonterminals": {
-        "E": true,
-        "F": true,
-        "D": true,
-        "C": true,
-        "B": true,
-        "A": true
-      },
-      "terminals": {
-        "d": true,
-        "e": true,
-        "b": true,
-        "c": true,
-        "a": true
-      }
+      "nonterminals": [
+        "E",
+        "F",
+        "D",
+        "C",
+        "B",
+        "A"
+      ],
+      "terminals": [
+        "d",
+        "e",
+        "b",
+        "c",
+        "a"
+      ]
     },
     "grammar.start": "E",
     "grammar.productions": [
@@ -101703,10 +101703,10 @@ module.exports = {
         "a"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "E": {
         "d": true,
@@ -101753,12 +101753,12 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "E": true,
-      "D": true,
-      "F": true,
-      "C": true
-    },
+    "grammar.endable": [
+      "E",
+      "D",
+      "F",
+      "C"
+    ],
     "grammar.sentences": [
       [
         "e",
@@ -105651,22 +105651,22 @@ module.exports = {
         "reason": "it contains a reduce-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "R": true,
-      "StructVar": true,
-      "NVar": true,
-      "Var": true,
-      "Subvar": true,
-      "V": true
-    },
-    "grammar.terminals": {
-      "s": true,
-      "u": true,
-      ";": true,
-      ":": true,
-      "id": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "R",
+      "StructVar",
+      "NVar",
+      "Var",
+      "Subvar",
+      "V"
+    ],
+    "grammar.terminals": [
+      "s",
+      "u",
+      ";",
+      ":",
+      "id"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "s",
@@ -105693,22 +105693,22 @@ module.exports = {
         "Subvar",
         "V"
       ],
-      "nonterminals": {
-        "S": true,
-        "R": true,
-        "StructVar": true,
-        "NVar": true,
-        "Var": true,
-        "Subvar": true,
-        "V": true
-      },
-      "terminals": {
-        "s": true,
-        "u": true,
-        ";": true,
-        ":": true,
-        "id": true
-      }
+      "nonterminals": [
+        "S",
+        "R",
+        "StructVar",
+        "NVar",
+        "Var",
+        "Subvar",
+        "V"
+      ],
+      "terminals": [
+        "s",
+        "u",
+        ";",
+        ":",
+        "id"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -105763,12 +105763,12 @@ module.exports = {
         "id"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "S": true
-    },
+    "grammar.nullable": [
+      "S"
+    ],
     "grammar.first": {
       "R": {
         "s": true,
@@ -105828,12 +105828,12 @@ module.exports = {
         ":": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "R": true,
-      "StructVar": true,
-      "NVar": true
-    },
+    "grammar.endable": [
+      "S",
+      "R",
+      "StructVar",
+      "NVar"
+    ],
     "grammar.sentences": [
       [],
       [
@@ -109262,25 +109262,25 @@ module.exports = {
         "reason": "it contains a reduce-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "C": true,
-      "D": true,
-      "A": true,
-      "B": true,
-      "E": true
-    },
-    "grammar.terminals": {
-      ";": true,
-      "(": true,
-      ")": true,
-      "*": true,
-      "x": true,
-      "y": true,
-      "id": true,
-      "num": true,
-      "!": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "C",
+      "D",
+      "A",
+      "B",
+      "E"
+    ],
+    "grammar.terminals": [
+      ";",
+      "(",
+      ")",
+      "*",
+      "x",
+      "y",
+      "id",
+      "num",
+      "!"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         ";",
@@ -109309,25 +109309,25 @@ module.exports = {
         "B",
         "E"
       ],
-      "nonterminals": {
-        "S": true,
-        "C": true,
-        "D": true,
-        "A": true,
-        "B": true,
-        "E": true
-      },
-      "terminals": {
-        ";": true,
-        "(": true,
-        ")": true,
-        "*": true,
-        "x": true,
-        "y": true,
-        "id": true,
-        "num": true,
-        "!": true
-      }
+      "nonterminals": [
+        "S",
+        "C",
+        "D",
+        "A",
+        "B",
+        "E"
+      ],
+      "terminals": [
+        ";",
+        "(",
+        ")",
+        "*",
+        "x",
+        "y",
+        "id",
+        "num",
+        "!"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -109396,10 +109396,10 @@ module.exports = {
         ")"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "S": {
         "(": true,
@@ -109459,10 +109459,10 @@ module.exports = {
         "y": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "C": true
-    },
+    "grammar.endable": [
+      "S",
+      "C"
+    ],
     "grammar.sentences": [
       [
         "(",
@@ -115063,18 +115063,18 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "X": true,
-      "E": true,
-      "F": true,
-      "A": true
-    },
-    "grammar.terminals": {
-      "(": true,
-      ")": true,
-      "sq)": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "X",
+      "E",
+      "F",
+      "A"
+    ],
+    "grammar.terminals": [
+      "(",
+      ")",
+      "sq)"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "(",
@@ -115095,18 +115095,18 @@ module.exports = {
         "F",
         "A"
       ],
-      "nonterminals": {
-        "S": true,
-        "X": true,
-        "E": true,
-        "F": true,
-        "A": true
-      },
-      "terminals": {
-        "(": true,
-        ")": true,
-        "sq)": true
-      }
+      "nonterminals": [
+        "S",
+        "X",
+        "E",
+        "F",
+        "A"
+      ],
+      "terminals": [
+        "(",
+        ")",
+        "sq)"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -115153,14 +115153,14 @@ module.exports = {
         "A"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "A": true,
-      "E": true,
-      "F": true
-    },
+    "grammar.nullable": [
+      "A",
+      "E",
+      "F"
+    ],
     "grammar.first": {
       "S": {
         "(": true,
@@ -115195,10 +115195,10 @@ module.exports = {
         "(": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "X": true
-    },
+    "grammar.endable": [
+      "S",
+      "X"
+    ],
     "grammar.sentences": [
       [
         "sq)"
@@ -118122,19 +118122,19 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "A": true,
-      "B": true,
-      "C": true,
-      "D": true
-    },
-    "grammar.terminals": {
-      "a": true,
-      "b": true,
-      "c": true,
-      "d": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "grammar.terminals": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "a",
@@ -118156,19 +118156,19 @@ module.exports = {
         "C",
         "D"
       ],
-      "nonterminals": {
-        "S": true,
-        "A": true,
-        "B": true,
-        "C": true,
-        "D": true
-      },
-      "terminals": {
-        "a": true,
-        "b": true,
-        "c": true,
-        "d": true
-      }
+      "nonterminals": [
+        "S",
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "terminals": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -118213,12 +118213,12 @@ module.exports = {
         "B"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "A": true
-    },
+    "grammar.nullable": [
+      "A"
+    ],
     "grammar.first": {
       "A": {
         "a": true
@@ -118281,12 +118281,12 @@ module.exports = {
         "c": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "B": true,
-      "C": true,
-      "D": true
-    },
+    "grammar.endable": [
+      "S",
+      "B",
+      "C",
+      "D"
+    ],
     "grammar.sentences": [
       [
         "b",
@@ -123178,18 +123178,18 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "B": true,
-      "A": true,
-      "C": true
-    },
-    "grammar.terminals": {
-      "x": true,
-      "y": true,
-      "z": true,
-      "w": true,
-      "v": true
-    },
+    "grammar.nonterminals": [
+      "B",
+      "A",
+      "C"
+    ],
+    "grammar.terminals": [
+      "x",
+      "y",
+      "z",
+      "w",
+      "v"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "x",
@@ -123208,18 +123208,18 @@ module.exports = {
         "A",
         "C"
       ],
-      "nonterminals": {
-        "B": true,
-        "A": true,
-        "C": true
-      },
-      "terminals": {
-        "x": true,
-        "y": true,
-        "z": true,
-        "w": true,
-        "v": true
-      }
+      "nonterminals": [
+        "B",
+        "A",
+        "C"
+      ],
+      "terminals": [
+        "x",
+        "y",
+        "z",
+        "w",
+        "v"
+      ]
     },
     "grammar.start": "B",
     "grammar.productions": [
@@ -123251,12 +123251,12 @@ module.exports = {
         "v"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "A": true
-    },
+    "grammar.nullable": [
+      "A"
+    ],
     "grammar.first": {
       "B": {
         "x": true,
@@ -123281,10 +123281,10 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "B": true,
-      "C": true
-    },
+    "grammar.endable": [
+      "B",
+      "C"
+    ],
     "grammar.sentences": [
       [
         "v"
@@ -125309,17 +125309,17 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "A": true,
-      "B": true
-    },
-    "grammar.terminals": {
-      "d": true,
-      "a": true,
-      "b": true,
-      "c": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "A",
+      "B"
+    ],
+    "grammar.terminals": [
+      "d",
+      "a",
+      "b",
+      "c"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "d",
@@ -125337,17 +125337,17 @@ module.exports = {
         "A",
         "B"
       ],
-      "nonterminals": {
-        "S": true,
-        "A": true,
-        "B": true
-      },
-      "terminals": {
-        "d": true,
-        "a": true,
-        "b": true,
-        "c": true
-      }
+      "nonterminals": [
+        "S",
+        "A",
+        "B"
+      ],
+      "terminals": [
+        "d",
+        "a",
+        "b",
+        "c"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -125376,12 +125376,12 @@ module.exports = {
         "B"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "B": true
-    },
+    "grammar.nullable": [
+      "B"
+    ],
     "grammar.first": {
       "A": {
         "a": true,
@@ -125408,9 +125408,9 @@ module.exports = {
         "d": true
       }
     },
-    "grammar.endable": {
-      "S": true
-    },
+    "grammar.endable": [
+      "S"
+    ],
     "grammar.sentences": [
       [
         "a",
@@ -127677,15 +127677,15 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "B": true,
-      "C": true
-    },
-    "grammar.terminals": {
-      "a": true,
-      "b": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "B",
+      "C"
+    ],
+    "grammar.terminals": [
+      "a",
+      "b"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "a",
@@ -127701,15 +127701,15 @@ module.exports = {
         "B",
         "C"
       ],
-      "nonterminals": {
-        "A": true,
-        "B": true,
-        "C": true
-      },
-      "terminals": {
-        "a": true,
-        "b": true
-      }
+      "nonterminals": [
+        "A",
+        "B",
+        "C"
+      ],
+      "terminals": [
+        "a",
+        "b"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -127741,12 +127741,12 @@ module.exports = {
         "b"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "B": true
-    },
+    "grammar.nullable": [
+      "B"
+    ],
     "grammar.first": {
       "A": {
         "a": true
@@ -127770,10 +127770,10 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "A": true,
-      "C": true
-    },
+    "grammar.endable": [
+      "A",
+      "C"
+    ],
     "grammar.sentences": [
       [
         "a"
@@ -129764,19 +129764,19 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "EXPR": true,
-      "TERM": true,
-      "FACTOR": true
-    },
-    "grammar.terminals": {
-      "mult": true,
-      "add": true,
-      "num": true,
-      "lpar": true,
-      "rpar": true,
-      "star": true
-    },
+    "grammar.nonterminals": [
+      "EXPR",
+      "TERM",
+      "FACTOR"
+    ],
+    "grammar.terminals": [
+      "mult",
+      "add",
+      "num",
+      "lpar",
+      "rpar",
+      "star"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "mult",
@@ -129796,19 +129796,19 @@ module.exports = {
         "TERM",
         "FACTOR"
       ],
-      "nonterminals": {
-        "EXPR": true,
-        "TERM": true,
-        "FACTOR": true
-      },
-      "terminals": {
-        "mult": true,
-        "add": true,
-        "num": true,
-        "lpar": true,
-        "rpar": true,
-        "star": true
-      }
+      "nonterminals": [
+        "EXPR",
+        "TERM",
+        "FACTOR"
+      ],
+      "terminals": [
+        "mult",
+        "add",
+        "num",
+        "lpar",
+        "rpar",
+        "star"
+      ]
     },
     "grammar.start": "EXPR",
     "grammar.productions": [
@@ -129848,10 +129848,10 @@ module.exports = {
         "EXPR"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "FACTOR": {
         "num": true,
@@ -129889,11 +129889,11 @@ module.exports = {
         "rpar": true
       }
     },
-    "grammar.endable": {
-      "EXPR": true,
-      "TERM": true,
-      "FACTOR": true
-    },
+    "grammar.endable": [
+      "EXPR",
+      "TERM",
+      "FACTOR"
+    ],
     "grammar.sentences": [
       [
         "num"
@@ -135067,14 +135067,14 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "B": true,
-      "C": true
-    },
-    "grammar.terminals": {
-      "a": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "B",
+      "C"
+    ],
+    "grammar.terminals": [
+      "a"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "a"
@@ -135089,14 +135089,14 @@ module.exports = {
         "B",
         "C"
       ],
-      "nonterminals": {
-        "A": true,
-        "B": true,
-        "C": true
-      },
-      "terminals": {
-        "a": true
-      }
+      "nonterminals": [
+        "A",
+        "B",
+        "C"
+      ],
+      "terminals": [
+        "a"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -135127,13 +135127,13 @@ module.exports = {
         "C"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "B": true,
-      "C": true
-    },
+    "grammar.nullable": [
+      "B",
+      "C"
+    ],
     "grammar.first": {
       "A": {
         "a": true
@@ -135156,10 +135156,10 @@ module.exports = {
         "Grammar.END": true
       }
     },
-    "grammar.endable": {
-      "A": true,
-      "C": true
-    },
+    "grammar.endable": [
+      "A",
+      "C"
+    ],
     "grammar.sentences": [
       [
         "a"
@@ -137131,18 +137131,18 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "B": true,
-      "C": true
-    },
-    "grammar.terminals": {
-      "x": true,
-      "y": true,
-      "n": true,
-      "z": true,
-      "r": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "B",
+      "C"
+    ],
+    "grammar.terminals": [
+      "x",
+      "y",
+      "n",
+      "z",
+      "r"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "x",
@@ -137161,18 +137161,18 @@ module.exports = {
         "B",
         "C"
       ],
-      "nonterminals": {
-        "A": true,
-        "B": true,
-        "C": true
-      },
-      "terminals": {
-        "x": true,
-        "y": true,
-        "n": true,
-        "z": true,
-        "r": true
-      }
+      "nonterminals": [
+        "A",
+        "B",
+        "C"
+      ],
+      "terminals": [
+        "x",
+        "y",
+        "n",
+        "z",
+        "r"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -137210,10 +137210,10 @@ module.exports = {
         "r"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "B": {
         "x": true,
@@ -137254,11 +137254,11 @@ module.exports = {
         "y": true
       }
     },
-    "grammar.endable": {
-      "A": true,
-      "B": true,
-      "C": true
-    },
+    "grammar.endable": [
+      "A",
+      "B",
+      "C"
+    ],
     "grammar.sentences": [
       [
         "z",
@@ -142698,16 +142698,16 @@ module.exports = {
         "reason": "it contains a shift-reduce conflict"
       }
     },
-    "grammar.nonterminals": {
-      "A": true,
-      "F": true,
-      "B": true,
-      "G": true
-    },
-    "grammar.terminals": {
-      "b": true,
-      "x": true
-    },
+    "grammar.nonterminals": [
+      "A",
+      "F",
+      "B",
+      "G"
+    ],
+    "grammar.terminals": [
+      "b",
+      "x"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "b",
@@ -142725,16 +142725,16 @@ module.exports = {
         "B",
         "G"
       ],
-      "nonterminals": {
-        "A": true,
-        "F": true,
-        "B": true,
-        "G": true
-      },
-      "terminals": {
-        "b": true,
-        "x": true
-      }
+      "nonterminals": [
+        "A",
+        "F",
+        "B",
+        "G"
+      ],
+      "terminals": [
+        "b",
+        "x"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -142766,12 +142766,12 @@ module.exports = {
         "G"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "G": true
-    },
+    "grammar.nullable": [
+      "G"
+    ],
     "grammar.first": {
       "A": {
         "b": true
@@ -142805,12 +142805,12 @@ module.exports = {
         "x": true
       }
     },
-    "grammar.endable": {
-      "A": true,
-      "F": true,
-      "B": true,
-      "G": true
-    },
+    "grammar.endable": [
+      "A",
+      "F",
+      "B",
+      "G"
+    ],
     "grammar.sentences": [
       [
         "b",
@@ -145188,13 +145188,13 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "A": true
-    },
-    "grammar.terminals": {
-      "b": true,
-      "c": true
-    },
+    "grammar.nonterminals": [
+      "A"
+    ],
+    "grammar.terminals": [
+      "b",
+      "c"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "b",
@@ -145206,13 +145206,13 @@ module.exports = {
       "productionOrder": [
         "A"
       ],
-      "nonterminals": {
-        "A": true
-      },
-      "terminals": {
-        "b": true,
-        "c": true
-      }
+      "nonterminals": [
+        "A"
+      ],
+      "terminals": [
+        "b",
+        "c"
+      ]
     },
     "grammar.start": "A",
     "grammar.productions": [
@@ -145226,10 +145226,10 @@ module.exports = {
         "c"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {},
+    "grammar.nullable": [],
     "grammar.first": {
       "A": {
         "c": true
@@ -145241,9 +145241,9 @@ module.exports = {
         "b": true
       }
     },
-    "grammar.endable": {
-      "A": true
-    },
+    "grammar.endable": [
+      "A"
+    ],
     "grammar.sentences": [
       [
         "c"
@@ -146466,25 +146466,25 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "EXP": true,
-      "TERM": true,
-      "STMTS": true,
-      "STMT": true,
-      "LEXP": true,
-      "INDEX": true
-    },
-    "grammar.terminals": {
-      "add": true,
-      "id": true,
-      "let": true,
-      "in": true,
-      "end": true,
-      "assign": true,
-      "semi": true,
-      "lpar": true,
-      "rpar": true
-    },
+    "grammar.nonterminals": [
+      "EXP",
+      "TERM",
+      "STMTS",
+      "STMT",
+      "LEXP",
+      "INDEX"
+    ],
+    "grammar.terminals": [
+      "add",
+      "id",
+      "let",
+      "in",
+      "end",
+      "assign",
+      "semi",
+      "lpar",
+      "rpar"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "add",
@@ -146513,25 +146513,25 @@ module.exports = {
         "LEXP",
         "INDEX"
       ],
-      "nonterminals": {
-        "EXP": true,
-        "TERM": true,
-        "STMTS": true,
-        "STMT": true,
-        "LEXP": true,
-        "INDEX": true
-      },
-      "terminals": {
-        "add": true,
-        "id": true,
-        "let": true,
-        "in": true,
-        "end": true,
-        "assign": true,
-        "semi": true,
-        "lpar": true,
-        "rpar": true
-      }
+      "nonterminals": [
+        "EXP",
+        "TERM",
+        "STMTS",
+        "STMT",
+        "LEXP",
+        "INDEX"
+      ],
+      "terminals": [
+        "add",
+        "id",
+        "let",
+        "in",
+        "end",
+        "assign",
+        "semi",
+        "lpar",
+        "rpar"
+      ]
     },
     "grammar.start": "EXP",
     "grammar.productions": [
@@ -146593,12 +146593,12 @@ module.exports = {
         "rpar"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "STMTS": true
-    },
+    "grammar.nullable": [
+      "STMTS"
+    ],
     "grammar.first": {
       "TERM": {
         "id": true,
@@ -146658,11 +146658,11 @@ module.exports = {
         "id": true
       }
     },
-    "grammar.endable": {
-      "EXP": true,
-      "TERM": true,
-      "INDEX": true
-    },
+    "grammar.endable": [
+      "EXP",
+      "TERM",
+      "INDEX"
+    ],
     "grammar.sentences": [
       [
         "id"
@@ -154220,19 +154220,19 @@ module.exports = {
         "member": true
       }
     },
-    "grammar.nonterminals": {
-      "S": true,
-      "E": true,
-      "B": true,
-      "C": true,
-      "D": true,
-      "T": true,
-      "X": true
-    },
-    "grammar.terminals": {
-      "+": true,
-      "*": true
-    },
+    "grammar.nonterminals": [
+      "S",
+      "E",
+      "B",
+      "C",
+      "D",
+      "T",
+      "X"
+    ],
+    "grammar.terminals": [
+      "+",
+      "*"
+    ],
     "grammar.symbolInfo": {
       "terminalOrder": [
         "+",
@@ -154256,19 +154256,19 @@ module.exports = {
         "T",
         "X"
       ],
-      "nonterminals": {
-        "S": true,
-        "E": true,
-        "B": true,
-        "C": true,
-        "D": true,
-        "T": true,
-        "X": true
-      },
-      "terminals": {
-        "+": true,
-        "*": true
-      }
+      "nonterminals": [
+        "S",
+        "E",
+        "B",
+        "C",
+        "D",
+        "T",
+        "X"
+      ],
+      "terminals": [
+        "+",
+        "*"
+      ]
     },
     "grammar.start": "S",
     "grammar.productions": [
@@ -154312,18 +154312,18 @@ module.exports = {
         "X"
       ]
     ],
-    "grammar.unreachable": {},
-    "grammar.unrealizable": {},
+    "grammar.unreachable": [],
+    "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
-    "grammar.nullable": {
-      "X": true,
-      "T": true,
-      "E": true,
-      "D": true,
-      "S": true,
-      "C": true,
-      "B": true
-    },
+    "grammar.nullable": [
+      "X",
+      "T",
+      "E",
+      "D",
+      "S",
+      "C",
+      "B"
+    ],
     "grammar.first": {
       "E": {
         "+": true,
@@ -154380,12 +154380,12 @@ module.exports = {
         "*": true
       }
     },
-    "grammar.endable": {
-      "S": true,
-      "E": true,
-      "T": true,
-      "X": true
-    },
+    "grammar.endable": [
+      "S",
+      "E",
+      "T",
+      "X"
+    ],
     "grammar.sentences": [
       [],
       [

@@ -16,7 +16,7 @@ module.exports = function(grammar) {
   for (i = 0; i < grammar.productions.length; i++) {
     for (j = 1; j < grammar.productions[i].length; j++) {
 
-      if (nonterminals[grammar.productions[i][j]]) {
+      if (nonterminals.has(grammar.productions[i][j])) {
         Relation.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
       }
 
@@ -29,12 +29,12 @@ module.exports = function(grammar) {
 
   // Collect unreachable nonterminals
 
-  unreachable = {};
+  unreachable = new Set();
 
-  for (s in nonterminals) {
+  for (s of nonterminals) {
 
     if (s != start && (!closure[start] || !closure[start][s])) {
-      unreachable[s] = true;
+      unreachable.add(s);
     }
 
   }

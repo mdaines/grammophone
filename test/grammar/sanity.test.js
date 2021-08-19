@@ -1,63 +1,28 @@
 const Grammar = require("../../src/grammar");
-const Sets = require("../../src/sets");
 
 function calculate(productions, calculation) {
-
   return new Grammar(productions).calculate(calculation);
-
-}
-
-function isSetEqual(a, b) {
-
-  return Sets.count(Sets.intersection(a, b)) === Sets.count(a);
-
-}
-
-function assertSetEqual(expected, actual, message) {
-
-  expect(
-    isSetEqual(expected, actual)
-  ).toBe(true);
-
-}
-
-function assertArrayEqual(expected, actual, message) {
-
-  expect(actual).toStrictEqual(expected);
-
 }
 
 describe("GrammarSanityChecksTest", function() {
-
   it("testUnreachable", function() {
-
-    assertSetEqual({ "C": true, "D": true }, calculate([["A", "B"], ["B"], ["C", "D"], ["D"]], "grammar.unreachable"));
-
+    expect(calculate([["A", "B"], ["B"], ["C", "D"], ["D"]], "grammar.unreachable")).toEqual(new Set(["C", "D"]));
   });
 
   it("testUnrealizable", function() {
-
-    assertSetEqual({ "A": true, "B": true }, calculate([["A", "B"], ["B", "y", "B"]], "grammar.unrealizable"));
-
+    expect(calculate([["A", "B"], ["B", "y", "B"]], "grammar.unrealizable")).toEqual(new Set(["A", "B"]));
   });
 
   it("testCycles", function() {
-
-    assertArrayEqual(["A", "B", "C", "A"], calculate([["A", "B"], ["B", "C"], ["C", "A"]], "grammar.cycle"));
-    assertArrayEqual(["A", "A"], calculate([["A", "A"]], "grammar.cycle"));
-
+    expect(calculate([["A", "B"], ["B", "C"], ["C", "A"]], "grammar.cycle")).toEqual(["A", "B", "C", "A"]);
+    expect(calculate([["A", "A"]], "grammar.cycle")).toEqual(["A", "A"]);
   });
 
   it("testNullAmbiguity", function() {
-
-    assertArrayEqual([0, 1], calculate([["A", "B"], ["A"], ["B"]], "grammar.nullAmbiguity"));
-
+    expect(calculate([["A", "B"], ["A"], ["B"]], "grammar.nullAmbiguity")).toEqual([0, 1]);
   });
 
   it("testAmbiguity", function() {
-
-    assertArrayEqual(["a"], calculate([["A", "a", "C"], ["A", "B", "a"], ["B", "a", "B"], ["B"], ["C", "a", "C"], ["C"]], "grammar.ambiguous"));
-
+    expect(calculate([["A", "a", "C"], ["A", "B", "a"], ["B", "a", "B"], ["B"], ["C", "a", "C"], ["C"]], "grammar.ambiguous")).toEqual(["a"]);
   });
-
 });

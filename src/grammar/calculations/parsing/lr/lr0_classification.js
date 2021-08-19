@@ -12,7 +12,7 @@ module.exports = function(grammar) {
 
     if (table[i].reduce.length > 0) {
       for (s in table[i].shift) {
-        if (terminals[s]) {
+        if (terminals.has(s)) {
           return { member: false, reason: "it contains a shift-reduce conflict" };
         }
       }

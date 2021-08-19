@@ -43,7 +43,7 @@ module.exports = function(grammar) {
   for (i = 0; i < grammar.productions.length; i++) {
     for (j = 1; j < grammar.productions[i].length; j++) {
 
-      if (nonterminals[grammar.productions[i][j]]) {
+      if (nonterminals.has(grammar.productions[i][j])) {
 
         result.push({
           name: "expand",

@@ -9,7 +9,7 @@ function epsilonSeparate(grammar, group, epsilon) {
 
   do {
     symbol += "*";
-  } while (typeof nonterminals[symbol] !== "undefined");
+  } while (nonterminals.has(symbol));
 
   // Copy productions to changes, marking those we're removing.
 
@@ -65,7 +65,7 @@ module.exports = function(grammar) {
   // while collecting its non-null productions and its null (epsilon)
   // production. If it is unambiguously nullable, add it to the result.
 
-  for (nt in nonterminals) {
+  for (nt of nonterminals) {
 
     group = [];
     epsilon = -1;

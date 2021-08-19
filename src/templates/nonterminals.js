@@ -21,12 +21,15 @@ module.exports = function(input) {
       ),
 
       info.productionOrder.map(function(symbol) {
+        let firstSymbols = first[symbol] ? new Set(Object.keys(first[symbol])) : new Set();
+        let followSymbols = follow[symbol] ? new Set(Object.keys(follow[symbol])) : new Set();
+
         return m("tr",
           m("td", Helpers.formatSymbol(symbol, info)),
-          m("td", nullable[symbol] ? "Nullable" : ""),
-          m("td", endable[symbol] ? "Endable" : ""),
-          m("td", Helpers.formatSymbolList(Helpers.listSymbols(first[symbol] || {}, info.terminalOrder), info)),
-          m("td", Helpers.formatSymbolList(Helpers.listSymbols(follow[symbol] || {}, info.terminalOrder), info))
+          m("td", nullable.has(symbol) ? "Nullable" : ""),
+          m("td", endable.has(symbol) ? "Endable" : ""),
+          m("td", Helpers.formatSymbolList(Helpers.listSymbols(firstSymbols, info.terminalOrder), info)),
+          m("td", Helpers.formatSymbolList(Helpers.listSymbols(followSymbols, info.terminalOrder), info))
         );
       })
     )

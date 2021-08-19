@@ -1,112 +1,98 @@
-const Sets = require("../../src/sets");
+const SetOperations = require("../../src/set_operations");
 const EXAMPLE_GRAMMARS = require("../fixtures/example_grammars.js");
 const Grammar = require("../../src/grammar");
 
 function classifications(grammar) {
-  var classification = grammar.calculate("grammar.classification");
-  var k, result;
+  let classification = grammar.calculate("grammar.classification");
+  let result = new Set();
 
-  result = {};
-
-  for (k in classification) {
+  for (let k in classification) {
     if (classification[k].member) {
-      result[k] = true;
+      result.add(k);
     }
   }
 
   return result;
 }
 
-function isSetEqual(a, b) {
-  return Sets.count(Sets.intersection(a, b)) === Sets.count(a);
-}
-
-var SUPPORTED_CLASSIFICATIONS = {
-  ll1: true,
-  lr0: true,
-  slr1: true,
-  lr1: true,
-  lalr1: true
-};
-
 function assertExampleClassifications(expected, name) {
-  var grammar = new Grammar(EXAMPLE_GRAMMARS[name]);
-  var actual = Sets.intersection(classifications(grammar), SUPPORTED_CLASSIFICATIONS);
+  let grammar = new Grammar(EXAMPLE_GRAMMARS[name]);
 
-  expect(isSetEqual(expected, actual)).toBe(true);
+  // expected should be a subset of classifications
+  expect(SetOperations.intersection(expected, classifications(grammar))).toEqual(expected);
 }
 
 describe("grammar.classification", function() {
   it("agrees with smlweb", function() {
-    assertExampleClassifications({ "lr0": true }, "ll0-lr0-0.cfg");
-    assertExampleClassifications({ "lr0": true }, "ll0-lr0-1.cfg");
-    assertExampleClassifications({ "lr0": true }, "ll0-lr0-2.cfg");
+    assertExampleClassifications(new Set(["lr0"]), "ll0-lr0-0.cfg");
+    assertExampleClassifications(new Set(["lr0"]), "ll0-lr0-1.cfg");
+    assertExampleClassifications(new Set(["lr0"]), "ll0-lr0-2.cfg");
 
-    assertExampleClassifications({ "ll1": true, "lr0": true }, "ll1-lr0-0.cfg");
-    assertExampleClassifications({ "ll1": true, "lr0": true }, "ll1-lr0-1.cfg");
-    assertExampleClassifications({ "ll1": true, "lr0": true }, "ll1-lr0-2.cfg");
+    assertExampleClassifications(new Set(["ll1", "lr0"]), "ll1-lr0-0.cfg");
+    assertExampleClassifications(new Set(["ll1", "lr0"]), "ll1-lr0-1.cfg");
+    assertExampleClassifications(new Set(["ll1", "lr0"]), "ll1-lr0-2.cfg");
 
-    assertExampleClassifications({ "lr0": true }, "ll2-lr0-0.cfg");
-    assertExampleClassifications({ "lr0": true }, "ll2-lr0-1.cfg");
-    assertExampleClassifications({ "lr0": true }, "ll2-lr0-2.cfg");
+    assertExampleClassifications(new Set(["lr0"]), "ll2-lr0-0.cfg");
+    assertExampleClassifications(new Set(["lr0"]), "ll2-lr0-1.cfg");
+    assertExampleClassifications(new Set(["lr0"]), "ll2-lr0-2.cfg");
 
-    assertExampleClassifications({ "lr0": true }, "oth-lr0-0.cfg");
-    assertExampleClassifications({ "lr0": true }, "oth-lr0-1.cfg");
-    assertExampleClassifications({ "lr0": true }, "oth-lr0-2.cfg");
-    assertExampleClassifications({ "lr0": true }, "oth-lr0-3.cfg");
+    assertExampleClassifications(new Set(["lr0"]), "oth-lr0-0.cfg");
+    assertExampleClassifications(new Set(["lr0"]), "oth-lr0-1.cfg");
+    assertExampleClassifications(new Set(["lr0"]), "oth-lr0-2.cfg");
+    assertExampleClassifications(new Set(["lr0"]), "oth-lr0-3.cfg");
 
-    assertExampleClassifications({ "ll1": true, "slr1": true }, "ll1-slr1-0.cfg");
-    assertExampleClassifications({ "ll1": true, "slr1": true }, "ll1-slr1-1.cfg");
-    assertExampleClassifications({ "ll1": true, "slr1": true }, "ll1-slr1-2.cfg");
+    assertExampleClassifications(new Set(["ll1", "slr1"]), "ll1-slr1-0.cfg");
+    assertExampleClassifications(new Set(["ll1", "slr1"]), "ll1-slr1-1.cfg");
+    assertExampleClassifications(new Set(["ll1", "slr1"]), "ll1-slr1-2.cfg");
 
-    assertExampleClassifications({ "slr1": true }, "ll2-slr1-0.cfg");
-    assertExampleClassifications({ "slr1": true }, "ll2-slr1-1.cfg");
-    assertExampleClassifications({ "slr1": true }, "ll2-slr1-2.cfg");
+    assertExampleClassifications(new Set(["slr1"]), "ll2-slr1-0.cfg");
+    assertExampleClassifications(new Set(["slr1"]), "ll2-slr1-1.cfg");
+    assertExampleClassifications(new Set(["slr1"]), "ll2-slr1-2.cfg");
 
-    assertExampleClassifications({ "slr1": true }, "oth-slr1-0.cfg");
-    assertExampleClassifications({ "slr1": true }, "oth-slr1-1.cfg");
-    assertExampleClassifications({ "slr1": true }, "oth-slr1-2.cfg");
+    assertExampleClassifications(new Set(["slr1"]), "oth-slr1-0.cfg");
+    assertExampleClassifications(new Set(["slr1"]), "oth-slr1-1.cfg");
+    assertExampleClassifications(new Set(["slr1"]), "oth-slr1-2.cfg");
 
-    assertExampleClassifications({ "ll1": true, "lalr1": true }, "ll1-lalr1-0.cfg");
-    assertExampleClassifications({ "ll1": true, "lalr1": true }, "ll1-lalr1-1.cfg");
-    assertExampleClassifications({ "ll1": true, "lalr1": true }, "ll1-lalr1-2.cfg");
+    assertExampleClassifications(new Set(["ll1", "lalr1"]), "ll1-lalr1-0.cfg");
+    assertExampleClassifications(new Set(["ll1", "lalr1"]), "ll1-lalr1-1.cfg");
+    assertExampleClassifications(new Set(["ll1", "lalr1"]), "ll1-lalr1-2.cfg");
 
-    assertExampleClassifications({ "lalr1": true }, "ll2-lalr1-0.cfg");
-    assertExampleClassifications({ "lalr1": true }, "ll2-lalr1-1.cfg");
-    assertExampleClassifications({ "lalr1": true }, "ll2-lalr1-2.cfg");
+    assertExampleClassifications(new Set(["lalr1"]), "ll2-lalr1-0.cfg");
+    assertExampleClassifications(new Set(["lalr1"]), "ll2-lalr1-1.cfg");
+    assertExampleClassifications(new Set(["lalr1"]), "ll2-lalr1-2.cfg");
 
-    assertExampleClassifications({ "lalr1": true }, "oth-lalr1-0.cfg");
-    assertExampleClassifications({ "lalr1": true }, "oth-lalr1-1.cfg");
-    assertExampleClassifications({ "lalr1": true }, "oth-lalr1-2.cfg");
-    assertExampleClassifications({ "lalr1": true }, "oth-lalr1-3.cfg");
+    assertExampleClassifications(new Set(["lalr1"]), "oth-lalr1-0.cfg");
+    assertExampleClassifications(new Set(["lalr1"]), "oth-lalr1-1.cfg");
+    assertExampleClassifications(new Set(["lalr1"]), "oth-lalr1-2.cfg");
+    assertExampleClassifications(new Set(["lalr1"]), "oth-lalr1-3.cfg");
 
-    assertExampleClassifications({ "ll1": true, "lr1": true }, "ll1-lr1-0.cfg");
-    assertExampleClassifications({ "ll1": true, "lr1": true }, "ll1-lr1-1.cfg");
-    assertExampleClassifications({ "ll1": true, "lr1": true }, "ll1-lr1-2.cfg");
+    assertExampleClassifications(new Set(["ll1", "lr1"]), "ll1-lr1-0.cfg");
+    assertExampleClassifications(new Set(["ll1", "lr1"]), "ll1-lr1-1.cfg");
+    assertExampleClassifications(new Set(["ll1", "lr1"]), "ll1-lr1-2.cfg");
 
-    assertExampleClassifications({ "lr1": true }, "ll2-lr1-0.cfg");
-    assertExampleClassifications({ "lr1": true }, "ll2-lr1-1.cfg");
-    assertExampleClassifications({ "lr1": true }, "ll2-lr1-2.cfg");
+    assertExampleClassifications(new Set(["lr1"]), "ll2-lr1-0.cfg");
+    assertExampleClassifications(new Set(["lr1"]), "ll2-lr1-1.cfg");
+    assertExampleClassifications(new Set(["lr1"]), "ll2-lr1-2.cfg");
 
-    assertExampleClassifications({ "lr1": true }, "oth-lr1-0.cfg");
-    assertExampleClassifications({ "lr1": true }, "oth-lr1-1.cfg");
-    assertExampleClassifications({ "lr1": true }, "oth-lr1-2.cfg");
+    assertExampleClassifications(new Set(["lr1"]), "oth-lr1-0.cfg");
+    assertExampleClassifications(new Set(["lr1"]), "oth-lr1-1.cfg");
+    assertExampleClassifications(new Set(["lr1"]), "oth-lr1-2.cfg");
 
-    assertExampleClassifications({ }, "ll2-lr2-0.cfg");
-    assertExampleClassifications({ }, "ll2-lr2-1.cfg");
-    assertExampleClassifications({ }, "ll2-lr2-2.cfg");
-    assertExampleClassifications({ }, "ll2-lr2-3.cfg");
-    assertExampleClassifications({ }, "ll2-lr2-4.cfg");
+    assertExampleClassifications(new Set(), "ll2-lr2-0.cfg");
+    assertExampleClassifications(new Set(), "ll2-lr2-1.cfg");
+    assertExampleClassifications(new Set(), "ll2-lr2-2.cfg");
+    assertExampleClassifications(new Set(), "ll2-lr2-3.cfg");
+    assertExampleClassifications(new Set(), "ll2-lr2-4.cfg");
 
-    assertExampleClassifications({ }, "oth-lr2-0.cfg");
-    assertExampleClassifications({ }, "oth-lr2-1.cfg");
-    assertExampleClassifications({ }, "oth-lr2-2.cfg");
+    assertExampleClassifications(new Set(), "oth-lr2-0.cfg");
+    assertExampleClassifications(new Set(), "oth-lr2-1.cfg");
+    assertExampleClassifications(new Set(), "oth-lr2-2.cfg");
 
-    assertExampleClassifications({ }, "oth-oth-0.cfg");
-    assertExampleClassifications({ }, "oth-oth-1.cfg");
-    assertExampleClassifications({ }, "oth-oth-2.cfg");
-    assertExampleClassifications({ }, "oth-oth-3.cfg");
-    assertExampleClassifications({ }, "oth-oth-4.cfg");
-    assertExampleClassifications({ }, "oth-oth-5.cfg");
+    assertExampleClassifications(new Set(), "oth-oth-0.cfg");
+    assertExampleClassifications(new Set(), "oth-oth-1.cfg");
+    assertExampleClassifications(new Set(), "oth-oth-2.cfg");
+    assertExampleClassifications(new Set(), "oth-oth-3.cfg");
+    assertExampleClassifications(new Set(), "oth-oth-4.cfg");
+    assertExampleClassifications(new Set(), "oth-oth-5.cfg");
   });
 });

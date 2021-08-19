@@ -3,6 +3,7 @@ const Calculations = require("../../src/grammar/calculations");
 const exampleGrammars = require("./example_grammars");
 const fs = require("fs");
 const path = require("path");
+const prepare = require("./serialization").prepare;
 
 let output = {};
 
@@ -12,7 +13,9 @@ Object.keys(exampleGrammars).forEach(function(exampleName) {
   output[exampleName] = {};
 
   Object.keys(Calculations).forEach(function(calculationName) {
-    output[exampleName][calculationName] = grammar.calculate(calculationName);
+    let result = grammar.calculate(calculationName);
+
+    output[exampleName][calculationName] = prepare(calculationName, result);
   });
 });
 

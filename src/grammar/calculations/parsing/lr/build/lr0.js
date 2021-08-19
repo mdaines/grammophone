@@ -26,7 +26,7 @@ module.exports = {
 
     // Which productions have been used?
 
-    var used = {};
+    var used = new Set();
 
     // Copy the kernel as the initial list of items
 
@@ -65,9 +65,9 @@ module.exports = {
 
         for (j = 0; j < grammar.productions.length; j++) {
 
-          if (!used[j] && grammar.productions[j][0] == symbol) {
+          if (!used.has(j) && grammar.productions[j][0] == symbol) {
             added.push({ production: j, index: 0 });
-            used[j] = true;
+            used.add(j);
           }
 
         }

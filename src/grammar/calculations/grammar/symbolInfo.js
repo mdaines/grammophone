@@ -21,11 +21,11 @@ module.exports = function(grammar) {
 
       s = grammar.productions[i][j];
 
-      if (nonterminals[s] && nonterminalOrder.indexOf(s) === -1) {
+      if (nonterminals.has(s) && nonterminalOrder.indexOf(s) === -1) {
         nonterminalOrder.push(s);
       }
 
-      if (terminals[s] && terminalOrder.indexOf(s) === -1) {
+      if (terminals.has(s) && terminalOrder.indexOf(s) === -1) {
         terminalOrder.push(s);
       }
 

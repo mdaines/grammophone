@@ -1,6 +1,6 @@
 module.exports = function(grammar) {
 
-  var nullable = {};
+  var nullable = new Set();
   var added;
   var i, j, head;
 
@@ -11,15 +11,15 @@ module.exports = function(grammar) {
     for (i = 0; i < grammar.productions.length; i++) {
 
       for (j = 1; j < grammar.productions[i].length; j++) {
-        if (!nullable[grammar.productions[i][j]]) {
+        if (!nullable.has(grammar.productions[i][j])) {
           break;
         }
       }
 
       head = grammar.productions[i][0];
 
-      if (j == grammar.productions[i].length && !nullable[head]) {
-        nullable[head] = true;
+      if (j == grammar.productions[i].length && !nullable.has(head)) {
+        nullable.add(head);
         added.push(head);
       }
 

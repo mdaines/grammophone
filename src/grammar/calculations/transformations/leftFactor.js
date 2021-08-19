@@ -13,7 +13,7 @@ function leftFactor(grammar, group, prefix) {
 
   do {
     symbol += "'";
-  } while (typeof nonterminals[symbol] !== "undefined");
+  } while (nonterminals.has(symbol));
 
   // Copy productions to changes, marking those we're removing.
 
