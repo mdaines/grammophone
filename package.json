@@ -19,6 +19,6 @@
     "test": "jest",
     "generate-lezer-parser": "yarn lezer-generator --cjs --output src/parser/rules.js src/parser/rules.grammar",
     "build": "rollup -c",
-    "lint": "yarn jshint --exclude build,node_modules,lib ."
+    "lint": "yarn jshint --exclude build,lib,node_modules,test/fixtures/example_output.js ."
   }
 }
