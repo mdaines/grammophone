@@ -1,50 +1,7 @@
 const Grammar = require("../../src/grammar");
-const Sets = require("../../src/sets");
 
-function calculate(grammar, calculation) {
-
-  return grammar.calculate(calculation);
-
-}
-
-function isSetEqual(a, b) {
-
-  return Sets.count(Sets.intersection(a, b)) === Sets.count(a);
-
-}
-
-function isRelationEqual(a, b) {
-
-  var k;
-
-  if (Sets.count(a) !== Sets.count(b)) {
-    return false;
-  }
-
-  for (k in a) {
-    if (!isSetEqual(a[k], b[k])) {
-      return false;
-    }
-  }
-
-  return true;
-
-}
-
-function assertRelationEqual(expected, actual, message) {
-
-  expect(
-    isRelationEqual(expected, actual)
-  ).toBe(true);
-
-}
-
-function assertSetEqual(expected, actual, message) {
-
-  expect(
-    isSetEqual(expected, actual)
-  ).toBe(true);
-
+function calculate(productions, calculation) {
+  return new Grammar(productions).calculate(calculation);
 }
 
 var Fixtures = {
@@ -82,63 +39,55 @@ var Fixtures = {
 };
 
 describe("GrammarNonterminalsTest", function() {
-
   it("testFirst", function() {
-
-    assertRelationEqual({
+    expect(calculate(Fixtures.expressions, "grammar.first")).toEqual({
       "exp": { "(": true, "number": true },
       "term": { "(": true, "number": true },
       "factor": { "(": true, "number": true },
       "addop": { "+": true, "-": true },
       "mulop": { "*": true }
-    }, calculate(new Grammar(Fixtures.expressions), "grammar.first"));
+    });
 
-    assertRelationEqual({
+    expect(calculate(Fixtures.ifelse, "grammar.first")).toEqual({
       "statement": { "if": true, "other": true },
       "if-stmt": { "if": true },
       "else-part": { "else": true },
       "exp": { "0": true, "1": true }
-    }, calculate(new Grammar(Fixtures.ifelse), "grammar.first"));
+    });
 
-    assertRelationEqual({
+    expect(calculate(Fixtures.statements, "grammar.first")).toEqual({
       "stmt-sequence": { "s": true },
       "stmt-seq'": { ";": true },
       "stmt": { "s": true }
-    }, calculate(new Grammar(Fixtures.statements), "grammar.first"));
-
+    });
   });
 
   it("testFollow", function() {
-
-    assertRelationEqual({
-      "exp": { "Grammar.END": true, "+": true, "-": true },
+    expect(calculate(Fixtures.expressions, "grammar.follow")).toEqual({
+      "exp": { "Grammar.END": true, "+": true, "-": true, ")": true },
       "term": { "Grammar.END": true, "+": true, "-": true, "*": true, ")": true },
       "factor": { "Grammar.END": true, "+": true, "-": true, "*": true, ")": true },
       "addop": { "(": true, "number": true },
       "mulop": { "(": true, "number": true }
-    }, calculate(new Grammar(Fixtures.expressions), "grammar.follow"));
+    });
 
-    assertRelationEqual({
+    expect(calculate(Fixtures.ifelse, "grammar.follow")).toEqual({
       "statement": { "Grammar.END": true, "else": true },
       "if-stmt": { "Grammar.END": true, "else": true },
       "else-part": { "Grammar.END": true, "else": true },
       "exp": { ")": true }
-    }, calculate(new Grammar(Fixtures.ifelse), "grammar.follow"));
+    });
 
-    assertRelationEqual({
+    expect(calculate(Fixtures.statements, "grammar.follow")).toEqual({
       "stmt-sequence": { "Grammar.END": true },
       "stmt-seq'": { "Grammar.END": true },
       "stmt": { ";": true, "Grammar.END": true }
-    }, calculate(new Grammar(Fixtures.statements), "grammar.follow"));
-
+    });
   });
 
   it("testNullable", function() {
-
-    assertSetEqual({ }, calculate(new Grammar(Fixtures.expressions), "grammar.nullable"));
-    assertSetEqual({ "else-part": true }, calculate(new Grammar(Fixtures.ifelse), "grammar.nullable"));
-    assertSetEqual({ "stmt-seq'": true }, calculate(new Grammar(Fixtures.statements), "grammar.nullable"));
-
+    expect(calculate(Fixtures.expressions, "grammar.nullable")).toEqual(new Set());
+    expect(calculate(Fixtures.ifelse, "grammar.nullable")).toEqual(new Set(["else-part"]));
+    expect(calculate(Fixtures.statements, "grammar.nullable")).toEqual(new Set(["stmt-seq'"]));
   });
-
 });

@@ -17,12 +17,12 @@ function listSymbols(set, order) {
   let result = [];
 
   for (let i = 0; i < order.length; i++) {
-    if (set[order[i]]) {
+    if (set.has(order[i])) {
       result.push(order[i]);
     }
   }
 
-  if (set[END]) {
+  if (set.has(END)) {
     result.push(END);
   }
 
@@ -53,9 +53,9 @@ function prettifySymbol(symbol) {
 function formatSymbol(symbol, info) {
   if (symbol == END) {
     return m("u", "$");
-  } else if (info.nonterminals[symbol]) {
+  } else if (info.nonterminals.has(symbol)) {
     return m("i", prettifySymbol(symbol));
-  } else if (info.terminals[symbol]) {
+  } else if (info.terminals.has(symbol)) {
     return m("b", prettifySymbol(symbol));
   } else {
     throw new Error("Unknown symbol: " + symbol);
@@ -123,7 +123,7 @@ function barePrettifySymbol(symbol) {
 function bareFormatSymbol(symbol, info) {
   if (symbol == END) {
     return "$";
-  } else if (info.nonterminals[symbol] || info.terminals[symbol]) {
+  } else if (info.nonterminals.has(symbol) || info.terminals.has(symbol)) {
     return barePrettifySymbol(escapeString(symbol));
   } else {
     throw new Error("Unknown symbol: " + symbol);

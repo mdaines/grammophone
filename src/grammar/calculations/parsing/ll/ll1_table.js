@@ -12,11 +12,11 @@ module.exports = function(grammar) {
 
   // Populate table with blank arrays
 
-  for (k in nonterminals) {
+  for (k of nonterminals) {
 
     table[k] = {};
 
-    for (l in terminals) {
+    for (l of terminals) {
       table[k][l] = [];
     }
 
@@ -38,7 +38,7 @@ module.exports = function(grammar) {
     // For each symbol s in first(body), add the production
     // to table[nonterminal][s].
 
-    for (s in first) {
+    for (s of first) {
       table[head][s].push(i);
     }
 

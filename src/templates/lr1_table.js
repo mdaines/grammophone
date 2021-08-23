@@ -1,5 +1,4 @@
 const m = require("mithril/hyperscript");
-const Sets = require("../sets");
 const END = require("../grammar/symbols").END;
 const Helpers = require("../helpers");
 
@@ -13,10 +12,10 @@ module.exports = function(input) {
       m("col")
     ),
     m("colgroup.t",
-      Helpers.fillArray(Sets.count(info.terminals) + 1, m("col"))
+      Helpers.fillArray(info.terminals.size + 1, m("col"))
     ),
     m("colgroup.nt",
-      Helpers.fillArray(Sets.count(info.nonterminals), m("col"))
+      Helpers.fillArray(info.nonterminals.size, m("col"))
     ),
 
     m("tr",

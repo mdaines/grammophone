@@ -8,7 +8,7 @@ module.exports = function(grammar) {
 
   // For each nonterminal...
 
-  for (nt in nonterminals) {
+  for (nt of nonterminals) {
 
     // Look through the productions of this nonterminal for
     // productions which are nullable. If we find more than
@@ -38,7 +38,7 @@ module.exports = function(grammar) {
 
         for (j = 1; j < grammar.productions[i].length; j++) {
 
-          if (!nullable[grammar.productions[i][j]]) {
+          if (!nullable.has(grammar.productions[i][j])) {
             break;
           }
 

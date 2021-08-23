@@ -1,10 +1,10 @@
 module.exports = function(grammar) {
 
   var i;
-  var nonterminals = {};
+  var nonterminals = new Set();
 
   for (i = 0; i < grammar.productions.length; i++) {
-    nonterminals[grammar.productions[i][0]] = true;
+    nonterminals.add(grammar.productions[i][0]);
   }
 
   return nonterminals;

@@ -17,7 +17,7 @@ function expandSentenceNode(node, grammar) {
 
   for (i = 0; i < node.sentence.length; i++) {
 
-    if (nonterminals[node.sentence[i]] && !unrealizable[node.sentence[i]]) {
+    if (nonterminals.has(node.sentence[i]) && !unrealizable.has(node.sentence[i])) {
 
       for (j = 0; j < grammar.productions.length; j++) {
 
@@ -27,7 +27,7 @@ function expandSentenceNode(node, grammar) {
           nonterminalCount = 0;
 
           for (k = 0; k < replacement.length; k++) {
-            if (nonterminals[replacement[k]]) {
+            if (nonterminals.has(replacement[k])) {
               nonterminalCount++;
             }
           }

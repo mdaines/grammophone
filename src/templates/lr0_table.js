@@ -1,5 +1,4 @@
 const m = require("mithril/hyperscript");
-const Sets = require("../sets");
 const Helpers = require("../helpers");
 
 module.exports = function(input) {
@@ -12,10 +11,10 @@ module.exports = function(input) {
       m("col")
     ),
     m("colgroup.t",
-      Helpers.fillArray(Sets.count(info.terminals), m("col"))
+      Helpers.fillArray(info.terminals.size, m("col"))
     ),
     m("colgroup.nt",
-      Helpers.fillArray(Sets.count(info.nonterminals), m("col"))
+      Helpers.fillArray(info.nonterminals.size, m("col"))
     ),
 
     m("tr",

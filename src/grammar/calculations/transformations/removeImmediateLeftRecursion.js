@@ -11,7 +11,7 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
 
   do {
     symbol += "'";
-  } while (typeof nonterminals[symbol] !== "undefined");
+  } while (nonterminals.has(symbol));
 
   // Copy productions to changes, marking those we're removing.
 
@@ -97,7 +97,7 @@ module.exports = function(grammar) {
   //
   // where m, n > 0?
 
-  for (nt in nonterminals) {
+  for (nt of nonterminals) {
     candidates[nt] = { recursive: [], base: [] };
   }
 

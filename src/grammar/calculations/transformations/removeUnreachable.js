@@ -28,7 +28,7 @@ module.exports = function(grammar) {
   var result = [];
   var group;
 
-  for (nt in unreachable) {
+  for (nt of unreachable) {
 
     group = [];
 

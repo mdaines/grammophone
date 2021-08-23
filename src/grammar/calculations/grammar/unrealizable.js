@@ -6,7 +6,7 @@ module.exports = function(grammar) {
 
   // Is a particular nonterminal realizable?
 
-  marked = {};
+  marked = new Set();
 
   do {
 
@@ -18,7 +18,7 @@ module.exports = function(grammar) {
 
       for (j = 1; j < grammar.productions[i].length; j++) {
 
-        if (!marked[grammar.productions[i][j]] && nonterminals[grammar.productions[i][j]]) {
+        if (!marked.has(grammar.productions[i][j]) && nonterminals.has(grammar.productions[i][j])) {
           break;
         }
 
@@ -29,8 +29,8 @@ module.exports = function(grammar) {
       // either marked or terminals), mark the head and record
       // that we marked it in this step.
 
-      if (!marked[grammar.productions[i][0]] && j == grammar.productions[i].length) {
-        marked[grammar.productions[i][0]] = true;
+      if (!marked.has(grammar.productions[i][0]) && j == grammar.productions[i].length) {
+        marked.add(grammar.productions[i][0]);
         added.push(grammar.productions[i][0]);
       }
 
@@ -40,12 +40,12 @@ module.exports = function(grammar) {
 
   // Collect nonterminals which were not marked.
 
-  unrealizable = {};
+  unrealizable = new Set();
 
-  for (s in nonterminals) {
+  for (s of nonterminals) {
 
-    if (!marked[s]) {
-      unrealizable[s] = true;
+    if (!marked.has(s)) {
+      unrealizable.add(s);
     }
 
   }

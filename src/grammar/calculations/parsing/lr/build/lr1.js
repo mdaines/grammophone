@@ -80,7 +80,7 @@ module.exports = {
 
             // Add an item for every lookahead...
 
-            for (l in lookaheads) {
+            for (l of lookaheads) {
 
               if (!used[j][l]) {
                 added.push({ production: j, index: 0, lookahead: l });

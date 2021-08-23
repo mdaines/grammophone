@@ -1,5 +1,5 @@
-var Calculations = require("./calculations");
-var END = require("./symbols").END;
+const Calculations = require("./calculations");
+const END = require("./symbols").END;
 
 module.exports = class Grammar {
   constructor(productions) {
@@ -84,7 +84,7 @@ module.exports = class Grammar {
     var terminals = this.calculate("grammar.terminals");
     var nonterminals = this.calculate("grammar.nonterminals");
 
-    result = {};
+    result = new Set();
 
     for (i = 0; i < symbols.length; i++) {
 
@@ -92,21 +92,21 @@ module.exports = class Grammar {
 
       if (s === END) {
 
-        result[s] = true;
+        result.add(s);
         break;
 
-      } else if (terminals[s]) {
+      } else if (terminals.has(s)) {
 
-        result[s] = true;
+        result.add(s);
         break;
 
-      } else if (nonterminals[s]) {
+      } else if (nonterminals.has(s)) {
 
         for (k in first[s]) {
-          result[k] = true;
+          result.add(k);
         }
 
-        if (!nullable[s]) {
+        if (!nullable.has(s)) {
           break;
         }
 
@@ -134,13 +134,13 @@ module.exports = class Grammar {
 
       s = symbols[i];
 
-      if (nonterminals[s]) {
+      if (nonterminals.has(s)) {
 
-        if (!nullable[s]) {
+        if (!nullable.has(s)) {
           return false;
         }
 
-      } else if (terminals[s]) {
+      } else if (terminals.has(s)) {
 
         return false;
 

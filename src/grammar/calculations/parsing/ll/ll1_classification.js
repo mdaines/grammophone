@@ -1,4 +1,4 @@
-var Sets = require("../../../../sets");
+var SetOperations = require("../../../../set_operations");
 
 module.exports = function(grammar) {
 
@@ -27,11 +27,11 @@ module.exports = function(grammar) {
 
   var table = {};
 
-  for (k in nonterminals) {
+  for (k of nonterminals) {
 
     table[k] = {};
 
-    for (l in terminals) {
+    for (l of terminals) {
       table[k][l] = false;
     }
 
@@ -44,7 +44,7 @@ module.exports = function(grammar) {
 
     first = grammar.getFirst(body);
 
-    for (s in first) {
+    for (s of first) {
       if (table[head][s]) {
         return { member: false, reason: "it contains a first set clash" };
       }
@@ -59,9 +59,8 @@ module.exports = function(grammar) {
 
   first = grammar.calculate("grammar.first");
 
-  for (k in nullable) {
-
-    if (Sets.any(Sets.intersection(first[k], follow[k]))) {
+  for (k of nullable) {
+    if (SetOperations.any(SetOperations.intersection(new Set(Object.keys(first[k])), new Set(Object.keys(follow[k]))))) {
       return { member: false, reason: "it contains a first/follow set clash" };
     }
 

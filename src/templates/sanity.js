@@ -1,9 +1,9 @@
 const m = require("mithril/hyperscript");
 const Helpers = require("../helpers");
-const Sets = require("../sets");
+const SetOperations = require("../set_operations");
 
 function formatUnreachable(unreachable, info) {
-  if (Sets.any(unreachable)) {
+  if (SetOperations.any(unreachable)) {
     return m("li",
       "The grammar has unreachable nonterminals: ",
       Helpers.formatSymbolList(Helpers.listSymbols(unreachable, info.productionOrder), info)
@@ -14,7 +14,7 @@ function formatUnreachable(unreachable, info) {
 }
 
 function formatUnrealizable(unrealizable, info) {
-  if (Sets.any(unrealizable)) {
+  if (SetOperations.any(unrealizable)) {
     return m("li",
       "The grammar has unrealizable nonterminals: ",
       Helpers.formatSymbolList(Helpers.listSymbols(unrealizable, info.productionOrder), info)

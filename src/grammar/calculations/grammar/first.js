@@ -18,7 +18,7 @@ module.exports = function(grammar) {
 
     for (j = 1; j < grammar.productions[i].length; j++) {
 
-      if (!nullable[grammar.productions[i][j]]) {
+      if (!nullable.has(grammar.productions[i][j])) {
         break;
       }
 
@@ -27,7 +27,7 @@ module.exports = function(grammar) {
     // If the first non-nullable symbol is a terminal, add it to the immediate first set
     // of this nonterminal.
 
-    if (j < grammar.productions[i].length && !nonterminals[grammar.productions[i][j]]) {
+    if (j < grammar.productions[i].length && !nonterminals.has(grammar.productions[i][j])) {
       Relation.add(immediate, grammar.productions[i][0], grammar.productions[i][j]);
     }
 
@@ -41,13 +41,13 @@ module.exports = function(grammar) {
 
       // Is it a nonterminal? Add it.
 
-      if (nonterminals[grammar.productions[i][j]]) {
+      if (nonterminals.has(grammar.productions[i][j])) {
         Relation.add(propagation, grammar.productions[i][0], grammar.productions[i][j]);
       }
 
       // Is it not nullable? Stop.
 
-      if (!nullable[grammar.productions[i][j]]) {
+      if (!nullable.has(grammar.productions[i][j])) {
         break;
       }
 
@@ -60,7 +60,7 @@ module.exports = function(grammar) {
 
   // Ensure that all nonterminals are present as keys, even if that particular follow set is empty.
 
-  for (k in nonterminals) {
+  for (k of nonterminals) {
     if (typeof result[k] === "undefined") {
       result[k] = {};
     }

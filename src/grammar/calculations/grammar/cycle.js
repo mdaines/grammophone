@@ -1,4 +1,4 @@
-var Relation = require('../../../relation');
+const Relation = require("../../../relation");
 
 module.exports = function(grammar) {
 
@@ -15,7 +15,7 @@ module.exports = function(grammar) {
   for (i = 0; i < grammar.productions.length; i++) {
     for (j = 1; j < grammar.productions[i].length; j++) {
 
-      if (nonterminals[grammar.productions[i][j]]) {
+      if (nonterminals.has(grammar.productions[i][j])) {
 
         for (k = 1; k < grammar.productions[i].length; k++) {
 
@@ -23,7 +23,7 @@ module.exports = function(grammar) {
             continue;
           }
 
-          if (!nonterminals[grammar.productions[i][k]] || !nullable[grammar.productions[i][k]]) {
+          if (!nonterminals.has(grammar.productions[i][k]) || !nullable.has(grammar.productions[i][k])) {
             break;
           }
 
