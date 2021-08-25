@@ -60,7 +60,7 @@ module.exports = function(grammar) {
   first = grammar.calculate("grammar.first");
 
   for (k of nullable) {
-    if (SetOperations.any(SetOperations.intersection(new Set(Object.keys(first[k])), new Set(Object.keys(follow[k]))))) {
+    if (SetOperations.any(SetOperations.intersection(first.get(k), follow.get(k)))) {
       return { member: false, reason: "it contains a first/follow set clash" };
     }
 

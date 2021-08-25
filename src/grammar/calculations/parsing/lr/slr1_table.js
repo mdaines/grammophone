@@ -32,7 +32,7 @@ module.exports = function(grammar) {
 
         if (item.index == grammar.productions[item.production].length - 1) {
 
-          for (s in follow[grammar.productions[item.production][0]]) {
+          for (s of follow.get(grammar.productions[item.production][0])) {
             addReduceAction(actions, s, item.production);
           }
 

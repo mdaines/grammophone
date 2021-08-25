@@ -102,7 +102,7 @@ module.exports = class Grammar {
 
       } else if (nonterminals.has(s)) {
 
-        for (k in first[s]) {
+        for (k of first.get(s)) {
           result.add(k);
         }
 

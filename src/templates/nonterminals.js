@@ -21,8 +21,8 @@ module.exports = function(input) {
       ),
 
       info.productionOrder.map(function(symbol) {
-        let firstSymbols = first[symbol] ? new Set(Object.keys(first[symbol])) : new Set();
-        let followSymbols = follow[symbol] ? new Set(Object.keys(follow[symbol])) : new Set();
+        let firstSymbols = first.get(symbol);
+        let followSymbols = follow.get(symbol);
 
         return m("tr",
           m("td", Helpers.formatSymbol(symbol, info)),
