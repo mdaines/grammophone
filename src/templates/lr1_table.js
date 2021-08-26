@@ -29,9 +29,7 @@ module.exports = function(input) {
       })
     ),
 
-    Object.keys(table).map(function(s, index) {
-      let state = table[s];
-
+    table.map(function(state, index) {
       return m("tr",
         m("th", { scope: "row" }, index),
         info.terminalOrder.concat(END).map(function(s) {
