@@ -10,12 +10,12 @@ module.exports = function(grammar) {
   var nonterminals = grammar.calculate("grammar.nonterminals");
   var start = grammar.calculate("grammar.start");
 
-  immediate = Relation.create();
-  propagation = Relation.create();
+  immediate = new Relation();
+  propagation = new Relation();
 
   // Add the end of input symbol to the immediate follow set of the grammar's start symbol.
 
-  Relation.add(immediate, start, END);
+  immediate.add(start, END);
 
   // Given a production X -> ... A β, follow(A) includes first(β), except for the empty string.
 
@@ -34,14 +34,14 @@ module.exports = function(grammar) {
           // If this symbol is a terminal, add it, and then stop adding.
 
           if (!nonterminals.has(grammar.productions[i][k])) {
-            Relation.add(immediate, grammar.productions[i][j], grammar.productions[i][k]);
+            immediate.add(grammar.productions[i][j], grammar.productions[i][k]);
             break;
           }
 
           // If it is a nonterminal, add the first set of that nonterminal.
 
-          for (s in first[grammar.productions[i][k]]) {
-            Relation.add(immediate, grammar.productions[i][j], s);
+          for (s of first.get(grammar.productions[i][k])) {
+            immediate.add(grammar.productions[i][j], s);
           }
 
           // Stop if it isn't nullable.
@@ -69,7 +69,7 @@ module.exports = function(grammar) {
       // If the symbol is a nonterminal, add the left side.
 
       if (nonterminals.has(grammar.productions[i][j])) {
-        Relation.add(propagation, grammar.productions[i][j], grammar.productions[i][0]);
+        propagation.add(grammar.productions[i][j], grammar.productions[i][0]);
       }
 
       // If it isn't nullable, stop.
@@ -84,15 +84,7 @@ module.exports = function(grammar) {
 
   // Propagate the relation
 
-  result = Relation.propagate(immediate, propagation);
-
-  // Ensure that all nonterminals are present as keys, even if that particular follow set is empty.
-
-  for (k of nonterminals) {
-    if (typeof result[k] === "undefined") {
-      result[k] = {};
-    }
-  }
+  result = immediate.propagate(propagation);
 
   return result;
 

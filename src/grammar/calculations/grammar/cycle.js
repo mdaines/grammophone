@@ -10,7 +10,7 @@ module.exports = function(grammar) {
   // Build relation
   // (x,y) | x -> a y b, y a nonterminal, a and b nullable
 
-  relation = Relation.create();
+  relation = new Relation();
 
   for (i = 0; i < grammar.productions.length; i++) {
     for (j = 1; j < grammar.productions[i].length; j++) {
@@ -30,7 +30,7 @@ module.exports = function(grammar) {
         }
 
         if (k === grammar.productions[i].length) {
-          Relation.add(relation, grammar.productions[i][0], grammar.productions[i][j]);
+          relation.add(grammar.productions[i][0], grammar.productions[i][j]);
         }
 
       }
@@ -40,6 +40,6 @@ module.exports = function(grammar) {
 
   // Find a cycle if there is one
 
-  return Relation.cycle(relation);
+  return relation.cycle();
 
 };

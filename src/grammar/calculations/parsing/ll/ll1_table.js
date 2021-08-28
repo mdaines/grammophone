@@ -47,7 +47,7 @@ module.exports = function(grammar) {
 
     if (grammar.isNullable(body)) {
 
-      for (s in follow[head]) {
+      for (s of follow.get(head)) {
         table[head][s].push(i);
       }
 

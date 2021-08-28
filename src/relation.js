@@ -1,134 +1,135 @@
-var Relation = {
+class Relation {
+  constructor(iterable) {
+    this._map = new Map();
 
-  create: function() {
+    if (iterable != null) {
+      for (let [s, t] of iterable) {
+        this.add(s, t);
+      }
+    }
+  }
 
-    return {};
+  has(s, t) {
+    if (this._map.has(s)) {
+      return this._map.get(s).has(t);
+    } else {
+      return false;
+    }
+  }
 
-  },
+  get(s) {
+    if (this._map.has(s)) {
+      return this._map.get(s);
+    } else {
+      return new Set();
+    }
+  }
 
-  // Add to a relation.
+  keys() {
+    return this._map.keys();
+  }
 
-  add: function(relation, s, t) {
+  *[Symbol.iterator]() {
+    for (let k of this._map.keys()) {
+      for (let l of this._map.get(k)) {
+        yield [k, l];
+      }
+    }
+  }
 
-    relation[s] = relation[s] || {};
-    relation[s][t] = true;
+  entries() {
+    return this[Symbol.iterator]();
+  }
 
-  },
+  add(s, t) {
+    if (!this._map.has(s)) {
+      this._map.set(s, new Set());
+    }
 
-  // Given a relation, return its transitive closure as a new object.
-  // (floyd-warshall)
+    this._map.get(s).add(t);
+  }
 
-  closure: function(relation) {
+  propagate(propagation) {
+    let result = new Relation();
+    let closed = propagation.closure();
 
-    var i, j, k;
-    var result = {};
-    var keys = {};
-
-    // Copy the relation and build the set of keys
-
-    for (i in relation) {
-      keys[i] = true;
-
-      for (j in relation[i]) {
-        keys[j] = true;
-
-        result[i] = result[i] || {};
-        result[i][j] = relation[i][j];
+    for (let k of this.keys()) {
+      for (let l of this.get(k)) {
+        result.add(k, l);
       }
     }
 
-    for (i in keys) {
-      result[i] = result[i] || {};
+    for (let s of closed.keys()) {
+      for (let t of closed.get(s)) {
+        for (let u of this.get(t)) {
+          result.add(s, u);
+        }
+      }
+    }
+
+    return result;
+  }
+
+  closure() {
+    var result = new Relation();
+    var keys = new Set();
+
+    // Copy the relation and build the set of keys
+
+    for (let i of this.keys()) {
+      keys.add(i);
+
+      for (let j of this.get(i)) {
+        keys.add(j);
+
+        result.add(i, j);
+      }
     }
 
     // Perform transitive closure
 
-    for (k in keys) {
-      for (i in keys) {
-        for (j in keys) {
-          if (result[i][j] || (result[i][k] && result[k][j])) {
-            result[i][j] = true;
+    for (let k of keys) {
+      for (let i of keys) {
+        for (let j of keys) {
+          if (result.has(i, j) || (result.has(i, k) && result.has(k, j))) {
+            result.add(i, j);
           }
         }
       }
     }
 
     return result;
+  }
 
-  },
+  dfs(k, v) {
+    for (let l of this.get(k)) {
+      if (v.indexOf(l) != -1) {
+        if (l == k) {
+          return v.concat(k);
+        } else {
+          return v.concat(k).concat(l);
+        }
+      }
 
-  // Propagate the immediate relation using the (closure of the) propagation relation.
-
-  propagate: function(immediate, propagation) {
-
-    var k, l, s, t, u;
-
-    var result = {};
-    var closed = this.closure(propagation);
-
-    for (k in immediate) {
-      for (l in immediate[k]) {
-        result[k] = result[k] || {};
-        result[k][l] = immediate[k][l];
+      let w = this.dfs(l, v.concat(k));
+      if (w) {
+        return w;
       }
     }
 
-    for (s in closed) {
-      for (t in closed[s]) {
-        for (u in immediate[t]) {
-          result[s] = result[s] || {};
-          result[s][u] = immediate[t][u];
-        }
-      }
-    }
+    return undefined;
+  }
 
-    return result;
-
-  },
-
-  // If the graph of the relation has a cycle, return the first
-  // cycle we find. Otherwise, return undefined.
-
-  cycle: function(relation) {
-
-    function dfs(k, v) {
-
-      var w, l;
-
-      for (l in relation[k]) {
-
-        if (v.indexOf(l) != -1) {
-          if (l == k) {
-            return v.concat(k);
-          } else {
-            return v.concat(k).concat(l);
-          }
-        }
-
-        w = dfs(l, v.concat(k));
-        if (w) {
-          return w;
-        }
-
-      }
-
-      return undefined;
-
-    }
-
-    var v, k;
-
-    for (k in relation) {
-      v = dfs(k, []);
+  cycle() {
+    for (let k of this.keys()) {
+      let v = this.dfs(k, []);
       if (v) {
         return v;
       }
     }
 
     return undefined;
-
   }
-
-};
+}
 
 module.exports = Relation;

@@ -92,32 +92,38 @@ module.exports = {
     "grammar.nullable": [
       "A"
     ],
-    "grammar.first": {
-      "S": {
-        "b": true
-      },
-      "B": {
-        "r": true
-      },
-      "C": {
-        "d": true
-      },
-      "A": {}
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "A": {
-        "i": true
-      },
-      "B": {
-        "Grammar.END": true
-      },
-      "C": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "b"
+      ],
+      [
+        "B",
+        "r"
+      ],
+      [
+        "C",
+        "d"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "i"
+      ],
+      [
+        "B",
+        "Grammar.END"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "B",
@@ -1300,29 +1306,38 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "A": {
-        "a": true
-      },
-      "C": {
-        "z": true
-      },
-      "B": {
-        "z": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true
-      },
-      "B": {
-        "z": true
-      },
-      "C": {
-        "x": true,
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "a"
+      ],
+      [
+        "C",
+        "z"
+      ],
+      [
+        "B",
+        "z"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "z"
+      ],
+      [
+        "C",
+        "x"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "A",
       "C"
@@ -2571,50 +2586,62 @@ module.exports = {
     "grammar.nullable": [
       "Adverb"
     ],
-    "grammar.first": {
-      "S": {
-        "mary": true
-      },
-      "Owns": {
-        "had": true
-      },
-      "Object": {
-        "a": true
-      },
-      "Adjective": {
-        "little": true
-      },
-      "Noun": {
-        "lamb": true
-      },
-      "Animal": {
-        "little": true
-      },
-      "Adverb": {}
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "Owns": {
-        "a": true
-      },
-      "Adverb": {
-        "little": true
-      },
-      "Adjective": {
-        "lamb": true
-      },
-      "Object": {
-        "Grammar.END": true
-      },
-      "Animal": {
-        "Grammar.END": true
-      },
-      "Noun": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "mary"
+      ],
+      [
+        "Owns",
+        "had"
+      ],
+      [
+        "Object",
+        "a"
+      ],
+      [
+        "Adjective",
+        "little"
+      ],
+      [
+        "Noun",
+        "lamb"
+      ],
+      [
+        "Animal",
+        "little"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "Owns",
+        "a"
+      ],
+      [
+        "Adverb",
+        "little"
+      ],
+      [
+        "Adjective",
+        "lamb"
+      ],
+      [
+        "Object",
+        "Grammar.END"
+      ],
+      [
+        "Animal",
+        "Grammar.END"
+      ],
+      [
+        "Noun",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "Object",
@@ -4404,34 +4431,46 @@ module.exports = {
       "S'",
       "V"
     ],
-    "grammar.first": {
-      "S": {
-        "id": true
-      },
-      "S'": {
-        "assign": true
-      },
-      "E": {
-        "id": true,
-        "num": true
-      },
-      "V": {}
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "V": {
-        "assign": true,
-        "Grammar.END": true
-      },
-      "S'": {
-        "Grammar.END": true
-      },
-      "E": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "id"
+      ],
+      [
+        "S'",
+        "assign"
+      ],
+      [
+        "E",
+        "id"
+      ],
+      [
+        "E",
+        "num"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "V",
+        "assign"
+      ],
+      [
+        "V",
+        "Grammar.END"
+      ],
+      [
+        "S'",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "V",
@@ -5985,30 +6024,46 @@ module.exports = {
       "V",
       "Var"
     ],
-    "grammar.first": {
-      "L": {
-        "+": true,
-        "num": true,
-        "(": true
-      },
-      "V": {
-        "(": true
-      },
-      "Var": {}
-    },
-    "grammar.follow": {
-      "L": {
-        "Grammar.END": true
-      },
-      "V": {
-        "+": true,
-        ")": true
-      },
-      "Var": {
-        "(": true,
-        "+": true
-      }
-    },
+    "grammar.first": [
+      [
+        "L",
+        "+"
+      ],
+      [
+        "L",
+        "num"
+      ],
+      [
+        "L",
+        "("
+      ],
+      [
+        "V",
+        "("
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "L",
+        "Grammar.END"
+      ],
+      [
+        "V",
+        "+"
+      ],
+      [
+        "V",
+        ")"
+      ],
+      [
+        "Var",
+        "("
+      ],
+      [
+        "Var",
+        "+"
+      ]
+    ],
     "grammar.endable": [
       "L"
     ],
@@ -8616,44 +8671,82 @@ module.exports = {
       "M",
       "Q"
     ],
-    "grammar.first": {
-      "P": {
-        "*": true,
-        "o": true,
-        "(*": true,
-        "(": true
-      },
-      "StarM": {
-        "(*": true,
-        "(": true
-      },
-      "Q": {
-        "o": true
-      },
-      "M": {
-        "o": true,
-        "(*": true,
-        "(": true
-      }
-    },
-    "grammar.follow": {
-      "P": {
-        "Grammar.END": true
-      },
-      "M": {
-        "*": true,
-        "*)": true
-      },
-      "Q": {
-        "(*": true,
-        "(": true,
-        "*": true
-      },
-      "StarM": {
-        "*": true,
-        "*)": true
-      }
-    },
+    "grammar.first": [
+      [
+        "P",
+        "*"
+      ],
+      [
+        "P",
+        "o"
+      ],
+      [
+        "P",
+        "(*"
+      ],
+      [
+        "P",
+        "("
+      ],
+      [
+        "StarM",
+        "(*"
+      ],
+      [
+        "StarM",
+        "("
+      ],
+      [
+        "Q",
+        "o"
+      ],
+      [
+        "M",
+        "o"
+      ],
+      [
+        "M",
+        "(*"
+      ],
+      [
+        "M",
+        "("
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "P",
+        "Grammar.END"
+      ],
+      [
+        "M",
+        "*"
+      ],
+      [
+        "M",
+        "*)"
+      ],
+      [
+        "Q",
+        "(*"
+      ],
+      [
+        "Q",
+        "("
+      ],
+      [
+        "Q",
+        "*"
+      ],
+      [
+        "StarM",
+        "*"
+      ],
+      [
+        "StarM",
+        "*)"
+      ]
+    ],
     "grammar.endable": [
       "P"
     ],
@@ -11819,31 +11912,46 @@ module.exports = {
     ],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "A": {
-        "x": true,
-        "y": true,
-        "r": true
-      },
-      "C": {
-        "r": true
-      },
-      "B": {
-        "r": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true
-      },
-      "C": {
-        "r": true,
-        "Grammar.END": true
-      },
-      "B": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "x"
+      ],
+      [
+        "A",
+        "y"
+      ],
+      [
+        "A",
+        "r"
+      ],
+      [
+        "C",
+        "r"
+      ],
+      [
+        "B",
+        "r"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "C",
+        "r"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "A",
       "C",
@@ -14094,33 +14202,54 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "A": {
-        "y": true,
-        "x": true,
-        "z": true,
-        "u": true
-      },
-      "B": {
-        "z": true,
-        "u": true
-      },
-      "C": {
-        "s": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true
-      },
-      "B": {
-        "s": true,
-        "Grammar.END": true
-      },
-      "C": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "y"
+      ],
+      [
+        "A",
+        "x"
+      ],
+      [
+        "A",
+        "z"
+      ],
+      [
+        "A",
+        "u"
+      ],
+      [
+        "B",
+        "z"
+      ],
+      [
+        "B",
+        "u"
+      ],
+      [
+        "C",
+        "s"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "s"
+      ],
+      [
+        "B",
+        "Grammar.END"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "A",
       "B",
@@ -16202,36 +16331,66 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "S": {
-        "(": true,
-        "(*": true
-      },
-      "SL": {
-        ";": true,
-        "(": true,
-        "(*": true
-      },
-      "Ses": {
-        "(": true,
-        "(*": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true,
-        ";": true,
-        "(": true,
-        "(*": true,
-        ")": true
-      },
-      "Ses": {
-        ")": true
-      },
-      "SL": {
-        ")": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "("
+      ],
+      [
+        "S",
+        "(*"
+      ],
+      [
+        "SL",
+        ";"
+      ],
+      [
+        "SL",
+        "("
+      ],
+      [
+        "SL",
+        "(*"
+      ],
+      [
+        "Ses",
+        "("
+      ],
+      [
+        "Ses",
+        "(*"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "S",
+        ";"
+      ],
+      [
+        "S",
+        "("
+      ],
+      [
+        "S",
+        "(*"
+      ],
+      [
+        "S",
+        ")"
+      ],
+      [
+        "Ses",
+        ")"
+      ],
+      [
+        "SL",
+        ")"
+      ]
+    ],
     "grammar.endable": [
       "S"
     ],
@@ -19047,46 +19206,70 @@ module.exports = {
       "C",
       "D"
     ],
-    "grammar.first": {
-      "S": {
-        "a": true,
-        "b": true
-      },
-      "A": {
-        "a": true,
-        "b": true
-      },
-      "B": {
-        "b": true,
-        "a": true
-      },
-      "C": {},
-      "D": {},
-      "E": {}
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "C": {
-        "a": true,
-        "b": true
-      },
-      "D": {
-        "b": true,
-        "a": true
-      },
-      "A": {
-        "Grammar.END": true
-      },
-      "B": {
-        "Grammar.END": true
-      },
-      "E": {
-        "a": true,
-        "b": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "a"
+      ],
+      [
+        "S",
+        "b"
+      ],
+      [
+        "A",
+        "a"
+      ],
+      [
+        "A",
+        "b"
+      ],
+      [
+        "B",
+        "b"
+      ],
+      [
+        "B",
+        "a"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "C",
+        "a"
+      ],
+      [
+        "C",
+        "b"
+      ],
+      [
+        "D",
+        "b"
+      ],
+      [
+        "D",
+        "a"
+      ],
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        "a"
+      ],
+      [
+        "E",
+        "b"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "A",
@@ -21431,40 +21614,62 @@ module.exports = {
       "E",
       "F"
     ],
-    "grammar.first": {
-      "S": {
-        "(": true,
-        "sq)": true,
-        ")": true
-      },
-      "X": {
-        ")": true,
-        "sq)": true
-      },
-      "E": {},
-      "F": {},
-      "A": {}
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "E": {
-        "sq)": true,
-        ")": true
-      },
-      "F": {
-        ")": true,
-        "sq)": true
-      },
-      "X": {
-        "Grammar.END": true
-      },
-      "A": {
-        "sq)": true,
-        ")": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "("
+      ],
+      [
+        "S",
+        "sq)"
+      ],
+      [
+        "S",
+        ")"
+      ],
+      [
+        "X",
+        ")"
+      ],
+      [
+        "X",
+        "sq)"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        "sq)"
+      ],
+      [
+        "E",
+        ")"
+      ],
+      [
+        "F",
+        ")"
+      ],
+      [
+        "F",
+        "sq)"
+      ],
+      [
+        "X",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "sq)"
+      ],
+      [
+        "A",
+        ")"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "X"
@@ -23586,58 +23791,110 @@ module.exports = {
       "V",
       "L"
     ],
-    "grammar.first": {
-      "E": {
-        "id": true,
-        "(": true
-      },
-      "D": {
-        "*": true,
-        "!": true,
-        "num": true,
-        "(": true
-      },
-      "R": {
-        "!": true,
-        "*": true,
-        "num": true,
-        "(": true
-      },
-      "V": {
-        "num": true
-      },
-      "L": {
-        "(": true
-      },
-      "Z": {}
-    },
-    "grammar.follow": {
-      "E": {
-        "Grammar.END": true,
-        "*": true,
-        ")": true
-      },
-      "R": {
-        ")": true
-      },
-      "V": {
-        "*": true,
-        "!": true
-      },
-      "L": {
-        "!": true,
-        "*": true
-      },
-      "D": {
-        "Grammar.END": true,
-        "*": true,
-        ")": true
-      },
-      "Z": {
-        "*": true,
-        "!": true
-      }
-    },
+    "grammar.first": [
+      [
+        "E",
+        "id"
+      ],
+      [
+        "E",
+        "("
+      ],
+      [
+        "D",
+        "*"
+      ],
+      [
+        "D",
+        "!"
+      ],
+      [
+        "D",
+        "num"
+      ],
+      [
+        "D",
+        "("
+      ],
+      [
+        "R",
+        "!"
+      ],
+      [
+        "R",
+        "*"
+      ],
+      [
+        "R",
+        "num"
+      ],
+      [
+        "R",
+        "("
+      ],
+      [
+        "V",
+        "num"
+      ],
+      [
+        "L",
+        "("
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "E",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        "*"
+      ],
+      [
+        "E",
+        ")"
+      ],
+      [
+        "R",
+        ")"
+      ],
+      [
+        "V",
+        "*"
+      ],
+      [
+        "V",
+        "!"
+      ],
+      [
+        "L",
+        "!"
+      ],
+      [
+        "L",
+        "*"
+      ],
+      [
+        "D",
+        "Grammar.END"
+      ],
+      [
+        "D",
+        "*"
+      ],
+      [
+        "D",
+        ")"
+      ],
+      [
+        "Z",
+        "*"
+      ],
+      [
+        "Z",
+        "!"
+      ]
+    ],
     "grammar.endable": [
       "E",
       "D"
@@ -30420,27 +30677,46 @@ module.exports = {
     "grammar.nullable": [
       "B"
     ],
-    "grammar.first": {
-      "A": {
-        "c": true,
-        "d": true,
-        "r": true
-      },
-      "B": {
-        "r": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true,
-        "r": true,
-        "fo": true
-      },
-      "B": {
-        "c": true,
-        "fo": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "c"
+      ],
+      [
+        "A",
+        "d"
+      ],
+      [
+        "A",
+        "r"
+      ],
+      [
+        "B",
+        "r"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "r"
+      ],
+      [
+        "A",
+        "fo"
+      ],
+      [
+        "B",
+        "c"
+      ],
+      [
+        "B",
+        "fo"
+      ]
+    ],
     "grammar.endable": [
       "A"
     ],
@@ -32809,24 +33085,34 @@ module.exports = {
     "grammar.nullable": [
       "ExprOpt"
     ],
-    "grammar.first": {
-      "S": {
-        "for": true,
-        "expr": true
-      },
-      "ExprOpt": {
-        "expr": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "ExprOpt": {
-        ";": true,
-        ")": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "for"
+      ],
+      [
+        "S",
+        "expr"
+      ],
+      [
+        "ExprOpt",
+        "expr"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "ExprOpt",
+        ";"
+      ],
+      [
+        "ExprOpt",
+        ")"
+      ]
+    ],
     "grammar.endable": [
       "S"
     ],
@@ -35545,121 +35831,294 @@ module.exports = {
       "PointerOpt",
       "TypeQualifierList"
     ],
-    "grammar.first": {
-      "StorageClassSpecifier": {
-        "typedef": true,
-        "static": true
-      },
-      "TypeSpecifier": {
-        "void": true,
-        "short": true,
-        "int": true
-      },
-      "TypeQualifier": {
-        "const": true,
-        "volatile": true
-      },
-      "DirectDeclarator": {
-        "id": true
-      },
-      "PointerOpt": {
-        "*": true
-      },
-      "Decl": {
-        "typedef": true,
-        "static": true,
-        "void": true,
-        "short": true,
-        "int": true,
-        "const": true,
-        "volatile": true
-      },
-      "DeclSpecifiers": {
-        "typedef": true,
-        "static": true,
-        "void": true,
-        "short": true,
-        "int": true,
-        "const": true,
-        "volatile": true
-      },
-      "DeclSpecifiersOpt": {
-        "typedef": true,
-        "static": true,
-        "void": true,
-        "short": true,
-        "int": true,
-        "const": true,
-        "volatile": true
-      },
-      "Declarator": {
-        "*": true,
-        "id": true
-      },
-      "TypeQualifierList": {
-        "const": true,
-        "volatile": true
-      }
-    },
-    "grammar.follow": {
-      "Decl": {
-        "Grammar.END": true
-      },
-      "DeclSpecifiers": {
-        "*": true,
-        "id": true
-      },
-      "StorageClassSpecifier": {
-        "typedef": true,
-        "static": true,
-        "void": true,
-        "short": true,
-        "int": true,
-        "const": true,
-        "volatile": true,
-        "*": true,
-        "id": true
-      },
-      "TypeSpecifier": {
-        "typedef": true,
-        "static": true,
-        "void": true,
-        "short": true,
-        "int": true,
-        "const": true,
-        "volatile": true,
-        "*": true,
-        "id": true
-      },
-      "TypeQualifier": {
-        "typedef": true,
-        "static": true,
-        "void": true,
-        "short": true,
-        "int": true,
-        "const": true,
-        "volatile": true,
-        "*": true,
-        "id": true
-      },
-      "PointerOpt": {
-        "id": true
-      },
-      "TypeQualifierList": {
-        "*": true,
-        "id": true
-      },
-      "Declarator": {
-        "Grammar.END": true
-      },
-      "DeclSpecifiersOpt": {
-        "*": true,
-        "id": true
-      },
-      "DirectDeclarator": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "StorageClassSpecifier",
+        "typedef"
+      ],
+      [
+        "StorageClassSpecifier",
+        "static"
+      ],
+      [
+        "TypeSpecifier",
+        "void"
+      ],
+      [
+        "TypeSpecifier",
+        "short"
+      ],
+      [
+        "TypeSpecifier",
+        "int"
+      ],
+      [
+        "TypeQualifier",
+        "const"
+      ],
+      [
+        "TypeQualifier",
+        "volatile"
+      ],
+      [
+        "DirectDeclarator",
+        "id"
+      ],
+      [
+        "PointerOpt",
+        "*"
+      ],
+      [
+        "Decl",
+        "typedef"
+      ],
+      [
+        "Decl",
+        "static"
+      ],
+      [
+        "Decl",
+        "void"
+      ],
+      [
+        "Decl",
+        "short"
+      ],
+      [
+        "Decl",
+        "int"
+      ],
+      [
+        "Decl",
+        "const"
+      ],
+      [
+        "Decl",
+        "volatile"
+      ],
+      [
+        "DeclSpecifiers",
+        "typedef"
+      ],
+      [
+        "DeclSpecifiers",
+        "static"
+      ],
+      [
+        "DeclSpecifiers",
+        "void"
+      ],
+      [
+        "DeclSpecifiers",
+        "short"
+      ],
+      [
+        "DeclSpecifiers",
+        "int"
+      ],
+      [
+        "DeclSpecifiers",
+        "const"
+      ],
+      [
+        "DeclSpecifiers",
+        "volatile"
+      ],
+      [
+        "DeclSpecifiersOpt",
+        "typedef"
+      ],
+      [
+        "DeclSpecifiersOpt",
+        "static"
+      ],
+      [
+        "DeclSpecifiersOpt",
+        "void"
+      ],
+      [
+        "DeclSpecifiersOpt",
+        "short"
+      ],
+      [
+        "DeclSpecifiersOpt",
+        "int"
+      ],
+      [
+        "DeclSpecifiersOpt",
+        "const"
+      ],
+      [
+        "DeclSpecifiersOpt",
+        "volatile"
+      ],
+      [
+        "Declarator",
+        "*"
+      ],
+      [
+        "Declarator",
+        "id"
+      ],
+      [
+        "TypeQualifierList",
+        "const"
+      ],
+      [
+        "TypeQualifierList",
+        "volatile"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "Decl",
+        "Grammar.END"
+      ],
+      [
+        "DeclSpecifiers",
+        "*"
+      ],
+      [
+        "DeclSpecifiers",
+        "id"
+      ],
+      [
+        "StorageClassSpecifier",
+        "typedef"
+      ],
+      [
+        "StorageClassSpecifier",
+        "static"
+      ],
+      [
+        "StorageClassSpecifier",
+        "void"
+      ],
+      [
+        "StorageClassSpecifier",
+        "short"
+      ],
+      [
+        "StorageClassSpecifier",
+        "int"
+      ],
+      [
+        "StorageClassSpecifier",
+        "const"
+      ],
+      [
+        "StorageClassSpecifier",
+        "volatile"
+      ],
+      [
+        "StorageClassSpecifier",
+        "*"
+      ],
+      [
+        "StorageClassSpecifier",
+        "id"
+      ],
+      [
+        "TypeSpecifier",
+        "typedef"
+      ],
+      [
+        "TypeSpecifier",
+        "static"
+      ],
+      [
+        "TypeSpecifier",
+        "void"
+      ],
+      [
+        "TypeSpecifier",
+        "short"
+      ],
+      [
+        "TypeSpecifier",
+        "int"
+      ],
+      [
+        "TypeSpecifier",
+        "const"
+      ],
+      [
+        "TypeSpecifier",
+        "volatile"
+      ],
+      [
+        "TypeSpecifier",
+        "*"
+      ],
+      [
+        "TypeSpecifier",
+        "id"
+      ],
+      [
+        "TypeQualifier",
+        "typedef"
+      ],
+      [
+        "TypeQualifier",
+        "static"
+      ],
+      [
+        "TypeQualifier",
+        "void"
+      ],
+      [
+        "TypeQualifier",
+        "short"
+      ],
+      [
+        "TypeQualifier",
+        "int"
+      ],
+      [
+        "TypeQualifier",
+        "const"
+      ],
+      [
+        "TypeQualifier",
+        "volatile"
+      ],
+      [
+        "TypeQualifier",
+        "*"
+      ],
+      [
+        "TypeQualifier",
+        "id"
+      ],
+      [
+        "PointerOpt",
+        "id"
+      ],
+      [
+        "TypeQualifierList",
+        "*"
+      ],
+      [
+        "TypeQualifierList",
+        "id"
+      ],
+      [
+        "Declarator",
+        "Grammar.END"
+      ],
+      [
+        "DeclSpecifiersOpt",
+        "*"
+      ],
+      [
+        "DeclSpecifiersOpt",
+        "id"
+      ],
+      [
+        "DirectDeclarator",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "Decl",
       "Declarator",
@@ -43125,30 +43584,42 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "S": {
-        "id": true
-      },
-      "V": {
-        "id": true
-      },
-      "E": {
-        "num": true,
-        "id": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "V": {
-        "assign": true,
-        "Grammar.END": true
-      },
-      "E": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "id"
+      ],
+      [
+        "V",
+        "id"
+      ],
+      [
+        "E",
+        "num"
+      ],
+      [
+        "E",
+        "id"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "V",
+        "assign"
+      ],
+      [
+        "V",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "V",
@@ -44464,40 +44935,66 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "L": {
-        "*": true,
-        "id": true
-      },
-      "S'": {
-        "*": true,
-        "id": true
-      },
-      "S": {
-        "*": true,
-        "id": true
-      },
-      "R": {
-        "*": true,
-        "id": true
-      }
-    },
-    "grammar.follow": {
-      "S'": {
-        "Grammar.END": true
-      },
-      "L": {
-        "assign": true,
-        "Grammar.END": true
-      },
-      "S": {
-        "Grammar.END": true
-      },
-      "R": {
-        "assign": true,
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "L",
+        "*"
+      ],
+      [
+        "L",
+        "id"
+      ],
+      [
+        "S'",
+        "*"
+      ],
+      [
+        "S'",
+        "id"
+      ],
+      [
+        "S",
+        "*"
+      ],
+      [
+        "S",
+        "id"
+      ],
+      [
+        "R",
+        "*"
+      ],
+      [
+        "R",
+        "id"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S'",
+        "Grammar.END"
+      ],
+      [
+        "L",
+        "assign"
+      ],
+      [
+        "L",
+        "Grammar.END"
+      ],
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "R",
+        "assign"
+      ],
+      [
+        "R",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "S'",
       "L",
@@ -46770,30 +47267,42 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "A": {
-        "w": true
-      },
-      "B": {
-        "w": true
-      },
-      "S": {
-        "w": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "A": {
-        "x": true,
-        "y": true
-      },
-      "B": {
-        "x": true,
-        "y": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "w"
+      ],
+      [
+        "B",
+        "w"
+      ],
+      [
+        "S",
+        "w"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "x"
+      ],
+      [
+        "A",
+        "y"
+      ],
+      [
+        "B",
+        "x"
+      ],
+      [
+        "B",
+        "y"
+      ]
+    ],
     "grammar.endable": [
       "S"
     ],
@@ -48458,22 +48967,26 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "S": {
-        "(": true
-      },
-      "Block": {
-        "(": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "Block": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "("
+      ],
+      [
+        "Block",
+        "("
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "Block",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "Block"
@@ -49419,44 +49932,66 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "Rv": {
-        "num": true,
-        "id": true
-      },
-      "Lv": {
-        "id": true
-      },
-      "S": {
-        "id": true
-      },
-      "Assign": {
-        "id": true
-      },
-      "Inc": {
-        "id": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "Lv": {
-        "equals": true,
-        "++": true,
-        "//": true,
-        "Grammar.END": true
-      },
-      "Assign": {
-        "Grammar.END": true
-      },
-      "Inc": {
-        "Grammar.END": true
-      },
-      "Rv": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "Rv",
+        "num"
+      ],
+      [
+        "Rv",
+        "id"
+      ],
+      [
+        "Lv",
+        "id"
+      ],
+      [
+        "S",
+        "id"
+      ],
+      [
+        "Assign",
+        "id"
+      ],
+      [
+        "Inc",
+        "id"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "Lv",
+        "equals"
+      ],
+      [
+        "Lv",
+        "++"
+      ],
+      [
+        "Lv",
+        "//"
+      ],
+      [
+        "Lv",
+        "Grammar.END"
+      ],
+      [
+        "Assign",
+        "Grammar.END"
+      ],
+      [
+        "Inc",
+        "Grammar.END"
+      ],
+      [
+        "Rv",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "Lv",
@@ -51506,28 +52041,34 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "Happy": {
-        ":": true
-      },
-      "Sad": {
-        ":": true
-      },
-      "Emoticon": {
-        ":": true
-      }
-    },
-    "grammar.follow": {
-      "Emoticon": {
-        "Grammar.END": true
-      },
-      "Happy": {
-        "Grammar.END": true
-      },
-      "Sad": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "Happy",
+        ":"
+      ],
+      [
+        "Sad",
+        ":"
+      ],
+      [
+        "Emoticon",
+        ":"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "Emoticon",
+        "Grammar.END"
+      ],
+      [
+        "Happy",
+        "Grammar.END"
+      ],
+      [
+        "Sad",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "Emoticon",
       "Happy",
@@ -52559,45 +53100,66 @@ module.exports = {
       "C",
       "D"
     ],
-    "grammar.first": {
-      "S": {
-        "a": true
-      },
-      "A": {
-        "a": true,
-        "b": true
-      },
-      "B": {
-        "b": true,
-        "a": true
-      },
-      "C": {},
-      "D": {},
-      "E": {}
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "C": {
-        "a": true,
-        "b": true
-      },
-      "D": {
-        "b": true,
-        "a": true
-      },
-      "A": {
-        "Grammar.END": true
-      },
-      "B": {
-        "Grammar.END": true
-      },
-      "E": {
-        "a": true,
-        "b": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "a"
+      ],
+      [
+        "A",
+        "a"
+      ],
+      [
+        "A",
+        "b"
+      ],
+      [
+        "B",
+        "b"
+      ],
+      [
+        "B",
+        "a"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "C",
+        "a"
+      ],
+      [
+        "C",
+        "b"
+      ],
+      [
+        "D",
+        "b"
+      ],
+      [
+        "D",
+        "a"
+      ],
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        "a"
+      ],
+      [
+        "E",
+        "b"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "A",
@@ -55190,52 +55752,78 @@ module.exports = {
       "BOpt",
       "IOpt"
     ],
-    "grammar.first": {
-      "Value": {
-        "number": true
-      },
-      "V": {
-        "f": true,
-        "i": true
-      },
-      "Real": {
-        "dot": true,
-        "+": true
-      },
-      "Int": {
-        "+": true,
-        "dot": true
-      },
-      "BOpt": {},
-      "IOpt": {},
-      "Opt": {}
-    },
-    "grammar.follow": {
-      "Value": {
-        "Grammar.END": true
-      },
-      "IOpt": {
-        "dot": true,
-        "+": true
-      },
-      "BOpt": {
-        "+": true,
-        "dot": true
-      },
-      "V": {
-        "Grammar.END": true
-      },
-      "Real": {
-        "Grammar.END": true
-      },
-      "Int": {
-        "Grammar.END": true
-      },
-      "Opt": {
-        "+": true,
-        "dot": true
-      }
-    },
+    "grammar.first": [
+      [
+        "Value",
+        "number"
+      ],
+      [
+        "V",
+        "f"
+      ],
+      [
+        "V",
+        "i"
+      ],
+      [
+        "Real",
+        "dot"
+      ],
+      [
+        "Real",
+        "+"
+      ],
+      [
+        "Int",
+        "+"
+      ],
+      [
+        "Int",
+        "dot"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "Value",
+        "Grammar.END"
+      ],
+      [
+        "IOpt",
+        "dot"
+      ],
+      [
+        "IOpt",
+        "+"
+      ],
+      [
+        "BOpt",
+        "+"
+      ],
+      [
+        "BOpt",
+        "dot"
+      ],
+      [
+        "V",
+        "Grammar.END"
+      ],
+      [
+        "Real",
+        "Grammar.END"
+      ],
+      [
+        "Int",
+        "Grammar.END"
+      ],
+      [
+        "Opt",
+        "+"
+      ],
+      [
+        "Opt",
+        "dot"
+      ]
+    ],
     "grammar.endable": [
       "Value",
       "V",
@@ -58059,62 +58647,106 @@ module.exports = {
     "grammar.nullable": [
       "W"
     ],
-    "grammar.first": {
-      "S": {
-        "'": true
-      },
-      "U": {
-        "'": true
-      },
-      "W": {
-        "8": true,
-        "*": true
-      },
-      "Q": {
-        "'": true
-      },
-      "P": {
-        "'": true
-      },
-      "T": {
-        "'": true
-      },
-      "E": {
-        "'": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "T": {
-        "8": true,
-        "*": true,
-        ";": true,
-        "Grammar.END": true
-      },
-      "E": {
-        "8": true,
-        ";": true,
-        "*": true,
-        "Grammar.END": true
-      },
-      "Q": {
-        "Grammar.END": true
-      },
-      "P": {
-        "Grammar.END": true
-      },
-      "W": {
-        "Grammar.END": true
-      },
-      "U": {
-        "8": true,
-        "*": true,
-        ";": true,
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "'"
+      ],
+      [
+        "U",
+        "'"
+      ],
+      [
+        "W",
+        "*"
+      ],
+      [
+        "W",
+        "8"
+      ],
+      [
+        "Q",
+        "'"
+      ],
+      [
+        "P",
+        "'"
+      ],
+      [
+        "T",
+        "'"
+      ],
+      [
+        "E",
+        "'"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "T",
+        "*"
+      ],
+      [
+        "T",
+        "8"
+      ],
+      [
+        "T",
+        ";"
+      ],
+      [
+        "T",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        ";"
+      ],
+      [
+        "E",
+        "*"
+      ],
+      [
+        "E",
+        "8"
+      ],
+      [
+        "E",
+        "Grammar.END"
+      ],
+      [
+        "Q",
+        "Grammar.END"
+      ],
+      [
+        "P",
+        "Grammar.END"
+      ],
+      [
+        "W",
+        "Grammar.END"
+      ],
+      [
+        "U",
+        "*"
+      ],
+      [
+        "U",
+        "8"
+      ],
+      [
+        "U",
+        ";"
+      ],
+      [
+        "U",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "T",
@@ -59251,8 +59883,8 @@ module.exports = {
             "production": 7,
             "index": 0,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           },
@@ -59261,8 +59893,8 @@ module.exports = {
             "index": 0,
             "lookaheads": [
               ";",
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           },
@@ -59318,8 +59950,8 @@ module.exports = {
             "index": 1,
             "lookaheads": [
               ";",
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           }
@@ -59350,8 +59982,8 @@ module.exports = {
             "production": 6,
             "index": 0,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           },
@@ -59366,8 +59998,8 @@ module.exports = {
             "production": 8,
             "index": 0,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END",
               ";"
             ]
@@ -59377,8 +60009,8 @@ module.exports = {
             "index": 1,
             "lookaheads": [
               ";",
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           }
@@ -59494,8 +60126,8 @@ module.exports = {
             "production": 7,
             "index": 1,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           }
@@ -59512,8 +60144,8 @@ module.exports = {
             "production": 7,
             "index": 1,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           }
@@ -59616,8 +60248,8 @@ module.exports = {
             "production": 6,
             "index": 1,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           },
@@ -59634,8 +60266,8 @@ module.exports = {
             "production": 6,
             "index": 1,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           },
@@ -59655,8 +60287,8 @@ module.exports = {
             "production": 8,
             "index": 1,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END",
               ";"
             ]
@@ -59667,8 +60299,8 @@ module.exports = {
             "production": 8,
             "index": 1,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END",
               ";"
             ]
@@ -60215,8 +60847,8 @@ module.exports = {
             "production": 7,
             "index": 0,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           },
@@ -60225,8 +60857,8 @@ module.exports = {
             "index": 0,
             "lookaheads": [
               ";",
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           },
@@ -60282,8 +60914,8 @@ module.exports = {
             "index": 1,
             "lookaheads": [
               ";",
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           }
@@ -60314,8 +60946,8 @@ module.exports = {
             "production": 6,
             "index": 0,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           },
@@ -60330,8 +60962,8 @@ module.exports = {
             "production": 8,
             "index": 0,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END",
               ";"
             ]
@@ -60341,8 +60973,8 @@ module.exports = {
             "index": 1,
             "lookaheads": [
               ";",
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           }
@@ -60451,8 +61083,8 @@ module.exports = {
             "production": 6,
             "index": 1,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END",
               ";"
             ]
@@ -60462,8 +61094,8 @@ module.exports = {
             "index": 1,
             "lookaheads": [
               ";",
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           }
@@ -60473,8 +61105,8 @@ module.exports = {
             "production": 6,
             "index": 1,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END",
               ";"
             ]
@@ -60484,8 +61116,8 @@ module.exports = {
             "index": 1,
             "lookaheads": [
               ";",
-              "8",
               "*",
+              "8",
               "Grammar.END"
             ]
           }
@@ -60588,8 +61220,8 @@ module.exports = {
             "production": 8,
             "index": 1,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END",
               ";"
             ]
@@ -60600,8 +61232,8 @@ module.exports = {
             "production": 8,
             "index": 1,
             "lookaheads": [
-              "8",
               "*",
+              "8",
               "Grammar.END",
               ";"
             ]
@@ -61969,40 +62601,62 @@ module.exports = {
       "E",
       "F"
     ],
-    "grammar.first": {
-      "S": {
-        "(": true,
-        "sq)": true
-      },
-      "X": {
-        ")": true,
-        "sq)": true
-      },
-      "E": {},
-      "F": {},
-      "A": {}
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "E": {
-        "sq)": true,
-        ")": true
-      },
-      "F": {
-        "(": true,
-        "sq)": true
-      },
-      "X": {
-        "Grammar.END": true
-      },
-      "A": {
-        "sq)": true,
-        ")": true,
-        "(": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "("
+      ],
+      [
+        "S",
+        "sq)"
+      ],
+      [
+        "X",
+        ")"
+      ],
+      [
+        "X",
+        "sq)"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        "sq)"
+      ],
+      [
+        "E",
+        ")"
+      ],
+      [
+        "F",
+        "("
+      ],
+      [
+        "F",
+        "sq)"
+      ],
+      [
+        "X",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "sq)"
+      ],
+      [
+        "A",
+        ")"
+      ],
+      [
+        "A",
+        "("
+      ]
+    ],
     "grammar.endable": [
       "S",
       "X"
@@ -64099,40 +64753,66 @@ module.exports = {
     "grammar.nullable": [
       "E"
     ],
-    "grammar.first": {
-      "A": {
-        "b": true,
-        "e": true,
-        "o": true
-      },
-      "B": {
-        "b": true,
-        "o": true
-      },
-      "E": {
-        "e": true
-      },
-      "SL": {
-        "s": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true
-      },
-      "E": {
-        "b": true,
-        "o": true,
-        "Grammar.END": true
-      },
-      "B": {
-        "s": true
-      },
-      "SL": {
-        "e": true,
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "b"
+      ],
+      [
+        "A",
+        "e"
+      ],
+      [
+        "A",
+        "o"
+      ],
+      [
+        "B",
+        "b"
+      ],
+      [
+        "B",
+        "o"
+      ],
+      [
+        "E",
+        "e"
+      ],
+      [
+        "SL",
+        "s"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        "b"
+      ],
+      [
+        "E",
+        "o"
+      ],
+      [
+        "E",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "s"
+      ],
+      [
+        "SL",
+        "e"
+      ],
+      [
+        "SL",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "A",
       "E",
@@ -66716,22 +67396,26 @@ module.exports = {
     "grammar.nullable": [
       "X"
     ],
-    "grammar.first": {
-      "S": {
-        "a": true
-      },
-      "X": {
-        "a": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "X": {
-        "a": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "a"
+      ],
+      [
+        "X",
+        "a"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "X",
+        "a"
+      ]
+    ],
     "grammar.endable": [
       "S"
     ],
@@ -67537,30 +68221,42 @@ module.exports = {
     "grammar.nullable": [
       "C"
     ],
-    "grammar.first": {
-      "B": {
-        "b": true,
-        "c": true
-      },
-      "C": {
-        "a": true
-      },
-      "A": {
-        "b": true,
-        "c": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true
-      },
-      "B": {
-        "a": true
-      },
-      "C": {
-        "a": true
-      }
-    },
+    "grammar.first": [
+      [
+        "B",
+        "b"
+      ],
+      [
+        "B",
+        "c"
+      ],
+      [
+        "C",
+        "a"
+      ],
+      [
+        "A",
+        "b"
+      ],
+      [
+        "A",
+        "c"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "a"
+      ],
+      [
+        "C",
+        "a"
+      ]
+    ],
     "grammar.endable": [
       "A"
     ],
@@ -69520,45 +70216,70 @@ module.exports = {
       "C",
       "B"
     ],
-    "grammar.first": {
-      "E": {
-        "a": true
-      },
-      "D": {
-        "b": true
-      },
-      "C": {
-        "c": true
-      },
-      "B": {
-        "a": true
-      },
-      "A": {
-        "a": true,
-        "c": true,
-        "b": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true
-      },
-      "B": {
-        "c": true,
-        "b": true,
-        "a": true
-      },
-      "C": {
-        "b": true,
-        "a": true
-      },
-      "D": {
-        "a": true
-      },
-      "E": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "E",
+        "a"
+      ],
+      [
+        "D",
+        "b"
+      ],
+      [
+        "C",
+        "c"
+      ],
+      [
+        "B",
+        "a"
+      ],
+      [
+        "A",
+        "a"
+      ],
+      [
+        "A",
+        "c"
+      ],
+      [
+        "A",
+        "b"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "c"
+      ],
+      [
+        "B",
+        "b"
+      ],
+      [
+        "B",
+        "a"
+      ],
+      [
+        "C",
+        "b"
+      ],
+      [
+        "C",
+        "a"
+      ],
+      [
+        "D",
+        "a"
+      ],
+      [
+        "E",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "A",
       "E"
@@ -71906,32 +72627,50 @@ module.exports = {
     "grammar.nullable": [
       "A"
     ],
-    "grammar.first": {
-      "A": {
-        "a": true
-      },
-      "B": {
-        "d": true,
-        "e": true
-      },
-      "C": {
-        "c": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true,
-        "c": true
-      },
-      "B": {
-        "Grammar.END": true,
-        "c": true
-      },
-      "C": {
-        "Grammar.END": true,
-        "c": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "a"
+      ],
+      [
+        "B",
+        "d"
+      ],
+      [
+        "B",
+        "e"
+      ],
+      [
+        "C",
+        "c"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "c"
+      ],
+      [
+        "B",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "c"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ],
+      [
+        "C",
+        "c"
+      ]
+    ],
     "grammar.endable": [
       "A",
       "B",
@@ -74718,35 +75457,62 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "TERM": {
-        "id": true,
-        "let": true
-      },
-      "LEXP": {
-        "id": true,
-        "lpar": true
-      },
-      "INDEX": {
-        "lpar": true
-      }
-    },
-    "grammar.follow": {
-      "TERM": {
-        "Grammar.END": true,
-        "rpar": true
-      },
-      "INDEX": {
-        "id": true,
-        "lpar": true,
-        "Grammar.END": true,
-        "rpar": true
-      },
-      "LEXP": {
-        "Grammar.END": true,
-        "rpar": true
-      }
-    },
+    "grammar.first": [
+      [
+        "TERM",
+        "id"
+      ],
+      [
+        "TERM",
+        "let"
+      ],
+      [
+        "LEXP",
+        "id"
+      ],
+      [
+        "LEXP",
+        "lpar"
+      ],
+      [
+        "INDEX",
+        "lpar"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "TERM",
+        "Grammar.END"
+      ],
+      [
+        "TERM",
+        "rpar"
+      ],
+      [
+        "INDEX",
+        "id"
+      ],
+      [
+        "INDEX",
+        "lpar"
+      ],
+      [
+        "INDEX",
+        "Grammar.END"
+      ],
+      [
+        "INDEX",
+        "rpar"
+      ],
+      [
+        "LEXP",
+        "Grammar.END"
+      ],
+      [
+        "LEXP",
+        "rpar"
+      ]
+    ],
     "grammar.endable": [
       "TERM",
       "INDEX",
@@ -77776,84 +78542,178 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "Label": {
-        "id": true
-      },
-      "Dest": {
-        "id": true,
-        "reg": true,
-        "(": true
-      },
-      "Src": {
-        "num": true,
-        "id": true,
-        "reg": true,
-        "(": true
-      },
-      "Inst": {
-        "pneumonic": true,
-        "id": true
-      },
-      "Macro": {
-        "id": true
-      },
-      "Line": {
-        "id": true,
-        "pneumonic": true
-      },
-      "Op": {
-        "pneumonic": true,
-        "id": true
-      },
-      "Operands": {
-        "num": true,
-        "id": true,
-        "reg": true,
-        "(": true
-      }
-    },
-    "grammar.follow": {
-      "Line": {
-        "Grammar.END": true
-      },
-      "Inst": {
-        "num": true,
-        "id": true,
-        "reg": true,
-        "(": true
-      },
-      "Src": {
-        "num": true,
-        "id": true,
-        "reg": true,
-        "(": true,
-        ")": true
-      },
-      "Op": {
-        "Grammar.END": true
-      },
-      "Label": {
-        "Grammar.END": true
-      },
-      "Operands": {
-        "Grammar.END": true
-      },
-      "Dest": {
-        "num": true,
-        "id": true,
-        "reg": true,
-        "(": true,
-        ")": true,
-        "Grammar.END": true
-      },
-      "Macro": {
-        "num": true,
-        "id": true,
-        "reg": true,
-        "(": true
-      }
-    },
+    "grammar.first": [
+      [
+        "Label",
+        "id"
+      ],
+      [
+        "Dest",
+        "id"
+      ],
+      [
+        "Dest",
+        "reg"
+      ],
+      [
+        "Dest",
+        "("
+      ],
+      [
+        "Src",
+        "num"
+      ],
+      [
+        "Src",
+        "id"
+      ],
+      [
+        "Src",
+        "reg"
+      ],
+      [
+        "Src",
+        "("
+      ],
+      [
+        "Inst",
+        "pneumonic"
+      ],
+      [
+        "Inst",
+        "id"
+      ],
+      [
+        "Macro",
+        "id"
+      ],
+      [
+        "Line",
+        "id"
+      ],
+      [
+        "Line",
+        "pneumonic"
+      ],
+      [
+        "Op",
+        "pneumonic"
+      ],
+      [
+        "Op",
+        "id"
+      ],
+      [
+        "Operands",
+        "num"
+      ],
+      [
+        "Operands",
+        "id"
+      ],
+      [
+        "Operands",
+        "reg"
+      ],
+      [
+        "Operands",
+        "("
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "Line",
+        "Grammar.END"
+      ],
+      [
+        "Inst",
+        "num"
+      ],
+      [
+        "Inst",
+        "id"
+      ],
+      [
+        "Inst",
+        "reg"
+      ],
+      [
+        "Inst",
+        "("
+      ],
+      [
+        "Src",
+        "num"
+      ],
+      [
+        "Src",
+        "id"
+      ],
+      [
+        "Src",
+        "reg"
+      ],
+      [
+        "Src",
+        "("
+      ],
+      [
+        "Src",
+        ")"
+      ],
+      [
+        "Op",
+        "Grammar.END"
+      ],
+      [
+        "Label",
+        "Grammar.END"
+      ],
+      [
+        "Operands",
+        "Grammar.END"
+      ],
+      [
+        "Dest",
+        "num"
+      ],
+      [
+        "Dest",
+        "id"
+      ],
+      [
+        "Dest",
+        "reg"
+      ],
+      [
+        "Dest",
+        "("
+      ],
+      [
+        "Dest",
+        ")"
+      ],
+      [
+        "Dest",
+        "Grammar.END"
+      ],
+      [
+        "Macro",
+        "num"
+      ],
+      [
+        "Macro",
+        "id"
+      ],
+      [
+        "Macro",
+        "reg"
+      ],
+      [
+        "Macro",
+        "("
+      ]
+    ],
     "grammar.endable": [
       "Line",
       "Op",
@@ -82845,40 +83705,66 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "T": {
-        "id": true
-      },
-      "V": {
-        "id": true
-      },
-      "E": {
-        "num": true,
-        "id": true
-      },
-      "S": {
-        "id": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true,
-        ";": true
-      },
-      "V": {
-        "assign": true,
-        "Grammar.END": true,
-        ";": true
-      },
-      "T": {
-        "Grammar.END": true,
-        ";": true
-      },
-      "E": {
-        "Grammar.END": true,
-        ";": true
-      }
-    },
+    "grammar.first": [
+      [
+        "T",
+        "id"
+      ],
+      [
+        "V",
+        "id"
+      ],
+      [
+        "E",
+        "num"
+      ],
+      [
+        "E",
+        "id"
+      ],
+      [
+        "S",
+        "id"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "S",
+        ";"
+      ],
+      [
+        "V",
+        "assign"
+      ],
+      [
+        "V",
+        "Grammar.END"
+      ],
+      [
+        "V",
+        ";"
+      ],
+      [
+        "T",
+        "Grammar.END"
+      ],
+      [
+        "T",
+        ";"
+      ],
+      [
+        "E",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        ";"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "V",
@@ -85339,30 +86225,42 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "V": {
-        "id": true
-      },
-      "Var": {
-        "id": true
-      },
-      "L": {
-        "id": true
-      }
-    },
-    "grammar.follow": {
-      "L": {
-        "Grammar.END": true,
-        "equals": true
-      },
-      "V": {
-        "(": true
-      },
-      "Var": {
-        "(": true,
-        "+": true
-      }
-    },
+    "grammar.first": [
+      [
+        "V",
+        "id"
+      ],
+      [
+        "Var",
+        "id"
+      ],
+      [
+        "L",
+        "id"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "L",
+        "Grammar.END"
+      ],
+      [
+        "L",
+        "equals"
+      ],
+      [
+        "V",
+        "("
+      ],
+      [
+        "Var",
+        "("
+      ],
+      [
+        "Var",
+        "+"
+      ]
+    ],
     "grammar.endable": [
       "L"
     ],
@@ -88176,34 +89074,58 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "O": {
-        "id": true,
-        "(": true
-      },
-      "OL": {
-        "id": true,
-        "(": true
-      },
-      "E": {
-        "id": true,
-        "(": true
-      }
-    },
-    "grammar.follow": {
-      "E": {
-        "Grammar.END": true
-      },
-      "O": {
-        ":": true,
-        "Grammar.END": true
-      },
-      "OL": {
-        "l": true,
-        ")": true,
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "O",
+        "id"
+      ],
+      [
+        "O",
+        "("
+      ],
+      [
+        "OL",
+        "id"
+      ],
+      [
+        "OL",
+        "("
+      ],
+      [
+        "E",
+        "id"
+      ],
+      [
+        "E",
+        "("
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "E",
+        "Grammar.END"
+      ],
+      [
+        "O",
+        ":"
+      ],
+      [
+        "O",
+        "Grammar.END"
+      ],
+      [
+        "OL",
+        "l"
+      ],
+      [
+        "OL",
+        ")"
+      ],
+      [
+        "OL",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "E",
       "O",
@@ -91556,31 +92478,46 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "S": {
-        "a": true,
-        "b": true
-      },
-      "B": {
-        "g": true
-      },
-      "A": {
-        "g": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "A": {
-        "c": true,
-        "d": true
-      },
-      "B": {
-        "c": true,
-        "d": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "a"
+      ],
+      [
+        "S",
+        "b"
+      ],
+      [
+        "B",
+        "g"
+      ],
+      [
+        "A",
+        "g"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "c"
+      ],
+      [
+        "A",
+        "d"
+      ],
+      [
+        "B",
+        "c"
+      ],
+      [
+        "B",
+        "d"
+      ]
+    ],
     "grammar.endable": [
       "S"
     ],
@@ -93606,33 +94543,54 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "C": {
-        "a": true,
-        "b": true
-      },
-      "B": {
-        "a": true,
-        "c": true
-      },
-      "A": {
-        "a": true,
-        "b": true,
-        "c": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true
-      },
-      "C": {
-        "a": true,
-        "Grammar.END": true
-      },
-      "B": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "C",
+        "a"
+      ],
+      [
+        "C",
+        "b"
+      ],
+      [
+        "B",
+        "a"
+      ],
+      [
+        "B",
+        "c"
+      ],
+      [
+        "A",
+        "a"
+      ],
+      [
+        "A",
+        "b"
+      ],
+      [
+        "A",
+        "c"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "C",
+        "a"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "A",
       "C",
@@ -95819,32 +96777,50 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "A": {
-        "x": true,
-        "a": true
-      },
-      "B": {
-        "x": true,
-        "b": true
-      },
-      "S": {
-        "x": true,
-        "a": true,
-        "b": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "A": {
-        "Grammar.END": true
-      },
-      "B": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "x"
+      ],
+      [
+        "A",
+        "a"
+      ],
+      [
+        "B",
+        "x"
+      ],
+      [
+        "B",
+        "b"
+      ],
+      [
+        "S",
+        "x"
+      ],
+      [
+        "S",
+        "a"
+      ],
+      [
+        "S",
+        "b"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "A",
@@ -97640,30 +98616,42 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "Parens": {
-        "(": true
-      },
-      "StarParens": {
-        "(": true
-      },
-      "S": {
-        "(": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "Parens": {
-        ")": true,
-        "Grammar.END": true
-      },
-      "StarParens": {
-        "*)": true,
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "Parens",
+        "("
+      ],
+      [
+        "StarParens",
+        "("
+      ],
+      [
+        "S",
+        "("
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "Parens",
+        ")"
+      ],
+      [
+        "Parens",
+        "Grammar.END"
+      ],
+      [
+        "StarParens",
+        "*)"
+      ],
+      [
+        "StarParens",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "Parens",
@@ -100448,33 +101436,42 @@ module.exports = {
     "grammar.nullable": [
       "D"
     ],
-    "grammar.first": {
-      "S": {
-        "T": true,
-        "C": true
-      },
-      "B": {
-        "C": true
-      },
-      "D": {
-        "d": true
-      },
-      "A": {
-        "C": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "A": {
-        "Grammar.END": true
-      },
-      "B": {
-        "Grammar.END": true
-      },
-      "D": {}
-    },
+    "grammar.first": [
+      [
+        "S",
+        "T"
+      ],
+      [
+        "S",
+        "C"
+      ],
+      [
+        "B",
+        "C"
+      ],
+      [
+        "D",
+        "d"
+      ],
+      [
+        "A",
+        "C"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "A",
@@ -101707,52 +102704,82 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "E": {
-        "d": true,
-        "e": true
-      },
-      "F": {
-        "e": true,
-        "d": true
-      },
-      "D": {
-        "d": true,
-        "e": true
-      },
-      "C": {
-        "e": true,
-        "d": true
-      },
-      "B": {
-        "a": true
-      },
-      "A": {
-        "a": true
-      }
-    },
-    "grammar.follow": {
-      "E": {
-        "Grammar.END": true
-      },
-      "B": {
-        "b": true,
-        "c": true
-      },
-      "A": {
-        "c": true,
-        "b": true
-      },
-      "D": {
-        "Grammar.END": true
-      },
-      "F": {
-        "Grammar.END": true
-      },
-      "C": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "E",
+        "d"
+      ],
+      [
+        "E",
+        "e"
+      ],
+      [
+        "F",
+        "e"
+      ],
+      [
+        "F",
+        "d"
+      ],
+      [
+        "D",
+        "d"
+      ],
+      [
+        "D",
+        "e"
+      ],
+      [
+        "C",
+        "e"
+      ],
+      [
+        "C",
+        "d"
+      ],
+      [
+        "B",
+        "a"
+      ],
+      [
+        "A",
+        "a"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "E",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "b"
+      ],
+      [
+        "B",
+        "c"
+      ],
+      [
+        "A",
+        "c"
+      ],
+      [
+        "A",
+        "b"
+      ],
+      [
+        "D",
+        "Grammar.END"
+      ],
+      [
+        "F",
+        "Grammar.END"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "E",
       "D",
@@ -105769,65 +106796,118 @@ module.exports = {
     "grammar.nullable": [
       "S"
     ],
-    "grammar.first": {
-      "R": {
-        "s": true,
-        "u": true
-      },
-      "V": {
-        "id": true
-      },
-      "S": {
-        "s": true,
-        "u": true
-      },
-      "StructVar": {
-        "id": true
-      },
-      "NVar": {
-        "id": true
-      },
-      "Var": {
-        "id": true
-      },
-      "Subvar": {
-        "id": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true,
-        "s": true,
-        "u": true
-      },
-      "Var": {
-        ";": true,
-        ":": true
-      },
-      "Subvar": {
-        ":": true,
-        ";": true
-      },
-      "R": {
-        "Grammar.END": true,
-        "s": true,
-        "u": true
-      },
-      "StructVar": {
-        "Grammar.END": true,
-        "s": true,
-        "u": true
-      },
-      "NVar": {
-        "Grammar.END": true,
-        "s": true,
-        "u": true
-      },
-      "V": {
-        ";": true,
-        ":": true
-      }
-    },
+    "grammar.first": [
+      [
+        "R",
+        "s"
+      ],
+      [
+        "R",
+        "u"
+      ],
+      [
+        "V",
+        "id"
+      ],
+      [
+        "S",
+        "s"
+      ],
+      [
+        "S",
+        "u"
+      ],
+      [
+        "StructVar",
+        "id"
+      ],
+      [
+        "NVar",
+        "id"
+      ],
+      [
+        "Var",
+        "id"
+      ],
+      [
+        "Subvar",
+        "id"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "S",
+        "s"
+      ],
+      [
+        "S",
+        "u"
+      ],
+      [
+        "Var",
+        ";"
+      ],
+      [
+        "Var",
+        ":"
+      ],
+      [
+        "Subvar",
+        ":"
+      ],
+      [
+        "Subvar",
+        ";"
+      ],
+      [
+        "R",
+        "Grammar.END"
+      ],
+      [
+        "R",
+        "s"
+      ],
+      [
+        "R",
+        "u"
+      ],
+      [
+        "StructVar",
+        "Grammar.END"
+      ],
+      [
+        "StructVar",
+        "s"
+      ],
+      [
+        "StructVar",
+        "u"
+      ],
+      [
+        "NVar",
+        "Grammar.END"
+      ],
+      [
+        "NVar",
+        "s"
+      ],
+      [
+        "NVar",
+        "u"
+      ],
+      [
+        "V",
+        ";"
+      ],
+      [
+        "V",
+        ":"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "R",
@@ -109400,65 +110480,134 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "S": {
-        "(": true,
-        "*": true
-      },
-      "A": {
-        "id": true,
-        "!": true,
-        "(": true
-      },
-      "B": {
-        "num": true,
-        "!": true,
-        "(": true
-      },
-      "E": {
-        "!": true,
-        "(": true
-      },
-      "C": {
-        "id": true,
-        "num": true,
-        "!": true,
-        "(": true
-      },
-      "D": {
-        "id": true,
-        "num": true,
-        "!": true,
-        "(": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true,
-        ";": true,
-        ")": true
-      },
-      "C": {
-        ")": true,
-        "Grammar.END": true,
-        ";": true
-      },
-      "D": {
-        "*": true
-      },
-      "A": {
-        "x": true,
-        "y": true
-      },
-      "B": {
-        "y": true,
-        "x": true
-      },
-      "E": {
-        "x": true,
-        "y": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "("
+      ],
+      [
+        "S",
+        "*"
+      ],
+      [
+        "A",
+        "id"
+      ],
+      [
+        "A",
+        "!"
+      ],
+      [
+        "A",
+        "("
+      ],
+      [
+        "B",
+        "num"
+      ],
+      [
+        "B",
+        "!"
+      ],
+      [
+        "B",
+        "("
+      ],
+      [
+        "E",
+        "!"
+      ],
+      [
+        "E",
+        "("
+      ],
+      [
+        "C",
+        "id"
+      ],
+      [
+        "C",
+        "num"
+      ],
+      [
+        "C",
+        "!"
+      ],
+      [
+        "C",
+        "("
+      ],
+      [
+        "D",
+        "id"
+      ],
+      [
+        "D",
+        "num"
+      ],
+      [
+        "D",
+        "!"
+      ],
+      [
+        "D",
+        "("
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "S",
+        ";"
+      ],
+      [
+        "S",
+        ")"
+      ],
+      [
+        "C",
+        ")"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ],
+      [
+        "C",
+        ";"
+      ],
+      [
+        "D",
+        "*"
+      ],
+      [
+        "A",
+        "x"
+      ],
+      [
+        "A",
+        "y"
+      ],
+      [
+        "B",
+        "y"
+      ],
+      [
+        "B",
+        "x"
+      ],
+      [
+        "E",
+        "x"
+      ],
+      [
+        "E",
+        "y"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "C"
@@ -115161,40 +116310,62 @@ module.exports = {
       "E",
       "F"
     ],
-    "grammar.first": {
-      "S": {
-        "(": true,
-        "sq)": true
-      },
-      "X": {
-        ")": true,
-        "sq)": true
-      },
-      "E": {},
-      "F": {},
-      "A": {}
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "E": {
-        "sq)": true,
-        ")": true
-      },
-      "F": {
-        "(": true,
-        "sq)": true
-      },
-      "X": {
-        "Grammar.END": true
-      },
-      "A": {
-        "sq)": true,
-        ")": true,
-        "(": true
-      }
-    },
+    "grammar.first": [
+      [
+        "S",
+        "("
+      ],
+      [
+        "S",
+        "sq)"
+      ],
+      [
+        "X",
+        ")"
+      ],
+      [
+        "X",
+        "sq)"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        "sq)"
+      ],
+      [
+        "E",
+        ")"
+      ],
+      [
+        "F",
+        "("
+      ],
+      [
+        "F",
+        "sq)"
+      ],
+      [
+        "X",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "sq)"
+      ],
+      [
+        "A",
+        ")"
+      ],
+      [
+        "A",
+        "("
+      ]
+    ],
     "grammar.endable": [
       "S",
       "X"
@@ -118219,68 +119390,162 @@ module.exports = {
     "grammar.nullable": [
       "A"
     ],
-    "grammar.first": {
-      "A": {
-        "a": true
-      },
-      "B": {
-        "b": true,
-        "c": true,
-        "d": true,
-        "a": true
-      },
-      "C": {
-        "c": true,
-        "d": true,
-        "a": true
-      },
-      "D": {
-        "d": true,
-        "a": true
-      },
-      "S": {
-        "a": true,
-        "b": true,
-        "c": true,
-        "d": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true,
-        "b": true,
-        "c": true,
-        "d": true,
-        "a": true
-      },
-      "A": {
-        "b": true,
-        "c": true,
-        "d": true,
-        "a": true
-      },
-      "B": {
-        "c": true,
-        "d": true,
-        "a": true,
-        "Grammar.END": true,
-        "b": true
-      },
-      "C": {
-        "d": true,
-        "a": true,
-        "c": true,
-        "Grammar.END": true,
-        "b": true
-      },
-      "D": {
-        "Grammar.END": true,
-        "d": true,
-        "a": true,
-        "b": true,
-        "c": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "a"
+      ],
+      [
+        "B",
+        "b"
+      ],
+      [
+        "B",
+        "c"
+      ],
+      [
+        "B",
+        "d"
+      ],
+      [
+        "B",
+        "a"
+      ],
+      [
+        "C",
+        "c"
+      ],
+      [
+        "C",
+        "d"
+      ],
+      [
+        "C",
+        "a"
+      ],
+      [
+        "D",
+        "d"
+      ],
+      [
+        "D",
+        "a"
+      ],
+      [
+        "S",
+        "a"
+      ],
+      [
+        "S",
+        "b"
+      ],
+      [
+        "S",
+        "c"
+      ],
+      [
+        "S",
+        "d"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "S",
+        "b"
+      ],
+      [
+        "S",
+        "c"
+      ],
+      [
+        "S",
+        "d"
+      ],
+      [
+        "S",
+        "a"
+      ],
+      [
+        "A",
+        "b"
+      ],
+      [
+        "A",
+        "c"
+      ],
+      [
+        "A",
+        "d"
+      ],
+      [
+        "A",
+        "a"
+      ],
+      [
+        "B",
+        "c"
+      ],
+      [
+        "B",
+        "d"
+      ],
+      [
+        "B",
+        "a"
+      ],
+      [
+        "B",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "b"
+      ],
+      [
+        "C",
+        "d"
+      ],
+      [
+        "C",
+        "a"
+      ],
+      [
+        "C",
+        "c"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ],
+      [
+        "C",
+        "b"
+      ],
+      [
+        "D",
+        "Grammar.END"
+      ],
+      [
+        "D",
+        "d"
+      ],
+      [
+        "D",
+        "a"
+      ],
+      [
+        "D",
+        "b"
+      ],
+      [
+        "D",
+        "c"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "B",
@@ -123257,30 +124522,42 @@ module.exports = {
     "grammar.nullable": [
       "A"
     ],
-    "grammar.first": {
-      "B": {
-        "x": true,
-        "v": true
-      },
-      "A": {
-        "x": true
-      },
-      "C": {
-        "v": true
-      }
-    },
-    "grammar.follow": {
-      "B": {
-        "Grammar.END": true
-      },
-      "A": {
-        "x": true
-      },
-      "C": {
-        "w": true,
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "B",
+        "x"
+      ],
+      [
+        "B",
+        "v"
+      ],
+      [
+        "A",
+        "x"
+      ],
+      [
+        "C",
+        "v"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "B",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "x"
+      ],
+      [
+        "C",
+        "w"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "B",
       "C"
@@ -125382,32 +126659,50 @@ module.exports = {
     "grammar.nullable": [
       "B"
     ],
-    "grammar.first": {
-      "A": {
-        "a": true,
-        "b": true
-      },
-      "B": {
-        "d": true
-      },
-      "S": {
-        "a": true,
-        "b": true
-      }
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "A": {
-        "d": true,
-        "c": true
-      },
-      "B": {
-        "c": true,
-        "d": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "a"
+      ],
+      [
+        "A",
+        "b"
+      ],
+      [
+        "B",
+        "d"
+      ],
+      [
+        "S",
+        "a"
+      ],
+      [
+        "S",
+        "b"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "d"
+      ],
+      [
+        "A",
+        "c"
+      ],
+      [
+        "B",
+        "c"
+      ],
+      [
+        "B",
+        "d"
+      ]
+    ],
     "grammar.endable": [
       "S"
     ],
@@ -127747,29 +129042,38 @@ module.exports = {
     "grammar.nullable": [
       "B"
     ],
-    "grammar.first": {
-      "A": {
-        "a": true
-      },
-      "B": {
-        "a": true
-      },
-      "C": {
-        "a": true,
-        "b": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true
-      },
-      "B": {
-        "a": true
-      },
-      "C": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "a"
+      ],
+      [
+        "B",
+        "a"
+      ],
+      [
+        "C",
+        "a"
+      ],
+      [
+        "C",
+        "b"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "a"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "A",
       "C"
@@ -129852,43 +131156,94 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "FACTOR": {
-        "num": true,
-        "lpar": true,
-        "star": true
-      },
-      "EXPR": {
-        "num": true,
-        "lpar": true,
-        "star": true
-      },
-      "TERM": {
-        "num": true,
-        "lpar": true,
-        "star": true
-      }
-    },
-    "grammar.follow": {
-      "EXPR": {
-        "Grammar.END": true,
-        "mult": true,
-        "rpar": true,
-        "add": true
-      },
-      "TERM": {
-        "add": true,
-        "Grammar.END": true,
-        "mult": true,
-        "rpar": true
-      },
-      "FACTOR": {
-        "add": true,
-        "Grammar.END": true,
-        "mult": true,
-        "rpar": true
-      }
-    },
+    "grammar.first": [
+      [
+        "FACTOR",
+        "num"
+      ],
+      [
+        "FACTOR",
+        "lpar"
+      ],
+      [
+        "FACTOR",
+        "star"
+      ],
+      [
+        "EXPR",
+        "num"
+      ],
+      [
+        "EXPR",
+        "lpar"
+      ],
+      [
+        "EXPR",
+        "star"
+      ],
+      [
+        "TERM",
+        "num"
+      ],
+      [
+        "TERM",
+        "lpar"
+      ],
+      [
+        "TERM",
+        "star"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "EXPR",
+        "Grammar.END"
+      ],
+      [
+        "EXPR",
+        "mult"
+      ],
+      [
+        "EXPR",
+        "rpar"
+      ],
+      [
+        "EXPR",
+        "add"
+      ],
+      [
+        "TERM",
+        "add"
+      ],
+      [
+        "TERM",
+        "Grammar.END"
+      ],
+      [
+        "TERM",
+        "mult"
+      ],
+      [
+        "TERM",
+        "rpar"
+      ],
+      [
+        "FACTOR",
+        "add"
+      ],
+      [
+        "FACTOR",
+        "Grammar.END"
+      ],
+      [
+        "FACTOR",
+        "mult"
+      ],
+      [
+        "FACTOR",
+        "rpar"
+      ]
+    ],
     "grammar.endable": [
       "EXPR",
       "TERM",
@@ -135134,28 +136489,34 @@ module.exports = {
       "B",
       "C"
     ],
-    "grammar.first": {
-      "A": {
-        "a": true
-      },
-      "B": {
-        "a": true
-      },
-      "C": {
-        "a": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true
-      },
-      "B": {
-        "a": true
-      },
-      "C": {
-        "Grammar.END": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "a"
+      ],
+      [
+        "B",
+        "a"
+      ],
+      [
+        "C",
+        "a"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "a"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ]
+    ],
     "grammar.endable": [
       "A",
       "C"
@@ -137214,46 +138575,106 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "B": {
-        "x": true,
-        "z": true,
-        "r": true
-      },
-      "C": {
-        "z": true,
-        "r": true
-      },
-      "A": {
-        "x": true,
-        "z": true,
-        "r": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true,
-        "x": true,
-        "z": true,
-        "r": true,
-        "y": true
-      },
-      "B": {
-        "z": true,
-        "r": true,
-        "Grammar.END": true,
-        "x": true,
-        "y": true
-      },
-      "C": {
-        "n": true,
-        "Grammar.END": true,
-        "x": true,
-        "z": true,
-        "r": true,
-        "y": true
-      }
-    },
+    "grammar.first": [
+      [
+        "B",
+        "x"
+      ],
+      [
+        "B",
+        "z"
+      ],
+      [
+        "B",
+        "r"
+      ],
+      [
+        "C",
+        "z"
+      ],
+      [
+        "C",
+        "r"
+      ],
+      [
+        "A",
+        "x"
+      ],
+      [
+        "A",
+        "z"
+      ],
+      [
+        "A",
+        "r"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "x"
+      ],
+      [
+        "A",
+        "z"
+      ],
+      [
+        "A",
+        "r"
+      ],
+      [
+        "A",
+        "y"
+      ],
+      [
+        "B",
+        "z"
+      ],
+      [
+        "B",
+        "r"
+      ],
+      [
+        "B",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "x"
+      ],
+      [
+        "B",
+        "y"
+      ],
+      [
+        "C",
+        "n"
+      ],
+      [
+        "C",
+        "Grammar.END"
+      ],
+      [
+        "C",
+        "x"
+      ],
+      [
+        "C",
+        "z"
+      ],
+      [
+        "C",
+        "r"
+      ],
+      [
+        "C",
+        "y"
+      ]
+    ],
     "grammar.endable": [
       "A",
       "B",
@@ -142772,39 +144193,62 @@ module.exports = {
     "grammar.nullable": [
       "G"
     ],
-    "grammar.first": {
-      "A": {
-        "b": true
-      },
-      "B": {
-        "x": true
-      },
-      "G": {
-        "x": true
-      },
-      "F": {
-        "b": true,
-        "x": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true,
-        "x": true
-      },
-      "F": {
-        "Grammar.END": true,
-        "x": true
-      },
-      "B": {
-        "Grammar.END": true,
-        "x": true
-      },
-      "G": {
-        "Grammar.END": true,
-        "x": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "b"
+      ],
+      [
+        "B",
+        "x"
+      ],
+      [
+        "G",
+        "x"
+      ],
+      [
+        "F",
+        "b"
+      ],
+      [
+        "F",
+        "x"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "x"
+      ],
+      [
+        "F",
+        "Grammar.END"
+      ],
+      [
+        "F",
+        "x"
+      ],
+      [
+        "B",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "x"
+      ],
+      [
+        "G",
+        "Grammar.END"
+      ],
+      [
+        "G",
+        "x"
+      ]
+    ],
     "grammar.endable": [
       "A",
       "F",
@@ -145230,17 +146674,22 @@ module.exports = {
     "grammar.unrealizable": [],
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
-    "grammar.first": {
-      "A": {
-        "c": true
-      }
-    },
-    "grammar.follow": {
-      "A": {
-        "Grammar.END": true,
-        "b": true
-      }
-    },
+    "grammar.first": [
+      [
+        "A",
+        "c"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "A",
+        "Grammar.END"
+      ],
+      [
+        "A",
+        "b"
+      ]
+    ],
     "grammar.endable": [
       "A"
     ],
@@ -146599,65 +148048,134 @@ module.exports = {
     "grammar.nullable": [
       "STMTS"
     ],
-    "grammar.first": {
-      "TERM": {
-        "id": true,
-        "let": true
-      },
-      "LEXP": {
-        "id": true
-      },
-      "INDEX": {
-        "lpar": true
-      },
-      "EXP": {
-        "id": true,
-        "let": true
-      },
-      "STMTS": {
-        "id": true
-      },
-      "STMT": {
-        "id": true
-      }
-    },
-    "grammar.follow": {
-      "EXP": {
-        "Grammar.END": true,
-        "add": true,
-        "end": true,
-        "semi": true,
-        "rpar": true
-      },
-      "STMTS": {
-        "in": true,
-        "id": true
-      },
-      "LEXP": {
-        "assign": true,
-        "lpar": true
-      },
-      "TERM": {
-        "Grammar.END": true,
-        "add": true,
-        "end": true,
-        "semi": true,
-        "rpar": true
-      },
-      "INDEX": {
-        "assign": true,
-        "lpar": true,
-        "Grammar.END": true,
-        "add": true,
-        "end": true,
-        "semi": true,
-        "rpar": true
-      },
-      "STMT": {
-        "in": true,
-        "id": true
-      }
-    },
+    "grammar.first": [
+      [
+        "TERM",
+        "id"
+      ],
+      [
+        "TERM",
+        "let"
+      ],
+      [
+        "LEXP",
+        "id"
+      ],
+      [
+        "INDEX",
+        "lpar"
+      ],
+      [
+        "EXP",
+        "id"
+      ],
+      [
+        "EXP",
+        "let"
+      ],
+      [
+        "STMTS",
+        "id"
+      ],
+      [
+        "STMT",
+        "id"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "EXP",
+        "Grammar.END"
+      ],
+      [
+        "EXP",
+        "add"
+      ],
+      [
+        "EXP",
+        "end"
+      ],
+      [
+        "EXP",
+        "semi"
+      ],
+      [
+        "EXP",
+        "rpar"
+      ],
+      [
+        "STMTS",
+        "in"
+      ],
+      [
+        "STMTS",
+        "id"
+      ],
+      [
+        "LEXP",
+        "assign"
+      ],
+      [
+        "LEXP",
+        "lpar"
+      ],
+      [
+        "TERM",
+        "Grammar.END"
+      ],
+      [
+        "TERM",
+        "add"
+      ],
+      [
+        "TERM",
+        "end"
+      ],
+      [
+        "TERM",
+        "semi"
+      ],
+      [
+        "TERM",
+        "rpar"
+      ],
+      [
+        "INDEX",
+        "assign"
+      ],
+      [
+        "INDEX",
+        "lpar"
+      ],
+      [
+        "INDEX",
+        "Grammar.END"
+      ],
+      [
+        "INDEX",
+        "add"
+      ],
+      [
+        "INDEX",
+        "end"
+      ],
+      [
+        "INDEX",
+        "semi"
+      ],
+      [
+        "INDEX",
+        "rpar"
+      ],
+      [
+        "STMT",
+        "in"
+      ],
+      [
+        "STMT",
+        "id"
+      ]
+    ],
     "grammar.endable": [
       "EXP",
       "TERM",
@@ -154324,62 +155842,114 @@ module.exports = {
       "C",
       "B"
     ],
-    "grammar.first": {
-      "E": {
-        "+": true,
-        "*": true
-      },
-      "S": {
-        "+": true,
-        "*": true
-      },
-      "B": {
-        "+": true,
-        "*": true
-      },
-      "C": {
-        "+": true,
-        "*": true
-      },
-      "D": {
-        "+": true,
-        "*": true
-      },
-      "T": {},
-      "X": {}
-    },
-    "grammar.follow": {
-      "S": {
-        "Grammar.END": true
-      },
-      "B": {
-        "+": true,
-        "*": true
-      },
-      "E": {
-        "Grammar.END": true,
-        "+": true,
-        "*": true
-      },
-      "T": {
-        "Grammar.END": true,
-        "+": true,
-        "*": true
-      },
-      "C": {
-        "+": true,
-        "*": true
-      },
-      "D": {
-        "+": true,
-        "*": true
-      },
-      "X": {
-        "Grammar.END": true,
-        "+": true,
-        "*": true
-      }
-    },
+    "grammar.first": [
+      [
+        "E",
+        "+"
+      ],
+      [
+        "E",
+        "*"
+      ],
+      [
+        "S",
+        "+"
+      ],
+      [
+        "S",
+        "*"
+      ],
+      [
+        "B",
+        "+"
+      ],
+      [
+        "B",
+        "*"
+      ],
+      [
+        "C",
+        "+"
+      ],
+      [
+        "C",
+        "*"
+      ],
+      [
+        "D",
+        "+"
+      ],
+      [
+        "D",
+        "*"
+      ]
+    ],
+    "grammar.follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "B",
+        "+"
+      ],
+      [
+        "B",
+        "*"
+      ],
+      [
+        "E",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        "+"
+      ],
+      [
+        "E",
+        "*"
+      ],
+      [
+        "T",
+        "Grammar.END"
+      ],
+      [
+        "T",
+        "+"
+      ],
+      [
+        "T",
+        "*"
+      ],
+      [
+        "C",
+        "+"
+      ],
+      [
+        "C",
+        "*"
+      ],
+      [
+        "D",
+        "+"
+      ],
+      [
+        "D",
+        "*"
+      ],
+      [
+        "X",
+        "Grammar.END"
+      ],
+      [
+        "X",
+        "+"
+      ],
+      [
+        "X",
+        "*"
+      ]
+    ],
     "grammar.endable": [
       "S",
       "E",
