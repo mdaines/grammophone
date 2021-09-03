@@ -13,12 +13,12 @@ module.exports = function(src) {
       throw new Error("Parse error");
     }
 
-    if (cursor.name === "Head") {
+    if (cursor.name === "HeadSymbol") {
       head = src.slice(cursor.from, cursor.to);
     } else if (cursor.name === "Production") {
       production = [head];
       productions.push(production);
-    } else if (cursor.name === "Symbol") {
+    } else if (cursor.name === "ProductionSymbol") {
       production.push(src.slice(cursor.from, cursor.to));
     }
   } while (cursor.next());

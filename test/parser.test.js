@@ -8,30 +8,26 @@ describe("parser", function() {
     expect(parser("A -> a. B -> b. A -> c.")).toEqual([["A", "a"], ["B", "b"], ["A", "c"]]);
   });
 
+  it("colon and semicolon can be used to define rules", function() {
+    expect(parser("A : a ;")).toEqual([["A", "a"]]);
+    expect(parser("A : a | b ;")).toEqual([["A", "a"], ["A", "b"]]);
+    expect(parser("A : ;")).toEqual([["A"]]);
+    expect(parser("A : a; B : b; A : c;")).toEqual([["A", "a"], ["B", "b"], ["A", "c"]]);
+  });
+
   it("spacing", function() {
     expect(parser("A->a.")).toEqual([["A", "a"]]);
     expect(parser("A->a|b.")).toEqual([["A", "a"], ["A", "b"]]);
     expect(parser("A->.")).toEqual([["A"]]);
   });
 
-  it("symbols can end in one or more single quotes (primes)", function() {
-    expect(parser("A' -> a . A'' -> a''' .")).toEqual([["A'", "a"], ["A''", "a'''"]]);
-  });
-
   it("symbols can contain numbers", function() {
     expect(parser("A -> a1 .")).toEqual([["A", "a1"]]);
   });
 
-  it("symbols can be numbers", function() {
-    expect(parser("A -> 1 | 2 | 3.")).toEqual([["A", "1"], ["A", "2"], ["A", "3"]]);
-  });
-
-  it("symbols can contain hyphens", function() {
-    expect(parser("ab-cd -> xy-z .")).toEqual([["ab-cd", "xy-z"]]);
-  });
-
-  it("non-letter symbols", function() {
-    expect(parser("A -> ; + = .")).toEqual([["A", ";", "+", "="]]);
+  it("symbols can contain dollar and underscore", function() {
+    expect(parser("$ -> _ .")).toEqual([["$", "_"]]);
+    expect(parser("$a -> _1 a_2 .")).toEqual([["$a", "_1", "a_2"]]);
   });
 
   it("nonterminals don't need to be capitalized", function() {
@@ -70,6 +66,10 @@ describe("parser", function() {
     it("stop that looks like part of a symbol", function() {
       expect(function() { parser("A.y -> a."); }).toThrowError();
       expect(function() { parser("A -> x.y ."); }).toThrowError();
+    });
+
+    it("symbols cannot start with a number", function() {
+      expect(function() { parser("A -> 1 ."); }).toThrowError();
     });
   });
 });
