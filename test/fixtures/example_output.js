@@ -137,6 +137,16 @@ module.exports = {
         "d"
       ]
     ],
+    "grammar.symbols": [
+      "S",
+      "b",
+      "A",
+      "i",
+      "B",
+      "r",
+      "C",
+      "d"
+    ],
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -1350,6 +1360,15 @@ module.exports = {
         "x",
         "z"
       ]
+    ],
+    "grammar.symbols": [
+      "A",
+      "a",
+      "b",
+      "B",
+      "C",
+      "x",
+      "z"
     ],
     "parsing.ll.ll1_classification": {
       "member": true
@@ -2656,6 +2675,20 @@ module.exports = {
         "little",
         "lamb"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "mary",
+      "Owns",
+      "Object",
+      "had",
+      "a",
+      "Animal",
+      "Adverb",
+      "Adjective",
+      "Noun",
+      "little",
+      "lamb"
     ],
     "parsing.ll.ll1_classification": {
       "member": true
@@ -4492,6 +4525,15 @@ module.exports = {
         "id"
       ]
     ],
+    "grammar.symbols": [
+      "S",
+      "id",
+      "S'",
+      "V",
+      "assign",
+      "E",
+      "num"
+    ],
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -5759,7 +5801,7 @@ module.exports = {
           {
             "production": [
               "S'",
-              "S'*"
+              "S'2"
             ],
             "operation": "insert",
             "index": 1
@@ -5773,7 +5815,7 @@ module.exports = {
           },
           {
             "production": [
-              "S'*",
+              "S'2",
               "V",
               "assign",
               "E"
@@ -5903,7 +5945,7 @@ module.exports = {
           {
             "production": [
               "S'",
-              "S'*"
+              "S'2"
             ],
             "operation": "insert",
             "index": 1
@@ -5917,7 +5959,7 @@ module.exports = {
           },
           {
             "production": [
-              "S'*",
+              "S'2",
               "V",
               "assign",
               "E"
@@ -6350,6 +6392,15 @@ module.exports = {
         "+",
         "num"
       ]
+    ],
+    "grammar.symbols": [
+      "L",
+      "V",
+      "+",
+      "num",
+      "Var",
+      "(",
+      ")"
     ],
     "parsing.ll.ll1_classification": {
       "member": true
@@ -8324,7 +8375,7 @@ module.exports = {
           {
             "production": [
               "V",
-              "V*"
+              "V2"
             ],
             "operation": "insert",
             "index": 2
@@ -8338,7 +8389,7 @@ module.exports = {
           },
           {
             "production": [
-              "V*",
+              "V2",
               "Var",
               "(",
               "Var",
@@ -8525,7 +8576,7 @@ module.exports = {
           {
             "production": [
               "V",
-              "V*"
+              "V2"
             ],
             "operation": "insert",
             "index": 2
@@ -8539,7 +8590,7 @@ module.exports = {
           },
           {
             "production": [
-              "V*",
+              "V2",
               "Var",
               "(",
               "Var",
@@ -9023,6 +9074,18 @@ module.exports = {
         "*)",
         "*"
       ]
+    ],
+    "grammar.symbols": [
+      "P",
+      "M",
+      "*",
+      "Q",
+      "StarM",
+      "(*",
+      "*)",
+      "(",
+      ")",
+      "o"
     ],
     "parsing.ll.ll1_classification": {
       "member": true
@@ -11450,7 +11513,7 @@ module.exports = {
           {
             "production": [
               "P",
-              "P*"
+              "P2"
             ],
             "operation": "insert",
             "index": 0
@@ -11464,7 +11527,7 @@ module.exports = {
           },
           {
             "production": [
-              "P*",
+              "P2",
               "M",
               "*"
             ],
@@ -11489,7 +11552,7 @@ module.exports = {
           {
             "production": [
               "M",
-              "M*"
+              "M2"
             ],
             "operation": "insert",
             "index": 2
@@ -11503,7 +11566,7 @@ module.exports = {
           },
           {
             "production": [
-              "M*",
+              "M2",
               "Q",
               "StarM"
             ],
@@ -11528,7 +11591,7 @@ module.exports = {
           {
             "production": [
               "Q",
-              "Q*"
+              "Q2"
             ],
             "operation": "insert",
             "index": 6
@@ -11542,7 +11605,7 @@ module.exports = {
           },
           {
             "production": [
-              "Q*",
+              "Q2",
               "o"
             ],
             "operation": "insert",
@@ -11723,7 +11786,7 @@ module.exports = {
           {
             "production": [
               "P",
-              "P*"
+              "P2"
             ],
             "operation": "insert",
             "index": 0
@@ -11737,7 +11800,7 @@ module.exports = {
           },
           {
             "production": [
-              "P*",
+              "P2",
               "M",
               "*"
             ],
@@ -11762,7 +11825,7 @@ module.exports = {
           {
             "production": [
               "M",
-              "M*"
+              "M2"
             ],
             "operation": "insert",
             "index": 2
@@ -11776,7 +11839,7 @@ module.exports = {
           },
           {
             "production": [
-              "M*",
+              "M2",
               "Q",
               "StarM"
             ],
@@ -11801,7 +11864,7 @@ module.exports = {
           {
             "production": [
               "Q",
-              "Q*"
+              "Q2"
             ],
             "operation": "insert",
             "index": 6
@@ -11815,7 +11878,7 @@ module.exports = {
           },
           {
             "production": [
-              "Q*",
+              "Q2",
               "o"
             ],
             "operation": "insert",
@@ -12513,6 +12576,14 @@ module.exports = {
         "x",
         "r"
       ]
+    ],
+    "grammar.symbols": [
+      "A",
+      "B",
+      "x",
+      "C",
+      "y",
+      "r"
     ],
     "parsing.ll.ll1_classification": {
       "member": true
@@ -14571,6 +14642,16 @@ module.exports = {
         "z",
         "u"
       ]
+    ],
+    "grammar.symbols": [
+      "A",
+      "y",
+      "B",
+      "x",
+      "C",
+      "z",
+      "u",
+      "s"
     ],
     "parsing.ll.ll1_classification": {
       "member": true
@@ -16787,6 +16868,16 @@ module.exports = {
         "*)",
         ")"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "(",
+      "Ses",
+      ")",
+      "(*",
+      "*)",
+      "SL",
+      ";"
     ],
     "parsing.ll.ll1_classification": {
       "member": true
@@ -19293,6 +19384,16 @@ module.exports = {
         "a"
       ]
     ],
+    "grammar.symbols": [
+      "S",
+      "a",
+      "A",
+      "b",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -21690,6 +21791,16 @@ module.exports = {
         "sq)"
       ]
     ],
+    "grammar.symbols": [
+      "S",
+      "(",
+      "X",
+      "E",
+      "sq)",
+      "F",
+      ")",
+      "A"
+    ],
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -24063,6 +24174,21 @@ module.exports = {
         ")",
         "!"
       ]
+    ],
+    "grammar.symbols": [
+      "E",
+      "id",
+      "+",
+      "D",
+      "(",
+      "*",
+      "R",
+      ")",
+      "V",
+      "L",
+      "!",
+      "Z",
+      "num"
     ],
     "parsing.ll.ll1_classification": {
       "member": true
@@ -29973,7 +30099,7 @@ module.exports = {
           {
             "production": [
               "E",
-              "E*"
+              "E2"
             ],
             "operation": "insert",
             "index": 0
@@ -29987,7 +30113,7 @@ module.exports = {
           },
           {
             "production": [
-              "E*",
+              "E2",
               "id",
               "+",
               "D"
@@ -29997,7 +30123,7 @@ module.exports = {
           },
           {
             "production": [
-              "E*",
+              "E2",
               "(",
               "E",
               "*",
@@ -30552,7 +30678,7 @@ module.exports = {
           {
             "production": [
               "E",
-              "E*"
+              "E2"
             ],
             "operation": "insert",
             "index": 0
@@ -30566,7 +30692,7 @@ module.exports = {
           },
           {
             "production": [
-              "E*",
+              "E2",
               "id",
               "+",
               "D"
@@ -30576,7 +30702,7 @@ module.exports = {
           },
           {
             "production": [
-              "E*",
+              "E2",
               "(",
               "E",
               "*",
@@ -31064,6 +31190,15 @@ module.exports = {
         "r",
         "fo"
       ]
+    ],
+    "grammar.symbols": [
+      "A",
+      "B",
+      "c",
+      "d",
+      "n",
+      "fo",
+      "r"
     ],
     "parsing.ll.ll1_classification": {
       "member": true
@@ -32827,7 +32962,7 @@ module.exports = {
           {
             "production": [
               "B",
-              "B*"
+              "B2"
             ],
             "operation": "insert",
             "index": 2
@@ -32841,7 +32976,7 @@ module.exports = {
           },
           {
             "production": [
-              "B*",
+              "B2",
               "r"
             ],
             "operation": "insert",
@@ -32970,7 +33105,7 @@ module.exports = {
           {
             "production": [
               "B",
-              "B*"
+              "B2"
             ],
             "operation": "insert",
             "index": 2
@@ -32984,7 +33119,7 @@ module.exports = {
           },
           {
             "production": [
-              "B*",
+              "B2",
               "r"
             ],
             "operation": "insert",
@@ -33583,6 +33718,15 @@ module.exports = {
         "expr",
         ";"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "for",
+      "(",
+      "ExprOpt",
+      ";",
+      ")",
+      "expr"
     ],
     "parsing.ll.ll1_classification": {
       "member": true
@@ -35394,7 +35538,7 @@ module.exports = {
           {
             "production": [
               "ExprOpt",
-              "ExprOpt*"
+              "ExprOpt2"
             ],
             "operation": "insert",
             "index": 2
@@ -35408,7 +35552,7 @@ module.exports = {
           },
           {
             "production": [
-              "ExprOpt*",
+              "ExprOpt2",
               "expr"
             ],
             "operation": "insert",
@@ -35613,7 +35757,7 @@ module.exports = {
           {
             "production": [
               "ExprOpt",
-              "ExprOpt*"
+              "ExprOpt2"
             ],
             "operation": "insert",
             "index": 2
@@ -35627,7 +35771,7 @@ module.exports = {
           },
           {
             "production": [
-              "ExprOpt*",
+              "ExprOpt2",
               "expr"
             ],
             "operation": "insert",
@@ -36153,6 +36297,27 @@ module.exports = {
         "volatile",
         "id"
       ]
+    ],
+    "grammar.symbols": [
+      "Decl",
+      "DeclSpecifiers",
+      "Declarator",
+      "StorageClassSpecifier",
+      "DeclSpecifiersOpt",
+      "TypeSpecifier",
+      "TypeQualifier",
+      "typedef",
+      "static",
+      "void",
+      "short",
+      "int",
+      "const",
+      "volatile",
+      "PointerOpt",
+      "DirectDeclarator",
+      "id",
+      "*",
+      "TypeQualifierList"
     ],
     "parsing.ll.ll1_classification": {
       "member": true
@@ -42823,7 +42988,7 @@ module.exports = {
           {
             "production": [
               "DeclSpecifiersOpt",
-              "DeclSpecifiersOpt*"
+              "DeclSpecifiersOpt2"
             ],
             "operation": "insert",
             "index": 4
@@ -42837,7 +43002,7 @@ module.exports = {
           },
           {
             "production": [
-              "DeclSpecifiersOpt*",
+              "DeclSpecifiersOpt2",
               "DeclSpecifiers"
             ],
             "operation": "insert",
@@ -42861,7 +43026,7 @@ module.exports = {
           {
             "production": [
               "PointerOpt",
-              "PointerOpt*"
+              "PointerOpt2"
             ],
             "operation": "insert",
             "index": 15
@@ -42875,7 +43040,7 @@ module.exports = {
           },
           {
             "production": [
-              "PointerOpt*",
+              "PointerOpt2",
               "*",
               "TypeQualifierList",
               "PointerOpt"
@@ -42901,7 +43066,7 @@ module.exports = {
           {
             "production": [
               "TypeQualifierList",
-              "TypeQualifierList*"
+              "TypeQualifierList2"
             ],
             "operation": "insert",
             "index": 17
@@ -42915,7 +43080,7 @@ module.exports = {
           },
           {
             "production": [
-              "TypeQualifierList*",
+              "TypeQualifierList2",
               "TypeQualifier",
               "TypeQualifierList"
             ],
@@ -43394,7 +43559,7 @@ module.exports = {
           {
             "production": [
               "DeclSpecifiersOpt",
-              "DeclSpecifiersOpt*"
+              "DeclSpecifiersOpt2"
             ],
             "operation": "insert",
             "index": 4
@@ -43408,7 +43573,7 @@ module.exports = {
           },
           {
             "production": [
-              "DeclSpecifiersOpt*",
+              "DeclSpecifiersOpt2",
               "DeclSpecifiers"
             ],
             "operation": "insert",
@@ -43432,7 +43597,7 @@ module.exports = {
           {
             "production": [
               "PointerOpt",
-              "PointerOpt*"
+              "PointerOpt2"
             ],
             "operation": "insert",
             "index": 15
@@ -43446,7 +43611,7 @@ module.exports = {
           },
           {
             "production": [
-              "PointerOpt*",
+              "PointerOpt2",
               "*",
               "TypeQualifierList",
               "PointerOpt"
@@ -43472,7 +43637,7 @@ module.exports = {
           {
             "production": [
               "TypeQualifierList",
-              "TypeQualifierList*"
+              "TypeQualifierList2"
             ],
             "operation": "insert",
             "index": 17
@@ -43486,7 +43651,7 @@ module.exports = {
           },
           {
             "production": [
-              "TypeQualifierList*",
+              "TypeQualifierList2",
               "TypeQualifier",
               "TypeQualifierList"
             ],
@@ -43639,6 +43804,14 @@ module.exports = {
         "assign",
         "id"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "id",
+      "V",
+      "assign",
+      "E",
+      "num"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -45241,6 +45414,15 @@ module.exports = {
         "*",
         "id"
       ]
+    ],
+    "grammar.symbols": [
+      "S'",
+      "S",
+      "L",
+      "assign",
+      "R",
+      "*",
+      "id"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -47320,6 +47502,14 @@ module.exports = {
         "y"
       ]
     ],
+    "grammar.symbols": [
+      "S",
+      "A",
+      "x",
+      "B",
+      "y",
+      "w"
+    ],
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -49002,6 +49192,13 @@ module.exports = {
         ")"
       ]
     ],
+    "grammar.symbols": [
+      "S",
+      "Block",
+      "(",
+      ")",
+      "stmt"
+    ],
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -50018,6 +50215,18 @@ module.exports = {
         "equals",
         "id"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "Assign",
+      "Inc",
+      "Lv",
+      "equals",
+      "Rv",
+      "++",
+      "//",
+      "num",
+      "id"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -51729,14 +51938,14 @@ module.exports = {
             "production": [
               "Inc",
               "Lv",
-              "Inc'"
+              "Inc2"
             ],
             "operation": "insert",
             "index": 3
           },
           {
             "production": [
-              "Inc'",
+              "Inc2",
               "++"
             ],
             "operation": "insert",
@@ -51744,7 +51953,7 @@ module.exports = {
           },
           {
             "production": [
-              "Inc'",
+              "Inc2",
               "//"
             ],
             "operation": "insert",
@@ -51935,14 +52144,14 @@ module.exports = {
             "production": [
               "Inc",
               "Lv",
-              "Inc'"
+              "Inc2"
             ],
             "operation": "insert",
             "index": 3
           },
           {
             "production": [
-              "Inc'",
+              "Inc2",
               "++"
             ],
             "operation": "insert",
@@ -51950,7 +52159,7 @@ module.exports = {
           },
           {
             "production": [
-              "Inc'",
+              "Inc2",
               "//"
             ],
             "operation": "insert",
@@ -52083,6 +52292,14 @@ module.exports = {
         ":",
         "("
       ]
+    ],
+    "grammar.symbols": [
+      "Emoticon",
+      "Happy",
+      "Sad",
+      ":",
+      ")",
+      "("
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -53186,6 +53403,16 @@ module.exports = {
         "b",
         "a"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "a",
+      "A",
+      "b",
+      "B",
+      "C",
+      "D",
+      "E"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -55354,14 +55581,14 @@ module.exports = {
             "production": [
               "S",
               "a",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "S'",
+              "S2",
               "a",
               "A"
             ],
@@ -55370,7 +55597,7 @@ module.exports = {
           },
           {
             "production": [
-              "S'",
+              "S2",
               "b",
               "B"
             ],
@@ -55583,14 +55810,14 @@ module.exports = {
             "production": [
               "S",
               "a",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "S'",
+              "S2",
               "a",
               "A"
             ],
@@ -55599,7 +55826,7 @@ module.exports = {
           },
           {
             "production": [
-              "S'",
+              "S2",
               "b",
               "B"
             ],
@@ -55854,6 +56081,20 @@ module.exports = {
         "i",
         "dot"
       ]
+    ],
+    "grammar.symbols": [
+      "Value",
+      "number",
+      "V",
+      "f",
+      "Real",
+      "i",
+      "Int",
+      "IOpt",
+      "dot",
+      "BOpt",
+      "+",
+      "Opt"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -58229,14 +58470,14 @@ module.exports = {
             "production": [
               "Value",
               "number",
-              "Value'"
+              "Value2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "Value'",
+              "Value2",
               "V"
             ],
             "operation": "insert",
@@ -58244,7 +58485,7 @@ module.exports = {
           },
           {
             "production": [
-              "Value'"
+              "Value2"
             ],
             "operation": "insert",
             "index": 2
@@ -58482,14 +58723,14 @@ module.exports = {
             "production": [
               "Value",
               "number",
-              "Value'"
+              "Value2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "Value'",
+              "Value2",
               "V"
             ],
             "operation": "insert",
@@ -58497,7 +58738,7 @@ module.exports = {
           },
           {
             "production": [
-              "Value'"
+              "Value2"
             ],
             "operation": "insert",
             "index": 2
@@ -58927,6 +59168,19 @@ module.exports = {
         "8",
         "8"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "'",
+      "Q",
+      "P",
+      "T",
+      "W",
+      "E",
+      ";",
+      "U",
+      "*",
+      "8"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -62063,7 +62317,7 @@ module.exports = {
           {
             "production": [
               "W",
-              "W*"
+              "W2"
             ],
             "operation": "insert",
             "index": 9
@@ -62077,7 +62331,7 @@ module.exports = {
           },
           {
             "production": [
-              "W*",
+              "W2",
               "*",
               "W"
             ],
@@ -62086,7 +62340,7 @@ module.exports = {
           },
           {
             "production": [
-              "W*",
+              "W2",
               "8",
               "W"
             ],
@@ -62452,7 +62706,7 @@ module.exports = {
           {
             "production": [
               "W",
-              "W*"
+              "W2"
             ],
             "operation": "insert",
             "index": 9
@@ -62466,7 +62720,7 @@ module.exports = {
           },
           {
             "production": [
-              "W*",
+              "W2",
               "*",
               "W"
             ],
@@ -62475,7 +62729,7 @@ module.exports = {
           },
           {
             "production": [
-              "W*",
+              "W2",
               "8",
               "W"
             ],
@@ -62676,6 +62930,16 @@ module.exports = {
         "(",
         "sq)"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "(",
+      "X",
+      "E",
+      "sq)",
+      "F",
+      ")",
+      "A"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -65024,6 +65288,17 @@ module.exports = {
         "e"
       ]
     ],
+    "grammar.symbols": [
+      "A",
+      "E",
+      "B",
+      "SL",
+      "b",
+      "e",
+      "o",
+      "r",
+      "s"
+    ],
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -67018,14 +67293,14 @@ module.exports = {
             "production": [
               "SL",
               "s",
-              "SL'"
+              "SL2"
             ],
             "operation": "insert",
             "index": 6
           },
           {
             "production": [
-              "SL'",
+              "SL2",
               "SL"
             ],
             "operation": "insert",
@@ -67033,7 +67308,7 @@ module.exports = {
           },
           {
             "production": [
-              "SL'"
+              "SL2"
             ],
             "operation": "insert",
             "index": 8
@@ -67058,7 +67333,7 @@ module.exports = {
           {
             "production": [
               "E",
-              "E*"
+              "E2"
             ],
             "operation": "insert",
             "index": 4
@@ -67072,7 +67347,7 @@ module.exports = {
           },
           {
             "production": [
-              "E*",
+              "E2",
               "e"
             ],
             "operation": "insert",
@@ -67263,14 +67538,14 @@ module.exports = {
             "production": [
               "SL",
               "s",
-              "SL'"
+              "SL2"
             ],
             "operation": "insert",
             "index": 6
           },
           {
             "production": [
-              "SL'",
+              "SL2",
               "SL"
             ],
             "operation": "insert",
@@ -67278,7 +67553,7 @@ module.exports = {
           },
           {
             "production": [
-              "SL'"
+              "SL2"
             ],
             "operation": "insert",
             "index": 8
@@ -67301,7 +67576,7 @@ module.exports = {
           {
             "production": [
               "E",
-              "E*"
+              "E2"
             ],
             "operation": "insert",
             "index": 4
@@ -67315,7 +67590,7 @@ module.exports = {
           },
           {
             "production": [
-              "E*",
+              "E2",
               "e"
             ],
             "operation": "insert",
@@ -67427,6 +67702,11 @@ module.exports = {
         "a",
         "a"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "X",
+      "a"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -68037,7 +68317,7 @@ module.exports = {
           {
             "production": [
               "X",
-              "X*"
+              "X2"
             ],
             "operation": "insert",
             "index": 1
@@ -68051,7 +68331,7 @@ module.exports = {
           },
           {
             "production": [
-              "X*",
+              "X2",
               "a"
             ],
             "operation": "insert",
@@ -68106,7 +68386,7 @@ module.exports = {
           {
             "production": [
               "X",
-              "X*"
+              "X2"
             ],
             "operation": "insert",
             "index": 1
@@ -68120,7 +68400,7 @@ module.exports = {
           },
           {
             "production": [
-              "X*",
+              "X2",
               "a"
             ],
             "operation": "insert",
@@ -68801,6 +69081,14 @@ module.exports = {
         "b",
         "a"
       ]
+    ],
+    "grammar.symbols": [
+      "A",
+      "B",
+      "a",
+      "b",
+      "C",
+      "c"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -69948,7 +70236,7 @@ module.exports = {
           {
             "production": [
               "C",
-              "C*"
+              "C2"
             ],
             "operation": "insert",
             "index": 3
@@ -69962,7 +70250,7 @@ module.exports = {
           },
           {
             "production": [
-              "C*",
+              "C2",
               "a",
               "B"
             ],
@@ -70079,7 +70367,7 @@ module.exports = {
           {
             "production": [
               "C",
-              "C*"
+              "C2"
             ],
             "operation": "insert",
             "index": 3
@@ -70093,7 +70381,7 @@ module.exports = {
           },
           {
             "production": [
-              "C*",
+              "C2",
               "a",
               "B"
             ],
@@ -70504,6 +70792,16 @@ module.exports = {
         "b",
         "a"
       ]
+    ],
+    "grammar.symbols": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "a",
+      "b",
+      "c"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -72163,7 +72461,7 @@ module.exports = {
           {
             "production": [
               "D",
-              "D*"
+              "D2"
             ],
             "operation": "insert",
             "index": 2
@@ -72177,7 +72475,7 @@ module.exports = {
           },
           {
             "production": [
-              "D*",
+              "D2",
               "b"
             ],
             "operation": "insert",
@@ -72201,7 +72499,7 @@ module.exports = {
           {
             "production": [
               "C",
-              "C*"
+              "C2"
             ],
             "operation": "insert",
             "index": 4
@@ -72215,7 +72513,7 @@ module.exports = {
           },
           {
             "production": [
-              "C*",
+              "C2",
               "c"
             ],
             "operation": "insert",
@@ -72239,7 +72537,7 @@ module.exports = {
           {
             "production": [
               "B",
-              "B*"
+              "B2"
             ],
             "operation": "insert",
             "index": 6
@@ -72253,7 +72551,7 @@ module.exports = {
           },
           {
             "production": [
-              "B*",
+              "B2",
               "a",
               "B"
             ],
@@ -72429,7 +72727,7 @@ module.exports = {
           {
             "production": [
               "D",
-              "D*"
+              "D2"
             ],
             "operation": "insert",
             "index": 2
@@ -72443,7 +72741,7 @@ module.exports = {
           },
           {
             "production": [
-              "D*",
+              "D2",
               "b"
             ],
             "operation": "insert",
@@ -72467,7 +72765,7 @@ module.exports = {
           {
             "production": [
               "C",
-              "C*"
+              "C2"
             ],
             "operation": "insert",
             "index": 4
@@ -72481,7 +72779,7 @@ module.exports = {
           },
           {
             "production": [
-              "C*",
+              "C2",
               "c"
             ],
             "operation": "insert",
@@ -72505,7 +72803,7 @@ module.exports = {
           {
             "production": [
               "B",
-              "B*"
+              "B2"
             ],
             "operation": "insert",
             "index": 6
@@ -72519,7 +72817,7 @@ module.exports = {
           },
           {
             "production": [
-              "B*",
+              "B2",
               "a",
               "B"
             ],
@@ -72899,6 +73197,15 @@ module.exports = {
         "a",
         "e"
       ]
+    ],
+    "grammar.symbols": [
+      "A",
+      "a",
+      "B",
+      "C",
+      "d",
+      "e",
+      "c"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -75017,14 +75324,14 @@ module.exports = {
             "production": [
               "A",
               "a",
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "A'",
+              "A2",
               "B"
             ],
             "operation": "insert",
@@ -75032,7 +75339,7 @@ module.exports = {
           },
           {
             "production": [
-              "A'",
+              "A2",
               "A",
               "C"
             ],
@@ -75063,7 +75370,7 @@ module.exports = {
           {
             "production": [
               "A",
-              "A*"
+              "A2"
             ],
             "operation": "insert",
             "index": 0
@@ -75077,7 +75384,7 @@ module.exports = {
           },
           {
             "production": [
-              "A*",
+              "A2",
               "a",
               "B"
             ],
@@ -75086,7 +75393,7 @@ module.exports = {
           },
           {
             "production": [
-              "A*",
+              "A2",
               "a",
               "A",
               "C"
@@ -75282,14 +75589,14 @@ module.exports = {
             "production": [
               "A",
               "a",
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "A'",
+              "A2",
               "B"
             ],
             "operation": "insert",
@@ -75297,7 +75604,7 @@ module.exports = {
           },
           {
             "production": [
-              "A'",
+              "A2",
               "A",
               "C"
             ],
@@ -75326,7 +75633,7 @@ module.exports = {
           {
             "production": [
               "A",
-              "A*"
+              "A2"
             ],
             "operation": "insert",
             "index": 0
@@ -75340,7 +75647,7 @@ module.exports = {
           },
           {
             "production": [
-              "A*",
+              "A2",
               "a",
               "B"
             ],
@@ -75349,7 +75656,7 @@ module.exports = {
           },
           {
             "production": [
-              "A*",
+              "A2",
               "a",
               "A",
               "C"
@@ -75846,6 +76153,15 @@ module.exports = {
         "rpar",
         "rpar"
       ]
+    ],
+    "grammar.symbols": [
+      "TERM",
+      "id",
+      "INDEX",
+      "let",
+      "LEXP",
+      "lpar",
+      "rpar"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -78173,21 +78489,21 @@ module.exports = {
             "production": [
               "TERM",
               "id",
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "TERM'",
+              "TERM2",
               "INDEX"
             ],
             "operation": "insert",
@@ -78364,21 +78680,21 @@ module.exports = {
             "production": [
               "TERM",
               "id",
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "TERM'",
+              "TERM2",
               "INDEX"
             ],
             "operation": "insert",
@@ -78920,6 +79236,23 @@ module.exports = {
         ")",
         "reg"
       ]
+    ],
+    "grammar.symbols": [
+      "Line",
+      "Op",
+      "Label",
+      "Inst",
+      "Operands",
+      "id",
+      ":",
+      "Src",
+      "Dest",
+      "reg",
+      "(",
+      ")",
+      "num",
+      "pneumonic",
+      "Macro"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -84035,6 +84368,16 @@ module.exports = {
         "id"
       ]
     ],
+    "grammar.symbols": [
+      "S",
+      ";",
+      "T",
+      "id",
+      "V",
+      "assign",
+      "E",
+      "num"
+    ],
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -85884,24 +86227,24 @@ module.exports = {
             "production": [
               "S",
               "T",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "S'",
+              "S2",
               ";",
               "T",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 2
@@ -86096,24 +86439,24 @@ module.exports = {
             "production": [
               "S",
               "T",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "S'",
+              "S2",
               ";",
               "T",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 2
@@ -86811,6 +87154,17 @@ module.exports = {
         "(",
         ")"
       ]
+    ],
+    "grammar.symbols": [
+      "L",
+      "V",
+      "(",
+      "args",
+      ")",
+      "equals",
+      "Var",
+      "+",
+      "id"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -88739,26 +89093,26 @@ module.exports = {
               "(",
               "args",
               ")",
-              "L'"
+              "L2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "L'",
+              "L2",
               "equals",
               "Var",
               "(",
               ")",
-              "L'"
+              "L2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "L'"
+              "L2"
             ],
             "operation": "insert",
             "index": 2
@@ -88944,26 +89298,26 @@ module.exports = {
               "(",
               "args",
               ")",
-              "L'"
+              "L2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "L'",
+              "L2",
               "equals",
               "Var",
               "(",
               ")",
-              "L'"
+              "L2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "L'"
+              "L2"
             ],
             "operation": "insert",
             "index": 2
@@ -89483,6 +89837,16 @@ module.exports = {
         ")",
         ")"
       ]
+    ],
+    "grammar.symbols": [
+      "E",
+      "O",
+      ":",
+      "OL",
+      "id",
+      "l",
+      "(",
+      ")"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -92102,14 +92466,14 @@ module.exports = {
             "production": [
               "E",
               "O",
-              "E'"
+              "E2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "E'",
+              "E2",
               ":",
               "OL"
             ],
@@ -92118,7 +92482,7 @@ module.exports = {
           },
           {
             "production": [
-              "E'"
+              "E2"
             ],
             "operation": "insert",
             "index": 2
@@ -92350,14 +92714,14 @@ module.exports = {
             "production": [
               "E",
               "O",
-              "E'"
+              "E2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "E'",
+              "E2",
               ":",
               "OL"
             ],
@@ -92366,7 +92730,7 @@ module.exports = {
           },
           {
             "production": [
-              "E'"
+              "E2"
             ],
             "operation": "insert",
             "index": 2
@@ -92542,6 +92906,16 @@ module.exports = {
         "g",
         "d"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "a",
+      "g",
+      "d",
+      "A",
+      "c",
+      "b",
+      "B"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -94232,14 +94606,14 @@ module.exports = {
             "production": [
               "S",
               "a",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "S'",
+              "S2",
               "g",
               "d"
             ],
@@ -94248,7 +94622,7 @@ module.exports = {
           },
           {
             "production": [
-              "S'",
+              "S2",
               "A",
               "c"
             ],
@@ -94275,14 +94649,14 @@ module.exports = {
             "production": [
               "S",
               "b",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 2
           },
           {
             "production": [
-              "S'",
+              "S2",
               "A",
               "d"
             ],
@@ -94291,7 +94665,7 @@ module.exports = {
           },
           {
             "production": [
-              "S'",
+              "S2",
               "g",
               "c"
             ],
@@ -94383,14 +94757,14 @@ module.exports = {
             "production": [
               "S",
               "a",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "S'",
+              "S2",
               "g",
               "d"
             ],
@@ -94399,7 +94773,7 @@ module.exports = {
           },
           {
             "production": [
-              "S'",
+              "S2",
               "A",
               "c"
             ],
@@ -94426,14 +94800,14 @@ module.exports = {
             "production": [
               "S",
               "b",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 2
           },
           {
             "production": [
-              "S'",
+              "S2",
               "A",
               "d"
             ],
@@ -94442,7 +94816,7 @@ module.exports = {
           },
           {
             "production": [
-              "S'",
+              "S2",
               "g",
               "c"
             ],
@@ -95002,6 +95376,14 @@ module.exports = {
         "a",
         "a"
       ]
+    ],
+    "grammar.symbols": [
+      "A",
+      "C",
+      "B",
+      "a",
+      "b",
+      "c"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -97128,6 +97510,14 @@ module.exports = {
         "b"
       ]
     ],
+    "grammar.symbols": [
+      "S",
+      "A",
+      "B",
+      "x",
+      "a",
+      "b"
+    ],
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -99199,6 +99589,14 @@ module.exports = {
         "*)"
       ]
     ],
+    "grammar.symbols": [
+      "S",
+      "Parens",
+      "StarParens",
+      "(",
+      ")",
+      "*)"
+    ],
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -101053,14 +101451,14 @@ module.exports = {
             "production": [
               "Parens",
               "(",
-              "Parens'"
+              "Parens2"
             ],
             "operation": "insert",
             "index": 2
           },
           {
             "production": [
-              "Parens'",
+              "Parens2",
               "Parens",
               ")"
             ],
@@ -101069,7 +101467,7 @@ module.exports = {
           },
           {
             "production": [
-              "Parens'",
+              "Parens2",
               ")"
             ],
             "operation": "insert",
@@ -101095,14 +101493,14 @@ module.exports = {
             "production": [
               "StarParens",
               "(",
-              "StarParens'"
+              "StarParens2"
             ],
             "operation": "insert",
             "index": 4
           },
           {
             "production": [
-              "StarParens'",
+              "StarParens2",
               "StarParens",
               "*)"
             ],
@@ -101111,7 +101509,7 @@ module.exports = {
           },
           {
             "production": [
-              "StarParens'",
+              "StarParens2",
               "*)"
             ],
             "operation": "insert",
@@ -101269,14 +101667,14 @@ module.exports = {
             "production": [
               "Parens",
               "(",
-              "Parens'"
+              "Parens2"
             ],
             "operation": "insert",
             "index": 2
           },
           {
             "production": [
-              "Parens'",
+              "Parens2",
               "Parens",
               ")"
             ],
@@ -101285,7 +101683,7 @@ module.exports = {
           },
           {
             "production": [
-              "Parens'",
+              "Parens2",
               ")"
             ],
             "operation": "insert",
@@ -101311,14 +101709,14 @@ module.exports = {
             "production": [
               "StarParens",
               "(",
-              "StarParens'"
+              "StarParens2"
             ],
             "operation": "insert",
             "index": 4
           },
           {
             "production": [
-              "StarParens'",
+              "StarParens2",
               "StarParens",
               "*)"
             ],
@@ -101327,7 +101725,7 @@ module.exports = {
           },
           {
             "production": [
-              "StarParens'",
+              "StarParens2",
               "*)"
             ],
             "operation": "insert",
@@ -101484,6 +101882,15 @@ module.exports = {
       [
         "C"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "T",
+      "A",
+      "B",
+      "C",
+      "D",
+      "d"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -102278,21 +102685,21 @@ module.exports = {
             "production": [
               "D",
               "d",
-              "D'"
+              "D2"
             ],
             "operation": "insert",
             "index": 4
           },
           {
             "production": [
-              "D'"
+              "D2"
             ],
             "operation": "insert",
             "index": 5
           },
           {
             "production": [
-              "D'",
+              "D2",
               "D"
             ],
             "operation": "insert",
@@ -102322,7 +102729,7 @@ module.exports = {
           {
             "production": [
               "D",
-              "D*"
+              "D2"
             ],
             "operation": "insert",
             "index": 4
@@ -102336,7 +102743,7 @@ module.exports = {
           },
           {
             "production": [
-              "D*",
+              "D2",
               "d"
             ],
             "operation": "insert",
@@ -102344,7 +102751,7 @@ module.exports = {
           },
           {
             "production": [
-              "D*",
+              "D2",
               "d",
               "D"
             ],
@@ -102470,21 +102877,21 @@ module.exports = {
             "production": [
               "D",
               "d",
-              "D'"
+              "D2"
             ],
             "operation": "insert",
             "index": 4
           },
           {
             "production": [
-              "D'"
+              "D2"
             ],
             "operation": "insert",
             "index": 5
           },
           {
             "production": [
-              "D'",
+              "D2",
               "D"
             ],
             "operation": "insert",
@@ -102512,7 +102919,7 @@ module.exports = {
           {
             "production": [
               "D",
-              "D*"
+              "D2"
             ],
             "operation": "insert",
             "index": 4
@@ -102526,7 +102933,7 @@ module.exports = {
           },
           {
             "production": [
-              "D*",
+              "D2",
               "d"
             ],
             "operation": "insert",
@@ -102534,7 +102941,7 @@ module.exports = {
           },
           {
             "production": [
-              "D*",
+              "D2",
               "d",
               "D"
             ],
@@ -102835,6 +103242,19 @@ module.exports = {
         "a",
         "c"
       ]
+    ],
+    "grammar.symbols": [
+      "E",
+      "d",
+      "D",
+      "F",
+      "e",
+      "C",
+      "B",
+      "b",
+      "A",
+      "c",
+      "a"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -107164,6 +107584,20 @@ module.exports = {
         ";"
       ]
     ],
+    "grammar.symbols": [
+      "S",
+      "R",
+      "s",
+      "StructVar",
+      "u",
+      "NVar",
+      "Var",
+      ";",
+      "Subvar",
+      ":",
+      "V",
+      "id"
+    ],
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -109932,23 +110366,23 @@ module.exports = {
           {
             "production": [
               "S",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "S'",
+              "S2",
               "R",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 2
@@ -109974,7 +110408,7 @@ module.exports = {
           {
             "production": [
               "S",
-              "S*"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
@@ -109988,7 +110422,7 @@ module.exports = {
           },
           {
             "production": [
-              "S*",
+              "S2",
               "S",
               "R"
             ],
@@ -110256,23 +110690,23 @@ module.exports = {
           {
             "production": [
               "S",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "S'",
+              "S2",
               "R",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 2
@@ -110295,7 +110729,7 @@ module.exports = {
           {
             "production": [
               "S",
-              "S*"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
@@ -110309,7 +110743,7 @@ module.exports = {
           },
           {
             "production": [
-              "S*",
+              "S2",
               "S",
               "R"
             ],
@@ -110887,6 +111321,23 @@ module.exports = {
         "x",
         "*"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      ";",
+      "C",
+      "(",
+      ")",
+      "*",
+      "D",
+      "A",
+      "x",
+      "B",
+      "y",
+      "E",
+      "id",
+      "num",
+      "!"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -115722,7 +116173,7 @@ module.exports = {
               "(",
               "C",
               ")",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
@@ -115733,24 +116184,24 @@ module.exports = {
               "*",
               "D",
               "*",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "S'",
+              "S2",
               ";",
               "C",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 2
           },
           {
             "production": [
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 3
@@ -116152,7 +116603,7 @@ module.exports = {
               "(",
               "C",
               ")",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
@@ -116163,24 +116614,24 @@ module.exports = {
               "*",
               "D",
               "*",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "S'",
+              "S2",
               ";",
               "C",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 2
           },
           {
             "production": [
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 3
@@ -116671,6 +117122,16 @@ module.exports = {
         ")",
         "("
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "(",
+      "X",
+      ")",
+      "E",
+      "sq)",
+      "F",
+      "A"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -118995,14 +119456,14 @@ module.exports = {
             "production": [
               "S",
               "(",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "S'",
+              "S2",
               "X"
             ],
             "operation": "insert",
@@ -119010,7 +119471,7 @@ module.exports = {
           },
           {
             "production": [
-              "S'",
+              "S2",
               ")",
               "S"
             ],
@@ -119244,14 +119705,14 @@ module.exports = {
             "production": [
               "S",
               "(",
-              "S'"
+              "S2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "S'",
+              "S2",
               "X"
             ],
             "operation": "insert",
@@ -119259,7 +119720,7 @@ module.exports = {
           },
           {
             "production": [
-              "S'",
+              "S2",
               ")",
               "S"
             ],
@@ -119733,6 +120194,17 @@ module.exports = {
         "a",
         "b"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "A",
+      "B",
+      "C",
+      "D",
+      "a",
+      "b",
+      "c",
+      "d"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -124113,7 +124585,7 @@ module.exports = {
           {
             "production": [
               "A",
-              "A*"
+              "A2"
             ],
             "operation": "insert",
             "index": 1
@@ -124127,7 +124599,7 @@ module.exports = {
           },
           {
             "production": [
-              "A*",
+              "A2",
               "a",
               "S"
             ],
@@ -124395,7 +124867,7 @@ module.exports = {
           {
             "production": [
               "A",
-              "A*"
+              "A2"
             ],
             "operation": "insert",
             "index": 1
@@ -124409,7 +124881,7 @@ module.exports = {
           },
           {
             "production": [
-              "A*",
+              "A2",
               "a",
               "S"
             ],
@@ -125035,6 +125507,16 @@ module.exports = {
         "w",
         "w"
       ]
+    ],
+    "grammar.symbols": [
+      "B",
+      "A",
+      "x",
+      "y",
+      "C",
+      "z",
+      "w",
+      "v"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -126325,23 +126807,23 @@ module.exports = {
             "production": [
               "C",
               "v",
-              "C'"
+              "C2"
             ],
             "operation": "insert",
             "index": 4
           },
           {
             "production": [
-              "C'",
+              "C2",
               "w",
-              "C'"
+              "C2"
             ],
             "operation": "insert",
             "index": 5
           },
           {
             "production": [
-              "C'"
+              "C2"
             ],
             "operation": "insert",
             "index": 6
@@ -126367,7 +126849,7 @@ module.exports = {
           {
             "production": [
               "A",
-              "A*"
+              "A2"
             ],
             "operation": "insert",
             "index": 3
@@ -126381,7 +126863,7 @@ module.exports = {
           },
           {
             "production": [
-              "A*",
+              "A2",
               "x",
               "z"
             ],
@@ -126499,23 +126981,23 @@ module.exports = {
             "production": [
               "C",
               "v",
-              "C'"
+              "C2"
             ],
             "operation": "insert",
             "index": 4
           },
           {
             "production": [
-              "C'",
+              "C2",
               "w",
-              "C'"
+              "C2"
             ],
             "operation": "insert",
             "index": 5
           },
           {
             "production": [
-              "C'"
+              "C2"
             ],
             "operation": "insert",
             "index": 6
@@ -126538,7 +127020,7 @@ module.exports = {
           {
             "production": [
               "A",
-              "A*"
+              "A2"
             ],
             "operation": "insert",
             "index": 3
@@ -126552,7 +127034,7 @@ module.exports = {
           },
           {
             "production": [
-              "A*",
+              "A2",
               "x",
               "z"
             ],
@@ -127012,6 +127494,15 @@ module.exports = {
         "c",
         "d"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "A",
+      "d",
+      "a",
+      "B",
+      "b",
+      "c"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -128758,7 +129249,7 @@ module.exports = {
           {
             "production": [
               "B",
-              "B*"
+              "B2"
             ],
             "operation": "insert",
             "index": 3
@@ -128772,7 +129263,7 @@ module.exports = {
           },
           {
             "production": [
-              "B*",
+              "B2",
               "d",
               "A"
             ],
@@ -128924,7 +129415,7 @@ module.exports = {
           {
             "production": [
               "B",
-              "B*"
+              "B2"
             ],
             "operation": "insert",
             "index": 3
@@ -128938,7 +129429,7 @@ module.exports = {
           },
           {
             "production": [
-              "B*",
+              "B2",
               "d",
               "A"
             ],
@@ -129394,6 +129885,13 @@ module.exports = {
         "a",
         "b"
       ]
+    ],
+    "grammar.symbols": [
+      "A",
+      "a",
+      "C",
+      "B",
+      "b"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -130860,7 +131358,7 @@ module.exports = {
           {
             "production": [
               "B",
-              "B*"
+              "B2"
             ],
             "operation": "insert",
             "index": 2
@@ -130874,7 +131372,7 @@ module.exports = {
           },
           {
             "production": [
-              "B*",
+              "B2",
               "a",
               "B"
             ],
@@ -131020,7 +131518,7 @@ module.exports = {
           {
             "production": [
               "B",
-              "B*"
+              "B2"
             ],
             "operation": "insert",
             "index": 2
@@ -131034,7 +131532,7 @@ module.exports = {
           },
           {
             "production": [
-              "B*",
+              "B2",
               "a",
               "B"
             ],
@@ -131336,6 +131834,17 @@ module.exports = {
         "add",
         "num"
       ]
+    ],
+    "grammar.symbols": [
+      "EXPR",
+      "mult",
+      "TERM",
+      "add",
+      "FACTOR",
+      "num",
+      "lpar",
+      "rpar",
+      "star"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -135982,24 +136491,24 @@ module.exports = {
             "production": [
               "EXPR",
               "TERM",
-              "EXPR'"
+              "EXPR2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "EXPR'",
+              "EXPR2",
               "mult",
               "EXPR",
-              "EXPR'"
+              "EXPR2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "EXPR'"
+              "EXPR2"
             ],
             "operation": "insert",
             "index": 2
@@ -136023,24 +136532,24 @@ module.exports = {
             "production": [
               "TERM",
               "FACTOR",
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 2
           },
           {
             "production": [
-              "TERM'",
+              "TERM2",
               "add",
               "TERM",
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 3
           },
           {
             "production": [
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 4
@@ -136332,24 +136841,24 @@ module.exports = {
             "production": [
               "EXPR",
               "TERM",
-              "EXPR'"
+              "EXPR2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "EXPR'",
+              "EXPR2",
               "mult",
               "EXPR",
-              "EXPR'"
+              "EXPR2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "EXPR'"
+              "EXPR2"
             ],
             "operation": "insert",
             "index": 2
@@ -136373,24 +136882,24 @@ module.exports = {
             "production": [
               "TERM",
               "FACTOR",
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 2
           },
           {
             "production": [
-              "TERM'",
+              "TERM2",
               "add",
               "TERM",
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 3
           },
           {
             "production": [
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 4
@@ -136822,6 +137331,12 @@ module.exports = {
         "a",
         "a"
       ]
+    ],
+    "grammar.symbols": [
+      "A",
+      "a",
+      "C",
+      "B"
     ],
     "grammar.ambiguous": [
       "a"
@@ -138208,7 +138723,7 @@ module.exports = {
           {
             "production": [
               "B",
-              "B*"
+              "B2"
             ],
             "operation": "insert",
             "index": 2
@@ -138222,7 +138737,7 @@ module.exports = {
           },
           {
             "production": [
-              "B*",
+              "B2",
               "a",
               "B"
             ],
@@ -138247,7 +138762,7 @@ module.exports = {
           {
             "production": [
               "C",
-              "C*"
+              "C2"
             ],
             "operation": "insert",
             "index": 4
@@ -138261,7 +138776,7 @@ module.exports = {
           },
           {
             "production": [
-              "C*",
+              "C2",
               "a",
               "C"
             ],
@@ -138405,7 +138920,7 @@ module.exports = {
           {
             "production": [
               "B",
-              "B*"
+              "B2"
             ],
             "operation": "insert",
             "index": 2
@@ -138419,7 +138934,7 @@ module.exports = {
           },
           {
             "production": [
-              "B*",
+              "B2",
               "a",
               "B"
             ],
@@ -138444,7 +138959,7 @@ module.exports = {
           {
             "production": [
               "C",
-              "C*"
+              "C2"
             ],
             "operation": "insert",
             "index": 4
@@ -138458,7 +138973,7 @@ module.exports = {
           },
           {
             "production": [
-              "C*",
+              "C2",
               "a",
               "C"
             ],
@@ -138869,6 +139384,16 @@ module.exports = {
         "y",
         "r"
       ]
+    ],
+    "grammar.symbols": [
+      "A",
+      "B",
+      "C",
+      "x",
+      "y",
+      "n",
+      "z",
+      "r"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -143792,23 +144317,23 @@ module.exports = {
               "A",
               "B",
               "C",
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "A'",
+              "A2",
               "B",
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 2
@@ -144071,23 +144596,23 @@ module.exports = {
               "A",
               "B",
               "C",
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "A'",
+              "A2",
               "B",
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 2
@@ -144628,6 +145153,14 @@ module.exports = {
         "x",
         "x"
       ]
+    ],
+    "grammar.symbols": [
+      "A",
+      "b",
+      "F",
+      "x",
+      "B",
+      "G"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -146424,7 +146957,7 @@ module.exports = {
           {
             "production": [
               "G",
-              "G*"
+              "G2"
             ],
             "operation": "insert",
             "index": 4
@@ -146438,7 +146971,7 @@ module.exports = {
           },
           {
             "production": [
-              "G*",
+              "G2",
               "x",
               "B"
             ],
@@ -146587,7 +147120,7 @@ module.exports = {
           {
             "production": [
               "G",
-              "G*"
+              "G2"
             ],
             "operation": "insert",
             "index": 4
@@ -146601,7 +147134,7 @@ module.exports = {
           },
           {
             "production": [
-              "G*",
+              "G2",
               "x",
               "B"
             ],
@@ -147220,6 +147753,11 @@ module.exports = {
         "b"
       ]
     ],
+    "grammar.symbols": [
+      "A",
+      "b",
+      "c"
+    ],
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -147795,23 +148333,23 @@ module.exports = {
             "production": [
               "A",
               "c",
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "A'",
+              "A2",
               "b",
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 2
@@ -147870,23 +148408,23 @@ module.exports = {
             "production": [
               "A",
               "c",
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "A'",
+              "A2",
               "b",
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "A'"
+              "A2"
             ],
             "operation": "insert",
             "index": 2
@@ -148422,6 +148960,23 @@ module.exports = {
         "add",
         "id"
       ]
+    ],
+    "grammar.symbols": [
+      "EXP",
+      "add",
+      "TERM",
+      "id",
+      "INDEX",
+      "let",
+      "STMTS",
+      "in",
+      "end",
+      "STMT",
+      "LEXP",
+      "assign",
+      "semi",
+      "lpar",
+      "rpar"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -154909,24 +155464,24 @@ module.exports = {
             "production": [
               "EXP",
               "TERM",
-              "EXP'"
+              "EXP2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "EXP'",
+              "EXP2",
               "add",
               "TERM",
-              "EXP'"
+              "EXP2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "EXP'"
+              "EXP2"
             ],
             "operation": "insert",
             "index": 2
@@ -154949,23 +155504,23 @@ module.exports = {
           {
             "production": [
               "STMTS",
-              "STMTS'"
+              "STMTS2"
             ],
             "operation": "insert",
             "index": 5
           },
           {
             "production": [
-              "STMTS'",
+              "STMTS2",
               "STMT",
-              "STMTS'"
+              "STMTS2"
             ],
             "operation": "insert",
             "index": 6
           },
           {
             "production": [
-              "STMTS'"
+              "STMTS2"
             ],
             "operation": "insert",
             "index": 7
@@ -154989,23 +155544,23 @@ module.exports = {
             "production": [
               "LEXP",
               "id",
-              "LEXP'"
+              "LEXP2"
             ],
             "operation": "insert",
             "index": 8
           },
           {
             "production": [
-              "LEXP'",
+              "LEXP2",
               "INDEX",
-              "LEXP'"
+              "LEXP2"
             ],
             "operation": "insert",
             "index": 9
           },
           {
             "production": [
-              "LEXP'"
+              "LEXP2"
             ],
             "operation": "insert",
             "index": 10
@@ -155032,21 +155587,21 @@ module.exports = {
             "production": [
               "TERM",
               "id",
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 2
           },
           {
             "production": [
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 3
           },
           {
             "production": [
-              "TERM'",
+              "TERM2",
               "INDEX"
             ],
             "operation": "insert",
@@ -155072,7 +155627,7 @@ module.exports = {
           {
             "production": [
               "STMTS",
-              "STMTS*"
+              "STMTS2"
             ],
             "operation": "insert",
             "index": 5
@@ -155086,7 +155641,7 @@ module.exports = {
           },
           {
             "production": [
-              "STMTS*",
+              "STMTS2",
               "STMTS",
               "STMT"
             ],
@@ -155534,24 +156089,24 @@ module.exports = {
             "production": [
               "EXP",
               "TERM",
-              "EXP'"
+              "EXP2"
             ],
             "operation": "insert",
             "index": 0
           },
           {
             "production": [
-              "EXP'",
+              "EXP2",
               "add",
               "TERM",
-              "EXP'"
+              "EXP2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "EXP'"
+              "EXP2"
             ],
             "operation": "insert",
             "index": 2
@@ -155574,23 +156129,23 @@ module.exports = {
           {
             "production": [
               "STMTS",
-              "STMTS'"
+              "STMTS2"
             ],
             "operation": "insert",
             "index": 5
           },
           {
             "production": [
-              "STMTS'",
+              "STMTS2",
               "STMT",
-              "STMTS'"
+              "STMTS2"
             ],
             "operation": "insert",
             "index": 6
           },
           {
             "production": [
-              "STMTS'"
+              "STMTS2"
             ],
             "operation": "insert",
             "index": 7
@@ -155614,23 +156169,23 @@ module.exports = {
             "production": [
               "LEXP",
               "id",
-              "LEXP'"
+              "LEXP2"
             ],
             "operation": "insert",
             "index": 8
           },
           {
             "production": [
-              "LEXP'",
+              "LEXP2",
               "INDEX",
-              "LEXP'"
+              "LEXP2"
             ],
             "operation": "insert",
             "index": 9
           },
           {
             "production": [
-              "LEXP'"
+              "LEXP2"
             ],
             "operation": "insert",
             "index": 10
@@ -155655,21 +156210,21 @@ module.exports = {
             "production": [
               "TERM",
               "id",
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 2
           },
           {
             "production": [
-              "TERM'"
+              "TERM2"
             ],
             "operation": "insert",
             "index": 3
           },
           {
             "production": [
-              "TERM'",
+              "TERM2",
               "INDEX"
             ],
             "operation": "insert",
@@ -155693,7 +156248,7 @@ module.exports = {
           {
             "production": [
               "STMTS",
-              "STMTS*"
+              "STMTS2"
             ],
             "operation": "insert",
             "index": 5
@@ -155707,7 +156262,7 @@ module.exports = {
           },
           {
             "production": [
-              "STMTS*",
+              "STMTS2",
               "STMTS",
               "STMT"
             ],
@@ -156110,6 +156665,17 @@ module.exports = {
         "*",
         "*"
       ]
+    ],
+    "grammar.symbols": [
+      "S",
+      "E",
+      "B",
+      "+",
+      "T",
+      "*",
+      "C",
+      "D",
+      "X"
     ],
     "parsing.ll.ll1_classification": {
       "member": false,
@@ -158355,14 +158921,14 @@ module.exports = {
             "production": [
               "E",
               "B",
-              "E'"
+              "E2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "E'",
+              "E2",
               "+",
               "T"
             ],
@@ -158371,7 +158937,7 @@ module.exports = {
           },
           {
             "production": [
-              "E'",
+              "E2",
               "*",
               "T"
             ],
@@ -158639,14 +159205,14 @@ module.exports = {
             "production": [
               "E",
               "B",
-              "E'"
+              "E2"
             ],
             "operation": "insert",
             "index": 1
           },
           {
             "production": [
-              "E'",
+              "E2",
               "+",
               "T"
             ],
@@ -158655,7 +159221,7 @@ module.exports = {
           },
           {
             "production": [
-              "E'",
+              "E2",
               "*",
               "T"
             ],
