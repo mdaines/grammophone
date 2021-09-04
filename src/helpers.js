@@ -3,7 +3,6 @@ const END = require("./grammar/symbols").END;
 
 const ARROW = "\u2192";
 const EPSILON = "\u03B5";
-const PRIME = "\u2032";
 
 function fillArray(count, value) {
   let array = [];
@@ -47,7 +46,7 @@ function formatSymbolList(symbols, info, separator) {
 }
 
 function prettifySymbol(symbol) {
-  return symbol.replace(/'/g, PRIME);
+  return symbol;
 }
 
 function formatSymbol(symbol, info) {
