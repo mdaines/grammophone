@@ -21,6 +21,11 @@ file "build/assets/application.js" => javascript_files do
 end
 
 file "build/assets/viz.js" => "build/assets"
+file "build/assets/lite.render.js" => "lib/lite.render.js" do
+  FileUtils.cp "lib/lite.render.js", "build/assets"
+end
+
+file "build/assets/viz.js" => "build/assets"
 file "build/assets/viz.js" => "lib/viz.js" do
   FileUtils.cp "lib/viz.js", "build/assets"
 end
@@ -34,6 +39,7 @@ build_files = [
   "build/assets/application.css",
   "build/assets/application.js",
   "build/assets/viz.js",
+  "build/assets/lite.render.js",
   "build/index.html"
 ]
 

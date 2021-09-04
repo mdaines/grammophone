@@ -1,23 +1,10 @@
-const template = require("../templates/lr_automaton_graph");
+const LRAutomatonView = require("./lr_automaton_view");
 
-module.exports = class LR1AutomatonView {
+module.exports = class LR1AutomatonView extends LRAutomatonView {
   constructor(element) {
-    this._element = element;
-  }
+    super(element);
 
-  setDelegate(delegate) {
-    this._delegate = delegate;
-  }
-
-  reload() {
-    let dot = template({
-      info: this._delegate.getCalculation("grammar.symbolInfo"),
-      automaton: this._delegate.getCalculation("parsing.lr.lr1_automaton"),
-      productions: this._delegate.getCalculation("grammar.productions"),
-      start: this._delegate.getCalculation("grammar.start"),
-      title: "LR(1) Automaton"
-    });
-
-    this._element.innerHTML = Viz(dot);
+    this.calculation = "parsing.lr.lr1_automaton";
+    this.title = "LR(1) Automaton";
   }
 }
