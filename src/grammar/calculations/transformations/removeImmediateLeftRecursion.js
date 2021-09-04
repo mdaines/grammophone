@@ -7,11 +7,7 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
   // Find a new symbol for the right recursive production by adding primes
   // to the existing symbol.
 
-  var symbol = grammar.productions[recursive[0]][0];
-
-  do {
-    symbol += "'";
-  } while (nonterminals.has(symbol));
+  var symbol = grammar.getNewSymbol(grammar.productions[recursive[0]][0], nonterminals);
 
   // Copy productions to changes, marking those we're removing.
 

@@ -13,6 +13,7 @@ module.exports["grammar.first"] = require("./grammar/first");
 module.exports["grammar.follow"] = require("./grammar/follow");
 module.exports["grammar.endable"] = require("./grammar/endable");
 module.exports["grammar.sentences"] = require("./grammar/sentences");
+module.exports["grammar.symbols"] = require("./grammar/symbols");
 module.exports["grammar.ambiguous"] = require("./grammar/ambiguous");
 module.exports["parsing.ll.ll1_classification"] = require("./parsing/ll/ll1_classification");
 module.exports["parsing.ll.ll1_table"] = require("./parsing/ll/ll1_table");

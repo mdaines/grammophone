@@ -5,11 +5,7 @@ function epsilonSeparate(grammar, group, epsilon) {
 
   // Find a new symbol...
 
-  var symbol = grammar.productions[group[0]][0];
-
-  do {
-    symbol += "*";
-  } while (nonterminals.has(symbol));
+  var symbol = grammar.getNewSymbol(grammar.productions[group[0]][0], nonterminals);
 
   // Copy productions to changes, marking those we're removing.
 
