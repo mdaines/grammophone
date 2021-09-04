@@ -98,11 +98,16 @@ describe("parser", function() {
       expect(function() { parser("A -> x.y ."); }).toThrowError();
     });
 
-    it("symbols cannot start with a number", function() {
+    it("rules can't mix definition styles", function() {
+      expect(function() { parser("A -> a ;"); }).toThrowError();
+      expect(function() { parser("A : a ."); }).toThrowError();
+    });
+
+    it("symbols can't start with a number", function() {
       expect(function() { parser("A -> 1 ."); }).toThrowError();
     });
 
-    it("quoted symbols cannot contain a newline", function() {
+    it("quoted symbols can't contain a newline", function() {
       expect(function() { parser("\"A\n\" -> a ."); }).toThrowError();
     });
   });
