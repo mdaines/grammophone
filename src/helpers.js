@@ -107,12 +107,10 @@ const ESCAPE = {
   "\"": "&quot;"
 };
 
-function escapeChar(char) {
-  return ESCAPE[char];
-}
-
 function escapeString(string) {
-  return string.replace(/[&<>"]/g, escapeChar);
+  return string.replace(/[&<>"]/g, function(name) {
+    return ESCAPE[name];
+  });
 }
 
 function barePrettifySymbol(symbol) {
