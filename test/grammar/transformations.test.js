@@ -25,7 +25,7 @@ describe("transformations.epsilonSeparate", function() {
           {
             operation: "insert",
             index: 0,
-            production: ["A", "A*"],
+            production: ["A", "A2"],
           },
           {
             operation: "insert",
@@ -35,7 +35,7 @@ describe("transformations.epsilonSeparate", function() {
           {
             operation: "insert",
             index: 2,
-            production: ["A*", "a"],
+            production: ["A2", "a"],
           }
         ]
       }
