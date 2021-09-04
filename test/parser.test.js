@@ -30,6 +30,16 @@ describe("parser", function() {
     expect(parser("$a -> _1 a_2 .")).toEqual([["$a", "_1", "a_2"]]);
   });
 
+  it("symbols can be quoted", function() {
+    expect(parser("\"A\" -> \"a\".")).toEqual([["A", "a"]]);
+    expect(parser("\"\\\"\" -> .")).toEqual([["\\\""]]);
+    expect(parser("\"'\" -> .")).toEqual([["'"]]);
+    expect(parser("'\\'' -> .")).toEqual([["\\'"]]);
+    expect(parser("'\"' -> .")).toEqual([["\""]]);
+    expect(parser("\"->\" -> .")).toEqual([["->"]]);
+    expect(parser("\"\\u2192\" -> .")).toEqual([["\\u2192"]]);
+  });
+
   it("nonterminals don't need to be capitalized", function() {
     expect(parser("a -> b .")).toEqual([["a", "b"]]);
   });
@@ -70,6 +80,10 @@ describe("parser", function() {
 
     it("symbols cannot start with a number", function() {
       expect(function() { parser("A -> 1 ."); }).toThrowError();
+    });
+
+    it("quoted symbols cannot contain a newline", function() {
+      expect(function() { parser("\"A\n\" -> a ."); }).toThrowError();
     });
   });
 });

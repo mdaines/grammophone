@@ -2,14 +2,14 @@
 const {LRParser} = require("@lezer/lr")
 exports.parser = LRParser.deserialize({
   version: 14,
-  states: "#`QYQPOOOOQO'#C^'#C^O_QPO'#CgOOQO'#Ca'#CaQYQPOOOgQPO,59ROrQPO,59ROOQO-E6_-E6_OOQO'#C`'#C`OOQO'#Cb'#CbO}QPO'#C_OOQO'#Cj'#CjO!]QPO1G.mO!eQPO1G.mOOQO-E6`-E6`O!mQPO,59UOOQO7+$X7+$XOOQO1G.p1G.p",
-  stateData: "!{~OXOSYOS~O[PO~O]TOaUO~O[WO_RP`RP~O[WO_RPbRP~O[WO_RX`RXbRX~O__O``O~O__Ob`O~O[WO_RP`RPbRP~O",
-  goto: "!Z_PP`dkqwPPPP!PPP!TTQOSSZTURa_XXTUY_QSORVSUYTU_R^YTROSQ[TR]U",
-  nodeNames: "⚠ rules HeadSymbol Production ProductionSymbol",
+  states: "#YQYQPOOOOQO'#C^'#C^ObQPO'#ChOOQO'#Cb'#CbQYQPOOOjQPO,59SOxQPO,59SOOQO-E6`-E6`OOQO'#Cc'#CcO!WQPO'#CaOOQO'#Cj'#CjO!iQPO1G.nO!qQPO1G.nOOQO-E6a-E6aO!yQPO,59UOOQO7+$Y7+$YOOQO1G.p1G.p",
+  stateData: "#[~OYOSZOS~ORPOSPO~O]TOaUO~ORWOSWO_TP`TP~ORWOSWO_TPbTP~ORWOSWO_TX`TXbTX~O_^O`_O~O_^Ob_O~ORWOSWO_TP`TPbTP~O",
+  goto: "!T_PP`PPdkqPPPPyP}TQOSSYTUR`^QSORVSUXTU^R]XTROSQZTR[U",
+  nodeNames: "⚠ rules Head Symbol QuotedSymbol Production",
   maxTerm: 18,
   skippedNodes: [0],
   repeatNodeCount: 2,
-  tokenData: "$r~RdX^!apq!ast#Utu#m}!O$R!O!P$^![!]$c!]!^$h!c!}#m#R#S#m#T#o#m#p#q$m#y#z!a$f$g!a#BY#BZ!a$IS$I_!a$I|$JO!a$JT$JU!a$KV$KW!a&FU&FV!a~!fYX~X^!apq!a#y#z!a$f$g!a#BY#BZ!a$IS$I_!a$I|$JO!a$JT$JU!a$KV$KW!a&FU&FV!a~#ZSY~OY#UZ;'S#U;'S;=`#g<%lO#U~#jP;=`<%l#U~#rT[~tu#m!Q![#m!c!}#m#R#S#m#T#o#m~$UP!`!a$X~$^O]~~$cO`~~$hOa~~$mOb~~$rO_~",
+  tokenData: "(Z~RfX^!gpq!grs#[st%Otu%gwx%{}!O'j!O!P'u![!]'z!]!^(P!c!}%g#R#S%g#T#o%g#p#q(U#y#z!g$f$g!g#BY#BZ!g$IS$I_!g$I|$JO!g$JT$JU!g$KV$KW!g&FU&FV!g~!lYY~X^!gpq!g#y#z!g$f$g!g#BY#BZ!g$IS$I_!g$I|$JO!g$JT$JU!g$KV$KW!g&FU&FV!g~#_WOY#[Zr#[rs#ws#O#[#O#P#|#P;'S#[;'S;=`$x<%lO#[~#|OS~~$PRO;'S#[;'S;=`$Y;=`O#[~$]XOY#[Zr#[rs#ws#O#[#O#P#|#P;'S#[;'S;=`$x;=`<%l#[<%lO#[~${P;=`<%l#[~%TSZ~OY%OZ;'S%O;'S;=`%a<%lO%O~%dP;=`<%l%O~%lTR~tu%g!Q![%g!c!}%g#R#S%g#T#o%g~&OWOY%{Zw%{wx#wx#O%{#O#P&h#P;'S%{;'S;=`'d<%lO%{~&kRO;'S%{;'S;=`&t;=`O%{~&wXOY%{Zw%{wx#wx#O%{#O#P&h#P;'S%{;'S;=`'d;=`<%l%{<%lO%{~'gP;=`<%l%{~'mP!`!a'p~'uO]~~'zO`~~(POa~~(UOb~~(ZO_~",
   tokenizers: [0],
   topRules: {"rules":[0,1]},
   tokenPrec: 0

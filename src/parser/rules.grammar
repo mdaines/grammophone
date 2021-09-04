@@ -1,24 +1,27 @@
 @top rules { rule* }
 
 rule {
-  HeadSymbol "->" productions "." |
-  HeadSymbol ":" productions ";"
+  Head "->" productions "." |
+  Head ":" productions ";"
 }
 
-HeadSymbol { symbol }
+Head { Symbol | QuotedSymbol }
 
 productions { Production | productions "|" Production }
 
-Production { ProductionSymbol* }
-
-ProductionSymbol { symbol }
+Production { (Symbol | QuotedSymbol)* }
 
 @skip { space | comment }
 
 @tokens {
-  symbolStart { std.asciiLetter | $[_$] }
+  symbolStart { std.asciiLetter | "_" | "$" }
   symbolPart { symbolStart | std.digit }
-  symbol { symbolStart symbolPart* }
+  Symbol { symbolStart symbolPart* }
+  
+  QuotedSymbol {
+    '"' (![\\\n"] | "\\" _)* '"' |
+    "'" (![\\\n'] | "\\" _)* "'"
+  }
   
   space { std.whitespace+ }
   comment { "#" ![\n]* }
