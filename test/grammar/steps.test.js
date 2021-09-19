@@ -1,54 +1,5 @@
 const Grammar = require("../../src/grammar");
 
-function calculateSteps(grammar) {
-  let nonterminals = grammar.calculate("grammar.nonterminals");
-
-  let symbolCounts = new Map();
-  let productionCounts = new Map();
-
-  while (productionCounts.size < grammar.productions.length) {
-    let size = productionCounts.size;
-
-    for (let i = 0; i < grammar.productions.length; i++) {
-      let steps = 1;
-
-      let j;
-
-      for (j = 1; j < grammar.productions[i].length; j++) {
-        let s = grammar.productions[i][j];
-
-        if (symbolCounts.has(s)) {
-          steps += symbolCounts.get(s);
-        } else if (nonterminals.has(s)) {
-          break;
-        }
-      }
-
-      if (j == grammar.productions[i].length) {
-        let h = grammar.productions[i][0];
-
-        if (!symbolCounts.has(h)) {
-          symbolCounts.set(h, steps);
-        }
-
-        productionCounts.set(i, steps);
-      }
-    }
-
-    if (size == productionCounts.size) {
-      return undefined;
-    }
-  }
-
-  let result = new Array(grammar.productions.length);
-
-  for (let i = 0; i < grammar.productions.length; i++) {
-    result[i] = productionCounts.get(i);
-  }
-
-  return result;
-}
-
 describe("steps", function() {
   it("simple grammar", function() {
     let grammar = new Grammar([
@@ -56,7 +7,7 @@ describe("steps", function() {
       ["S"]
     ]);
 
-    expect(calculateSteps(grammar)).toEqual([
+    expect(grammar.calculate("grammar.steps")).toEqual([
       2,
       1
     ]);
@@ -68,7 +19,7 @@ describe("steps", function() {
       ["B", "u"]
     ]);
 
-    expect(calculateSteps(grammar)).toEqual([
+    expect(grammar.calculate("grammar.steps")).toEqual([
       2,
       1
     ]);
@@ -84,7 +35,7 @@ describe("steps", function() {
       ["C", "s"]
     ]);
 
-    expect(calculateSteps(grammar)).toEqual([
+    expect(grammar.calculate("grammar.steps")).toEqual([
       2,
       1,
       3,
@@ -101,7 +52,7 @@ describe("steps", function() {
       ["C", "x"]
     ]);
 
-    expect(calculateSteps(grammar)).toEqual([
+    expect(grammar.calculate("grammar.steps")).toEqual([
       3,
       2,
       1
@@ -116,7 +67,7 @@ describe("steps", function() {
       ["a3", "a1", "x", "a1"]
     ]);
 
-    expect(calculateSteps(grammar)).toEqual([
+    expect(grammar.calculate("grammar.steps")).toEqual([
       1,
       15,
       7,
@@ -131,7 +82,7 @@ describe("steps", function() {
       ["C", "A"]
     ]);
 
-    expect(calculateSteps(grammar)).toEqual(undefined);
+    expect(grammar.calculate("grammar.steps")).toEqual(undefined);
   });
 
   it("unreachable", function() {
@@ -140,7 +91,7 @@ describe("steps", function() {
       ["B", "y"]
     ]);
 
-    expect(calculateSteps(grammar)).toEqual([
+    expect(grammar.calculate("grammar.steps")).toEqual([
       1,
       1
     ]);
@@ -151,6 +102,6 @@ describe("steps", function() {
       ["A", "A", "x"]
     ]);
 
-    expect(calculateSteps(grammar)).toEqual(undefined);
+    expect(grammar.calculate("grammar.steps")).toEqual(undefined);
   });
 });
