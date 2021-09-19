@@ -38,11 +38,13 @@ module.exports = function(grammar) {
     }
   }
 
-  let result = new Array(grammar.productions.length);
+  // let result = new Array(grammar.productions.length);
+  //
+  // for (let i = 0; i < grammar.productions.length; i++) {
+  //   result[i] = productionCounts.get(i);
+  // }
+  //
+  // return result;
 
-  for (let i = 0; i < grammar.productions.length; i++) {
-    result[i] = productionCounts.get(i);
-  }
-
-  return result;
+  return symbolCounts;
 }
