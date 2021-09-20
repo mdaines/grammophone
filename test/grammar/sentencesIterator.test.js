@@ -1,9 +1,5 @@
 const Grammar = require("../../src/grammar");
 
-function getProductions(grammar, nonterminal) {
-  return grammar.productions.filter(p => p[0] == nonterminal);
-}
-
 function orderedProductions(grammar, nonterminal) {
   let steps = grammar.calculate("grammar.steps");
 
@@ -39,9 +35,6 @@ function sentenceCost(grammar, sentence) {
 function makeSentencesIterator(grammar) {
   let start = grammar.calculate("grammar.start");
   let nonterminals = grammar.calculate("grammar.nonterminals");
-  let steps = grammar.calculate("grammar.steps");
-
-  let productions = getProductions(grammar, start);
 
   let state = {
     grammar,
