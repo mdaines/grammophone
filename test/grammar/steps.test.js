@@ -7,14 +7,15 @@ describe("steps", function() {
       ["S"]
     ]);
 
-    // expect(grammar.calculate("grammar.steps")).toEqual([
-    //   2,
-    //   1
-    // ]);
-
-    expect(grammar.calculate("grammar.steps")).toEqual(new Map([
-      ["S", 1]
-    ]));
+    expect(grammar.calculate("grammar.steps")).toEqual({
+      symbols: new Map([
+        ["S", 1]
+      ]),
+      productions: new Map([
+        [0, 2],
+        [1, 1]
+      ])
+    });
   });
 
   it("recursion", function() {
@@ -23,14 +24,15 @@ describe("steps", function() {
       ["B", "u"]
     ]);
 
-    // expect(grammar.calculate("grammar.steps")).toEqual([
-    //   2,
-    //   1
-    // ]);
-
-    expect(grammar.calculate("grammar.steps")).toEqual(new Map([
-      ["B", 1]
-    ]));
+    expect(grammar.calculate("grammar.steps")).toEqual({
+      symbols: new Map([
+        ["B", 1]
+      ]),
+      productions: new Map([
+        [0, 2],
+        [1, 1]
+      ])
+    });
   });
 
   it("multiple nonterminals and recursion", function() {
@@ -43,20 +45,21 @@ describe("steps", function() {
       ["C", "s"]
     ]);
 
-    // expect(grammar.calculate("grammar.steps")).toEqual([
-    //   2,
-    //   1,
-    //   3,
-    //   2,
-    //   1,
-    //   1
-    // ]);
-
-    expect(grammar.calculate("grammar.steps")).toEqual(new Map([
-      ["A", 1],
-      ["B", 1],
-      ["C", 1]
-    ]));
+    expect(grammar.calculate("grammar.steps")).toEqual({
+      symbols: new Map([
+        ["A", 1],
+        ["B", 1],
+        ["C", 1]
+      ]),
+      productions: new Map([
+        [0, 2],
+        [1, 1],
+        [2, 3],
+        [3, 2],
+        [4, 1],
+        [5, 1]
+      ])
+    });
   });
 
   it("multiple steps", function() {
@@ -72,11 +75,18 @@ describe("steps", function() {
     //   1
     // ]);
 
-    expect(grammar.calculate("grammar.steps")).toEqual(new Map([
-      ["A", 3],
-      ["B", 2],
-      ["C", 1]
-    ]));
+    expect(grammar.calculate("grammar.steps")).toEqual({
+      symbols: new Map([
+        ["A", 3],
+        ["B", 2],
+        ["C", 1]
+      ]),
+      productions: new Map([
+        [0, 3],
+        [1, 2],
+        [2, 1]
+      ])
+    });
   });
 
   it("repeated nonterminals and recursion", function() {
@@ -87,18 +97,19 @@ describe("steps", function() {
       ["a3", "a1", "x", "a1"]
     ]);
 
-    // expect(grammar.calculate("grammar.steps")).toEqual([
-    //   1,
-    //   15,
-    //   7,
-    //   3
-    // ]);
-
-    expect(grammar.calculate("grammar.steps")).toEqual(new Map([
-      ["a1", 1],
-      ["a2", 7],
-      ["a3", 3]
-    ]));
+    expect(grammar.calculate("grammar.steps")).toEqual({
+      symbols: new Map([
+        ["a1", 1],
+        ["a2", 7],
+        ["a3", 3]
+      ]),
+      productions: new Map([
+        [0, 1],
+        [1, 15],
+        [2, 7],
+        [3, 3]
+      ])
+    });
   });
 
   it("cycle", function() {
@@ -117,15 +128,16 @@ describe("steps", function() {
       ["B", "y"]
     ]);
 
-    // expect(grammar.calculate("grammar.steps")).toEqual([
-    //   1,
-    //   1
-    // ]);
-
-    expect(grammar.calculate("grammar.steps")).toEqual(new Map([
-      ["A", 1],
-      ["B", 1]
-    ]));
+    expect(grammar.calculate("grammar.steps")).toEqual({
+      symbols: new Map([
+        ["A", 1],
+        ["B", 1]
+      ]),
+      productions: new Map([
+        [0, 1],
+        [1, 1]
+      ])
+    });
   });
 
   it("unrealizable", function() {
