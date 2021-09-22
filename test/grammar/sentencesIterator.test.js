@@ -61,7 +61,7 @@ describe("sentencesIterator", function() {
     expect(iterator.next()).toEqual({ value: undefined, done: true });
   });
 
-  it("repeated nonterminals and recursion", function() {
+  it("repeated nonterminals and recursion (ambiguous)", function() {
     let grammar = new Grammar([
       ["a1", "x"],
       ["a1", "a2", "x", "a2"],
