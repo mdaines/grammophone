@@ -119,7 +119,41 @@ describe("steps", function() {
       ["C", "A"]
     ]);
 
-    expect(grammar.calculate("grammar.steps")).toEqual(undefined);
+    expect(grammar.calculate("grammar.steps")).toEqual({
+      symbols: new Map([
+        ["A", undefined],
+        ["B", undefined],
+        ["C", undefined]
+      ]),
+      productions: new Map([
+        [0, undefined],
+        [1, undefined],
+        [2, undefined]
+      ])
+    });
+  });
+
+  it("optional cycle", function() {
+    let grammar = new Grammar([
+      ["A", "x"],
+      ["A", "B"],
+      ["B", "C"],
+      ["C", "A"]
+    ]);
+
+    expect(grammar.calculate("grammar.steps")).toEqual({
+      symbols: new Map([
+        ["A", 1],
+        ["B", undefined],
+        ["C", undefined]
+      ]),
+      productions: new Map([
+        [0, 1],
+        [1, undefined],
+        [2, undefined],
+        [3, undefined]
+      ])
+    });
   });
 
   it("unreachable", function() {
@@ -145,6 +179,38 @@ describe("steps", function() {
       ["A", "A", "x"]
     ]);
 
-    expect(grammar.calculate("grammar.steps")).toEqual(undefined);
+    expect(grammar.calculate("grammar.steps")).toEqual({
+      symbols: new Map([
+        ["A", undefined]
+      ]),
+      productions: new Map([
+        [0, undefined]
+      ])
+    });
+  });
+
+  it("partially unrealizable", function() {
+    let grammar = new Grammar([
+      ["A", "B"],
+      ["A", "x", "C"],
+      ["A", "y", "A"],
+      ["B", "C", "B"],
+      ["C", "r"]
+    ]);
+
+    expect(grammar.calculate("grammar.steps")).toEqual({
+      symbols: new Map([
+        ["A", 2],
+        ["B", undefined],
+        ["C", 1]
+      ]),
+      productions: new Map([
+        [0, undefined],
+        [1, 2],
+        [2, 3],
+        [3, undefined],
+        [4, 1]
+      ])
+    });
   });
 });
