@@ -4,7 +4,8 @@ function orderedProductions(grammar, nonterminal) {
   let indexes = [];
 
   grammar.productions.forEach((p, i) => {
-    if (p[0] == nonterminal) {
+    // only include productions for which steps is defined (all symbols are realizable)
+    if (p[0] == nonterminal && typeof steps.productions.get(i) !== "undefined") {
       indexes.push(i);
     }
   });
@@ -31,6 +32,16 @@ function sentenceCost(grammar, sentence) {
 }
 
 module.exports = function(grammar) {
+  let steps = grammar.calculate("grammar.steps");
+
+  if (typeof steps === "undefined") {
+    return {
+      next: function() {
+        return { value: undefined, done: true };
+      }
+    }
+  }
+
   let start = grammar.calculate("grammar.start");
   let nonterminals = grammar.calculate("grammar.nonterminals");
 

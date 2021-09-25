@@ -115,8 +115,11 @@ describe("sentencesIterator", function() {
     ]);
 
     let iterator = makeSentencesIterator(grammar);
-    expect(iterator.next()).toEqual({ value: "x", done: false });
-    expect(iterator.next()).toEqual({ value: undefined, done: true });
+    expect(iterator.next()).toEqual({ value: ["x"], done: false });
+    expect(iterator.next()).toEqual({ value: undefined, done: false });
+    expect(iterator.next()).toEqual({ value: undefined, done: false });
+    expect(iterator.next()).toEqual({ value: undefined, done: false });
+    expect(iterator.next()).toEqual({ value: ["x"], done: false });
   });
 
   it("unreachable", function() {
@@ -126,7 +129,7 @@ describe("sentencesIterator", function() {
     ]);
 
     let iterator = makeSentencesIterator(grammar);
-    expect(iterator.next()).toEqual({ value: "x", done: false });
+    expect(iterator.next()).toEqual({ value: ["x"], done: false });
     expect(iterator.next()).toEqual({ value: undefined, done: true });
   });
 
