@@ -69,12 +69,6 @@ describe("steps", function() {
       ["C", "x"]
     ]);
 
-    // expect(grammar.calculate("grammar.steps")).toEqual([
-    //   3,
-    //   2,
-    //   1
-    // ]);
-
     expect(grammar.calculate("grammar.steps")).toEqual({
       symbols: new Map([
         ["A", 3],
@@ -144,14 +138,14 @@ describe("steps", function() {
     expect(grammar.calculate("grammar.steps")).toEqual({
       symbols: new Map([
         ["A", 1],
-        ["B", undefined],
-        ["C", undefined]
+        ["B", 3],
+        ["C", 2]
       ]),
       productions: new Map([
         [0, 1],
-        [1, undefined],
-        [2, undefined],
-        [3, undefined]
+        [1, 4],
+        [2, 3],
+        [3, 2]
       ])
     });
   });
