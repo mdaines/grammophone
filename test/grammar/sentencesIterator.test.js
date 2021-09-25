@@ -94,4 +94,66 @@ describe("sentencesIterator", function() {
     expect(iterator.next()).toEqual({ value: undefined, done: false });
     expect(iterator.next()).toEqual({ value: ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"], done: false });
   });
+
+  it("cycle", function() {
+    let grammar = new Grammar([
+      ["A", "B"],
+      ["B", "C"],
+      ["C", "A"]
+    ]);
+
+    let iterator = makeSentencesIterator(grammar);
+    expect(iterator.next()).toEqual({ value: undefined, done: true });
+  });
+
+  it("optional cycle", function() {
+    let grammar = new Grammar([
+      ["A", "x"],
+      ["A", "B"],
+      ["B", "C"],
+      ["C", "A"]
+    ]);
+
+    let iterator = makeSentencesIterator(grammar);
+    expect(iterator.next()).toEqual({ value: "x", done: false });
+    expect(iterator.next()).toEqual({ value: undefined, done: true });
+  });
+
+  it("unreachable", function() {
+    let grammar = new Grammar([
+      ["A", "x"],
+      ["B", "y"]
+    ]);
+
+    let iterator = makeSentencesIterator(grammar);
+    expect(iterator.next()).toEqual({ value: "x", done: false });
+    expect(iterator.next()).toEqual({ value: undefined, done: true });
+  });
+
+  it("unrealizable", function() {
+    let grammar = new Grammar([
+      ["A", "A", "x"]
+    ]);
+
+    let iterator = makeSentencesIterator(grammar);
+    expect(iterator.next()).toEqual({ value: undefined, done: true });
+  });
+
+  it("partially unrealizable", function() {
+    let grammar = new Grammar([
+      ["A", "B"],
+      ["A", "x", "C"],
+      ["A", "y", "A"],
+      ["B", "C", "B"],
+      ["C", "r"]
+    ]);
+
+    let iterator = makeSentencesIterator(grammar);
+    expect(iterator.next()).toEqual({ value: undefined, done: false });
+    expect(iterator.next()).toEqual({ value: undefined, done: false });
+    expect(iterator.next()).toEqual({ value: ["x", "r"], done: false });
+    expect(iterator.next()).toEqual({ value: undefined, done: false });
+    expect(iterator.next()).toEqual({ value: undefined, done: false });
+    expect(iterator.next()).toEqual({ value: ["y", "x", "r"], done: false });
+  });
 });
