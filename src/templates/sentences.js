@@ -22,6 +22,10 @@ module.exports = function(input) {
     if (sentences.length > limit) {
       result.push(m("p", m("a", { href: "#/sentences" }, "More example sentences")));
     }
+
+    if (input.more) {
+      result.push(m("p", m("button", { "data-action": "more" }, "Generate more sentences")));
+    }
   } else {
     result.push(m("p", "No example sentences could be generated."));
   }

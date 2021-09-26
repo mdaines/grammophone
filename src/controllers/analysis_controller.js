@@ -13,6 +13,7 @@ var LR1AutomatonView = require("../views/lr1_automaton_view");
 var LR1TableView = require("../views/lr1_table_view");
 var LALR1AutomatonView = require("../views/lalr1_automaton_view");
 var LALR1TableView = require("../views/lalr1_table_view");
+const makeSentencesIterator = require("../grammar/make_sentences_iterator");
 
 module.exports = class AnalysisController {
   constructor(element) {
@@ -215,6 +216,10 @@ module.exports = class AnalysisController {
 
     return this._grammar.calculate(name);
 
+  }
+
+  getSentencesIterator() {
+    return makeSentencesIterator(this._grammar);
   }
 
   getPathComponents() {
