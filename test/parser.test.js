@@ -36,28 +36,28 @@ describe("parser", function() {
   });
 
   it("quoted symbols can contain escapes", function() {
-    expect(parser("\"\\\"\" -> .")).toEqual([["\""]]);
-    expect(parser("\"\\\\\" -> .")).toEqual([["\\"]]);
+    expect(parser("\"\\\"\" -> .")).toEqual([["\\\""]]);
+    expect(parser("\"\\\\\" -> .")).toEqual([["\\\\"]]);
     expect(parser("\"'\" -> .")).toEqual([["'"]]);
-    expect(parser("'\\'' -> .")).toEqual([["'"]]);
+    expect(parser("'\\'' -> .")).toEqual([["\\'"]]);
     expect(parser("'\"' -> .")).toEqual([["\""]]);
 
-    expect(parser("\"\\b\" -> .")).toEqual([["\b"]]);
-    expect(parser("\"\\f\" -> .")).toEqual([["\f"]]);
-    expect(parser("\"\\n\" -> .")).toEqual([["\n"]]);
-    expect(parser("\"\\r\" -> .")).toEqual([["\r"]]);
-    expect(parser("\"\\t\" -> .")).toEqual([["\t"]]);
-    expect(parser("\"\\v\" -> .")).toEqual([["\v"]]);
-    expect(parser("\"\\0\" -> .")).toEqual([["\0"]]);
+    expect(parser("\"\\b\" -> .")).toEqual([["\\b"]]);
+    expect(parser("\"\\f\" -> .")).toEqual([["\\f"]]);
+    expect(parser("\"\\n\" -> .")).toEqual([["\\n"]]);
+    expect(parser("\"\\r\" -> .")).toEqual([["\\r"]]);
+    expect(parser("\"\\t\" -> .")).toEqual([["\\t"]]);
+    expect(parser("\"\\v\" -> .")).toEqual([["\\v"]]);
+    expect(parser("\"\\0\" -> .")).toEqual([["\\0"]]);
 
-    expect(parser("\"\\xA9\" -> .")).toEqual([["\xA9"]]);
-    expect(parser("\"\\xa9\" -> .")).toEqual([["\xA9"]]);
+    expect(parser("\"\\xA9\" -> .")).toEqual([["\\xA9"]]);
+    expect(parser("\"\\xa9\" -> .")).toEqual([["\\xa9"]]);
 
-    expect(parser("\"\\u00A9\" -> .")).toEqual([["\u00A9"]]);
-    expect(parser("\"\\u00a9\" -> .")).toEqual([["\u00A9"]]);
-    expect(parser("\"\\u2665\" -> .")).toEqual([["\u2665"]]);
+    expect(parser("\"\\u00A9\" -> .")).toEqual([["\\u00A9"]]);
+    expect(parser("\"\\u00a9\" -> .")).toEqual([["\\u00a9"]]);
+    expect(parser("\"\\u2665\" -> .")).toEqual([["\\u2665"]]);
 
-    expect(parser("\"\\u{1D306}\" -> .")).toEqual([["\u{1D306}"]]);
+    expect(parser("\"\\u{1D306}\" -> .")).toEqual([["\\u{1D306}"]]);
   });
 
   it("nonterminals don't need to be capitalized", function() {
