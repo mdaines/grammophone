@@ -14,8 +14,8 @@ Production { (Symbol | QuotedSymbol)* }
 @skip { space | comment }
 
 @tokens {
-  symbolStart { std.asciiLetter | "_" | "$" }
-  symbolPart { symbolStart | std.digit }
+  symbolStart { @asciiLetter | "_" | "$" }
+  symbolPart { symbolStart | @digit }
   Symbol { symbolStart symbolPart* }
   
   QuotedSymbol {
@@ -23,6 +23,6 @@ Production { (Symbol | QuotedSymbol)* }
     "'" (![\\\n'] | "\\" _)* "'"
   }
   
-  space { std.whitespace+ }
+  space { @whitespace+ }
   comment { "#" ![\n]* }
 }
