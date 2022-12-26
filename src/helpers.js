@@ -46,7 +46,7 @@ function formatSymbolList(symbols, info, separator) {
 }
 
 function prettifySymbol(symbol) {
-  return symbol;
+  return symbol.replace(/\s/g, "♢");
 }
 
 function formatSymbol(symbol, info) {
@@ -114,7 +114,7 @@ function escapeString(string) {
 }
 
 function barePrettifySymbol(symbol) {
-  return symbol.replace(/'/g, "&prime;");
+  return symbol.replace(/'/g, "&prime;").replace(/\s/g, "♢");
 }
 
 function bareFormatSymbol(symbol, info) {

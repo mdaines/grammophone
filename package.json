@@ -12,6 +12,7 @@
     "@rollup/plugin-node-resolve": "*",
     "jest": "*",
     "jshint": "*",
+    "mithril-query": "*",
     "rollup": "*",
     "uglify-js": "*"
   },
