@@ -15,7 +15,7 @@ describe("helpers", function() {
       expect(output.contains("$")).toBe(true);
     });
 
-    it("formats whitespace characters as diamonds", function() {
+    it("formats whitespace characters", function() {
       let info = {
         terminals: new Set([" "]),
         nonterminals: new Set()
@@ -23,7 +23,7 @@ describe("helpers", function() {
 
       let output = mq(helpers.formatSymbol(" ", info));
       expect(output.has("b")).toBe(true);
-      expect(output.contains("♢")).toBe(true);
+      expect(output.contains("\u2B1A")).toBe(true);
     });
 
     it("refuses to format an unknown symbol", function() {
@@ -50,13 +50,13 @@ describe("helpers", function() {
       expect(helpers.bareFormatSymbol("&", info)).toEqual("&amp;");
     });
 
-    it("formats whitespace characters as diamonds", function() {
+    it("formats whitespace characters", function() {
       let info = {
         terminals: new Set([" "]),
         nonterminals: new Set()
       };
 
-      expect(helpers.bareFormatSymbol(" ", info)).toEqual("♢");
+      expect(helpers.bareFormatSymbol(" ", info)).toEqual("\u2B1A");
     });
 
     it("refuses to format an unknown symbol", function() {
