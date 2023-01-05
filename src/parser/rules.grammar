@@ -1,28 +1,34 @@
-@top rules { rule* }
+@top Rules { rule* }
+
+@skip { space | LineComment }
 
 rule {
-  Head "->" productions "." |
-  Head ":" productions ";"
+  Head produces productions stop
 }
 
 Head { Symbol | QuotedSymbol }
 
-productions { Production | productions "|" Production }
+productions { Production ("|" Production)* }
 
 Production { (Symbol | QuotedSymbol)* }
 
-@skip { space | comment }
-
 @tokens {
   symbolStart { @asciiLetter | "_" | "$" }
+  
   symbolPart { symbolStart | @digit }
+  
   Symbol { symbolStart symbolPart* }
   
   QuotedSymbol {
     '"' (![\\\n"] | "\\" _)* '"' |
     "'" (![\\\n'] | "\\" _)* "'"
   }
-  
+
+  LineComment { "#" ![\n]* }
+
   space { @whitespace+ }
-  comment { "#" ![\n]* }
+  
+  produces { "->" | ":" }
+  
+  stop { "." | ";" }
 }

@@ -2,15 +2,15 @@
 const {LRParser} = require("@lezer/lr")
 exports.parser = LRParser.deserialize({
   version: 14,
-  states: "#YQYQPOOOOQO'#C^'#C^ObQPO'#ChOOQO'#Cb'#CbQYQPOOOjQPO,59SOxQPO,59SOOQO-E6`-E6`OOQO'#Cc'#CcO!WQPO'#CaOOQO'#Cj'#CjO!iQPO1G.nO!qQPO1G.nOOQO-E6a-E6aO!yQPO,59UOOQO7+$Y7+$YOOQO1G.p1G.p",
-  stateData: "#[~OYOSZOS~ORPOSPO~O]TOaUO~ORWOSWO_TP`TP~ORWOSWO_TPbTP~ORWOSWO_TX`TXbTX~O_^O`_O~O_^Ob_O~ORWOSWO_TP`TPbTP~O",
-  goto: "!T_PP`PPdkqPPPPyP}TQOSSYTUR`^QSORVSUXTU^R]XTROSQZTR[U",
-  nodeNames: "⚠ rules Head Symbol QuotedSymbol Production",
-  maxTerm: 18,
-  skippedNodes: [0],
-  repeatNodeCount: 2,
-  tokenData: "(Z~RfX^!gpq!grs#[st%Otu%gwx%{}!O'j!O!P'u![!]'z!]!^(P!c!}%g#R#S%g#T#o%g#p#q(U#y#z!g$f$g!g#BY#BZ!g$IS$I_!g$I|$JO!g$JT$JU!g$KV$KW!g&FU&FV!g~!lYY~X^!gpq!g#y#z!g$f$g!g#BY#BZ!g$IS$I_!g$I|$JO!g$JT$JU!g$KV$KW!g&FU&FV!g~#_WOY#[Zr#[rs#ws#O#[#O#P#|#P;'S#[;'S;=`$x<%lO#[~#|OS~~$PRO;'S#[;'S;=`$Y;=`O#[~$]XOY#[Zr#[rs#ws#O#[#O#P#|#P;'S#[;'S;=`$x;=`<%l#[<%lO#[~${P;=`<%l#[~%TSZ~OY%OZ;'S%O;'S;=`%a<%lO%O~%dP;=`<%l%O~%lTR~tu%g!Q![%g!c!}%g#R#S%g#T#o%g~&OWOY%{Zw%{wx#wx#O%{#O#P&h#P;'S%{;'S;=`'d<%lO%{~&kRO;'S%{;'S;=`&t;=`O%{~&wXOY%{Zw%{wx#wx#O%{#O#P&h#P;'S%{;'S;=`'d;=`<%l%{<%lO%{~'gP;=`<%l%{~'mP!`!a'p~'uO]~~'zO`~~(POa~~(UOb~~(ZO_~",
+  states: "#YQYQPOOOOQO'#C_'#C_ObQPO'#CiOOQO'#Cc'#CcQYQPOOOgQPO,59TOOQO-E6a-E6aOOQO'#Cd'#CdOuQPO'#CbO!TQPO'#CkO!]QPO1G.oOOQO-E6b-E6bOgQPO'#CeO!bQPO,59VOOQO7+$Z7+$ZOOQO,59P,59POOQO-E6c-E6c",
+  stateData: "!j~O[OSPOS~OSPOTPO~O^TO~OSVOTVO`UPaUP~OSVOTVO`UXaUX~O`[Oa_X~Oa^O~O`[Oa_a~O",
+  goto: "!V`PPPaPPekqxPPP!OP!STQOSQXTR_[QSORUSSWT[RZWQ]XR`]TROSRYT",
+  nodeNames: "⚠ LineComment Rules Head Symbol QuotedSymbol Production",
+  maxTerm: 17,
+  skippedNodes: [0,1],
+  repeatNodeCount: 3,
+  tokenData: "(P~RfX^!gpq!grs#[st%Otu%gwx%{}!O'j!O!P'u![!]'p!]!^'u!c!}%g#R#S%g#T#o%g#p#q'z#y#z!g$f$g!g#BY#BZ!g$IS$I_!g$I|$JO!g$JT$JU!g$KV$KW!g&FU&FV!g~!lY[~X^!gpq!g#y#z!g$f$g!g#BY#BZ!g$IS$I_!g$I|$JO!g$JT$JU!g$KV$KW!g&FU&FV!g~#_WOY#[Zr#[rs#ws#O#[#O#P#|#P;'S#[;'S;=`$x<%lO#[~#|OT~~$PRO;'S#[;'S;=`$Y;=`O#[~$]XOY#[Zr#[rs#ws#O#[#O#P#|#P;'S#[;'S;=`$x;=`<%l#[<%lO#[~${P;=`<%l#[~%TSP~OY%OZ;'S%O;'S;=`%a<%lO%O~%dP;=`<%l%O~%lTS~tu%g!Q![%g!c!}%g#R#S%g#T#o%g~&OWOY%{Zw%{wx#wx#O%{#O#P&h#P;'S%{;'S;=`'d<%lO%{~&kRO;'S%{;'S;=`&t;=`O%{~&wXOY%{Zw%{wx#wx#O%{#O#P&h#P;'S%{;'S;=`'d;=`<%l%{<%lO%{~'gP;=`<%l%{~'mP!`!a'p~'uO^~~'zOa~~(PO`~",
   tokenizers: [0],
-  topRules: {"rules":[0,1]},
+  topRules: {"Rules":[0,2]},
   tokenPrec: 0
 })

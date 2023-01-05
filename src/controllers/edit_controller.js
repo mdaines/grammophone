@@ -1,14 +1,26 @@
-const render = require("mithril/render");
-const template = require("../templates/edit");
+const languageSupport = require("../parser/language_support");
+const linter = require("../parser/linter");
+
+const { EditorView, basicSetup } = require("codemirror");
 
 module.exports = class EditController {
   constructor(element) {
     this._element = element;
     this._element.id = "edit";
+
+    this._editor = new EditorView({
+      doc: "",
+      extensions: [
+        basicSetup,
+        languageSupport(),
+        linter
+      ],
+      parent: this._element
+    });
   }
 
   getSpec() {
-    return this._element.querySelector(".spec").value;
+    return this._editor.state.doc.sliceString(0);
   }
 
   setDelegate(delegate) {
@@ -16,10 +28,12 @@ module.exports = class EditController {
   }
 
   reload() {
-    let vnode = template({
-      spec: this._delegate.getSpec()
+    this._editor.dispatch({
+      changes: {
+        from: 0,
+        to: this._editor.state.doc.length,
+        insert: this._delegate.getSpec()
+      }
     });
-
-    render(this._element, vnode);
   }
 }

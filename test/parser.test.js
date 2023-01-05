@@ -78,6 +78,11 @@ describe("parser", function() {
     expect(parser("# 123\n\n")).toEqual([]);
   });
 
+  it("mixed rule styles", function() {
+    expect(parser("A -> a ;")).toEqual([["A", "a"]]);
+    expect(parser("A : a .")).toEqual([["A", "a"]]);
+  });
+
   describe("errors", function() {
     it("missing arrow", function() {
       expect(function() { parser("A -> a. B"); }).toThrowError();
@@ -96,11 +101,6 @@ describe("parser", function() {
     it("stop that looks like part of a symbol", function() {
       expect(function() { parser("A.y -> a."); }).toThrowError();
       expect(function() { parser("A -> x.y ."); }).toThrowError();
-    });
-
-    it("rules can't mix definition styles", function() {
-      expect(function() { parser("A -> a ;"); }).toThrowError();
-      expect(function() { parser("A : a ."); }).toThrowError();
     });
 
     it("symbols can't start with a number", function() {
