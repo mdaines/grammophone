@@ -1,3 +1,5 @@
 var ApplicationController = require("./controllers/application_controller");
 
-module.exports = ApplicationController;
+window.onload = function() {
+  new ApplicationController(document.body);
+}

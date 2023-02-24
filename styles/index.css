@@ -1,0 +1,9 @@
+@import 'application.css';
+@import 'analysis.css';
+@import 'edit.css';
+@import 'transform.css';
+@import 'views/blank_slate.css';
+@import 'views/ll1_table.css';
+@import 'views/lr0_table.css';
+@import 'views/lr1_table.css';
+@import 'views/parsing.css';
