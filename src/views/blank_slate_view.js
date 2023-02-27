@@ -1,5 +1,5 @@
-const render = require("mithril/render");
-const template = require("../templates/blank_slate");
+const { render } = require("preact");
+const BlankSlate = require("../templates/blank_slate.js");
 
 module.exports = class BlankSlateView {
   constructor(element) {
@@ -12,8 +12,6 @@ module.exports = class BlankSlateView {
   }
 
   reload() {
-    let vnode = template({});
-
-    render(this._element, vnode);
+    render(<BlankSlate />, this._element);
   }
 }
