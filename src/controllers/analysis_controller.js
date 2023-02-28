@@ -7,7 +7,8 @@ const SanityComponent = require("../components/analysis/sanity_component.js");
 const ShortSentencesComponent = require("../components/analysis/short_sentences_component.js");
 const SentencesComponent = require("../components/analysis/sentences_component.js");
 
-var LL1TableView = require("../views/ll1_table_view");
+const LL1TableComponent = require("../components/analysis/parsing/ll1_table_component.js");
+
 var LR0AutomatonView = require("../views/lr0_automaton_view");
 var LR0TableView = require("../views/lr0_table_view");
 var SLR1TableView = require("../views/slr1_table_view");
@@ -51,7 +52,7 @@ module.exports = class AnalysisController {
 
       "/ll1-table": {
         views: [
-          { id: "table", constructor: LL1TableView }
+          { id: "table", component: LL1TableComponent }
         ],
         path: [{ path: "/", title: "Analysis" }, { title: "LL(1) Parsing Table" }]
       },
