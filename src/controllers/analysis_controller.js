@@ -156,10 +156,6 @@ module.exports = class AnalysisController {
     if (this._views.length > 0) {
 
       for (i = 0; i < this._views.length; i++) {
-        if (this._views[i].instance && this._views[i].instance.teardown) {
-          this._views[i].instance.teardown();
-        }
-
         this._element.removeChild(this._views[i].element);
       }
 
