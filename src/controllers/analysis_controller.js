@@ -1,5 +1,7 @@
+const { render } = require("preact");
+const BlankSlateComponent = require("../components/blank_slate_component.js");
+
 var HeaderView = require("../views/header_view");
-var BlankSlateView = require("../views/blank_slate_view");
 var SanityView = require("../views/sanity_view");
 var SentencesView = require("../views/sentences_view");
 var ShortSentencesView = require("../views/short_sentences_view");
@@ -23,10 +25,8 @@ module.exports = class AnalysisController {
     // blank slate view
 
     this._blankSlateElement = document.createElement("section");
+    this._blankSlateElement.className = "blank-slate";
     this._element.appendChild(this._blankSlateElement);
-
-    this._blankSlateView = new BlankSlateView(this._blankSlateElement);
-    this._blankSlateView.setDelegate(this);
 
     // header view (managed separately from views which are swapped
     // depending on routes)
@@ -122,6 +122,10 @@ module.exports = class AnalysisController {
 
   }
 
+  _render() {
+    render(<BlankSlateComponent />, this._blankSlateElement);
+  }
+
   setDelegate(delegate) {
 
     this._delegate = delegate;
@@ -198,7 +202,8 @@ module.exports = class AnalysisController {
     }
 
     this._headerView.reload();
-    this._blankSlateView.reload();
+
+    this._render();
 
     // possibly reset scroll to top-left
 
