@@ -1,4 +1,3 @@
-const { Fragment } = require("preact");
 const { formatSymbol, formatSymbolList, listSymbols } = require("../../jsx_helpers");
 
 module.exports = function({ getCalculation }) {
@@ -9,7 +8,7 @@ module.exports = function({ getCalculation }) {
   const info = getCalculation("grammar.symbolInfo");
 
   return (
-    <Fragment>
+    <>
       <h1>Nonterminals</h1>
 
       <table class="symbols">
@@ -38,6 +37,6 @@ module.exports = function({ getCalculation }) {
           })
         }
       </table>
-    </Fragment>
+    </>
   );
 }

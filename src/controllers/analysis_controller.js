@@ -1,9 +1,9 @@
 const { render } = require("preact");
 const BlankSlateComponent = require("../components/blank_slate_component.js");
 const NonterminalsComponent = require("../components/analysis/nonterminals_component.js");
+const SanityComponent = require("../components/analysis/sanity_component.js");
 
 var HeaderView = require("../views/header_view");
-var SanityView = require("../views/sanity_view");
 var SentencesView = require("../views/sentences_view");
 var ShortSentencesView = require("../views/short_sentences_view");
 var ParsingView = require("../views/parsing_view");
@@ -43,7 +43,7 @@ module.exports = class AnalysisController {
 
       "/": {
         views: [
-          { id: "sanity", constructor: SanityView },
+          { id: "sanity", component: SanityComponent },
           { id: "sentences", constructor: ShortSentencesView },
           { id: "nonterminals", component: NonterminalsComponent },
           { id: "parsing", constructor: ParsingView }

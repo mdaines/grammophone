@@ -61,45 +61,45 @@ function formatSymbol(symbol, info) {
   }
 }
 
-// function formatProduction(production, info) {
-//   let result = [];
-//
-//   result.push(formatSymbol(production[0], info));
-//   result.push(" ");
-//   result.push(ARROW);
-//   result.push(" ");
-//
-//   if (production.length > 1) {
-//     production.slice(1).forEach(function(symbol, index) {
-//       if (index > 0) {
-//         result.push(" ");
-//       }
-//       result.push(formatSymbol(symbol, info));
-//     });
-//   } else {
-//     result.push(m("u", EPSILON));
-//   }
-//
-//   return result;
-// }
-//
-// function formatSentence(sentence, info) {
-//   let result = [];
-//
-//   if (sentence.length === 0) {
-//     result.push(m("u", EPSILON));
-//   } else {
-//     sentence.forEach(function(symbol, index) {
-//       if (index > 0) {
-//         result.push(" ");
-//       }
-//       result.push(formatSymbol(symbol, info));
-//     });
-//   }
-//
-//   return result;
-// }
-//
+function formatProduction(production, info) {
+  let result = [];
+
+  result.push(formatSymbol(production[0], info));
+  result.push(" ");
+  result.push(ARROW);
+  result.push(" ");
+
+  if (production.length > 1) {
+    production.slice(1).forEach(function(symbol, index) {
+      if (index > 0) {
+        result.push(" ");
+      }
+      result.push(formatSymbol(symbol, info));
+    });
+  } else {
+    result.push(<u>{EPSILON}</u>);
+  }
+
+  return result;
+}
+
+function formatSentence(sentence, info) {
+  let result = [];
+
+  if (sentence.length === 0) {
+    result.push(<u>{EPSILON}</u>);
+  } else {
+    sentence.forEach(function(symbol, index) {
+      if (index > 0) {
+        result.push(" ");
+      }
+      result.push(formatSymbol(symbol, info));
+    });
+  }
+
+  return result;
+}
+
 // const ESCAPE = {
 //   "&": "&amp;",
 //   "<": "&lt;",
@@ -193,8 +193,8 @@ function formatSymbol(symbol, info) {
 module.exports.listSymbols = listSymbols;
 module.exports.formatSymbolList = formatSymbolList;
 module.exports.formatSymbol = formatSymbol;
-// module.exports.formatProduction = formatProduction;
-// module.exports.formatSentence = formatSentence;
+module.exports.formatProduction = formatProduction;
+module.exports.formatSentence = formatSentence;
 // module.exports.escapeString = escapeString;
 // module.exports.bareFormatSymbol = bareFormatSymbol;
 // module.exports.bareFormatSymbols = bareFormatSymbols;
