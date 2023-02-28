@@ -1,12 +1,12 @@
 const { render } = require("preact");
 const BlankSlateComponent = require("../components/blank_slate_component.js");
 const NonterminalsComponent = require("../components/analysis/nonterminals_component.js");
+const ParsingComponent = require("../components/analysis/parsing_component.js");
 const SanityComponent = require("../components/analysis/sanity_component.js");
 const ShortSentencesComponent = require("../components/analysis/short_sentences_component.js");
 const SentencesComponent = require("../components/analysis/sentences_component.js");
 
 var HeaderView = require("../views/header_view");
-var ParsingView = require("../views/parsing_view");
 var LL1TableView = require("../views/ll1_table_view");
 var LR0AutomatonView = require("../views/lr0_automaton_view");
 var LR0TableView = require("../views/lr0_table_view");
@@ -46,7 +46,7 @@ module.exports = class AnalysisController {
           { id: "sanity", component: SanityComponent },
           { id: "sentences", component: ShortSentencesComponent },
           { id: "nonterminals", component: NonterminalsComponent },
-          { id: "parsing", constructor: ParsingView }
+          { id: "parsing", component: ParsingComponent }
         ],
         path: [{ title: "Analysis" }]
       },
