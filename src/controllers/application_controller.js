@@ -1,10 +1,10 @@
 const { render } = require("preact");
 const EditComponent = require("../components/edit_component.js");
+const ErrorComponent = require("../components/error_component.js");
 
 var AnalysisController = require("./analysis_controller");
 var TransformController = require("./transform_controller");
 var ModeController = require("./mode_controller");
-var ErrorController = require("./error_controller");
 var Grammar = require("../grammar");
 var parser = require("../parser");
 
@@ -48,10 +48,8 @@ module.exports = class ApplicationController {
     // error
 
     this._errorElement = document.createElement("section");
+    this._errorElement.id = "error";
     this._masterElement.appendChild(this._errorElement);
-
-    this._errorController = new ErrorController(this._errorElement);
-    this._errorController.setDelegate(this);
 
     // transform
 
@@ -87,9 +85,7 @@ module.exports = class ApplicationController {
     this._analysisController.reload();
     this._modeController.reload();
 
-    if (this._mode === "edit") {
-      this._errorController.reload();
-    } else {
+    if (this._mode === "transform") {
       this._transformController.reload();
     }
 
@@ -100,6 +96,7 @@ module.exports = class ApplicationController {
 
   _render() {
     render(<EditComponent spec={this._spec} specChanged={(newValue) => { this._spec = newValue; }} />, this._editElement);
+    render(<ErrorComponent error={this._parse.error} />, this._errorElement);
   }
 
   _hashChanged() {
@@ -162,12 +159,6 @@ module.exports = class ApplicationController {
 
   }
 
-  getError() {
-
-    return this._parse.error;
-
-  }
-
   getMode() {
 
     return this._mode;
@@ -192,7 +183,7 @@ module.exports = class ApplicationController {
       this._analysisController.reload();
     }
 
-    this._errorController.reload();
+    this._render();
     this._layout();
 
   }
@@ -207,8 +198,8 @@ module.exports = class ApplicationController {
     }
 
     this._analysisController.reload();
-    this._errorController.reload();
     this._modeController.reload();
+    this._render();
     this._layout();
 
   }
