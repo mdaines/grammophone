@@ -1,12 +1,12 @@
 const { render } = require("preact");
 const BlankSlateComponent = require("../components/blank_slate_component.js");
+const HeaderComponent = require("../components/analysis/header_component.js");
 const NonterminalsComponent = require("../components/analysis/nonterminals_component.js");
 const ParsingComponent = require("../components/analysis/parsing_component.js");
 const SanityComponent = require("../components/analysis/sanity_component.js");
 const ShortSentencesComponent = require("../components/analysis/short_sentences_component.js");
 const SentencesComponent = require("../components/analysis/sentences_component.js");
 
-var HeaderView = require("../views/header_view");
 var LL1TableView = require("../views/ll1_table_view");
 var LR0AutomatonView = require("../views/lr0_automaton_view");
 var LR0TableView = require("../views/lr0_table_view");
@@ -32,10 +32,8 @@ module.exports = class AnalysisController {
     // depending on routes)
 
     this._headerElement = document.createElement("header");
+    this._headerElement.className = "header";
     this._element.appendChild(this._headerElement);
-
-    this._headerView = new HeaderView(this._headerElement);
-    this._headerView.setDelegate(this);
 
     // routes
 
@@ -124,6 +122,7 @@ module.exports = class AnalysisController {
 
   _render() {
     render(<BlankSlateComponent />, this._blankSlateElement);
+    render(<HeaderComponent path={this.getPathComponents()} />, this._headerElement);
 
     for (let view of this._views) {
       if (view.component) {
@@ -209,8 +208,6 @@ module.exports = class AnalysisController {
       this._blankSlateElement.style.display = '';
 
     }
-
-    this._headerView.reload();
 
     this._render();
 
