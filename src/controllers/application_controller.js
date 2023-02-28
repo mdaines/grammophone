@@ -1,5 +1,7 @@
+const { render } = require("preact");
+const EditComponent = require("../components/edit_component.js");
+
 var AnalysisController = require("./analysis_controller");
-var EditController = require("./edit_controller");
 var TransformController = require("./transform_controller");
 var ModeController = require("./mode_controller");
 var ErrorController = require("./error_controller");
@@ -8,13 +10,13 @@ var parser = require("../parser");
 
 function parse(spec) {
   if (spec.match(/^\s*$/)) {
-    return { spec: spec };
+    return { };
   }
 
   try {
-    return { grammar: new Grammar(parser(spec)), spec: spec };
+    return { grammar: new Grammar(parser(spec)) };
   } catch (e) {
-    return { error: e, spec: spec };
+    return { error: e };
   }
 }
 
@@ -32,10 +34,8 @@ module.exports = class ApplicationController {
     // edit
 
     this._editElement = document.createElement("section");
+    this._editElement.id = "edit";
     this._masterElement.appendChild(this._editElement);
-
-    this._editController = new EditController(this._editElement);
-    this._editController.setDelegate(this);
 
     // mode
 
@@ -80,11 +80,11 @@ module.exports = class ApplicationController {
     // set initial path and parse, and reload children
 
     this._path = "/";
-    this._parse = { spec: "# Type a grammar here:\n\n" };
+    this._spec = "# Type a grammar here:\n\n";
+    this._parse = {};
     this._mode = "edit";
 
     this._analysisController.reload();
-    this._editController.reload();
     this._modeController.reload();
 
     if (this._mode === "edit") {
@@ -93,8 +93,13 @@ module.exports = class ApplicationController {
       this._transformController.reload();
     }
 
-    this._layout();
+    this._render();
 
+    this._layout();
+  }
+
+  _render() {
+    render(<EditComponent spec={this._spec} specChanged={(newValue) => { this._spec = newValue; }} />, this._editElement);
   }
 
   _hashChanged() {
@@ -157,12 +162,6 @@ module.exports = class ApplicationController {
 
   }
 
-  getSpec() {
-
-    return this._parse.spec;
-
-  }
-
   getError() {
 
     return this._parse.error;
@@ -177,7 +176,8 @@ module.exports = class ApplicationController {
 
   grammarChanged(grammar) {
 
-    this._parse = { grammar: grammar, spec: grammar.toString() };
+    this._parse = { grammar: grammar };
+    this._spec = grammar.toString();
 
     this._analysisController.reload();
     this._layout();
@@ -186,7 +186,7 @@ module.exports = class ApplicationController {
 
   analyze() {
 
-    this._parse = parse(this._editController.getSpec());
+    this._parse = parse(this._spec);
 
     if (typeof this._parse.error === "undefined") {
       this._analysisController.reload();
@@ -199,7 +199,7 @@ module.exports = class ApplicationController {
 
   transform() {
 
-    this._parse = parse(this._editController.getSpec());
+    this._parse = parse(this._spec);
 
     if (typeof this._parse.error === "undefined" && typeof this._parse.grammar !== "undefined") {
       this._mode = "transform";
@@ -218,8 +218,8 @@ module.exports = class ApplicationController {
     this._mode = "edit";
 
     this._analysisController.reload();
-    this._editController.reload();
     this._modeController.reload();
+    this._render();
     this._layout();
 
   }
