@@ -13,6 +13,8 @@
   },
   "devDependencies": {
     "@lezer/generator": "^1.2.2",
+    "eslint": "^8.35.0",
+    "eslint-plugin-react": "^7.32.2",
     "jest": "^29.4.3",
     "jshint": "^2.13.6",
     "mithril-query": "^4.0.1",
@@ -21,7 +23,7 @@
   },
   "scripts": {
     "generate-lezer-parser": "yarn lezer-generator --cjs --output src/parser/rules.js src/parser/rules.grammar",
-    "lint": "yarn jshint --exclude dist,build,lib,node_modules,test/fixtures/example_output.js .",
+    "lint": "yarn eslint src test",
     "test": "jest",
     "build": "parcel build",
     "serve": "parcel serve"

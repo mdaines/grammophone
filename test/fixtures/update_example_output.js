@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 const Grammar = require("../../src/grammar");
 const Calculations = require("../../src/grammar/calculations");
 const exampleGrammars = require("./example_grammars");

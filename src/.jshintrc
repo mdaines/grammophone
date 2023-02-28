@@ -1,4 +1,0 @@
-{
-  "extends": "../.jshintrc",
-  "browserify": true
-}

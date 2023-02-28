@@ -164,11 +164,11 @@ function bareFormatItem(item, start, productions, info) {
 }
 
 const TRANSFORMATION_FORMATTERS = {
-  expand: function(transformation, productions, info) {
+  expand: function() {
     return "Expand Nonterminal";
   },
 
-  removeImmediateLeftRecursion: function(transformation, productions, info) {
+  removeImmediateLeftRecursion: function() {
     return "Remove Immediate Left Recursion";
   },
 
@@ -177,11 +177,11 @@ const TRANSFORMATION_FORMATTERS = {
       bareFormatSymbols(productions[transformation.production].slice(1, transformation.length + 1), info).join(" ");
   },
 
-  epsilonSeparate: function(transformation, productions, info) {
+  epsilonSeparate: function() {
     return "Epsilon-Separate";
   },
 
-  removeUnreachable: function(transformation, productions, info) {
+  removeUnreachable: function() {
     return "Remove Unreachable Nonterminal"
   }
 }

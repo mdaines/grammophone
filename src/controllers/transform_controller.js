@@ -53,7 +53,7 @@ module.exports = class TransformController {
 
   }
 
-  getTransformations(productionIndex, symbolIndex) {
+  getTransformations() {
 
     return this._stack[this._index].grammar.calculate("transformations.all");
 
