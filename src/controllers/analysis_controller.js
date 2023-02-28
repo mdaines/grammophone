@@ -1,11 +1,11 @@
 const { render } = require("preact");
 const BlankSlateComponent = require("../components/blank_slate_component.js");
+const NonterminalsComponent = require("../components/analysis/nonterminals_component.js");
 
 var HeaderView = require("../views/header_view");
 var SanityView = require("../views/sanity_view");
 var SentencesView = require("../views/sentences_view");
 var ShortSentencesView = require("../views/short_sentences_view");
-var NonterminalsView = require("../views/nonterminals_view");
 var ParsingView = require("../views/parsing_view");
 var LL1TableView = require("../views/ll1_table_view");
 var LR0AutomatonView = require("../views/lr0_automaton_view");
@@ -45,7 +45,7 @@ module.exports = class AnalysisController {
         views: [
           { id: "sanity", constructor: SanityView },
           { id: "sentences", constructor: ShortSentencesView },
-          { id: "nonterminals", constructor: NonterminalsView },
+          { id: "nonterminals", component: NonterminalsComponent },
           { id: "parsing", constructor: ParsingView }
         ],
         path: [{ title: "Analysis" }]
@@ -124,6 +124,12 @@ module.exports = class AnalysisController {
 
   _render() {
     render(<BlankSlateComponent />, this._blankSlateElement);
+
+    for (let view of this._views) {
+      if (view.component) {
+        render(<view.component getCalculation={(c) => this.getCalculation(c)} />, view.element);
+      }
+    }
   }
 
   setDelegate(delegate) {
@@ -150,7 +156,7 @@ module.exports = class AnalysisController {
     if (this._views.length > 0) {
 
       for (i = 0; i < this._views.length; i++) {
-        if (this._views[i].instance.teardown) {
+        if (this._views[i].instance && this._views[i].instance.teardown) {
           this._views[i].instance.teardown();
         }
 
@@ -173,21 +179,28 @@ module.exports = class AnalysisController {
         element.id = route.views[i].id;
         this._element.appendChild(element);
 
-        var instance = new route.views[i].constructor(element);
-        instance.setDelegate(this);
+        if (route.views[i].component) {
+          this._views[i] = {
+            component: route.views[i].component,
+            element: element
+          };
+        } else {
+          var instance = new route.views[i].constructor(element);
+          instance.setDelegate(this);
 
-        if (instance.setup) {
-          instance.setup();
+          if (instance.setup) {
+            instance.setup();
+          }
+
+          if (instance.reload) {
+            instance.reload();
+          }
+
+          this._views[i] = {
+            instance: instance,
+            element: element
+          };
         }
-
-        if (instance.reload) {
-          instance.reload();
-        }
-
-        this._views[i] = {
-          instance: instance,
-          element: element
-        };
 
       }
 
