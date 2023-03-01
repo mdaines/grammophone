@@ -1,8 +1,8 @@
 const { render } = require("preact");
 const EditComponent = require("../components/edit_component.js");
 const ErrorComponent = require("../components/error_component.js");
+const AnalysisComponent = require("../components/analysis_component.js");
 
-var AnalysisController = require("./analysis_controller");
 var TransformController = require("./transform_controller");
 var ModeController = require("./mode_controller");
 var Grammar = require("../grammar");
@@ -62,10 +62,8 @@ module.exports = class ApplicationController {
     // analysis
 
     this._analysisElement = document.createElement("section");
+    this._analysisElement.id = "analysis";
     this._element.appendChild(this._analysisElement);
-
-    this._analysisController = new AnalysisController(this._analysisElement);
-    this._analysisController.setDelegate(this);
 
     // listen for hashchange events
 
@@ -82,7 +80,6 @@ module.exports = class ApplicationController {
     this._parse = {};
     this._mode = "edit";
 
-    this._analysisController.reload();
     this._modeController.reload();
 
     if (this._mode === "transform") {
@@ -97,6 +94,7 @@ module.exports = class ApplicationController {
   _render() {
     render(<EditComponent spec={this._spec} specChanged={(newValue) => { this._spec = newValue; }} />, this._editElement);
     render(<ErrorComponent error={this._parse.error} />, this._errorElement);
+    render(<AnalysisComponent grammar={this._parse.grammar} path={this._path} />, this._analysisElement);
   }
 
   _hashChanged() {
@@ -111,7 +109,7 @@ module.exports = class ApplicationController {
 
     // update controllers
 
-    this._analysisController.reload();
+    this._render();
 
   }
 
@@ -170,7 +168,7 @@ module.exports = class ApplicationController {
     this._parse = { grammar: grammar };
     this._spec = grammar.toString();
 
-    this._analysisController.reload();
+    this._render();
     this._layout();
 
   }
@@ -178,10 +176,6 @@ module.exports = class ApplicationController {
   analyze() {
 
     this._parse = parse(this._spec);
-
-    if (typeof this._parse.error === "undefined") {
-      this._analysisController.reload();
-    }
 
     this._render();
     this._layout();
@@ -197,7 +191,6 @@ module.exports = class ApplicationController {
       this._transformController.reload();
     }
 
-    this._analysisController.reload();
     this._modeController.reload();
     this._render();
     this._layout();
@@ -208,7 +201,6 @@ module.exports = class ApplicationController {
 
     this._mode = "edit";
 
-    this._analysisController.reload();
     this._modeController.reload();
     this._render();
     this._layout();
