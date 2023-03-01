@@ -1,5 +1,7 @@
 module.exports = function({ error }) {
   return (
-    <code>{error ? error.toString() : ""}</code>
+    <section id="error">
+      <code>{error ? error.toString() : ""}</code>
+    </section>
   );
 }

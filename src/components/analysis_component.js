@@ -97,10 +97,8 @@ module.exports = function({ grammar, path }) {
     const route = ROUTES[path];
 
     return (
-      <>
-        <header class="header">
-          <HeaderComponent path={route.path} />
-        </header>
+      <section id="analysis">
+        <HeaderComponent path={route.path} />
 
         {
           route.views.map((view) => {
@@ -111,15 +109,13 @@ module.exports = function({ grammar, path }) {
             );
           })
         }
-      </>
+      </section>
     );
   } else {
     return (
-      <>
-        <section class="blank-slate">
-          <BlankSlateComponent />
-        </section>
-      </>
+      <section id="analysis">
+        <BlankSlateComponent />
+      </section>
     );
   }
 }

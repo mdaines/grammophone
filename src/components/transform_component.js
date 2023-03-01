@@ -45,60 +45,62 @@ module.exports = function({ grammar, stack, index, undo, redo, apply }) {
   }
 
   return (
-    <article>
-      <div class="buttons">{buttons}</div>
+    <section id="transform">
+      <article>
+        <div class="buttons">{buttons}</div>
 
-      <table class="symbols productions" onChange={(e) => { apply(transformations[parseInt(e.target.value)]); }}>
-        {
-          productions.map(function(production, i) {
-            let result = [];
+        <table class="symbols productions" onChange={(e) => { apply(transformations[parseInt(e.target.value)]); }}>
+          {
+            productions.map(function(production, i) {
+              let result = [];
 
-            production.forEach(function(symbol, j) {
-              if (j > 0) {
+              production.forEach(function(symbol, j) {
+                if (j > 0) {
+                  result.push(" ");
+                }
+
+                if (productionTransformations[i][j].length > 0) {
+                  result.push(
+                    <span class="pill">
+                      {formatSymbol(symbol, info)}
+                      <select value="symbol">
+                        <option disabled={true} value="symbol">{symbol}</option>
+                        {
+                          productionTransformations[i][j].map(function(t) {
+                            return (
+                              <option value={t.index}>
+                                {formatTransformation(t.transformation, productions, info)}
+                              </option>
+                            );
+                          })
+                        }
+                      </select>
+                    </span>
+                  );
+                } else {
+                  result.push(formatSymbol(symbol, info));
+                }
+
+                if (j === 0) {
+                  result.push(" ");
+                  result.push("\u2192"); // arrow
+                }
+              });
+
+              if (production.length === 1) {
                 result.push(" ");
+                result.push(<u>{"\u03B5"}</u>); // epsilon
               }
 
-              if (productionTransformations[i][j].length > 0) {
-                result.push(
-                  <span class="pill">
-                    {formatSymbol(symbol, info)}
-                    <select value="symbol">
-                      <option disabled={true} value="symbol">{symbol}</option>
-                      {
-                        productionTransformations[i][j].map(function(t) {
-                          return (
-                            <option value={t.index}>
-                              {formatTransformation(t.transformation, productions, info)}
-                            </option>
-                          );
-                        })
-                      }
-                    </select>
-                  </span>
-                );
-              } else {
-                result.push(formatSymbol(symbol, info));
-              }
-
-              if (j === 0) {
-                result.push(" ");
-                result.push("\u2192"); // arrow
-              }
-            });
-
-            if (production.length === 1) {
-              result.push(" ");
-              result.push(<u>{"\u03B5"}</u>); // epsilon
-            }
-
-            return (
-              <tr>
-                <td>{result}</td>
-              </tr>
-            );
-          })
-        }
-      </table>
-    </article>
+              return (
+                <tr>
+                  <td>{result}</td>
+                </tr>
+              );
+            })
+          }
+        </table>
+      </article>
+    </section>
   );
 }

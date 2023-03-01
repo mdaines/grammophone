@@ -10,7 +10,9 @@ module.exports = function({ path }) {
     }
   });
 
-  if (segments.length > 0) {
-    return <nav>{segments}</nav>;
-  }
+  return (
+    <header class="header">
+      {segments.length > 0 ? <nav>{segments}</nav> : []}
+    </header>
+  );
 }

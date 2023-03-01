@@ -8,24 +8,18 @@ module.exports = function({ spec, updateSpec, mode, edit, transform, analyze, er
   return (
     <>
       <div id="master">
-        <section id="mode">
-          <ModeComponent mode={mode} edit={edit} transform={transform} analyze={analyze} />
-        </section>
+        <ModeComponent mode={mode} edit={edit} transform={transform} analyze={analyze} />
 
-        <section id="error">
-          <ErrorComponent error={error} />
-        </section>
+        <ErrorComponent error={error} />
 
         {
           mode == "edit" ?
-            <section id="edit"><EditComponent spec={spec} specChanged={updateSpec} /></section> :
-            <section id="transform"><TransformComponent grammar={grammar} stack={transformStack} index={transformIndex} undo={undoTransformation} redo={redoTransformation} apply={applyTransformation} /></section>
+            <EditComponent spec={spec} specChanged={updateSpec} /> :
+            <TransformComponent grammar={grammar} stack={transformStack} index={transformIndex} undo={undoTransformation} redo={redoTransformation} apply={applyTransformation} />
         }
       </div>
 
-      <section id="analysis">
-        <AnalysisComponent grammar={grammar} path={path} />
-      </section>
+      <AnalysisComponent grammar={grammar} path={path} />
     </>
   );
 }
