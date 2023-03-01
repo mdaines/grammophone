@@ -1,4 +1,8 @@
-/*#edit .spec-wrap {
+#edit {
+  position: relative;
+}
+
+#edit .spec-wrap {
   position: absolute;
   top: 0;
   bottom: 20px;
@@ -28,4 +32,3 @@
 #edit .spec:focus {
   outline: none;
 }
-*/

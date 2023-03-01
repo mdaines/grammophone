@@ -15,12 +15,6 @@ body {
   border-right: 1px solid #bbb;
 }
 
-#edit {
-}
-
-#transform {
-}
-
 #analysis {
   position: absolute;
   top: 0;
@@ -105,7 +99,6 @@ body {
 }
 
 #error {
-  position: relative;
   padding: 10px;
   background: #f00;
   margin-right: -1px;
@@ -117,7 +110,9 @@ body {
   font-weight: bold;
 }
 
-
+#edit, #transform {
+  flex-grow: 1;
+}
 
 
 h1 {

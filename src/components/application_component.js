@@ -10,7 +10,7 @@ module.exports = function({ spec, updateSpec, mode, edit, transform, analyze, er
       <div id="master">
         <ModeComponent mode={mode} edit={edit} transform={transform} analyze={analyze} />
 
-        <ErrorComponent error={error} />
+        {error ? <ErrorComponent error={error} /> : []}
 
         {
           mode == "edit" ?
