@@ -8,14 +8,14 @@ const ShortSentencesComponent = require("../components/analysis/short_sentences_
 const SentencesComponent = require("../components/analysis/sentences_component.js");
 
 const LL1TableComponent = require("../components/analysis/parsing/ll1_table_component.js");
+const LR0TableComponent = require("../components/analysis/parsing/lr0_table_component.js");
+const LR1TableComponent = require("../components/analysis/parsing/lr1_table_component.js");
+const LALR1TableComponent = require("../components/analysis/parsing/lalr1_table_component.js");
+const SLR1TableComponent = require("../components/analysis/parsing/slr1_table_component.js");
 
 var LR0AutomatonView = require("../views/lr0_automaton_view");
-var LR0TableView = require("../views/lr0_table_view");
-var SLR1TableView = require("../views/slr1_table_view");
 var LR1AutomatonView = require("../views/lr1_automaton_view");
-var LR1TableView = require("../views/lr1_table_view");
 var LALR1AutomatonView = require("../views/lalr1_automaton_view");
-var LALR1TableView = require("../views/lalr1_table_view");
 
 module.exports = class AnalysisController {
   constructor(element) {
@@ -66,14 +66,14 @@ module.exports = class AnalysisController {
 
       "/lr0-table": {
         views: [
-          { id: "table", constructor: LR0TableView }
+          { id: "table", component: LR0TableComponent }
         ],
         path: [{ path: "/", title: "Analysis" }, { title: "LR(0) Parsing Table" }]
       },
 
       "/slr1-table": {
         views: [
-          { id: "table", constructor: SLR1TableView }
+          { id: "table", component: SLR1TableComponent }
         ],
         path: [{ path: "/", title: "Analysis" }, { title: "SLR(1) Parsing Table" }]
       },
@@ -87,7 +87,7 @@ module.exports = class AnalysisController {
 
       "/lr1-table": {
         views: [
-          { id: "table", constructor: LR1TableView }
+          { id: "table", component: LR1TableComponent }
         ],
         path: [{ path: "/", title: "Analysis" }, { title: "LR(1) Parsing Table" }]
       },
@@ -101,7 +101,7 @@ module.exports = class AnalysisController {
 
       "/lalr1-table": {
         views: [
-          { id: "table", constructor: LALR1TableView }
+          { id: "table", component: LALR1TableComponent }
         ],
         path: [{ path: "/", title: "Analysis" }, { title: "LALR(1) Parsing Table" }]
       },
