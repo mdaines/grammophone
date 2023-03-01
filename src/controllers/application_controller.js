@@ -2,9 +2,9 @@ const { render } = require("preact");
 const EditComponent = require("../components/edit_component.js");
 const ErrorComponent = require("../components/error_component.js");
 const AnalysisComponent = require("../components/analysis_component.js");
+const ModeComponent = require("../components/mode_component.js");
 
 var TransformController = require("./transform_controller");
-var ModeController = require("./mode_controller");
 var Grammar = require("../grammar");
 var parser = require("../parser");
 
@@ -40,10 +40,8 @@ module.exports = class ApplicationController {
     // mode
 
     this._modeElement = document.createElement("section");
+    this._modeElement.id = "mode";
     this._masterElement.appendChild(this._modeElement);
-
-    this._modeController = new ModeController(this._modeElement);
-    this._modeController.setDelegate(this);
 
     // error
 
@@ -80,8 +78,6 @@ module.exports = class ApplicationController {
     this._parse = {};
     this._mode = "edit";
 
-    this._modeController.reload();
-
     if (this._mode === "transform") {
       this._transformController.reload();
     }
@@ -95,6 +91,7 @@ module.exports = class ApplicationController {
     render(<EditComponent spec={this._spec} specChanged={(newValue) => { this._spec = newValue; }} />, this._editElement);
     render(<ErrorComponent error={this._parse.error} />, this._errorElement);
     render(<AnalysisComponent grammar={this._parse.grammar} path={this._path} />, this._analysisElement);
+    render(<ModeComponent mode={this._mode} edit={() => this.edit()} transform={() => this.transform()} analyze={() => this.analyze()} />, this._modeElement);
   }
 
   _hashChanged() {
@@ -191,7 +188,6 @@ module.exports = class ApplicationController {
       this._transformController.reload();
     }
 
-    this._modeController.reload();
     this._render();
     this._layout();
 
@@ -201,7 +197,6 @@ module.exports = class ApplicationController {
 
     this._mode = "edit";
 
-    this._modeController.reload();
     this._render();
     this._layout();
 
