@@ -3,8 +3,8 @@ const EditComponent = require("../components/edit_component.js");
 const ErrorComponent = require("../components/error_component.js");
 const AnalysisComponent = require("../components/analysis_component.js");
 const ModeComponent = require("../components/mode_component.js");
+const TransformComponent = require("../components/transform_component.js");
 
-var TransformController = require("./transform_controller");
 var Grammar = require("../grammar");
 var parser = require("../parser");
 
@@ -52,10 +52,8 @@ module.exports = class ApplicationController {
     // transform
 
     this._transformElement = document.createElement("section");
+    this._transformElement.id = "transform";
     this._masterElement.appendChild(this._transformElement);
-
-    this._transformController = new TransformController(this._transformElement);
-    this._transformController.setDelegate(this);
 
     // analysis
 
@@ -78,10 +76,6 @@ module.exports = class ApplicationController {
     this._parse = {};
     this._mode = "edit";
 
-    if (this._mode === "transform") {
-      this._transformController.reload();
-    }
-
     this._render();
 
     this._layout();
@@ -92,6 +86,10 @@ module.exports = class ApplicationController {
     render(<ErrorComponent error={this._parse.error} />, this._errorElement);
     render(<AnalysisComponent grammar={this._parse.grammar} path={this._path} />, this._analysisElement);
     render(<ModeComponent mode={this._mode} edit={() => this.edit()} transform={() => this.transform()} analyze={() => this.analyze()} />, this._modeElement);
+
+    if (this._parse.grammar) {
+      render(<TransformComponent grammar={this._parse.grammar} stack={this._transformStack} index={this._transformIndex} undo={() => { this.undoTransformation(); }} redo={() => { this.redoTransformation(); }} apply={(t) => { this.applyTransformation(t); }} />, this._transformElement);
+    }
   }
 
   _hashChanged() {
@@ -160,14 +158,39 @@ module.exports = class ApplicationController {
 
   }
 
-  grammarChanged(grammar) {
+  undoTransformation() {
+    if (this._transformIndex > 0) {
+      this._transformIndex -= 1;
+      this._parse = { grammar: this._transformStack[this._transformIndex].grammar };
+      this._spec = this._transformStack[this._transformIndex].grammar.toString();
 
-    this._parse = { grammar: grammar };
-    this._spec = grammar.toString();
+      this._render();
+    }
+  }
+
+  redoTransformation() {
+    if (this._transformIndex < this._transformStack.length - 1) {
+      this._transformIndex += 1;
+      this._parse = { grammar: this._transformStack[this._transformIndex].grammar };
+      this._spec = this._transformStack[this._transformIndex].grammar.toString();
+
+      this._render();
+    }
+  }
+
+  applyTransformation(transformation) {
+    const item = {
+      grammar: this._parse.grammar.transform(transformation),
+      transformation: transformation
+    };
+
+    this._transformIndex += 1;
+    this._transformStack.splice(this._transformIndex, this._transformStack.length - this._transformIndex, item);
+
+    this._parse = { grammar: this._transformStack[this._transformIndex].grammar };
+    this._spec = this._transformStack[this._transformIndex].grammar.toString();
 
     this._render();
-    this._layout();
-
   }
 
   analyze() {
@@ -175,7 +198,6 @@ module.exports = class ApplicationController {
     this._parse = parse(this._spec);
 
     this._render();
-    this._layout();
 
   }
 
@@ -185,7 +207,9 @@ module.exports = class ApplicationController {
 
     if (typeof this._parse.error === "undefined" && typeof this._parse.grammar !== "undefined") {
       this._mode = "transform";
-      this._transformController.reload();
+
+      this._transformStack = [{ grammar: this._parse.grammar }];
+      this._transformIndex = 0;
     }
 
     this._render();
