@@ -1,5 +1,4 @@
 const { fillArray, formatSymbol, formatProduction } = require("../../../jsx_helpers");
-const END = require("../../../grammar/symbols").END;
 
 module.exports = function({ getCalculation }) {
   const info = getCalculation("grammar.symbolInfo");

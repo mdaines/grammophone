@@ -18,7 +18,7 @@ function render(src) {
 
 module.exports = class AbstractLRAutomatonComponent extends Component {
   shouldComponentUpdate(newProps) {
-    updateBaseWithRenderedSVG(newProps);
+    this.updateBaseWithRenderedSVG(newProps);
     return false;
   }
 
