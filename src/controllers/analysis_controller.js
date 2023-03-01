@@ -1,6 +1,7 @@
 const { render } = require("preact");
 const BlankSlateComponent = require("../components/blank_slate_component.js");
 const HeaderComponent = require("../components/analysis/header_component.js");
+
 const NonterminalsComponent = require("../components/analysis/nonterminals_component.js");
 const ParsingComponent = require("../components/analysis/parsing_component.js");
 const SanityComponent = require("../components/analysis/sanity_component.js");
@@ -13,9 +14,9 @@ const LR1TableComponent = require("../components/analysis/parsing/lr1_table_comp
 const LALR1TableComponent = require("../components/analysis/parsing/lalr1_table_component.js");
 const SLR1TableComponent = require("../components/analysis/parsing/slr1_table_component.js");
 
-var LR0AutomatonView = require("../views/lr0_automaton_view");
-var LR1AutomatonView = require("../views/lr1_automaton_view");
-var LALR1AutomatonView = require("../views/lalr1_automaton_view");
+const LR0AutomatonComponent = require("../components/analysis/parsing/lr0_automaton_component.js");
+const LR1AutomatonComponent = require("../components/analysis/parsing/lr1_automaton_component.js");
+const LALR1AutomatonComponent = require("../components/analysis/parsing/lalr1_automaton_component.js");
 
 module.exports = class AnalysisController {
   constructor(element) {
@@ -59,7 +60,7 @@ module.exports = class AnalysisController {
 
       "/lr0-automaton": {
         views: [
-          { id: "automaton", constructor: LR0AutomatonView }
+          { id: "automaton", component: LR0AutomatonComponent }
         ],
         path: [{ path: "/", title: "Analysis" }, { title: "LR(0) Automaton" }]
       },
@@ -80,7 +81,7 @@ module.exports = class AnalysisController {
 
       "/lr1-automaton": {
         views: [
-          { id: "automaton", constructor: LR1AutomatonView }
+          { id: "automaton", component: LR1AutomatonComponent }
         ],
         path: [{ path: "/", title: "Analysis" }, { title: "LR(1) Automaton" }]
       },
@@ -94,7 +95,7 @@ module.exports = class AnalysisController {
 
       "/lalr1-automaton": {
         views: [
-          { id: "automaton", constructor: LALR1AutomatonView }
+          { id: "automaton", component: LALR1AutomatonComponent }
         ],
         path: [{ path: "/", title: "Analysis" }, { title: "LALR(1) Automaton" }]
       },
