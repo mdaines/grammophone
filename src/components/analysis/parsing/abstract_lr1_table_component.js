@@ -1,4 +1,4 @@
-const { fillArray, formatSymbol, formatProduction } = require("../../../jsx_helpers");
+const { fillArray, formatSymbol, formatProduction } = require("../../../helpers.js");
 const END = require("../../../grammar/symbols").END;
 
 module.exports = function({ getCalculation, tableCalculation }) {

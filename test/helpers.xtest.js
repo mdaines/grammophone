@@ -1,5 +1,4 @@
-const mq = require("mithril-query");
-const helpers = require("../src/helpers");
+const { formatSymbol, bareFormatSymbol } = require("../src/helpers.js");
 const END = require("../src/grammar/symbols").END;
 
 describe("helpers", function() {
@@ -10,9 +9,11 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      let output = mq(helpers.formatSymbol(END, info));
-      expect(output.has("u")).toBe(true);
-      expect(output.contains("$")).toBe(true);
+      expect(formatSymbol(END, info)).toEqual("something");
+
+      // let output = mq(helpers.formatSymbol(END, info));
+      // expect(output.has("u")).toBe(true);
+      // expect(output.contains("$")).toBe(true);
     });
 
     it("formats whitespace characters", function() {
@@ -21,9 +22,11 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      let output = mq(helpers.formatSymbol(" ", info));
-      expect(output.has("b")).toBe(true);
-      expect(output.contains("\u2B1A")).toBe(true);
+      expect(formatSymbol(" ", info)).toEqual("something");
+
+      // let output = mq(helpers.formatSymbol(" ", info));
+      // expect(output.has("b")).toBe(true);
+      // expect(output.contains("\u2B1A")).toBe(true);
     });
 
     it("refuses to format an unknown symbol", function() {
@@ -32,13 +35,13 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      expect(function() { helpers.formatSymbol("x", info); }).toThrowError();
+      expect(function() { formatSymbol("x", info); }).toThrowError();
     });
   });
 
   describe("bareFormatSymbol", function() {
     it("formats END as $", function() {
-      expect(helpers.bareFormatSymbol(END, {})).toEqual("$");
+      expect(bareFormatSymbol(END, {})).toEqual("$");
     });
 
     it("escapes HTML", function() {
@@ -47,7 +50,7 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      expect(helpers.bareFormatSymbol("&", info)).toEqual("&amp;");
+      expect(bareFormatSymbol("&", info)).toEqual("&amp;");
     });
 
     it("formats whitespace characters", function() {
@@ -56,7 +59,7 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      expect(helpers.bareFormatSymbol(" ", info)).toEqual("\u2B1A");
+      expect(bareFormatSymbol(" ", info)).toEqual("\u2B1A");
     });
 
     it("refuses to format an unknown symbol", function() {
@@ -65,7 +68,7 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      expect(function() { helpers.bareFormatSymbol("x", info); }).toThrowError();
+      expect(function() { bareFormatSymbol("x", info); }).toThrowError();
     });
   });
 });

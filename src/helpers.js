@@ -1,4 +1,3 @@
-const m = require("mithril/hyperscript");
 const END = require("./grammar/symbols").END;
 
 const ARROW = "\u2192";
@@ -52,11 +51,11 @@ function prettifySymbol(symbol) {
 
 function formatSymbol(symbol, info) {
   if (symbol == END) {
-    return m("u", "$");
+    return <u>$</u>;
   } else if (info.nonterminals.has(symbol)) {
-    return m("i", prettifySymbol(symbol));
+    return <i>{prettifySymbol(symbol)}</i>;
   } else if (info.terminals.has(symbol)) {
-    return m("b", prettifySymbol(symbol));
+    return <b>{prettifySymbol(symbol)}</b>;
   } else {
     throw new Error("Unknown symbol: " + symbol);
   }
@@ -78,7 +77,7 @@ function formatProduction(production, info) {
       result.push(formatSymbol(symbol, info));
     });
   } else {
-    result.push(m("u", EPSILON));
+    result.push(<u>{EPSILON}</u>);
   }
 
   return result;
@@ -88,7 +87,7 @@ function formatSentence(sentence, info) {
   let result = [];
 
   if (sentence.length === 0) {
-    result.push(m("u", EPSILON));
+    result.push(<u>{EPSILON}</u>);
   } else {
     sentence.forEach(function(symbol, index) {
       if (index > 0) {
