@@ -20,15 +20,10 @@ module.exports = class ApplicationController {
   constructor(element) {
     this._element = element;
 
-    // listen for hashchange events
-
     window.location.hash = "";
-
     window.addEventListener("hashchange", function() {
       this._hashChanged();
     }.bind(this), false);
-
-    // set initial path and parse, and reload children
 
     this._path = "/";
     this._spec = "# Type a grammar here:\n\n";
