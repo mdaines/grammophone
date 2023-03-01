@@ -171,34 +171,14 @@ module.exports = class AnalysisController {
       var route = this._routes[this._path];
 
       for (i = 0; i < route.views.length; i++) {
-
         var element = document.createElement("article");
         element.id = route.views[i].id;
         this._element.appendChild(element);
 
-        if (route.views[i].component) {
-          this._views[i] = {
-            component: route.views[i].component,
-            element: element
-          };
-        } else {
-          var instance = new route.views[i].constructor(element);
-          instance.setDelegate(this);
-
-          if (instance.setup) {
-            instance.setup();
-          }
-
-          if (instance.reload) {
-            instance.reload();
-          }
-
-          this._views[i] = {
-            instance: instance,
-            element: element
-          };
-        }
-
+        this._views[i] = {
+          component: route.views[i].component,
+          element: element
+        };
       }
 
       this._headerElement.style.display = '';
