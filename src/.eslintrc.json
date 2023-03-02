@@ -1,0 +1,11 @@
+{
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "react/jsx-uses-vars": "error"
+  }
+}

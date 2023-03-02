@@ -1,12 +1,6 @@
-const Helpers = require("../helpers");
+const { bareFormatItem, bareFormatSymbol } = require("../helpers.js");
 
-module.exports = function(input) {
-  let info = input.info;
-  let automaton = input.automaton;
-  let productions = input.productions;
-  let start = input.start;
-  let title = input.title;
-
+module.exports = function({ info, automaton, productions, start, title }) {
   let result = [];
 
   result.push(
@@ -22,7 +16,7 @@ module.exports = function(input) {
       " [label=\"",
       index,
       " | ",
-      state.items.map(function(item) { return Helpers.bareFormatItem(item, start, productions, info); }).join("\\n"),
+      state.items.map(function(item) { return bareFormatItem(item, start, productions, info); }).join("\\n"),
       "\"];\n"
     );
   });
@@ -36,7 +30,7 @@ module.exports = function(input) {
         " -> s",
         state.transitions[s],
         " [label=\"",
-        Helpers.bareFormatSymbol(s, input.info),
+        bareFormatSymbol(s, info),
         "\"];\n"
       );
     }

@@ -5,28 +5,14 @@ body {
 }
 
 #master {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   width: 300px;
   border-right: 1px solid #bbb;
-}
-
-#edit {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-#transform {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 
 #analysis {
@@ -41,10 +27,6 @@ body {
 }
 
 #mode {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   padding: 10px;
   border-bottom: 1px solid #bbb;
   background: #ddd;
@@ -117,10 +99,6 @@ body {
 }
 
 #error {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
   padding: 10px;
   background: #f00;
   margin-right: -1px;
@@ -132,7 +110,9 @@ body {
   font-weight: bold;
 }
 
-
+#edit, #transform {
+  flex-grow: 1;
+}
 
 
 h1 {

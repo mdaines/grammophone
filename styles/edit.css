@@ -1,3 +1,7 @@
+#edit {
+  position: relative;
+}
+
 #edit .spec-wrap {
   position: absolute;
   top: 0;
