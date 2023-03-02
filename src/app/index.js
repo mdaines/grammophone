@@ -1,7 +1,7 @@
-const { render, Component } = require("preact");
+const { render } = require("preact");
 const { useReducer, useEffect } = require("preact/hooks");
 const { reducer, init } = require("./reducer.js");
-const ApplicationComponent = require("./components/application_component.js");
+const ApplicationComponent = require("../components/application_component.js");
 
 function App() {
   const [state, dispatch] = useReducer(reducer, "# Type a grammar here:\n\n", init);

@@ -1,5 +1,5 @@
-const Grammar = require("./grammar");
-const parser = require("./parser");
+const Grammar = require("../grammar");
+const parser = require("../parser");
 
 function reducer(state, action) {
   switch (action.type) {
@@ -38,20 +38,22 @@ function reducer(state, action) {
     }
 
   case "applyTransformation":
-    const item = {
-      grammar: state.grammar.transform(action.transformation),
-      transformation: action.transformation
-    };
+    {
+      const item = {
+        grammar: state.grammar.transform(action.transformation),
+        transformation: action.transformation
+      };
 
-    const transformIndex = state.transformIndex + 1;
-    const transformStack = state.transformStack.slice(0, transformIndex).concat(item);
+      const transformIndex = state.transformIndex + 1;
+      const transformStack = state.transformStack.slice(0, transformIndex).concat(item);
 
-    return {
-      ...state,
-      grammar: item.grammar,
-      spec: item.grammar.toString(),
-      transformIndex,
-      transformStack
+      return {
+        ...state,
+        grammar: item.grammar,
+        spec: item.grammar.toString(),
+        transformIndex,
+        transformStack
+      }
     }
 
   case "undoTransformation":
