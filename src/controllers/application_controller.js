@@ -1,8 +1,33 @@
 const { render } = require("preact");
 const ApplicationComponent = require("../components/application_component.js");
+const Grammar = require("../grammar");
+const parser = require("../parser");
 
-var Grammar = require("../grammar");
-var parser = require("../parser");
+function reducer(state, action) {
+  switch (action.type) {
+  case "setSpec":
+    return { ...state, spec: action.spec };
+
+  case "analyze":
+    try {
+      const grammar = new Grammar(parser(state.spec));
+
+      return { ...state, grammar, error: null };
+    } catch (e) {
+      return { ...state, error: e };
+    }
+
+  case "setPath":
+    return { ...state, path: action.path };
+
+  default:
+    throw `Unhandled action type ${action.type}`;
+  }
+}
+
+function init(spec = "") {
+  return { spec: spec, path: "/" };
+}
 
 function parse(spec) {
   if (spec.match(/^\s*$/)) {
@@ -25,28 +50,32 @@ module.exports = class ApplicationController {
       this._hashChanged();
     }.bind(this), false);
 
-    this._path = "/";
-    this._spec = "# Type a grammar here:\n\n";
-    this._parse = {};
     this._mode = "edit";
 
+    this._state = init("# Type a grammar here:\n\n");
+
+    this._render();
+  }
+
+  dispatch(action) {
+    this._state = reducer(this._state, action);
     this._render();
   }
 
   _render() {
     render(
       <ApplicationComponent
-        spec={this._spec}
-        error={this._parse.error}
-        grammar={this._parse.grammar}
-        path={this._path}
+        spec={this._state.spec}
+        error={this._state.error}
+        grammar={this._state.grammar}
+        path={this._state.path}
         mode={this._mode}
         transformStack={this._transformStack}
         transformIndex={this._transformIndex}
-        updateSpec={(newValue) => { this._spec = newValue; }}
+        updateSpec={(newValue) => { this.dispatch({ type: "setSpec", spec: newValue }); }}
         edit={() => this.edit()}
         transform={() => this.transform()}
-        analyze={() => this.analyze()}
+        analyze={() => this.dispatch({ type: "analyze" })}
         undoTransformation={() => { this.undoTransformation(); }}
         redoTransformation={() => { this.redoTransformation(); }}
         applyTransformation={(t) => { this.applyTransformation(t); }}
@@ -56,20 +85,19 @@ module.exports = class ApplicationController {
   }
 
   _hashChanged() {
-    this._path = window.location.hash.slice(1);
-
-    if (this._path == "") {
-      this._path = "/";
+    let path = window.location.hash.slice(1);
+    if (path == "") {
+      path = "/";
     }
 
-    this._render();
+    this.dispatch({ type: "setPath", path });
   }
 
   undoTransformation() {
     if (this._transformIndex > 0) {
       this._transformIndex -= 1;
-      this._parse = { grammar: this._transformStack[this._transformIndex].grammar };
-      this._spec = this._transformStack[this._transformIndex].grammar.toString();
+      this._state.grammar = this._transformStack[this._transformIndex].grammar;
+      this._state.spec = this._transformStack[this._transformIndex].grammar.toString();
 
       this._render();
     }
@@ -78,8 +106,8 @@ module.exports = class ApplicationController {
   redoTransformation() {
     if (this._transformIndex < this._transformStack.length - 1) {
       this._transformIndex += 1;
-      this._parse = { grammar: this._transformStack[this._transformIndex].grammar };
-      this._spec = this._transformStack[this._transformIndex].grammar.toString();
+      this._state.grammar = this._transformStack[this._transformIndex].grammar;
+      this._state.spec = this._transformStack[this._transformIndex].grammar.toString();
 
       this._render();
     }
@@ -87,31 +115,29 @@ module.exports = class ApplicationController {
 
   applyTransformation(transformation) {
     const item = {
-      grammar: this._parse.grammar.transform(transformation),
+      grammar: this._state.grammar.transform(transformation),
       transformation: transformation
     };
 
     this._transformIndex += 1;
     this._transformStack.splice(this._transformIndex, this._transformStack.length - this._transformIndex, item);
 
-    this._parse = { grammar: this._transformStack[this._transformIndex].grammar };
-    this._spec = this._transformStack[this._transformIndex].grammar.toString();
+    this._state.grammar = this._transformStack[this._transformIndex].grammar;
+    this._state.spec = this._transformStack[this._transformIndex].grammar.toString();
 
-    this._render();
-  }
-
-  analyze() {
-    this._parse = parse(this._spec);
     this._render();
   }
 
   transform() {
-    this._parse = parse(this._spec);
+    const { grammar, error } = parse(this._state.spec);
 
-    if (typeof this._parse.error === "undefined" && typeof this._parse.grammar !== "undefined") {
+    this._state.grammar = grammar;
+    this._state.error = error;
+
+    if (typeof error === "undefined" && typeof grammar !== "undefined") {
       this._mode = "transform";
 
-      this._transformStack = [{ grammar: this._parse.grammar }];
+      this._transformStack = [{ grammar: grammar }];
       this._transformIndex = 0;
     }
 
