@@ -1,4 +1,4 @@
-const { bareFormatItem, bareFormatSymbol } = require("../helpers.js");
+const { bareFormatItem, bareFormatSymbol } = require("../../helpers.js");
 
 module.exports = function({ info, automaton, productions, start, title }) {
   let result = [];

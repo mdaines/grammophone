@@ -1,4 +1,4 @@
-const { formatTransformation, formatSymbol } = require("../helpers.js");
+const { formatTransformation, formatSymbol } = require("./helpers.js");
 
 module.exports = function({ grammar, stack, index, undo, redo, apply }) {
   const transformations = grammar.calculate("transformations.all");

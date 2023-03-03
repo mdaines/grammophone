@@ -1,4 +1,4 @@
-const template = require("../../../templates/lr_automaton_graph");
+const template = require("./lr_automaton_graph");
 const { Component } = require("preact");
 
 let viz;

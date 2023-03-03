@@ -1,4 +1,4 @@
-const END = require("./grammar/symbols").END;
+const END = require("../grammar/symbols").END;
 
 const ARROW = "\u2192";
 const EPSILON = "\u03B5";

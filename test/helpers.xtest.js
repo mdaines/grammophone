@@ -1,4 +1,4 @@
-const { formatSymbol, bareFormatSymbol } = require("../src/helpers.js");
+const { formatSymbol, bareFormatSymbol } = require("../src/components/helpers.js");
 const END = require("../src/grammar/symbols").END;
 
 describe("helpers", function() {

@@ -1,4 +1,4 @@
-const { formatSentence, formatSymbolList, listSymbols, formatProduction } = require("../../helpers.js");
+const { formatSentence, formatSymbolList, listSymbols, formatProduction } = require("../helpers.js");
 
 function formatUnreachable(unreachable, info) {
   if (unreachable.size > 0) {

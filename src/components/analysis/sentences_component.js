@@ -1,4 +1,4 @@
-const { formatSentence } = require("../../helpers.js");
+const { formatSentence } = require("../helpers.js");
 
 module.exports = function({ getCalculation, limit = 30 }) {
   const sentences = getCalculation("grammar.sentences");

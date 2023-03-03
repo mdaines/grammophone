@@ -1,4 +1,4 @@
-const { formatSymbol, formatSymbolList, listSymbols } = require("../../helpers.js");
+const { formatSymbol, formatSymbolList, listSymbols } = require("../helpers.js");
 
 module.exports = function({ getCalculation }) {
   const nullable = getCalculation("grammar.nullable");
