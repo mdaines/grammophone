@@ -16,17 +16,17 @@
     "eslint-plugin-react": "^7.32.2",
     "jest": "^29.4.3",
     "jshint": "^2.13.6",
-    "parcel": "^2.8.3",
-    "process": "^0.11.10"
+    "parcel": "^2.8.3"
   },
   "scripts": {
     "generate-lezer-parser": "yarn lezer-generator --cjs --output src/parser/rules.js src/parser/rules.grammar",
     "lint": "yarn eslint src test",
     "test": "jest",
-    "build": "parcel build",
-    "serve": "parcel serve"
+    "build": "parcel build --no-autoinstall",
+    "serve": "parcel serve --no-autoinstall"
   },
   "alias": {
-    "preact/jsx-dev-runtime": "preact/jsx-runtime"
+    "preact/jsx-dev-runtime": "preact/jsx-runtime",
+    "process": false
   }
 }
