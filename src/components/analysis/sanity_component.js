@@ -1,4 +1,4 @@
-const { formatSentence, formatSymbolList, listSymbols, formatProduction } = require("../helpers.js");
+import { formatSentence, formatSymbolList, listSymbols, formatProduction } from "../helpers.js";
 
 function formatUnreachable(unreachable, info) {
   if (unreachable.size > 0) {
@@ -68,7 +68,7 @@ function formatAmbiguous(ambiguous, info) {
   }
 }
 
-module.exports = function({ getCalculation }) {
+export default function({ getCalculation }) {
   const unreachable = getCalculation("grammar.unreachable");
   const unrealizable = getCalculation("grammar.unrealizable");
   const cycle = getCalculation("grammar.cycle");

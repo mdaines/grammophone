@@ -1,7 +1,7 @@
-const Grammar = require("../grammar");
-const parser = require("../parser");
+import Grammar from "../grammar/index.js";
+import parser from "../parser/index.js";
 
-function reducer(state, action) {
+export function reducer(state, action) {
   switch (action.type) {
   case "setSpec":
     return { ...state, spec: action.spec };
@@ -83,9 +83,6 @@ function reducer(state, action) {
   }
 }
 
-function init(spec = "") {
+export function init(spec = "") {
   return { spec: spec, path: "/", mode: "edit" };
 }
-
-module.exports.reducer = reducer;
-module.exports.init = init;

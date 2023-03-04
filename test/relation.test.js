@@ -1,87 +1,90 @@
-const Relation = require("../src/relation");
+import Relation from "../src/relation.js";
+import assert from "node:assert/strict";
 
-describe("get", function() {
-  it("returns added sets", function() {
-    let relation = new Relation();
-    relation.add("x", "y");
-    relation.add("x", "z");
-    relation.add("a", "b");
+describe("Relation", function() {
+  describe("get", function() {
+    it("returns added sets", function() {
+      let relation = new Relation();
+      relation.add("x", "y");
+      relation.add("x", "z");
+      relation.add("a", "b");
 
-    expect(relation.get("x")).toEqual(new Set(["y", "z"]));
-    expect(relation.get("a")).toEqual(new Set(["b"]));
+      assert.deepStrictEqual(relation.get("x"), new Set(["y", "z"]));
+      assert.deepStrictEqual(relation.get("a"), new Set(["b"]));
+    });
+
+    it("returns the empty set when nothing has been added", function() {
+      let relation = new Relation();
+      relation.add("x", "y");
+
+      assert.deepStrictEqual(relation.get("a"), new Set());
+    });
   });
 
-  it("returns the empty set when nothing has been added", function() {
-    let relation = new Relation();
-    relation.add("x", "y");
+  describe("keys", function() {
+    it("returns something that can be used to iterate over the domain in insertion order", function() {
+      let relation = new Relation();
+      relation.add("x", "a");
+      relation.add("y", "b");
 
-    expect(relation.get("a")).toEqual(new Set());
+      assert.deepStrictEqual(Array.from(relation.keys()), ["x", "y"]);
+    });
   });
-});
 
-describe("keys", function() {
-  it("returns something that can be used to iterate over the domain in insertion order", function() {
-    let relation = new Relation();
-    relation.add("x", "a");
-    relation.add("y", "b");
+  describe("has", function() {
+    it("returns a boolean indicating whether the pair is in the relation", function() {
+      let relation = new Relation();
+      relation.add("x", "a");
+      relation.add("y", "b");
 
-    expect(Array.from(relation.keys())).toEqual(["x", "y"]);
+      assert.deepStrictEqual(relation.has("x", "a"), true);
+      assert.deepStrictEqual(relation.has("y", "b"), true);
+
+      assert.deepStrictEqual(relation.has("x", "b"), false);
+      assert.deepStrictEqual(relation.has("z", "c"), false);
+    });
   });
-});
 
-describe("has", function() {
-  it("returns a boolean indicating whether the pair is in the relation", function() {
-    let relation = new Relation();
-    relation.add("x", "a");
-    relation.add("y", "b");
+  describe("closure", function() {
+    it("returns the closure of the relation", function() {
+      let relation = new Relation();
+      relation.add("x", "y");
+      relation.add("y", "z");
+      relation.add("z", "x");
+      relation.add("a", "b");
 
-    expect(relation.has("x", "a")).toEqual(true);
-    expect(relation.has("y", "b")).toEqual(true);
+      let closure = relation.closure();
 
-    expect(relation.has("x", "b")).toEqual(false);
-    expect(relation.has("z", "c")).toEqual(false);
+      assert.deepStrictEqual(closure.has("x", "y"), true);
+      assert.deepStrictEqual(closure.has("x", "z"), true);
+      assert.deepStrictEqual(closure.has("x", "x"), true);
+      assert.deepStrictEqual(closure.has("y", "z"), true);
+      assert.deepStrictEqual(closure.has("y", "x"), true);
+      assert.deepStrictEqual(closure.has("z", "x"), true);
+      assert.deepStrictEqual(closure.has("z", "y"), true);
+      assert.deepStrictEqual(closure.has("z", "z"), true);
+      assert.deepStrictEqual(closure.has("a", "b"), true);
+    });
   });
-});
 
-describe("closure", function() {
-  it("returns the closure of the relation", function() {
-    let relation = new Relation();
-    relation.add("x", "y");
-    relation.add("y", "z");
-    relation.add("z", "x");
-    relation.add("a", "b");
+  describe("iteration", function() {
+    it("is iterable", function() {
+      let relation = new Relation();
+      relation.add("x", "y");
+      relation.add("y", "z");
 
-    let closure = relation.closure();
-
-    expect(closure.has("x", "y")).toEqual(true);
-    expect(closure.has("x", "z")).toEqual(true);
-    expect(closure.has("x", "x")).toEqual(true);
-    expect(closure.has("y", "z")).toEqual(true);
-    expect(closure.has("y", "x")).toEqual(true);
-    expect(closure.has("z", "x")).toEqual(true);
-    expect(closure.has("z", "y")).toEqual(true);
-    expect(closure.has("z", "z")).toEqual(true);
-    expect(closure.has("a", "b")).toEqual(true);
+      assert.deepStrictEqual(Array.from(relation), [["x", "y"], ["y", "z"]]);
+    });
   });
-});
 
-describe("iteration", function() {
-  it("is iterable", function() {
-    let relation = new Relation();
-    relation.add("x", "y");
-    relation.add("y", "z");
+  describe("entries", function() {
+    it("returns something that can be used to iterate over the pairs in the relation", function() {
+      let relation = new Relation();
+      relation.add("x", "a");
+      relation.add("x", "b");
+      relation.add("y", "c");
 
-    expect(Array.from(relation)).toEqual([["x", "y"], ["y", "z"]]);
-  });
-});
-
-describe("entries", function() {
-  it("returns something that can be used to iterate over the pairs in the relation", function() {
-    let relation = new Relation();
-    relation.add("x", "a");
-    relation.add("x", "b");
-    relation.add("y", "c");
-
-    expect(Array.from(relation.entries())).toEqual([["x", "a"], ["x", "b"], ["y", "c"]]);
+      assert.deepStrictEqual(Array.from(relation.entries()), [["x", "a"], ["x", "b"], ["y", "c"]]);
+    });
   });
 });

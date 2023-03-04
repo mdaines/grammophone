@@ -1,4 +1,4 @@
-module.exports = function(grammar) {
+export default function(grammar) {
   return [].concat(grammar.calculate("transformations.expand"))
            .concat(grammar.calculate("transformations.removeImmediateLeftRecursion"))
            .concat(grammar.calculate("transformations.leftFactor"))

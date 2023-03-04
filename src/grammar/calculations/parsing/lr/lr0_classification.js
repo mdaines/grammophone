@@ -1,4 +1,4 @@
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var i, s;
   var table = grammar.calculate("parsing.lr.lr0_table");

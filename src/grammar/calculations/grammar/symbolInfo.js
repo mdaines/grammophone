@@ -1,4 +1,4 @@
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var i, j, s;
 
@@ -42,4 +42,4 @@ module.exports = function(grammar) {
     terminals: terminals
   };
 
-};
+}

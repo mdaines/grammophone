@@ -1,4 +1,5 @@
-const Grammar = require("../../src/grammar");
+import Grammar from "../../src/grammar/index.js";
+import assert from "node:assert/strict";
 
 describe("transformations.epsilonSeparate", function() {
   it("returns the expected result", function() {
@@ -8,7 +9,7 @@ describe("transformations.epsilonSeparate", function() {
     ];
 
     let grammar = new Grammar(productions);
-    expect(grammar.calculate("transformations.epsilonSeparate")).toEqual([
+    assert.deepStrictEqual(grammar.calculate("transformations.epsilonSeparate"), [
       {
         name: "epsilonSeparate",
         production: 0,
@@ -48,6 +49,6 @@ describe("transformations.epsilonSeparate", function() {
     ];
 
     let grammar = new Grammar(productions);
-    expect(grammar.calculate("transformations.epsilonSeparate")).toEqual([]);
+    assert.deepStrictEqual(grammar.calculate("transformations.epsilonSeparate"), []);
   });
 });

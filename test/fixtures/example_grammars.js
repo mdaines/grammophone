@@ -1,6 +1,6 @@
 // From the original smlweb.cpsc.ucalgary.ca code.
 
-module.exports = {
+export default {
   "ll0-lr0-0.cfg": [
     ["S", "b", "A", "i", "B"],
     ["A"],

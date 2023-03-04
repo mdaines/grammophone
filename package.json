@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "name": "grammophone",
   "browserslist": "> 0.5%, last 2 versions",
+  "type": "module",
   "source": [
     "src/index.html"
   ],
@@ -14,16 +15,16 @@
     "@lezer/generator": "^1.2.2",
     "eslint": "^8.35.0",
     "eslint-plugin-react": "^7.32.2",
-    "jest": "^29.4.3",
     "jshint": "^2.13.6",
+    "mocha": "^10.2.0",
     "parcel": "^2.8.3"
   },
   "scripts": {
-    "generate-lezer-parser": "yarn lezer-generator --cjs --output src/parser/rules.js src/parser/rules.grammar",
-    "lint": "yarn eslint src test",
-    "test": "jest",
-    "build": "parcel build --no-autoinstall",
-    "serve": "parcel serve --no-autoinstall"
+    "generate-lezer-parser": "lezer-generator --output src/parser/rules.js src/parser/rules.grammar",
+    "lint": "eslint src test",
+    "test": "mocha --recursive",
+    "build": "parcel build --no-autoinstall --no-cache",
+    "serve": "parcel serve --no-autoinstall --no-cache"
   },
   "alias": {
     "preact/jsx-dev-runtime": "preact/jsx-runtime",

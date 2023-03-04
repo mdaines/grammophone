@@ -1,7 +1,7 @@
-var END = require("../../../symbols").END;
-var addReduceAction = require("./helpers").addReduceAction;
+import { END } from "../../../symbols.js";
+import { addReduceAction } from "./helpers.js";
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var i, j, s;
   var state, actions, item;

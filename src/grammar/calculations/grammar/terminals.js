@@ -1,4 +1,4 @@
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var i, j;
   var terminals = new Set();
@@ -16,4 +16,4 @@ module.exports = function(grammar) {
 
   return terminals;
 
-};
+}

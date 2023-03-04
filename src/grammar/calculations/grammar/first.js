@@ -1,6 +1,6 @@
-var Relation = require('../../../relation');
+import Relation from "../../../relation.js";
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var immediate, propagation, result;
   var i, j;
@@ -60,4 +60,4 @@ module.exports = function(grammar) {
 
   return result;
 
-};
+}

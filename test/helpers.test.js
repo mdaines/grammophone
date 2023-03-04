@@ -1,5 +1,6 @@
-const { formatSymbol, bareFormatSymbol } = require("../src/components/helpers.js");
-const END = require("../src/grammar/symbols").END;
+import { bareFormatSymbol, formatSymbol } from "../src/components/helpers.js";
+import { END } from "../src/grammar/symbols.js";
+import assert from "node:assert/strict";
 
 describe("helpers", function() {
   describe("formatSymbol", function() {
@@ -9,11 +10,10 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      expect(formatSymbol(END, info)).toEqual("something");
+      let output = formatSymbol(END, info);
 
-      // let output = mq(helpers.formatSymbol(END, info));
-      // expect(output.has("u")).toBe(true);
-      // expect(output.contains("$")).toBe(true);
+      assert.deepStrictEqual(output.type, "u");
+      assert.deepStrictEqual(output.props, { children: "$" });
     });
 
     it("formats whitespace characters", function() {
@@ -22,11 +22,10 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      expect(formatSymbol(" ", info)).toEqual("something");
+      let output = formatSymbol(" ", info);
 
-      // let output = mq(helpers.formatSymbol(" ", info));
-      // expect(output.has("b")).toBe(true);
-      // expect(output.contains("\u2B1A")).toBe(true);
+      assert.deepStrictEqual(output.type, "b");
+      assert.deepStrictEqual(output.props, { children: "\u2B1A" });
     });
 
     it("refuses to format an unknown symbol", function() {
@@ -35,13 +34,13 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      expect(function() { formatSymbol("x", info); }).toThrowError();
+      assert.throws(function() { formatSymbol("x", info); });
     });
   });
 
   describe("bareFormatSymbol", function() {
     it("formats END as $", function() {
-      expect(bareFormatSymbol(END, {})).toEqual("$");
+      assert.deepStrictEqual(bareFormatSymbol(END, {}), "$");
     });
 
     it("escapes HTML", function() {
@@ -50,7 +49,7 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      expect(bareFormatSymbol("&", info)).toEqual("&amp;");
+      assert.deepStrictEqual(bareFormatSymbol("&", info), "&amp;");
     });
 
     it("formats whitespace characters", function() {
@@ -59,7 +58,7 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      expect(bareFormatSymbol(" ", info)).toEqual("\u2B1A");
+      assert.deepStrictEqual(bareFormatSymbol(" ", info), "\u2B1A");
     });
 
     it("refuses to format an unknown symbol", function() {
@@ -68,7 +67,7 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      expect(function() { bareFormatSymbol("x", info); }).toThrowError();
+      assert.throws(function() { bareFormatSymbol("x", info); });
     });
   });
 });

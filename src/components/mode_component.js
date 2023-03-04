@@ -1,4 +1,4 @@
-module.exports = function({ mode, edit, transform, analyze }) {
+export default function({ mode, edit, transform, analyze }) {
   function onChange(e) {
     if (e.target.value === "edit") {
       edit();

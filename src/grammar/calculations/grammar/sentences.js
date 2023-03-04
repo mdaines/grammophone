@@ -55,7 +55,7 @@ function expandSentenceNode(node, grammar) {
 var MAX_SENTENCES = 30;
 var MAX_DEPTH = 200;
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var start = grammar.calculate("grammar.start");
 
@@ -101,4 +101,4 @@ module.exports = function(grammar) {
     }
   });
 
-};
+}

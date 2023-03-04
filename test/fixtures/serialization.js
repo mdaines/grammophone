@@ -1,4 +1,4 @@
-const Relation = require("../../src/relation");
+import Relation from "../../src/relation.js";
 
 function convertSet(s) {
   if (s instanceof Set) {
@@ -16,7 +16,7 @@ function convertRelation(r) {
   }
 }
 
-function prepare(calculationName, result) {
+export function prepare(calculationName, result) {
   result = convertRelation(result);
   result = convertSet(result);
 
@@ -27,5 +27,3 @@ function prepare(calculationName, result) {
 
   return result;
 }
-
-module.exports.prepare = prepare;

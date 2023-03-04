@@ -1,6 +1,6 @@
-const { bareFormatItem, bareFormatSymbol } = require("../../helpers.js");
+import { bareFormatItem, bareFormatSymbol } from "../../helpers.js";
 
-module.exports = function({ info, automaton, productions, start, title }) {
+export default function({ info, automaton, productions, start, title }) {
   let result = [];
 
   result.push(

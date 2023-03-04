@@ -1,6 +1,6 @@
-var END = require("../../../../symbols").END;
+import { END } from "../../../../symbols.js";
 
-module.exports = {
+export default {
 
   initial: function() {
 

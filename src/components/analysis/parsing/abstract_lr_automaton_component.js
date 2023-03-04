@@ -1,5 +1,5 @@
-const template = require("./lr_automaton_graph");
-const { Component } = require("preact");
+import template from "./lr_automaton_graph.js";
+import { Component } from "preact";
 
 let viz;
 
@@ -16,7 +16,7 @@ function render(src) {
     });
 }
 
-module.exports = class AbstractLRAutomatonComponent extends Component {
+export default class AbstractLRAutomatonComponent extends Component {
   shouldComponentUpdate(newProps) {
     this.updateBaseWithRenderedSVG(newProps);
     return false;

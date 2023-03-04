@@ -1,4 +1,4 @@
-module.exports = function(grammar) {
+export default function(grammar) {
   let symbols = new Set();
 
   for (let i = 0; i < grammar.productions.length; i++) {
@@ -8,4 +8,4 @@ module.exports = function(grammar) {
   }
 
   return symbols;
-};
+}

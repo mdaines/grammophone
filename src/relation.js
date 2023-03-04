@@ -1,4 +1,4 @@
-class Relation {
+export default class Relation {
   constructor(iterable) {
     this._map = new Map();
 
@@ -131,5 +131,3 @@ class Relation {
     return undefined;
   }
 }
-
-module.exports = Relation;

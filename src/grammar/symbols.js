@@ -1,3 +1,1 @@
-module.exports = {
-  END: "Grammar.END"
-};
+export const END = "Grammar.END";

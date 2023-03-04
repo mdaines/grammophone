@@ -1,10 +1,11 @@
-const END = require("../grammar/symbols").END;
+import { END } from "../grammar/symbols.js";
+import { h } from "preact";
 
 const ARROW = "\u2192";
 const EPSILON = "\u03B5";
 const BLANK = "\u2B1A";
 
-function fillArray(count, value) {
+export function fillArray(count, value) {
   let array = [];
   for (let i = 0; i < count; i++) {
     array.push(value);
@@ -12,7 +13,7 @@ function fillArray(count, value) {
   return array;
 }
 
-function listSymbols(set, order) {
+export function listSymbols(set, order) {
   let result = [];
 
   for (let i = 0; i < order.length; i++) {
@@ -28,7 +29,7 @@ function listSymbols(set, order) {
   return result;
 }
 
-function formatSymbolList(symbols, info, separator) {
+export function formatSymbolList(symbols, info, separator) {
   if (typeof separator === "undefined") {
     separator = ", ";
   }
@@ -49,19 +50,19 @@ function prettifySymbol(symbol) {
   return symbol.replace(/\s/g, BLANK);
 }
 
-function formatSymbol(symbol, info) {
+export function formatSymbol(symbol, info) {
   if (symbol == END) {
-    return <u>$</u>;
+    return h("u", null, "$");
   } else if (info.nonterminals.has(symbol)) {
-    return <i>{prettifySymbol(symbol)}</i>;
+    return h("i", null, prettifySymbol(symbol));
   } else if (info.terminals.has(symbol)) {
-    return <b>{prettifySymbol(symbol)}</b>;
+    return h("b", null, prettifySymbol(symbol));
   } else {
     throw new Error("Unknown symbol: " + symbol);
   }
 }
 
-function formatProduction(production, info) {
+export function formatProduction(production, info) {
   let result = [];
 
   result.push(formatSymbol(production[0], info));
@@ -77,17 +78,17 @@ function formatProduction(production, info) {
       result.push(formatSymbol(symbol, info));
     });
   } else {
-    result.push(<u>{EPSILON}</u>);
+    result.push(h("u", null, EPSILON));
   }
 
   return result;
 }
 
-function formatSentence(sentence, info) {
+export function formatSentence(sentence, info) {
   let result = [];
 
   if (sentence.length === 0) {
-    result.push(<u>{EPSILON}</u>);
+    result.push(h("u", null, EPSILON));
   } else {
     sentence.forEach(function(symbol, index) {
       if (index > 0) {
@@ -107,7 +108,7 @@ const ESCAPE = {
   "\"": "&quot;"
 };
 
-function escapeString(string) {
+export function escapeString(string) {
   return string.replace(/[&<>"]/g, function(name) {
     return ESCAPE[name];
   });
@@ -117,7 +118,7 @@ function barePrettifySymbol(symbol) {
   return symbol.replace(/'/g, "&prime;").replace(/\s/g, BLANK);
 }
 
-function bareFormatSymbol(symbol, info) {
+export function bareFormatSymbol(symbol, info) {
   if (symbol == END) {
     return "$";
   } else if (info.nonterminals.has(symbol) || info.terminals.has(symbol)) {
@@ -127,7 +128,7 @@ function bareFormatSymbol(symbol, info) {
   }
 }
 
-function bareFormatSymbols(symbols, info) {
+export function bareFormatSymbols(symbols, info) {
   let result = [];
 
   for (let i = 0; i < symbols.length; i++) {
@@ -137,7 +138,7 @@ function bareFormatSymbols(symbols, info) {
   return result;
 }
 
-function bareFormatItem(item, start, productions, info) {
+export function bareFormatItem(item, start, productions, info) {
   let production;
 
   if (item.production === -1) {
@@ -185,18 +186,6 @@ const TRANSFORMATION_FORMATTERS = {
   }
 }
 
-function formatTransformation(transformation, productions, info) {
+export function formatTransformation(transformation, productions, info) {
   return TRANSFORMATION_FORMATTERS[transformation.name](transformation, productions, info) || transformation.name;
 }
-
-module.exports.fillArray = fillArray;
-module.exports.listSymbols = listSymbols;
-module.exports.formatSymbolList = formatSymbolList;
-module.exports.formatSymbol = formatSymbol;
-module.exports.formatProduction = formatProduction;
-module.exports.formatSentence = formatSentence;
-module.exports.escapeString = escapeString;
-module.exports.bareFormatSymbol = bareFormatSymbol;
-module.exports.bareFormatSymbols = bareFormatSymbols;
-module.exports.bareFormatItem = bareFormatItem;
-module.exports.formatTransformation = formatTransformation;

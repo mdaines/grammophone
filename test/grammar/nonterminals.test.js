@@ -1,6 +1,7 @@
-const Grammar = require("../../src/grammar");
-const Relation = require("../../src/relation");
-const END = require("../../src/grammar/symbols").END;
+import Grammar from "../../src/grammar/index.js";
+import Relation from "../../src/relation.js";
+import { END } from "../../src/grammar/symbols.js";
+import assert from "node:assert/strict";
 
 function calculate(productions, calculation) {
   return new Grammar(productions).calculate(calculation);
@@ -42,7 +43,7 @@ var Fixtures = {
 
 describe("GrammarNonterminalsTest", function() {
   it("testFirst", function() {
-    expect(calculate(Fixtures.expressions, "grammar.first")).toEqual(new Relation([
+    assert.deepStrictEqual(calculate(Fixtures.expressions, "grammar.first"), new Relation([
       ["addop", "+"],
       ["addop", "-"],
       ["mulop", "*"],
@@ -54,7 +55,7 @@ describe("GrammarNonterminalsTest", function() {
       ["term", "number"]
     ]));
 
-    expect(calculate(Fixtures.ifelse, "grammar.first")).toEqual(new Relation([
+    assert.deepStrictEqual(calculate(Fixtures.ifelse, "grammar.first"), new Relation([
       ["statement", "other"],
       ["statement", "if"],
       ["if-stmt", "if"],
@@ -63,7 +64,7 @@ describe("GrammarNonterminalsTest", function() {
       ["exp", "1"]
     ]));
 
-    expect(calculate(Fixtures.statements, "grammar.first")).toEqual(new Relation([
+    assert.deepStrictEqual(calculate(Fixtures.statements, "grammar.first"), new Relation([
       ["stmt-seq'", ";"],
       ["stmt", "s"],
       ["stmt-sequence", "s"]
@@ -71,7 +72,7 @@ describe("GrammarNonterminalsTest", function() {
   });
 
   it("testFollow", function() {
-    expect(calculate(Fixtures.expressions, "grammar.follow")).toEqual(new Relation([
+    assert.deepStrictEqual(calculate(Fixtures.expressions, "grammar.follow"), new Relation([
       ["exp", END],
       ["exp", "+"],
       ["exp", "-"],
@@ -92,7 +93,7 @@ describe("GrammarNonterminalsTest", function() {
       ["factor", ")"]
     ]));
 
-    expect(calculate(Fixtures.ifelse, "grammar.follow")).toEqual(new Relation([
+    assert.deepStrictEqual(calculate(Fixtures.ifelse, "grammar.follow"), new Relation([
       ["statement", END],
       ["statement", "else"],
       ["exp", ")"],
@@ -102,7 +103,7 @@ describe("GrammarNonterminalsTest", function() {
       ["else-part", "else"]
     ]));
 
-    expect(calculate(Fixtures.statements, "grammar.follow")).toEqual(new Relation([
+    assert.deepStrictEqual(calculate(Fixtures.statements, "grammar.follow"), new Relation([
       ["stmt-sequence", END],
       ["stmt", ";"],
       ["stmt", END],
@@ -111,8 +112,8 @@ describe("GrammarNonterminalsTest", function() {
   });
 
   it("testNullable", function() {
-    expect(calculate(Fixtures.expressions, "grammar.nullable")).toEqual(new Set());
-    expect(calculate(Fixtures.ifelse, "grammar.nullable")).toEqual(new Set(["else-part"]));
-    expect(calculate(Fixtures.statements, "grammar.nullable")).toEqual(new Set(["stmt-seq'"]));
+    assert.deepStrictEqual(calculate(Fixtures.expressions, "grammar.nullable"), new Set());
+    assert.deepStrictEqual(calculate(Fixtures.ifelse, "grammar.nullable"), new Set(["else-part"]));
+    assert.deepStrictEqual(calculate(Fixtures.statements, "grammar.nullable"), new Set(["stmt-seq'"]));
   });
 });

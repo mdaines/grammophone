@@ -1,7 +1,7 @@
-var Relation = require('../../../relation');
-var END = require("../../symbols").END;
+import Relation from "../../../relation.js";
+import { END } from "../../symbols.js";
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var immediate, propagation, result;
   var i, j, k, s;
@@ -88,4 +88,4 @@ module.exports = function(grammar) {
 
   return result;
 
-};
+}

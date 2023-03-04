@@ -1,7 +1,7 @@
 // This file is generated automatically.
 // See update_example_output.js
 
-module.exports = {
+export default {
   "ll0-lr0-0.cfg": {
     "grammar.classification": {
       "ll1": {

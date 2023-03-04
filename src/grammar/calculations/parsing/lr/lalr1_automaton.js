@@ -1,8 +1,7 @@
-var collapseLookaheads = require("./helpers").collapseLookaheads;
-var lr0 = require("./build/lr0");
-var mergeItems = require("./helpers").mergeItems;
+import { collapseLookaheads, mergeItems } from "./helpers.js";
+import lr0 from "./build/lr0.js";
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var i, j;
 

@@ -1,6 +1,6 @@
-const END = require("../../symbols").END;
+import { END } from "../../symbols.js";
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var s;
   var endable = new Set();
@@ -14,4 +14,4 @@ module.exports = function(grammar) {
 
   return endable;
 
-};
+}
