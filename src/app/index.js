@@ -16,6 +16,7 @@ function App() {
   }
 
   useEffect(() => {
+    window.location.hash = state.path;
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
