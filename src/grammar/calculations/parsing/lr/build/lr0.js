@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 
   // What is the initial item?
 

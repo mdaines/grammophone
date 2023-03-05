@@ -77,7 +77,7 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
 
 }
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var i;
 

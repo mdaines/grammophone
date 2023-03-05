@@ -1,7 +1,7 @@
-var automaton = require("./helpers").automaton;
-var lr0 = require("./build/lr0");
+import { automaton } from "./helpers.js";
+import lr0 from "./build/lr0.js";
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   return automaton(grammar, lr0);
 

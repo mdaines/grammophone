@@ -1,7 +1,7 @@
-const { fillArray, formatSymbol, formatProduction } = require("../../helpers.js");
-const END = require("../../../grammar/symbols").END;
+import { fillArray, formatSymbol, formatProduction } from "../../helpers.js";
+import { END } from "../../../grammar/symbols.js";
 
-module.exports = function({ getCalculation, tableCalculation }) {
+export default function({ getCalculation, tableCalculation }) {
   const info = getCalculation("grammar.symbolInfo");
   const table = getCalculation(tableCalculation);
   const productions = getCalculation("grammar.productions");

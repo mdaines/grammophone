@@ -49,7 +49,7 @@ function epsilonSeparate(grammar, group, epsilon) {
 
 }
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var nt, i;
   var nonterminals = grammar.calculate("grammar.nonterminals");

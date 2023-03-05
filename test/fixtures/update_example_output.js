@@ -1,11 +1,12 @@
 /* eslint-env node */
 
-const Grammar = require("../../src/grammar");
-const Calculations = require("../../src/grammar/calculations");
-const exampleGrammars = require("./example_grammars");
-const fs = require("fs");
-const path = require("path");
-const prepare = require("./serialization").prepare;
+import Grammar from "../../src/grammar/index.js";
+import Calculations from "../../src/grammar/calculations/index.js";
+import exampleGrammars from "./example_grammars.js";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { prepare } from "./serialization.js";
 
 let output = {};
 
@@ -24,6 +25,8 @@ Object.keys(exampleGrammars).forEach(function(exampleName) {
 let script = `// This file is generated automatically.
 // See update_example_output.js
 
-module.exports = ${JSON.stringify(output, null, 2)};\n`;
+export default ${JSON.stringify(output, null, 2)};\n`;
 
-fs.writeFileSync(path.join(__dirname, "example_output.js"), script);
+let dir = path.dirname(fileURLToPath(import.meta.url));
+
+fs.writeFileSync(path.join(dir, "example_output.js"), script);

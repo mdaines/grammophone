@@ -1,4 +1,4 @@
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var nonterminals = grammar.calculate("grammar.nonterminals");
   var nullable = grammar.calculate("grammar.nullable");
@@ -62,4 +62,4 @@ module.exports = function(grammar) {
 
   return [];
 
-};
+}

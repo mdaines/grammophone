@@ -1,8 +1,8 @@
-function any(set) {
+export function any(set) {
   return set.size > 0;
 }
 
-function intersection(a, b) {
+export function intersection(a, b) {
   let result = new Set();
 
   for (let k of a.values()) {
@@ -13,6 +13,3 @@ function intersection(a, b) {
 
   return result;
 }
-
-module.exports.any = any;
-module.exports.intersection = intersection;

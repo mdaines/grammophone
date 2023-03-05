@@ -1,6 +1,6 @@
-var classifyLR1 = require("./helpers").classifyLR1;
+import { classifyLR1 } from "./helpers.js";
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   return classifyLR1(grammar.calculate("parsing.lr.slr1_table"));
 

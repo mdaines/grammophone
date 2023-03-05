@@ -1,7 +1,7 @@
-const Calculations = require("./calculations");
-const END = require("./symbols").END;
+import Calculations from "./calculations/index.js";
+import { END } from "./symbols.js";
 
-module.exports = class Grammar {
+export default class Grammar {
   constructor(productions) {
     var i, j;
 

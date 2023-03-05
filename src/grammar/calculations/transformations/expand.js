@@ -31,7 +31,7 @@ function expand(grammar, production, symbol) {
 
 }
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var i, j;
 

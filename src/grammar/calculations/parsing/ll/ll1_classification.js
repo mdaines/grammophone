@@ -1,6 +1,6 @@
-var SetOperations = require("../../../../set_operations");
+import * as SetOperations from "../../../../set_operations.js";
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var i, k, l, s;
   var head, body, first;

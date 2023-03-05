@@ -6,7 +6,7 @@ function formatClassification(cs, c, n) {
   }
 }
 
-module.exports = function({ getCalculation }) {
+export default function({ getCalculation }) {
   const classification = getCalculation("grammar.classification");
 
   return (

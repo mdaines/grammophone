@@ -104,7 +104,7 @@ Trie.prototype.getFactorablePrefixes = function() {
 
 }
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var i;
   var result = [];

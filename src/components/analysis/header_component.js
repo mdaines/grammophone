@@ -1,4 +1,4 @@
-module.exports = function({ path }) {
+export default function({ path }) {
   let segments = [];
 
   path.forEach(function(segment) {

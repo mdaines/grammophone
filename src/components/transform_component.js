@@ -1,6 +1,6 @@
-const { formatTransformation, formatSymbol } = require("./helpers.js");
+import { formatTransformation, formatSymbol } from "./helpers.js";
 
-module.exports = function({ grammar, stack, index, undo, redo, apply }) {
+export default function({ grammar, stack, index, undo, redo, apply }) {
   const transformations = grammar.calculate("transformations.all");
   const undoTransformation = index > 0 ? stack[index].transformation : undefined;
   const redoTransformation = index < stack.length - 1 ? stack[index + 1].transformation : undefined;

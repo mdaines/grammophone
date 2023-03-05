@@ -1,10 +1,10 @@
-const EditComponent = require("./edit_component.js");
-const ErrorComponent = require("./error_component.js");
-const AnalysisComponent = require("./analysis_component.js");
-const ModeComponent = require("./mode_component.js");
-const TransformComponent = require("./transform_component.js");
+import EditComponent from "./edit_component.js";
+import ErrorComponent from "./error_component.js";
+import AnalysisComponent from "./analysis_component.js";
+import ModeComponent from "./mode_component.js";
+import TransformComponent from "./transform_component.js";
 
-module.exports = function({ spec, updateSpec, mode, edit, transform, analyze, error, grammar, path, transformStack, transformIndex, undoTransformation, redoTransformation, applyTransformation }) {
+export default function({ spec, updateSpec, mode, edit, transform, analyze, error, grammar, path, transformStack, transformIndex, undoTransformation, redoTransformation, applyTransformation }) {
   return (
     <>
       <div id="master">

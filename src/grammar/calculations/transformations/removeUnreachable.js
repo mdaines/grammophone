@@ -20,7 +20,7 @@ function removeUnreachable(grammar, group) {
 
 }
 
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var unreachable = grammar.calculate("grammar.unreachable");
   var nt;

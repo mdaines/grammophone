@@ -1,4 +1,4 @@
-module.exports = function() {
+export default function() {
   return (
     <section class="blank-slate">
       <div>

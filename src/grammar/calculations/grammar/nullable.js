@@ -1,4 +1,4 @@
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var nullable = new Set();
   var added;
@@ -29,4 +29,4 @@ module.exports = function(grammar) {
 
   return nullable;
 
-};
+}

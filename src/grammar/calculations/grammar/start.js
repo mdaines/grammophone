@@ -1,5 +1,5 @@
-module.exports = function(grammar) {
+export default function(grammar) {
 
   return grammar.productions[0][0];
 
-};
+}

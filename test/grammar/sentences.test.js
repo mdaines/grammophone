@@ -1,5 +1,5 @@
-const exampleFixtures = require("../fixtures/example_grammars.js");
-const Grammar = require("../../src/grammar");
+import exampleFixtures from "../fixtures/example_grammars.js";
+import Grammar from "../../src/grammar/index.js";
 
 const queueDepthFixtures = {
   "a": [

@@ -1,4 +1,4 @@
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var marked, added, unrealizable;
   var i, j, s;
@@ -52,4 +52,4 @@ module.exports = function(grammar) {
 
   return unrealizable;
 
-};
+}

@@ -36,7 +36,7 @@
 
 // Build an LR automaton for the grammar, using the provided "build" functions.
 
-function automaton(grammar, build) {
+export function automaton(grammar, build) {
 
   var states = [ { kernel: build.initial() } ];
 
@@ -104,7 +104,7 @@ function automaton(grammar, build) {
 
 }
 
-function classifyLR1(table) {
+export function classifyLR1(table) {
 
   var i, s;
 
@@ -128,7 +128,7 @@ function classifyLR1(table) {
 
 }
 
-function addReduceAction(actions, symbol, production) {
+export function addReduceAction(actions, symbol, production) {
 
   if (typeof actions[symbol] === "undefined") {
     actions[symbol] = { reduce: [] };
@@ -145,7 +145,7 @@ function addReduceAction(actions, symbol, production) {
 // Collapse a list of LR1 items' lookaheads so that distinct
 // items' lookaheads are arrays.
 
-function collapseLookaheads(items) {
+export function collapseLookaheads(items) {
 
   var i, p, x, l;
   var table = {};
@@ -183,7 +183,7 @@ function collapseLookaheads(items) {
 // Return the union of the items in two LALR1 states.
 // For each item in the first state, add lookaheads from the second state's corresponding items.
 
-function mergeItems(a, b) {
+export function mergeItems(a, b) {
 
   var result = [];
   var item;
@@ -222,9 +222,3 @@ function mergeItems(a, b) {
   return result;
 
 }
-
-module.exports.automaton = automaton;
-module.exports.classifyLR1 = classifyLR1;
-module.exports.addReduceAction = addReduceAction;
-module.exports.collapseLookaheads = collapseLookaheads;
-module.exports.mergeItems = mergeItems;

@@ -1,6 +1,7 @@
-const SetOperations = require("../../src/set_operations");
-const EXAMPLE_GRAMMARS = require("../fixtures/example_grammars.js");
-const Grammar = require("../../src/grammar");
+import * as SetOperations from "../../src/set_operations.js";
+import EXAMPLE_GRAMMARS from "../fixtures/example_grammars.js";
+import Grammar from "../../src/grammar/index.js";
+import assert from "node:assert/strict";
 
 function classifications(grammar) {
   let classification = grammar.calculate("grammar.classification");
@@ -19,7 +20,7 @@ function assertExampleClassifications(expected, name) {
   let grammar = new Grammar(EXAMPLE_GRAMMARS[name]);
 
   // expected should be a subset of classifications
-  expect(SetOperations.intersection(expected, classifications(grammar))).toEqual(expected);
+  assert.deepStrictEqual(SetOperations.intersection(expected, classifications(grammar)), expected);
 }
 
 describe("grammar.classification", function() {

@@ -1,6 +1,6 @@
-const { formatSymbol, formatSymbolList, listSymbols } = require("../helpers.js");
+import { formatSymbol, formatSymbolList, listSymbols } from "../helpers.js";
 
-module.exports = function({ getCalculation }) {
+export default function({ getCalculation }) {
   const nullable = getCalculation("grammar.nullable");
   const endable = getCalculation("grammar.endable");
   const first = getCalculation("grammar.first");

@@ -1,21 +1,21 @@
-const BlankSlateComponent = require("./blank_slate_component.js");
-const HeaderComponent = require("./analysis/header_component.js");
+import BlankSlateComponent from "./blank_slate_component.js";
+import HeaderComponent from "./analysis/header_component.js";
 
-const NonterminalsComponent = require("./analysis/nonterminals_component.js");
-const ParsingComponent = require("./analysis/parsing_component.js");
-const SanityComponent = require("./analysis/sanity_component.js");
-const ShortSentencesComponent = require("./analysis/short_sentences_component.js");
-const SentencesComponent = require("./analysis/sentences_component.js");
+import NonterminalsComponent from "./analysis/nonterminals_component.js";
+import ParsingComponent from "./analysis/parsing_component.js";
+import SanityComponent from "./analysis/sanity_component.js";
+import ShortSentencesComponent from "./analysis/short_sentences_component.js";
+import SentencesComponent from "./analysis/sentences_component.js";
 
-const LL1TableComponent = require("./analysis/parsing/ll1_table_component.js");
-const LR0TableComponent = require("./analysis/parsing/lr0_table_component.js");
-const LR1TableComponent = require("./analysis/parsing/lr1_table_component.js");
-const LALR1TableComponent = require("./analysis/parsing/lalr1_table_component.js");
-const SLR1TableComponent = require("./analysis/parsing/slr1_table_component.js");
+import LL1TableComponent from "./analysis/parsing/ll1_table_component.js";
+import LR0TableComponent from "./analysis/parsing/lr0_table_component.js";
+import LR1TableComponent from "./analysis/parsing/lr1_table_component.js";
+import LALR1TableComponent from "./analysis/parsing/lalr1_table_component.js";
+import SLR1TableComponent from "./analysis/parsing/slr1_table_component.js";
 
-const LR0AutomatonComponent = require("./analysis/parsing/lr0_automaton_component.js");
-const LR1AutomatonComponent = require("./analysis/parsing/lr1_automaton_component.js");
-const LALR1AutomatonComponent = require("./analysis/parsing/lalr1_automaton_component.js");
+import LR0AutomatonComponent from "./analysis/parsing/lr0_automaton_component.js";
+import LR1AutomatonComponent from "./analysis/parsing/lr1_automaton_component.js";
+import LALR1AutomatonComponent from "./analysis/parsing/lalr1_automaton_component.js";
 
 const ROUTES = {
   "/": {
@@ -92,7 +92,7 @@ const ROUTES = {
   }
 };
 
-module.exports = function({ grammar, path }) {
+export default function({ grammar, path }) {
   if (typeof grammar !== "undefined") {
     const route = ROUTES[path];
 

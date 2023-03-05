@@ -1,4 +1,4 @@
-module.exports = function({ spec, specChanged }) {
+export default function({ spec, specChanged }) {
   return (
     <section id="edit">
       <div class="spec-wrap">

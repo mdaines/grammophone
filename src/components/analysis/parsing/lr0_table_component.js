@@ -1,6 +1,6 @@
-const { fillArray, formatSymbol, formatProduction } = require("../../helpers.js");
+import { fillArray, formatSymbol, formatProduction } from "../../helpers.js";
 
-module.exports = function({ getCalculation }) {
+export default function({ getCalculation }) {
   const info = getCalculation("grammar.symbolInfo");
   const table = getCalculation("parsing.lr.lr0_table");
   const productions = getCalculation("grammar.productions");

@@ -1,6 +1,6 @@
-const parser = require("./rules").parser;
+import { parser } from "./rules.js";
 
-module.exports = function(src) {
+export default function(src) {
   let tree = parser.parse(src);
   let cursor = tree.cursor();
 

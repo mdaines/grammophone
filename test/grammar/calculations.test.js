@@ -1,8 +1,9 @@
-const Grammar = require("../../src/grammar");
-const Calculations = require("../../src/grammar/calculations");
-const exampleGrammars = require("../fixtures/example_grammars");
-const exampleOutput = require("../fixtures/example_output");
-const prepare = require("../fixtures/serialization").prepare;
+import Grammar from "../../src/grammar/index.js";
+import Calculations from "../../src/grammar/calculations/index.js";
+import exampleGrammars from "../fixtures/example_grammars.js";
+import exampleOutput from "../fixtures/example_output.js";
+import { prepare } from "../fixtures/serialization.js";
+import assert from "node:assert/strict";
 
 describe("output for example grammars", function() {
   Object.keys(exampleGrammars).forEach(function(exampleName) {
@@ -12,7 +13,7 @@ describe("output for example grammars", function() {
       it(`${exampleName} ${calculationName}`, function() {
         let result = grammar.calculate(calculationName);
 
-        expect(prepare(calculationName, result)).toEqual(exampleOutput[exampleName][calculationName]);
+        assert.deepStrictEqual(prepare(calculationName, result), exampleOutput[exampleName][calculationName]);
       });
     });
   });

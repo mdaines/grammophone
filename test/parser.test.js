@@ -1,114 +1,115 @@
-const parser = require("../src/parser");
+import parser from "../src/parser/index.js";
+import assert from "node:assert/strict";
 
 describe("parser", function() {
   it("basics", function() {
-    expect(parser("A -> a .")).toEqual([["A", "a"]]);
-    expect(parser("A -> a | b .")).toEqual([["A", "a"], ["A", "b"]]);
-    expect(parser("A -> .")).toEqual([["A"]]);
-    expect(parser("A -> a. B -> b. A -> c.")).toEqual([["A", "a"], ["B", "b"], ["A", "c"]]);
+    assert.deepStrictEqual(parser("A -> a ."), [["A", "a"]]);
+    assert.deepStrictEqual(parser("A -> a | b ."), [["A", "a"], ["A", "b"]]);
+    assert.deepStrictEqual(parser("A -> ."), [["A"]]);
+    assert.deepStrictEqual(parser("A -> a. B -> b. A -> c."), [["A", "a"], ["B", "b"], ["A", "c"]]);
   });
 
   it("colon and semicolon can be used to define rules", function() {
-    expect(parser("A : a ;")).toEqual([["A", "a"]]);
-    expect(parser("A : a | b ;")).toEqual([["A", "a"], ["A", "b"]]);
-    expect(parser("A : ;")).toEqual([["A"]]);
-    expect(parser("A : a; B : b; A : c;")).toEqual([["A", "a"], ["B", "b"], ["A", "c"]]);
+    assert.deepStrictEqual(parser("A : a ;"), [["A", "a"]]);
+    assert.deepStrictEqual(parser("A : a | b ;"), [["A", "a"], ["A", "b"]]);
+    assert.deepStrictEqual(parser("A : ;"), [["A"]]);
+    assert.deepStrictEqual(parser("A : a; B : b; A : c;"), [["A", "a"], ["B", "b"], ["A", "c"]]);
   });
 
   it("spacing", function() {
-    expect(parser("A->a.")).toEqual([["A", "a"]]);
-    expect(parser("A->a|b.")).toEqual([["A", "a"], ["A", "b"]]);
-    expect(parser("A->.")).toEqual([["A"]]);
+    assert.deepStrictEqual(parser("A->a."), [["A", "a"]]);
+    assert.deepStrictEqual(parser("A->a|b."), [["A", "a"], ["A", "b"]]);
+    assert.deepStrictEqual(parser("A->."), [["A"]]);
   });
 
   it("symbols can contain numbers", function() {
-    expect(parser("A -> a1 .")).toEqual([["A", "a1"]]);
+    assert.deepStrictEqual(parser("A -> a1 ."), [["A", "a1"]]);
   });
 
   it("symbols can contain dollar and underscore", function() {
-    expect(parser("$ -> _ .")).toEqual([["$", "_"]]);
-    expect(parser("$a -> _1 a_2 .")).toEqual([["$a", "_1", "a_2"]]);
+    assert.deepStrictEqual(parser("$ -> _ ."), [["$", "_"]]);
+    assert.deepStrictEqual(parser("$a -> _1 a_2 ."), [["$a", "_1", "a_2"]]);
   });
 
   it("symbols can be quoted", function() {
-    expect(parser("\"A\" -> \"a\".")).toEqual([["A", "a"]]);
-    expect(parser("\"->\" -> .")).toEqual([["->"]]);
+    assert.deepStrictEqual(parser("\"A\" -> \"a\"."), [["A", "a"]]);
+    assert.deepStrictEqual(parser("\"->\" -> ."), [["->"]]);
   });
 
   it("quoted symbols can contain escapes", function() {
-    expect(parser("\"\\\"\" -> .")).toEqual([["\\\""]]);
-    expect(parser("\"\\\\\" -> .")).toEqual([["\\\\"]]);
-    expect(parser("\"'\" -> .")).toEqual([["'"]]);
-    expect(parser("'\\'' -> .")).toEqual([["\\'"]]);
-    expect(parser("'\"' -> .")).toEqual([["\""]]);
+    assert.deepStrictEqual(parser("\"\\\"\" -> ."), [["\\\""]]);
+    assert.deepStrictEqual(parser("\"\\\\\" -> ."), [["\\\\"]]);
+    assert.deepStrictEqual(parser("\"'\" -> ."), [["'"]]);
+    assert.deepStrictEqual(parser("'\\'' -> ."), [["\\'"]]);
+    assert.deepStrictEqual(parser("'\"' -> ."), [["\""]]);
 
-    expect(parser("\"\\b\" -> .")).toEqual([["\\b"]]);
-    expect(parser("\"\\f\" -> .")).toEqual([["\\f"]]);
-    expect(parser("\"\\n\" -> .")).toEqual([["\\n"]]);
-    expect(parser("\"\\r\" -> .")).toEqual([["\\r"]]);
-    expect(parser("\"\\t\" -> .")).toEqual([["\\t"]]);
-    expect(parser("\"\\v\" -> .")).toEqual([["\\v"]]);
-    expect(parser("\"\\0\" -> .")).toEqual([["\\0"]]);
+    assert.deepStrictEqual(parser("\"\\b\" -> ."), [["\\b"]]);
+    assert.deepStrictEqual(parser("\"\\f\" -> ."), [["\\f"]]);
+    assert.deepStrictEqual(parser("\"\\n\" -> ."), [["\\n"]]);
+    assert.deepStrictEqual(parser("\"\\r\" -> ."), [["\\r"]]);
+    assert.deepStrictEqual(parser("\"\\t\" -> ."), [["\\t"]]);
+    assert.deepStrictEqual(parser("\"\\v\" -> ."), [["\\v"]]);
+    assert.deepStrictEqual(parser("\"\\0\" -> ."), [["\\0"]]);
 
-    expect(parser("\"\\xA9\" -> .")).toEqual([["\\xA9"]]);
-    expect(parser("\"\\xa9\" -> .")).toEqual([["\\xa9"]]);
+    assert.deepStrictEqual(parser("\"\\xA9\" -> ."), [["\\xA9"]]);
+    assert.deepStrictEqual(parser("\"\\xa9\" -> ."), [["\\xa9"]]);
 
-    expect(parser("\"\\u00A9\" -> .")).toEqual([["\\u00A9"]]);
-    expect(parser("\"\\u00a9\" -> .")).toEqual([["\\u00a9"]]);
-    expect(parser("\"\\u2665\" -> .")).toEqual([["\\u2665"]]);
+    assert.deepStrictEqual(parser("\"\\u00A9\" -> ."), [["\\u00A9"]]);
+    assert.deepStrictEqual(parser("\"\\u00a9\" -> ."), [["\\u00a9"]]);
+    assert.deepStrictEqual(parser("\"\\u2665\" -> ."), [["\\u2665"]]);
 
-    expect(parser("\"\\u{1D306}\" -> .")).toEqual([["\\u{1D306}"]]);
+    assert.deepStrictEqual(parser("\"\\u{1D306}\" -> ."), [["\\u{1D306}"]]);
   });
 
   it("nonterminals don't need to be capitalized", function() {
-    expect(parser("a -> b .")).toEqual([["a", "b"]]);
+    assert.deepStrictEqual(parser("a -> b ."), [["a", "b"]]);
   });
 
   it("terminals can be capitalized", function() {
-    expect(parser("a -> B .")).toEqual([["a", "B"]]);
+    assert.deepStrictEqual(parser("a -> B ."), [["a", "B"]]);
   });
 
   it("multiple lines", function() {
-    expect(parser("A -> a |\n  b\n  .")).toEqual([["A", "a"], ["A", "b"]]);
+    assert.deepStrictEqual(parser("A -> a |\n  b\n  ."), [["A", "a"], ["A", "b"]]);
   });
 
   it("comments", function() {
-    expect(parser("# A -> a .\nA -> b .")).toEqual([["A", "b"]]);
-    expect(parser("# abc\n\nA -> b .")).toEqual([["A", "b"]]);
-    expect(parser("# 123\n\n")).toEqual([]);
+    assert.deepStrictEqual(parser("# A -> a .\nA -> b ."), [["A", "b"]]);
+    assert.deepStrictEqual(parser("# abc\n\nA -> b ."), [["A", "b"]]);
+    assert.deepStrictEqual(parser("# 123\n\n"), []);
   });
 
   describe("errors", function() {
     it("missing arrow", function() {
-      expect(function() { parser("A -> a. B"); }).toThrowError();
-      expect(function() { parser("A"); }).toThrowError();
+      assert.throws(function() { parser("A -> a. B"); });
+      assert.throws(function() { parser("A"); });
     });
 
     it("missing nonterminal", function() {
-      expect(function() { parser("A -> a. ->"); }).toThrowError();
-      expect(function() { parser("-> X"); }).toThrowError();
+      assert.throws(function() { parser("A -> a. ->"); });
+      assert.throws(function() { parser("-> X"); });
     });
 
     it("multiple nonterminals", function() {
-      expect(function() { parser("A B -> a."); }).toThrowError();
+      assert.throws(function() { parser("A B -> a."); });
     });
 
     it("stop that looks like part of a symbol", function() {
-      expect(function() { parser("A.y -> a."); }).toThrowError();
-      expect(function() { parser("A -> x.y ."); }).toThrowError();
+      assert.throws(function() { parser("A.y -> a."); });
+      assert.throws(function() { parser("A -> x.y ."); });
     });
 
     it("rules can't mix definition styles", function() {
-      expect(function() { parser("A -> a ;"); }).toThrowError();
-      expect(function() { parser("A : a ."); }).toThrowError();
+      assert.throws(function() { parser("A -> a ;"); });
+      assert.throws(function() { parser("A : a ."); });
     });
 
     it("symbols can't start with a number", function() {
-      expect(function() { parser("A -> 1 ."); }).toThrowError();
+      assert.throws(function() { parser("A -> 1 ."); });
     });
 
     it("quoted symbols can't contain a newline", function() {
-      expect(function() { parser("\"A\n\" -> a ."); }).toThrowError();
+      assert.throws(function() { parser("\"A\n\" -> a ."); });
     });
   });
 });

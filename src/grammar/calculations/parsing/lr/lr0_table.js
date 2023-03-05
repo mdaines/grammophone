@@ -1,4 +1,4 @@
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var i, j, s;
   var state, item, actions;

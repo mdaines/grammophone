@@ -1,4 +1,4 @@
-module.exports = function(grammar) {
+export default function(grammar) {
 
   var i;
   var nonterminals = new Set();
@@ -9,4 +9,4 @@ module.exports = function(grammar) {
 
   return nonterminals;
 
-};
+}

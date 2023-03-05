@@ -1,6 +1,6 @@
-const { formatSentence } = require("../helpers.js");
+import { formatSentence } from "../helpers.js";
 
-module.exports = function({ getCalculation, limit = 30 }) {
+export default function({ getCalculation, limit = 30 }) {
   const sentences = getCalculation("grammar.sentences");
   const info = getCalculation("grammar.symbolInfo");
 

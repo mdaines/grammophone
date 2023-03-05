@@ -1,4 +1,4 @@
-module.exports = function(grammar) {
+export default function(grammar) {
 
   return {
     "ll1": grammar.calculate("parsing.ll.ll1_classification"),
@@ -8,4 +8,4 @@ module.exports = function(grammar) {
     "lalr1": grammar.calculate("parsing.lr.lalr1_classification")
   };
 
-};
+}
