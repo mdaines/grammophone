@@ -16,13 +16,33 @@ function convertRelation(r) {
   }
 }
 
+function convertMap(m) {
+  if (m instanceof Map) {
+    return Array.from(m);
+  } else {
+    return m;
+  }
+}
+
 export function prepare(calculationName, result) {
   result = convertRelation(result);
   result = convertSet(result);
+  result = convertMap(result);
 
   if (calculationName === "grammar.symbolInfo") {
-    result.nonterminals = convertSet(result.nonterminals);
-    result.terminals = convertSet(result.terminals);
+    result = {
+      ...result,
+      nonterminals: convertSet(result.nonterminals),
+      terminals: convertSet(result.terminals)
+    };
+  }
+
+  if (calculationName === "grammar.derivationSteps") {
+    result = {
+      ...result,
+      productions: convertMap(result.productions),
+      symbols: convertMap(result.symbols)
+    };
   }
 
   return result;

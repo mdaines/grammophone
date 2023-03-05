@@ -12,7 +12,7 @@ import grammar_nullable from "./grammar/nullable.js";
 import grammar_first from "./grammar/first.js";
 import grammar_follow from "./grammar/follow.js";
 import grammar_endable from "./grammar/endable.js";
-import grammar_sentences from "./grammar/sentences.js";
+import grammar_derivationSteps from "./grammar/derivationSteps.js";
 import grammar_symbols from "./grammar/symbols.js";
 import grammar_ambiguous from "./grammar/ambiguous.js";
 import parsing_ll_ll1_classification from "./parsing/ll/ll1_classification.js";
@@ -50,7 +50,7 @@ export default {
   "grammar.first": grammar_first,
   "grammar.follow": grammar_follow,
   "grammar.endable": grammar_endable,
-  "grammar.sentences": grammar_sentences,
+  "grammar.derivationSteps": grammar_derivationSteps,
   "grammar.symbols": grammar_symbols,
   "grammar.ambiguous": grammar_ambiguous,
   "parsing.ll.ll1_classification": parsing_ll_ll1_classification,

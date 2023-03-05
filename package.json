@@ -22,7 +22,7 @@
   "scripts": {
     "generate-lezer-parser": "lezer-generator --output src/parser/rules.js src/parser/rules.grammar",
     "lint": "eslint src test",
-    "test": "mocha --recursive",
+    "test": "mocha --recursive --ignore \"test/fixtures/*\"",
     "build": "parcel build --no-autoinstall --no-cache",
     "serve": "parcel serve --no-autoinstall --no-cache"
   },

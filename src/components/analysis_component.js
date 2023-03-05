@@ -104,7 +104,7 @@ export default function({ grammar, path }) {
           route.views.map((view) => {
             return (
               <article id={view.id}>
-                <view.component getCalculation={(name) => grammar.calculate(name)} />
+                <view.component grammar={grammar} getCalculation={(name) => grammar.calculate(name)} />
               </article>
             );
           })
