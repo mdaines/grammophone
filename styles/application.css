@@ -11,14 +11,25 @@ body {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 300px;
+  width: var(--editor-width);
   border-right: 1px solid #bbb;
+}
+
+#master-resize-handle {
+  position: absolute;
+  right: -3px;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  height: 100%;
+  z-index: 1;
+  cursor: ew-resize;
 }
 
 #analysis {
   position: absolute;
   top: 0;
-  left: 300px;
+  left: var(--editor-width);
   right: 0;
   bottom: 0;
   margin-left: 1px;

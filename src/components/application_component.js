@@ -3,6 +3,7 @@ import ErrorComponent from "./error_component.js";
 import AnalysisComponent from "./analysis_component.js";
 import ModeComponent from "./mode_component.js";
 import TransformComponent from "./transform_component.js";
+import MasterResizeComponent from "./master_resize_component.js";
 
 export default function({ spec, updateSpec, mode, edit, transform, analyze, error, grammar, path, transformStack, transformIndex, undoTransformation, redoTransformation, applyTransformation }) {
   return (
@@ -14,9 +15,11 @@ export default function({ spec, updateSpec, mode, edit, transform, analyze, erro
 
         {
           mode == "edit" ?
-            <EditComponent spec={spec} specChanged={updateSpec} /> :
-            <TransformComponent grammar={grammar} stack={transformStack} index={transformIndex} undo={undoTransformation} redo={redoTransformation} apply={applyTransformation} />
+          <EditComponent spec={spec} specChanged={updateSpec} /> :
+          <TransformComponent grammar={grammar} stack={transformStack} index={transformIndex} undo={undoTransformation} redo={redoTransformation} apply={applyTransformation} />
         }
+
+        <MasterResizeComponent />
       </div>
 
       <AnalysisComponent grammar={grammar} path={path} />

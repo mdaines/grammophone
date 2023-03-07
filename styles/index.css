@@ -7,3 +7,8 @@
 @import 'views/lr0_table.css';
 @import 'views/lr1_table.css';
 @import 'views/parsing.css';
+
+
+:root {
+  --editor-width: 500px;
+}
