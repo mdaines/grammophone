@@ -1,7 +1,11 @@
-export default function(grammar) {
+import { makeSentencesIterator, takeFromIterator } from "../../sentences_iterator.js";
 
-  var i, j;
-  var sentences = grammar.calculate("grammar.sentences");
+export default function(grammar) {
+  const iterator = makeSentencesIterator(grammar);
+  const result = takeFromIterator(iterator, 50, 1000);
+  const sentences = result.values;
+
+  let i, j;
 
   for (i = 0; i < sentences.length - 1; i++) {
     if (sentences[i].length != sentences[i+1].length) {
@@ -18,5 +22,4 @@ export default function(grammar) {
       return sentences[i];
     }
   }
-
 }
