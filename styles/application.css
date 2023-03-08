@@ -4,23 +4,64 @@ body {
   line-height: 1.2;
 }
 
-#master {
-  display: flex;
-  flex-direction: column;
+#app {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
+  right: 0;
+  display: grid;
+  grid-template-areas: "header header" "editor analysis";
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 300px 1fr;
+}
+
+#project-header {
+  grid-area: header;
+  justify-content: space-between;
+  display: flex;
+  background: #222;
+  padding: 10px;
+}
+
+#project-header h1 {
+  padding: 6px 8px 5px 8px;
+  font: 12pt helvetica;
+  color: #fff;
+}
+
+#project-header ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+#project-header a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 8px 5px 8px;
+  border-radius: 4px;
+  font: 12pt helvetica;
+}
+
+#project-header a:hover {
+  background: #444;
+}
+
+#editor {
+  grid-area: editor;
+  display: flex;
+  flex-direction: column;
   width: 300px;
   border-right: 1px solid #bbb;
 }
 
 #analysis {
-  position: absolute;
-  top: 0;
-  left: 300px;
-  right: 0;
-  bottom: 0;
+  grid-area: analysis;
   margin-left: 1px;
   padding: 20px;
   overflow: auto;
