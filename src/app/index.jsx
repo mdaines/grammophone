@@ -1,7 +1,7 @@
 import { render } from "preact";
 import { useReducer, useEffect } from "preact/hooks";
 import { reducer, init } from "./reducer.js";
-import ApplicationComponent from "../components/application_component.js";
+import ApplicationComponent from "../components/application_component.jsx";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, "# Type a grammar here:\n\n", init);

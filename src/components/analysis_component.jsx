@@ -1,21 +1,21 @@
-import BlankSlateComponent from "./blank_slate_component.js";
-import HeaderComponent from "./analysis/header_component.js";
+import BlankSlateComponent from "./blank_slate_component.jsx";
+import HeaderComponent from "./analysis/header_component.jsx";
 
-import NonterminalsComponent from "./analysis/nonterminals_component.js";
-import ParsingComponent from "./analysis/parsing_component.js";
-import SanityComponent from "./analysis/sanity_component.js";
-import ShortSentencesComponent from "./analysis/short_sentences_component.js";
-import SentencesComponent from "./analysis/sentences_component.js";
+import NonterminalsComponent from "./analysis/nonterminals_component.jsx";
+import ParsingComponent from "./analysis/parsing_component.jsx";
+import SanityComponent from "./analysis/sanity_component.jsx";
+import ShortSentencesComponent from "./analysis/short_sentences_component.jsx";
+import SentencesComponent from "./analysis/sentences_component.jsx";
 
-import LL1TableComponent from "./analysis/parsing/ll1_table_component.js";
-import LR0TableComponent from "./analysis/parsing/lr0_table_component.js";
-import LR1TableComponent from "./analysis/parsing/lr1_table_component.js";
-import LALR1TableComponent from "./analysis/parsing/lalr1_table_component.js";
-import SLR1TableComponent from "./analysis/parsing/slr1_table_component.js";
+import LL1TableComponent from "./analysis/parsing/ll1_table_component.jsx";
+import LR0TableComponent from "./analysis/parsing/lr0_table_component.jsx";
+import LR1TableComponent from "./analysis/parsing/lr1_table_component.jsx";
+import LALR1TableComponent from "./analysis/parsing/lalr1_table_component.jsx";
+import SLR1TableComponent from "./analysis/parsing/slr1_table_component.jsx";
 
-import LR0AutomatonComponent from "./analysis/parsing/lr0_automaton_component.js";
-import LR1AutomatonComponent from "./analysis/parsing/lr1_automaton_component.js";
-import LALR1AutomatonComponent from "./analysis/parsing/lalr1_automaton_component.js";
+import LR0AutomatonComponent from "./analysis/parsing/lr0_automaton_component.jsx";
+import LR1AutomatonComponent from "./analysis/parsing/lr1_automaton_component.jsx";
+import LALR1AutomatonComponent from "./analysis/parsing/lalr1_automaton_component.jsx";
 
 const ROUTES = {
   "/": {

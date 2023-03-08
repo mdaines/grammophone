@@ -1,8 +1,8 @@
-import EditComponent from "./edit_component.js";
-import ErrorComponent from "./error_component.js";
-import AnalysisComponent from "./analysis_component.js";
-import ModeComponent from "./mode_component.js";
-import TransformComponent from "./transform_component.js";
+import EditComponent from "./edit_component.jsx";
+import ErrorComponent from "./error_component.jsx";
+import AnalysisComponent from "./analysis_component.jsx";
+import ModeComponent from "./mode_component.jsx";
+import TransformComponent from "./transform_component.jsx";
 
 export default function({ spec, updateSpec, mode, edit, transform, analyze, error, grammar, path, transformStack, transformIndex, undoTransformation, redoTransformation, applyTransformation }) {
   return (
