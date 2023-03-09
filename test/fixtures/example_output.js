@@ -88,6 +88,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "A"
@@ -177,6 +178,7 @@ export default {
       "C",
       "d"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -1344,6 +1346,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -1421,6 +1424,7 @@ export default {
       "x",
       "z"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -2652,6 +2656,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "Adverb"
@@ -2794,6 +2799,7 @@ export default {
       "little",
       "lamb"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -4563,6 +4569,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "S'",
@@ -4669,6 +4676,7 @@ export default {
       "E",
       "num"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -6196,6 +6204,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "V",
@@ -6291,6 +6300,7 @@ export default {
       "(",
       ")"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -8605,6 +8615,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "P",
@@ -8756,6 +8767,7 @@ export default {
       ")",
       "o"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -11642,6 +11654,7 @@ export default {
     "grammar.unrealizable": [
       "B"
     ],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -11723,6 +11736,7 @@ export default {
       "y",
       "r"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -13409,6 +13423,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -13516,6 +13531,7 @@ export default {
       "u",
       "s"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -15273,6 +15289,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -15386,6 +15403,7 @@ export default {
       "SL",
       ";"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -17798,6 +17816,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "E",
@@ -17949,6 +17968,7 @@ export default {
       "D",
       "E"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -20264,6 +20284,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "A",
@@ -20398,6 +20419,7 @@ export default {
       ")",
       "A"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -22492,6 +22514,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "E",
@@ -22700,6 +22723,7 @@ export default {
       "Z",
       "num"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -29309,6 +29333,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "B"
@@ -29395,6 +29420,7 @@ export default {
       "fo",
       "r"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -31411,6 +31437,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "ExprOpt"
@@ -31485,6 +31512,7 @@ export default {
       ")",
       "expr"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -33726,6 +33754,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "DeclSpecifiersOpt",
@@ -34168,6 +34197,7 @@ export default {
       "*",
       "TypeQualifierList"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": true
     },
@@ -41596,6 +41626,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -41685,6 +41716,7 @@ export default {
       "E",
       "num"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -42978,6 +43010,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -43101,6 +43134,7 @@ export default {
       "*",
       "id"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -45124,6 +45158,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -45207,6 +45242,7 @@ export default {
       "y",
       "w"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -46852,6 +46888,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -46911,6 +46948,7 @@ export default {
       ")",
       "stmt"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -47839,6 +47877,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -47978,6 +48017,7 @@ export default {
       "num",
       "id"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -49998,6 +50038,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -50075,6 +50116,7 @@ export default {
       ")",
       "("
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -51085,6 +51127,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "E",
@@ -51232,6 +51275,7 @@ export default {
       "D",
       "E"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -53791,6 +53835,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "Opt",
@@ -53967,6 +54012,7 @@ export default {
       "+",
       "Opt"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -56755,6 +56801,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "W"
@@ -56963,6 +57010,7 @@ export default {
       "*",
       "8"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -60630,6 +60678,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "A",
@@ -60764,6 +60813,7 @@ export default {
       ")",
       "A"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -62836,6 +62886,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "E"
@@ -62970,6 +63021,7 @@ export default {
       "r",
       "s"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -65338,6 +65390,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "X"
@@ -65396,6 +65449,7 @@ export default {
       "X",
       "a"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first/follow set clash"
@@ -66185,6 +66239,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "C"
@@ -66274,6 +66329,7 @@ export default {
       "C",
       "c"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first/follow set clash"
@@ -67682,6 +67738,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "D",
@@ -67824,6 +67881,7 @@ export default {
       "b",
       "c"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first/follow set clash"
@@ -69942,6 +70000,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "A"
@@ -70046,6 +70105,7 @@ export default {
       "e",
       "c"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -72601,6 +72661,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -72715,6 +72776,7 @@ export default {
       "lpar",
       "rpar"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -75408,6 +75470,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -75696,6 +75759,7 @@ export default {
       "pneumonic",
       "Macro"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -80478,6 +80542,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -80606,6 +80671,7 @@ export default {
       "E",
       "num"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -82794,6 +82860,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -82884,6 +82951,7 @@ export default {
       "+",
       "id"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -85144,6 +85212,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -85255,6 +85324,7 @@ export default {
       "(",
       ")"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -88247,6 +88317,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -88344,6 +88415,7 @@ export default {
       "b",
       "B"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -90342,6 +90414,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -90447,6 +90520,7 @@ export default {
       "b",
       "c"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -92219,6 +92293,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -92320,6 +92395,7 @@ export default {
       "a",
       "b"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -93806,6 +93882,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -93899,6 +93976,7 @@ export default {
       ")",
       "*)"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -96132,6 +96210,7 @@ export default {
       "D"
     ],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "D"
@@ -96236,6 +96315,7 @@ export default {
       "D",
       "d"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -97453,6 +97533,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -97624,6 +97705,7 @@ export default {
       "c",
       "a"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -101580,6 +101662,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "S"
@@ -101794,6 +101877,7 @@ export default {
       "V",
       "id"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -105108,6 +105192,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -105341,6 +105426,7 @@ export default {
       "num",
       "!"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -110757,6 +110843,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "A",
@@ -110895,6 +110982,7 @@ export default {
       "F",
       "A"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -113609,6 +113697,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "A"
@@ -113848,6 +113937,7 @@ export default {
       "c",
       "d"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first/follow set clash"
@@ -118632,6 +118722,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "A"
@@ -118728,6 +118819,7 @@ export default {
       "w",
       "v"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -120347,6 +120439,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "B"
@@ -120445,6 +120538,7 @@ export default {
       "b",
       "c"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first/follow set clash"
@@ -122470,6 +122564,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "B"
@@ -122559,6 +122654,7 @@ export default {
       "B",
       "b"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -124318,6 +124414,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -124470,6 +124567,7 @@ export default {
       "rpar",
       "star"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -129617,6 +129715,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "B",
@@ -131452,6 +131551,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -131615,6 +131715,7 @@ export default {
       "z",
       "r"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -136934,6 +137035,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "G"
@@ -137054,6 +137156,7 @@ export default {
       "B",
       "G"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first/follow set clash"
@@ -139097,6 +139200,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [],
     "grammar.first": [
@@ -139141,6 +139245,7 @@ export default {
       "b",
       "c"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -139965,6 +140070,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "STMTS"
@@ -140193,6 +140299,7 @@ export default {
       "lpar",
       "rpar"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
@@ -147602,6 +147709,7 @@ export default {
     ],
     "grammar.unreachable": [],
     "grammar.unrealizable": [],
+    "grammar.cycle": null,
     "grammar.nullAmbiguity": [],
     "grammar.nullable": [
       "X",
@@ -147807,6 +147915,7 @@ export default {
       "D",
       "X"
     ],
+    "grammar.ambiguous": null,
     "parsing.ll.ll1_classification": {
       "member": false,
       "reason": "it contains a first set clash"
