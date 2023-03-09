@@ -98,12 +98,12 @@ export default function({ grammar, path }) {
 
     return (
       <section id="analysis">
-        <HeaderComponent path={route.path} />
+        <HeaderComponent key="header" path={route.path} />
 
         {
           route.views.map((view) => {
             return (
-              <article id={view.id}>
+              <article key={view.id} id={view.id}>
                 <view.component grammar={grammar} getCalculation={(name) => grammar.calculate(name)} />
               </article>
             );

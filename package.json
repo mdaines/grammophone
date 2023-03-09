@@ -9,7 +9,8 @@
   ],
   "dependencies": {
     "@lezer/lr": "^1.3.3",
-    "preact": "^10.13.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@lezer/generator": "^1.2.2",
@@ -24,7 +25,8 @@
     "lint": "eslint src test",
     "test": "mocha --recursive --ignore \"test/fixtures/*\"",
     "build": "parcel build --no-autoinstall --no-cache",
-    "serve": "parcel serve --no-autoinstall --no-cache"
+    "serve": "parcel serve --no-autoinstall --no-cache",
+    "serve-gallery": "parcel serve --no-autoinstall --no-cache gallery/index.html"
   },
   "alias": {
     "preact/jsx-dev-runtime": "preact/jsx-runtime",

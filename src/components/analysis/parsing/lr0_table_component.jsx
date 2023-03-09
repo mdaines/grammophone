@@ -6,81 +6,85 @@ export default function({ getCalculation }) {
   const productions = getCalculation("grammar.productions");
 
   return (
-    <table class="symbols lr0-table">
+    <table className="symbols lr0-table">
       <colgroup>
         <col />
       </colgroup>
-      <colgroup class="t">
-        {fillArray(info.terminals.size, <col />)}
+      <colgroup className="t">
+        {fillArray(info.terminals.size, (index) => <col key={index} />)}
       </colgroup>
-      <colgroup class="nt">
-        {fillArray(info.nonterminals.size, <col />)}
+      <colgroup className="nt">
+        {fillArray(info.nonterminals.size, (index) => <col key={index} />)}
       </colgroup>
 
-      <tr>
-        <th>State</th>
+      <thead>
+        <tr>
+          <th>State</th>
+          {
+            info.terminalOrder.map(function(symbol, index) {
+              return <th key={"t"+index}>{formatSymbol(symbol, info)}</th>;
+            })
+          }
+          {
+            info.nonterminalOrder.map(function(symbol, index) {
+              return <th key={"nt"+index}>{formatSymbol(symbol, info)}</th>;
+            })
+          }
+        </tr>
+      </thead>
+
+      <tbody>
         {
-          info.terminalOrder.map(function(symbol) {
-            return <th>{formatSymbol(symbol, info)}</th>;
-          })
-        }
-        {
-          info.nonterminalOrder.map(function(symbol) {
-            return <th>{formatSymbol(symbol, info)}</th>;
-          })
-        }
-      </tr>
+          table.map(function(state, index) {
+            return (
+              <tr key={index}>
+                <th scope="row">{index}</th>
+                {
+                  info.terminalOrder.map(function(s, index) {
+                    let actions = [];
 
-      {
-        table.map(function(state, index) {
-          return (
-            <tr>
-              <th scope="row">{index}</th>
-              {
-                info.terminalOrder.map(function(s) {
-                  let actions = [];
-
-                  if (typeof state.shift[s] !== "undefined") {
-                    actions.push(<li>{`shift(${state.shift[s]})`}</li>);
-                  }
-
-                  state.reduce.forEach(function(p) {
-                    if (p === -1) {
-                      actions.push(<li>{"accept"}</li>);
-                    } else {
-                      actions.push(
-                        <li>
-                          {"reduce("}
-                          {formatProduction(productions[p], info)}
-                          {")"}
-                        </li>
-                      );
+                    if (typeof state.shift[s] !== "undefined") {
+                      actions.push(<li key="s">{`shift(${state.shift[s]})`}</li>);
                     }
-                  });
 
-                  let isConflict = (typeof state.shift[s] === "undefined" ? 0 : 1) + state.reduce.length > 1;
+                    state.reduce.forEach(function(p, index) {
+                      if (p === -1) {
+                        actions.push(<li key={"r"+index}>{"accept"}</li>);
+                      } else {
+                        actions.push(
+                          <li key={"r"+index}>
+                            {"reduce("}
+                            {formatProduction(productions[p], info)}
+                            {")"}
+                          </li>
+                        );
+                      }
+                    });
 
-                  return (
-                    <td class={isConflict ? "conflict" : ""}>
-                      <ul>{actions}</ul>
-                    </td>
-                  );
-                })
-              }
+                    let isConflict = (typeof state.shift[s] === "undefined" ? 0 : 1) + state.reduce.length > 1;
 
-              {
-                info.nonterminalOrder.map(function(s) {
-                  return (
-                    <td>
-                      <ul>{typeof state.shift[s] !== "undefined" ? <li>{state.shift[s]}</li> : null}</ul>
-                    </td>
-                  );
-                })
-              }
-            </tr>
-          );
-        })
-      }
+                    return (
+                      <td key={"t"+index} className={isConflict ? "conflict" : ""}>
+                        <ul>{actions}</ul>
+                      </td>
+                    );
+                  })
+                }
+
+                {
+                  info.nonterminalOrder.map(function(s, index) {
+                    return (
+                      <td key={"nt"+index}>
+                        <ul>{typeof state.shift[s] !== "undefined" ? <li>{state.shift[s]}</li> : null}</ul>
+                      </td>
+                    );
+                  })
+                }
+              </tr>
+            );
+          })
+        }
+      </tbody>
     </table>
   );
 }

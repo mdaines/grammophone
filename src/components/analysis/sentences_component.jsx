@@ -1,32 +1,40 @@
 import { formatSentence } from "../helpers.js";
 import { makeSentencesIterator, takeFromIterator } from "../../grammar/sentences_iterator.js";
-import { Component } from "preact";
+import { Component } from "react";
 
-class ListComponent extends Component {
+function takePage(iterator) {
+  return takeFromIterator(iterator, 20, 1000);
+}
+
+export default class ListComponent extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { values: [], done: false };
-    this.more();
+    const iterator = makeSentencesIterator(this.props.grammar);
+
+    this.state = { iterator, sentences: takePage(iterator) };
   }
 
   more() {
-    const { done, values } = takeFromIterator(this.props.iterator, 20, 1000);
+    const { values, done } = takePage(this.state.iterator);
+    const sentences = { values: this.state.sentences.values.concat(values), done };
 
-    this.setState({ values: this.state.values.concat(values), done });
+    this.setState({ ...this.state, sentences });
   }
 
-  render({ symbolInfo }) {
+  render() {
+    const symbolInfo = this.props.grammar.calculate("grammar.symbolInfo");
+
     let examples;
 
-    if (this.state.values.length == 0 && this.state.done) {
+    if (this.state.sentences.values.length == 0 && this.state.sentences.done) {
       examples = <p>{"No example sentences could be generated."}</p>;
     } else {
       examples = (
-        <ul class="symbols">
+        <ul className="symbols">
           {
-            this.state.values.map(function(sentence) {
-              return <li>{formatSentence(sentence, symbolInfo)}</li>;
+            this.state.sentences.values.map((sentence, index) => {
+              return <li key={index}>{formatSentence(sentence, symbolInfo)}</li>;
             })
           }
         </ul>
@@ -35,21 +43,10 @@ class ListComponent extends Component {
 
     return (
       <>
+        <h1>Example Sentences</h1>
         {examples}
         <p><button disabled={this.state.done} onClick={() => { this.more(); }}>{"Generate more sentences"}</button></p>
       </>
     );
   }
-}
-
-export default function({ grammar }) {
-  const iterator = makeSentencesIterator(grammar);
-  const symbolInfo = grammar.calculate("grammar.symbolInfo");
-
-  return (
-    <>
-      <h1>Example Sentences</h1>
-      <ListComponent key={grammar} iterator={iterator} symbolInfo={symbolInfo} />
-    </>
-  );
 }

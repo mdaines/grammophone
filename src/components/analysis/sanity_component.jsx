@@ -81,7 +81,7 @@ export default function({ getCalculation }) {
     <>
       <h1>Sanity Checks</h1>
 
-      <ul class="symbols">
+      <ul className="symbols">
         {formatUnreachable(unreachable, info)}
         {formatUnrealizable(unrealizable, info)}
         {formatCycle(cycle, info)}

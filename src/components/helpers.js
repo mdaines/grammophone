@@ -1,14 +1,14 @@
 import { END } from "../grammar/symbols.js";
-import { h } from "preact";
+import { createElement as h, Fragment } from "react";
 
 const ARROW = "\u2192";
 const EPSILON = "\u03B5";
 const BLANK = "\u2B1A";
 
-export function fillArray(count, value) {
+export function fillArray(count, fn) {
   let array = [];
   for (let i = 0; i < count; i++) {
-    array.push(value);
+    array.push(fn(i));
   }
   return array;
 }
@@ -34,16 +34,13 @@ export function formatSymbolList(symbols, info, separator) {
     separator = ", ";
   }
 
-  let result = [];
-
-  for (let i = 0; i < symbols.length; i++) {
-    if (i > 0) {
-      result.push(separator);
+  return symbols.map((symbol, index) => {
+    if (index > 0) {
+      return h(Fragment, { key: index }, separator, formatSymbol(symbol, info));
+    } else {
+      return h(Fragment, { key: index }, formatSymbol(symbol, info));
     }
-    result.push(formatSymbol(symbols[i], info));
-  }
-
-  return result;
+  });
 }
 
 function prettifySymbol(symbol) {
@@ -63,42 +60,29 @@ export function formatSymbol(symbol, info) {
 }
 
 export function formatProduction(production, info) {
-  let result = [];
-
-  result.push(formatSymbol(production[0], info));
-  result.push(" ");
-  result.push(ARROW);
-  result.push(" ");
+  let symbols;
 
   if (production.length > 1) {
-    production.slice(1).forEach(function(symbol, index) {
-      if (index > 0) {
-        result.push(" ");
-      }
-      result.push(formatSymbol(symbol, info));
-    });
+    symbols = formatSymbolList(production.slice(1), info, " ");
   } else {
-    result.push(h("u", null, EPSILON));
+    symbols = h("u", null, EPSILON);
   }
 
-  return result;
+  return h(Fragment, null,
+    formatSymbol(production[0], info),
+    " ",
+    ARROW,
+    " ",
+    symbols
+  );
 }
 
 export function formatSentence(sentence, info) {
-  let result = [];
-
   if (sentence.length === 0) {
-    result.push(h("u", null, EPSILON));
-  } else {
-    sentence.forEach(function(symbol, index) {
-      if (index > 0) {
-        result.push(" ");
-      }
-      result.push(formatSymbol(symbol, info));
-    });
+    return h("u", null, EPSILON);
   }
 
-  return result;
+  return formatSymbolList(sentence, info, " ");
 }
 
 const ESCAPE = {

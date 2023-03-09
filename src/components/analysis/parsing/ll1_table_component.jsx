@@ -7,52 +7,56 @@ export default function({ getCalculation }) {
   const productions = getCalculation("grammar.productions");
 
   return (
-    <table class="symbols ll1-table">
+    <table className="symbols ll1-table">
       <colgroup>
         <col />
       </colgroup>
-      <colgroup class="t">
-        {fillArray(info.terminals.size + 1, <col />)}
+      <colgroup className="t">
+        {fillArray(info.terminals.size + 1, (index) => <col key={index} />)}
       </colgroup>
 
-      <tr>
-        <th />
+      <thead>
+        <tr>
+          <th />
+          {
+            info.terminalOrder.map(function(symbol, index) {
+              return <th key={index}>{formatSymbol(symbol, info)}</th>;
+            })
+          }
+          <th>{formatSymbol(END, info)}</th>
+        </tr>
+      </thead>
+
+      <tbody>
         {
-          info.terminalOrder.map(function(symbol) {
-            return <th>{formatSymbol(symbol, info)}</th>;
+          info.productionOrder.map(function(nt, index) {
+            return (
+              <tr key={index}>
+                <th scope="row">{formatSymbol(nt, info)}</th>
+                {
+                  info.terminalOrder.concat(END).map(function(t, index) {
+                    if (typeof table[nt][t] !== "undefined") {
+                      return (
+                        <td key={index} className={table[nt][t].length > 1 ? "conflict" : ""}>
+                          <ul>
+                            {
+                              table[nt][t].map(function(p, index) {
+                                return <li key={index}>{formatProduction(productions[p], info)}</li>;
+                              })
+                            }
+                          </ul>
+                        </td>
+                      );
+                    } else {
+                      return <td key={index} />;
+                    }
+                  })
+                }
+              </tr>
+            );
           })
         }
-        <th>{formatSymbol(END, info)}</th>
-      </tr>
-
-      {
-        info.productionOrder.map(function(nt) {
-          return (
-            <tr>
-              <th scope="row">{formatSymbol(nt, info)}</th>
-              {
-                info.terminalOrder.concat(END).map(function(t) {
-                  if (typeof table[nt][t] !== "undefined") {
-                    return (
-                      <td class={table[nt][t].length > 1 ? "conflict" : ""}>
-                        <ul>
-                          {
-                            table[nt][t].map(function(p) {
-                              return <li>{formatProduction(productions[p], info)}</li>;
-                            })
-                          }
-                        </ul>
-                      </td>
-                    );
-                  } else {
-                    return <td />;
-                  }
-                })
-              }
-            </tr>
-          );
-        })
-      }
+      </tbody>
     </table>
   );
 }

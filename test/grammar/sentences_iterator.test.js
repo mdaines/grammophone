@@ -28,6 +28,23 @@ describe("makeSentencesIterator", function() {
     assert.deepStrictEqual(iterator.next(), { value: undefined, done: false });
   });
 
+  it("can be called multiple times for the same grammar and returns the same result", function() {
+    let grammar = new Grammar([
+      ["S", "a", "S", "b"],
+      ["S"]
+    ]);
+
+    let iterator1 = makeSentencesIterator(grammar);
+    assert.deepStrictEqual(iterator1.next(), { value: [], done: false });
+    assert.deepStrictEqual(iterator1.next(), { value: undefined, done: false });
+    assert.deepStrictEqual(iterator1.next(), { value: ["a", "b"], done: false });
+
+    let iterator2 = makeSentencesIterator(grammar);
+    assert.deepStrictEqual(iterator2.next(), { value: [], done: false });
+    assert.deepStrictEqual(iterator2.next(), { value: undefined, done: false });
+    assert.deepStrictEqual(iterator2.next(), { value: ["a", "b"], done: false });
+  });
+
   it("multiple nonterminals and recursion", function() {
     let grammar = new Grammar([
       ["A", "y", "B"],

@@ -11,31 +11,35 @@ export default function({ getCalculation }) {
     <>
       <h1>Nonterminals</h1>
 
-      <table class="symbols">
-        <tr>
-          <th>Symbol</th>
-          <th>Nullable?</th>
-          <th>Endable?</th>
-          <th>First set</th>
-          <th>Follow set</th>
-        </tr>
+      <table className="symbols">
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Nullable?</th>
+            <th>Endable?</th>
+            <th>First set</th>
+            <th>Follow set</th>
+          </tr>
+        </thead>
 
-        {
-          info.productionOrder.map(function(symbol) {
-            const firstSymbols = first.get(symbol);
-            const followSymbols = follow.get(symbol);
+        <tbody>
+          {
+            info.productionOrder.map(function(symbol) {
+              const firstSymbols = first.get(symbol);
+              const followSymbols = follow.get(symbol);
 
-            return (
-              <tr>
-                <td>{formatSymbol(symbol, info)}</td>
-                <td>{nullable.has(symbol) ? "Nullable" : ""}</td>
-                <td>{endable.has(symbol) ? "Endable" : ""}</td>
-                <td>{formatSymbolList(listSymbols(firstSymbols, info.terminalOrder), info)}</td>
-                <td>{formatSymbolList(listSymbols(followSymbols, info.terminalOrder), info)}</td>
-              </tr>
-            );
-          })
-        }
+              return (
+                <tr key={symbol}>
+                  <td>{formatSymbol(symbol, info)}</td>
+                  <td>{nullable.has(symbol) ? "Nullable" : ""}</td>
+                  <td>{endable.has(symbol) ? "Endable" : ""}</td>
+                  <td>{formatSymbolList(listSymbols(firstSymbols, info.terminalOrder), info)}</td>
+                  <td>{formatSymbolList(listSymbols(followSymbols, info.terminalOrder), info)}</td>
+                </tr>
+              );
+            })
+          }
+        </tbody>
       </table>
     </>
   );

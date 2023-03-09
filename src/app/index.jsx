@@ -1,5 +1,5 @@
-import { render } from "preact";
-import { useReducer, useEffect } from "preact/hooks";
+import { createRoot } from "react-dom/client";
+import { useReducer, useEffect, StrictMode } from "react";
 import { reducer, init } from "./reducer.js";
 import ApplicationComponent from "../components/application_component.jsx";
 
@@ -41,4 +41,5 @@ function App() {
   );
 }
 
-render(<App />, document.getElementById("app"));
+const root = createRoot(document.getElementById("app"));
+root.render(<StrictMode><App /></StrictMode>);

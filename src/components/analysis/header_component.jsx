@@ -1,18 +1,26 @@
-export default function({ path }) {
-  let segments = [];
+import { Fragment } from "react";
 
-  path.forEach(function(segment) {
+export default function({ path }) {
+  const segments = path.map((segment, index) => {
     if (segment.path) {
-      segments.push(<a href={"#" + segment.path}>{segment.title}</a>);
-      segments.push(" / ");
+      return (
+        <Fragment key={index}>
+          <a href={"#" + segment.path}>{segment.title}</a>
+          {" / "}
+        </Fragment>
+      );
     } else {
-      segments.push(<b>{segment.title}</b>);
+      return (
+        <Fragment key={index}>
+          <b key={segment.path}>{segment.title}</b>
+        </Fragment>
+      );
     }
   });
 
   return (
-    <header class="header">
-      {segments.length > 0 ? <nav>{segments}</nav> : []}
+    <header className="header">
+      <nav>{segments}</nav>
     </header>
   );
 }

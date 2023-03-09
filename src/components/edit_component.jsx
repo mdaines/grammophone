@@ -1,8 +1,8 @@
 export default function({ spec, specChanged }) {
   return (
     <section id="edit">
-      <div class="spec-wrap">
-        <textarea class="spec" onInput={(e) => { specChanged(e.target.value); }}>{spec}</textarea>
+      <div className="spec-wrap">
+        <textarea className="spec" onInput={(e) => { specChanged(e.target.value); }} defaultValue={spec} />
       </div>
     </section>
   );

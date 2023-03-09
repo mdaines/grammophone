@@ -1,5 +1,5 @@
 import template from "./lr_automaton_graph.js";
-import { Component } from "preact";
+import { useRef, useEffect } from "react";
 
 let viz;
 
@@ -16,31 +16,24 @@ function render(src) {
     });
 }
 
-export default class AbstractLRAutomatonComponent extends Component {
-  shouldComponentUpdate(newProps) {
-    this.updateBaseWithRenderedSVG(newProps);
-    return false;
-  }
+export default function({ getCalculation, automatonCalculation, title }) {
+  const containerRef = useRef(null);
 
-  updateBaseWithRenderedSVG({ getCalculation, automatonCalculation, title }) {
-    const src = template({
-      info: getCalculation("grammar.symbolInfo"),
-      automaton: getCalculation(automatonCalculation),
-      productions: getCalculation("grammar.productions"),
-      start: getCalculation("grammar.start"),
-      title: title
-    });
+  const src = template({
+    info: getCalculation("grammar.symbolInfo"),
+    automaton: getCalculation(automatonCalculation),
+    productions: getCalculation("grammar.productions"),
+    start: getCalculation("grammar.start"),
+    title: title
+  });
 
+  useEffect(() => {
     render(src)
       .then((element) => {
-        this.base.innerHTML = "";
-        this.base.appendChild(element);
+        containerRef.current.innerHTML = "";
+        containerRef.current.appendChild(element);
       });
-  }
+  }, [src]);
 
-  render(props) {
-    this.updateBaseWithRenderedSVG(props);
-
-    return <div />;
-  }
+  return <div ref={containerRef} />;
 }

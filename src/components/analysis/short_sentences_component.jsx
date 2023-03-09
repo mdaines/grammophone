@@ -12,10 +12,10 @@ export default function({ grammar }) {
     examples = <p>{"No example sentences could be generated."}</p>;
   } else {
     examples = (
-      <ul class="symbols">
+      <ul className="symbols">
         {
-          values.map(function(sentence) {
-            return <li>{formatSentence(sentence, symbolInfo)}</li>;
+          values.map(function(sentence, index) {
+            return <li key={index}>{formatSentence(sentence, symbolInfo)}</li>;
           })
         }
       </ul>
