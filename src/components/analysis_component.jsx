@@ -1,4 +1,3 @@
-import BlankSlateComponent from "./blank_slate_component.jsx";
 import HeaderComponent from "./analysis/header_component.jsx";
 
 import NonterminalsComponent from "./analysis/nonterminals_component.jsx";
@@ -93,29 +92,21 @@ const ROUTES = {
 };
 
 export default function({ grammar, path }) {
-  if (typeof grammar !== "undefined") {
-    const route = ROUTES[path];
+  const route = ROUTES[path];
 
-    return (
-      <section id="analysis">
-        <HeaderComponent key="header" path={route.path} />
+  return (
+    <section id="analysis">
+      <HeaderComponent key="header" path={route.path} />
 
-        {
-          route.views.map((view) => {
-            return (
-              <article key={view.id} id={view.id}>
-                <view.component grammar={grammar} getCalculation={(name) => grammar.calculate(name)} />
-              </article>
-            );
-          })
-        }
-      </section>
-    );
-  } else {
-    return (
-      <section id="analysis">
-        <BlankSlateComponent />
-      </section>
-    );
-  }
+      {
+        route.views.map((view) => {
+          return (
+            <article key={view.id} id={view.id}>
+              <view.component grammar={grammar} getCalculation={(name) => grammar.calculate(name)} />
+            </article>
+          );
+        })
+      }
+    </section>
+  );
 }
