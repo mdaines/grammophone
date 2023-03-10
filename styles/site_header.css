@@ -1,4 +1,4 @@
-#project-header {
+#site-header {
   grid-area: header;
   justify-content: space-between;
   display: flex;
@@ -6,14 +6,14 @@
   padding: 10px;
 }
 
-#project-header h1 {
+#site-header h1 {
   margin: 0;
   padding: 6px 8px 5px 8px;
   font: 12pt helvetica;
   color: #fff;
 }
 
-#project-header ul {
+#site-header ul {
   display: flex;
   list-style: none;
   padding: 0;
@@ -21,7 +21,7 @@
   justify-content: flex-end;
 }
 
-#project-header a {
+#site-header a {
   display: block;
   color: #fff;
   text-decoration: none;
@@ -30,6 +30,6 @@
   font: 12pt helvetica;
 }
 
-#project-header a:hover {
+#site-header a:hover {
   background: #444;
 }

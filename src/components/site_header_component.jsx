@@ -1,6 +1,6 @@
 export default function() {
   return (
-    <div id="project-header">
+    <div id="site-header">
       <h1>Grammophone, a context-free grammar checker</h1>
 
       <ul>

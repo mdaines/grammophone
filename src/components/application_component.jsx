@@ -1,4 +1,4 @@
-import HeaderComponent from "./header_component.jsx";
+import SiteHeaderComponent from "./site_header_component.jsx";
 import EditorComponent from "./editor_component.jsx";
 import AnalysisComponent from "./analysis_component.jsx";
 import BlankSlateComponent from "./blank_slate_component.jsx";
@@ -6,7 +6,7 @@ import BlankSlateComponent from "./blank_slate_component.jsx";
 export default function({ spec, updateSpec, mode, edit, transform, analyze, error, grammar, path, transformStack, transformIndex, undoTransformation, redoTransformation, applyTransformation }) {
   return (
     <>
-      <HeaderComponent />
+      <SiteHeaderComponent />
 
       <EditorComponent
         mode={mode}
