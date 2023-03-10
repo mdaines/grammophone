@@ -3,3 +3,11 @@
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
+
+#analysis h1 {
+  font-size: 18pt;
+  font-weight: normal;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+

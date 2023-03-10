@@ -1,0 +1,35 @@
+table {
+  border-collapse: collapse;
+  border: hidden;
+  background: #fff;
+  margin: 1em 0;
+}
+
+td {
+  padding: 4px 6px;
+  min-width: 80px;
+  max-width: 300px;
+  border: 1px solid #eee;
+}
+
+th {
+  padding: 4px 6px;
+  border: 1px solid #eee;
+  border-bottom: 2px solid #000;
+}
+
+th[scope=row] {
+  border-bottom: 1px solid #eee;
+  border-right: 2px solid #000;
+}
+
+td ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+td li {
+  margin: 2pt 0;
+  text-align: left;
+}

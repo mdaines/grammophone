@@ -1,0 +1,11 @@
+#error {
+  padding: 10px;
+  background: #f00;
+  margin-right: -1px;
+  margin-top: -1px;
+  border-bottom: 1px solid #e11;
+  border-right: 1px solid #e11;
+  border-top: 1px solid #e11;
+  color: #fff;
+  font-weight: bold;
+}

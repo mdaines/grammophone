@@ -1,0 +1,13 @@
+.symbols i {
+  font-style: italic;
+  font-weight: normal;
+}
+
+.symbols u {
+  text-decoration: none;
+  background: #ddd;
+}
+
+.symbols b {
+  font: bold 10pt courier;
+}
