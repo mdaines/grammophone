@@ -1,8 +1,7 @@
 name: Deploy to Pages
 
 on:
-  push:
-    branches: ["gh-pages"]
+  workflow_dispatch
 
 permissions:
   contents: read
