@@ -19,8 +19,6 @@ export default function({ path }) {
   });
 
   return (
-    <header className="header">
-      <nav>{segments}</nav>
-    </header>
+    <nav id="path">{segments}</nav>
   );
 }

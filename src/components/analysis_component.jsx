@@ -1,4 +1,4 @@
-import HeaderComponent from "./analysis/header_component.jsx";
+import PathComponent from "./analysis/path_component.jsx";
 
 import * as NonterminalsComponent from "./analysis/nonterminals_component.jsx";
 import * as ParsingComponent from "./analysis/parsing_component.jsx";
@@ -93,14 +93,14 @@ export default function({ grammar, path }) {
   const route = ROUTES[path];
 
   return (
-    <section id="analysis">
-      <HeaderComponent key="header" path={route.path} />
+    <main id="analysis">
+      <PathComponent path={route.path} />
 
       {
         route.views.map((view) => {
           return <view.component key={view.id} grammar={grammar} getCalculation={(name) => grammar.calculate(name)} />;
         })
       }
-    </section>
+    </main>
   );
 }

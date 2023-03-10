@@ -11,7 +11,7 @@ body {
   bottom: 0;
   right: 0;
   display: grid;
-  grid-template-areas: "header header" "editor analysis";
+  grid-template-areas: "header header" "editor main";
   grid-template-rows: min-content 1fr;
   grid-template-columns: 300px 1fr;
 }
@@ -24,8 +24,8 @@ body {
   border-right: 1px solid #bbb;
 }
 
-#analysis {
-  grid-area: analysis;
+main {
+  grid-area: main;
   margin-left: 1px;
   padding: 20px;
   overflow: auto;

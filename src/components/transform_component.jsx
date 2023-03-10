@@ -66,58 +66,56 @@ export default function({ grammar, stack, index, undo, redo, apply }) {
   }
 
   return (
-    <section id="transform">
-      <article>
-        <div className="buttons">
-          {undoButton}
-          {redoButton}
-        </div>
+    <div id="transform">
+      <div className="buttons">
+        {undoButton}
+        {redoButton}
+      </div>
 
-        <table className="symbols productions" onChange={(e) => { apply(transformations[parseInt(e.target.value)]); }}>
-          <tbody>
-            {
-              productions.map(function(production, i) {
-                let result = [];
+      <table className="symbols productions" onChange={(e) => { apply(transformations[parseInt(e.target.value)]); }}>
+        <tbody>
+          {
+            productions.map(function(production, i) {
+              let result = [];
 
-                production.forEach(function(symbol, j) {
-                  let symbolElement;
+              production.forEach(function(symbol, j) {
+                let symbolElement;
 
-                  if (productionTransformations[i][j].length > 0) {
-                    symbolElement = <TransformPill symbol={symbol} info={info} productionTransformations={productionTransformations[i][j]} productions={productions} />;
-                  } else {
-                    symbolElement = formatSymbol(symbol, info);
-                  }
-
-                  result.push(
-                    <Fragment key={"s"+j}>
-                      {j > 0 ? " " : null}
-                      {symbolElement}
-                      {j === 0 ? " \u2192" : null}
-                    </Fragment>
-                  )
-                });
-
-                if (production.length === 1) {
-                  result.push(
-                    <Fragment key="epsilon">
-                      {" "}
-                      <u>{"\u03B5"}</u>
-                    </Fragment>
-                  );
+                if (productionTransformations[i][j].length > 0) {
+                  symbolElement = <TransformPill symbol={symbol} info={info} productionTransformations={productionTransformations[i][j]} productions={productions} />;
+                } else {
+                  symbolElement = formatSymbol(symbol, info);
                 }
 
-                return (
-                  <tr key={i}>
-                    <td>
-                      {result}
-                    </td>
-                  </tr>
+                result.push(
+                  <Fragment key={"s"+j}>
+                    {j > 0 ? " " : null}
+                    {symbolElement}
+                    {j === 0 ? " \u2192" : null}
+                  </Fragment>
+                )
+              });
+
+              if (production.length === 1) {
+                result.push(
+                  <Fragment key="epsilon">
+                    {" "}
+                    <u>{"\u03B5"}</u>
+                  </Fragment>
                 );
-              })
-            }
-          </tbody>
-        </table>
-      </article>
-    </section>
+              }
+
+              return (
+                <tr key={i}>
+                  <td>
+                    {result}
+                  </td>
+                </tr>
+              );
+            })
+          }
+        </tbody>
+      </table>
+    </div>
   );
 }

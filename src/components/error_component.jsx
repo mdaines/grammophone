@@ -1,7 +1,7 @@
 export default function({ error }) {
   return (
-    <section id="error">
+    <div id="error">
       <code>{error ? error.toString() : ""}</code>
-    </section>
+    </div>
   );
 }

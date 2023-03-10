@@ -1,4 +1,4 @@
-.blank-slate {
+#blank-slate .message {
   margin: 3em;
   padding: 0.5em 1.5em;
   background: #eee;
@@ -7,7 +7,7 @@
   font: 12pt helvetica;
 }
 
-.blank-slate pre {
+#blank-slate pre {
   background: #fff;
   font: 14pt courier;
   padding: 0.5em;

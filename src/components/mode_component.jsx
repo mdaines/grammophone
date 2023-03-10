@@ -8,12 +8,12 @@ export default function({ mode, edit, transform, analyze }) {
   }
 
   return (
-    <section id="mode">
+    <div id="mode">
       <input id="mode-edit" type="radio" name="mode" value="edit" checked={mode === "edit"} onChange={onChange} />
       <label className="left" htmlFor="mode-edit">Edit</label>
       <input id="mode-transform" type="radio" name="mode" value="transform" checked={mode === "transform"} onChange={onChange} />
       <label className="right" htmlFor="mode-transform">Transform</label>
       <button id="mode-analyze" disabled={mode !== "edit"} onClick={analyze}>Analyze</button>
-    </section>
+    </div>
   );
 }
