@@ -1,6 +1,6 @@
-@import '../styles/tables.css';
-@import '../styles/symbols.css';
-@import '../styles/ll1_table.css';
-@import '../styles/lr0_table.css';
-@import '../styles/lr1_table.css';
-@import '../styles/parsing.css';
+@import '../styles/analysis/tables.css';
+@import '../styles/analysis/symbols.css';
+@import '../styles/analysis/ll1_table.css';
+@import '../styles/analysis/lr0_table.css';
+@import '../styles/analysis/lr1_table.css';
+@import '../styles/analysis/parsing.css';
