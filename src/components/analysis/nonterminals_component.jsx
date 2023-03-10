@@ -1,5 +1,8 @@
 import { formatSymbol, formatSymbolList, listSymbols } from "../helpers.js";
 
+export const ID = "nonterminals";
+export const TITLE = "Nonterminals";
+
 export default function({ getCalculation }) {
   const nullable = getCalculation("grammar.nullable");
   const endable = getCalculation("grammar.endable");
@@ -8,8 +11,8 @@ export default function({ getCalculation }) {
   const info = getCalculation("grammar.symbolInfo");
 
   return (
-    <>
-      <h1>Nonterminals</h1>
+    <section id={ID} className="analysis">
+      <h2>{TITLE}</h2>
 
       <table className="symbols">
         <thead>
@@ -41,6 +44,6 @@ export default function({ getCalculation }) {
           }
         </tbody>
       </table>
-    </>
+    </section>
   );
 }

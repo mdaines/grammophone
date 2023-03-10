@@ -20,6 +20,7 @@ function App({ grammar }) {
 
   return (
     <>
+      <h1>Gallery</h1>
       <SanityComponent grammar={grammar} getCalculation={getCalculation} />
       <NonterminalsComponent grammar={grammar} getCalculation={getCalculation} />
       <ShortSentencesComponent grammar={grammar} getCalculation={getCalculation} />

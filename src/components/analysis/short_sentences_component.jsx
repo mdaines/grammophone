@@ -1,6 +1,9 @@
 import { formatSentence } from "../helpers.js";
 import { makeSentencesIterator, takeFromIterator } from "../../grammar/sentences_iterator.js";
 
+export const ID = "short_sentences";
+export const TITLE = "Example Sentences";
+
 export default function({ grammar }) {
   const symbolInfo = grammar.calculate("grammar.symbolInfo");
   const iterator = makeSentencesIterator(grammar);
@@ -27,10 +30,10 @@ export default function({ grammar }) {
   }
 
   return (
-    <>
-      <h1>Example Sentences</h1>
+    <section id={ID} className="analysis">
+      <h2>{TITLE}</h2>
       {examples}
       {link}
-    </>
+    </section>
   );
 }

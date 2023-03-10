@@ -68,6 +68,9 @@ function formatAmbiguous(ambiguous, info) {
   }
 }
 
+export const ID = "sanity";
+export const TITLE = "Sanity Checks";
+
 export default function({ getCalculation }) {
   const unreachable = getCalculation("grammar.unreachable");
   const unrealizable = getCalculation("grammar.unrealizable");
@@ -78,8 +81,8 @@ export default function({ getCalculation }) {
   const info = getCalculation("grammar.symbolInfo");
 
   return (
-    <>
-      <h1>Sanity Checks</h1>
+    <section id={ID} className="analysis">
+      <h2>{TITLE}</h2>
 
       <ul className="symbols">
         {formatUnreachable(unreachable, info)}
@@ -88,6 +91,6 @@ export default function({ getCalculation }) {
         {formatNullAmbiguity(nullAmbiguity, productions, info)}
         {formatAmbiguous(ambiguous, info)}
       </ul>
-    </>
+    </section>
   );
 }

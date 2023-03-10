@@ -6,7 +6,10 @@ function takePage(iterator) {
   return takeFromIterator(iterator, 20, 1000);
 }
 
-export default class ListComponent extends Component {
+export const ID = "sentences";
+export const TITLE = "Example Sentences";
+
+export default class extends Component {
   constructor(props) {
     super(props);
 
@@ -42,11 +45,11 @@ export default class ListComponent extends Component {
     }
 
     return (
-      <>
-        <h1>Example Sentences</h1>
+      <section id={ID} className="analysis">
+        <h2>{TITLE}</h2>
         {examples}
         <p><button disabled={this.state.done} onClick={() => { this.more(); }}>{"Generate more sentences"}</button></p>
-      </>
+      </section>
     );
   }
 }

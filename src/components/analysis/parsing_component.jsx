@@ -6,12 +6,15 @@ function formatClassification(cs, c, n) {
   }
 }
 
+export const ID = "parsing";
+export const TITLE = "Parsing Algorithms";
+
 export default function({ getCalculation }) {
   const classification = getCalculation("grammar.classification");
 
   return (
-    <>
-      <h1>Parsing Algorithms</h1>
+    <section id={ID} className="analysis">
+      <h2>{TITLE}</h2>
       <table className="parsing-algorithm-table">
         <tbody>
           <tr>
@@ -57,6 +60,6 @@ export default function({ getCalculation }) {
           </tr>
         </tbody>
       </table>
-    </>
+    </section>
   );
 }
