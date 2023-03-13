@@ -4,8 +4,8 @@ import { Fragment } from "react";
 function TransformPill({ symbol, symbolInfo, productionTransformations, productions }) {
   return (
     <span className="pill">
-      <select defaultValue="symbol">
       {formatSymbol(symbol, symbolInfo)}
+      <select value="symbol" readOnly>
         <option disabled={true} value="symbol">{symbol}</option>
         {
           productionTransformations.map(function(t, index) {

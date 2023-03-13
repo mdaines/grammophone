@@ -1,5 +1,7 @@
 # Changelog
 
+* Fix that a previous transformation option could remain selected for a nonterminal after applying a transformation, preventing it from being selected again. Instead, the first option should always be selected.
+
 * Correct the example outputs for the LR(1) automaton calculation. These actually had the output of the LALR(1) automaton calculation, which takes as input the LR(1) automaton, and incorrectly overwrites parts of it. This bug is fixed in a later commit.
 
 * Clean up tests, and add test cases (beyond the example outputs) for several calculations.
