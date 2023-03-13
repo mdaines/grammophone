@@ -1,8 +1,6 @@
 import { automaton } from "./helpers.js";
-import lr0 from "./build/lr0.js";
+import * as build from "./build/lr0.js";
 
-export default function(grammar) {
-
-  return automaton(grammar, lr0);
-
+export default function(calculations) {
+  return automaton(calculations, build);
 }

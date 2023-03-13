@@ -1,12 +1,11 @@
 import { END } from "../../../symbols.js";
 import { addReduceAction } from "./helpers.js";
 
-export default function(grammar) {
+export default function({ productions, lr1Automaton: automaton }) {
 
   var i, j, s;
   var state, actions, item;
   var table = [];
-  var automaton = grammar.calculate("parsing.lr.lr1_automaton");
 
   for (i = 0; i < automaton.length; i++) {
 
@@ -29,7 +28,7 @@ export default function(grammar) {
 
       } else {
 
-        if (item.index == grammar.productions[item.production].length - 1) {
+        if (item.index == productions[item.production].length - 1) {
           addReduceAction(actions, item.lookahead, item.production);
         }
 

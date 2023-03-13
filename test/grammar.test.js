@@ -17,21 +17,12 @@ describe("Grammar", function() {
     });
   });
 
-  describe("getNewSymbol", function() {
-    it("returns a symbol not already in the grammar", function() {
-      let grammar = new Grammar([["A", "a", "a2"], ["B2", "B3"]]);
+  describe("calculations", function() {
+    it("returns an object with memoized calculation getters", function() {
+      const grammar = new Grammar([["A", "a"]]);
 
-      assert.deepStrictEqual(grammar.getNewSymbol("A"), "A2");
-      assert.deepStrictEqual(grammar.getNewSymbol("a"), "a3");
-      assert.deepStrictEqual(grammar.getNewSymbol("a2"), "a3");
-      assert.deepStrictEqual(grammar.getNewSymbol("B2"), "B4");
-      assert.deepStrictEqual(grammar.getNewSymbol("B3"), "B4");
-    });
-
-    it("returns the same symbol if the symbol is not in the grammar", function() {
-      let grammar = new Grammar([["A", "a"]]);
-
-      assert.deepStrictEqual(grammar.getNewSymbol("x"), "x");
+      assert.deepStrictEqual(grammar.calculations.symbols, new Set(["A", "a"]));
+      assert.deepStrictEqual(Object.getOwnPropertyDescriptor(grammar.calculations, "symbols").value, new Set(["A", "a"]));
     });
   });
 });

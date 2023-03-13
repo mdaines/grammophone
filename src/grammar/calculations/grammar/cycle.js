@@ -1,36 +1,34 @@
 import Relation from "../../../relation.js";
 
-export default function(grammar) {
+export default function({ productions, nonterminals, nullable }) {
 
   var relation;
   var i, j, k;
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var nullable = grammar.calculate("grammar.nullable");
 
   // Build relation
   // (x,y) | x -> a y b, y a nonterminal, a and b nullable
 
   relation = new Relation();
 
-  for (i = 0; i < grammar.productions.length; i++) {
-    for (j = 1; j < grammar.productions[i].length; j++) {
+  for (i = 0; i < productions.length; i++) {
+    for (j = 1; j < productions[i].length; j++) {
 
-      if (nonterminals.has(grammar.productions[i][j])) {
+      if (nonterminals.has(productions[i][j])) {
 
-        for (k = 1; k < grammar.productions[i].length; k++) {
+        for (k = 1; k < productions[i].length; k++) {
 
           if (j === k) {
             continue;
           }
 
-          if (!nonterminals.has(grammar.productions[i][k]) || !nullable.has(grammar.productions[i][k])) {
+          if (!nonterminals.has(productions[i][k]) || !nullable.has(productions[i][k])) {
             break;
           }
 
         }
 
-        if (k === grammar.productions[i].length) {
-          relation.add(grammar.productions[i][0], grammar.productions[i][j]);
+        if (k === productions[i].length) {
+          relation.add(productions[i][0], productions[i][j]);
         }
 
       }

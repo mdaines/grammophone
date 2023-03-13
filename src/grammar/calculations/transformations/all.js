@@ -1,7 +1,7 @@
-export default function(grammar) {
-  return [].concat(grammar.calculate("transformations.expand"))
-           .concat(grammar.calculate("transformations.removeImmediateLeftRecursion"))
-           .concat(grammar.calculate("transformations.leftFactor"))
-           .concat(grammar.calculate("transformations.epsilonSeparate"))
-           .concat(grammar.calculate("transformations.removeUnreachable"));
+export default function(calculations) {
+  return [].concat(calculations.expandTransformation)
+           .concat(calculations.removeImmediateLeftRecursionTransformation)
+           .concat(calculations.leftFactorTransformation)
+           .concat(calculations.epsilonSeparateTransformation)
+           .concat(calculations.removeUnreachableTransformation);
 }

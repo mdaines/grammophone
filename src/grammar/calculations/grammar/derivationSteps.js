@@ -1,7 +1,4 @@
-export default function(grammar) {
-  let nonterminals = grammar.calculate("grammar.nonterminals");
-  let unrealizable = grammar.calculate("grammar.unrealizable");
-
+export default function({ productions, nonterminals, unrealizable }) {
   let symbolCounts = new Map();
   let productionCounts = new Map();
 
@@ -12,9 +9,9 @@ export default function(grammar) {
     symbolCounts.set(s, undefined);
   }
 
-  for (let i = 0; i < grammar.productions.length; i++) {
-    for (let j = 1; j < grammar.productions[i].length; j++) {
-      let s = grammar.productions[i][j];
+  for (let i = 0; i < productions.length; i++) {
+    for (let j = 1; j < productions[i].length; j++) {
+      let s = productions[i][j];
 
       if (unrealizable.has(s)) {
         productionCounts.set(i, undefined);
@@ -23,8 +20,8 @@ export default function(grammar) {
     }
   }
 
-  while (productionCounts.size < grammar.productions.length) {
-    for (let i = 0; i < grammar.productions.length; i++) {
+  while (productionCounts.size < productions.length) {
+    for (let i = 0; i < productions.length; i++) {
       if (productionCounts.has(i)) {
         continue;
       }
@@ -33,8 +30,8 @@ export default function(grammar) {
 
       let j;
 
-      for (j = 1; j < grammar.productions[i].length; j++) {
-        let s = grammar.productions[i][j];
+      for (j = 1; j < productions[i].length; j++) {
+        let s = productions[i][j];
 
         if (symbolCounts.has(s)) {
           steps += symbolCounts.get(s);
@@ -43,8 +40,8 @@ export default function(grammar) {
         }
       }
 
-      if (j == grammar.productions[i].length) {
-        let h = grammar.productions[i][0];
+      if (j == productions[i].length) {
+        let h = productions[i][0];
 
         if (!symbolCounts.has(h)) {
           symbolCounts.set(h, steps);

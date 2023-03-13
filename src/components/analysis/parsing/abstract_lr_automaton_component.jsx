@@ -16,16 +16,16 @@ function render(src) {
     });
 }
 
-export default function({ getCalculation, automatonCalculation, title }) {
-  const containerRef = useRef(null);
-
+export default function({ grammar, automaton, title }) {
+  const { productions, symbolInfo, start } = grammar.calculations;
   const src = template({
-    info: getCalculation("grammar.symbolInfo"),
-    automaton: getCalculation(automatonCalculation),
-    productions: getCalculation("grammar.productions"),
-    start: getCalculation("grammar.start"),
-    title: title
+    symbolInfo,
+    automaton,
+    productions,
+    start,
+    title
   });
+  const containerRef = useRef(null);
 
   useEffect(() => {
     render(src)

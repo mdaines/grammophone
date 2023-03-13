@@ -71,25 +71,20 @@ function formatAmbiguous(ambiguous, info) {
 export const ID = "sanity";
 export const TITLE = "Sanity Checks";
 
-export default function({ getCalculation }) {
-  const unreachable = getCalculation("grammar.unreachable");
-  const unrealizable = getCalculation("grammar.unrealizable");
-  const cycle = getCalculation("grammar.cycle");
-  const nullAmbiguity = getCalculation("grammar.nullAmbiguity");
-  const ambiguous = getCalculation("grammar.ambiguous");
-  const productions = getCalculation("grammar.productions");
-  const info = getCalculation("grammar.symbolInfo");
+export default function({ grammar }) {
+  const { unreachable, unrealizable, cycle, nullAmbiguity, productions, symbolInfo } = grammar.calculations;
+  const ambiguous = grammar.ambiguousSentenceExample;
 
   return (
     <section id={ID} className="analysis">
       <h2>{TITLE}</h2>
 
       <ul className="symbols">
-        {formatUnreachable(unreachable, info)}
-        {formatUnrealizable(unrealizable, info)}
-        {formatCycle(cycle, info)}
-        {formatNullAmbiguity(nullAmbiguity, productions, info)}
-        {formatAmbiguous(ambiguous, info)}
+        {formatUnreachable(unreachable, symbolInfo)}
+        {formatUnrealizable(unrealizable, symbolInfo)}
+        {formatCycle(cycle, symbolInfo)}
+        {formatNullAmbiguity(nullAmbiguity, productions, symbolInfo)}
+        {formatAmbiguous(ambiguous, symbolInfo)}
       </ul>
     </section>
   );

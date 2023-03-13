@@ -1,0 +1,15 @@
+# Changelog
+
+* Correct the example outputs for the LR(1) automaton calculation. These actually had the output of the LALR(1) automaton calculation, which takes as input the LR(1) automaton, and incorrectly overwrites parts of it. This bug is fixed in a later commit.
+
+* Clean up tests, and add test cases (beyond the example outputs) for several calculations.
+
+* Introduce the `calculations` property on `Grammar` instances. This replaces the `getCalculation` method, which took a string identifying a calculation and dispatched to the correct calculation function, memoizing the result. The new property returns an object with individual memoized properties, which can be destructured in calculation functions, like this:
+
+  ```js
+  export default function({ symbols, nonterminals }) {
+    // ...
+  }
+  ```
+  
+  This avoids passing the grammar instance to calculation functions, which aren't really supposed to modify it or depend on it other than asking for calculations, and removes the dotted calculation names like "grammar.terminals".

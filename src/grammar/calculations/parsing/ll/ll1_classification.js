@@ -1,11 +1,11 @@
 import * as SetOperations from "../../../../set_operations.js";
+import { getFirst } from "../helpers.js";
 
-export default function(grammar) {
+export default function(calculations) {
+  const { nullAmbiguity } = calculations;
 
   var i, k, l, s;
-  var head, body, first;
-
-  var nullAmbiguity = grammar.calculate("grammar.nullAmbiguity");
+  var head, body, bodyFirst;
 
   // We can return immediately if the grammar contains a null ambiguity.
 
@@ -13,10 +13,7 @@ export default function(grammar) {
     return { member: false, reason: "it contains a null ambiguity" };
   }
 
-  var follow = grammar.calculate("grammar.follow");
-  var terminals = grammar.calculate("grammar.terminals");
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var nullable = grammar.calculate("grammar.nullable");
+  const { productions, first, follow, terminals, nonterminals, nullable } = calculations;
 
   // Check for first set clashes. Instead of checking intersections of
   // first sets of all productions alpha_i for a given nonterminal A,
@@ -37,14 +34,14 @@ export default function(grammar) {
 
   }
 
-  for (i = 0; i < grammar.productions.length; i++) {
+  for (i = 0; i < productions.length; i++) {
 
-    head = grammar.productions[i][0];
-    body = grammar.productions[i].slice(1);
+    head = productions[i][0];
+    body = productions[i].slice(1);
 
-    first = grammar.getFirst(body);
+    bodyFirst = getFirst(calculations, body);
 
-    for (s of first) {
+    for (s of bodyFirst) {
       if (table[head][s]) {
         return { member: false, reason: "it contains a first set clash" };
       }
@@ -56,8 +53,6 @@ export default function(grammar) {
 
   // Check for first/follow set clashes. That is, check that every nullable
   // production has disjoint first and follow sets.
-
-  first = grammar.calculate("grammar.first");
 
   for (k of nullable) {
     if (SetOperations.any(SetOperations.intersection(first.get(k), follow.get(k)))) {

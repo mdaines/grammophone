@@ -1,7 +1,5 @@
 import { classifyLR1 } from "./helpers.js";
 
-export default function(grammar) {
-
-  return classifyLR1(grammar.calculate("parsing.lr.lalr1_table"));
-
+export default function({ lalr1Table: table }) {
+  return classifyLR1(table);
 }

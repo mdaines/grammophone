@@ -1,14 +1,13 @@
 import { END } from "../../../symbols.js";
+import { getFirst, isNullable } from "../helpers.js";
 
-export default function(grammar) {
+export default function(calculations) {
+
+  const { productions, terminals, nonterminals, follow } = calculations;
 
   var i, k, l, s;
   var table = {};
-  var head, body, first;
-
-  var terminals = grammar.calculate("grammar.terminals");
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var follow = grammar.calculate("grammar.follow");
+  var head, body, bodyFirst;
 
   // Populate table with blank arrays
 
@@ -26,26 +25,26 @@ export default function(grammar) {
 
   // Collect moves
 
-  for (i = 0; i < grammar.productions.length; i++) {
+  for (i = 0; i < productions.length; i++) {
 
-    head = grammar.productions[i][0];
-    body = grammar.productions[i].slice(1);
+    head = productions[i][0];
+    body = productions[i].slice(1);
 
     // Get the first set of the production's body
 
-    first = grammar.getFirst(body);
+    bodyFirst = getFirst(calculations, body);
 
     // For each symbol s in first(body), add the production
     // to table[nonterminal][s].
 
-    for (s of first) {
+    for (s of bodyFirst) {
       table[head][s].push(i);
     }
 
     // If the production is nullable, for each symbol s of follow(head),
     // add this production to table[head][s].
 
-    if (grammar.isNullable(body)) {
+    if (isNullable(calculations, body)) {
 
       for (s of follow.get(head)) {
         table[head][s].push(i);

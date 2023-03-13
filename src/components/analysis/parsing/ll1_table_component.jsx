@@ -4,10 +4,8 @@ import { END } from "../../../grammar/symbols.js";
 export const ID = "ll1_table";
 export const TITLE = "LL(1) Parsing Table";
 
-export default function({ getCalculation }) {
-  const info = getCalculation("grammar.symbolInfo");
-  const table = getCalculation("parsing.ll.ll1_table");
-  const productions = getCalculation("grammar.productions");
+export default function({ grammar }) {
+  const { symbolInfo, ll1Table: table, productions } = grammar.calculations;
 
   return (
     <section id={ID} className="analysis">
@@ -18,36 +16,36 @@ export default function({ getCalculation }) {
           <col />
         </colgroup>
         <colgroup className="t">
-          {fillArray(info.terminals.size + 1, (index) => <col key={index} />)}
+          {fillArray(symbolInfo.terminals.size + 1, (index) => <col key={index} />)}
         </colgroup>
 
         <thead>
           <tr>
             <th />
             {
-              info.terminalOrder.map(function(symbol, index) {
-                return <th key={index}>{formatSymbol(symbol, info)}</th>;
+              symbolInfo.terminalOrder.map(function(symbol, index) {
+                return <th key={index}>{formatSymbol(symbol, symbolInfo)}</th>;
               })
             }
-            <th>{formatSymbol(END, info)}</th>
+            <th>{formatSymbol(END, symbolInfo)}</th>
           </tr>
         </thead>
 
         <tbody>
           {
-            info.productionOrder.map(function(nt, index) {
+            symbolInfo.productionOrder.map(function(nt, index) {
               return (
                 <tr key={index}>
-                  <th scope="row">{formatSymbol(nt, info)}</th>
+                  <th scope="row">{formatSymbol(nt, symbolInfo)}</th>
                   {
-                    info.terminalOrder.concat(END).map(function(t, index) {
+                    symbolInfo.terminalOrder.concat(END).map(function(t, index) {
                       if (typeof table[nt][t] !== "undefined") {
                         return (
                           <td key={index} className={table[nt][t].length > 1 ? "conflict" : ""}>
                             <ul>
                               {
                                 table[nt][t].map(function(p, index) {
-                                  return <li key={index}>{formatProduction(productions[p], info)}</li>;
+                                  return <li key={index}>{formatProduction(productions[p], symbolInfo)}</li>;
                                 })
                               }
                             </ul>

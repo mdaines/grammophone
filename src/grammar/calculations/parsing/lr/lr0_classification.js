@@ -1,8 +1,6 @@
-export default function(grammar) {
+export default function({ lr0Table: table, terminals }) {
 
   var i, s;
-  var table = grammar.calculate("parsing.lr.lr0_table");
-  var terminals = grammar.calculate("grammar.terminals");
 
   for (i = 0; i < table.length; i++) {
 

@@ -1,11 +1,15 @@
-export default function(grammar) {
-
+export default function({
+  ll1Classification: ll1,
+  lr0Classification: lr0,
+  slr1Classification: slr1,
+  lr1Classification: lr1,
+  lalr1Classification: lalr1
+}) {
   return {
-    "ll1": grammar.calculate("parsing.ll.ll1_classification"),
-    "lr0": grammar.calculate("parsing.lr.lr0_classification"),
-    "slr1": grammar.calculate("parsing.lr.slr1_classification"),
-    "lr1": grammar.calculate("parsing.lr.lr1_classification"),
-    "lalr1": grammar.calculate("parsing.lr.lalr1_classification")
+    ll1,
+    lr0,
+    slr1,
+    lr1,
+    lalr1
   };
-
 }

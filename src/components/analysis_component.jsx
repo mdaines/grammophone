@@ -98,7 +98,7 @@ export default function({ grammar, path }) {
 
       {
         route.views.map((view) => {
-          return <view.component key={view.id} grammar={grammar} getCalculation={(name) => grammar.calculate(name)} />;
+          return <view.component key={view.id} grammar={grammar} />;
         })
       }
     </main>

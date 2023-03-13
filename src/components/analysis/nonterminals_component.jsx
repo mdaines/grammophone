@@ -3,12 +3,8 @@ import { formatSymbol, formatSymbolList, listSymbols } from "../helpers.js";
 export const ID = "nonterminals";
 export const TITLE = "Nonterminals";
 
-export default function({ getCalculation }) {
-  const nullable = getCalculation("grammar.nullable");
-  const endable = getCalculation("grammar.endable");
-  const first = getCalculation("grammar.first");
-  const follow = getCalculation("grammar.follow");
-  const info = getCalculation("grammar.symbolInfo");
+export default function({ grammar }) {
+  const { nullable, endable, first, follow, symbolInfo } = grammar.calculations;
 
   return (
     <section id={ID} className="analysis">
@@ -27,17 +23,17 @@ export default function({ getCalculation }) {
 
         <tbody>
           {
-            info.productionOrder.map(function(symbol) {
+            symbolInfo.productionOrder.map(function(symbol) {
               const firstSymbols = first.get(symbol);
               const followSymbols = follow.get(symbol);
 
               return (
                 <tr key={symbol}>
-                  <td>{formatSymbol(symbol, info)}</td>
+                  <td>{formatSymbol(symbol, symbolInfo)}</td>
                   <td>{nullable.has(symbol) ? "Nullable" : ""}</td>
                   <td>{endable.has(symbol) ? "Endable" : ""}</td>
-                  <td>{formatSymbolList(listSymbols(firstSymbols, info.terminalOrder), info)}</td>
-                  <td>{formatSymbolList(listSymbols(followSymbols, info.terminalOrder), info)}</td>
+                  <td>{formatSymbolList(listSymbols(firstSymbols, symbolInfo.terminalOrder), symbolInfo)}</td>
+                  <td>{formatSymbolList(listSymbols(followSymbols, symbolInfo.terminalOrder), symbolInfo)}</td>
                 </tr>
               );
             })

@@ -1,4 +1,4 @@
-function removeUnreachable(grammar, group) {
+function removeUnreachable({ productions }, group) {
 
   var i;
 
@@ -7,7 +7,7 @@ function removeUnreachable(grammar, group) {
 
   // Remove all productions in the group.
 
-  for (i = 0; i < grammar.productions.length; i++) {
+  for (i = 0; i < productions.length; i++) {
 
     if (group.indexOf(i) !== -1) {
       changes.push({ index: i + offset, operation: "delete" });
@@ -20,9 +20,8 @@ function removeUnreachable(grammar, group) {
 
 }
 
-export default function(grammar) {
+export default function({ productions, unreachable }) {
 
-  var unreachable = grammar.calculate("grammar.unreachable");
   var nt;
   var i;
   var result = [];
@@ -32,9 +31,9 @@ export default function(grammar) {
 
     group = [];
 
-    for (i = 0; i < grammar.productions.length; i++) {
+    for (i = 0; i < productions.length; i++) {
 
-      if (grammar.productions[i][0] === nt) {
+      if (productions[i][0] === nt) {
         group.push(i);
       }
 
@@ -46,7 +45,7 @@ export default function(grammar) {
         name: "removeUnreachable",
         production: group[0],
         symbol: 0,
-        changes: removeUnreachable(grammar, group)
+        changes: removeUnreachable({ productions }, group)
       });
 
     }

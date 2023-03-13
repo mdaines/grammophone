@@ -1,7 +1,5 @@
-export default function(grammar) {
+export default function({ productions, nonterminals, nullable }) {
 
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var nullable = grammar.calculate("grammar.nullable");
   var found;
   var nt;
   var i, j;
@@ -16,13 +14,13 @@ export default function(grammar) {
 
     found = undefined;
 
-    for (i = 0; i < grammar.productions.length; i++) {
+    for (i = 0; i < productions.length; i++) {
 
-      if (grammar.productions[i][0] == nt) {
+      if (productions[i][0] == nt) {
 
         // An empty production is nullable.
 
-        if (grammar.productions[i].length == 1) {
+        if (productions[i].length == 1) {
 
           if (typeof found !== "undefined") {
             return i < found ? [i, found] : [found, i];
@@ -36,15 +34,15 @@ export default function(grammar) {
 
         // A production is nullable if all of its symbols are nullable.
 
-        for (j = 1; j < grammar.productions[i].length; j++) {
+        for (j = 1; j < productions[i].length; j++) {
 
-          if (!nullable.has(grammar.productions[i][j])) {
+          if (!nullable.has(productions[i][j])) {
             break;
           }
 
         }
 
-        if (j == grammar.productions[i].length) {
+        if (j == productions[i].length) {
 
           if (typeof found !== "undefined") {
             return i < found ? [i, found] : [found, i];

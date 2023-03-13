@@ -1,14 +1,10 @@
 import Relation from "../../../relation.js";
 import { END } from "../../symbols.js";
 
-export default function(grammar) {
+export default function({ productions, first, nullable, nonterminals, start }) {
 
   var immediate, propagation, result;
   var i, j, k, s;
-  var first = grammar.calculate("grammar.first");
-  var nullable = grammar.calculate("grammar.nullable");
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var start = grammar.calculate("grammar.start");
 
   immediate = new Relation();
   propagation = new Relation();
@@ -19,34 +15,34 @@ export default function(grammar) {
 
   // Given a production X -> ... A β, follow(A) includes first(β), except for the empty string.
 
-  for (i = 0; i < grammar.productions.length; i++) {
+  for (i = 0; i < productions.length; i++) {
 
-    for (j = 1; j < grammar.productions[i].length - 1; j++) {
+    for (j = 1; j < productions[i].length - 1; j++) {
 
       // If the symbol is a nonterminal...
 
-      if (nonterminals.has(grammar.productions[i][j])) {
+      if (nonterminals.has(productions[i][j])) {
 
         // Add the first set of the remaining symbols to the follow set of the symbol
 
-        for (k = j + 1; k < grammar.productions[i].length; k++) {
+        for (k = j + 1; k < productions[i].length; k++) {
 
           // If this symbol is a terminal, add it, and then stop adding.
 
-          if (!nonterminals.has(grammar.productions[i][k])) {
-            immediate.add(grammar.productions[i][j], grammar.productions[i][k]);
+          if (!nonterminals.has(productions[i][k])) {
+            immediate.add(productions[i][j], productions[i][k]);
             break;
           }
 
           // If it is a nonterminal, add the first set of that nonterminal.
 
-          for (s of first.get(grammar.productions[i][k])) {
-            immediate.add(grammar.productions[i][j], s);
+          for (s of first.get(productions[i][k])) {
+            immediate.add(productions[i][j], s);
           }
 
           // Stop if it isn't nullable.
 
-          if (!nullable.has(grammar.productions[i][k])) {
+          if (!nullable.has(productions[i][k])) {
             break;
           }
 
@@ -60,21 +56,21 @@ export default function(grammar) {
 
   // Given a production B -> ... A β where β is nullable or is the empty string, follow(A) includes follow(B)
 
-  for (i = 0; i < grammar.productions.length; i++) {
+  for (i = 0; i < productions.length; i++) {
 
     // Scan from the end of the right side of the production to the beginning...
 
-    for (j = grammar.productions[i].length - 1; j > 0; j--) {
+    for (j = productions[i].length - 1; j > 0; j--) {
 
       // If the symbol is a nonterminal, add the left side.
 
-      if (nonterminals.has(grammar.productions[i][j])) {
-        propagation.add(grammar.productions[i][j], grammar.productions[i][0]);
+      if (nonterminals.has(productions[i][j])) {
+        propagation.add(productions[i][j], productions[i][0]);
       }
 
       // If it isn't nullable, stop.
 
-      if (!nullable.has(grammar.productions[i][j])) {
+      if (!nullable.has(productions[i][j])) {
         break;
       }
 

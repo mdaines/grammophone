@@ -1,8 +1,7 @@
-export default function(grammar) {
+export default function({ productions, nonterminals }) {
 
   var marked, added, unrealizable;
   var i, j, s;
-  var nonterminals = grammar.calculate("grammar.nonterminals");
 
   // Is a particular nonterminal realizable?
 
@@ -12,13 +11,13 @@ export default function(grammar) {
 
     added = [];
 
-    for (i = 0; i < grammar.productions.length; i++) {
+    for (i = 0; i < productions.length; i++) {
 
       // Are there any unmarked nonterminals? Break at the first one.
 
-      for (j = 1; j < grammar.productions[i].length; j++) {
+      for (j = 1; j < productions[i].length; j++) {
 
-        if (!marked.has(grammar.productions[i][j]) && nonterminals.has(grammar.productions[i][j])) {
+        if (!marked.has(productions[i][j]) && nonterminals.has(productions[i][j])) {
           break;
         }
 
@@ -29,9 +28,9 @@ export default function(grammar) {
       // either marked or terminals), mark the head and record
       // that we marked it in this step.
 
-      if (!marked.has(grammar.productions[i][0]) && j == grammar.productions[i].length) {
-        marked.add(grammar.productions[i][0]);
-        added.push(grammar.productions[i][0]);
+      if (!marked.has(productions[i][0]) && j == productions[i].length) {
+        marked.add(productions[i][0]);
+        added.push(productions[i][0]);
       }
 
     }

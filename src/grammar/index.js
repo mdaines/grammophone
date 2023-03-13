@@ -1,5 +1,5 @@
-import Calculations from "./calculations/index.js";
-import { END } from "./symbols.js";
+import { makeCalculationsMemo } from "./calculations_memo.js";
+import { makeSentencesIterator, ambiguousSentenceExample } from "./sentences.js";
 
 export default class Grammar {
   constructor(productions) {
@@ -38,21 +38,6 @@ export default class Grammar {
     }
 
     this.productions = productions;
-    this.calculations = {};
-  }
-
-  calculate(name) {
-
-    if (typeof Calculations[name] === "undefined") {
-      throw new Error("Undefined grammar calculation " + name);
-    }
-
-    if (typeof this.calculations[name] === "undefined") {
-      this.calculations[name] = Calculations[name](this);
-    }
-
-    return this.calculations[name];
-
   }
 
   transform(transformation) {
@@ -70,134 +55,6 @@ export default class Grammar {
     });
 
     return new Grammar(productions);
-
-  }
-
-  getNewSymbol(symbol) {
-    let symbols = this.calculate("grammar.symbols");
-
-    if (!symbols.has(symbol)) {
-      return symbol;
-    }
-
-    let match = symbol.match(/(\d+)$/);
-    let base, number;
-
-    if (match) {
-      base = symbol.substring(0, match.index);
-      number = parseInt(match[1], 10) + 1;
-    } else {
-      base = symbol;
-      number = 2;
-    }
-
-    let newSymbol;
-
-    do {
-      newSymbol = base + String(number);
-      number += 1;
-    } while (symbols.has(newSymbol));
-
-    return newSymbol;
-  }
-
-  getFirst(symbols) {
-
-    var i, k;
-    var s;
-    var result;
-
-    var first = this.calculate("grammar.first");
-    var nullable = this.calculate("grammar.nullable");
-    var terminals = this.calculate("grammar.terminals");
-    var nonterminals = this.calculate("grammar.nonterminals");
-
-    result = new Set();
-
-    for (i = 0; i < symbols.length; i++) {
-
-      s = symbols[i];
-
-      if (s === END) {
-
-        result.add(s);
-        break;
-
-      } else if (terminals.has(s)) {
-
-        result.add(s);
-        break;
-
-      } else if (nonterminals.has(s)) {
-
-        for (k of first.get(s)) {
-          result.add(k);
-        }
-
-        if (!nullable.has(s)) {
-          break;
-        }
-
-      } else {
-
-        throw new Error("Unexpected symbol " + s);
-
-      }
-
-    }
-
-    return result;
-
-  }
-
-  isNullable(symbols) {
-
-    var i, s;
-
-    var nullable = this.calculate("grammar.nullable");
-    var terminals = this.calculate("grammar.terminals");
-    var nonterminals = this.calculate("grammar.nonterminals");
-
-    for (i = 0; i < symbols.length; i++) {
-
-      s = symbols[i];
-
-      if (nonterminals.has(s)) {
-
-        if (!nullable.has(s)) {
-          return false;
-        }
-
-      } else if (terminals.has(s)) {
-
-        return false;
-
-      } else {
-
-        throw new Error("Unexpected symbol " + s);
-
-      }
-
-    }
-
-    return true;
-
-  }
-
-  copyProductions() {
-
-    var i, j;
-    var result = [];
-
-    for (i = 0; i < this.productions.length; i++) {
-      result[i] = [];
-
-      for (j = 0; j < this.productions[i].length; j++) {
-        result[i][j] = this.productions[i][j];
-      }
-    }
-
-    return result;
 
   }
 
@@ -221,5 +78,20 @@ export default class Grammar {
 
     return result;
 
+  }
+
+  exampleSentences() {
+    return makeSentencesIterator(this);
+  }
+
+  get ambiguousSentenceExample() {
+    return ambiguousSentenceExample(this);
+  }
+
+  get calculations() {
+    const calculations = makeCalculationsMemo(this.productions);
+
+    Object.defineProperty(this, "calculations", { value: calculations, enumerable: true });
+    return this.calculations;
   }
 }

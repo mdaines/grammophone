@@ -1,7 +1,6 @@
 /* eslint-env node */
 
 import Grammar from "../../src/grammar/index.js";
-import Calculations from "../../src/grammar/calculations/index.js";
 import exampleGrammars from "./example_grammars.js";
 import fs from "node:fs";
 import path from "node:path";
@@ -10,15 +9,15 @@ import { replacer } from "./serialization.js";
 
 let output = {};
 
-Object.keys(exampleGrammars).forEach(function(exampleName) {
+for (let exampleName of Object.keys(exampleGrammars)) {
   let grammar = new Grammar(exampleGrammars[exampleName]);
 
   output[exampleName] = {};
 
-  Object.keys(Calculations).forEach(function(calculationName) {
-    output[exampleName][calculationName] = grammar.calculate(calculationName);
-  });
-});
+  for (let calculationName of Object.keys(grammar.calculations)) {
+    output[exampleName][calculationName] = grammar.calculations[calculationName];
+  }
+}
 
 let script = `// This file is generated automatically.
 // See update_example_output.js

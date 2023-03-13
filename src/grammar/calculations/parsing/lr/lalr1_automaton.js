@@ -1,13 +1,13 @@
 import { collapseLookaheads, mergeItems } from "./helpers.js";
-import lr0 from "./build/lr0.js";
+import * as build from "./build/lr0.js";
 
-export default function(grammar) {
+export default function({ lr1Automaton }) {
 
   var i, j;
 
   // Get the LR1 automaton.
 
-  var automaton = grammar.calculate("parsing.lr.lr1_automaton");
+  const automaton = lr1Automaton;
 
   // Collapse lookaheads.
 
@@ -45,7 +45,7 @@ export default function(grammar) {
 
     for (j = 0; j < automaton.length; j++) {
 
-      if (!used[j] && lr0.same(automaton[i].kernel, automaton[j].kernel)) {
+      if (!used[j] && build.same(automaton[i].kernel, automaton[j].kernel)) {
 
         m.push(j);
         used[j] = true;

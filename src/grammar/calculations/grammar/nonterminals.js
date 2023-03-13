@@ -1,12 +1,9 @@
-export default function(grammar) {
+export default function({ productions }) {
+  let result = new Set();
 
-  var i;
-  var nonterminals = new Set();
-
-  for (i = 0; i < grammar.productions.length; i++) {
-    nonterminals.add(grammar.productions[i][0]);
+  for (let production of productions) {
+    result.add(production[0]);
   }
 
-  return nonterminals;
-
+  return result;
 }

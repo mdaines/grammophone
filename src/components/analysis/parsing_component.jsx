@@ -9,8 +9,8 @@ function formatClassification(cs, c, n) {
 export const ID = "parsing";
 export const TITLE = "Parsing Algorithms";
 
-export default function({ getCalculation }) {
-  const classification = getCalculation("grammar.classification");
+export default function({ grammar }) {
+  const { classification } = grammar.calculations;
 
   return (
     <section id={ID} className="analysis">

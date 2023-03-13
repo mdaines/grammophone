@@ -1,22 +1,23 @@
+import { getNewSymbol } from "./helpers.js";
+
 // Perform the left-factoring transformation. Group is an array of production
 // indices, and prefix is the number of symbols (not counting the head of
 // the production) to factor.
 
-function leftFactor(grammar, group, prefix) {
+function leftFactor({ productions, symbols }, group, prefix) {
 
   var i;
-  var nonterminals = grammar.calculate("grammar.nonterminals");
 
   // Find a new symbol...
 
-  var symbol = grammar.getNewSymbol(grammar.productions[group[0]][0], nonterminals);
+  var symbol = getNewSymbol(symbols, productions[group[0]][0]);
 
   // Copy productions to changes, marking those we're removing.
 
   var changes = [];
   var offset = 0;
 
-  for (i = 0; i < grammar.productions.length; i++) {
+  for (i = 0; i < productions.length; i++) {
 
     if (group.indexOf(i) !== -1) {
       changes.push({ index: i + offset, operation: "delete" });
@@ -28,7 +29,7 @@ function leftFactor(grammar, group, prefix) {
   // Add the reference to the new symbol with the factored prefix
 
   changes.push({
-    production: grammar.productions[group[0]].slice(0, prefix + 1).concat(symbol),
+    production: productions[group[0]].slice(0, prefix + 1).concat(symbol),
     operation: "insert",
     index: group[0]
   });
@@ -37,7 +38,7 @@ function leftFactor(grammar, group, prefix) {
 
   for (i = 0; i < group.length; i++) {
     changes.push({
-      production: [symbol].concat(grammar.productions[group[i]].slice(prefix + 1)),
+      production: [symbol].concat(productions[group[i]].slice(prefix + 1)),
       operation: "insert",
       index: group[0] + i + 1
     });
@@ -104,7 +105,7 @@ Trie.prototype.getFactorablePrefixes = function() {
 
 }
 
-export default function(grammar) {
+export default function({ productions, symbols }) {
 
   var i;
   var result = [];
@@ -112,17 +113,17 @@ export default function(grammar) {
 
   // Build tries for each nonterminal's productions
 
-  var productions = {};
+  var productionTries = {};
 
-  for (i = 0; i < grammar.productions.length; i++) {
+  for (i = 0; i < productions.length; i++) {
 
-    nt = grammar.productions[i][0];
+    nt = productions[i][0];
 
-    if (typeof productions[nt] === "undefined") {
-      productions[nt] = new Trie();
+    if (typeof productionTries[nt] === "undefined") {
+      productionTries[nt] = new Trie();
     }
 
-    productions[nt].insert(grammar.productions[i].slice(1), i);
+    productionTries[nt].insert(productions[i].slice(1), i);
 
   }
 
@@ -130,9 +131,9 @@ export default function(grammar) {
 
   var factorable;
 
-  for (nt in productions) {
+  for (nt in productionTries) {
 
-    factorable = productions[nt].getFactorablePrefixes();
+    factorable = productionTries[nt].getFactorablePrefixes();
 
     for (i = 0; i < factorable.length; i++) {
 
@@ -145,7 +146,7 @@ export default function(grammar) {
         production: group[0],
         symbol: 0,
         length: length,
-        changes: leftFactor(grammar, group, length)
+        changes: leftFactor({ productions, symbols }, group, length)
       });
 
     }

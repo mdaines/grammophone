@@ -1,13 +1,14 @@
-function removeImmediateLeftRecursion(grammar, base, recursive) {
+import { getNewSymbol } from "./helpers.js";
+
+function removeImmediateLeftRecursion({ productions, symbols }, base, recursive) {
 
   var i, j;
-  var nonterminals = grammar.calculate("grammar.nonterminals");
   var production;
 
   // Find a new symbol for the right recursive production by adding primes
   // to the existing symbol.
 
-  var symbol = grammar.getNewSymbol(grammar.productions[recursive[0]][0], nonterminals);
+  var symbol = getNewSymbol(symbols, productions[recursive[0]][0]);
 
   // Copy productions to changes, marking those we're removing.
 
@@ -15,7 +16,7 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
   var first;
   var offset = 0;
 
-  for (i = 0; i < grammar.productions.length; i++) {
+  for (i = 0; i < productions.length; i++) {
 
     if (base.indexOf(i) !== -1 || recursive.indexOf(i) !== -1) {
 
@@ -39,8 +40,8 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
 
     production = [];
 
-    for (j = 0; j < grammar.productions[base[i]].length; j++) {
-      production.push(grammar.productions[base[i]][j]);
+    for (j = 0; j < productions[base[i]].length; j++) {
+      production.push(productions[base[i]][j]);
     }
 
     production.push(symbol);
@@ -58,8 +59,8 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
 
     production.push(symbol);
 
-    for (j = 2; j < grammar.productions[recursive[i]].length; j++) {
-      production.push(grammar.productions[recursive[i]][j]);
+    for (j = 2; j < productions[recursive[i]].length; j++) {
+      production.push(productions[recursive[i]][j]);
     }
 
     production.push(symbol);
@@ -77,11 +78,10 @@ function removeImmediateLeftRecursion(grammar, base, recursive) {
 
 }
 
-export default function(grammar) {
+export default function({ productions, nonterminals, symbols }) {
 
   var i;
 
-  var nonterminals = grammar.calculate("grammar.nonterminals");
   var result = [];
 
   var candidates = {};
@@ -97,10 +97,10 @@ export default function(grammar) {
     candidates[nt] = { recursive: [], base: [] };
   }
 
-  for (i = 0; i < grammar.productions.length; i++) {
-    nt = grammar.productions[i][0];
+  for (i = 0; i < productions.length; i++) {
+    nt = productions[i][0];
 
-    if (nt == grammar.productions[i][1]) {
+    if (nt == productions[i][1]) {
       candidates[nt].recursive.push(i);
     } else {
       candidates[nt].base.push(i);
@@ -115,7 +115,7 @@ export default function(grammar) {
         name: "removeImmediateLeftRecursion",
         production: candidates[nt].recursive[0],
         symbol: 0,
-        changes: removeImmediateLeftRecursion(grammar, candidates[nt].base, candidates[nt].recursive)
+        changes: removeImmediateLeftRecursion({ productions, symbols }, candidates[nt].base, candidates[nt].recursive)
       });
 
     }

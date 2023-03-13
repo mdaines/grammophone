@@ -1,5 +1,5 @@
 function orderedProductions(grammar, nonterminal) {
-  let steps = grammar.calculate("grammar.derivationSteps");
+  let steps = grammar.calculations.derivationSteps;
 
   let indexes = [];
 
@@ -18,7 +18,7 @@ function orderedProductions(grammar, nonterminal) {
 }
 
 function sentenceCost(grammar, sentence) {
-  let steps = grammar.calculate("grammar.derivationSteps");
+  let steps = grammar.calculations.derivationSteps;
 
   let cost = sentence.length;
 
@@ -32,7 +32,7 @@ function sentenceCost(grammar, sentence) {
 }
 
 export function makeSentencesIterator(grammar) {
-  let steps = grammar.calculate("grammar.derivationSteps");
+  let steps = grammar.calculations.derivationSteps;
 
   if (typeof steps === "undefined") {
     return {
@@ -45,8 +45,8 @@ export function makeSentencesIterator(grammar) {
     }
   }
 
-  let start = grammar.calculate("grammar.start");
-  let nonterminals = grammar.calculate("grammar.nonterminals");
+  let start = grammar.calculations.start;
+  let nonterminals = grammar.calculations.nonterminals;
 
   let state = {
     grammar,
@@ -122,4 +122,29 @@ export function takeFromIterator(iterator, count, limit) {
   }
 
   return { values, done };
+}
+
+export function ambiguousSentenceExample(grammar) {
+  const iterator = makeSentencesIterator(grammar);
+  const { values: sentences } = takeFromIterator(iterator, 50, 1000);
+
+  sentences.sort();
+
+  for (let i = 0; i < sentences.length - 1; i++) {
+    if (sentences[i].length != sentences[i+1].length) {
+      continue;
+    }
+
+    let j;
+
+    for (j = 0; j < sentences[i].length; j++) {
+      if (sentences[i][j] !== sentences[i+1][j]) {
+        break;
+      }
+    }
+
+    if (j === sentences[i].length) {
+      return sentences[i];
+    }
+  }
 }

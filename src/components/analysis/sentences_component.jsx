@@ -1,5 +1,5 @@
 import { formatSentence } from "../helpers.js";
-import { makeSentencesIterator, takeFromIterator } from "../../grammar/sentences_iterator.js";
+import { takeFromIterator } from "../../grammar/sentences.js";
 import { Component } from "react";
 
 function takePage(iterator) {
@@ -13,7 +13,7 @@ export default class extends Component {
   constructor(props) {
     super(props);
 
-    const iterator = makeSentencesIterator(this.props.grammar);
+    const iterator = this.props.grammar.exampleSentences();
 
     this.state = { iterator, sentences: takePage(iterator) };
   }
@@ -26,7 +26,7 @@ export default class extends Component {
   }
 
   render() {
-    const symbolInfo = this.props.grammar.calculate("grammar.symbolInfo");
+    const { symbolInfo } = this.props.grammar.calculations;
 
     let examples;
 

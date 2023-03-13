@@ -1,18 +1,19 @@
-function epsilonSeparate(grammar, group, epsilon) {
+import { getNewSymbol } from "./helpers.js";
+
+function epsilonSeparate({ productions, symbols }, group, epsilon) {
 
   var i;
-  var nonterminals = grammar.calculate("grammar.nonterminals");
 
   // Find a new symbol...
 
-  var symbol = grammar.getNewSymbol(grammar.productions[group[0]][0], nonterminals);
+  var symbol = getNewSymbol(symbols, productions[group[0]][0]);
 
   // Copy productions to changes, marking those we're removing.
 
   var changes = [];
   var offset = 0;
 
-  for (i = 0; i < grammar.productions.length; i++) {
+  for (i = 0; i < productions.length; i++) {
 
     if (group.indexOf(i) !== -1 || i === epsilon) {
       changes.push({ index: i + offset, operation: "delete" });
@@ -24,13 +25,13 @@ function epsilonSeparate(grammar, group, epsilon) {
   // Add the separated version of the original rule
 
   changes.push({
-    production: [grammar.productions[group[0]][0], symbol],
+    production: [productions[group[0]][0], symbol],
     operation: "insert",
     index: group[0]
   });
 
   changes.push({
-    production: [grammar.productions[group[0]][0]],
+    production: [productions[group[0]][0]],
     operation: "insert",
     index: group[0] + 1
   });
@@ -39,7 +40,7 @@ function epsilonSeparate(grammar, group, epsilon) {
 
   for (i = 0; i < group.length; i++) {
     changes.push({
-      production: [symbol].concat(grammar.productions[group[i]].slice(1)),
+      production: [symbol].concat(productions[group[i]].slice(1)),
       operation: "insert",
       index: group[0] + i + 2
     });
@@ -49,10 +50,9 @@ function epsilonSeparate(grammar, group, epsilon) {
 
 }
 
-export default function(grammar) {
+export default function({ productions, symbols, nonterminals }) {
 
   var nt, i;
-  var nonterminals = grammar.calculate("grammar.nonterminals");
   var result = [];
   var group;
   var epsilon;
@@ -66,11 +66,11 @@ export default function(grammar) {
     group = [];
     epsilon = -1;
 
-    for (i = 0; i < grammar.productions.length; i++) {
+    for (i = 0; i < productions.length; i++) {
 
-      if (grammar.productions[i][0] === nt) {
+      if (productions[i][0] === nt) {
 
-        if (grammar.productions[i].length === 1) {
+        if (productions[i].length === 1) {
           if (epsilon !== -1) {
             break;
           }
@@ -83,13 +83,13 @@ export default function(grammar) {
 
     }
 
-    if (i === grammar.productions.length && group.length > 0 && epsilon !== -1) {
+    if (i === productions.length && group.length > 0 && epsilon !== -1) {
 
       result.push({
         name: "epsilonSeparate",
         production: group[0],
         symbol: 0,
-        changes: epsilonSeparate(grammar, group, epsilon)
+        changes: epsilonSeparate({ productions, symbols }, group, epsilon)
       });
 
     }

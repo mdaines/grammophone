@@ -3,10 +3,8 @@ import { fillArray, formatSymbol, formatProduction } from "../../helpers.js";
 export const ID = "lr0_table";
 export const TITLE = "LR(0) Parsing Table";
 
-export default function({ getCalculation }) {
-  const info = getCalculation("grammar.symbolInfo");
-  const table = getCalculation("parsing.lr.lr0_table");
-  const productions = getCalculation("grammar.productions");
+export default function({ grammar }) {
+  const { symbolInfo, lr0Table: table, productions } = grammar.calculations;
 
   return (
     <section id={ID} className="analysis">
@@ -17,23 +15,23 @@ export default function({ getCalculation }) {
           <col />
         </colgroup>
         <colgroup className="t">
-          {fillArray(info.terminals.size, (index) => <col key={index} />)}
+          {fillArray(symbolInfo.terminals.size, (index) => <col key={index} />)}
         </colgroup>
         <colgroup className="nt">
-          {fillArray(info.nonterminals.size, (index) => <col key={index} />)}
+          {fillArray(symbolInfo.nonterminals.size, (index) => <col key={index} />)}
         </colgroup>
 
         <thead>
           <tr>
             <th>State</th>
             {
-              info.terminalOrder.map(function(symbol, index) {
-                return <th key={"t"+index}>{formatSymbol(symbol, info)}</th>;
+              symbolInfo.terminalOrder.map(function(symbol, index) {
+                return <th key={"t"+index}>{formatSymbol(symbol, symbolInfo)}</th>;
               })
             }
             {
-              info.nonterminalOrder.map(function(symbol, index) {
-                return <th key={"nt"+index}>{formatSymbol(symbol, info)}</th>;
+              symbolInfo.nonterminalOrder.map(function(symbol, index) {
+                return <th key={"nt"+index}>{formatSymbol(symbol, symbolInfo)}</th>;
               })
             }
           </tr>
@@ -46,7 +44,7 @@ export default function({ getCalculation }) {
                 <tr key={index}>
                   <th scope="row">{index}</th>
                   {
-                    info.terminalOrder.map(function(s, index) {
+                    symbolInfo.terminalOrder.map(function(s, index) {
                       let actions = [];
 
                       if (typeof state.shift[s] !== "undefined") {
@@ -60,7 +58,7 @@ export default function({ getCalculation }) {
                           actions.push(
                             <li key={"r"+index}>
                               {"reduce("}
-                              {formatProduction(productions[p], info)}
+                              {formatProduction(productions[p], symbolInfo)}
                               {")"}
                             </li>
                           );
@@ -78,7 +76,7 @@ export default function({ getCalculation }) {
                   }
 
                   {
-                    info.nonterminalOrder.map(function(s, index) {
+                    symbolInfo.nonterminalOrder.map(function(s, index) {
                       return (
                         <td key={"nt"+index}>
                           <ul>{typeof state.shift[s] !== "undefined" ? <li>{state.shift[s]}</li> : null}</ul>

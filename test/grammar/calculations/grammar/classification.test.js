@@ -1,14 +1,13 @@
-import * as SetOperations from "../../src/set_operations.js";
-import EXAMPLE_GRAMMARS from "../fixtures/example_grammars.js";
-import Grammar from "../../src/grammar/index.js";
+import * as SetOperations from "../../../../src/set_operations.js";
+import Grammar from "../../../../src/grammar/index.js";
+import Fixtures from "../../../fixtures/example_grammars.js";
 import assert from "node:assert/strict";
 
-function classifications(grammar) {
-  let classification = grammar.calculate("grammar.classification");
+function classifications(calculations) {
   let result = new Set();
 
-  for (let k in classification) {
-    if (classification[k].member) {
+  for (let k in calculations.classification) {
+    if (calculations.classification[k].member) {
       result.add(k);
     }
   }
@@ -17,13 +16,13 @@ function classifications(grammar) {
 }
 
 function assertExampleClassifications(expected, name) {
-  let grammar = new Grammar(EXAMPLE_GRAMMARS[name]);
+  const calculations = new Grammar(Fixtures[name]).calculations;
 
   // expected should be a subset of classifications
-  assert.deepStrictEqual(SetOperations.intersection(expected, classifications(grammar)), expected);
+  assert.deepStrictEqual(SetOperations.intersection(expected, classifications(calculations)), expected);
 }
 
-describe("grammar.classification", function() {
+describe("classification", function() {
   it("agrees with smlweb", function() {
     assertExampleClassifications(new Set(["lr0"]), "ll0-lr0-0.cfg");
     assertExampleClassifications(new Set(["lr0"]), "ll0-lr0-1.cfg");

@@ -1,5 +1,5 @@
 import Grammar from "../../src/grammar/index.js";
-import { makeSentencesIterator, takeFromIterator } from "../../src/grammar/sentences_iterator.js";
+import { makeSentencesIterator, takeFromIterator, ambiguousSentenceExample } from "../../src/grammar/sentences.js";
 import assert from "node:assert/strict";
 
 describe("makeSentencesIterator", function() {
@@ -237,5 +237,25 @@ describe("takeFromIterator", function() {
 
     assert.deepStrictEqual(takeFromIterator(iterator, 2, 3), { values: [[], ["a", "b"]], done: false });
     assert.deepStrictEqual(takeFromIterator(iterator, 2, 3), { values: [["a", "a", "b", "b"]], done: false });
+  });
+});
+
+describe("ambiguousSentenceExample", function() {
+  it("returns an example sentence for an ambiguous grammar", function() {
+    const grammar = new Grammar([
+      ["A", "a"],
+      ["A", "B"],
+      ["B", "a"]
+    ]);
+
+    assert.deepStrictEqual(ambiguousSentenceExample(grammar), ["a"]);
+  });
+
+  it("returns undefined for an unambiguous grammar", function() {
+    const grammar = new Grammar([
+      ["A", "a"]
+    ]);
+
+    assert.deepStrictEqual(ambiguousSentenceExample(grammar), undefined);
   });
 });

@@ -1,9 +1,8 @@
-export default function(grammar) {
+export default function({ productions, lr0Automaton: automaton }) {
 
   var i, j, s;
   var state, item, actions;
   var table = [];
-  var automaton = grammar.calculate("parsing.lr.lr0_automaton");
 
   for (i = 0; i < automaton.length; i++) {
 
@@ -27,7 +26,7 @@ export default function(grammar) {
           actions.reduce.push(item.production);
         }
       } else {
-        if (item.index == grammar.productions[item.production].length - 1) {
+        if (item.index == productions[item.production].length - 1) {
           actions.reduce.push(item.production);
         }
       }

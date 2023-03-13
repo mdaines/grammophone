@@ -36,7 +36,7 @@
 
 // Build an LR automaton for the grammar, using the provided "build" functions.
 
-export function automaton(grammar, build) {
+export function automaton(calculations, build) {
 
   var states = [ { kernel: build.initial() } ];
 
@@ -59,11 +59,11 @@ export function automaton(grammar, build) {
 
       // Find the closure of the state's kernel
 
-      state.items = build.closure(grammar, state.kernel);
+      state.items = build.closure(calculations, state.kernel);
 
       // Find the transitions out of the state (a map from symbol to kernel)
 
-      transitions = build.transitions(grammar, state.items);
+      transitions = build.transitions(calculations, state.items);
 
       // Build the state's list of transitions...
 

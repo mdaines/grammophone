@@ -1,6 +1,6 @@
 import { bareFormatItem, bareFormatSymbol } from "../../helpers.js";
 
-export default function({ info, automaton, productions, start, title }) {
+export default function({ symbolInfo, automaton, productions, start, title }) {
   let result = [];
 
   result.push(
@@ -16,7 +16,7 @@ export default function({ info, automaton, productions, start, title }) {
       " [label=\"",
       index,
       " | ",
-      state.items.map(function(item) { return bareFormatItem(item, start, productions, info); }).join("\\n"),
+      state.items.map(function(item) { return bareFormatItem(item, start, productions, symbolInfo); }).join("\\n"),
       "\"];\n"
     );
   });
@@ -30,7 +30,7 @@ export default function({ info, automaton, productions, start, title }) {
         " -> s",
         state.transitions[s],
         " [label=\"",
-        bareFormatSymbol(s, info),
+        bareFormatSymbol(s, symbolInfo),
         "\"];\n"
       );
     }

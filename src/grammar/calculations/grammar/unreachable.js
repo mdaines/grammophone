@@ -1,23 +1,20 @@
 import Relation from "../../../relation.js";
 
-export default function(grammar) {
+export default function({ productions, nonterminals, start }) {
 
   var relation, closure, unreachable;
   var i, j, s;
-
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var start = grammar.calculate("grammar.start");
 
   // Build relation:
   // (x,y) | x -> a y b where a and b are strings of terminals or nonterminals
 
   relation = new Relation();
 
-  for (i = 0; i < grammar.productions.length; i++) {
-    for (j = 1; j < grammar.productions[i].length; j++) {
+  for (i = 0; i < productions.length; i++) {
+    for (j = 1; j < productions[i].length; j++) {
 
-      if (nonterminals.has(grammar.productions[i][j])) {
-        relation.add(grammar.productions[i][0], grammar.productions[i][j]);
+      if (nonterminals.has(productions[i][j])) {
+        relation.add(productions[i][0], productions[i][j]);
       }
 
     }

@@ -1,4 +1,4 @@
-export default function(grammar) {
+export default function({ productions, nonterminals, terminals }) {
 
   var i, j, s;
 
@@ -6,20 +6,17 @@ export default function(grammar) {
   var nonterminalOrder = [];
   var productionOrder = [];
 
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-  var terminals = grammar.calculate("grammar.terminals");
+  for (i = 0; i < productions.length; i++) {
 
-  for (i = 0; i < grammar.productions.length; i++) {
-
-    s = grammar.productions[i][0];
+    s = productions[i][0];
 
     if (productionOrder.indexOf(s) === -1) {
       productionOrder.push(s);
     }
 
-    for (j = 0; j < grammar.productions[i].length; j++) {
+    for (j = 0; j < productions[i].length; j++) {
 
-      s = grammar.productions[i][j];
+      s = productions[i][j];
 
       if (nonterminals.has(s) && nonterminalOrder.indexOf(s) === -1) {
         nonterminalOrder.push(s);

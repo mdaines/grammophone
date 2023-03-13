@@ -1,15 +1,14 @@
-import Grammar from "../../src/grammar/index.js";
+import Grammar from "../../../../src/grammar/index.js";
 import assert from "node:assert/strict";
 
-describe("transformations.epsilonSeparate", function() {
+describe("epsilonSeparateTransformation", function() {
   it("returns the expected result", function() {
-    let productions = [
+    const grammar = new Grammar([
       ["A", "a"],
       ["A"]
-    ];
+    ]);
 
-    let grammar = new Grammar(productions);
-    assert.deepStrictEqual(grammar.calculate("transformations.epsilonSeparate"), [
+    assert.deepStrictEqual(grammar.calculations.epsilonSeparateTransformation, [
       {
         name: "epsilonSeparate",
         production: 0,
@@ -44,11 +43,10 @@ describe("transformations.epsilonSeparate", function() {
   });
 
   it("result is empty when a nonterminal only produces epsilon", function() {
-    let productions = [
+    const grammar = new Grammar([
       ["A"]
-    ];
+    ]);
 
-    let grammar = new Grammar(productions);
-    assert.deepStrictEqual(grammar.calculate("transformations.epsilonSeparate"), []);
+    assert.deepStrictEqual(grammar.calculations.epsilonSeparateTransformation, []);
   });
 });

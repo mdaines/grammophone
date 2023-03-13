@@ -1,5 +1,3 @@
-export default function(grammar) {
-
-  return grammar.productions[0][0];
-
+export default function({ productions }) {
+  return productions[0][0];
 }

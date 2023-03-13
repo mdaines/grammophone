@@ -1,17 +1,17 @@
 import { formatTransformation, formatSymbol } from "./helpers.js";
 import { Fragment } from "react";
 
-function TransformPill({ symbol, info, productionTransformations, productions }) {
+function TransformPill({ symbol, symbolInfo, productionTransformations, productions }) {
   return (
     <span className="pill">
-      {formatSymbol(symbol, info)}
       <select defaultValue="symbol">
+      {formatSymbol(symbol, symbolInfo)}
         <option disabled={true} value="symbol">{symbol}</option>
         {
           productionTransformations.map(function(t, index) {
             return (
               <option key={index} value={t.index}>
-                {formatTransformation(t.transformation, productions, info)}
+                {formatTransformation(t.transformation, productions, symbolInfo)}
               </option>
             );
           })
@@ -22,11 +22,9 @@ function TransformPill({ symbol, info, productionTransformations, productions })
 }
 
 export default function({ grammar, stack, index, undo, redo, apply }) {
-  const transformations = grammar.calculate("transformations.all");
+  const { allTransformations: transformations, symbolInfo, productions } = grammar.calculations;
   const undoTransformation = index > 0 ? stack[index].transformation : undefined;
   const redoTransformation = index < stack.length - 1 ? stack[index + 1].transformation : undefined;
-  const productions = grammar.productions;
-  const info = grammar.calculate("grammar.symbolInfo");
 
   const productionTransformations = [];
 
@@ -51,7 +49,7 @@ export default function({ grammar, stack, index, undo, redo, apply }) {
     undoButton = (
       <button className="undo" onClick={() => { undo(); }}>
         {"Undo "}
-        {formatTransformation(undoTransformation, productions, info)}
+        {formatTransformation(undoTransformation, productions, symbolInfo)}
       </button>
     );
   }
@@ -60,7 +58,7 @@ export default function({ grammar, stack, index, undo, redo, apply }) {
     redoButton = (
       <button className="redo" onClick={() => { redo(); }}>
         {"Redo "}
-        {formatTransformation(redoTransformation, productions, info)}
+        {formatTransformation(redoTransformation, productions, symbolInfo)}
       </button>
     );
   }
@@ -82,9 +80,9 @@ export default function({ grammar, stack, index, undo, redo, apply }) {
                 let symbolElement;
 
                 if (productionTransformations[i][j].length > 0) {
-                  symbolElement = <TransformPill symbol={symbol} info={info} productionTransformations={productionTransformations[i][j]} productions={productions} />;
+                  symbolElement = <TransformPill symbol={symbol} symbolInfo={symbolInfo} productionTransformations={productionTransformations[i][j]} productions={productions} />;
                 } else {
-                  symbolElement = formatSymbol(symbol, info);
+                  symbolElement = formatSymbol(symbol, symbolInfo);
                 }
 
                 result.push(

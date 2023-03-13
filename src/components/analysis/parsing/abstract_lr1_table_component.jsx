@@ -1,10 +1,8 @@
 import { fillArray, formatSymbol, formatProduction } from "../../helpers.js";
 import { END } from "../../../grammar/symbols.js";
 
-export default function({ getCalculation, tableCalculation }) {
-  const info = getCalculation("grammar.symbolInfo");
-  const table = getCalculation(tableCalculation);
-  const productions = getCalculation("grammar.productions");
+export default function({ grammar, table }) {
+  const { productions, symbolInfo } = grammar.calculations;
 
   return (
     <table className="symbols lr1-table">
@@ -12,24 +10,24 @@ export default function({ getCalculation, tableCalculation }) {
         <col />
       </colgroup>
       <colgroup className="t">
-        {fillArray(info.terminals.size + 1, (index) => <col key={index} />)}
+        {fillArray(symbolInfo.terminals.size + 1, (index) => <col key={index} />)}
       </colgroup>
       <colgroup className="nt">
-        {fillArray(info.nonterminals.size, (index) => <col key={index} />)}
+        {fillArray(symbolInfo.nonterminals.size, (index) => <col key={index} />)}
       </colgroup>
 
       <thead>
         <tr>
           <th>State</th>
           {
-            info.terminalOrder.map(function(symbol, index) {
-              return <th key={"t"+index}>{formatSymbol(symbol, info)}</th>;
+            symbolInfo.terminalOrder.map(function(symbol, index) {
+              return <th key={"t"+index}>{formatSymbol(symbol, symbolInfo)}</th>;
             })
           }
-          <th>{formatSymbol(END, info)}</th>
+          <th>{formatSymbol(END, symbolInfo)}</th>
           {
-            info.nonterminalOrder.map(function(symbol, index) {
-              return <th key={"nt"+index}>{formatSymbol(symbol, info)}</th>;
+            symbolInfo.nonterminalOrder.map(function(symbol, index) {
+              return <th key={"nt"+index}>{formatSymbol(symbol, symbolInfo)}</th>;
             })
           }
         </tr>
@@ -42,7 +40,7 @@ export default function({ getCalculation, tableCalculation }) {
               <tr key={index}>
                 <th scope="row">{index}</th>
                 {
-                  info.terminalOrder.concat(END).map(function(s, index) {
+                  symbolInfo.terminalOrder.concat(END).map(function(s, index) {
                     if (typeof state[s] === "undefined") {
                       return <td key={"t"+index} />;
                     } else {
@@ -60,7 +58,7 @@ export default function({ getCalculation, tableCalculation }) {
                             actions.push(
                               <li key={"r"+index}>
                                 {"reduce("}
-                                {formatProduction(productions[p], info)}
+                                {formatProduction(productions[p], symbolInfo)}
                                 {")"}
                               </li>
                             );
@@ -79,7 +77,7 @@ export default function({ getCalculation, tableCalculation }) {
                   })
                 }
                 {
-                  info.nonterminalOrder.map(function(s, index) {
+                  symbolInfo.nonterminalOrder.map(function(s, index) {
                     if (typeof state[s] === "undefined") {
                       return <td key={"nt"+index} />;
                     } else if (typeof state[s].shift === "undefined") {

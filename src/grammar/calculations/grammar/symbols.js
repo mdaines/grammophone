@@ -1,11 +1,11 @@
-export default function(grammar) {
-  let symbols = new Set();
+export default function({ productions }) {
+  let result = new Set();
 
-  for (let i = 0; i < grammar.productions.length; i++) {
-    for (let j = 0; j < grammar.productions[i].length; j++) {
-      symbols.add(grammar.productions[i][j]);
+  for (let production of productions) {
+    for (let symbol of production) {
+      result.add(symbol);
     }
   }
 
-  return symbols;
+  return result;
 }

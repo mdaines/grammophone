@@ -1,19 +1,11 @@
-export default function(grammar) {
+export default function({ symbols, nonterminals }) {
+  let result = new Set();
 
-  var i, j;
-  var terminals = new Set();
-  var nonterminals = grammar.calculate("grammar.nonterminals");
-
-  for (i = 0; i < grammar.productions.length; i++) {
-    for (j = 1; j < grammar.productions[i].length; j++) {
-
-      if (!nonterminals.has(grammar.productions[i][j])) {
-        terminals.add(grammar.productions[i][j]);
-      }
-
+  for (let s of symbols) {
+    if (!nonterminals.has(s)) {
+      result.add(s);
     }
   }
 
-  return terminals;
-
+  return result;
 }

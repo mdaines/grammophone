@@ -1,4 +1,4 @@
-function expand(grammar, production, symbol) {
+function expand(productions, production, symbol) {
 
   var i;
 
@@ -12,12 +12,12 @@ function expand(grammar, production, symbol) {
 
   var offset = 0;
 
-  for (i = 0; i < grammar.productions.length; i++) {
+  for (i = 0; i < productions.length; i++) {
 
-    if (grammar.productions[i][0] === grammar.productions[production][symbol]) {
+    if (productions[i][0] === productions[production][symbol]) {
 
-      var p = grammar.productions[production].slice();
-      var b = grammar.productions[i].slice(1);
+      var p = productions[production].slice();
+      var b = productions[i].slice(1);
       Array.prototype.splice.apply(p, [symbol, 1].concat(b));
 
       changes.push({ production: p, operation: "insert", index: production + offset });
@@ -31,25 +31,24 @@ function expand(grammar, production, symbol) {
 
 }
 
-export default function(grammar) {
+export default function({ productions, nonterminals }) {
 
   var i, j;
 
-  var nonterminals = grammar.calculate("grammar.nonterminals");
   var result = [];
 
   // Are there any nonterminals we can expand?
 
-  for (i = 0; i < grammar.productions.length; i++) {
-    for (j = 1; j < grammar.productions[i].length; j++) {
+  for (i = 0; i < productions.length; i++) {
+    for (j = 1; j < productions[i].length; j++) {
 
-      if (nonterminals.has(grammar.productions[i][j])) {
+      if (nonterminals.has(productions[i][j])) {
 
         result.push({
           name: "expand",
           production: i,
           symbol: j,
-          changes: expand(grammar, i, j)
+          changes: expand(productions, i, j)
         });
 
       }

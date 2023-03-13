@@ -1,4 +1,4 @@
-export default function(grammar) {
+export default function({ productions }) {
 
   var nullable = new Set();
   var added;
@@ -8,17 +8,17 @@ export default function(grammar) {
 
     added = [];
 
-    for (i = 0; i < grammar.productions.length; i++) {
+    for (i = 0; i < productions.length; i++) {
 
-      for (j = 1; j < grammar.productions[i].length; j++) {
-        if (!nullable.has(grammar.productions[i][j])) {
+      for (j = 1; j < productions[i].length; j++) {
+        if (!nullable.has(productions[i][j])) {
           break;
         }
       }
 
-      head = grammar.productions[i][0];
+      head = productions[i][0];
 
-      if (j == grammar.productions[i].length && !nullable.has(head)) {
+      if (j == productions[i].length && !nullable.has(head)) {
         nullable.add(head);
         added.push(head);
       }
