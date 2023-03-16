@@ -1,5 +1,7 @@
 # Changelog
 
+* Copy the LR(1) automaton used in the LALR(1) automaton calculation so that its `lookahead` properties are not replaced with `lookaheads`. Calculations are not supposed to modify the results of other calculations. Introduce a test that calls every possible pair of calculations on a grammar in sequence so that similar problems can be detected.
+
 * Use Node 17.x in workflows. Specifically, this allows use of `structuredClone`.
 
 * Fix that a previous transformation option could remain selected for a nonterminal after applying a transformation, preventing it from being selected again. Instead, the first option should always be selected.

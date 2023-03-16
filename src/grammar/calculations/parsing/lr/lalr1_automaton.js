@@ -5,9 +5,9 @@ export default function({ lr1Automaton }) {
 
   var i, j;
 
-  // Get the LR1 automaton.
+  // Copy the LR(1) automaton.
 
-  const automaton = lr1Automaton;
+  const automaton = structuredClone(lr1Automaton);
 
   // Collapse lookaheads.
 
