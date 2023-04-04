@@ -4,37 +4,53 @@ import parser from "../parser/index.js";
 export function reducer(state, action) {
   switch (action.type) {
   case "setSpec":
-    return { ...state, spec: action.spec };
+    {
+      return { ...state, spec: action.spec };
+    }
 
   case "setPath":
-    return { ...state, path: action.path };
+    {
+      return { ...state, path: action.path };
+    }
 
   case "analyze":
-    try {
-      const grammar = new Grammar(parser(state.spec));
+    {
+      const { productions, error } = parser(state.spec);
 
-      return { ...state, grammar, error: null };
-    } catch (e) {
-      return { ...state, error: e };
+      if (error) {
+        return { ...state, grammar: state.grammar, error };
+      } else if (productions.length == 0) {
+        return { ...state, grammar: undefined, error: undefined };
+      } else {
+        return { ...state, grammar: new Grammar(productions), error: undefined };
+      }
     }
 
   case "edit":
-    return { ...state, mode: "edit" };
+    {
+      return { ...state, mode: "edit", transformStack: undefined, transformIndex: undefined };
+    }
 
   case "transform":
-    try {
-      const grammar = new Grammar(parser(state.spec));
+    {
+      const { productions, error } = parser(state.spec);
 
-      return {
-        ...state,
-        grammar,
-        error: null,
-        mode: "transform",
-        transformStack: [{ grammar }],
-        transformIndex: 0
-      };
-    } catch (e) {
-      return { ...state, error: e };
+      if (error) {
+        return { ...state, grammar: state.grammar, error };
+      } else if (productions.length == 0) {
+        return { ...state, grammar: undefined, error: undefined };
+      } else {
+        const grammar = new Grammar(productions);
+
+        return {
+          ...state,
+          grammar,
+          error: undefined,
+          mode: "transform",
+          transformStack: [{ grammar }],
+          transformIndex: 0
+        };
+      }
     }
 
   case "applyTransformation":
@@ -57,32 +73,35 @@ export function reducer(state, action) {
     }
 
   case "undoTransformation":
-    if (state.transformIndex > 0) {
-      const transformIndex = state.transformIndex - 1;
-      const grammar = state.transformStack[transformIndex].grammar;
-      const spec = state.transformStack[transformIndex].grammar.toString();
+    {
+      if (state.transformIndex > 0) {
+        const transformIndex = state.transformIndex - 1;
+        const grammar = state.transformStack[transformIndex].grammar;
+        const spec = state.transformStack[transformIndex].grammar.toString();
 
-      return { ...state, transformIndex, grammar, spec };
-    } else {
-      return state;
+        return { ...state, transformIndex, grammar, spec };
+      } else {
+        return state;
+      }
     }
 
   case "redoTransformation":
-    if (state.transformIndex < state.transformStack.length - 1) {
-      const transformIndex = state.transformIndex + 1;
-      const grammar = state.transformStack[transformIndex].grammar;
-      const spec = state.transformStack[transformIndex].grammar.toString();
+    {
+      if (state.transformIndex < state.transformStack.length - 1) {
+        const transformIndex = state.transformIndex + 1;
+        const grammar = state.transformStack[transformIndex].grammar;
+        const spec = state.transformStack[transformIndex].grammar.toString();
 
-      return { ...state, transformIndex, grammar, spec };
-    } else {
-      return state;
+        return { ...state, transformIndex, grammar, spec };
+      } else {
+        return state;
+      }
     }
-
-  default:
-    throw `Unhandled action type ${action.type}`;
   }
+
+  throw `Unhandled action type ${action.type}`;
 }
 
 export function init(spec = "") {
-  return { spec: spec, path: "/", mode: "edit" };
+  return reducer({ spec, path: "/", mode: "edit" }, { type: "analyze" });
 }

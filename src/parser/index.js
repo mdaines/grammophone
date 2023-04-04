@@ -10,7 +10,7 @@ export default function(src) {
 
   do {
     if (cursor.type.isError) {
-      throw new Error("Parse error");
+      return { error: new Error("Parse error") };
     }
 
     if (cursor.name === "Head") {
@@ -37,5 +37,5 @@ export default function(src) {
     }
   } while (cursor.next());
 
-  return productions;
+  return { productions };
 }

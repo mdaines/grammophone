@@ -1,5 +1,7 @@
 # Changelog
 
+* Change the parser to always succeed, even if there is a parse error. The parser will now return an object with a `productions` key if it succeeds, or an `error` key with an `Error` if it fails.
+
 * Move the App component to its own file so that hot reloading works.
 
 * Copy the LR(1) automaton used in the LALR(1) automaton calculation so that its `lookahead` properties are not replaced with `lookaheads`. Calculations are not supposed to modify the results of other calculations. Introduce a test that calls every possible pair of calculations on a grammar in sequence so that similar problems can be detected.
