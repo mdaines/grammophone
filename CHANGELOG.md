@@ -1,5 +1,7 @@
 # Changelog
 
+* Add a Copy Link button to the editor pane that copies a URL to the clipboard containing a link with the current grammar spec in a search param. On load, look for this search param and analyze the grammar it specifies if present.
+
 * Change the parser to always succeed, even if there is a parse error. The parser will now return an object with a `productions` key if it succeeds, or an `error` key with an `Error` if it fails.
 
 * Move the App component to its own file so that hot reloading works.

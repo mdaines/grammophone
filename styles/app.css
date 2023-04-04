@@ -13,14 +13,13 @@ body {
   display: grid;
   grid-template-areas: "header header" "editor main";
   grid-template-rows: min-content 1fr;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: max-content 1fr;
 }
 
 #editor {
   grid-area: editor;
   display: flex;
   flex-direction: column;
-  width: 300px;
   border-right: 1px solid #bbb;
 }
 

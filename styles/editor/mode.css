@@ -2,7 +2,12 @@
   padding: 10px;
   border-bottom: 1px solid #bbb;
   background: #ddd;
-  text-align: center;
+  display: flex;
+  gap: 8px;
+}
+
+#mode-switch {
+  display: flex;
 }
 
 #mode input[type=radio] {
@@ -11,8 +16,7 @@
 }
 
 #mode label {
-  font: 12pt helvetica;
-  display: inline-block;
+  font: 16px helvetica;
   padding: 6px 8px 5px 8px;
   margin: 0;
   background: #fff;
@@ -48,14 +52,12 @@
 }
 
 #mode button {
-  font: 12pt helvetica;
-  display: inline-block;
+  font: 16px helvetica;
   padding: 6px 8px 5px 8px;
   background: #fff;
   border: 1px solid #bbb;
   border-radius: 4px;
   color: #000;
-  margin-left: 18px;
 }
 
 #mode button:active {

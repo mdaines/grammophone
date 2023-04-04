@@ -2,8 +2,8 @@ import { useReducer, useEffect } from "react";
 import { reducer, init } from "./reducer.js";
 import ApplicationComponent from "../components/application_component.jsx";
 
-export default function App() {
-  const [state, dispatch] = useReducer(reducer, "# Type a grammar here:\n\n", init);
+export default function App({ initialSpec }) {
+  const [state, dispatch] = useReducer(reducer, initialSpec, init);
 
   function onHashChange() {
     let path = window.location.hash.slice(1);
