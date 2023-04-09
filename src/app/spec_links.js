@@ -1,7 +1,7 @@
 const DEFAULT_SPEC = "# Type a grammar here:\n\n";
 
-export function getURLSearchParamSpec() {
-  const spec = new URLSearchParams(window.location.search).get("s");
+export function getURLSearchParamSpec(search) {
+  const spec = new URLSearchParams(search).get("s")?.replaceAll(" ", "+");
 
   if (spec) {
     try {

@@ -1,5 +1,7 @@
 # Changelog
 
+* Work around URLSearchParams interpreting plus signs as spaces by replacing spaces with plus signs after getting the spec search param.
+
 * Display a status message for a short time on the Copy Link button after the link is copied.
 
 * Use writeText() to copy the grammar URL.
