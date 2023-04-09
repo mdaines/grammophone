@@ -18,9 +18,6 @@ export function getURLSearchParamSpec() {
 
 export function copySpecLink(spec) {
   const url = `${window.location.origin}${window.location.pathname}?s=${btoa(spec)}`;
-  const type = "text/plain";
-  const blob = new Blob([url], { type });
-  const data = [new ClipboardItem({ [type]: blob })];
 
-  return navigator.clipboard.write(data);
+  return navigator.clipboard.writeText(url);
 }
