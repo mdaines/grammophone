@@ -1,5 +1,7 @@
 # Changelog
 
+* Display a status message for a short time on the Copy Link button after the link is copied.
+
 * Use writeText() to copy the grammar URL.
 
 * Add a Copy Link button to the editor pane that copies a URL to the clipboard containing a link with the current grammar spec in a search param. On load, look for this search param and analyze the grammar it specifies if present.

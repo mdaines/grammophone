@@ -13,7 +13,7 @@ export default function({ spec, updateSpec, mode, edit, transform, analyze, erro
         edit={edit}
         transform={transform}
         analyze={analyze}
-        copySpecLink={() => copySpecLink(spec).catch(error => console.log(error))}
+        copySpecLink={() => copySpecLink(spec)}
       />
 
       {error ? <ErrorComponent error={error} /> : []}

@@ -71,3 +71,26 @@
   border-color: #ccc;
   color: #ccc;
 }
+
+#mode-copy {
+  display: grid;
+  grid-template-areas: 'label';
+}
+
+#mode-copy .label {
+  grid-area: label;
+  visibility: visible;
+}
+
+#mode-copy .status {
+  grid-area: label;
+  visibility: hidden;
+}
+
+#mode-copy.show-status .label {
+  visibility: hidden;
+}
+
+#mode-copy.show-status .status {
+  visibility: visible;
+}

@@ -1,3 +1,7 @@
+import { useRef } from "react";
+
+let statusTimeout;
+
 export default function({ mode, edit, transform, analyze, copySpecLink }) {
   function onChange(e) {
     if (e.target.value === "edit") {
@@ -6,6 +10,25 @@ export default function({ mode, edit, transform, analyze, copySpecLink }) {
       transform();
     }
   }
+
+  function handleCopy() {
+    copySpecLink().then(() => {
+      copyButtonRef.current?.classList.add("show-status");
+
+      clearTimeout(statusTimeout);
+      return new Promise((resolve, reject) => {
+        statusTimeout = setTimeout(resolve, 1000);
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+    .then(() => {
+      copyButtonRef.current?.classList.remove("show-status");
+    });
+  }
+
+  const copyButtonRef = useRef(null);
 
   return (
     <div id="mode">
@@ -17,7 +40,10 @@ export default function({ mode, edit, transform, analyze, copySpecLink }) {
       </div>
 
       <button id="mode-analyze" disabled={mode !== "edit"} onClick={analyze}>Analyze</button>
-      <button id="mode-copy" onClick={copySpecLink}>Copy Link</button>
+      <button id="mode-copy" onClick={handleCopy} ref={copyButtonRef}>
+        <span className="label">{"Copy Link"}</span>
+        <span className="status">{"Copied!"}</span>
+      </button>
     </div>
   );
 }
