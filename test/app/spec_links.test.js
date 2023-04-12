@@ -1,4 +1,4 @@
-import { getURLSearchParamSpec } from "../../src/app/spec_links.js";
+import { getURLSearchParamSpec, DEFAULT_SPEC, encode, decode } from "../../src/app/spec_links.js";
 import assert from "node:assert/strict";
 
 describe("getURLSearchParamSpec", function() {
@@ -14,5 +14,32 @@ describe("getURLSearchParamSpec", function() {
     const expected = "S -> Start $.\nStart -> Type Name.\nStart -> Name.\nType -> id \"<\".\nName -> id \"<\".";
 
     assert.deepStrictEqual(getURLSearchParamSpec(search), expected);
+  });
+
+  it("handles characters outside of ASCII range", function() {
+    const search = "s=Iumfs+alvSIgLT4gIuKZqyIgIumfs+alvSIgfCAu";
+    const expected = "\"音楽\" -> \"♫\" \"音楽\" | .";
+
+    assert.deepStrictEqual(getURLSearchParamSpec(search), expected);
+  });
+
+  it("returns the default spec if the expected search param isn't present", function() {
+    assert.deepStrictEqual(getURLSearchParamSpec(""), DEFAULT_SPEC);
+  });
+});
+
+describe("encode", function() {
+  it("returns the encoded version of the spec", function() {
+    assert.deepStrictEqual(encode("A -> ."), "QSAtPiAu");
+  });
+
+  it("handles characters outside of ASCII range", function() {
+    assert.deepStrictEqual(encode("\"音楽\" -> \"♫\" \"音楽\" | ."), "Iumfs+alvSIgLT4gIuKZqyIgIumfs+alvSIgfCAu");
+  });
+});
+
+describe("decode", function() {
+  it("handles characters outside of ASCII range", function() {
+    assert.deepStrictEqual(decode("Iumfs+alvSIgLT4gIuKZqyIgIumfs+alvSIgfCAu"), "\"音楽\" -> \"♫\" \"音楽\" | .");
   });
 });

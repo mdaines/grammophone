@@ -1,5 +1,7 @@
 # Changelog
 
+* Grammar symbols can contain characters outside of ASCII range. Ensure that we can copy links to such grammars by encoding the grammar's spec as UTF-8 before encoding as base64, and decoding from UTF-8 when setting the initial spec.
+
 * Work around URLSearchParams interpreting plus signs as spaces by replacing spaces with plus signs after getting the spec search param.
 
 * Display a status message for a short time on the Copy Link button after the link is copied.
