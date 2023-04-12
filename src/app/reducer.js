@@ -18,11 +18,15 @@ export function reducer(state, action) {
       const { productions, error } = parser(state.spec);
 
       if (error) {
-        return { ...state, grammar: state.grammar, error };
+        return { ...state, error };
       } else if (productions.length == 0) {
         return { ...state, grammar: undefined, error: undefined };
       } else {
-        return { ...state, grammar: new Grammar(productions), error: undefined };
+        try {
+          return { ...state, grammar: new Grammar(productions), error: undefined };
+        } catch (error) {
+          return { ...state, error };
+        }
       }
     }
 
@@ -40,16 +44,20 @@ export function reducer(state, action) {
       } else if (productions.length == 0) {
         return { ...state, grammar: undefined, error: undefined };
       } else {
-        const grammar = new Grammar(productions);
+        try {
+          const grammar = new Grammar(productions);
 
-        return {
-          ...state,
-          grammar,
-          error: undefined,
-          mode: "transform",
-          transformStack: [{ grammar }],
-          transformIndex: 0
-        };
+          return {
+            ...state,
+            grammar,
+            error: undefined,
+            mode: "transform",
+            transformStack: [{ grammar }],
+            transformIndex: 0
+          };
+        } catch (error) {
+          return { ...state, error };
+        }
       }
     }
 
