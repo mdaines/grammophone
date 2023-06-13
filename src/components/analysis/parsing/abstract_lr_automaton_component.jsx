@@ -1,19 +1,16 @@
 import template from "./lr_automaton_graph.js";
 import { useRef, useEffect } from "react";
 
-let viz;
+let vizPromise;
 
 function render(src) {
-  if (typeof viz === "undefined") {
-    viz = new Viz();
+  if (typeof vizPromise === "undefined") {
+    vizPromise = import("@viz-js/viz").then(m => m.instance());
   }
 
-  return viz.renderSVGElement(src)
-    .catch((error) => {
-      viz = undefined;
-
-      return document.createTextNode(error.toString());
-    });
+  return vizPromise
+    .then(viz => viz.renderSVGElement(src))
+    .catch(error => document.createTextNode(error.toString()));
 }
 
 export default function({ grammar, automaton, title }) {
@@ -29,11 +26,11 @@ export default function({ grammar, automaton, title }) {
 
   useEffect(() => {
     render(src)
-      .then((element) => {
+      .then(element => {
         containerRef.current.innerHTML = "";
         containerRef.current.appendChild(element);
       });
   }, [src]);
 
-  return <div ref={containerRef} />;
+  return <div ref={containerRef} className="lr-automaton" />;
 }

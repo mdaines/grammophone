@@ -10,3 +10,7 @@
 .parsing-algorithm-table .classification {
   font-size: 90%;
 }
+
+.lr-automaton {
+  margin: 1em 0;
+}
