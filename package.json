@@ -31,7 +31,6 @@
     "serve-gallery": "parcel serve --no-autoinstall --no-cache gallery/index.html"
   },
   "alias": {
-    "preact/jsx-dev-runtime": "preact/jsx-runtime",
     "process": false
   }
 }
