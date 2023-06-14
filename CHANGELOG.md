@@ -1,5 +1,7 @@
 # Changelog
 
+* Update Viz.js to 3.x. Use `import()` so that the library isn't loaded until an automaton diagram needs to be displayed.
+
 * Catch validation errors from the Grammar constructor.
 
 * Grammar symbols can contain characters outside of ASCII range. Ensure that we can copy links to such grammars by encoding the grammar's spec as UTF-8 before encoding as base64, and decoding from UTF-8 when setting the initial spec.
