@@ -9,7 +9,7 @@
   ],
   "dependencies": {
     "@lezer/lr": "^1.3.3",
-    "@viz-js/viz": "^3.0.0-pre.1",
+    "@viz-js/viz": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "utf8": "^3.0.0"

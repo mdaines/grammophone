@@ -803,10 +803,10 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@viz-js/viz@^3.0.0-pre.1":
-  version "3.0.0-pre.1"
-  resolved "https://registry.yarnpkg.com/@viz-js/viz/-/viz-3.0.0-pre.1.tgz#0b549c02057f7e4b531e5e172fbf7b54b9eb07f0"
-  integrity sha512-D6tJNYjC+ozbDgvf7AOlV0JyIRXVWPVuzfmYCXCjQ7/CWV9RTPxMezq9Ywwen0Z0rxwo57s8apEP6xe3T+sqdA==
+"@viz-js/viz@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@viz-js/viz/-/viz-3.0.0.tgz#291b757e874b64461b51e6dab960171917100046"
+  integrity sha512-HRglx7l2bglrkZ7CwzI36N8dk29PscIdGkleaGSPrwl9mZ+i3NOpM+Meq2Ndxz6UKZ/YEev/u4HxuMVrN/ekjg==
 
 abortcontroller-polyfill@^1.1.9:
   version "1.7.5"
