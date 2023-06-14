@@ -9,7 +9,7 @@ function takePage(iterator) {
 export const ID = "sentences";
 export const TITLE = "Example Sentences";
 
-export default class extends Component {
+class SentencesInternalComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -52,4 +52,8 @@ export default class extends Component {
       </section>
     );
   }
+}
+
+export default function({ grammar }) {
+  return <SentencesInternalComponent key={grammar} grammar={grammar} />;
 }

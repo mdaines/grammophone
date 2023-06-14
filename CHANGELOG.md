@@ -1,5 +1,7 @@
 # Changelog
 
+* Work around the sentences component not resetting when the grammar changes by wrapping it in another component that uses the grammar as a key.
+
 * Update Viz.js to 3.x. Use `import()` so that the library isn't loaded until an automaton diagram needs to be displayed.
 
 * Catch validation errors from the Grammar constructor.
