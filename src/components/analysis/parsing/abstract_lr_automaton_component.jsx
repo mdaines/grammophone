@@ -1,36 +1,35 @@
-import template from "./lr_automaton_graph.js";
-import { useRef, useEffect } from "react";
+import { bareFormatItem, bareFormatSymbol } from "../../helpers.js";
+import { dotGraph } from "../../../dot_print.js";
+import VizComponent from "./viz_component.jsx";
 
-let vizPromise;
-
-function render(src) {
-  if (typeof vizPromise === "undefined") {
-    vizPromise = import("@viz-js/viz").then(m => m.instance());
-  }
-
-  return vizPromise
-    .then(viz => viz.renderSVGElement(src))
-    .catch(error => document.createTextNode(error.toString()));
+function transform(grammar, automaton) {
+  return {
+    data: grammar.calculations,
+    nodes: automaton.map((state, index) => {
+      return { key: index, data: { ...state, index } };
+    }),
+    edges: automaton.flatMap((state, source) => {
+      return Object.entries(state.transitions).map(([symbol, target]) => {
+        return { source, target, data: { symbol } };
+      });
+    })
+  };
 }
 
-export default function({ grammar, automaton, title }) {
-  const { productions, symbolInfo, start } = grammar.calculations;
-  const src = template({
-    symbolInfo,
-    automaton,
-    productions,
-    start,
-    title
-  });
-  const containerRef = useRef(null);
+const automatonGraph = dotGraph()
+  .attr("rankdir", "LR");
 
-  useEffect(() => {
-    render(src)
-      .then(element => {
-        containerRef.current.innerHTML = "";
-        containerRef.current.appendChild(element);
-      });
-  }, [src]);
+automatonGraph.node()
+  .attr("label", ({ index, items }, { start, productions, symbolInfo }) => {
+    return `${index} | ${items.map(item => bareFormatItem(item, start, productions, symbolInfo)).join("\n")}`;
+  })
+  .attr("shape", "record");
 
-  return <div ref={containerRef} className="lr-automaton" />;
+automatonGraph.edge()
+  .attr("label", ({ symbol }, { symbolInfo }) => bareFormatSymbol(symbol, symbolInfo));
+
+export default function({ grammar, automaton }) {
+  const src = automatonGraph(transform(grammar, automaton));
+
+  return <VizComponent src={src} />;
 }
