@@ -87,4 +87,25 @@ describe("Relation", function() {
       assert.deepStrictEqual(Array.from(relation.entries()), [["x", "a"], ["x", "b"], ["y", "c"]]);
     });
   });
+
+  describe("graph", function() {
+    it("returns a representation of the relation as a graph", function() {
+      let relation = new Relation();
+      relation.add("x", "y");
+      relation.add("y", "z");
+      relation.add("z", "x");
+      relation.add("a", "b");
+
+      assert.deepStrictEqual(relation.graph(), {
+        data: {},
+        nodes: [],
+        edges: [
+          { source: "x", target: "y", data: {} },
+          { source: "y", target: "z", data: {} },
+          { source: "z", target: "x", data: {} },
+          { source: "a", target: "b", data: {} }
+        ]
+      });
+    });
+  });
 });

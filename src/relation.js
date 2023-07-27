@@ -130,4 +130,12 @@ export default class Relation {
 
     return undefined;
   }
+
+  graph() {
+    return {
+      data: {},
+      nodes: [],
+      edges: Array.from(this.entries(), ([source, target]) => ({ source, target, data: {} }))
+    };
+  }
 }
