@@ -14,93 +14,123 @@ import * as LR0AutomatonComponent from "./analysis/parsing/lr0_automaton_compone
 import * as LR1AutomatonComponent from "./analysis/parsing/lr1_automaton_component.jsx";
 import * as LALR1AutomatonComponent from "./analysis/parsing/lalr1_automaton_component.jsx";
 
-const ROUTES = {
-  "/": {
-    views: [
-      { id: SanityComponent.ID, component: SanityComponent.default },
-      { id: ShortSentencesComponent.ID, component: ShortSentencesComponent.default },
-      { id: NonterminalsComponent.ID, component: NonterminalsComponent.default },
-      { id: ParsingComponent.ID, component: ParsingComponent.default }
-    ],
-    path: [{ title: "Analysis" }]
-  },
+import { createHashRouter, RouterProvider, useMatches, Outlet, NavLink, useNavigate } from "react-router-dom";
+import { useContext, createContext, useEffect } from "react";
 
-  "/ll1-table": {
-    views: [
-      { id: LL1TableComponent.ID, component: LL1TableComponent.default }
-    ],
-    path: [{ path: "/", title: "Analysis" }, { title: LL1TableComponent.TITLE }]
-  },
+export const GrammarContext = createContext(null);
 
-  "/lr0-automaton": {
-    views: [
-      { id: LR0AutomatonComponent.ID, component: LR0AutomatonComponent.default }
-    ],
-    path: [{ path: "/", title: "Analysis" }, { title: LR0AutomatonComponent.TITLE }]
-  },
+function GrammarContextHost({ Component }) {
+  const grammar = useContext(GrammarContext);
 
-  "/lr0-table": {
-    views: [
-      { id: LR0TableComponent.ID, component: LR0TableComponent.default }
-    ],
-    path: [{ path: "/", title: "Analysis" }, { title: LR0TableComponent.TITLE }]
-  },
+  return <Component grammar={grammar} />;
+}
 
-  "/slr1-table": {
-    views: [
-      { id: SLR1TableComponent.ID, component: SLR1TableComponent.default }
-    ],
-    path: [{ path: "/", title: "Analysis" }, { title: SLR1TableComponent.TITLE }]
-  },
-
-  "/lr1-automaton": {
-    views: [
-      { id: LR1AutomatonComponent.ID, component: LR1AutomatonComponent.default }
-    ],
-    path: [{ path: "/", title: "Analysis" }, { title: LR1AutomatonComponent.TITLE }]
-  },
-
-  "/lr1-table": {
-    views: [
-      { id: LR1TableComponent.ID, component: LR1TableComponent.default }
-    ],
-    path: [{ path: "/", title: "Analysis" }, { title: LR1TableComponent.TITLE }]
-  },
-
-  "/lalr1-automaton": {
-    views: [
-      { id: LALR1AutomatonComponent.ID, component: LALR1AutomatonComponent.default }
-    ],
-    path: [{ path: "/", title: "Analysis" }, { title: LALR1AutomatonComponent.TITLE }]
-  },
-
-  "/lalr1-table": {
-    views: [
-      { id: LALR1TableComponent.ID, component: LALR1TableComponent.default }
-    ],
-    path: [{ path: "/", title: "Analysis" }, { title: LALR1TableComponent.TITLE }]
-  },
-
-  "/sentences": {
-    views: [
-      { id: SentencesComponent.ID, component: SentencesComponent.default }
-    ],
-    path: [{ path: "/", title: "Analysis" }, { title: SentencesComponent.TITLE }]
+const router = createHashRouter([
+  {
+    path: "/",
+    element: <Analysis />,
+    handle: { title: "Analysis" },
+    children: [
+      {
+        index: true,
+        element: (
+          <>
+            <GrammarContextHost Component={SanityComponent.default} />
+            <GrammarContextHost Component={ShortSentencesComponent.default} />
+            <GrammarContextHost Component={NonterminalsComponent.default} />
+            <GrammarContextHost Component={ParsingComponent.default} />
+          </>
+        )
+      },
+      {
+        path: "sentences",
+        handle: { title: SentencesComponent.TITLE },
+        element: <GrammarContextHost Component={SentencesComponent.default} />
+      },
+      {
+        path: "ll1-table",
+        handle: { title: LL1TableComponent.TITLE },
+        element: <GrammarContextHost Component={LL1TableComponent.default} />
+      },
+      {
+        path: "lr0-automaton",
+        handle: { title: LR0AutomatonComponent.TITLE },
+        element: <GrammarContextHost Component={LR0AutomatonComponent.default} />
+      },
+      {
+        path: "lr0-table",
+        handle: { title: LR0TableComponent.TITLE },
+        element: <GrammarContextHost Component={LR0TableComponent.default} />
+      },
+      {
+        path: "slr1-table",
+        handle: { title: SLR1TableComponent.TITLE },
+        element: <GrammarContextHost Component={SLR1TableComponent.default} />
+      },
+      {
+        path: "lr1-automaton",
+        handle: { title: LR1AutomatonComponent.TITLE },
+        element: <GrammarContextHost Component={LR1AutomatonComponent.default} />
+      },
+      {
+        path: "lr1-table",
+        handle: { title: LR1TableComponent.TITLE },
+        element: <GrammarContextHost Component={LR1TableComponent.default} />
+      },
+      {
+        path: "lalr1-automaton",
+        handle: { title: LALR1AutomatonComponent.TITLE },
+        element: <GrammarContextHost Component={LALR1AutomatonComponent.default} />
+      },
+      {
+        path: "lalr1-table",
+        handle: { title: LALR1TableComponent.title },
+        element: <GrammarContextHost Component={LALR1TableComponent.default} />
+      },
+      {
+        path: "*",
+        element: <CatchAll />
+      }
+    ]
   }
-};
+]);
 
-export default function({ grammar, path }) {
-  const route = ROUTES[path];
+function CatchAll() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/");
+  });
+}
+
+function PathNav() {
+  let matches = useMatches();
+  let components = matches.filter(m => m.handle?.title);
 
   return (
-    <main id="analysis">
-      <PathComponent path={route.path} />
+    <nav id="path">
+      <ol>
+        {components.map((m, index) => (
+          <li key={index}><NavLink to={m.pathname}>{m.handle?.title}</NavLink></li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
 
-      {
-        route.views.map((view) => {
-          return <view.component key={view.id} grammar={grammar} />;
-        })
-      }
+function Analysis() {
+  return (
+    <main id="analysis">
+      <PathNav />
+      <Outlet />
     </main>
+  );
+}
+
+export default function({ grammar }) {
+  return (
+    <GrammarContext.Provider value={grammar}>
+      <RouterProvider router={router} />
+    </GrammarContext.Provider>
   );
 }

@@ -4,6 +4,33 @@
   padding-bottom: 10px;
 }
 
+#analysis nav ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 4px;
+}
+
+#analysis nav li {
+  display: flex;
+  gap: 4px;
+}
+
+#analysis nav li:after {
+  content: "/";
+}
+
+#analysis nav li:last-of-type:after {
+  content: "";
+}
+
+#analysis nav li a.active {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
 #analysis h2 {
   font-size: 18pt;
   font-weight: normal;

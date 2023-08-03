@@ -8,11 +8,6 @@ export function reducer(state, action) {
       return { ...state, spec: action.spec };
     }
 
-  case "setPath":
-    {
-      return { ...state, path: action.path };
-    }
-
   case "analyze":
     {
       const { productions, error } = parser(state.spec);
@@ -111,5 +106,5 @@ export function reducer(state, action) {
 }
 
 export function init(spec = "") {
-  return reducer({ spec, path: "/", mode: "edit" }, { type: "analyze" });
+  return reducer({ spec, mode: "edit" }, { type: "analyze" });
 }

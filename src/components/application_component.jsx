@@ -3,7 +3,7 @@ import EditorComponent from "./editor_component.jsx";
 import AnalysisComponent from "./analysis_component.jsx";
 import BlankSlateComponent from "./blank_slate_component.jsx";
 
-export default function({ spec, updateSpec, mode, edit, transform, analyze, error, grammar, path, transformStack, transformIndex, undoTransformation, redoTransformation, applyTransformation }) {
+export default function({ spec, updateSpec, mode, edit, transform, analyze, error, grammar, transformStack, transformIndex, undoTransformation, redoTransformation, applyTransformation }) {
   return (
     <>
       <SiteHeaderComponent />
@@ -25,7 +25,7 @@ export default function({ spec, updateSpec, mode, edit, transform, analyze, erro
 
       {
         grammar ?
-          <AnalysisComponent grammar={grammar} path={path} /> :
+          <AnalysisComponent grammar={grammar} /> :
           <BlankSlateComponent />
       }
     </>

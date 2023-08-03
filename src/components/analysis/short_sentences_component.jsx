@@ -1,6 +1,8 @@
 import { formatSentence } from "../helpers.js";
 import { takeFromIterator } from "../../grammar/sentences.js";
 
+import { Link } from "react-router-dom";
+
 export const ID = "short_sentences";
 export const TITLE = "Example Sentences";
 
@@ -26,7 +28,7 @@ export default function({ grammar }) {
   }
 
   if (!done) {
-    link = <p><a href="#/sentences">{"More example sentences"}</a></p>;
+    link = <p><Link to="sentences">{"More example sentences"}</Link></p>;
   }
 
   return (
