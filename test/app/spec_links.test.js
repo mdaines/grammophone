@@ -34,12 +34,40 @@ describe("encode", function() {
   });
 
   it("handles characters outside of ASCII range", function() {
-    assert.deepStrictEqual(encode("\"音楽\" -> \"♫\" \"音楽\" | ."), "Iumfs+alvSIgLT4gIuKZqyIgIumfs+alvSIgfCAu");
+    assert.deepStrictEqual(encode("\"音楽\" -> \"♫\" \"音楽\" | ."), "Iumfs-alvSIgLT4gIuKZqyIgIumfs-alvSIgfCAu");
+  });
+
+  it("uses base64url alphabet", function() {
+    assert.deepStrictEqual(encode("??>>??"), "Pz8-Pj8_");
+  });
+
+  it("returns alternate padding", function() {
+    assert.deepStrictEqual(encode("S -> Start $."), "UyAtPiBTdGFydCAkLg~~");
   });
 });
 
 describe("decode", function() {
   it("handles characters outside of ASCII range", function() {
     assert.deepStrictEqual(decode("Iumfs+alvSIgLT4gIuKZqyIgIumfs+alvSIgfCAu"), "\"音楽\" -> \"♫\" \"音楽\" | .");
+  });
+
+  it("handles regular base64", function() {
+    assert.deepStrictEqual(decode("Pz8+Pj8/"), "??>>??");
+  });
+
+  it("handles base64url", function() {
+    assert.deepStrictEqual(decode("Pz8-Pj8_"), "??>>??");
+  });
+
+  it("handles plus interpreted as space", function() {
+    assert.deepStrictEqual(decode("Pz8 Pj8_"), "??>>??");
+  });
+
+  it("handles regular padding", function() {
+    assert.deepStrictEqual(decode("UyAtPiBTdGFydCAkLg=="), "S -> Start $.");
+  });
+
+  it("handles alternate padding", function() {
+    assert.deepStrictEqual(decode("UyAtPiBTdGFydCAkLg~~"), "S -> Start $.");
   });
 });

@@ -2,20 +2,35 @@ import utf8 from "utf8";
 
 export const DEFAULT_SPEC = "# Type a grammar here:\n\n";
 
-export function encode(spec) {
-  return btoa(utf8.encode(spec));
+export function encode(stringToEncode) {
+  return btoa(
+    utf8.encode(
+      stringToEncode
+    )
+  )
+  .replaceAll("+", "-")
+  .replaceAll("/", "_")
+  .replaceAll("=", "~");
 }
 
-export function decode(spec) {
-  return utf8.decode(atob(spec));
+export function decode(stringToDecode) {
+  return utf8.decode(
+    atob(
+      stringToDecode
+      .replaceAll("-", "+")
+      .replaceAll("_", "/")
+      .replaceAll("~", "=")
+      .replaceAll(" ", "+")
+    )
+  );
 }
 
 export function getURLSearchParamSpec(search) {
-  const spec = new URLSearchParams(search).get("s")?.replaceAll(" ", "+");
+  const param = new URLSearchParams(search).get("s");
 
-  if (spec) {
+  if (param) {
     try {
-      return decode(spec);
+      return decode(param);
     } catch (error) {
       console.error(error);
 
