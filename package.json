@@ -27,8 +27,7 @@
     "lint": "eslint src test",
     "test": "mocha --recursive --extension \".test.js\"",
     "build": "parcel build --no-autoinstall --no-cache",
-    "serve": "parcel serve --no-autoinstall --no-cache",
-    "serve-gallery": "parcel serve --no-autoinstall --no-cache gallery/index.html"
+    "serve": "parcel serve --no-autoinstall --no-cache"
   },
   "alias": {
     "process": false
