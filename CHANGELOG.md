@@ -1,5 +1,7 @@
 # Changelog
 
+* Update Viz.js to 3.2.x. Instead of generating automata graphs by assembling strings in DOT format, generate graph objects and render these directly.
+
 * Introduce a helper for printing graphs in DOT format. This is used for the automaton components.
 
 * Work around the sentences component not resetting when the grammar changes by wrapping it in another component that uses the grammar as a key.
