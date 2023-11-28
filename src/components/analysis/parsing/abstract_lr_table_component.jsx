@@ -1,7 +1,11 @@
 import { fillArray, formatSymbol, formatProduction } from "../../helpers.js";
 import { END } from "../../../grammar/symbols.js";
 
-export default function({ grammar, table }) {
+function isConflict(actions) {
+  return (typeof actions.shift === "undefined" ? 0 : 1) + (typeof actions.reduce !== "undefined" ? actions.reduce.length : 0) > 1;
+}
+
+export default function({ grammar, table, includeEnd }) {
   const { productions, symbolInfo } = grammar.calculations;
 
   return (
@@ -10,7 +14,7 @@ export default function({ grammar, table }) {
         <col />
       </colgroup>
       <colgroup className="t">
-        {fillArray(symbolInfo.terminals.size + 1, (index) => <col key={index} />)}
+        {fillArray(symbolInfo.terminals.size + (includeEnd ? 1 : 0), (index) => <col key={index} />)}
       </colgroup>
       <colgroup className="nt">
         {fillArray(symbolInfo.nonterminals.size, (index) => <col key={index} />)}
@@ -24,7 +28,9 @@ export default function({ grammar, table }) {
               return <th key={"t"+index}>{formatSymbol(symbol, symbolInfo)}</th>;
             })
           }
-          <th>{formatSymbol(END, symbolInfo)}</th>
+          {
+            includeEnd ? <th>{formatSymbol(END, symbolInfo)}</th> : []
+          }
           {
             symbolInfo.nonterminalOrder.map(function(symbol, index) {
               return <th key={"nt"+index}>{formatSymbol(symbol, symbolInfo)}</th>;
@@ -40,7 +46,7 @@ export default function({ grammar, table }) {
               <tr key={index}>
                 <th scope="row">{index}</th>
                 {
-                  symbolInfo.terminalOrder.concat(END).map(function(s, index) {
+                  symbolInfo.terminalOrder.concat(includeEnd ? END : []).map(function(s, index) {
                     if (typeof state[s] === "undefined") {
                       return <td key={"t"+index} />;
                     } else {
@@ -66,10 +72,8 @@ export default function({ grammar, table }) {
                         });
                       }
 
-                      let isConflict = (typeof state[s].shift === "undefined" ? 0 : 1) + (typeof state[s].reduce !== "undefined" ? state[s].reduce.length : 0) > 1;
-
                       return (
-                        <td key={"t"+index} className={isConflict ? "conflict" : ""}>
+                        <td key={"t"+index} className={isConflict(state[s]) ? "conflict" : ""}>
                           <ul>{actions}</ul>
                         </td>
                       );

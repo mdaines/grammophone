@@ -7,7 +7,11 @@ export default function({ grammar }) {
   return (
     <section id={ID} className="analysis">
       <h2>{TITLE}</h2>
-      <AbstractLRAutomatonComponent grammar={grammar} automaton={grammar.calculations.lalr1Automaton} />
+      <AbstractLRAutomatonComponent
+        grammar={grammar}
+        automaton={grammar.calculations.lalr1Automaton}
+        table={grammar.calculations.lalr1Table}
+      />
     </section>
   );
 }

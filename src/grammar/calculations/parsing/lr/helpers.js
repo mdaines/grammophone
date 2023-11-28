@@ -104,7 +104,7 @@ export function automaton(calculations, build) {
 
 }
 
-export function classifyLR1(table) {
+export function classifyLR(table) {
 
   var i, s;
 
@@ -221,4 +221,16 @@ export function mergeItems(a, b) {
 
   return result;
 
+}
+
+export function lrConflicts(table) {
+  return table.map(state => {
+    const conflicts = {};
+
+    for (let s in state) {
+      conflicts[s] = (typeof state[s].shift === "undefined" ? 0 : 1) + (typeof state[s].reduce !== "undefined" ? state[s].reduce.length : 0) > 1;
+    }
+
+    return conflicts;
+  });
 }
