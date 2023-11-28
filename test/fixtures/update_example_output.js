@@ -9,12 +9,16 @@ import { replacer } from "./serialization.js";
 
 let output = {};
 
-for (let exampleName of Object.keys(exampleGrammars)) {
+let exampleNames = Object.keys(exampleGrammars).sort();
+
+for (let exampleName of exampleNames) {
   let grammar = new Grammar(exampleGrammars[exampleName]);
 
   output[exampleName] = {};
 
-  for (let calculationName of Object.keys(grammar.calculations)) {
+  let calculationNames = Object.keys(grammar.calculations).sort();
+
+  for (let calculationName of calculationNames) {
     output[exampleName][calculationName] = grammar.calculations[calculationName];
   }
 }
