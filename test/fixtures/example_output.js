@@ -746,63 +746,146 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "b": 2
+        "S": {
+          "shift": 1
         },
-        "reduce": []
+        "b": {
+          "shift": 2
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "A": 3
+        "b": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "i": 4
+        "i": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "B": 5,
-          "r": 6
+        "r": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "d": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "C": 7,
-          "d": 8
+        "A": {
+          "shift": 3
         },
-        "reduce": []
+        "b": {
+          "reduce": [
+            1
+          ]
+        },
+        "i": {
+          "reduce": [
+            1
+          ]
+        },
+        "r": {
+          "reduce": [
+            1
+          ]
+        },
+        "d": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "i": {
+          "shift": 4
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "B": {
+          "shift": 5
+        },
+        "r": {
+          "shift": 6
+        }
+      },
+      {
+        "b": {
+          "reduce": [
+            0
+          ]
+        },
+        "i": {
+          "reduce": [
+            0
+          ]
+        },
+        "r": {
+          "reduce": [
+            0
+          ]
+        },
+        "d": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "C": {
+          "shift": 7
+        },
+        "d": {
+          "shift": 8
+        }
+      },
+      {
+        "b": {
+          "reduce": [
+            2
+          ]
+        },
+        "i": {
+          "reduce": [
+            2
+          ]
+        },
+        "r": {
+          "reduce": [
+            2
+          ]
+        },
+        "d": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "b": {
+          "reduce": [
+            3
+          ]
+        },
+        "i": {
+          "reduce": [
+            3
+          ]
+        },
+        "r": {
+          "reduce": [
+            3
+          ]
+        },
+        "d": {
+          "reduce": [
+            3
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -1957,62 +2040,129 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "a": 2
+        "A": {
+          "shift": 1
         },
-        "reduce": []
+        "a": {
+          "shift": 2
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "b": 3
+        "a": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "B": 4,
-          "C": 5,
-          "z": 6
+        "b": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "C": 7,
-          "z": 6
+        "x": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "z": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          "x": 8
+        "b": {
+          "shift": 3
+        }
+      },
+      {
+        "B": {
+          "shift": 4
         },
-        "reduce": []
+        "C": {
+          "shift": 5
+        },
+        "z": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "C": {
+          "shift": 7
+        },
+        "z": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "x": {
+          "shift": 8
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "a": {
+          "reduce": [
+            2
+          ]
+        },
+        "b": {
+          "reduce": [
+            2
+          ]
+        },
+        "x": {
+          "reduce": [
+            2
+          ]
+        },
+        "z": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "b": {
+          "reduce": [
+            0
+          ]
+        },
+        "x": {
+          "reduce": [
+            0
+          ]
+        },
+        "z": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "b": {
+          "reduce": [
+            1
+          ]
+        },
+        "x": {
+          "reduce": [
+            1
+          ]
+        },
+        "z": {
+          "reduce": [
+            1
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -3623,90 +3773,266 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "mary": 2
+        "S": {
+          "shift": 1
         },
-        "reduce": []
+        "mary": {
+          "shift": 2
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "Owns": 3,
-          "had": 4
+        "mary": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "Object": 5,
-          "a": 6
+        "had": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "Animal": 7,
-          "Adverb": 8
+        "a": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "Adjective": 9,
-          "little": 10
+        "little": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "lamb": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          "Noun": 11,
-          "lamb": 12
+        "Owns": {
+          "shift": 3
         },
-        "reduce": []
+        "had": {
+          "shift": 4
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "Object": {
+          "shift": 5
+        },
+        "a": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "mary": {
+          "reduce": [
+            1
+          ]
+        },
+        "had": {
+          "reduce": [
+            1
+          ]
+        },
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "little": {
+          "reduce": [
+            1
+          ]
+        },
+        "lamb": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          6
-        ]
+        "mary": {
+          "reduce": [
+            0
+          ]
+        },
+        "had": {
+          "reduce": [
+            0
+          ]
+        },
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "little": {
+          "reduce": [
+            0
+          ]
+        },
+        "lamb": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "Animal": {
+          "shift": 7
+        },
+        "Adverb": {
+          "shift": 8
+        },
+        "mary": {
+          "reduce": [
+            4
+          ]
+        },
+        "had": {
+          "reduce": [
+            4
+          ]
+        },
+        "a": {
+          "reduce": [
+            4
+          ]
+        },
+        "little": {
+          "reduce": [
+            4
+          ]
+        },
+        "lamb": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "mary": {
+          "reduce": [
+            2
+          ]
+        },
+        "had": {
+          "reduce": [
+            2
+          ]
+        },
+        "a": {
+          "reduce": [
+            2
+          ]
+        },
+        "little": {
+          "reduce": [
+            2
+          ]
+        },
+        "lamb": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "Adjective": {
+          "shift": 9
+        },
+        "little": {
+          "shift": 10
+        }
+      },
+      {
+        "Noun": {
+          "shift": 11
+        },
+        "lamb": {
+          "shift": 12
+        }
+      },
+      {
+        "mary": {
+          "reduce": [
+            5
+          ]
+        },
+        "had": {
+          "reduce": [
+            5
+          ]
+        },
+        "a": {
+          "reduce": [
+            5
+          ]
+        },
+        "little": {
+          "reduce": [
+            5
+          ]
+        },
+        "lamb": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "mary": {
+          "reduce": [
+            3
+          ]
+        },
+        "had": {
+          "reduce": [
+            3
+          ]
+        },
+        "a": {
+          "reduce": [
+            3
+          ]
+        },
+        "little": {
+          "reduce": [
+            3
+          ]
+        },
+        "lamb": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "mary": {
+          "reduce": [
+            6
+          ]
+        },
+        "had": {
+          "reduce": [
+            6
+          ]
+        },
+        "a": {
+          "reduce": [
+            6
+          ]
+        },
+        "little": {
+          "reduce": [
+            6
+          ]
+        },
+        "lamb": {
+          "reduce": [
+            6
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -5328,73 +5654,159 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "id": 2
+        "S": {
+          "shift": 1
         },
-        "reduce": []
+        "id": {
+          "shift": 2
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "S'": 3,
-          "V": 4
+        "id": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          2,
-          3
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "assign": 5
+        "assign": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "num": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          "E": 6,
-          "id": 7,
-          "num": 8
+        "S'": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "V": 9
+        "V": {
+          "shift": 4
         },
-        "reduce": [
-          3
-        ]
+        "id": {
+          "reduce": [
+            2,
+            3
+          ]
+        },
+        "assign": {
+          "reduce": [
+            2,
+            3
+          ]
+        },
+        "num": {
+          "reduce": [
+            2,
+            3
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "id": {
+          "reduce": [
+            0
+          ]
+        },
+        "assign": {
+          "reduce": [
+            0
+          ]
+        },
+        "num": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "assign": {
+          "shift": 5
+        }
+      },
+      {
+        "E": {
+          "shift": 6
+        },
+        "id": {
+          "shift": 7
+        },
+        "num": {
+          "shift": 8
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            1
+          ]
+        },
+        "assign": {
+          "reduce": [
+            1
+          ]
+        },
+        "num": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "V": {
+          "shift": 9
+        },
+        "id": {
+          "reduce": [
+            3
+          ]
+        },
+        "assign": {
+          "reduce": [
+            3
+          ]
+        },
+        "num": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            5
+          ]
+        },
+        "assign": {
+          "reduce": [
+            5
+          ]
+        },
+        "num": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            4
+          ]
+        },
+        "assign": {
+          "reduce": [
+            4
+          ]
+        },
+        "num": {
+          "reduce": [
+            4
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -7233,94 +7645,241 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "L": 1,
-          "V": 2,
-          "num": 3,
-          "Var": 4
+        "L": {
+          "shift": 1
         },
-        "reduce": [
-          3,
-          4
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "+": 5
+        "V": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "(": 6
+        "num": {
+          "shift": 3,
+          "reduce": [
+            3,
+            4
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "L": 7,
-          "V": 2,
-          "num": 3,
-          "Var": 4
+        "Var": {
+          "shift": 4
         },
-        "reduce": [
-          3,
-          4
-        ]
-      },
-      {
-        "shift": {
-          "Var": 8
+        "+": {
+          "reduce": [
+            3,
+            4
+          ]
         },
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "+": 9
+        "(": {
+          "reduce": [
+            3,
+            4
+          ]
         },
-        "reduce": []
+        ")": {
+          "reduce": [
+            3,
+            4
+          ]
+        }
       },
       {
-        "shift": {
-          "V": 10,
-          "Var": 4
+        "+": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          3,
-          4
-        ]
-      },
-      {
-        "shift": {
-          ")": 11
+        "num": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "(": {
+          "reduce": [
+            -1
+          ]
+        },
+        ")": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "+": {
+          "shift": 5
+        }
+      },
+      {
+        "+": {
+          "reduce": [
+            1
+          ]
+        },
+        "num": {
+          "reduce": [
+            1
+          ]
+        },
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "(": {
+          "shift": 6
+        }
+      },
+      {
+        "L": {
+          "shift": 7
+        },
+        "V": {
+          "shift": 2
+        },
+        "num": {
+          "shift": 3,
+          "reduce": [
+            3,
+            4
+          ]
+        },
+        "Var": {
+          "shift": 4
+        },
+        "+": {
+          "reduce": [
+            3,
+            4
+          ]
+        },
+        "(": {
+          "reduce": [
+            3,
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            3,
+            4
+          ]
+        }
+      },
+      {
+        "Var": {
+          "shift": 8
+        },
+        "+": {
+          "reduce": [
+            4
+          ]
+        },
+        "num": {
+          "reduce": [
+            4
+          ]
+        },
+        "(": {
+          "reduce": [
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "+": {
+          "reduce": [
+            0
+          ]
+        },
+        "num": {
+          "reduce": [
+            0
+          ]
+        },
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "+": {
+          "shift": 9
+        }
+      },
+      {
+        "V": {
+          "shift": 10
+        },
+        "Var": {
+          "shift": 4
+        },
+        "+": {
+          "reduce": [
+            3,
+            4
+          ]
+        },
+        "num": {
+          "reduce": [
+            3,
+            4
+          ]
+        },
+        "(": {
+          "reduce": [
+            3,
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            3,
+            4
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 11
+        }
+      },
+      {
+        "+": {
+          "reduce": [
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            2
+          ]
+        },
+        "(": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -9873,105 +10432,362 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "P": 1,
-          "M": 2,
-          "Q": 3,
-          "o": 4
+        "P": {
+          "shift": 1
         },
-        "reduce": [
-          1,
-          3,
-          7
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "*": 5
+        "M": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "StarM": 6,
-          "(*": 7,
-          "(": 8
+        "Q": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          6
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "M": 9,
-          "Q": 3,
-          "o": 4
+        "o": {
+          "shift": 4,
+          "reduce": [
+            1,
+            3,
+            7
+          ]
         },
-        "reduce": [
-          3,
-          7
-        ]
-      },
-      {
-        "shift": {
-          "Q": 10,
-          "o": 4
+        "*": {
+          "reduce": [
+            1,
+            3,
+            7
+          ]
         },
-        "reduce": [
-          7
-        ]
-      },
-      {
-        "shift": {
-          "*)": 11
+        "(*": {
+          "reduce": [
+            1,
+            3,
+            7
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "*": 12
+        "*)": {
+          "reduce": [
+            1,
+            3,
+            7
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {
-          ")": 13
+        "(": {
+          "reduce": [
+            1,
+            3,
+            7
+          ]
         },
-        "reduce": []
+        ")": {
+          "reduce": [
+            1,
+            3,
+            7
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "*": {
+          "reduce": [
+            -1
+          ]
+        },
+        "(*": {
+          "reduce": [
+            -1
+          ]
+        },
+        "*)": {
+          "reduce": [
+            -1
+          ]
+        },
+        "(": {
+          "reduce": [
+            -1
+          ]
+        },
+        ")": {
+          "reduce": [
+            -1
+          ]
+        },
+        "o": {
+          "reduce": [
+            -1
+          ]
+        }
+      },
+      {
+        "*": {
+          "shift": 5
+        }
+      },
+      {
+        "StarM": {
+          "shift": 6
+        },
+        "(*": {
+          "shift": 7
+        },
+        "(": {
+          "shift": 8
+        }
+      },
+      {
+        "*": {
+          "reduce": [
+            6
+          ]
+        },
+        "(*": {
+          "reduce": [
+            6
+          ]
+        },
+        "*)": {
+          "reduce": [
+            6
+          ]
+        },
+        "(": {
+          "reduce": [
+            6
+          ]
+        },
+        ")": {
+          "reduce": [
+            6
+          ]
+        },
+        "o": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        "*": {
+          "reduce": [
+            0
+          ]
+        },
+        "(*": {
+          "reduce": [
+            0
+          ]
+        },
+        "*)": {
+          "reduce": [
+            0
+          ]
+        },
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        },
+        "o": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "*": {
+          "reduce": [
+            2
+          ]
+        },
+        "(*": {
+          "reduce": [
+            2
+          ]
+        },
+        "*)": {
+          "reduce": [
+            2
+          ]
+        },
+        "(": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "o": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "M": {
+          "shift": 9
+        },
+        "Q": {
+          "shift": 3
+        },
+        "o": {
+          "shift": 4,
+          "reduce": [
+            3,
+            7
+          ]
+        },
+        "*": {
+          "reduce": [
+            3,
+            7
+          ]
+        },
+        "(*": {
+          "reduce": [
+            3,
+            7
+          ]
+        },
+        "*)": {
+          "reduce": [
+            3,
+            7
+          ]
+        },
+        "(": {
+          "reduce": [
+            3,
+            7
+          ]
+        },
+        ")": {
+          "reduce": [
+            3,
+            7
+          ]
+        }
+      },
+      {
+        "Q": {
+          "shift": 10
+        },
+        "o": {
+          "shift": 4,
+          "reduce": [
+            7
+          ]
+        },
+        "*": {
+          "reduce": [
+            7
+          ]
+        },
+        "(*": {
+          "reduce": [
+            7
+          ]
+        },
+        "*)": {
+          "reduce": [
+            7
+          ]
+        },
+        "(": {
+          "reduce": [
+            7
+          ]
+        },
+        ")": {
+          "reduce": [
+            7
+          ]
+        }
+      },
+      {
+        "*)": {
+          "shift": 11
+        }
+      },
+      {
+        "*": {
+          "shift": 12
+        }
+      },
+      {
+        "*": {
+          "reduce": [
+            4
+          ]
+        },
+        "(*": {
+          "reduce": [
+            4
+          ]
+        },
+        "*)": {
+          "reduce": [
+            4
+          ]
+        },
+        "(": {
+          "reduce": [
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            4
+          ]
+        },
+        "o": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 13
+        }
+      },
+      {
+        "*": {
+          "reduce": [
+            5
+          ]
+        },
+        "(*": {
+          "reduce": [
+            5
+          ]
+        },
+        "*)": {
+          "reduce": [
+            5
+          ]
+        },
+        "(": {
+          "reduce": [
+            5
+          ]
+        },
+        ")": {
+          "reduce": [
+            5
+          ]
+        },
+        "o": {
+          "reduce": [
+            5
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -12173,77 +12989,165 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "B": 2,
-          "x": 3,
-          "y": 4,
-          "C": 5,
-          "r": 6
+        "A": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "C": 7,
-          "r": 6
+        "B": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "A": 8,
-          "B": 2,
-          "x": 3,
-          "y": 4,
-          "C": 5,
-          "r": 6
+        "x": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "B": 9,
-          "C": 5,
-          "r": 6
+        "y": {
+          "shift": 4
         },
-        "reduce": []
+        "C": {
+          "shift": 5
+        },
+        "r": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "x": {
+          "reduce": [
+            -1
+          ]
+        },
+        "y": {
+          "reduce": [
+            -1
+          ]
+        },
+        "r": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "x": {
+          "reduce": [
+            0
+          ]
+        },
+        "y": {
+          "reduce": [
+            0
+          ]
+        },
+        "r": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "C": {
+          "shift": 7
+        },
+        "r": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "A": {
+          "shift": 8
+        },
+        "B": {
+          "shift": 2
+        },
+        "x": {
+          "shift": 3
+        },
+        "y": {
+          "shift": 4
+        },
+        "C": {
+          "shift": 5
+        },
+        "r": {
+          "shift": 6
+        }
+      },
+      {
+        "B": {
+          "shift": 9
+        },
+        "C": {
+          "shift": 5
+        },
+        "r": {
+          "shift": 6
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            4
+          ]
+        },
+        "y": {
+          "reduce": [
+            4
+          ]
+        },
+        "r": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            1
+          ]
+        },
+        "y": {
+          "reduce": [
+            1
+          ]
+        },
+        "r": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            2
+          ]
+        },
+        "y": {
+          "reduce": [
+            2
+          ]
+        },
+        "r": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            3
+          ]
+        },
+        "y": {
+          "reduce": [
+            3
+          ]
+        },
+        "r": {
+          "reduce": [
+            3
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -13881,80 +14785,243 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "y": 2,
-          "x": 3,
-          "B": 4,
-          "z": 5,
-          "u": 6
+        "A": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "B": 7,
-          "z": 5,
-          "u": 6
+        "y": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "C": 8,
-          "s": 9
+        "x": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "B": 10,
-          "z": 5,
-          "u": 6
+        "B": {
+          "shift": 4
         },
-        "reduce": []
+        "z": {
+          "shift": 5
+        },
+        "u": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "y": {
+          "reduce": [
+            -1
+          ]
+        },
+        "x": {
+          "reduce": [
+            -1
+          ]
+        },
+        "z": {
+          "reduce": [
+            -1
+          ]
+        },
+        "u": {
+          "reduce": [
+            -1
+          ]
+        },
+        "s": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "B": {
+          "shift": 7
+        },
+        "z": {
+          "shift": 5
+        },
+        "u": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "y": {
+          "reduce": [
+            1
+          ]
+        },
+        "x": {
+          "reduce": [
+            1
+          ]
+        },
+        "z": {
+          "reduce": [
+            1
+          ]
+        },
+        "u": {
+          "reduce": [
+            1
+          ]
+        },
+        "s": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "C": {
+          "shift": 8
+        },
+        "s": {
+          "shift": 9
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "B": {
+          "shift": 10
+        },
+        "z": {
+          "shift": 5
+        },
+        "u": {
+          "shift": 6
+        }
+      },
+      {
+        "y": {
+          "reduce": [
+            4
+          ]
+        },
+        "x": {
+          "reduce": [
+            4
+          ]
+        },
+        "z": {
+          "reduce": [
+            4
+          ]
+        },
+        "u": {
+          "reduce": [
+            4
+          ]
+        },
+        "s": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "y": {
+          "reduce": [
+            0
+          ]
+        },
+        "x": {
+          "reduce": [
+            0
+          ]
+        },
+        "z": {
+          "reduce": [
+            0
+          ]
+        },
+        "u": {
+          "reduce": [
+            0
+          ]
+        },
+        "s": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "y": {
+          "reduce": [
+            2
+          ]
+        },
+        "x": {
+          "reduce": [
+            2
+          ]
+        },
+        "z": {
+          "reduce": [
+            2
+          ]
+        },
+        "u": {
+          "reduce": [
+            2
+          ]
+        },
+        "s": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "y": {
+          "reduce": [
+            5
+          ]
+        },
+        "x": {
+          "reduce": [
+            5
+          ]
+        },
+        "z": {
+          "reduce": [
+            5
+          ]
+        },
+        "u": {
+          "reduce": [
+            5
+          ]
+        },
+        "s": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "y": {
+          "reduce": [
+            3
+          ]
+        },
+        "x": {
+          "reduce": [
+            3
+          ]
+        },
+        "z": {
+          "reduce": [
+            3
+          ]
+        },
+        "u": {
+          "reduce": [
+            3
+          ]
+        },
+        "s": {
+          "reduce": [
+            3
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -15903,89 +16970,235 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "(": 2,
-          "(*": 3
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "Ses": 4,
-          "S": 5,
-          "(": 2,
-          "(*": 3
+        "(": {
+          "shift": 2
         },
-        "reduce": []
+        "(*": {
+          "shift": 3
+        }
       },
       {
-        "shift": {
-          "*)": 6
+        "(": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          ")": 7
+        ")": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "SL": 8,
-          ";": 9,
-          "S": 10,
-          "(": 2,
-          "(*": 3
+        "(*": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "SL": 11,
-          ";": 9,
-          "S": 10,
-          "(": 2,
-          "(*": 3
+        "*)": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        ";": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "Ses": {
+          "shift": 4
+        },
+        "S": {
+          "shift": 5
+        },
+        "(": {
+          "shift": 2
+        },
+        "(*": {
+          "shift": 3
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "*)": {
+          "shift": 6
+        }
+      },
+      {
+        ")": {
+          "shift": 7
+        }
+      },
+      {
+        "SL": {
+          "shift": 8
+        },
+        ";": {
+          "shift": 9
+        },
+        "S": {
+          "shift": 10
+        },
+        "(": {
+          "shift": 2
+        },
+        "(*": {
+          "shift": 3
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        },
+        "(*": {
+          "reduce": [
+            1
+          ]
+        },
+        "*)": {
+          "reduce": [
+            1
+          ]
+        },
+        ";": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        },
+        "(*": {
+          "reduce": [
+            0
+          ]
+        },
+        "*)": {
+          "reduce": [
+            0
+          ]
+        },
+        ";": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "(*": {
+          "reduce": [
+            2
+          ]
+        },
+        "*)": {
+          "reduce": [
+            2
+          ]
+        },
+        ";": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "SL": {
+          "shift": 11
+        },
+        ";": {
+          "shift": 9
+        },
+        "S": {
+          "shift": 10
+        },
+        "(": {
+          "shift": 2
+        },
+        "(*": {
+          "shift": 3
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            4
+          ]
+        },
+        "(*": {
+          "reduce": [
+            4
+          ]
+        },
+        "*)": {
+          "reduce": [
+            4
+          ]
+        },
+        ";": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        },
+        "(*": {
+          "reduce": [
+            3
+          ]
+        },
+        "*)": {
+          "reduce": [
+            3
+          ]
+        },
+        ";": {
+          "reduce": [
+            3
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -18598,107 +19811,181 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "a": 2,
-          "b": 3
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "A": 4,
-          "C": 5,
-          "D": 6,
-          "E": 7
+        "a": {
+          "shift": 2
         },
-        "reduce": [
-          8
-        ]
+        "b": {
+          "shift": 3
+        }
       },
       {
-        "shift": {
-          "B": 8,
-          "C": 9,
-          "D": 10,
-          "E": 7
+        "a": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          8
-        ]
+        "b": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "a": 11
+        "A": {
+          "shift": 4
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "b": 12
+        "C": {
+          "shift": 5
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          6,
-          7
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "b": 13
+        "D": {
+          "shift": 6
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "a": 14
+        "E": {
+          "shift": 7
         },
-        "reduce": []
+        "a": {
+          "reduce": [
+            8
+          ]
+        },
+        "b": {
+          "reduce": [
+            8
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "B": {
+          "shift": 8
+        },
+        "C": {
+          "shift": 9
+        },
+        "D": {
+          "shift": 10
+        },
+        "E": {
+          "shift": 7
+        },
+        "a": {
+          "reduce": [
+            8
+          ]
+        },
+        "b": {
+          "reduce": [
+            8
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "b": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "a": {
+          "shift": 11
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "b": {
+          "shift": 12
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            6,
+            7
+          ]
+        },
+        "b": {
+          "reduce": [
+            6,
+            7
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "b": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "b": {
+          "shift": 13
+        }
+      },
+      {
+        "a": {
+          "shift": 14
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            2
+          ]
+        },
+        "b": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            3
+          ]
+        },
+        "b": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            4
+          ]
+        },
+        "b": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            5
+          ]
+        },
+        "b": {
+          "reduce": [
+            5
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -20798,94 +22085,205 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "(": 2,
-          "E": 3,
-          "F": 4,
-          "A": 5
+        "S": {
+          "shift": 1
         },
-        "reduce": [
-          7
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "X": 6,
-          "E": 7,
-          "F": 8,
-          "A": 5
+        "(": {
+          "shift": 2,
+          "reduce": [
+            7
+          ]
         },
-        "reduce": [
-          7
-        ]
-      },
-      {
-        "shift": {
-          "sq)": 9
+        "E": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          ")": 10
+        "F": {
+          "shift": 4
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          5,
-          6
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          ")": 11
+        "A": {
+          "shift": 5
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "sq)": 12
+        "sq)": {
+          "reduce": [
+            7
+          ]
         },
-        "reduce": []
+        ")": {
+          "reduce": [
+            7
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "(": {
+          "reduce": [
+            -1
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            -1
+          ]
+        },
+        ")": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "X": {
+          "shift": 6
+        },
+        "E": {
+          "shift": 7
+        },
+        "F": {
+          "shift": 8
+        },
+        "A": {
+          "shift": 5
+        },
+        "(": {
+          "reduce": [
+            7
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            7
+          ]
+        },
+        ")": {
+          "reduce": [
+            7
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "sq)": {
+          "shift": 9
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        ")": {
+          "shift": 10
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            5,
+            6
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            5,
+            6
+          ]
+        },
+        ")": {
+          "reduce": [
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 11
+        }
+      },
+      {
+        "sq)": {
+          "shift": 12
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            2
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            3
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            4
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            4
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -25042,209 +26440,817 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "E": 1,
-          "id": 2,
-          "(": 3
+        "E": {
+          "shift": 1
         },
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "+": 4
+        "id": {
+          "shift": 2,
+          "reduce": [
+            2
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "E": 5,
-          "id": 2,
-          "(": 3
+        "(": {
+          "shift": 3,
+          "reduce": [
+            2
+          ]
         },
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "D": 6,
-          "V": 7,
-          "L": 8,
-          "Z": 9,
-          "num": 10,
-          "(": 11
+        "+": {
+          "reduce": [
+            2
+          ]
         },
-        "reduce": [
-          11
-        ]
-      },
-      {
-        "shift": {
-          "*": 12
+        "*": {
+          "reduce": [
+            2
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "*": 13
+        ")": {
+          "reduce": [
+            2
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "!": 14
+        "!": {
+          "reduce": [
+            2
+          ]
         },
-        "reduce": []
+        "num": {
+          "reduce": [
+            2
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          7,
-          9
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {
-          "E": 15,
-          "id": 2,
-          "(": 3
+        "id": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "R": 16,
-          "V": 17,
-          "L": 18,
-          "Z": 9,
-          "num": 10,
-          "(": 11
+        "+": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          11
-        ]
-      },
-      {
-        "shift": {
-          "E": 19,
-          "id": 2,
-          "(": 3
+        "(": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "E": 20,
-          "id": 2,
-          "(": 3
+        "*": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          ")": 21
+        ")": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          ")": 22
+        "!": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "num": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          "!": 23
+        "+": {
+          "shift": 4
+        }
+      },
+      {
+        "E": {
+          "shift": 5
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "*": 24
+        "id": {
+          "shift": 2,
+          "reduce": [
+            2
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          10
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "E": 25,
-          "id": 2,
-          "(": 3
+        "(": {
+          "shift": 3,
+          "reduce": [
+            2
+          ]
         },
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "E": 26,
-          "id": 2,
-          "(": 3
+        "+": {
+          "reduce": [
+            2
+          ]
         },
-        "reduce": [
-          2
-        ]
+        "*": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "!": {
+          "reduce": [
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            2
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "D": {
+          "shift": 6
+        },
+        "V": {
+          "shift": 7
+        },
+        "L": {
+          "shift": 8
+        },
+        "Z": {
+          "shift": 9
+        },
+        "num": {
+          "shift": 10,
+          "reduce": [
+            11
+          ]
+        },
+        "(": {
+          "shift": 11,
+          "reduce": [
+            11
+          ]
+        },
+        "id": {
+          "reduce": [
+            11
+          ]
+        },
+        "+": {
+          "reduce": [
+            11
+          ]
+        },
+        "*": {
+          "reduce": [
+            11
+          ]
+        },
+        ")": {
+          "reduce": [
+            11
+          ]
+        },
+        "!": {
+          "reduce": [
+            11
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          6
-        ]
+        "*": {
+          "shift": 12
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            0
+          ]
+        },
+        "+": {
+          "reduce": [
+            0
+          ]
+        },
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        "*": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        },
+        "!": {
+          "reduce": [
+            0
+          ]
+        },
+        "num": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "*": {
+          "shift": 13
+        }
+      },
+      {
+        "!": {
+          "shift": 14
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        "+": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        "(": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        "*": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        ")": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        "!": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        "num": {
+          "reduce": [
+            7,
+            9
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            8
+          ]
+        },
+        "+": {
+          "reduce": [
+            8
+          ]
+        },
+        "(": {
+          "reduce": [
+            8
+          ]
+        },
+        "*": {
+          "reduce": [
+            8
+          ]
+        },
+        ")": {
+          "reduce": [
+            8
+          ]
+        },
+        "!": {
+          "reduce": [
+            8
+          ]
+        },
+        "num": {
+          "reduce": [
+            8
+          ]
+        }
+      },
+      {
+        "E": {
+          "shift": 15
+        },
+        "id": {
+          "shift": 2,
+          "reduce": [
+            2
+          ]
+        },
+        "(": {
+          "shift": 3,
+          "reduce": [
+            2
+          ]
+        },
+        "+": {
+          "reduce": [
+            2
+          ]
+        },
+        "*": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "!": {
+          "reduce": [
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "R": {
+          "shift": 16
+        },
+        "V": {
+          "shift": 17
+        },
+        "L": {
+          "shift": 18
+        },
+        "Z": {
+          "shift": 9
+        },
+        "num": {
+          "shift": 10,
+          "reduce": [
+            11
+          ]
+        },
+        "(": {
+          "shift": 11,
+          "reduce": [
+            11
+          ]
+        },
+        "id": {
+          "reduce": [
+            11
+          ]
+        },
+        "+": {
+          "reduce": [
+            11
+          ]
+        },
+        "*": {
+          "reduce": [
+            11
+          ]
+        },
+        ")": {
+          "reduce": [
+            11
+          ]
+        },
+        "!": {
+          "reduce": [
+            11
+          ]
+        }
+      },
+      {
+        "E": {
+          "shift": 19
+        },
+        "id": {
+          "shift": 2,
+          "reduce": [
+            2
+          ]
+        },
+        "(": {
+          "shift": 3,
+          "reduce": [
+            2
+          ]
+        },
+        "+": {
+          "reduce": [
+            2
+          ]
+        },
+        "*": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "!": {
+          "reduce": [
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "E": {
+          "shift": 20
+        },
+        "id": {
+          "shift": 2,
+          "reduce": [
+            2
+          ]
+        },
+        "(": {
+          "shift": 3,
+          "reduce": [
+            2
+          ]
+        },
+        "+": {
+          "reduce": [
+            2
+          ]
+        },
+        "*": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "!": {
+          "reduce": [
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 21
+        }
+      },
+      {
+        ")": {
+          "shift": 22
+        }
+      },
+      {
+        "!": {
+          "shift": 23
+        }
+      },
+      {
+        "*": {
+          "shift": 24
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            3
+          ]
+        },
+        "+": {
+          "reduce": [
+            3
+          ]
+        },
+        "(": {
+          "reduce": [
+            3
+          ]
+        },
+        "*": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        },
+        "!": {
+          "reduce": [
+            3
+          ]
+        },
+        "num": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            4
+          ]
+        },
+        "+": {
+          "reduce": [
+            4
+          ]
+        },
+        "(": {
+          "reduce": [
+            4
+          ]
+        },
+        "*": {
+          "reduce": [
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            4
+          ]
+        },
+        "!": {
+          "reduce": [
+            4
+          ]
+        },
+        "num": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            10
+          ]
+        },
+        "+": {
+          "reduce": [
+            10
+          ]
+        },
+        "(": {
+          "reduce": [
+            10
+          ]
+        },
+        "*": {
+          "reduce": [
+            10
+          ]
+        },
+        ")": {
+          "reduce": [
+            10
+          ]
+        },
+        "!": {
+          "reduce": [
+            10
+          ]
+        },
+        "num": {
+          "reduce": [
+            10
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            1
+          ]
+        },
+        "+": {
+          "reduce": [
+            1
+          ]
+        },
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        "*": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        },
+        "!": {
+          "reduce": [
+            1
+          ]
+        },
+        "num": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "E": {
+          "shift": 25
+        },
+        "id": {
+          "shift": 2,
+          "reduce": [
+            2
+          ]
+        },
+        "(": {
+          "shift": 3,
+          "reduce": [
+            2
+          ]
+        },
+        "+": {
+          "reduce": [
+            2
+          ]
+        },
+        "*": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "!": {
+          "reduce": [
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "E": {
+          "shift": 26
+        },
+        "id": {
+          "shift": 2,
+          "reduce": [
+            2
+          ]
+        },
+        "(": {
+          "shift": 3,
+          "reduce": [
+            2
+          ]
+        },
+        "+": {
+          "reduce": [
+            2
+          ]
+        },
+        "*": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "!": {
+          "reduce": [
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            5
+          ]
+        },
+        "+": {
+          "reduce": [
+            5
+          ]
+        },
+        "(": {
+          "reduce": [
+            5
+          ]
+        },
+        "*": {
+          "reduce": [
+            5
+          ]
+        },
+        ")": {
+          "reduce": [
+            5
+          ]
+        },
+        "!": {
+          "reduce": [
+            5
+          ]
+        },
+        "num": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            6
+          ]
+        },
+        "+": {
+          "reduce": [
+            6
+          ]
+        },
+        "(": {
+          "reduce": [
+            6
+          ]
+        },
+        "*": {
+          "reduce": [
+            6
+          ]
+        },
+        ")": {
+          "reduce": [
+            6
+          ]
+        },
+        "!": {
+          "reduce": [
+            6
+          ]
+        },
+        "num": {
+          "reduce": [
+            6
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -29191,77 +31197,228 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "B": 2,
-          "d": 3,
-          "r": 4
+        "A": {
+          "shift": 1
         },
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "c": 5
+        "B": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "n": 6
+        "d": {
+          "shift": 3,
+          "reduce": [
+            3
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "A": 7,
-          "B": 2,
-          "d": 3,
-          "r": 4
+        "r": {
+          "shift": 4,
+          "reduce": [
+            3
+          ]
         },
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          "B": 8,
-          "r": 4
+        "c": {
+          "reduce": [
+            3
+          ]
         },
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          "fo": 9
+        "n": {
+          "reduce": [
+            3
+          ]
         },
-        "reduce": []
+        "fo": {
+          "reduce": [
+            3
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "c": {
+          "reduce": [
+            -1
+          ]
+        },
+        "d": {
+          "reduce": [
+            -1
+          ]
+        },
+        "n": {
+          "reduce": [
+            -1
+          ]
+        },
+        "fo": {
+          "reduce": [
+            -1
+          ]
+        },
+        "r": {
+          "reduce": [
+            -1
+          ]
+        }
+      },
+      {
+        "c": {
+          "shift": 5
+        }
+      },
+      {
+        "n": {
+          "shift": 6
+        }
+      },
+      {
+        "c": {
+          "reduce": [
+            2
+          ]
+        },
+        "d": {
+          "reduce": [
+            2
+          ]
+        },
+        "n": {
+          "reduce": [
+            2
+          ]
+        },
+        "fo": {
+          "reduce": [
+            2
+          ]
+        },
+        "r": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "c": {
+          "reduce": [
+            0
+          ]
+        },
+        "d": {
+          "reduce": [
+            0
+          ]
+        },
+        "n": {
+          "reduce": [
+            0
+          ]
+        },
+        "fo": {
+          "reduce": [
+            0
+          ]
+        },
+        "r": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "A": {
+          "shift": 7
+        },
+        "B": {
+          "shift": 2
+        },
+        "d": {
+          "shift": 3,
+          "reduce": [
+            3
+          ]
+        },
+        "r": {
+          "shift": 4,
+          "reduce": [
+            3
+          ]
+        },
+        "c": {
+          "reduce": [
+            3
+          ]
+        },
+        "n": {
+          "reduce": [
+            3
+          ]
+        },
+        "fo": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "B": {
+          "shift": 8
+        },
+        "r": {
+          "shift": 4,
+          "reduce": [
+            3
+          ]
+        },
+        "c": {
+          "reduce": [
+            3
+          ]
+        },
+        "d": {
+          "reduce": [
+            3
+          ]
+        },
+        "n": {
+          "reduce": [
+            3
+          ]
+        },
+        "fo": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "fo": {
+          "shift": 9
+        }
+      },
+      {
+        "c": {
+          "reduce": [
+            1
+          ]
+        },
+        "d": {
+          "reduce": [
+            1
+          ]
+        },
+        "n": {
+          "reduce": [
+            1
+          ]
+        },
+        "fo": {
+          "reduce": [
+            1
+          ]
+        },
+        "r": {
+          "reduce": [
+            1
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -31526,101 +33683,252 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "for": 2,
-          "expr": 3
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "(": 4
+        "for": {
+          "shift": 2
         },
-        "reduce": []
+        "expr": {
+          "shift": 3
+        }
       },
       {
-        "shift": {
-          ";": 5
+        "for": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "ExprOpt": 6,
-          "expr": 7
+        "(": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          ";": 8
+        ";": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "ExprOpt": 9,
-          "expr": 7
+        ")": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          3
-        ]
+        "expr": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          ";": 10
+        "(": {
+          "shift": 4
+        }
+      },
+      {
+        ";": {
+          "shift": 5
+        }
+      },
+      {
+        "ExprOpt": {
+          "shift": 6
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "ExprOpt": 11,
-          "expr": 7
+        "expr": {
+          "shift": 7,
+          "reduce": [
+            3
+          ]
         },
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          ")": 12
+        "for": {
+          "reduce": [
+            3
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "S": 13,
-          "for": 2,
-          "expr": 3
+        "(": {
+          "reduce": [
+            3
+          ]
         },
-        "reduce": []
+        ";": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "for": {
+          "reduce": [
+            1
+          ]
+        },
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        ";": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        },
+        "expr": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        ";": {
+          "shift": 8
+        }
+      },
+      {
+        "for": {
+          "reduce": [
+            2
+          ]
+        },
+        "(": {
+          "reduce": [
+            2
+          ]
+        },
+        ";": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "expr": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "ExprOpt": {
+          "shift": 9
+        },
+        "expr": {
+          "shift": 7,
+          "reduce": [
+            3
+          ]
+        },
+        "for": {
+          "reduce": [
+            3
+          ]
+        },
+        "(": {
+          "reduce": [
+            3
+          ]
+        },
+        ";": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        ";": {
+          "shift": 10
+        }
+      },
+      {
+        "ExprOpt": {
+          "shift": 11
+        },
+        "expr": {
+          "shift": 7,
+          "reduce": [
+            3
+          ]
+        },
+        "for": {
+          "reduce": [
+            3
+          ]
+        },
+        "(": {
+          "reduce": [
+            3
+          ]
+        },
+        ";": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 12
+        }
+      },
+      {
+        "S": {
+          "shift": 13
+        },
+        "for": {
+          "shift": 2
+        },
+        "expr": {
+          "shift": 3
+        }
+      },
+      {
+        "for": {
+          "reduce": [
+            0
+          ]
+        },
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        ";": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        },
+        "expr": {
+          "reduce": [
+            0
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -36932,228 +39240,1271 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "Decl": 1,
-          "DeclSpecifiers": 2,
-          "StorageClassSpecifier": 3,
-          "TypeSpecifier": 4,
-          "TypeQualifier": 5,
-          "typedef": 6,
-          "static": 7,
-          "void": 8,
-          "short": 9,
-          "int": 10,
-          "const": 11,
-          "volatile": 12
+        "Decl": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "Declarator": 13,
-          "PointerOpt": 14,
-          "*": 15
+        "DeclSpecifiers": {
+          "shift": 2
         },
-        "reduce": [
-          16
-        ]
-      },
-      {
-        "shift": {
-          "DeclSpecifiersOpt": 16,
-          "DeclSpecifiers": 17,
-          "StorageClassSpecifier": 3,
-          "TypeSpecifier": 4,
-          "TypeQualifier": 5,
-          "typedef": 6,
-          "static": 7,
-          "void": 8,
-          "short": 9,
-          "int": 10,
-          "const": 11,
-          "volatile": 12
+        "StorageClassSpecifier": {
+          "shift": 3
         },
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {
-          "DeclSpecifiersOpt": 18,
-          "DeclSpecifiers": 17,
-          "StorageClassSpecifier": 3,
-          "TypeSpecifier": 4,
-          "TypeQualifier": 5,
-          "typedef": 6,
-          "static": 7,
-          "void": 8,
-          "short": 9,
-          "int": 10,
-          "const": 11,
-          "volatile": 12
+        "TypeSpecifier": {
+          "shift": 4
         },
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {
-          "DeclSpecifiersOpt": 19,
-          "DeclSpecifiers": 17,
-          "StorageClassSpecifier": 3,
-          "TypeSpecifier": 4,
-          "TypeQualifier": 5,
-          "typedef": 6,
-          "static": 7,
-          "void": 8,
-          "short": 9,
-          "int": 10,
-          "const": 11,
-          "volatile": 12
+        "TypeQualifier": {
+          "shift": 5
         },
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          6
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          7
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          9
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          10
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          11
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          12
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "DirectDeclarator": 20,
-          "id": 21
+        "typedef": {
+          "shift": 6
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "TypeQualifierList": 22,
-          "TypeQualifier": 23,
-          "const": 11,
-          "volatile": 12
+        "static": {
+          "shift": 7
         },
-        "reduce": [
-          18
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          13
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          14
-        ]
-      },
-      {
-        "shift": {
-          "PointerOpt": 24,
-          "*": 15
+        "void": {
+          "shift": 8
         },
-        "reduce": [
-          16
-        ]
-      },
-      {
-        "shift": {
-          "TypeQualifierList": 25,
-          "TypeQualifier": 23,
-          "const": 11,
-          "volatile": 12
+        "short": {
+          "shift": 9
         },
-        "reduce": [
-          18
-        ]
+        "int": {
+          "shift": 10
+        },
+        "const": {
+          "shift": 11
+        },
+        "volatile": {
+          "shift": 12
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          15
-        ]
+        "typedef": {
+          "reduce": [
+            -1
+          ]
+        },
+        "static": {
+          "reduce": [
+            -1
+          ]
+        },
+        "void": {
+          "reduce": [
+            -1
+          ]
+        },
+        "short": {
+          "reduce": [
+            -1
+          ]
+        },
+        "int": {
+          "reduce": [
+            -1
+          ]
+        },
+        "const": {
+          "reduce": [
+            -1
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            -1
+          ]
+        },
+        "id": {
+          "reduce": [
+            -1
+          ]
+        },
+        "*": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          17
-        ]
+        "Declarator": {
+          "shift": 13
+        },
+        "PointerOpt": {
+          "shift": 14
+        },
+        "*": {
+          "shift": 15,
+          "reduce": [
+            16
+          ]
+        },
+        "typedef": {
+          "reduce": [
+            16
+          ]
+        },
+        "static": {
+          "reduce": [
+            16
+          ]
+        },
+        "void": {
+          "reduce": [
+            16
+          ]
+        },
+        "short": {
+          "reduce": [
+            16
+          ]
+        },
+        "int": {
+          "reduce": [
+            16
+          ]
+        },
+        "const": {
+          "reduce": [
+            16
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            16
+          ]
+        },
+        "id": {
+          "reduce": [
+            16
+          ]
+        }
+      },
+      {
+        "DeclSpecifiersOpt": {
+          "shift": 16
+        },
+        "DeclSpecifiers": {
+          "shift": 17
+        },
+        "StorageClassSpecifier": {
+          "shift": 3
+        },
+        "TypeSpecifier": {
+          "shift": 4
+        },
+        "TypeQualifier": {
+          "shift": 5
+        },
+        "typedef": {
+          "shift": 6,
+          "reduce": [
+            5
+          ]
+        },
+        "static": {
+          "shift": 7,
+          "reduce": [
+            5
+          ]
+        },
+        "void": {
+          "shift": 8,
+          "reduce": [
+            5
+          ]
+        },
+        "short": {
+          "shift": 9,
+          "reduce": [
+            5
+          ]
+        },
+        "int": {
+          "shift": 10,
+          "reduce": [
+            5
+          ]
+        },
+        "const": {
+          "shift": 11,
+          "reduce": [
+            5
+          ]
+        },
+        "volatile": {
+          "shift": 12,
+          "reduce": [
+            5
+          ]
+        },
+        "id": {
+          "reduce": [
+            5
+          ]
+        },
+        "*": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "DeclSpecifiersOpt": {
+          "shift": 18
+        },
+        "DeclSpecifiers": {
+          "shift": 17
+        },
+        "StorageClassSpecifier": {
+          "shift": 3
+        },
+        "TypeSpecifier": {
+          "shift": 4
+        },
+        "TypeQualifier": {
+          "shift": 5
+        },
+        "typedef": {
+          "shift": 6,
+          "reduce": [
+            5
+          ]
+        },
+        "static": {
+          "shift": 7,
+          "reduce": [
+            5
+          ]
+        },
+        "void": {
+          "shift": 8,
+          "reduce": [
+            5
+          ]
+        },
+        "short": {
+          "shift": 9,
+          "reduce": [
+            5
+          ]
+        },
+        "int": {
+          "shift": 10,
+          "reduce": [
+            5
+          ]
+        },
+        "const": {
+          "shift": 11,
+          "reduce": [
+            5
+          ]
+        },
+        "volatile": {
+          "shift": 12,
+          "reduce": [
+            5
+          ]
+        },
+        "id": {
+          "reduce": [
+            5
+          ]
+        },
+        "*": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "DeclSpecifiersOpt": {
+          "shift": 19
+        },
+        "DeclSpecifiers": {
+          "shift": 17
+        },
+        "StorageClassSpecifier": {
+          "shift": 3
+        },
+        "TypeSpecifier": {
+          "shift": 4
+        },
+        "TypeQualifier": {
+          "shift": 5
+        },
+        "typedef": {
+          "shift": 6,
+          "reduce": [
+            5
+          ]
+        },
+        "static": {
+          "shift": 7,
+          "reduce": [
+            5
+          ]
+        },
+        "void": {
+          "shift": 8,
+          "reduce": [
+            5
+          ]
+        },
+        "short": {
+          "shift": 9,
+          "reduce": [
+            5
+          ]
+        },
+        "int": {
+          "shift": 10,
+          "reduce": [
+            5
+          ]
+        },
+        "const": {
+          "shift": 11,
+          "reduce": [
+            5
+          ]
+        },
+        "volatile": {
+          "shift": 12,
+          "reduce": [
+            5
+          ]
+        },
+        "id": {
+          "reduce": [
+            5
+          ]
+        },
+        "*": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            6
+          ]
+        },
+        "static": {
+          "reduce": [
+            6
+          ]
+        },
+        "void": {
+          "reduce": [
+            6
+          ]
+        },
+        "short": {
+          "reduce": [
+            6
+          ]
+        },
+        "int": {
+          "reduce": [
+            6
+          ]
+        },
+        "const": {
+          "reduce": [
+            6
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            6
+          ]
+        },
+        "id": {
+          "reduce": [
+            6
+          ]
+        },
+        "*": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            7
+          ]
+        },
+        "static": {
+          "reduce": [
+            7
+          ]
+        },
+        "void": {
+          "reduce": [
+            7
+          ]
+        },
+        "short": {
+          "reduce": [
+            7
+          ]
+        },
+        "int": {
+          "reduce": [
+            7
+          ]
+        },
+        "const": {
+          "reduce": [
+            7
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            7
+          ]
+        },
+        "id": {
+          "reduce": [
+            7
+          ]
+        },
+        "*": {
+          "reduce": [
+            7
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            8
+          ]
+        },
+        "static": {
+          "reduce": [
+            8
+          ]
+        },
+        "void": {
+          "reduce": [
+            8
+          ]
+        },
+        "short": {
+          "reduce": [
+            8
+          ]
+        },
+        "int": {
+          "reduce": [
+            8
+          ]
+        },
+        "const": {
+          "reduce": [
+            8
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            8
+          ]
+        },
+        "id": {
+          "reduce": [
+            8
+          ]
+        },
+        "*": {
+          "reduce": [
+            8
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            9
+          ]
+        },
+        "static": {
+          "reduce": [
+            9
+          ]
+        },
+        "void": {
+          "reduce": [
+            9
+          ]
+        },
+        "short": {
+          "reduce": [
+            9
+          ]
+        },
+        "int": {
+          "reduce": [
+            9
+          ]
+        },
+        "const": {
+          "reduce": [
+            9
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            9
+          ]
+        },
+        "id": {
+          "reduce": [
+            9
+          ]
+        },
+        "*": {
+          "reduce": [
+            9
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            10
+          ]
+        },
+        "static": {
+          "reduce": [
+            10
+          ]
+        },
+        "void": {
+          "reduce": [
+            10
+          ]
+        },
+        "short": {
+          "reduce": [
+            10
+          ]
+        },
+        "int": {
+          "reduce": [
+            10
+          ]
+        },
+        "const": {
+          "reduce": [
+            10
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            10
+          ]
+        },
+        "id": {
+          "reduce": [
+            10
+          ]
+        },
+        "*": {
+          "reduce": [
+            10
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            11
+          ]
+        },
+        "static": {
+          "reduce": [
+            11
+          ]
+        },
+        "void": {
+          "reduce": [
+            11
+          ]
+        },
+        "short": {
+          "reduce": [
+            11
+          ]
+        },
+        "int": {
+          "reduce": [
+            11
+          ]
+        },
+        "const": {
+          "reduce": [
+            11
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            11
+          ]
+        },
+        "id": {
+          "reduce": [
+            11
+          ]
+        },
+        "*": {
+          "reduce": [
+            11
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            12
+          ]
+        },
+        "static": {
+          "reduce": [
+            12
+          ]
+        },
+        "void": {
+          "reduce": [
+            12
+          ]
+        },
+        "short": {
+          "reduce": [
+            12
+          ]
+        },
+        "int": {
+          "reduce": [
+            12
+          ]
+        },
+        "const": {
+          "reduce": [
+            12
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            12
+          ]
+        },
+        "id": {
+          "reduce": [
+            12
+          ]
+        },
+        "*": {
+          "reduce": [
+            12
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            0
+          ]
+        },
+        "static": {
+          "reduce": [
+            0
+          ]
+        },
+        "void": {
+          "reduce": [
+            0
+          ]
+        },
+        "short": {
+          "reduce": [
+            0
+          ]
+        },
+        "int": {
+          "reduce": [
+            0
+          ]
+        },
+        "const": {
+          "reduce": [
+            0
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            0
+          ]
+        },
+        "id": {
+          "reduce": [
+            0
+          ]
+        },
+        "*": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "DirectDeclarator": {
+          "shift": 20
+        },
+        "id": {
+          "shift": 21
+        }
+      },
+      {
+        "TypeQualifierList": {
+          "shift": 22
+        },
+        "TypeQualifier": {
+          "shift": 23
+        },
+        "const": {
+          "shift": 11,
+          "reduce": [
+            18
+          ]
+        },
+        "volatile": {
+          "shift": 12,
+          "reduce": [
+            18
+          ]
+        },
+        "typedef": {
+          "reduce": [
+            18
+          ]
+        },
+        "static": {
+          "reduce": [
+            18
+          ]
+        },
+        "void": {
+          "reduce": [
+            18
+          ]
+        },
+        "short": {
+          "reduce": [
+            18
+          ]
+        },
+        "int": {
+          "reduce": [
+            18
+          ]
+        },
+        "id": {
+          "reduce": [
+            18
+          ]
+        },
+        "*": {
+          "reduce": [
+            18
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            1
+          ]
+        },
+        "static": {
+          "reduce": [
+            1
+          ]
+        },
+        "void": {
+          "reduce": [
+            1
+          ]
+        },
+        "short": {
+          "reduce": [
+            1
+          ]
+        },
+        "int": {
+          "reduce": [
+            1
+          ]
+        },
+        "const": {
+          "reduce": [
+            1
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            1
+          ]
+        },
+        "id": {
+          "reduce": [
+            1
+          ]
+        },
+        "*": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            4
+          ]
+        },
+        "static": {
+          "reduce": [
+            4
+          ]
+        },
+        "void": {
+          "reduce": [
+            4
+          ]
+        },
+        "short": {
+          "reduce": [
+            4
+          ]
+        },
+        "int": {
+          "reduce": [
+            4
+          ]
+        },
+        "const": {
+          "reduce": [
+            4
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            4
+          ]
+        },
+        "id": {
+          "reduce": [
+            4
+          ]
+        },
+        "*": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            2
+          ]
+        },
+        "static": {
+          "reduce": [
+            2
+          ]
+        },
+        "void": {
+          "reduce": [
+            2
+          ]
+        },
+        "short": {
+          "reduce": [
+            2
+          ]
+        },
+        "int": {
+          "reduce": [
+            2
+          ]
+        },
+        "const": {
+          "reduce": [
+            2
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            2
+          ]
+        },
+        "id": {
+          "reduce": [
+            2
+          ]
+        },
+        "*": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            3
+          ]
+        },
+        "static": {
+          "reduce": [
+            3
+          ]
+        },
+        "void": {
+          "reduce": [
+            3
+          ]
+        },
+        "short": {
+          "reduce": [
+            3
+          ]
+        },
+        "int": {
+          "reduce": [
+            3
+          ]
+        },
+        "const": {
+          "reduce": [
+            3
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            3
+          ]
+        },
+        "id": {
+          "reduce": [
+            3
+          ]
+        },
+        "*": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            13
+          ]
+        },
+        "static": {
+          "reduce": [
+            13
+          ]
+        },
+        "void": {
+          "reduce": [
+            13
+          ]
+        },
+        "short": {
+          "reduce": [
+            13
+          ]
+        },
+        "int": {
+          "reduce": [
+            13
+          ]
+        },
+        "const": {
+          "reduce": [
+            13
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            13
+          ]
+        },
+        "id": {
+          "reduce": [
+            13
+          ]
+        },
+        "*": {
+          "reduce": [
+            13
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            14
+          ]
+        },
+        "static": {
+          "reduce": [
+            14
+          ]
+        },
+        "void": {
+          "reduce": [
+            14
+          ]
+        },
+        "short": {
+          "reduce": [
+            14
+          ]
+        },
+        "int": {
+          "reduce": [
+            14
+          ]
+        },
+        "const": {
+          "reduce": [
+            14
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            14
+          ]
+        },
+        "id": {
+          "reduce": [
+            14
+          ]
+        },
+        "*": {
+          "reduce": [
+            14
+          ]
+        }
+      },
+      {
+        "PointerOpt": {
+          "shift": 24
+        },
+        "*": {
+          "shift": 15,
+          "reduce": [
+            16
+          ]
+        },
+        "typedef": {
+          "reduce": [
+            16
+          ]
+        },
+        "static": {
+          "reduce": [
+            16
+          ]
+        },
+        "void": {
+          "reduce": [
+            16
+          ]
+        },
+        "short": {
+          "reduce": [
+            16
+          ]
+        },
+        "int": {
+          "reduce": [
+            16
+          ]
+        },
+        "const": {
+          "reduce": [
+            16
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            16
+          ]
+        },
+        "id": {
+          "reduce": [
+            16
+          ]
+        }
+      },
+      {
+        "TypeQualifierList": {
+          "shift": 25
+        },
+        "TypeQualifier": {
+          "shift": 23
+        },
+        "const": {
+          "shift": 11,
+          "reduce": [
+            18
+          ]
+        },
+        "volatile": {
+          "shift": 12,
+          "reduce": [
+            18
+          ]
+        },
+        "typedef": {
+          "reduce": [
+            18
+          ]
+        },
+        "static": {
+          "reduce": [
+            18
+          ]
+        },
+        "void": {
+          "reduce": [
+            18
+          ]
+        },
+        "short": {
+          "reduce": [
+            18
+          ]
+        },
+        "int": {
+          "reduce": [
+            18
+          ]
+        },
+        "id": {
+          "reduce": [
+            18
+          ]
+        },
+        "*": {
+          "reduce": [
+            18
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            15
+          ]
+        },
+        "static": {
+          "reduce": [
+            15
+          ]
+        },
+        "void": {
+          "reduce": [
+            15
+          ]
+        },
+        "short": {
+          "reduce": [
+            15
+          ]
+        },
+        "int": {
+          "reduce": [
+            15
+          ]
+        },
+        "const": {
+          "reduce": [
+            15
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            15
+          ]
+        },
+        "id": {
+          "reduce": [
+            15
+          ]
+        },
+        "*": {
+          "reduce": [
+            15
+          ]
+        }
+      },
+      {
+        "typedef": {
+          "reduce": [
+            17
+          ]
+        },
+        "static": {
+          "reduce": [
+            17
+          ]
+        },
+        "void": {
+          "reduce": [
+            17
+          ]
+        },
+        "short": {
+          "reduce": [
+            17
+          ]
+        },
+        "int": {
+          "reduce": [
+            17
+          ]
+        },
+        "const": {
+          "reduce": [
+            17
+          ]
+        },
+        "volatile": {
+          "reduce": [
+            17
+          ]
+        },
+        "id": {
+          "reduce": [
+            17
+          ]
+        },
+        "*": {
+          "reduce": [
+            17
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -42454,64 +45805,139 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "id": 2,
-          "V": 3
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0,
-          2
-        ]
-      },
-      {
-        "shift": {
-          "assign": 4
+        "id": {
+          "shift": 2
         },
-        "reduce": []
+        "V": {
+          "shift": 3
+        }
       },
       {
-        "shift": {
-          "E": 5,
-          "V": 6,
-          "num": 7,
-          "id": 8
+        "id": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "assign": {
+          "reduce": [
+            -1
+          ]
+        },
+        "num": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "id": {
+          "reduce": [
+            0,
+            2
+          ]
+        },
+        "assign": {
+          "reduce": [
+            0,
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            0,
+            2
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "assign": {
+          "shift": 4
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "E": {
+          "shift": 5
+        },
+        "V": {
+          "shift": 6
+        },
+        "num": {
+          "shift": 7
+        },
+        "id": {
+          "shift": 8
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "id": {
+          "reduce": [
+            1
+          ]
+        },
+        "assign": {
+          "reduce": [
+            1
+          ]
+        },
+        "num": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            3
+          ]
+        },
+        "assign": {
+          "reduce": [
+            3
+          ]
+        },
+        "num": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            4
+          ]
+        },
+        "assign": {
+          "reduce": [
+            4
+          ]
+        },
+        "num": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            2
+          ]
+        },
+        "assign": {
+          "reduce": [
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            2
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -44192,83 +47618,189 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S'": 1,
-          "S": 2,
-          "L": 3,
-          "R": 4,
-          "*": 5,
-          "id": 6
+        "S'": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "assign": 7
+        "S": {
+          "shift": 2
         },
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "R": 8,
-          "L": 9,
-          "*": 5,
-          "id": 6
+        "L": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {
-          "R": 10,
-          "L": 9,
-          "*": 5,
-          "id": 6
+        "R": {
+          "shift": 4
         },
-        "reduce": []
+        "*": {
+          "shift": 5
+        },
+        "id": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "assign": {
+          "reduce": [
+            -1
+          ]
+        },
+        "*": {
+          "reduce": [
+            -1
+          ]
+        },
+        "id": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "assign": {
+          "reduce": [
+            0
+          ]
+        },
+        "*": {
+          "reduce": [
+            0
+          ]
+        },
+        "id": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "assign": {
+          "shift": 7,
+          "reduce": [
+            5
+          ]
+        },
+        "*": {
+          "reduce": [
+            5
+          ]
+        },
+        "id": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "assign": {
+          "reduce": [
+            2
+          ]
+        },
+        "*": {
+          "reduce": [
+            2
+          ]
+        },
+        "id": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "R": {
+          "shift": 8
+        },
+        "L": {
+          "shift": 9
+        },
+        "*": {
+          "shift": 5
+        },
+        "id": {
+          "shift": 6
+        }
+      },
+      {
+        "assign": {
+          "reduce": [
+            4
+          ]
+        },
+        "*": {
+          "reduce": [
+            4
+          ]
+        },
+        "id": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "R": {
+          "shift": 10
+        },
+        "L": {
+          "shift": 9
+        },
+        "*": {
+          "shift": 5
+        },
+        "id": {
+          "shift": 6
+        }
+      },
+      {
+        "assign": {
+          "reduce": [
+            3
+          ]
+        },
+        "*": {
+          "reduce": [
+            3
+          ]
+        },
+        "id": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "assign": {
+          "reduce": [
+            5
+          ]
+        },
+        "*": {
+          "reduce": [
+            5
+          ]
+        },
+        "id": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "assign": {
+          "reduce": [
+            1
+          ]
+        },
+        "*": {
+          "reduce": [
+            1
+          ]
+        },
+        "id": {
+          "reduce": [
+            1
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -46096,88 +49628,159 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "A": 2,
-          "B": 3,
-          "w": 4
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "x": 5
+        "A": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "y": 6
+        "B": {
+          "shift": 3
         },
-        "reduce": []
+        "w": {
+          "shift": 4
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2,
-          3
-        ]
-      },
-      {
-        "shift": {
-          "B": 7,
-          "w": 8
+        "x": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "A": 9,
-          "w": 10
+        "y": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "w": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          "x": 11
+        "x": {
+          "shift": 5
+        }
+      },
+      {
+        "y": {
+          "shift": 6
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            2,
+            3
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          "y": 12
+        "y": {
+          "reduce": [
+            2,
+            3
+          ]
         },
-        "reduce": []
+        "w": {
+          "reduce": [
+            2,
+            3
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "B": {
+          "shift": 7
+        },
+        "w": {
+          "shift": 8
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "A": {
+          "shift": 9
+        },
+        "w": {
+          "shift": 10
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "x": {
+          "shift": 11
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            3
+          ]
+        },
+        "y": {
+          "reduce": [
+            3
+          ]
+        },
+        "w": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "y": {
+          "shift": 12
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            2
+          ]
+        },
+        "y": {
+          "reduce": [
+            2
+          ]
+        },
+        "w": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            0
+          ]
+        },
+        "y": {
+          "reduce": [
+            0
+          ]
+        },
+        "w": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            1
+          ]
+        },
+        "y": {
+          "reduce": [
+            1
+          ]
+        },
+        "w": {
+          "reduce": [
+            1
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -47288,49 +50891,96 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "Block": 2,
-          "(": 3
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          ")": 4,
-          "stmt": 5
+        "Block": {
+          "shift": 2
         },
-        "reduce": []
+        "(": {
+          "shift": 3
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          ")": 6
+        "(": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        ")": {
+          "reduce": [
+            -1
+          ]
+        },
+        "stmt": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        },
+        "stmt": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 4
+        },
+        "stmt": {
+          "shift": 5
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        },
+        "stmt": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 6
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "stmt": {
+          "reduce": [
+            2
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -49030,85 +52680,289 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "Assign": 2,
-          "Inc": 3,
-          "Lv": 4,
-          "id": 5
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "equals": 6,
-          "++": 7,
-          "//": 8
+        "Assign": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          7
-        ]
-      },
-      {
-        "shift": {
-          "Rv": 9,
-          "Lv": 10,
-          "num": 11,
-          "id": 5
+        "Inc": {
+          "shift": 3
         },
-        "reduce": []
+        "Lv": {
+          "shift": 4
+        },
+        "id": {
+          "shift": 5
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "equals": {
+          "reduce": [
+            -1
+          ]
+        },
+        "++": {
+          "reduce": [
+            -1
+          ]
+        },
+        "//": {
+          "reduce": [
+            -1
+          ]
+        },
+        "num": {
+          "reduce": [
+            -1
+          ]
+        },
+        "id": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "equals": {
+          "reduce": [
+            0
+          ]
+        },
+        "++": {
+          "reduce": [
+            0
+          ]
+        },
+        "//": {
+          "reduce": [
+            0
+          ]
+        },
+        "num": {
+          "reduce": [
+            0
+          ]
+        },
+        "id": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "equals": {
+          "reduce": [
+            1
+          ]
+        },
+        "++": {
+          "reduce": [
+            1
+          ]
+        },
+        "//": {
+          "reduce": [
+            1
+          ]
+        },
+        "num": {
+          "reduce": [
+            1
+          ]
+        },
+        "id": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "equals": {
+          "shift": 6
+        },
+        "++": {
+          "shift": 7
+        },
+        "//": {
+          "shift": 8
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          6
-        ]
+        "equals": {
+          "reduce": [
+            7
+          ]
+        },
+        "++": {
+          "reduce": [
+            7
+          ]
+        },
+        "//": {
+          "reduce": [
+            7
+          ]
+        },
+        "num": {
+          "reduce": [
+            7
+          ]
+        },
+        "id": {
+          "reduce": [
+            7
+          ]
+        }
+      },
+      {
+        "Rv": {
+          "shift": 9
+        },
+        "Lv": {
+          "shift": 10
+        },
+        "num": {
+          "shift": 11
+        },
+        "id": {
+          "shift": 5
+        }
+      },
+      {
+        "equals": {
+          "reduce": [
+            3
+          ]
+        },
+        "++": {
+          "reduce": [
+            3
+          ]
+        },
+        "//": {
+          "reduce": [
+            3
+          ]
+        },
+        "num": {
+          "reduce": [
+            3
+          ]
+        },
+        "id": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "equals": {
+          "reduce": [
+            4
+          ]
+        },
+        "++": {
+          "reduce": [
+            4
+          ]
+        },
+        "//": {
+          "reduce": [
+            4
+          ]
+        },
+        "num": {
+          "reduce": [
+            4
+          ]
+        },
+        "id": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "equals": {
+          "reduce": [
+            2
+          ]
+        },
+        "++": {
+          "reduce": [
+            2
+          ]
+        },
+        "//": {
+          "reduce": [
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            2
+          ]
+        },
+        "id": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "equals": {
+          "reduce": [
+            5
+          ]
+        },
+        "++": {
+          "reduce": [
+            5
+          ]
+        },
+        "//": {
+          "reduce": [
+            5
+          ]
+        },
+        "num": {
+          "reduce": [
+            5
+          ]
+        },
+        "id": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "equals": {
+          "reduce": [
+            6
+          ]
+        },
+        "++": {
+          "reduce": [
+            6
+          ]
+        },
+        "//": {
+          "reduce": [
+            6
+          ]
+        },
+        "num": {
+          "reduce": [
+            6
+          ]
+        },
+        "id": {
+          "reduce": [
+            6
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -50414,50 +54268,111 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "Emoticon": 1,
-          "Happy": 2,
-          "Sad": 3,
-          ":": 4
+        "Emoticon": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          ")": 5,
-          "(": 6
+        "Happy": {
+          "shift": 2
         },
-        "reduce": []
+        "Sad": {
+          "shift": 3
+        },
+        ":": {
+          "shift": 4
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        ":": {
+          "reduce": [
+            -1
+          ]
+        },
+        ")": {
+          "reduce": [
+            -1
+          ]
+        },
+        "(": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        ":": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        },
+        "(": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        ":": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        },
+        "(": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 5
+        },
+        "(": {
+          "shift": 6
+        }
+      },
+      {
+        ":": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "(": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        ":": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        },
+        "(": {
+          "reduce": [
+            3
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -52455,113 +56370,186 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "a": 2
+        "S": {
+          "shift": 1
         },
-        "reduce": []
+        "a": {
+          "shift": 2
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "a": 3,
-          "b": 4
+        "a": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "b": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          "A": 5,
-          "C": 6,
-          "D": 7,
-          "E": 8
+        "a": {
+          "shift": 3
         },
-        "reduce": [
-          8
-        ]
+        "b": {
+          "shift": 4
+        }
       },
       {
-        "shift": {
-          "B": 9,
-          "C": 10,
-          "D": 11,
-          "E": 8
+        "A": {
+          "shift": 5
         },
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "a": 12
+        "C": {
+          "shift": 6
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "b": 13
+        "D": {
+          "shift": 7
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          6,
-          7
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "b": 14
+        "E": {
+          "shift": 8
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "a": 15
+        "a": {
+          "reduce": [
+            8
+          ]
         },
-        "reduce": []
+        "b": {
+          "reduce": [
+            8
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "B": {
+          "shift": 9
+        },
+        "C": {
+          "shift": 10
+        },
+        "D": {
+          "shift": 11
+        },
+        "E": {
+          "shift": 8
+        },
+        "a": {
+          "reduce": [
+            8
+          ]
+        },
+        "b": {
+          "reduce": [
+            8
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "b": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "a": {
+          "shift": 12
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "b": {
+          "shift": 13
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            6,
+            7
+          ]
+        },
+        "b": {
+          "reduce": [
+            6,
+            7
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "b": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "b": {
+          "shift": 14
+        }
+      },
+      {
+        "a": {
+          "shift": 15
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            2
+          ]
+        },
+        "b": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            3
+          ]
+        },
+        "b": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            4
+          ]
+        },
+        "b": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            5
+          ]
+        },
+        "b": {
+          "reduce": [
+            5
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -55224,122 +59212,390 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "Value": 1,
-          "number": 2
+        "Value": {
+          "shift": 1
         },
-        "reduce": []
+        "number": {
+          "shift": 2
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "V": 3,
-          "f": 4,
-          "i": 5
+        "number": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "Real": 6,
-          "IOpt": 7,
-          "BOpt": 8,
-          "Opt": 9
+        "f": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          10
-        ]
-      },
-      {
-        "shift": {
-          "Int": 10,
-          "IOpt": 11,
-          "BOpt": 12,
-          "Opt": 9
+        "i": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          10
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "dot": 13
+        "dot": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "+": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          "+": 14
+        "V": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          9,
-          8
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          "+": 15
+        "f": {
+          "shift": 4,
+          "reduce": [
+            1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "dot": 16
+        "i": {
+          "shift": 5,
+          "reduce": [
+            1
+          ]
         },
-        "reduce": []
+        "number": {
+          "reduce": [
+            1
+          ]
+        },
+        "dot": {
+          "reduce": [
+            1
+          ]
+        },
+        "+": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "number": {
+          "reduce": [
+            0
+          ]
+        },
+        "f": {
+          "reduce": [
+            0
+          ]
+        },
+        "i": {
+          "reduce": [
+            0
+          ]
+        },
+        "dot": {
+          "reduce": [
+            0
+          ]
+        },
+        "+": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "Real": {
+          "shift": 6
+        },
+        "IOpt": {
+          "shift": 7
+        },
+        "BOpt": {
+          "shift": 8
+        },
+        "Opt": {
+          "shift": 9
+        },
+        "number": {
+          "reduce": [
+            10
+          ]
+        },
+        "f": {
+          "reduce": [
+            10
+          ]
+        },
+        "i": {
+          "reduce": [
+            10
+          ]
+        },
+        "dot": {
+          "reduce": [
+            10
+          ]
+        },
+        "+": {
+          "reduce": [
+            10
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          6
-        ]
+        "Int": {
+          "shift": 10
+        },
+        "IOpt": {
+          "shift": 11
+        },
+        "BOpt": {
+          "shift": 12
+        },
+        "Opt": {
+          "shift": 9
+        },
+        "number": {
+          "reduce": [
+            10
+          ]
+        },
+        "f": {
+          "reduce": [
+            10
+          ]
+        },
+        "i": {
+          "reduce": [
+            10
+          ]
+        },
+        "dot": {
+          "reduce": [
+            10
+          ]
+        },
+        "+": {
+          "reduce": [
+            10
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          7
-        ]
+        "number": {
+          "reduce": [
+            2
+          ]
+        },
+        "f": {
+          "reduce": [
+            2
+          ]
+        },
+        "i": {
+          "reduce": [
+            2
+          ]
+        },
+        "dot": {
+          "reduce": [
+            2
+          ]
+        },
+        "+": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "dot": {
+          "shift": 13
+        }
+      },
+      {
+        "+": {
+          "shift": 14
+        }
+      },
+      {
+        "number": {
+          "reduce": [
+            9,
+            8
+          ]
+        },
+        "f": {
+          "reduce": [
+            9,
+            8
+          ]
+        },
+        "i": {
+          "reduce": [
+            9,
+            8
+          ]
+        },
+        "dot": {
+          "reduce": [
+            9,
+            8
+          ]
+        },
+        "+": {
+          "reduce": [
+            9,
+            8
+          ]
+        }
+      },
+      {
+        "number": {
+          "reduce": [
+            3
+          ]
+        },
+        "f": {
+          "reduce": [
+            3
+          ]
+        },
+        "i": {
+          "reduce": [
+            3
+          ]
+        },
+        "dot": {
+          "reduce": [
+            3
+          ]
+        },
+        "+": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "+": {
+          "shift": 15
+        }
+      },
+      {
+        "dot": {
+          "shift": 16
+        }
+      },
+      {
+        "number": {
+          "reduce": [
+            4
+          ]
+        },
+        "f": {
+          "reduce": [
+            4
+          ]
+        },
+        "i": {
+          "reduce": [
+            4
+          ]
+        },
+        "dot": {
+          "reduce": [
+            4
+          ]
+        },
+        "+": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "number": {
+          "reduce": [
+            5
+          ]
+        },
+        "f": {
+          "reduce": [
+            5
+          ]
+        },
+        "i": {
+          "reduce": [
+            5
+          ]
+        },
+        "dot": {
+          "reduce": [
+            5
+          ]
+        },
+        "+": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "number": {
+          "reduce": [
+            6
+          ]
+        },
+        "f": {
+          "reduce": [
+            6
+          ]
+        },
+        "i": {
+          "reduce": [
+            6
+          ]
+        },
+        "dot": {
+          "reduce": [
+            6
+          ]
+        },
+        "+": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        "number": {
+          "reduce": [
+            7
+          ]
+        },
+        "f": {
+          "reduce": [
+            7
+          ]
+        },
+        "i": {
+          "reduce": [
+            7
+          ]
+        },
+        "dot": {
+          "reduce": [
+            7
+          ]
+        },
+        "+": {
+          "reduce": [
+            7
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -58686,146 +62942,423 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "'": 2,
-          "P": 3,
-          "T": 4,
-          "E": 5,
-          "U": 6
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "Q": 7,
-          "T": 8,
-          "E": 9,
-          "U": 6,
-          "'": 10
+        "'": {
+          "shift": 2
         },
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          ";": 11
+        "P": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "8": 12,
-          "W": 13,
-          "*": 14
+        "T": {
+          "shift": 4
         },
-        "reduce": [
-          11
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          6,
-          7
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "8": 12,
-          "W": 15,
-          "*": 14
+        "E": {
+          "shift": 5
         },
-        "reduce": [
-          11
-        ]
+        "U": {
+          "shift": 6
+        }
       },
       {
-        "shift": {
-          ";": 16
+        "8": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {
-          "8": 12,
-          "W": 17,
-          "*": 14
+        "'": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          11
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {
-          "8": 12,
-          "W": 18,
-          "*": 14
+        ";": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          11
-        ]
+        "*": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "8": {
+          "reduce": [
+            8
+          ]
+        },
+        "Q": {
+          "shift": 7
+        },
+        "T": {
+          "shift": 8
+        },
+        "E": {
+          "shift": 9
+        },
+        "U": {
+          "shift": 6
+        },
+        "'": {
+          "shift": 10,
+          "reduce": [
+            8
+          ]
+        },
+        ";": {
+          "reduce": [
+            8
+          ]
+        },
+        "*": {
+          "reduce": [
+            8
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "8": {
+          "reduce": [
+            1
+          ]
+        },
+        "'": {
+          "reduce": [
+            1
+          ]
+        },
+        ";": {
+          "reduce": [
+            1
+          ]
+        },
+        "*": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          10
-        ]
+        ";": {
+          "shift": 11
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          9
-        ]
+        "8": {
+          "shift": 12,
+          "reduce": [
+            11
+          ]
+        },
+        "W": {
+          "shift": 13
+        },
+        "*": {
+          "shift": 14,
+          "reduce": [
+            11
+          ]
+        },
+        "'": {
+          "reduce": [
+            11
+          ]
+        },
+        ";": {
+          "reduce": [
+            11
+          ]
+        }
+      },
+      {
+        "8": {
+          "reduce": [
+            6,
+            7
+          ]
+        },
+        "'": {
+          "reduce": [
+            6,
+            7
+          ]
+        },
+        ";": {
+          "reduce": [
+            6,
+            7
+          ]
+        },
+        "*": {
+          "reduce": [
+            6,
+            7
+          ]
+        }
+      },
+      {
+        "8": {
+          "reduce": [
+            0
+          ]
+        },
+        "'": {
+          "reduce": [
+            0
+          ]
+        },
+        ";": {
+          "reduce": [
+            0
+          ]
+        },
+        "*": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "8": {
+          "shift": 12,
+          "reduce": [
+            11
+          ]
+        },
+        "W": {
+          "shift": 15
+        },
+        "*": {
+          "shift": 14,
+          "reduce": [
+            11
+          ]
+        },
+        "'": {
+          "reduce": [
+            11
+          ]
+        },
+        ";": {
+          "reduce": [
+            11
+          ]
+        }
+      },
+      {
+        ";": {
+          "shift": 16
+        }
+      },
+      {
+        "8": {
+          "reduce": [
+            8
+          ]
+        },
+        "'": {
+          "reduce": [
+            8
+          ]
+        },
+        ";": {
+          "reduce": [
+            8
+          ]
+        },
+        "*": {
+          "reduce": [
+            8
+          ]
+        }
+      },
+      {
+        "8": {
+          "reduce": [
+            4
+          ]
+        },
+        "'": {
+          "reduce": [
+            4
+          ]
+        },
+        ";": {
+          "reduce": [
+            4
+          ]
+        },
+        "*": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "8": {
+          "shift": 12,
+          "reduce": [
+            11
+          ]
+        },
+        "W": {
+          "shift": 17
+        },
+        "*": {
+          "shift": 14,
+          "reduce": [
+            11
+          ]
+        },
+        "'": {
+          "reduce": [
+            11
+          ]
+        },
+        ";": {
+          "reduce": [
+            11
+          ]
+        }
+      },
+      {
+        "8": {
+          "reduce": [
+            5
+          ]
+        },
+        "'": {
+          "reduce": [
+            5
+          ]
+        },
+        ";": {
+          "reduce": [
+            5
+          ]
+        },
+        "*": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "8": {
+          "shift": 12,
+          "reduce": [
+            11
+          ]
+        },
+        "W": {
+          "shift": 18
+        },
+        "*": {
+          "shift": 14,
+          "reduce": [
+            11
+          ]
+        },
+        "'": {
+          "reduce": [
+            11
+          ]
+        },
+        ";": {
+          "reduce": [
+            11
+          ]
+        }
+      },
+      {
+        "8": {
+          "reduce": [
+            2
+          ]
+        },
+        "'": {
+          "reduce": [
+            2
+          ]
+        },
+        ";": {
+          "reduce": [
+            2
+          ]
+        },
+        "*": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "8": {
+          "reduce": [
+            3
+          ]
+        },
+        "'": {
+          "reduce": [
+            3
+          ]
+        },
+        ";": {
+          "reduce": [
+            3
+          ]
+        },
+        "*": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "8": {
+          "reduce": [
+            10
+          ]
+        },
+        "'": {
+          "reduce": [
+            10
+          ]
+        },
+        ";": {
+          "reduce": [
+            10
+          ]
+        },
+        "*": {
+          "reduce": [
+            10
+          ]
+        }
+      },
+      {
+        "8": {
+          "reduce": [
+            9
+          ]
+        },
+        "'": {
+          "reduce": [
+            9
+          ]
+        },
+        ";": {
+          "reduce": [
+            9
+          ]
+        },
+        "*": {
+          "reduce": [
+            9
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -61452,94 +65985,205 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "(": 2,
-          "E": 3,
-          "F": 4,
-          "A": 5
+        "S": {
+          "shift": 1
         },
-        "reduce": [
-          7
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "X": 6,
-          "E": 7,
-          "F": 8,
-          "A": 5
+        "(": {
+          "shift": 2,
+          "reduce": [
+            7
+          ]
         },
-        "reduce": [
-          7
-        ]
-      },
-      {
-        "shift": {
-          "sq)": 9
+        "E": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "(": 10
+        "F": {
+          "shift": 4
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          5,
-          6
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          ")": 11
+        "A": {
+          "shift": 5
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "sq)": 12
+        "sq)": {
+          "reduce": [
+            7
+          ]
         },
-        "reduce": []
+        ")": {
+          "reduce": [
+            7
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "(": {
+          "reduce": [
+            -1
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            -1
+          ]
+        },
+        ")": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "X": {
+          "shift": 6
+        },
+        "E": {
+          "shift": 7
+        },
+        "F": {
+          "shift": 8
+        },
+        "A": {
+          "shift": 5
+        },
+        "(": {
+          "reduce": [
+            7
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            7
+          ]
+        },
+        ")": {
+          "reduce": [
+            7
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "sq)": {
+          "shift": 9
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "(": {
+          "shift": 10
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            5,
+            6
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            5,
+            6
+          ]
+        },
+        ")": {
+          "reduce": [
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 11
+        }
+      },
+      {
+        "sq)": {
+          "shift": 12
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            2
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            3
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            4
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            4
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -63848,102 +68492,319 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "E": 2,
-          "b": 3,
-          "e": 4
+        "A": {
+          "shift": 1
         },
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "B": 5,
-          "b": 6,
-          "o": 7
+        "E": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "e": 8
+        "b": {
+          "shift": 3,
+          "reduce": [
+            5
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {
-          "SL": 9,
-          "s": 10
+        "e": {
+          "shift": 4,
+          "reduce": [
+            5
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "r": 11
+        "o": {
+          "reduce": [
+            5
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "E": 12,
-          "e": 4
+        "r": {
+          "reduce": [
+            5
+          ]
         },
-        "reduce": [
-          5
-        ]
+        "s": {
+          "reduce": [
+            5
+          ]
+        }
       },
       {
-        "shift": {
-          "SL": 13,
-          "s": 10
+        "b": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          7
-        ]
+        "e": {
+          "reduce": [
+            -1
+          ]
+        },
+        "o": {
+          "reduce": [
+            -1
+          ]
+        },
+        "r": {
+          "reduce": [
+            -1
+          ]
+        },
+        "s": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "B": {
+          "shift": 5
+        },
+        "b": {
+          "shift": 6
+        },
+        "o": {
+          "shift": 7
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "e": {
+          "shift": 8
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          6
-        ]
+        "b": {
+          "reduce": [
+            4
+          ]
+        },
+        "e": {
+          "reduce": [
+            4
+          ]
+        },
+        "o": {
+          "reduce": [
+            4
+          ]
+        },
+        "r": {
+          "reduce": [
+            4
+          ]
+        },
+        "s": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "SL": {
+          "shift": 9
+        },
+        "s": {
+          "shift": 10
+        }
+      },
+      {
+        "b": {
+          "reduce": [
+            2
+          ]
+        },
+        "e": {
+          "reduce": [
+            2
+          ]
+        },
+        "o": {
+          "reduce": [
+            2
+          ]
+        },
+        "r": {
+          "reduce": [
+            2
+          ]
+        },
+        "s": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "r": {
+          "shift": 11
+        }
+      },
+      {
+        "b": {
+          "reduce": [
+            1
+          ]
+        },
+        "e": {
+          "reduce": [
+            1
+          ]
+        },
+        "o": {
+          "reduce": [
+            1
+          ]
+        },
+        "r": {
+          "reduce": [
+            1
+          ]
+        },
+        "s": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "E": {
+          "shift": 12
+        },
+        "e": {
+          "shift": 4,
+          "reduce": [
+            5
+          ]
+        },
+        "b": {
+          "reduce": [
+            5
+          ]
+        },
+        "o": {
+          "reduce": [
+            5
+          ]
+        },
+        "r": {
+          "reduce": [
+            5
+          ]
+        },
+        "s": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "SL": {
+          "shift": 13
+        },
+        "s": {
+          "shift": 10,
+          "reduce": [
+            7
+          ]
+        },
+        "b": {
+          "reduce": [
+            7
+          ]
+        },
+        "e": {
+          "reduce": [
+            7
+          ]
+        },
+        "o": {
+          "reduce": [
+            7
+          ]
+        },
+        "r": {
+          "reduce": [
+            7
+          ]
+        }
+      },
+      {
+        "b": {
+          "reduce": [
+            3
+          ]
+        },
+        "e": {
+          "reduce": [
+            3
+          ]
+        },
+        "o": {
+          "reduce": [
+            3
+          ]
+        },
+        "r": {
+          "reduce": [
+            3
+          ]
+        },
+        "s": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "b": {
+          "reduce": [
+            0
+          ]
+        },
+        "e": {
+          "reduce": [
+            0
+          ]
+        },
+        "o": {
+          "reduce": [
+            0
+          ]
+        },
+        "r": {
+          "reduce": [
+            0
+          ]
+        },
+        "s": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "b": {
+          "reduce": [
+            6
+          ]
+        },
+        "e": {
+          "reduce": [
+            6
+          ]
+        },
+        "o": {
+          "reduce": [
+            6
+          ]
+        },
+        "r": {
+          "reduce": [
+            6
+          ]
+        },
+        "s": {
+          "reduce": [
+            6
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -65305,38 +70166,44 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "X": 2,
-          "a": 3
+        "S": {
+          "shift": 1
         },
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "a": 4
+        "X": {
+          "shift": 2
         },
-        "reduce": []
+        "a": {
+          "shift": 3,
+          "reduce": [
+            2
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "a": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "a": {
+          "shift": 4
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            0
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -66515,66 +71382,140 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "B": 2,
-          "b": 3,
-          "c": 4
+        "A": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "a": 5
+        "B": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "C": 6,
-          "a": 7
+        "b": {
+          "shift": 3
         },
-        "reduce": [
-          4
-        ]
+        "c": {
+          "shift": 4
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "B": 8,
-          "b": 3,
-          "c": 4
+        "a": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "b": {
+          "reduce": [
+            -1
+          ]
+        },
+        "c": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "a": {
+          "shift": 5
+        }
+      },
+      {
+        "C": {
+          "shift": 6
+        },
+        "a": {
+          "shift": 7,
+          "reduce": [
+            4
+          ]
+        },
+        "b": {
+          "reduce": [
+            4
+          ]
+        },
+        "c": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            2
+          ]
+        },
+        "b": {
+          "reduce": [
+            2
+          ]
+        },
+        "c": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "b": {
+          "reduce": [
+            0
+          ]
+        },
+        "c": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "b": {
+          "reduce": [
+            1
+          ]
+        },
+        "c": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "B": {
+          "shift": 8
+        },
+        "b": {
+          "shift": 3
+        },
+        "c": {
+          "shift": 4
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            3
+          ]
+        },
+        "b": {
+          "reduce": [
+            3
+          ]
+        },
+        "c": {
+          "reduce": [
+            3
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -68483,84 +73424,201 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "B": 2,
-          "a": 3
+        "A": {
+          "shift": 1
         },
-        "reduce": [
-          7
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "C": 4,
-          "c": 5
+        "B": {
+          "shift": 2
         },
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {
-          "B": 6,
-          "a": 3
+        "a": {
+          "shift": 3,
+          "reduce": [
+            7
+          ]
         },
-        "reduce": [
-          7
-        ]
-      },
-      {
-        "shift": {
-          "D": 7,
-          "b": 8
+        "b": {
+          "reduce": [
+            7
+          ]
         },
-        "reduce": [
-          3
-        ]
+        "c": {
+          "reduce": [
+            7
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          6
-        ]
-      },
-      {
-        "shift": {
-          "E": 9,
-          "a": 10
+        "a": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "b": {
+          "reduce": [
+            -1
+          ]
+        },
+        "c": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "C": {
+          "shift": 4
+        },
+        "c": {
+          "shift": 5,
+          "reduce": [
+            5
+          ]
+        },
+        "a": {
+          "reduce": [
+            5
+          ]
+        },
+        "b": {
+          "reduce": [
+            5
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "B": {
+          "shift": 6
+        },
+        "a": {
+          "shift": 3,
+          "reduce": [
+            7
+          ]
+        },
+        "b": {
+          "reduce": [
+            7
+          ]
+        },
+        "c": {
+          "reduce": [
+            7
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "D": {
+          "shift": 7
+        },
+        "b": {
+          "shift": 8,
+          "reduce": [
+            3
+          ]
+        },
+        "a": {
+          "reduce": [
+            3
+          ]
+        },
+        "c": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            4
+          ]
+        },
+        "b": {
+          "reduce": [
+            4
+          ]
+        },
+        "c": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            6
+          ]
+        },
+        "b": {
+          "reduce": [
+            6
+          ]
+        },
+        "c": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        "E": {
+          "shift": 9
+        },
+        "a": {
+          "shift": 10
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            2
+          ]
+        },
+        "b": {
+          "reduce": [
+            2
+          ]
+        },
+        "c": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "b": {
+          "reduce": [
+            0
+          ]
+        },
+        "c": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "b": {
+          "reduce": [
+            1
+          ]
+        },
+        "c": {
+          "reduce": [
+            1
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -70786,85 +75844,238 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "a": 2
+        "A": {
+          "shift": 1
         },
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "B": 3,
-          "A": 4,
-          "d": 5,
-          "e": 6,
-          "a": 2
+        "a": {
+          "shift": 2,
+          "reduce": [
+            2
+          ]
         },
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "C": 7,
-          "c": 8
+        "d": {
+          "reduce": [
+            2
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "B": 9,
-          "d": 5,
-          "e": 6
+        "e": {
+          "reduce": [
+            2
+          ]
         },
-        "reduce": []
+        "c": {
+          "reduce": [
+            2
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "A": 10,
-          "a": 2
+        "a": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          2
-        ]
+        "d": {
+          "reduce": [
+            -1
+          ]
+        },
+        "e": {
+          "reduce": [
+            -1
+          ]
+        },
+        "c": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "B": {
+          "shift": 3
+        },
+        "A": {
+          "shift": 4
+        },
+        "d": {
+          "shift": 5,
+          "reduce": [
+            2
+          ]
+        },
+        "e": {
+          "shift": 6,
+          "reduce": [
+            2
+          ]
+        },
+        "a": {
+          "shift": 2,
+          "reduce": [
+            2
+          ]
+        },
+        "c": {
+          "reduce": [
+            2
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "d": {
+          "reduce": [
+            0
+          ]
+        },
+        "e": {
+          "reduce": [
+            0
+          ]
+        },
+        "c": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "C": {
+          "shift": 7
+        },
+        "c": {
+          "shift": 8
+        }
+      },
+      {
+        "B": {
+          "shift": 9
+        },
+        "d": {
+          "shift": 5
+        },
+        "e": {
+          "shift": 6
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            4
+          ]
+        },
+        "d": {
+          "reduce": [
+            4
+          ]
+        },
+        "e": {
+          "reduce": [
+            4
+          ]
+        },
+        "c": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "d": {
+          "reduce": [
+            1
+          ]
+        },
+        "e": {
+          "reduce": [
+            1
+          ]
+        },
+        "c": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "A": {
+          "shift": 10
+        },
+        "a": {
+          "shift": 2,
+          "reduce": [
+            2
+          ]
+        },
+        "d": {
+          "reduce": [
+            2
+          ]
+        },
+        "e": {
+          "reduce": [
+            2
+          ]
+        },
+        "c": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            3
+          ]
+        },
+        "d": {
+          "reduce": [
+            3
+          ]
+        },
+        "e": {
+          "reduce": [
+            3
+          ]
+        },
+        "c": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            5
+          ]
+        },
+        "d": {
+          "reduce": [
+            5
+          ]
+        },
+        "e": {
+          "reduce": [
+            5
+          ]
+        },
+        "c": {
+          "reduce": [
+            5
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -73227,89 +78438,217 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "TERM": 1,
-          "id": 2,
-          "let": 3
+        "TERM": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "INDEX": 4,
-          "lpar": 5
+        "id": {
+          "shift": 2
         },
-        "reduce": [
-          0
-        ]
+        "let": {
+          "shift": 3
+        }
       },
       {
-        "shift": {
-          "LEXP": 6,
-          "INDEX": 7,
-          "id": 8,
-          "lpar": 5
+        "id": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "TERM": 9,
-          "id": 2,
-          "let": 3
+        "let": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "LEXP": 10,
-          "INDEX": 7,
-          "id": 8,
-          "lpar": 5
+        "lpar": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "rpar": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {
-          "rpar": 11
+        "INDEX": {
+          "shift": 4
         },
-        "reduce": []
+        "lpar": {
+          "shift": 5,
+          "reduce": [
+            0
+          ]
+        },
+        "id": {
+          "reduce": [
+            0
+          ]
+        },
+        "let": {
+          "reduce": [
+            0
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "LEXP": {
+          "shift": 6
+        },
+        "INDEX": {
+          "shift": 7
+        },
+        "id": {
+          "shift": 8
+        },
+        "lpar": {
+          "shift": 5
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "id": {
+          "reduce": [
+            1
+          ]
+        },
+        "let": {
+          "reduce": [
+            1
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            1
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "TERM": {
+          "shift": 9
+        },
+        "id": {
+          "shift": 2
+        },
+        "let": {
+          "shift": 3
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            2
+          ]
+        },
+        "let": {
+          "reduce": [
+            2
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            2
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "LEXP": {
+          "shift": 10
+        },
+        "INDEX": {
+          "shift": 7
+        },
+        "id": {
+          "shift": 8
+        },
+        "lpar": {
+          "shift": 5
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            4
+          ]
+        },
+        "let": {
+          "reduce": [
+            4
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            4
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "rpar": {
+          "shift": 11
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            3
+          ]
+        },
+        "let": {
+          "reduce": [
+            3
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            3
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            5
+          ]
+        },
+        "let": {
+          "reduce": [
+            5
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            5
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            5
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -77057,151 +82396,628 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "Line": 1,
-          "Op": 2,
-          "Label": 3,
-          "Inst": 4,
-          "id": 5,
-          "pneumonic": 6,
-          "Macro": 7
+        "Line": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "Operands": 8,
-          "Src": 9,
-          "Dest": 10,
-          "num": 11,
-          "id": 12,
-          "reg": 13,
-          "(": 14
+        "Op": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          ":": 15
+        "Label": {
+          "shift": 3
         },
-        "reduce": [
-          12
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          10
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          11
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "Src": 16,
-          "Dest": 10,
-          "num": 11,
-          "id": 12,
-          "reg": 13,
-          "(": 14
+        "Inst": {
+          "shift": 4
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          9
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          6
-        ]
-      },
-      {
-        "shift": {
-          "Src": 17,
-          "Dest": 10,
-          "num": 11,
-          "id": 12,
-          "reg": 13,
-          "(": 14
+        "id": {
+          "shift": 5
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          "Dest": 18,
-          "id": 12,
-          "reg": 13,
-          "(": 14
+        "pneumonic": {
+          "shift": 6
         },
-        "reduce": []
+        "Macro": {
+          "shift": 7
+        }
       },
       {
-        "shift": {
-          ")": 19
+        "id": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        ":": {
+          "reduce": [
+            -1
+          ]
+        },
+        "reg": {
+          "reduce": [
+            -1
+          ]
+        },
+        "(": {
+          "reduce": [
+            -1
+          ]
+        },
+        ")": {
+          "reduce": [
+            -1
+          ]
+        },
+        "num": {
+          "reduce": [
+            -1
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "id": {
+          "reduce": [
+            0
+          ]
+        },
+        ":": {
+          "reduce": [
+            0
+          ]
+        },
+        "reg": {
+          "reduce": [
+            0
+          ]
+        },
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        },
+        "num": {
+          "reduce": [
+            0
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          7
-        ]
+        "id": {
+          "reduce": [
+            1
+          ]
+        },
+        ":": {
+          "reduce": [
+            1
+          ]
+        },
+        "reg": {
+          "reduce": [
+            1
+          ]
+        },
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        },
+        "num": {
+          "reduce": [
+            1
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "Operands": {
+          "shift": 8
+        },
+        "Src": {
+          "shift": 9
+        },
+        "Dest": {
+          "shift": 10
+        },
+        "num": {
+          "shift": 11
+        },
+        "id": {
+          "shift": 12
+        },
+        "reg": {
+          "shift": 13
+        },
+        "(": {
+          "shift": 14
+        }
+      },
+      {
+        ":": {
+          "shift": 15,
+          "reduce": [
+            12
+          ]
+        },
+        "id": {
+          "reduce": [
+            12
+          ]
+        },
+        "reg": {
+          "reduce": [
+            12
+          ]
+        },
+        "(": {
+          "reduce": [
+            12
+          ]
+        },
+        ")": {
+          "reduce": [
+            12
+          ]
+        },
+        "num": {
+          "reduce": [
+            12
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            12
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            10
+          ]
+        },
+        ":": {
+          "reduce": [
+            10
+          ]
+        },
+        "reg": {
+          "reduce": [
+            10
+          ]
+        },
+        "(": {
+          "reduce": [
+            10
+          ]
+        },
+        ")": {
+          "reduce": [
+            10
+          ]
+        },
+        "num": {
+          "reduce": [
+            10
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            10
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            11
+          ]
+        },
+        ":": {
+          "reduce": [
+            11
+          ]
+        },
+        "reg": {
+          "reduce": [
+            11
+          ]
+        },
+        "(": {
+          "reduce": [
+            11
+          ]
+        },
+        ")": {
+          "reduce": [
+            11
+          ]
+        },
+        "num": {
+          "reduce": [
+            11
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            11
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            2
+          ]
+        },
+        ":": {
+          "reduce": [
+            2
+          ]
+        },
+        "reg": {
+          "reduce": [
+            2
+          ]
+        },
+        "(": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            2
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "Src": {
+          "shift": 16
+        },
+        "Dest": {
+          "shift": 10
+        },
+        "num": {
+          "shift": 11
+        },
+        "id": {
+          "shift": 12
+        },
+        "reg": {
+          "shift": 13
+        },
+        "(": {
+          "shift": 14
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            8
+          ]
+        },
+        ":": {
+          "reduce": [
+            8
+          ]
+        },
+        "reg": {
+          "reduce": [
+            8
+          ]
+        },
+        "(": {
+          "reduce": [
+            8
+          ]
+        },
+        ")": {
+          "reduce": [
+            8
+          ]
+        },
+        "num": {
+          "reduce": [
+            8
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            8
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            9
+          ]
+        },
+        ":": {
+          "reduce": [
+            9
+          ]
+        },
+        "reg": {
+          "reduce": [
+            9
+          ]
+        },
+        "(": {
+          "reduce": [
+            9
+          ]
+        },
+        ")": {
+          "reduce": [
+            9
+          ]
+        },
+        "num": {
+          "reduce": [
+            9
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            9
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            5
+          ]
+        },
+        ":": {
+          "reduce": [
+            5
+          ]
+        },
+        "reg": {
+          "reduce": [
+            5
+          ]
+        },
+        "(": {
+          "reduce": [
+            5
+          ]
+        },
+        ")": {
+          "reduce": [
+            5
+          ]
+        },
+        "num": {
+          "reduce": [
+            5
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            6
+          ]
+        },
+        ":": {
+          "reduce": [
+            6
+          ]
+        },
+        "reg": {
+          "reduce": [
+            6
+          ]
+        },
+        "(": {
+          "reduce": [
+            6
+          ]
+        },
+        ")": {
+          "reduce": [
+            6
+          ]
+        },
+        "num": {
+          "reduce": [
+            6
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        "Src": {
+          "shift": 17
+        },
+        "Dest": {
+          "shift": 10
+        },
+        "num": {
+          "shift": 11
+        },
+        "id": {
+          "shift": 12
+        },
+        "reg": {
+          "shift": 13
+        },
+        "(": {
+          "shift": 14
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            3
+          ]
+        },
+        ":": {
+          "reduce": [
+            3
+          ]
+        },
+        "reg": {
+          "reduce": [
+            3
+          ]
+        },
+        "(": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        },
+        "num": {
+          "reduce": [
+            3
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "Dest": {
+          "shift": 18
+        },
+        "id": {
+          "shift": 12
+        },
+        "reg": {
+          "shift": 13
+        },
+        "(": {
+          "shift": 14
+        }
+      },
+      {
+        ")": {
+          "shift": 19
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            4
+          ]
+        },
+        ":": {
+          "reduce": [
+            4
+          ]
+        },
+        "reg": {
+          "reduce": [
+            4
+          ]
+        },
+        "(": {
+          "reduce": [
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            4
+          ]
+        },
+        "num": {
+          "reduce": [
+            4
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "id": {
+          "reduce": [
+            7
+          ]
+        },
+        ":": {
+          "reduce": [
+            7
+          ]
+        },
+        "reg": {
+          "reduce": [
+            7
+          ]
+        },
+        "(": {
+          "reduce": [
+            7
+          ]
+        },
+        ")": {
+          "reduce": [
+            7
+          ]
+        },
+        "num": {
+          "reduce": [
+            7
+          ]
+        },
+        "pneumonic": {
+          "reduce": [
+            7
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -81217,87 +87033,229 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "T": 2,
-          "id": 3,
-          "V": 4
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          ";": 5
+        "T": {
+          "shift": 2
         },
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2,
-          4
-        ]
-      },
-      {
-        "shift": {
-          "assign": 6
+        "id": {
+          "shift": 3
         },
-        "reduce": []
+        "V": {
+          "shift": 4
+        }
       },
       {
-        "shift": {
-          "T": 7,
-          "id": 3,
-          "V": 4
+        ";": {
+          "shift": 5,
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "E": 8,
-          "V": 9,
-          "num": 10,
-          "id": 11
+        "id": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "assign": {
+          "reduce": [
+            -1
+          ]
+        },
+        "num": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        ";": {
+          "reduce": [
+            1
+          ]
+        },
+        "id": {
+          "reduce": [
+            1
+          ]
+        },
+        "assign": {
+          "reduce": [
+            1
+          ]
+        },
+        "num": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        ";": {
+          "reduce": [
+            2,
+            4
+          ]
+        },
+        "id": {
+          "reduce": [
+            2,
+            4
+          ]
+        },
+        "assign": {
+          "reduce": [
+            2,
+            4
+          ]
+        },
+        "num": {
+          "reduce": [
+            2,
+            4
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "assign": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          6
-        ]
+        "T": {
+          "shift": 7
+        },
+        "id": {
+          "shift": 3
+        },
+        "V": {
+          "shift": 4
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "E": {
+          "shift": 8
+        },
+        "V": {
+          "shift": 9
+        },
+        "num": {
+          "shift": 10
+        },
+        "id": {
+          "shift": 11
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            0
+          ]
+        },
+        "id": {
+          "reduce": [
+            0
+          ]
+        },
+        "assign": {
+          "reduce": [
+            0
+          ]
+        },
+        "num": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            3
+          ]
+        },
+        "id": {
+          "reduce": [
+            3
+          ]
+        },
+        "assign": {
+          "reduce": [
+            3
+          ]
+        },
+        "num": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            5
+          ]
+        },
+        "id": {
+          "reduce": [
+            5
+          ]
+        },
+        "assign": {
+          "reduce": [
+            5
+          ]
+        },
+        "num": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            6
+          ]
+        },
+        "id": {
+          "reduce": [
+            6
+          ]
+        },
+        "assign": {
+          "reduce": [
+            6
+          ]
+        },
+        "num": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            4
+          ]
+        },
+        "id": {
+          "reduce": [
+            4
+          ]
+        },
+        "assign": {
+          "reduce": [
+            4
+          ]
+        },
+        "num": {
+          "reduce": [
+            4
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -83589,103 +89547,266 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "L": 1,
-          "V": 2,
-          "Var": 3,
-          "id": 4
+        "L": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "equals": 5
+        "V": {
+          "shift": 2
         },
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "(": 6
+        "Var": {
+          "shift": 3
         },
-        "reduce": []
+        "id": {
+          "shift": 4
+        }
       },
       {
-        "shift": {
-          "+": 7
+        "equals": {
+          "shift": 5,
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3,
-          4
-        ]
-      },
-      {
-        "shift": {
-          "Var": 8,
-          "id": 9
+        "(": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "args": 10
+        "args": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "V": 11,
-          "Var": 3,
-          "id": 4
+        ")": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "(": 12
+        "+": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "id": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "(": {
+          "shift": 6
+        }
       },
       {
-        "shift": {
-          ")": 13
+        "+": {
+          "shift": 7
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            3,
+            4
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          ")": 14
+        "args": {
+          "reduce": [
+            3,
+            4
+          ]
         },
-        "reduce": []
+        ")": {
+          "reduce": [
+            3,
+            4
+          ]
+        },
+        "equals": {
+          "reduce": [
+            3,
+            4
+          ]
+        },
+        "+": {
+          "reduce": [
+            3,
+            4
+          ]
+        },
+        "id": {
+          "reduce": [
+            3,
+            4
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "Var": {
+          "shift": 8
+        },
+        "id": {
+          "shift": 9
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "args": {
+          "shift": 10
+        }
+      },
+      {
+        "V": {
+          "shift": 11
+        },
+        "Var": {
+          "shift": 3
+        },
+        "id": {
+          "shift": 4
+        }
+      },
+      {
+        "(": {
+          "shift": 12
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            4
+          ]
+        },
+        "args": {
+          "reduce": [
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            4
+          ]
+        },
+        "equals": {
+          "reduce": [
+            4
+          ]
+        },
+        "+": {
+          "reduce": [
+            4
+          ]
+        },
+        "id": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 13
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            2
+          ]
+        },
+        "args": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "equals": {
+          "reduce": [
+            2
+          ]
+        },
+        "+": {
+          "reduce": [
+            2
+          ]
+        },
+        "id": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 14
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        "args": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        },
+        "equals": {
+          "reduce": [
+            0
+          ]
+        },
+        "+": {
+          "reduce": [
+            0
+          ]
+        },
+        "id": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        "args": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        },
+        "equals": {
+          "reduce": [
+            1
+          ]
+        },
+        "+": {
+          "reduce": [
+            1
+          ]
+        },
+        "id": {
+          "reduce": [
+            1
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -86154,102 +92275,267 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "E": 1,
-          "O": 2,
-          "id": 3,
-          "OL": 4,
-          "(": 5
+        "E": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          ":": 6
+        "O": {
+          "shift": 2
         },
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2,
-          4
-        ]
-      },
-      {
-        "shift": {
-          "l": 7
+        "id": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "O": 8,
-          "id": 3,
-          "OL": 4,
-          "(": 5
+        "OL": {
+          "shift": 4
         },
-        "reduce": []
+        "(": {
+          "shift": 5
+        }
       },
       {
-        "shift": {
-          "OL": 9,
-          "id": 10,
-          "(": 5
+        ":": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          ":": 11
+        "id": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {
-          "OL": 12,
-          "id": 10,
-          "(": 5
+        "l": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          ")": 13
+        "(": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        ")": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        ":": {
+          "shift": 6,
+          "reduce": [
+            1
+          ]
+        },
+        "id": {
+          "reduce": [
+            1
+          ]
+        },
+        "l": {
+          "reduce": [
+            1
+          ]
+        },
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        ":": {
+          "reduce": [
+            2,
+            4
+          ]
+        },
+        "id": {
+          "reduce": [
+            2,
+            4
+          ]
+        },
+        "l": {
+          "reduce": [
+            2,
+            4
+          ]
+        },
+        "(": {
+          "reduce": [
+            2,
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "l": {
+          "shift": 7
+        }
+      },
+      {
+        "O": {
+          "shift": 8
+        },
+        "id": {
+          "shift": 3
+        },
+        "OL": {
+          "shift": 4
+        },
+        "(": {
+          "shift": 5
+        }
+      },
+      {
+        "OL": {
+          "shift": 9
+        },
+        "id": {
+          "shift": 10
+        },
+        "(": {
+          "shift": 5
+        }
+      },
+      {
+        ":": {
+          "reduce": [
+            3
+          ]
+        },
+        "id": {
+          "reduce": [
+            3
+          ]
+        },
+        "l": {
+          "reduce": [
+            3
+          ]
+        },
+        "(": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        ":": {
+          "shift": 11
+        }
+      },
+      {
+        ":": {
+          "reduce": [
+            0
+          ]
+        },
+        "id": {
+          "reduce": [
+            0
+          ]
+        },
+        "l": {
+          "reduce": [
+            0
+          ]
+        },
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        ":": {
+          "reduce": [
+            4
+          ]
+        },
+        "id": {
+          "reduce": [
+            4
+          ]
+        },
+        "l": {
+          "reduce": [
+            4
+          ]
+        },
+        "(": {
+          "reduce": [
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "OL": {
+          "shift": 12
+        },
+        "id": {
+          "shift": 10
+        },
+        "(": {
+          "shift": 5
+        }
+      },
+      {
+        ")": {
+          "shift": 13
+        }
+      },
+      {
+        ":": {
+          "reduce": [
+            5
+          ]
+        },
+        "id": {
+          "reduce": [
+            5
+          ]
+        },
+        "l": {
+          "reduce": [
+            5
+          ]
+        },
+        "(": {
+          "reduce": [
+            5
+          ]
+        },
+        ")": {
+          "reduce": [
+            5
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -88760,92 +95046,265 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "a": 2,
-          "b": 3
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "g": 4,
-          "A": 5,
-          "B": 6
+        "a": {
+          "shift": 2
         },
-        "reduce": []
+        "b": {
+          "shift": 3
+        }
       },
       {
-        "shift": {
-          "A": 7,
-          "g": 8,
-          "B": 6
+        "a": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "d": 9
+        "g": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {
-          "c": 10
+        "d": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {
-          "d": 11
+        "c": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "b": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          "c": 12
+        "g": {
+          "shift": 4
         },
-        "reduce": [
-          5
-        ]
+        "A": {
+          "shift": 5
+        },
+        "B": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "A": {
+          "shift": 7
+        },
+        "g": {
+          "shift": 8
+        },
+        "B": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "d": {
+          "shift": 9,
+          "reduce": [
+            5
+          ]
+        },
+        "a": {
+          "reduce": [
+            5
+          ]
+        },
+        "g": {
+          "reduce": [
+            5
+          ]
+        },
+        "c": {
+          "reduce": [
+            5
+          ]
+        },
+        "b": {
+          "reduce": [
+            5
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "c": {
+          "shift": 10
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "a": {
+          "reduce": [
+            4
+          ]
+        },
+        "g": {
+          "reduce": [
+            4
+          ]
+        },
+        "d": {
+          "reduce": [
+            4
+          ]
+        },
+        "c": {
+          "reduce": [
+            4
+          ]
+        },
+        "b": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "d": {
+          "shift": 11
+        }
+      },
+      {
+        "c": {
+          "shift": 12,
+          "reduce": [
+            5
+          ]
+        },
+        "a": {
+          "reduce": [
+            5
+          ]
+        },
+        "g": {
+          "reduce": [
+            5
+          ]
+        },
+        "d": {
+          "reduce": [
+            5
+          ]
+        },
+        "b": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "g": {
+          "reduce": [
+            0
+          ]
+        },
+        "d": {
+          "reduce": [
+            0
+          ]
+        },
+        "c": {
+          "reduce": [
+            0
+          ]
+        },
+        "b": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "g": {
+          "reduce": [
+            1
+          ]
+        },
+        "d": {
+          "reduce": [
+            1
+          ]
+        },
+        "c": {
+          "reduce": [
+            1
+          ]
+        },
+        "b": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            2
+          ]
+        },
+        "g": {
+          "reduce": [
+            2
+          ]
+        },
+        "d": {
+          "reduce": [
+            2
+          ]
+        },
+        "c": {
+          "reduce": [
+            2
+          ]
+        },
+        "b": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            3
+          ]
+        },
+        "g": {
+          "reduce": [
+            3
+          ]
+        },
+        "d": {
+          "reduce": [
+            3
+          ]
+        },
+        "c": {
+          "reduce": [
+            3
+          ]
+        },
+        "b": {
+          "reduce": [
+            3
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -90567,73 +97026,165 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "C": 2,
-          "B": 3,
-          "a": 4,
-          "b": 5,
-          "c": 6
+        "A": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "C": 7,
-          "B": 8,
-          "a": 4,
-          "b": 5,
-          "c": 6
+        "C": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {
-          "a": 9
+        "B": {
+          "shift": 3
         },
-        "reduce": []
+        "a": {
+          "shift": 4
+        },
+        "b": {
+          "shift": 5
+        },
+        "c": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "a": {
+          "reduce": [
+            -1
+          ]
+        },
+        "b": {
+          "reduce": [
+            -1
+          ]
+        },
+        "c": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "b": {
+          "reduce": [
+            0
+          ]
+        },
+        "c": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "b": {
+          "reduce": [
+            1
+          ]
+        },
+        "c": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "C": {
+          "shift": 7
+        },
+        "B": {
+          "shift": 8
+        },
+        "a": {
+          "shift": 4
+        },
+        "b": {
+          "shift": 5
+        },
+        "c": {
+          "shift": 6
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            3
+          ]
+        },
+        "b": {
+          "reduce": [
+            3
+          ]
+        },
+        "c": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            5
+          ]
+        },
+        "b": {
+          "reduce": [
+            5
+          ]
+        },
+        "c": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "a": {
+          "shift": 9
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            4
+          ]
+        },
+        "b": {
+          "reduce": [
+            4
+          ]
+        },
+        "c": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            2
+          ]
+        },
+        "b": {
+          "reduce": [
+            2
+          ]
+        },
+        "c": {
+          "reduce": [
+            2
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -92279,67 +98830,160 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "A": 2,
-          "B": 3,
-          "x": 4,
-          "a": 5,
-          "b": 6
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "A": 7,
-          "B": 8,
-          "x": 4,
-          "a": 5,
-          "b": 6
+        "A": {
+          "shift": 2
         },
-        "reduce": []
+        "B": {
+          "shift": 3
+        },
+        "x": {
+          "shift": 4
+        },
+        "a": {
+          "shift": 5
+        },
+        "b": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "x": {
+          "reduce": [
+            -1
+          ]
+        },
+        "a": {
+          "reduce": [
+            -1
+          ]
+        },
+        "b": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "x": {
+          "reduce": [
+            0
+          ]
+        },
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "b": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "x": {
+          "reduce": [
+            1
+          ]
+        },
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "b": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "A": {
+          "shift": 7
+        },
+        "B": {
+          "shift": 8
+        },
+        "x": {
+          "shift": 4
+        },
+        "a": {
+          "shift": 5
+        },
+        "b": {
+          "shift": 6
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            3
+          ]
+        },
+        "a": {
+          "reduce": [
+            3
+          ]
+        },
+        "b": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            5
+          ]
+        },
+        "a": {
+          "reduce": [
+            5
+          ]
+        },
+        "b": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            2
+          ]
+        },
+        "a": {
+          "reduce": [
+            2
+          ]
+        },
+        "b": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            4
+          ]
+        },
+        "a": {
+          "reduce": [
+            4
+          ]
+        },
+        "b": {
+          "reduce": [
+            4
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -94146,77 +100790,164 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "Parens": 2,
-          "StarParens": 3,
-          "(": 4
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "Parens": 5,
-          ")": 6,
-          "StarParens": 7,
-          "*)": 8,
-          "(": 4
+        "Parens": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          ")": 9
+        "StarParens": {
+          "shift": 3
         },
-        "reduce": []
+        "(": {
+          "shift": 4
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          "*)": 10
+        "(": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        ")": {
+          "reduce": [
+            -1
+          ]
+        },
+        "*)": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        },
+        "*)": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        },
+        "*)": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "Parens": {
+          "shift": 5
+        },
+        ")": {
+          "shift": 6
+        },
+        "StarParens": {
+          "shift": 7
+        },
+        "*)": {
+          "shift": 8
+        },
+        "(": {
+          "shift": 4
+        }
+      },
+      {
+        ")": {
+          "shift": 9
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        },
+        "*)": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "*)": {
+          "shift": 10
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            5
+          ]
+        },
+        ")": {
+          "reduce": [
+            5
+          ]
+        },
+        "*)": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "*)": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            4
+          ]
+        },
+        "*)": {
+          "reduce": [
+            4
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -95883,44 +102614,106 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "T": 2,
-          "A": 3,
-          "B": 4,
-          "C": 5
+        "S": {
+          "shift": 1
         },
-        "reduce": []
+        "T": {
+          "shift": 2
+        },
+        "A": {
+          "shift": 3
+        },
+        "B": {
+          "shift": 4
+        },
+        "C": {
+          "shift": 5
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
+        "T": {
+          "reduce": [
+            -1
+          ]
+        },
+        "C": {
+          "reduce": [
+            -1
+          ]
+        },
+        "d": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "T": {
+          "reduce": [
+            0
+          ]
+        },
+        "C": {
+          "reduce": [
+            0
+          ]
+        },
+        "d": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "T": {
+          "reduce": [
+            1
+          ]
+        },
+        "C": {
+          "reduce": [
+            1
+          ]
+        },
+        "d": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "T": {
+          "reduce": [
+            2
+          ]
+        },
+        "C": {
+          "reduce": [
+            2
+          ]
+        },
+        "d": {
+          "reduce": [
+            2
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "T": {
+          "reduce": [
+            3
+          ]
+        },
+        "C": {
+          "reduce": [
+            3
+          ]
+        },
+        "d": {
+          "reduce": [
+            3
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -98699,180 +105492,482 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "E": 1,
-          "d": 2,
-          "D": 3,
-          "F": 4,
-          "e": 5,
-          "C": 6
+        "E": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "D": 7,
-          "e": 8,
-          "A": 9,
-          "d": 10,
-          "a": 11
+        "d": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "A": 12,
-          "C": 13,
-          "d": 14,
-          "a": 11,
-          "e": 15
+        "D": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "B": 16,
-          "A": 12,
-          "a": 17
+        "F": {
+          "shift": 4
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "b": 18
+        "e": {
+          "shift": 5
         },
-        "reduce": []
+        "C": {
+          "shift": 6
+        }
       },
       {
-        "shift": {
-          "e": 19
+        "d": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          10
-        ]
-      },
-      {
-        "shift": {
-          "c": 20
+        "e": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          "B": 21,
-          "A": 9,
-          "a": 17
+        "b": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "d": 22
+        "c": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "a": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          "b": 23
+        "D": {
+          "shift": 7
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          9,
-          10
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {
-          "B": 16,
-          "a": 24
+        "e": {
+          "shift": 8
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          6
-        ]
-      },
-      {
-        "shift": {
-          "c": 25
+        "A": {
+          "shift": 9
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "B": 21,
-          "a": 24
+        "d": {
+          "shift": 10
         },
-        "reduce": []
+        "a": {
+          "shift": 11
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "d": {
+          "reduce": [
+            1
+          ]
+        },
+        "e": {
+          "reduce": [
+            1
+          ]
+        },
+        "b": {
+          "reduce": [
+            1
+          ]
+        },
+        "c": {
+          "reduce": [
+            1
+          ]
+        },
+        "a": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          9
-        ]
+        "d": {
+          "reduce": [
+            2
+          ]
+        },
+        "e": {
+          "reduce": [
+            2
+          ]
+        },
+        "b": {
+          "reduce": [
+            2
+          ]
+        },
+        "c": {
+          "reduce": [
+            2
+          ]
+        },
+        "a": {
+          "reduce": [
+            2
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          7
-        ]
+        "A": {
+          "shift": 12
+        },
+        "C": {
+          "shift": 13
+        },
+        "d": {
+          "shift": 14
+        },
+        "a": {
+          "shift": 11
+        },
+        "e": {
+          "shift": 15
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            4
+          ]
+        },
+        "e": {
+          "reduce": [
+            4
+          ]
+        },
+        "b": {
+          "reduce": [
+            4
+          ]
+        },
+        "c": {
+          "reduce": [
+            4
+          ]
+        },
+        "a": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            0
+          ]
+        },
+        "e": {
+          "reduce": [
+            0
+          ]
+        },
+        "b": {
+          "reduce": [
+            0
+          ]
+        },
+        "c": {
+          "reduce": [
+            0
+          ]
+        },
+        "a": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "B": {
+          "shift": 16
+        },
+        "A": {
+          "shift": 12
+        },
+        "a": {
+          "shift": 17
+        }
+      },
+      {
+        "b": {
+          "shift": 18
+        }
+      },
+      {
+        "e": {
+          "shift": 19
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            10
+          ]
+        },
+        "e": {
+          "reduce": [
+            10
+          ]
+        },
+        "b": {
+          "reduce": [
+            10
+          ]
+        },
+        "c": {
+          "reduce": [
+            10
+          ]
+        },
+        "a": {
+          "reduce": [
+            10
+          ]
+        }
+      },
+      {
+        "c": {
+          "shift": 20
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            3
+          ]
+        },
+        "e": {
+          "reduce": [
+            3
+          ]
+        },
+        "b": {
+          "reduce": [
+            3
+          ]
+        },
+        "c": {
+          "reduce": [
+            3
+          ]
+        },
+        "a": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "B": {
+          "shift": 21
+        },
+        "A": {
+          "shift": 9
+        },
+        "a": {
+          "shift": 17
+        }
+      },
+      {
+        "d": {
+          "shift": 22
+        }
+      },
+      {
+        "b": {
+          "shift": 23
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            9,
+            10
+          ]
+        },
+        "e": {
+          "reduce": [
+            9,
+            10
+          ]
+        },
+        "b": {
+          "reduce": [
+            9,
+            10
+          ]
+        },
+        "c": {
+          "reduce": [
+            9,
+            10
+          ]
+        },
+        "a": {
+          "reduce": [
+            9,
+            10
+          ]
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            8
+          ]
+        },
+        "e": {
+          "reduce": [
+            8
+          ]
+        },
+        "b": {
+          "reduce": [
+            8
+          ]
+        },
+        "c": {
+          "reduce": [
+            8
+          ]
+        },
+        "a": {
+          "reduce": [
+            8
+          ]
+        }
+      },
+      {
+        "B": {
+          "shift": 16
+        },
+        "a": {
+          "shift": 24
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            6
+          ]
+        },
+        "e": {
+          "reduce": [
+            6
+          ]
+        },
+        "b": {
+          "reduce": [
+            6
+          ]
+        },
+        "c": {
+          "reduce": [
+            6
+          ]
+        },
+        "a": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        "c": {
+          "shift": 25
+        }
+      },
+      {
+        "B": {
+          "shift": 21
+        },
+        "a": {
+          "shift": 24
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            5
+          ]
+        },
+        "e": {
+          "reduce": [
+            5
+          ]
+        },
+        "b": {
+          "reduce": [
+            5
+          ]
+        },
+        "c": {
+          "reduce": [
+            5
+          ]
+        },
+        "a": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            9
+          ]
+        },
+        "e": {
+          "reduce": [
+            9
+          ]
+        },
+        "b": {
+          "reduce": [
+            9
+          ]
+        },
+        "c": {
+          "reduce": [
+            9
+          ]
+        },
+        "a": {
+          "reduce": [
+            9
+          ]
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            7
+          ]
+        },
+        "e": {
+          "reduce": [
+            7
+          ]
+        },
+        "b": {
+          "reduce": [
+            7
+          ]
+        },
+        "c": {
+          "reduce": [
+            7
+          ]
+        },
+        "a": {
+          "reduce": [
+            7
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -102321,121 +109416,368 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1
+        "S": {
+          "shift": 1
         },
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "R": 2,
-          "s": 3,
-          "u": 4
+        "s": {
+          "reduce": [
+            1
+          ]
         },
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "StructVar": 5,
-          "Var": 6,
-          "Subvar": 7,
-          "V": 8,
-          "id": 9
+        "u": {
+          "reduce": [
+            1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "NVar": 10,
-          "Var": 11,
-          "Subvar": 12,
-          "V": 8,
-          "id": 9
+        ";": {
+          "reduce": [
+            1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          ";": 13
+        ":": {
+          "reduce": [
+            1
+          ]
         },
-        "reduce": []
+        "id": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {
-          ":": 14
+        "R": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          8,
-          9
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          10
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          ":": 15
+        "s": {
+          "shift": 3,
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          ";": 16
+        "u": {
+          "shift": 4,
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        ";": {
+          "reduce": [
+            -1
+          ]
+        },
+        ":": {
+          "reduce": [
+            -1
+          ]
+        },
+        "id": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "s": {
+          "reduce": [
+            0
+          ]
+        },
+        "u": {
+          "reduce": [
+            0
+          ]
+        },
+        ";": {
+          "reduce": [
+            0
+          ]
+        },
+        ":": {
+          "reduce": [
+            0
+          ]
+        },
+        "id": {
+          "reduce": [
+            0
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "StructVar": {
+          "shift": 5
+        },
+        "Var": {
+          "shift": 6
+        },
+        "Subvar": {
+          "shift": 7
+        },
+        "V": {
+          "shift": 8
+        },
+        "id": {
+          "shift": 9
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          6
-        ]
+        "NVar": {
+          "shift": 10
+        },
+        "Var": {
+          "shift": 11
+        },
+        "Subvar": {
+          "shift": 12
+        },
+        "V": {
+          "shift": 8
+        },
+        "id": {
+          "shift": 9
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          7
-        ]
+        "s": {
+          "reduce": [
+            2
+          ]
+        },
+        "u": {
+          "reduce": [
+            2
+          ]
+        },
+        ";": {
+          "reduce": [
+            2
+          ]
+        },
+        ":": {
+          "reduce": [
+            2
+          ]
+        },
+        "id": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        ";": {
+          "shift": 13
+        }
+      },
+      {
+        ":": {
+          "shift": 14
+        }
+      },
+      {
+        "s": {
+          "reduce": [
+            8,
+            9
+          ]
+        },
+        "u": {
+          "reduce": [
+            8,
+            9
+          ]
+        },
+        ";": {
+          "reduce": [
+            8,
+            9
+          ]
+        },
+        ":": {
+          "reduce": [
+            8,
+            9
+          ]
+        },
+        "id": {
+          "reduce": [
+            8,
+            9
+          ]
+        }
+      },
+      {
+        "s": {
+          "reduce": [
+            10
+          ]
+        },
+        "u": {
+          "reduce": [
+            10
+          ]
+        },
+        ";": {
+          "reduce": [
+            10
+          ]
+        },
+        ":": {
+          "reduce": [
+            10
+          ]
+        },
+        "id": {
+          "reduce": [
+            10
+          ]
+        }
+      },
+      {
+        "s": {
+          "reduce": [
+            3
+          ]
+        },
+        "u": {
+          "reduce": [
+            3
+          ]
+        },
+        ";": {
+          "reduce": [
+            3
+          ]
+        },
+        ":": {
+          "reduce": [
+            3
+          ]
+        },
+        "id": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        ":": {
+          "shift": 15
+        }
+      },
+      {
+        ";": {
+          "shift": 16
+        }
+      },
+      {
+        "s": {
+          "reduce": [
+            4
+          ]
+        },
+        "u": {
+          "reduce": [
+            4
+          ]
+        },
+        ";": {
+          "reduce": [
+            4
+          ]
+        },
+        ":": {
+          "reduce": [
+            4
+          ]
+        },
+        "id": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "s": {
+          "reduce": [
+            5
+          ]
+        },
+        "u": {
+          "reduce": [
+            5
+          ]
+        },
+        ";": {
+          "reduce": [
+            5
+          ]
+        },
+        ":": {
+          "reduce": [
+            5
+          ]
+        },
+        "id": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "s": {
+          "reduce": [
+            6
+          ]
+        },
+        "u": {
+          "reduce": [
+            6
+          ]
+        },
+        ";": {
+          "reduce": [
+            6
+          ]
+        },
+        ":": {
+          "reduce": [
+            6
+          ]
+        },
+        "id": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        "s": {
+          "reduce": [
+            7
+          ]
+        },
+        "u": {
+          "reduce": [
+            7
+          ]
+        },
+        ";": {
+          "reduce": [
+            7
+          ]
+        },
+        ":": {
+          "reduce": [
+            7
+          ]
+        },
+        "id": {
+          "reduce": [
+            7
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -106882,183 +114224,763 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "(": 2,
-          "*": 3
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          ";": 4
+        "(": {
+          "shift": 2
         },
-        "reduce": [
-          -1
-        ]
+        "*": {
+          "shift": 3
+        }
       },
       {
-        "shift": {
-          "C": 5,
-          "A": 6,
-          "B": 7,
-          "E": 8,
-          "id": 9,
-          "num": 10,
-          "!": 11,
-          "(": 12
+        ";": {
+          "shift": 4,
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "D": 13,
-          "A": 14,
-          "B": 15,
-          "E": 8,
-          "id": 9,
-          "num": 10,
-          "!": 11,
-          "(": 12
+        "(": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "C": 16,
-          "A": 6,
-          "B": 7,
-          "E": 8,
-          "id": 9,
-          "num": 10,
-          "!": 11,
-          "(": 12
+        ")": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          ")": 17
+        "*": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "x": 18
+        "x": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "y": 19
+        "y": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          7,
-          9
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          10
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          11
-        ]
-      },
-      {
-        "shift": {
-          "S": 20,
-          "(": 2,
-          "*": 3
+        "id": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "*": 21
+        "num": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "!": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          "y": 22
+        "C": {
+          "shift": 5
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "x": 23
+        "A": {
+          "shift": 6
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {
-          ")": 24,
-          ";": 4
+        "B": {
+          "shift": 7
         },
-        "reduce": []
+        "E": {
+          "shift": 8
+        },
+        "id": {
+          "shift": 9
+        },
+        "num": {
+          "shift": 10
+        },
+        "!": {
+          "shift": 11
+        },
+        "(": {
+          "shift": 12
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "D": {
+          "shift": 13
+        },
+        "A": {
+          "shift": 14
+        },
+        "B": {
+          "shift": 15
+        },
+        "E": {
+          "shift": 8
+        },
+        "id": {
+          "shift": 9
+        },
+        "num": {
+          "shift": 10
+        },
+        "!": {
+          "shift": 11
+        },
+        "(": {
+          "shift": 12
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "C": {
+          "shift": 16
+        },
+        "A": {
+          "shift": 6
+        },
+        "B": {
+          "shift": 7
+        },
+        "E": {
+          "shift": 8
+        },
+        "id": {
+          "shift": 9
+        },
+        "num": {
+          "shift": 10
+        },
+        "!": {
+          "shift": 11
+        },
+        "(": {
+          "shift": 12
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          6
-        ]
+        ")": {
+          "shift": 17
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          12
-        ]
+        "x": {
+          "shift": 18
+        }
+      },
+      {
+        "y": {
+          "shift": 19
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        "(": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        ")": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        "*": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        "x": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        "y": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        "id": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        "num": {
+          "reduce": [
+            7,
+            9
+          ]
+        },
+        "!": {
+          "reduce": [
+            7,
+            9
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            8
+          ]
+        },
+        "(": {
+          "reduce": [
+            8
+          ]
+        },
+        ")": {
+          "reduce": [
+            8
+          ]
+        },
+        "*": {
+          "reduce": [
+            8
+          ]
+        },
+        "x": {
+          "reduce": [
+            8
+          ]
+        },
+        "y": {
+          "reduce": [
+            8
+          ]
+        },
+        "id": {
+          "reduce": [
+            8
+          ]
+        },
+        "num": {
+          "reduce": [
+            8
+          ]
+        },
+        "!": {
+          "reduce": [
+            8
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            10
+          ]
+        },
+        "(": {
+          "reduce": [
+            10
+          ]
+        },
+        ")": {
+          "reduce": [
+            10
+          ]
+        },
+        "*": {
+          "reduce": [
+            10
+          ]
+        },
+        "x": {
+          "reduce": [
+            10
+          ]
+        },
+        "y": {
+          "reduce": [
+            10
+          ]
+        },
+        "id": {
+          "reduce": [
+            10
+          ]
+        },
+        "num": {
+          "reduce": [
+            10
+          ]
+        },
+        "!": {
+          "reduce": [
+            10
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            11
+          ]
+        },
+        "(": {
+          "reduce": [
+            11
+          ]
+        },
+        ")": {
+          "reduce": [
+            11
+          ]
+        },
+        "*": {
+          "reduce": [
+            11
+          ]
+        },
+        "x": {
+          "reduce": [
+            11
+          ]
+        },
+        "y": {
+          "reduce": [
+            11
+          ]
+        },
+        "id": {
+          "reduce": [
+            11
+          ]
+        },
+        "num": {
+          "reduce": [
+            11
+          ]
+        },
+        "!": {
+          "reduce": [
+            11
+          ]
+        }
+      },
+      {
+        "S": {
+          "shift": 20
+        },
+        "(": {
+          "shift": 2
+        },
+        "*": {
+          "shift": 3
+        }
+      },
+      {
+        "*": {
+          "shift": 21
+        }
+      },
+      {
+        "y": {
+          "shift": 22
+        }
+      },
+      {
+        "x": {
+          "shift": 23
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            0
+          ]
+        },
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        },
+        "*": {
+          "reduce": [
+            0
+          ]
+        },
+        "x": {
+          "reduce": [
+            0
+          ]
+        },
+        "y": {
+          "reduce": [
+            0
+          ]
+        },
+        "id": {
+          "reduce": [
+            0
+          ]
+        },
+        "num": {
+          "reduce": [
+            0
+          ]
+        },
+        "!": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            1
+          ]
+        },
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        },
+        "*": {
+          "reduce": [
+            1
+          ]
+        },
+        "x": {
+          "reduce": [
+            1
+          ]
+        },
+        "y": {
+          "reduce": [
+            1
+          ]
+        },
+        "id": {
+          "reduce": [
+            1
+          ]
+        },
+        "num": {
+          "reduce": [
+            1
+          ]
+        },
+        "!": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            3
+          ]
+        },
+        "(": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        },
+        "*": {
+          "reduce": [
+            3
+          ]
+        },
+        "x": {
+          "reduce": [
+            3
+          ]
+        },
+        "y": {
+          "reduce": [
+            3
+          ]
+        },
+        "id": {
+          "reduce": [
+            3
+          ]
+        },
+        "num": {
+          "reduce": [
+            3
+          ]
+        },
+        "!": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            4
+          ]
+        },
+        "(": {
+          "reduce": [
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            4
+          ]
+        },
+        "*": {
+          "reduce": [
+            4
+          ]
+        },
+        "x": {
+          "reduce": [
+            4
+          ]
+        },
+        "y": {
+          "reduce": [
+            4
+          ]
+        },
+        "id": {
+          "reduce": [
+            4
+          ]
+        },
+        "num": {
+          "reduce": [
+            4
+          ]
+        },
+        "!": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 24
+        },
+        ";": {
+          "shift": 4
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            2
+          ]
+        },
+        "(": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "*": {
+          "reduce": [
+            2
+          ]
+        },
+        "x": {
+          "reduce": [
+            2
+          ]
+        },
+        "y": {
+          "reduce": [
+            2
+          ]
+        },
+        "id": {
+          "reduce": [
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            2
+          ]
+        },
+        "!": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            5
+          ]
+        },
+        "(": {
+          "reduce": [
+            5
+          ]
+        },
+        ")": {
+          "reduce": [
+            5
+          ]
+        },
+        "*": {
+          "reduce": [
+            5
+          ]
+        },
+        "x": {
+          "reduce": [
+            5
+          ]
+        },
+        "y": {
+          "reduce": [
+            5
+          ]
+        },
+        "id": {
+          "reduce": [
+            5
+          ]
+        },
+        "num": {
+          "reduce": [
+            5
+          ]
+        },
+        "!": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            6
+          ]
+        },
+        "(": {
+          "reduce": [
+            6
+          ]
+        },
+        ")": {
+          "reduce": [
+            6
+          ]
+        },
+        "*": {
+          "reduce": [
+            6
+          ]
+        },
+        "x": {
+          "reduce": [
+            6
+          ]
+        },
+        "y": {
+          "reduce": [
+            6
+          ]
+        },
+        "id": {
+          "reduce": [
+            6
+          ]
+        },
+        "num": {
+          "reduce": [
+            6
+          ]
+        },
+        "!": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        ";": {
+          "reduce": [
+            12
+          ]
+        },
+        "(": {
+          "reduce": [
+            12
+          ]
+        },
+        ")": {
+          "reduce": [
+            12
+          ]
+        },
+        "*": {
+          "reduce": [
+            12
+          ]
+        },
+        "x": {
+          "reduce": [
+            12
+          ]
+        },
+        "y": {
+          "reduce": [
+            12
+          ]
+        },
+        "id": {
+          "reduce": [
+            12
+          ]
+        },
+        "num": {
+          "reduce": [
+            12
+          ]
+        },
+        "!": {
+          "reduce": [
+            12
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -111372,113 +119294,253 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "(": 2,
-          "E": 3,
-          "F": 4,
-          "A": 5
+        "S": {
+          "shift": 1
         },
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "X": 6,
-          ")": 7,
-          "E": 8,
-          "F": 9,
-          "A": 5
+        "(": {
+          "shift": 2,
+          "reduce": [
+            8
+          ]
         },
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {
-          "sq)": 10
+        "E": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "(": 11
+        "F": {
+          "shift": 4
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          6,
-          7
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "S": 12,
-          "(": 2,
-          "E": 3,
-          "F": 4,
-          "A": 5
+        "A": {
+          "shift": 5
         },
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {
-          ")": 13
+        ")": {
+          "reduce": [
+            8
+          ]
         },
-        "reduce": []
+        "sq)": {
+          "reduce": [
+            8
+          ]
+        }
       },
       {
-        "shift": {
-          "sq)": 14
+        "(": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        ")": {
+          "reduce": [
+            -1
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "X": {
+          "shift": 6
+        },
+        ")": {
+          "shift": 7,
+          "reduce": [
+            8
+          ]
+        },
+        "E": {
+          "shift": 8
+        },
+        "F": {
+          "shift": 9
+        },
+        "A": {
+          "shift": 5
+        },
+        "(": {
+          "reduce": [
+            8
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            8
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "sq)": {
+          "shift": 10
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "(": {
+          "shift": 11
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "(": {
+          "reduce": [
+            6,
+            7
+          ]
+        },
+        ")": {
+          "reduce": [
+            6,
+            7
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            6,
+            7
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "(": {
+          "reduce": [
+            0
+          ]
+        },
+        ")": {
+          "reduce": [
+            0
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "S": {
+          "shift": 12
+        },
+        "(": {
+          "shift": 2,
+          "reduce": [
+            8
+          ]
+        },
+        "E": {
+          "shift": 3
+        },
+        "F": {
+          "shift": 4
+        },
+        "A": {
+          "shift": 5
+        },
+        ")": {
+          "reduce": [
+            8
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            8
+          ]
+        }
+      },
+      {
+        ")": {
+          "shift": 13
+        }
+      },
+      {
+        "sq)": {
+          "shift": 14
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            2
+          ]
+        },
+        ")": {
+          "reduce": [
+            2
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            3
+          ]
+        },
+        ")": {
+          "reduce": [
+            3
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            1
+          ]
+        },
+        ")": {
+          "reduce": [
+            1
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            4
+          ]
+        },
+        ")": {
+          "reduce": [
+            4
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "(": {
+          "reduce": [
+            5
+          ]
+        },
+        ")": {
+          "reduce": [
+            5
+          ]
+        },
+        "sq)": {
+          "reduce": [
+            5
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -114679,120 +122741,334 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "A": 2,
-          "a": 3
+        "S": {
+          "shift": 1
         },
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "B": 4,
-          "b": 5,
-          "C": 6,
-          "c": 7,
-          "D": 8,
-          "d": 9,
-          "a": 10
+        "A": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "S": 11,
-          "A": 2,
-          "a": 3
+        "a": {
+          "shift": 3,
+          "reduce": [
+            2
+          ]
         },
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "C": 12,
-          "c": 7,
-          "D": 8,
-          "d": 9,
-          "a": 10
+        "b": {
+          "reduce": [
+            2
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          6
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          7
-        ]
-      },
-      {
-        "shift": {
-          "B": 13,
-          "b": 5,
-          "C": 6,
-          "c": 7,
-          "D": 8,
-          "d": 9,
-          "a": 10
+        "c": {
+          "reduce": [
+            2
+          ]
         },
-        "reduce": []
+        "d": {
+          "reduce": [
+            2
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "D": 14,
-          "d": 9,
-          "a": 10
+        "a": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "b": {
+          "reduce": [
+            -1
+          ]
+        },
+        "c": {
+          "reduce": [
+            -1
+          ]
+        },
+        "d": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          8
-        ]
+        "B": {
+          "shift": 4
+        },
+        "b": {
+          "shift": 5
+        },
+        "C": {
+          "shift": 6
+        },
+        "c": {
+          "shift": 7
+        },
+        "D": {
+          "shift": 8
+        },
+        "d": {
+          "shift": 9
+        },
+        "a": {
+          "shift": 10
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "S": {
+          "shift": 11
+        },
+        "A": {
+          "shift": 2
+        },
+        "a": {
+          "shift": 3,
+          "reduce": [
+            2
+          ]
+        },
+        "b": {
+          "reduce": [
+            2
+          ]
+        },
+        "c": {
+          "reduce": [
+            2
+          ]
+        },
+        "d": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "C": {
+          "shift": 12
+        },
+        "c": {
+          "shift": 7
+        },
+        "D": {
+          "shift": 8
+        },
+        "d": {
+          "shift": 9
+        },
+        "a": {
+          "shift": 10
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            3
+          ]
+        },
+        "b": {
+          "reduce": [
+            3
+          ]
+        },
+        "c": {
+          "reduce": [
+            3
+          ]
+        },
+        "d": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            4
+          ]
+        },
+        "b": {
+          "reduce": [
+            4
+          ]
+        },
+        "c": {
+          "reduce": [
+            4
+          ]
+        },
+        "d": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            5
+          ]
+        },
+        "b": {
+          "reduce": [
+            5
+          ]
+        },
+        "c": {
+          "reduce": [
+            5
+          ]
+        },
+        "d": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            6
+          ]
+        },
+        "b": {
+          "reduce": [
+            6
+          ]
+        },
+        "c": {
+          "reduce": [
+            6
+          ]
+        },
+        "d": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            7
+          ]
+        },
+        "b": {
+          "reduce": [
+            7
+          ]
+        },
+        "c": {
+          "reduce": [
+            7
+          ]
+        },
+        "d": {
+          "reduce": [
+            7
+          ]
+        }
+      },
+      {
+        "B": {
+          "shift": 13
+        },
+        "b": {
+          "shift": 5
+        },
+        "C": {
+          "shift": 6
+        },
+        "c": {
+          "shift": 7
+        },
+        "D": {
+          "shift": 8
+        },
+        "d": {
+          "shift": 9
+        },
+        "a": {
+          "shift": 10
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "b": {
+          "reduce": [
+            1
+          ]
+        },
+        "c": {
+          "reduce": [
+            1
+          ]
+        },
+        "d": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "D": {
+          "shift": 14
+        },
+        "d": {
+          "shift": 9
+        },
+        "a": {
+          "shift": 10
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            8
+          ]
+        },
+        "b": {
+          "reduce": [
+            8
+          ]
+        },
+        "c": {
+          "reduce": [
+            8
+          ]
+        },
+        "d": {
+          "reduce": [
+            8
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "b": {
+          "reduce": [
+            0
+          ]
+        },
+        "c": {
+          "reduce": [
+            0
+          ]
+        },
+        "d": {
+          "reduce": [
+            0
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -119038,72 +127314,220 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "B": 1,
-          "A": 2,
-          "C": 3,
-          "x": 4,
-          "v": 5
+        "B": {
+          "shift": 1
         },
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "x": 6
+        "A": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "w": 7
+        "C": {
+          "shift": 3
         },
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "z": 8
+        "x": {
+          "shift": 4,
+          "reduce": [
+            2
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {
-          "y": 9
+        "v": {
+          "shift": 5,
+          "reduce": [
+            2
+          ]
         },
-        "reduce": []
+        "y": {
+          "reduce": [
+            2
+          ]
+        },
+        "z": {
+          "reduce": [
+            2
+          ]
+        },
+        "w": {
+          "reduce": [
+            2
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "x": {
+          "reduce": [
+            -1
+          ]
+        },
+        "y": {
+          "reduce": [
+            -1
+          ]
+        },
+        "z": {
+          "reduce": [
+            -1
+          ]
+        },
+        "w": {
+          "reduce": [
+            -1
+          ]
+        },
+        "v": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "x": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "w": {
+          "shift": 7,
+          "reduce": [
+            1
+          ]
+        },
+        "x": {
+          "reduce": [
+            1
+          ]
+        },
+        "y": {
+          "reduce": [
+            1
+          ]
+        },
+        "z": {
+          "reduce": [
+            1
+          ]
+        },
+        "v": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "z": {
+          "shift": 8
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            5
+          ]
+        },
+        "y": {
+          "reduce": [
+            5
+          ]
+        },
+        "z": {
+          "reduce": [
+            5
+          ]
+        },
+        "w": {
+          "reduce": [
+            5
+          ]
+        },
+        "v": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "y": {
+          "shift": 9
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            4
+          ]
+        },
+        "y": {
+          "reduce": [
+            4
+          ]
+        },
+        "z": {
+          "reduce": [
+            4
+          ]
+        },
+        "w": {
+          "reduce": [
+            4
+          ]
+        },
+        "v": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            3
+          ]
+        },
+        "y": {
+          "reduce": [
+            3
+          ]
+        },
+        "z": {
+          "reduce": [
+            3
+          ]
+        },
+        "w": {
+          "reduce": [
+            3
+          ]
+        },
+        "v": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            0
+          ]
+        },
+        "y": {
+          "reduce": [
+            0
+          ]
+        },
+        "z": {
+          "reduce": [
+            0
+          ]
+        },
+        "w": {
+          "reduce": [
+            0
+          ]
+        },
+        "v": {
+          "reduce": [
+            0
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -120860,81 +129284,201 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "A": 2,
-          "a": 3,
-          "b": 4
+        "S": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "d": 5
+        "A": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "B": 6,
-          "d": 7
+        "a": {
+          "shift": 3
         },
-        "reduce": [
-          4
-        ]
+        "b": {
+          "shift": 4
+        }
       },
       {
-        "shift": {
-          "B": 8,
-          "d": 7
+        "d": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "A": 9,
-          "a": 3,
-          "b": 4
+        "a": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "c": 10
+        "b": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "c": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          3
-        ]
+        "d": {
+          "shift": 5
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "B": {
+          "shift": 6
+        },
+        "d": {
+          "shift": 7,
+          "reduce": [
+            4
+          ]
+        },
+        "a": {
+          "reduce": [
+            4
+          ]
+        },
+        "b": {
+          "reduce": [
+            4
+          ]
+        },
+        "c": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "B": {
+          "shift": 8
+        },
+        "d": {
+          "shift": 7,
+          "reduce": [
+            4
+          ]
+        },
+        "a": {
+          "reduce": [
+            4
+          ]
+        },
+        "b": {
+          "reduce": [
+            4
+          ]
+        },
+        "c": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            0
+          ]
+        },
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "b": {
+          "reduce": [
+            0
+          ]
+        },
+        "c": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            1
+          ]
+        },
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "b": {
+          "reduce": [
+            1
+          ]
+        },
+        "c": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "A": {
+          "shift": 9
+        },
+        "a": {
+          "shift": 3
+        },
+        "b": {
+          "shift": 4
+        }
+      },
+      {
+        "c": {
+          "shift": 10
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            3
+          ]
+        },
+        "a": {
+          "reduce": [
+            3
+          ]
+        },
+        "b": {
+          "reduce": [
+            3
+          ]
+        },
+        "c": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "d": {
+          "reduce": [
+            2
+          ]
+        },
+        "a": {
+          "reduce": [
+            2
+          ]
+        },
+        "b": {
+          "reduce": [
+            2
+          ]
+        },
+        "c": {
+          "reduce": [
+            2
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -122855,78 +131399,140 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "a": 2,
-          "B": 3
+        "A": {
+          "shift": 1
         },
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "C": 4,
-          "B": 5,
-          "a": 6,
-          "b": 7
+        "a": {
+          "shift": 2,
+          "reduce": [
+            3
+          ]
         },
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          "a": 8
+        "B": {
+          "shift": 3
         },
-        "reduce": []
+        "b": {
+          "reduce": [
+            3
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "C": 9,
-          "B": 5,
-          "a": 6,
-          "b": 7
+        "a": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          3
-        ]
+        "b": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "C": {
+          "shift": 4
+        },
+        "B": {
+          "shift": 5
+        },
+        "a": {
+          "shift": 6,
+          "reduce": [
+            3
+          ]
+        },
+        "b": {
+          "shift": 7,
+          "reduce": [
+            3
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "a": {
+          "shift": 8
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "a": {
+          "reduce": [
+            0
+          ]
+        },
+        "b": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            2
+          ]
+        },
+        "b": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "C": {
+          "shift": 9
+        },
+        "B": {
+          "shift": 5
+        },
+        "a": {
+          "shift": 6,
+          "reduce": [
+            3
+          ]
+        },
+        "b": {
+          "shift": 7,
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            5
+          ]
+        },
+        "b": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            1
+          ]
+        },
+        "b": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            4
+          ]
+        },
+        "b": {
+          "reduce": [
+            4
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -125876,123 +134482,370 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "EXPR": 1,
-          "TERM": 2,
-          "FACTOR": 3,
-          "num": 4,
-          "lpar": 5,
-          "star": 6
+        "EXPR": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "mult": 7
+        "TERM": {
+          "shift": 2
         },
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "add": 8
+        "FACTOR": {
+          "shift": 3
         },
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {
-          "EXPR": 9,
-          "TERM": 2,
-          "FACTOR": 3,
-          "num": 4,
-          "lpar": 5,
-          "star": 6
+        "num": {
+          "shift": 4
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "EXPR": 10,
-          "TERM": 2,
-          "FACTOR": 3,
-          "num": 4,
-          "lpar": 5,
-          "star": 6
+        "lpar": {
+          "shift": 5
         },
-        "reduce": []
+        "star": {
+          "shift": 6
+        }
       },
       {
-        "shift": {
-          "EXPR": 11,
-          "TERM": 2,
-          "FACTOR": 3,
-          "num": 4,
-          "lpar": 5,
-          "star": 6
+        "mult": {
+          "shift": 7,
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "TERM": 12,
-          "FACTOR": 3,
-          "num": 4,
-          "lpar": 5,
-          "star": 6
+        "add": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "rpar": 13,
-          "mult": 7
+        "num": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "mult": 7
+        "lpar": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          6
-        ]
-      },
-      {
-        "shift": {
-          "mult": 7
+        "rpar": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          0
-        ]
+        "star": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          "add": 8
+        "add": {
+          "shift": 8,
+          "reduce": [
+            1
+          ]
         },
-        "reduce": [
-          2
-        ]
+        "mult": {
+          "reduce": [
+            1
+          ]
+        },
+        "num": {
+          "reduce": [
+            1
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            1
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            1
+          ]
+        },
+        "star": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
+        "mult": {
+          "reduce": [
+            3
+          ]
+        },
+        "add": {
+          "reduce": [
+            3
+          ]
+        },
+        "num": {
+          "reduce": [
+            3
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            3
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            3
+          ]
+        },
+        "star": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "mult": {
+          "reduce": [
+            4
+          ]
+        },
+        "add": {
+          "reduce": [
+            4
+          ]
+        },
+        "num": {
+          "reduce": [
+            4
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            4
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            4
+          ]
+        },
+        "star": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "EXPR": {
+          "shift": 9
+        },
+        "TERM": {
+          "shift": 2
+        },
+        "FACTOR": {
+          "shift": 3
+        },
+        "num": {
+          "shift": 4
+        },
+        "lpar": {
+          "shift": 5
+        },
+        "star": {
+          "shift": 6
+        }
+      },
+      {
+        "EXPR": {
+          "shift": 10
+        },
+        "TERM": {
+          "shift": 2
+        },
+        "FACTOR": {
+          "shift": 3
+        },
+        "num": {
+          "shift": 4
+        },
+        "lpar": {
+          "shift": 5
+        },
+        "star": {
+          "shift": 6
+        }
+      },
+      {
+        "EXPR": {
+          "shift": 11
+        },
+        "TERM": {
+          "shift": 2
+        },
+        "FACTOR": {
+          "shift": 3
+        },
+        "num": {
+          "shift": 4
+        },
+        "lpar": {
+          "shift": 5
+        },
+        "star": {
+          "shift": 6
+        }
+      },
+      {
+        "TERM": {
+          "shift": 12
+        },
+        "FACTOR": {
+          "shift": 3
+        },
+        "num": {
+          "shift": 4
+        },
+        "lpar": {
+          "shift": 5
+        },
+        "star": {
+          "shift": 6
+        }
+      },
+      {
+        "rpar": {
+          "shift": 13
+        },
+        "mult": {
+          "shift": 7
+        }
+      },
+      {
+        "mult": {
+          "shift": 7,
+          "reduce": [
+            6
+          ]
+        },
+        "add": {
+          "reduce": [
+            6
+          ]
+        },
+        "num": {
+          "reduce": [
+            6
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            6
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            6
+          ]
+        },
+        "star": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        "mult": {
+          "shift": 7,
+          "reduce": [
+            0
+          ]
+        },
+        "add": {
+          "reduce": [
+            0
+          ]
+        },
+        "num": {
+          "reduce": [
+            0
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            0
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            0
+          ]
+        },
+        "star": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "add": {
+          "shift": 8,
+          "reduce": [
+            2
+          ]
+        },
+        "mult": {
+          "reduce": [
+            2
+          ]
+        },
+        "num": {
+          "reduce": [
+            2
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            2
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            2
+          ]
+        },
+        "star": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "mult": {
+          "reduce": [
+            5
+          ]
+        },
+        "add": {
+          "reduce": [
+            5
+          ]
+        },
+        "num": {
+          "reduce": [
+            5
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            5
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            5
+          ]
+        },
+        "star": {
+          "reduce": [
+            5
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -130802,72 +139655,88 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "a": 2,
-          "B": 3
+        "A": {
+          "shift": 1
         },
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "C": 4,
-          "B": 5,
-          "a": 6
+        "a": {
+          "shift": 2,
+          "reduce": [
+            3
+          ]
         },
-        "reduce": [
-          5,
-          3
-        ]
+        "B": {
+          "shift": 3
+        }
       },
       {
-        "shift": {
-          "a": 7
+        "a": {
+          "reduce": [
+            -1
+          ]
+        }
+      },
+      {
+        "C": {
+          "shift": 4
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "C": 8,
-          "B": 5,
-          "a": 6
+        "B": {
+          "shift": 5
         },
-        "reduce": [
-          5,
-          3
-        ]
+        "a": {
+          "shift": 6,
+          "reduce": [
+            5,
+            3
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "a": {
+          "shift": 7
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "a": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "C": {
+          "shift": 8
+        },
+        "B": {
+          "shift": 5
+        },
+        "a": {
+          "shift": 6,
+          "reduce": [
+            5,
+            3
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "a": {
+          "reduce": [
+            4
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -133807,120 +142676,330 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "B": 2,
-          "x": 3,
-          "C": 4,
-          "z": 5,
-          "r": 6
+        "A": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "B": 7,
-          "y": 8,
-          "x": 3,
-          "A": 9,
-          "C": 4,
-          "z": 5,
-          "r": 6
+        "B": {
+          "shift": 2
         },
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "C": 10,
-          "z": 5,
-          "r": 6
+        "x": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "A": 11,
-          "B": 2,
-          "x": 3,
-          "C": 4,
-          "z": 5,
-          "r": 6
+        "C": {
+          "shift": 4
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "n": 12
+        "z": {
+          "shift": 5
         },
-        "reduce": []
+        "r": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          6
-        ]
-      },
-      {
-        "shift": {
-          "C": 10,
-          "z": 5,
-          "r": 6
+        "B": {
+          "shift": 7
         },
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          "y": 8,
-          "B": 7,
-          "x": 3,
-          "A": 9,
-          "C": 4,
-          "z": 5,
-          "r": 6
+        "y": {
+          "shift": 8,
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "B": 7,
-          "y": 8,
-          "x": 3,
-          "A": 9,
-          "C": 4,
-          "z": 5,
-          "r": 6
+        "x": {
+          "shift": 3,
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          2
-        ]
+        "A": {
+          "shift": 9
+        },
+        "C": {
+          "shift": 4
+        },
+        "z": {
+          "shift": 5,
+          "reduce": [
+            -1
+          ]
+        },
+        "r": {
+          "shift": 6,
+          "reduce": [
+            -1
+          ]
+        },
+        "n": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "C": {
+          "shift": 10
+        },
+        "z": {
+          "shift": 5
+        },
+        "r": {
+          "shift": 6
+        }
+      },
+      {
+        "A": {
+          "shift": 11
+        },
+        "B": {
+          "shift": 2
+        },
+        "x": {
+          "shift": 3
+        },
+        "C": {
+          "shift": 4
+        },
+        "z": {
+          "shift": 5
+        },
+        "r": {
+          "shift": 6
+        }
+      },
+      {
+        "n": {
+          "shift": 12
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            5
+          ]
+        },
+        "y": {
+          "reduce": [
+            5
+          ]
+        },
+        "n": {
+          "reduce": [
+            5
+          ]
+        },
+        "z": {
+          "reduce": [
+            5
+          ]
+        },
+        "r": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            6
+          ]
+        },
+        "y": {
+          "reduce": [
+            6
+          ]
+        },
+        "n": {
+          "reduce": [
+            6
+          ]
+        },
+        "z": {
+          "reduce": [
+            6
+          ]
+        },
+        "r": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        "C": {
+          "shift": 10
+        },
+        "z": {
+          "shift": 5,
+          "reduce": [
+            0
+          ]
+        },
+        "r": {
+          "shift": 6,
+          "reduce": [
+            0
+          ]
+        },
+        "x": {
+          "reduce": [
+            0
+          ]
+        },
+        "y": {
+          "reduce": [
+            0
+          ]
+        },
+        "n": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            3
+          ]
+        },
+        "y": {
+          "reduce": [
+            3
+          ]
+        },
+        "n": {
+          "reduce": [
+            3
+          ]
+        },
+        "z": {
+          "reduce": [
+            3
+          ]
+        },
+        "r": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "y": {
+          "shift": 8
+        },
+        "B": {
+          "shift": 7
+        },
+        "x": {
+          "shift": 3
+        },
+        "A": {
+          "shift": 9
+        },
+        "C": {
+          "shift": 4
+        },
+        "z": {
+          "shift": 5
+        },
+        "r": {
+          "shift": 6
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            1
+          ]
+        },
+        "y": {
+          "reduce": [
+            1
+          ]
+        },
+        "n": {
+          "reduce": [
+            1
+          ]
+        },
+        "z": {
+          "reduce": [
+            1
+          ]
+        },
+        "r": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "B": {
+          "shift": 7
+        },
+        "y": {
+          "shift": 8,
+          "reduce": [
+            2
+          ]
+        },
+        "x": {
+          "shift": 3,
+          "reduce": [
+            2
+          ]
+        },
+        "A": {
+          "shift": 9
+        },
+        "C": {
+          "shift": 4
+        },
+        "z": {
+          "shift": 5,
+          "reduce": [
+            2
+          ]
+        },
+        "r": {
+          "shift": 6,
+          "reduce": [
+            2
+          ]
+        },
+        "n": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "x": {
+          "reduce": [
+            4
+          ]
+        },
+        "y": {
+          "reduce": [
+            4
+          ]
+        },
+        "n": {
+          "reduce": [
+            4
+          ]
+        },
+        "z": {
+          "reduce": [
+            4
+          ]
+        },
+        "r": {
+          "reduce": [
+            4
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -139278,79 +148357,130 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "b": 2
+        "A": {
+          "shift": 1
         },
-        "reduce": []
+        "b": {
+          "shift": 2
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {
-          "F": 3,
-          "A": 4,
-          "B": 5,
-          "b": 2,
-          "x": 6
+        "b": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "x": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "x": 7
+        "F": {
+          "shift": 3
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          2
-        ]
-      },
-      {
-        "shift": {
-          "G": 8,
-          "x": 9
+        "A": {
+          "shift": 4
         },
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          "B": 10,
-          "x": 6
+        "B": {
+          "shift": 5
         },
-        "reduce": []
+        "b": {
+          "shift": 2
+        },
+        "x": {
+          "shift": 6
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          4
-        ]
+        "b": {
+          "reduce": [
+            0
+          ]
+        },
+        "x": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "x": {
+          "shift": 7
+        }
+      },
+      {
+        "b": {
+          "reduce": [
+            2
+          ]
+        },
+        "x": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "G": {
+          "shift": 8
+        },
+        "x": {
+          "shift": 9,
+          "reduce": [
+            5
+          ]
+        },
+        "b": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "b": {
+          "reduce": [
+            1
+          ]
+        },
+        "x": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "b": {
+          "reduce": [
+            3
+          ]
+        },
+        "x": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "B": {
+          "shift": 10
+        },
+        "x": {
+          "shift": 6
+        }
+      },
+      {
+        "b": {
+          "reduce": [
+            4
+          ]
+        },
+        "x": {
+          "reduce": [
+            4
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -140629,31 +149759,49 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "A": 1,
-          "c": 2
+        "A": {
+          "shift": 1
         },
-        "reduce": []
+        "c": {
+          "shift": 2
+        }
       },
       {
-        "shift": {
-          "b": 3
+        "b": {
+          "shift": 3,
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          -1
-        ]
+        "c": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "b": {
+          "reduce": [
+            1
+          ]
+        },
+        "c": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          0
-        ]
+        "b": {
+          "reduce": [
+            0
+          ]
+        },
+        "c": {
+          "reduce": [
+            0
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -144377,165 +153525,692 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "EXP": 1,
-          "TERM": 2,
-          "id": 3,
-          "let": 4
+        "EXP": {
+          "shift": 1
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "add": 5
+        "TERM": {
+          "shift": 2
         },
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          1
-        ]
-      },
-      {
-        "shift": {
-          "INDEX": 6,
-          "lpar": 7
+        "id": {
+          "shift": 3
         },
-        "reduce": [
-          2
-        ]
+        "let": {
+          "shift": 4
+        }
       },
       {
-        "shift": {
-          "STMTS": 8
+        "add": {
+          "shift": 5,
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": [
-          6
-        ]
-      },
-      {
-        "shift": {
-          "TERM": 9,
-          "id": 3,
-          "let": 4
+        "id": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {
-          "EXP": 10,
-          "TERM": 2,
-          "id": 3,
-          "let": 4
+        "let": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "in": 11,
-          "STMT": 12,
-          "LEXP": 13,
-          "id": 14
+        "in": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0
-        ]
-      },
-      {
-        "shift": {
-          "rpar": 15,
-          "add": 5
+        "end": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {
-          "EXP": 16,
-          "TERM": 2,
-          "id": 3,
-          "let": 4
+        "assign": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {
-          "assign": 17,
-          "INDEX": 18,
-          "lpar": 7
+        "semi": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          9
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          10
-        ]
-      },
-      {
-        "shift": {
-          "end": 19,
-          "add": 5
+        "lpar": {
+          "reduce": [
+            -1
+          ]
         },
-        "reduce": []
+        "rpar": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {
-          "EXP": 20,
-          "TERM": 2,
-          "id": 3,
-          "let": 4
+        "add": {
+          "reduce": [
+            1
+          ]
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {
-          "semi": 21,
-          "add": 5
+        "id": {
+          "reduce": [
+            1
+          ]
         },
-        "reduce": []
+        "let": {
+          "reduce": [
+            1
+          ]
+        },
+        "in": {
+          "reduce": [
+            1
+          ]
+        },
+        "end": {
+          "reduce": [
+            1
+          ]
+        },
+        "assign": {
+          "reduce": [
+            1
+          ]
+        },
+        "semi": {
+          "reduce": [
+            1
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            1
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          7
-        ]
+        "INDEX": {
+          "shift": 6
+        },
+        "lpar": {
+          "shift": 7,
+          "reduce": [
+            2
+          ]
+        },
+        "add": {
+          "reduce": [
+            2
+          ]
+        },
+        "id": {
+          "reduce": [
+            2
+          ]
+        },
+        "let": {
+          "reduce": [
+            2
+          ]
+        },
+        "in": {
+          "reduce": [
+            2
+          ]
+        },
+        "end": {
+          "reduce": [
+            2
+          ]
+        },
+        "assign": {
+          "reduce": [
+            2
+          ]
+        },
+        "semi": {
+          "reduce": [
+            2
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            2
+          ]
+        }
+      },
+      {
+        "STMTS": {
+          "shift": 8
+        },
+        "add": {
+          "reduce": [
+            6
+          ]
+        },
+        "id": {
+          "reduce": [
+            6
+          ]
+        },
+        "let": {
+          "reduce": [
+            6
+          ]
+        },
+        "in": {
+          "reduce": [
+            6
+          ]
+        },
+        "end": {
+          "reduce": [
+            6
+          ]
+        },
+        "assign": {
+          "reduce": [
+            6
+          ]
+        },
+        "semi": {
+          "reduce": [
+            6
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            6
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            6
+          ]
+        }
+      },
+      {
+        "TERM": {
+          "shift": 9
+        },
+        "id": {
+          "shift": 3
+        },
+        "let": {
+          "shift": 4
+        }
+      },
+      {
+        "add": {
+          "reduce": [
+            3
+          ]
+        },
+        "id": {
+          "reduce": [
+            3
+          ]
+        },
+        "let": {
+          "reduce": [
+            3
+          ]
+        },
+        "in": {
+          "reduce": [
+            3
+          ]
+        },
+        "end": {
+          "reduce": [
+            3
+          ]
+        },
+        "assign": {
+          "reduce": [
+            3
+          ]
+        },
+        "semi": {
+          "reduce": [
+            3
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            3
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "EXP": {
+          "shift": 10
+        },
+        "TERM": {
+          "shift": 2
+        },
+        "id": {
+          "shift": 3
+        },
+        "let": {
+          "shift": 4
+        }
+      },
+      {
+        "in": {
+          "shift": 11
+        },
+        "STMT": {
+          "shift": 12
+        },
+        "LEXP": {
+          "shift": 13
+        },
+        "id": {
+          "shift": 14
+        }
+      },
+      {
+        "add": {
+          "reduce": [
+            0
+          ]
+        },
+        "id": {
+          "reduce": [
+            0
+          ]
+        },
+        "let": {
+          "reduce": [
+            0
+          ]
+        },
+        "in": {
+          "reduce": [
+            0
+          ]
+        },
+        "end": {
+          "reduce": [
+            0
+          ]
+        },
+        "assign": {
+          "reduce": [
+            0
+          ]
+        },
+        "semi": {
+          "reduce": [
+            0
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            0
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            0
+          ]
+        }
+      },
+      {
+        "rpar": {
+          "shift": 15
+        },
+        "add": {
+          "shift": 5
+        }
+      },
+      {
+        "EXP": {
+          "shift": 16
+        },
+        "TERM": {
+          "shift": 2
+        },
+        "id": {
+          "shift": 3
+        },
+        "let": {
+          "shift": 4
+        }
+      },
+      {
+        "add": {
+          "reduce": [
+            5
+          ]
+        },
+        "id": {
+          "reduce": [
+            5
+          ]
+        },
+        "let": {
+          "reduce": [
+            5
+          ]
+        },
+        "in": {
+          "reduce": [
+            5
+          ]
+        },
+        "end": {
+          "reduce": [
+            5
+          ]
+        },
+        "assign": {
+          "reduce": [
+            5
+          ]
+        },
+        "semi": {
+          "reduce": [
+            5
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            5
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "assign": {
+          "shift": 17
+        },
+        "INDEX": {
+          "shift": 18
+        },
+        "lpar": {
+          "shift": 7
+        }
+      },
+      {
+        "add": {
+          "reduce": [
+            9
+          ]
+        },
+        "id": {
+          "reduce": [
+            9
+          ]
+        },
+        "let": {
+          "reduce": [
+            9
+          ]
+        },
+        "in": {
+          "reduce": [
+            9
+          ]
+        },
+        "end": {
+          "reduce": [
+            9
+          ]
+        },
+        "assign": {
+          "reduce": [
+            9
+          ]
+        },
+        "semi": {
+          "reduce": [
+            9
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            9
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            9
+          ]
+        }
+      },
+      {
+        "add": {
+          "reduce": [
+            10
+          ]
+        },
+        "id": {
+          "reduce": [
+            10
+          ]
+        },
+        "let": {
+          "reduce": [
+            10
+          ]
+        },
+        "in": {
+          "reduce": [
+            10
+          ]
+        },
+        "end": {
+          "reduce": [
+            10
+          ]
+        },
+        "assign": {
+          "reduce": [
+            10
+          ]
+        },
+        "semi": {
+          "reduce": [
+            10
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            10
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            10
+          ]
+        }
+      },
+      {
+        "end": {
+          "shift": 19
+        },
+        "add": {
+          "shift": 5
+        }
+      },
+      {
+        "EXP": {
+          "shift": 20
+        },
+        "TERM": {
+          "shift": 2
+        },
+        "id": {
+          "shift": 3
+        },
+        "let": {
+          "shift": 4
+        }
+      },
+      {
+        "add": {
+          "reduce": [
+            8
+          ]
+        },
+        "id": {
+          "reduce": [
+            8
+          ]
+        },
+        "let": {
+          "reduce": [
+            8
+          ]
+        },
+        "in": {
+          "reduce": [
+            8
+          ]
+        },
+        "end": {
+          "reduce": [
+            8
+          ]
+        },
+        "assign": {
+          "reduce": [
+            8
+          ]
+        },
+        "semi": {
+          "reduce": [
+            8
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            8
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            8
+          ]
+        }
+      },
+      {
+        "add": {
+          "reduce": [
+            4
+          ]
+        },
+        "id": {
+          "reduce": [
+            4
+          ]
+        },
+        "let": {
+          "reduce": [
+            4
+          ]
+        },
+        "in": {
+          "reduce": [
+            4
+          ]
+        },
+        "end": {
+          "reduce": [
+            4
+          ]
+        },
+        "assign": {
+          "reduce": [
+            4
+          ]
+        },
+        "semi": {
+          "reduce": [
+            4
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            4
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "semi": {
+          "shift": 21
+        },
+        "add": {
+          "shift": 5
+        }
+      },
+      {
+        "add": {
+          "reduce": [
+            7
+          ]
+        },
+        "id": {
+          "reduce": [
+            7
+          ]
+        },
+        "let": {
+          "reduce": [
+            7
+          ]
+        },
+        "in": {
+          "reduce": [
+            7
+          ]
+        },
+        "end": {
+          "reduce": [
+            7
+          ]
+        },
+        "assign": {
+          "reduce": [
+            7
+          ]
+        },
+        "semi": {
+          "reduce": [
+            7
+          ]
+        },
+        "lpar": {
+          "reduce": [
+            7
+          ]
+        },
+        "rpar": {
+          "reduce": [
+            7
+          ]
+        }
       }
     ],
     "lr1Automaton": [
@@ -150947,92 +160622,179 @@ export default {
     },
     "lr0Table": [
       {
-        "shift": {
-          "S": 1,
-          "E": 2,
-          "B": 3,
-          "T": 4,
-          "C": 5,
-          "X": 6,
-          "D": 7
+        "S": {
+          "shift": 1
         },
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          -1
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          0,
-          6
-        ]
-      },
-      {
-        "shift": {
-          "+": 8,
-          "*": 9
+        "E": {
+          "shift": 2
         },
-        "reduce": []
-      },
-      {
-        "shift": {},
-        "reduce": [
-          3
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          4
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          7
-        ]
-      },
-      {
-        "shift": {},
-        "reduce": [
-          5
-        ]
-      },
-      {
-        "shift": {
-          "T": 10,
-          "X": 6
+        "B": {
+          "shift": 3
         },
-        "reduce": [
-          8
-        ]
-      },
-      {
-        "shift": {
-          "T": 11,
-          "X": 6
+        "T": {
+          "shift": 4
         },
-        "reduce": [
-          8
-        ]
+        "C": {
+          "shift": 5
+        },
+        "X": {
+          "shift": 6
+        },
+        "D": {
+          "shift": 7
+        },
+        "+": {
+          "reduce": [
+            8
+          ]
+        },
+        "*": {
+          "reduce": [
+            8
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          1
-        ]
+        "+": {
+          "reduce": [
+            -1
+          ]
+        },
+        "*": {
+          "reduce": [
+            -1
+          ]
+        }
       },
       {
-        "shift": {},
-        "reduce": [
-          2
-        ]
+        "+": {
+          "reduce": [
+            0,
+            6
+          ]
+        },
+        "*": {
+          "reduce": [
+            0,
+            6
+          ]
+        }
+      },
+      {
+        "+": {
+          "shift": 8
+        },
+        "*": {
+          "shift": 9
+        }
+      },
+      {
+        "+": {
+          "reduce": [
+            3
+          ]
+        },
+        "*": {
+          "reduce": [
+            3
+          ]
+        }
+      },
+      {
+        "+": {
+          "reduce": [
+            4
+          ]
+        },
+        "*": {
+          "reduce": [
+            4
+          ]
+        }
+      },
+      {
+        "+": {
+          "reduce": [
+            7
+          ]
+        },
+        "*": {
+          "reduce": [
+            7
+          ]
+        }
+      },
+      {
+        "+": {
+          "reduce": [
+            5
+          ]
+        },
+        "*": {
+          "reduce": [
+            5
+          ]
+        }
+      },
+      {
+        "T": {
+          "shift": 10
+        },
+        "X": {
+          "shift": 6
+        },
+        "+": {
+          "reduce": [
+            8
+          ]
+        },
+        "*": {
+          "reduce": [
+            8
+          ]
+        }
+      },
+      {
+        "T": {
+          "shift": 11
+        },
+        "X": {
+          "shift": 6
+        },
+        "+": {
+          "reduce": [
+            8
+          ]
+        },
+        "*": {
+          "reduce": [
+            8
+          ]
+        }
+      },
+      {
+        "+": {
+          "reduce": [
+            1
+          ]
+        },
+        "*": {
+          "reduce": [
+            1
+          ]
+        }
+      },
+      {
+        "+": {
+          "reduce": [
+            2
+          ]
+        },
+        "*": {
+          "reduce": [
+            2
+          ]
+        }
       }
     ],
     "lr1Automaton": [
