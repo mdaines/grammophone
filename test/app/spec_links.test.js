@@ -1,4 +1,4 @@
-import { getURLSearchParamSpec, DEFAULT_SPEC, encode, decode } from "../../src/app/spec_links.js";
+import { getURLSearchParamSpec, encode, decode } from "../../src/app/spec_links.js";
 import assert from "node:assert/strict";
 
 describe("getURLSearchParamSpec", function() {
@@ -23,8 +23,8 @@ describe("getURLSearchParamSpec", function() {
     assert.deepStrictEqual(getURLSearchParamSpec(search), expected);
   });
 
-  it("returns the default spec if the expected search param isn't present", function() {
-    assert.deepStrictEqual(getURLSearchParamSpec(""), DEFAULT_SPEC);
+  it("returns an empty string if the expected search param isn't present", function() {
+    assert.deepStrictEqual(getURLSearchParamSpec(""), "");
   });
 });
 

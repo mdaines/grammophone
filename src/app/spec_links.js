@@ -1,7 +1,5 @@
 import utf8 from "utf8";
 
-export const DEFAULT_SPEC = "# Type a grammar here:\n\n";
-
 export function encode(spec) {
   return btoa(utf8.encode(spec));
 }
@@ -19,10 +17,10 @@ export function getURLSearchParamSpec(search) {
     } catch (error) {
       console.error(error);
 
-      return DEFAULT_SPEC;
+      return "";
     }
   } else {
-    return DEFAULT_SPEC;
+    return "";
   }
 }
 
