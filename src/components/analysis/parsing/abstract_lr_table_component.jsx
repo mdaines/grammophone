@@ -9,7 +9,7 @@ export default function({ grammar, table, includeEnd }) {
   const { productions, symbolInfo } = grammar.calculations;
 
   return (
-    <table className="symbols lr1-table">
+    <table className="symbols lr-table">
       <colgroup>
         <col />
       </colgroup>
