@@ -9,6 +9,5 @@
 @import './analysis/tables.css';
 @import './analysis/symbols.css';
 @import './analysis/ll1_table.css';
-@import './analysis/lr0_table.css';
-@import './analysis/lr1_table.css';
+@import './analysis/lr_table.css';
 @import './analysis/parsing.css';
