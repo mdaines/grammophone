@@ -1,4 +1,5 @@
 import Grammar from "../../../../../src/grammar/index.js";
+import { END } from "../../../../../src/grammar/symbols.js";
 import assert from "node:assert/strict";
 
 describe("lr0Table", function() {
@@ -19,10 +20,16 @@ describe("lr0Table", function() {
       {
         "a": {
           "reduce": [-1]
+        },
+        [END]: {
+          "reduce": [-1]
         }
       },
       {
         "a": {
+          "reduce": [0]
+        },
+        [END]: {
           "reduce": [0]
         }
       }
