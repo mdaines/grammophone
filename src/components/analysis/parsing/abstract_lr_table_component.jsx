@@ -5,16 +5,14 @@ function isConflict(actions) {
   return (typeof actions.shift === "undefined" ? 0 : 1) + (typeof actions.reduce !== "undefined" ? actions.reduce.length : 0) > 1;
 }
 
-export default function({ grammar, table, includeEnd }) {
+export default function({ grammar, table }) {
   const { productions, symbolInfo } = grammar.calculations;
-  const terminalColumnCount = symbolInfo.terminals.size + (includeEnd ? 1 : 0);
-  const nonterminalColumnCount = symbolInfo.nonterminals.size;
 
   return (
     <table className="symbols lr-table">
       <colgroup span="1"></colgroup>
-      {terminalColumnCount > 0 ? <colgroup className="t" span={terminalColumnCount}></colgroup> : []}
-      {nonterminalColumnCount > 0 ? <colgroup className="nt" span={nonterminalColumnCount}></colgroup> : []}
+      <colgroup className="t" span={symbolInfo.terminals.size + 1}></colgroup>
+      <colgroup className="nt" span={symbolInfo.nonterminals.size}></colgroup>
 
       <thead>
         <tr>
@@ -24,9 +22,7 @@ export default function({ grammar, table, includeEnd }) {
               return <th key={"t"+index}>{formatSymbol(symbol, symbolInfo)}</th>;
             })
           }
-          {
-            includeEnd ? <th>{formatSymbol(END, symbolInfo)}</th> : []
-          }
+          <th>{formatSymbol(END, symbolInfo)}</th>
           {
             symbolInfo.nonterminalOrder.map(function(symbol, index) {
               return <th key={"nt"+index}>{formatSymbol(symbol, symbolInfo)}</th>;
@@ -42,7 +38,7 @@ export default function({ grammar, table, includeEnd }) {
               <tr key={index}>
                 <th scope="row">{index}</th>
                 {
-                  symbolInfo.terminalOrder.concat(includeEnd ? END : []).map(function(s, index) {
+                  symbolInfo.terminalOrder.concat(END).map(function(s, index) {
                     if (typeof state[s] === "undefined") {
                       return <td key={"t"+index} />;
                     } else {
