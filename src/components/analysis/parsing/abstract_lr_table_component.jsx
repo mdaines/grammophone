@@ -7,18 +7,14 @@ function isConflict(actions) {
 
 export default function({ grammar, table, includeEnd }) {
   const { productions, symbolInfo } = grammar.calculations;
+  const terminalColumnCount = symbolInfo.terminals.size + (includeEnd ? 1 : 0);
+  const nonterminalColumnCount = symbolInfo.nonterminals.size;
 
   return (
     <table className="symbols lr-table">
-      <colgroup>
-        <col />
-      </colgroup>
-      <colgroup className="t">
-        {fillArray(symbolInfo.terminals.size + (includeEnd ? 1 : 0), (index) => <col key={index} />)}
-      </colgroup>
-      <colgroup className="nt">
-        {fillArray(symbolInfo.nonterminals.size, (index) => <col key={index} />)}
-      </colgroup>
+      <colgroup span="1"></colgroup>
+      {terminalColumnCount > 0 ? <colgroup className="t" span={terminalColumnCount}></colgroup> : []}
+      {nonterminalColumnCount > 0 ? <colgroup className="nt" span={nonterminalColumnCount}></colgroup> : []}
 
       <thead>
         <tr>
