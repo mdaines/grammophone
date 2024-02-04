@@ -12,12 +12,8 @@ export default function({ grammar }) {
       <h2>{TITLE}</h2>
 
       <table className="symbols ll1-table">
-        <colgroup>
-          <col />
-        </colgroup>
-        <colgroup className="t">
-          {fillArray(symbolInfo.terminals.size + 1, (index) => <col key={index} />)}
-        </colgroup>
+        <colgroup span="1"></colgroup>
+        <colgroup className="t" span={symbolInfo.terminals.size + 1}></colgroup>
 
         <thead>
           <tr>
