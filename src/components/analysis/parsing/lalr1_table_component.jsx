@@ -10,7 +10,6 @@ export default function({ grammar }) {
       <AbstractLRTableComponent
         grammar={grammar}
         table={grammar.calculations.lalr1Table}
-        includeEnd={true}
       />
     </section>
   );
