@@ -1,3 +1,4 @@
+import { END } from "../../../symbols.js";
 import { addReduceAction } from "./helpers.js";
 
 export default function({ productions, lr0Automaton: automaton, symbolInfo }) {
@@ -19,7 +20,7 @@ export default function({ productions, lr0Automaton: automaton, symbolInfo }) {
 
     // add reduce actions for completed items
 
-    for (s of symbolInfo.terminalOrder) {
+    for (s of symbolInfo.terminalOrder.concat(END)) {
 
       for (j = 0; j < state.items.length; j++) {
 
