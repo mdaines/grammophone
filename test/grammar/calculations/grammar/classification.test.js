@@ -94,5 +94,7 @@ describe("classification", function() {
     assertExampleClassifications(new Set(), "oth-oth-3.cfg");
     assertExampleClassifications(new Set(), "oth-oth-4.cfg");
     assertExampleClassifications(new Set(), "oth-oth-5.cfg");
+
+    assertExampleClassifications(new Set(), "issue-41");
   });
 });

@@ -2,6 +2,547 @@
 // See update_example_output.js
 
 export default {
+  "issue-41": {
+    "allTransformations": [
+      {
+        "name": "expand",
+        "production": 0,
+        "symbol": 1,
+        "changes": [
+          {
+            "operation": "delete",
+            "index": 0
+          },
+          {
+            "production": [
+              "S",
+              "E"
+            ],
+            "operation": "insert",
+            "index": 0
+          }
+        ]
+      },
+      {
+        "name": "expand",
+        "production": 1,
+        "symbol": 1,
+        "changes": [
+          {
+            "operation": "delete",
+            "index": 1
+          },
+          {
+            "production": [
+              "E",
+              "E"
+            ],
+            "operation": "insert",
+            "index": 1
+          }
+        ]
+      }
+    ],
+    "classification": {
+      "ll1": {
+        "member": false,
+        "reason": "it contains a cycle"
+      },
+      "lr0": {
+        "member": false,
+        "reason": "it contains a reduce-reduce conflict"
+      },
+      "slr1": {
+        "member": false,
+        "reason": "it contains a reduce-reduce conflict"
+      },
+      "lr1": {
+        "member": false,
+        "reason": "it contains a reduce-reduce conflict"
+      },
+      "lalr1": {
+        "member": false,
+        "reason": "it contains a reduce-reduce conflict"
+      }
+    },
+    "cycle": [
+      "S",
+      "E",
+      "E"
+    ],
+    "derivationSteps": {
+      "symbols": [],
+      "productions": []
+    },
+    "endable": [
+      "S",
+      "E"
+    ],
+    "epsilonSeparateTransformation": [],
+    "expandTransformation": [
+      {
+        "name": "expand",
+        "production": 0,
+        "symbol": 1,
+        "changes": [
+          {
+            "operation": "delete",
+            "index": 0
+          },
+          {
+            "production": [
+              "S",
+              "E"
+            ],
+            "operation": "insert",
+            "index": 0
+          }
+        ]
+      },
+      {
+        "name": "expand",
+        "production": 1,
+        "symbol": 1,
+        "changes": [
+          {
+            "operation": "delete",
+            "index": 1
+          },
+          {
+            "production": [
+              "E",
+              "E"
+            ],
+            "operation": "insert",
+            "index": 1
+          }
+        ]
+      }
+    ],
+    "first": [],
+    "follow": [
+      [
+        "S",
+        "Grammar.END"
+      ],
+      [
+        "E",
+        "Grammar.END"
+      ]
+    ],
+    "lalr1Automaton": [
+      {
+        "kernel": [
+          {
+            "production": -1,
+            "index": 0,
+            "lookaheads": [
+              "Grammar.END"
+            ]
+          }
+        ],
+        "items": [
+          {
+            "production": 0,
+            "index": 0,
+            "lookaheads": [
+              "Grammar.END"
+            ]
+          },
+          {
+            "production": 1,
+            "index": 0,
+            "lookaheads": [
+              "Grammar.END"
+            ]
+          },
+          {
+            "production": -1,
+            "index": 0,
+            "lookaheads": [
+              "Grammar.END"
+            ]
+          }
+        ],
+        "transitions": {
+          "S": 1,
+          "E": 2
+        }
+      },
+      {
+        "kernel": [
+          {
+            "production": -1,
+            "index": 1,
+            "lookaheads": [
+              "Grammar.END"
+            ]
+          }
+        ],
+        "items": [
+          {
+            "production": -1,
+            "index": 1,
+            "lookaheads": [
+              "Grammar.END"
+            ]
+          }
+        ],
+        "transitions": {}
+      },
+      {
+        "kernel": [
+          {
+            "production": 0,
+            "index": 1,
+            "lookaheads": [
+              "Grammar.END"
+            ]
+          },
+          {
+            "production": 1,
+            "index": 1,
+            "lookaheads": [
+              "Grammar.END"
+            ]
+          }
+        ],
+        "items": [
+          {
+            "production": 0,
+            "index": 1,
+            "lookaheads": [
+              "Grammar.END"
+            ]
+          },
+          {
+            "production": 1,
+            "index": 1,
+            "lookaheads": [
+              "Grammar.END"
+            ]
+          }
+        ],
+        "transitions": {}
+      }
+    ],
+    "lalr1Classification": {
+      "member": false,
+      "reason": "it contains a reduce-reduce conflict"
+    },
+    "lalr1Table": [
+      {
+        "S": {
+          "shift": 1
+        },
+        "E": {
+          "shift": 2
+        }
+      },
+      {
+        "Grammar.END": {
+          "reduce": [
+            -1
+          ]
+        }
+      },
+      {
+        "Grammar.END": {
+          "reduce": [
+            0,
+            1
+          ]
+        }
+      }
+    ],
+    "leftFactorTransformation": [],
+    "ll1Classification": {
+      "member": false,
+      "reason": "it contains a cycle"
+    },
+    "ll1Table": {
+      "S": {
+        "Grammar.END": []
+      },
+      "E": {
+        "Grammar.END": []
+      }
+    },
+    "lr0Automaton": [
+      {
+        "kernel": [
+          {
+            "production": -1,
+            "index": 0
+          }
+        ],
+        "items": [
+          {
+            "production": -1,
+            "index": 0
+          },
+          {
+            "production": 0,
+            "index": 0
+          },
+          {
+            "production": 1,
+            "index": 0
+          }
+        ],
+        "transitions": {
+          "S": 1,
+          "E": 2
+        }
+      },
+      {
+        "kernel": [
+          {
+            "production": -1,
+            "index": 1
+          }
+        ],
+        "items": [
+          {
+            "production": -1,
+            "index": 1
+          }
+        ],
+        "transitions": {}
+      },
+      {
+        "kernel": [
+          {
+            "production": 0,
+            "index": 1
+          },
+          {
+            "production": 1,
+            "index": 1
+          }
+        ],
+        "items": [
+          {
+            "production": 0,
+            "index": 1
+          },
+          {
+            "production": 1,
+            "index": 1
+          }
+        ],
+        "transitions": {}
+      }
+    ],
+    "lr0Classification": {
+      "member": false,
+      "reason": "it contains a reduce-reduce conflict"
+    },
+    "lr0Table": [
+      {
+        "S": {
+          "shift": 1
+        },
+        "E": {
+          "shift": 2
+        }
+      },
+      {
+        "Grammar.END": {
+          "reduce": [
+            -1
+          ]
+        }
+      },
+      {
+        "Grammar.END": {
+          "reduce": [
+            0,
+            1
+          ]
+        }
+      }
+    ],
+    "lr1Automaton": [
+      {
+        "kernel": [
+          {
+            "production": -1,
+            "index": 0,
+            "lookahead": "Grammar.END"
+          }
+        ],
+        "items": [
+          {
+            "production": -1,
+            "index": 0,
+            "lookahead": "Grammar.END"
+          },
+          {
+            "production": 0,
+            "index": 0,
+            "lookahead": "Grammar.END"
+          },
+          {
+            "production": 1,
+            "index": 0,
+            "lookahead": "Grammar.END"
+          }
+        ],
+        "transitions": {
+          "S": 1,
+          "E": 2
+        }
+      },
+      {
+        "kernel": [
+          {
+            "production": -1,
+            "index": 1,
+            "lookahead": "Grammar.END"
+          }
+        ],
+        "items": [
+          {
+            "production": -1,
+            "index": 1,
+            "lookahead": "Grammar.END"
+          }
+        ],
+        "transitions": {}
+      },
+      {
+        "kernel": [
+          {
+            "production": 0,
+            "index": 1,
+            "lookahead": "Grammar.END"
+          },
+          {
+            "production": 1,
+            "index": 1,
+            "lookahead": "Grammar.END"
+          }
+        ],
+        "items": [
+          {
+            "production": 0,
+            "index": 1,
+            "lookahead": "Grammar.END"
+          },
+          {
+            "production": 1,
+            "index": 1,
+            "lookahead": "Grammar.END"
+          }
+        ],
+        "transitions": {}
+      }
+    ],
+    "lr1Classification": {
+      "member": false,
+      "reason": "it contains a reduce-reduce conflict"
+    },
+    "lr1Table": [
+      {
+        "S": {
+          "shift": 1
+        },
+        "E": {
+          "shift": 2
+        }
+      },
+      {
+        "Grammar.END": {
+          "reduce": [
+            -1
+          ]
+        }
+      },
+      {
+        "Grammar.END": {
+          "reduce": [
+            0,
+            1
+          ]
+        }
+      }
+    ],
+    "nonterminals": [
+      "S",
+      "E"
+    ],
+    "nullAmbiguity": [],
+    "nullable": [],
+    "productions": [
+      [
+        "S",
+        "E"
+      ],
+      [
+        "E",
+        "E"
+      ]
+    ],
+    "removeImmediateLeftRecursionTransformation": [],
+    "removeUnreachableTransformation": [],
+    "slr1Classification": {
+      "member": false,
+      "reason": "it contains a reduce-reduce conflict"
+    },
+    "slr1Table": [
+      {
+        "S": {
+          "shift": 1
+        },
+        "E": {
+          "shift": 2
+        }
+      },
+      {
+        "Grammar.END": {
+          "reduce": [
+            -1
+          ]
+        }
+      },
+      {
+        "Grammar.END": {
+          "reduce": [
+            0,
+            1
+          ]
+        }
+      }
+    ],
+    "start": "S",
+    "symbolInfo": {
+      "terminalOrder": [],
+      "nonterminalOrder": [
+        "S",
+        "E"
+      ],
+      "productionOrder": [
+        "S",
+        "E"
+      ],
+      "nonterminals": [
+        "S",
+        "E"
+      ],
+      "terminals": []
+    },
+    "symbols": [
+      "S",
+      "E"
+    ],
+    "terminals": [],
+    "unreachable": [],
+    "unrealizable": [
+      "S",
+      "E"
+    ]
+  },
   "ll0-lr0-0.cfg": {
     "allTransformations": [
       {
