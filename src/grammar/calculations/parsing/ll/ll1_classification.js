@@ -2,7 +2,7 @@ import * as SetOperations from "../../../../set_operations.js";
 import { getFirst } from "../helpers.js";
 
 export default function(calculations) {
-  const { nullAmbiguity } = calculations;
+  const { nullAmbiguity, cycle } = calculations;
 
   var i, k, l, s;
   var head, body, bodyFirst;
@@ -11,6 +11,12 @@ export default function(calculations) {
 
   if (nullAmbiguity.length > 0) {
     return { member: false, reason: "it contains a null ambiguity" };
+  }
+
+  // Also, return immediately if the grammar contains a cycle.
+
+  if (typeof cycle !== "undefined") {
+    return { member: false, reason: "it contains a cycle" };
   }
 
   const { productions, first, follow, terminals, nonterminals, nullable } = calculations;
