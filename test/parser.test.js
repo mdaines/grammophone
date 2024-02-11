@@ -32,33 +32,38 @@ describe("parser", function() {
   });
 
   it("symbols can be quoted", function() {
-    assert.deepStrictEqual(parser("\"A\" -> \"a\"."), { productions: [["A", "a"]] });
-    assert.deepStrictEqual(parser("\"->\" -> ."), { productions: [["->"]] });
+    assert.deepStrictEqual(parser(`"A" -> "a".`), { productions: [["A", "a"]] });
+    assert.deepStrictEqual(parser(`"->" -> .`), { productions: [["->"]] });
   });
 
   it("quoted symbols can contain escapes", function() {
-    assert.deepStrictEqual(parser("\"\\\"\" -> ."), { productions: [["\\\""]] });
-    assert.deepStrictEqual(parser("\"\\\\\" -> ."), { productions: [["\\\\"]] });
-    assert.deepStrictEqual(parser("\"'\" -> ."), { productions: [["'"]] });
-    assert.deepStrictEqual(parser("'\\'' -> ."), { productions: [["\\'"]] });
-    assert.deepStrictEqual(parser("'\"' -> ."), { productions: [["\""]] });
+    assert.deepStrictEqual(parser(`"\\"" -> .`), { productions: [[`\\"`]] });
+    assert.deepStrictEqual(parser(`"\\'" -> .`), { productions: [[`\\'`]] });
+    assert.deepStrictEqual(parser(`'\\'' -> .`), { productions: [[`\\'`]] });
+    assert.deepStrictEqual(parser(`'\\"' -> .`), { productions: [[`\\"`]] });
+    assert.deepStrictEqual(parser(`"\\\\" -> .`), { productions: [[`\\\\`]] });
 
-    assert.deepStrictEqual(parser("\"\\b\" -> ."), { productions: [["\\b"]] });
-    assert.deepStrictEqual(parser("\"\\f\" -> ."), { productions: [["\\f"]] });
-    assert.deepStrictEqual(parser("\"\\n\" -> ."), { productions: [["\\n"]] });
-    assert.deepStrictEqual(parser("\"\\r\" -> ."), { productions: [["\\r"]] });
-    assert.deepStrictEqual(parser("\"\\t\" -> ."), { productions: [["\\t"]] });
-    assert.deepStrictEqual(parser("\"\\v\" -> ."), { productions: [["\\v"]] });
-    assert.deepStrictEqual(parser("\"\\0\" -> ."), { productions: [["\\0"]] });
+    assert.deepStrictEqual(parser(`"\\b" -> .`), { productions: [[`\\b`]] });
+    assert.deepStrictEqual(parser(`"\\f" -> .`), { productions: [[`\\f`]] });
+    assert.deepStrictEqual(parser(`"\\n" -> .`), { productions: [[`\\n`]] });
+    assert.deepStrictEqual(parser(`"\\r" -> .`), { productions: [[`\\r`]] });
+    assert.deepStrictEqual(parser(`"\\t" -> .`), { productions: [[`\\t`]] });
+    assert.deepStrictEqual(parser(`"\\v" -> .`), { productions: [[`\\v`]] });
+    assert.deepStrictEqual(parser(`"\\0" -> .`), { productions: [[`\\0`]] });
 
-    assert.deepStrictEqual(parser("\"\\xA9\" -> ."), { productions: [["\\xA9"]] });
-    assert.deepStrictEqual(parser("\"\\xa9\" -> ."), { productions: [["\\xa9"]] });
+    assert.deepStrictEqual(parser(`"\\\n" -> .`), { productions: [[`\\\n`]] });
 
-    assert.deepStrictEqual(parser("\"\\u00A9\" -> ."), { productions: [["\\u00A9"]] });
-    assert.deepStrictEqual(parser("\"\\u00a9\" -> ."), { productions: [["\\u00a9"]] });
-    assert.deepStrictEqual(parser("\"\\u2665\" -> ."), { productions: [["\\u2665"]] });
+    // COPYRIGHT SIGN
+    assert.deepStrictEqual(parser(`"\\xA9" -> .`), { productions: [[`\\xA9`]] });
+    assert.deepStrictEqual(parser(`"\\xa9" -> .`), { productions: [[`\\xa9`]] });
+    assert.deepStrictEqual(parser(`"\\u00A9" -> .`), { productions: [[`\\u00A9`]] });
+    assert.deepStrictEqual(parser(`"\\u00a9" -> .`), { productions: [[`\\u00a9`]] });
 
-    assert.deepStrictEqual(parser("\"\\u{1D306}\" -> ."), { productions: [["\\u{1D306}"]] });
+    // BLACK HEART SUIT
+    assert.deepStrictEqual(parser(`"\\u2665" -> .`), { productions: [["\\u2665"]] });
+
+    // TETRAGRAM FOR CENTRE
+    assert.deepStrictEqual(parser(`"\\u{1D306}" -> .`), { productions: [["\\u{1D306}"]] });
   });
 
   it("nonterminals don't need to be capitalized", function() {
@@ -108,7 +113,7 @@ describe("parser", function() {
       assert.deepStrictEqual(parser("A -> 1 ."), { error: new Error("Parse error") });
     });
 
-    it("quoted symbols can't contain a newline", function() {
+    it("quoted symbols can't contain an unescaped newline", function() {
       assert.deepStrictEqual(parser("\"A\n\" -> a ."), { error: new Error("Parse error") });
     });
   });
