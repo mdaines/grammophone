@@ -37,33 +37,56 @@ describe("parser", function() {
   });
 
   it("quoted symbols can contain escapes", function() {
-    assert.deepStrictEqual(parser(`"\\"" -> .`), { productions: [[`\\"`]] });
-    assert.deepStrictEqual(parser(`"\\'" -> .`), { productions: [[`\\'`]] });
-    assert.deepStrictEqual(parser(`'\\'' -> .`), { productions: [[`\\'`]] });
-    assert.deepStrictEqual(parser(`'\\"' -> .`), { productions: [[`\\"`]] });
-    assert.deepStrictEqual(parser(`"\\\\" -> .`), { productions: [[`\\\\`]] });
+    // QUOTATION MARK and APOSTROPHE
+    assert.deepStrictEqual(parser(`"\\"" -> .`), { productions: [[`"`]] });
+    assert.deepStrictEqual(parser(`"\\'" -> .`), { productions: [[`'`]] });
+    assert.deepStrictEqual(parser(`'\\'' -> .`), { productions: [[`'`]] });
+    assert.deepStrictEqual(parser(`'\\"' -> .`), { productions: [[`"`]] });
+    assert.deepStrictEqual(parser(`"\\\\" -> .`), { productions: [[`\\`]] });
 
-    assert.deepStrictEqual(parser(`"\\b" -> .`), { productions: [[`\\b`]] });
-    assert.deepStrictEqual(parser(`"\\f" -> .`), { productions: [[`\\f`]] });
-    assert.deepStrictEqual(parser(`"\\n" -> .`), { productions: [[`\\n`]] });
-    assert.deepStrictEqual(parser(`"\\r" -> .`), { productions: [[`\\r`]] });
-    assert.deepStrictEqual(parser(`"\\t" -> .`), { productions: [[`\\t`]] });
-    assert.deepStrictEqual(parser(`"\\v" -> .`), { productions: [[`\\v`]] });
-    assert.deepStrictEqual(parser(`"\\0" -> .`), { productions: [[`\\0`]] });
+    // C-style escapes
+    assert.deepStrictEqual(parser(`"\\b" -> .`), { productions: [[`\b`]] });
+    assert.deepStrictEqual(parser(`"\\f" -> .`), { productions: [[`\f`]] });
+    assert.deepStrictEqual(parser(`"\\n" -> .`), { productions: [[`\n`]] });
+    assert.deepStrictEqual(parser(`"\\r" -> .`), { productions: [[`\r`]] });
+    assert.deepStrictEqual(parser(`"\\t" -> .`), { productions: [[`\t`]] });
+    assert.deepStrictEqual(parser(`"\\v" -> .`), { productions: [[`\v`]] });
+    assert.deepStrictEqual(parser(`"\\0" -> .`), { productions: [[`\0`]] });
 
-    assert.deepStrictEqual(parser(`"\\\n" -> .`), { productions: [[`\\\n`]] });
+    // Identity escapes
+    assert.deepStrictEqual(parser(`"\\z" -> .`), { productions: [[`z`]] });
+
+    // Escaped line terminator
+    assert.deepStrictEqual(parser(`"\\\n" -> .`), { productions: [[`\n`]] });
+    assert.deepStrictEqual(parser(`"\\\r" -> .`), { productions: [[`\r`]] });
 
     // COPYRIGHT SIGN
-    assert.deepStrictEqual(parser(`"\\xA9" -> .`), { productions: [[`\\xA9`]] });
-    assert.deepStrictEqual(parser(`"\\xa9" -> .`), { productions: [[`\\xa9`]] });
-    assert.deepStrictEqual(parser(`"\\u00A9" -> .`), { productions: [[`\\u00A9`]] });
-    assert.deepStrictEqual(parser(`"\\u00a9" -> .`), { productions: [[`\\u00a9`]] });
+    assert.deepStrictEqual(parser(`"\\xA9" -> .`), { productions: [[`\xA9`]] });
+    assert.deepStrictEqual(parser(`"\\xa9" -> .`), { productions: [[`\xa9`]] });
+    assert.deepStrictEqual(parser(`"\\u00A9" -> .`), { productions: [[`\u00A9`]] });
+    assert.deepStrictEqual(parser(`"\\u00a9" -> .`), { productions: [[`\u00a9`]] });
+    assert.deepStrictEqual(parser(`"\\u00a9" -> .`), { productions: [[`\u{00A9}`]] });
+    assert.deepStrictEqual(parser(`"\\u00a9" -> .`), { productions: [[`\u{00a9}`]] });
 
     // BLACK HEART SUIT
-    assert.deepStrictEqual(parser(`"\\u2665" -> .`), { productions: [["\\u2665"]] });
+    assert.deepStrictEqual(parser(`"\\u2665" -> .`), { productions: [[`\u2665`]] });
+    assert.deepStrictEqual(parser(`"\\u{2665}" -> .`), { productions: [[`\u{2665}`]] });
 
     // TETRAGRAM FOR CENTRE
-    assert.deepStrictEqual(parser(`"\\u{1D306}" -> .`), { productions: [["\\u{1D306}"]] });
+    assert.deepStrictEqual(parser(`"\\u{1D306}" -> .`), { productions: [[`\u{1D306}`]] });
+
+    // AMPERSAND (\x and two hex digits)
+    assert.deepStrictEqual(parser(`"\\x2665" -> .`), { productions: [[`\x2665`]] });
+
+    // MODIFIER LETTER CAPITAL D (\u without braces)
+    assert.deepStrictEqual(parser(`"\\u1D306" -> .`), { productions: [[`\u1D306`]] });
+  });
+
+  it("quoted symbols can contain multiple escapes", function() {
+    assert.deepStrictEqual(
+      parser(`"\\" \\0 \\xA9 \\u00A9 \\u{2665}" -> .`),
+      { productions: [[`" \0 \xA9 \u00A9 \u{2665}`]] }
+    );
   });
 
   it("nonterminals don't need to be capitalized", function() {
