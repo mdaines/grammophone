@@ -24,8 +24,11 @@ describe("helpers", function() {
 
       let output = formatSymbol(" ", info);
 
-      assert.deepStrictEqual(output.type, "b");
-      assert.deepStrictEqual(output.props, { children: "\u2B1A" });
+      assert.strictEqual(output.type, "b");
+      assert.strictEqual(output.props.children[0], "");
+      assert.strictEqual(output.props.children[1].type, "span");
+      assert.strictEqual(output.props.children[1].props.className, "np");
+      assert.strictEqual(output.props.children[1].props.children[0], "␣");
     });
 
     it("refuses to format an unknown symbol", function() {
@@ -58,7 +61,16 @@ describe("helpers", function() {
         nonterminals: new Set()
       };
 
-      assert.deepStrictEqual(bareFormatSymbol(" ", info), "\u2B1A");
+      assert.deepStrictEqual(bareFormatSymbol(" ", info), "␣");
+    });
+
+    it("double escapes other nonprinting characters", function() {
+      let info = {
+        terminals: new Set(["\n"]),
+        nonterminals: new Set()
+      };
+
+      assert.deepStrictEqual(bareFormatSymbol("\n", info), "\\\\n");
     });
 
     it("refuses to format an unknown symbol", function() {

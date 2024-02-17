@@ -5,9 +5,14 @@
 
 .symbols u {
   text-decoration: none;
-  background: #ddd;
+  background: #eee;
 }
 
 .symbols b {
   font: bold 10pt courier;
+}
+
+.symbols .np {
+  background: #eee;
+  color: #999;
 }

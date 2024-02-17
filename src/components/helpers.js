@@ -1,9 +1,40 @@
 import { END } from "../grammar/symbols.js";
 import { createElement as h, Fragment } from "react";
 
-const ARROW = "\u2192";
-const EPSILON = "\u03B5";
-const BLANK = "\u2B1A";
+const ARROW = "→";
+
+const EPSILON = "ε";
+
+const NONPRINTING_PATTERN = /(\s|\x08|\0)/; // eslint-disable-line no-control-regex
+
+const NONPRINTING = {
+  "\0": "\\0",
+  "\n": "\\n",
+  "\r": "\\r",
+  "\v": "\\v",
+  "\t": "\\t",
+  "\b": "\\b",
+  "\f": "\\f"
+};
+
+const BARE_NONPRINTING = {
+  "\0": "\\\\0",
+  "\n": "\\\\n",
+  "\r": "\\\\r",
+  "\v": "\\\\v",
+  "\t": "\\\\t",
+  "\b": "\\\\b",
+  "\f": "\\\\f"
+};
+
+const SPACE = "␣";
+
+const ESCAPE = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  "\"": "&quot;"
+};
 
 export function fillArray(count, fn) {
   let array = [];
@@ -44,7 +75,13 @@ export function formatSymbolList(symbols, info, separator) {
 }
 
 function prettifySymbol(symbol) {
-  return symbol.replace(/\s/g, BLANK);
+  return symbol.split(NONPRINTING_PATTERN).map((str, index) => {
+    if (index % 2 == 1) {
+      return h("span", { className: "np" }, NONPRINTING[str] || SPACE);
+    } else {
+      return str;
+    }
+  });
 }
 
 export function formatSymbol(symbol, info) {
@@ -85,13 +122,6 @@ export function formatSentence(sentence, info) {
   return formatSymbolList(sentence, info, " ");
 }
 
-const ESCAPE = {
-  "&": "&amp;",
-  "<": "&lt;",
-  ">": "&gt;",
-  "\"": "&quot;"
-};
-
 export function escapeString(string) {
   return string.replace(/[&<>"]/g, function(name) {
     return ESCAPE[name];
@@ -99,7 +129,13 @@ export function escapeString(string) {
 }
 
 function barePrettifySymbol(symbol) {
-  return symbol.replace(/'/g, "&prime;").replace(/\s/g, BLANK);
+  return symbol.split(NONPRINTING_PATTERN).map((str, index) => {
+    if (index % 2 == 1) {
+      return BARE_NONPRINTING[str] || SPACE;
+    } else {
+      return str;
+    }
+  }).join("");
 }
 
 export function bareFormatSymbol(symbol, info) {
