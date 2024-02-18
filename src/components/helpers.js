@@ -123,9 +123,9 @@ export function formatSentence(sentence, info) {
 }
 
 export function escapeString(string) {
-  return string.replace(/[&<>"]/g, function(name) {
+  return string.replaceAll(/[&<>"]/g, function(name) {
     return ESCAPE[name];
-  });
+  }).replaceAll("\\", "\\\\");
 }
 
 function barePrettifySymbol(symbol) {

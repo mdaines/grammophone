@@ -66,11 +66,12 @@ describe("helpers", function() {
 
     it("double escapes other nonprinting characters", function() {
       let info = {
-        terminals: new Set(["\n"]),
+        terminals: new Set(["\n", "\\"]),
         nonterminals: new Set()
       };
 
       assert.deepStrictEqual(bareFormatSymbol("\n", info), "\\\\n");
+      assert.deepStrictEqual(bareFormatSymbol("\\", info), "\\\\");
     });
 
     it("refuses to format an unknown symbol", function() {
