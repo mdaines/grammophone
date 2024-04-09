@@ -7,9 +7,19 @@ rule {
 
 Head { Symbol | QuotedSymbol }
 
-productions { Production | productions "|" Production }
+productions { Production ("|" Production)* }
 
-Production { (Symbol | QuotedSymbol)* }
+Production { term* }
+
+term { Symbol | QuotedSymbol | Group | Optional | Repeat0 | Repeat1 }
+
+Group { "(" productions ")" }
+
+Optional { term "?" }
+
+Repeat0 { term "*" }
+
+Repeat1 { term "+" }
 
 @skip { space | comment }
 

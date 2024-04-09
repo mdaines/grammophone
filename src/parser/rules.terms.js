@@ -4,4 +4,8 @@ export const
   Head = 2,
   Symbol = 3,
   QuotedSymbol = 4,
-  Production = 5
+  Production = 5,
+  Group = 6,
+  Optional = 7,
+  Repeat0 = 8,
+  Repeat1 = 9
