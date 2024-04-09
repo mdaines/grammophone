@@ -107,6 +107,59 @@ describe("parser", function() {
     assert.deepStrictEqual(parser("# 123\n\n"), { productions: [] });
   });
 
+  describe("ebnf", function() {
+    it("optional", function() {
+      assert.deepStrictEqual(parser("A -> a? ."), {
+        productions: [["A", "a"], ["A"]],
+        alternatives: []
+      });
+    });
+
+    it("repeat zero or more times", function() {
+      assert.deepStrictEqual(parser("A -> a* ."), {
+        productions: [["A", "A2"], ["A2", "a", "A2"], ["A2"]],
+        alternatives: [
+          { production: 1, symbols: ["A2", "A2", "a"] }
+        ]
+      });
+    });
+
+    it("repeat one or more times", function() {
+      assert.deepStrictEqual(parser("A -> a+ ."), {
+        productions: [["A", "A2"], ["A2", "a", "A2"], ["A2", "a"]],
+        alternatives: [
+          { production: 1, symbols: ["A2", "A2", "a"] }
+        ]
+      });
+    });
+
+    it("groups", function() {
+      assert.deepStrictEqual(parser("A -> (a | b) (c | d) ."), {
+        productions: [["A", "A2", "A3"], ["A2", "a", "b"], ["A3", "c", "d"]]
+        alternatives: []
+      });
+    });
+
+    it("nested", function() {
+      assert.deepStrictEqual(parser("A -> (a? | b)* ."), {
+        productions: [["A", "A2"], ["A2", "A3", "A2"], ["A3", "A4"], ["A3", "b"], ["A4", "a"], ["A4"]]
+        alternatives: [
+          { production: 1, symbols: ["A2", "A2", "A3"] }
+        ]
+      });
+    });
+
+    it("multiple alternatives", function() {
+      assert.deepStrictEqual(parser("A -> a* b+ ."), {
+        productions: [["A", "A2", "A3"], ["A2", "a", "A2"], ["A2"], ["A3", "b", "A3"], ["A3", "b"]],
+        alternatives: [
+          { production: 1, symbols: ["A2", "A2", "a"] },
+          { production: 3, symbols: ["A3", "A3", "b"] }
+        ]
+      });
+    });
+  });
+
   describe("errors", function() {
     it("missing arrow", function() {
       assert.deepStrictEqual(parser("A -> a. B"), { error: new Error("Parse error") });
