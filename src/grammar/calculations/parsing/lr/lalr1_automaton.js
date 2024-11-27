@@ -1,13 +1,23 @@
 import { collapseLookaheads, mergeItems } from "./helpers.js";
 import * as build from "./build/lr0.js";
 
+function copyLR1Automaton(automaton) {
+  return automaton.map(state => {
+    return {
+      kernel: state.kernel.map(item => Object.assign({}, item)),
+      items: state.items.map(item => Object.assign({}, item)),
+      transitions: Object.assign({}, state.transitions)
+    };
+  });
+}
+
 export default function({ lr1Automaton }) {
 
   var i, j;
 
   // Copy the LR(1) automaton.
 
-  const automaton = structuredClone(lr1Automaton);
+  const automaton = copyLR1Automaton(lr1Automaton);
 
   // Collapse lookaheads.
 
