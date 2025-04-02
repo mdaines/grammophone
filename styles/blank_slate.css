@@ -1,16 +1,19 @@
-#blank-slate .message {
-  margin: 3em;
-  padding: 0.5em 1.5em;
-  background: #eee;
-  border: 10px solid #ccc;
-  border-radius: 20px;
-  font: 12pt helvetica;
+#blank-slate .message p:first-child {
+  margin-top: 0;
+}
+
+#blank-slate h2 {
+  font-size: 18pt;
+  font-weight: normal;
+}
+
+#blank-slate h3 {
+  font-size: 12pt;
 }
 
 #blank-slate pre {
-  background: #fff;
-  font: 14pt courier;
-  padding: 0.5em;
-  border: 1px solid #ddd;
-  margin: 0.5em -0.5em;
+  background: #f8f8f8;
+  font: 11pt courier, monospace;
+  padding: 8px;
+  border-radius: 4px;
 }

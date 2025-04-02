@@ -5,6 +5,7 @@ export default function() {
 
       <ul>
         <li><a href="https://github.com/mdaines/grammophone/wiki">Help</a></li>
+        <li><a href="https://github.com/mdaines/grammophone/wiki/Example-Grammars">Examples</a></li>
         <li><a href="https://github.com/mdaines/grammophone">GitHub</a></li>
       </ul>
     </div>
