@@ -36,6 +36,7 @@ export default function App({ initialSpec }) {
       undoTransformation={() => { dispatch({ type: "undoTransformation" }); }}
       redoTransformation={() => { dispatch({ type: "redoTransformation" }); }}
       applyTransformation={(t) => { dispatch({ type: "applyTransformation", transformation: t }); }}
+      loadExample={(spec) => { dispatch({ type: "loadExample", spec }); }}
     />
   );
 }

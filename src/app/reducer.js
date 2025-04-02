@@ -105,6 +105,17 @@ export function reducer(state, action) {
         return state;
       }
     }
+
+  case "loadExample":
+    {
+      const { productions, error } = parser(action.spec);
+
+      if (error) {
+        throw `Unexpected error loading example: ${error}`;
+      }
+
+      return { ...state, spec: action.spec, grammar: new Grammar(productions), error: undefined };
+    }
   }
 
   throw `Unhandled action type ${action.type}`;
