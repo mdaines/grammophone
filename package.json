@@ -2,7 +2,6 @@
   "private": true,
   "version": "0.0.0",
   "name": "grammophone",
-  "browserslist": "> 0.5%, last 2 versions",
   "type": "module",
   "source": [
     "src/index.html"
