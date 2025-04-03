@@ -25,4 +25,18 @@ describe("Grammar", function() {
       assert.deepStrictEqual(Object.getOwnPropertyDescriptor(grammar.calculations, "symbols").value, new Set(["A", "a"]));
     });
   });
+
+  describe("toString", function() {
+    it("returns a string representing the grammar", function() {
+      const grammar = new Grammar([["A", "a"], ["A", "b", "c"]]);
+
+      assert.strictEqual(grammar.toString(), "A -> a .\nA -> b c .\n");
+    });
+
+    it("property quotes symbols", function() {
+      const grammar = new Grammar([["A", "_a2"], ["A", "$t"], ["A", "あ"], ["あ", "\"a\""]]);
+
+      assert.strictEqual(grammar.toString(), "A -> _a2 .\nA -> $t .\nA -> \"あ\" .\n\"あ\" -> \"\\\"a\\\"\" .\n");
+    });
+  });
 });

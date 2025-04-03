@@ -1,6 +1,16 @@
 import { makeCalculationsMemo } from "./calculations_memo.js";
 import { makeSentencesIterator, ambiguousSentenceExample } from "./sentences.js";
 
+const UNQUOTED_SYMBOL_PATTERN = /^[A-Za-z_$][A-Za-z_$0-9]*$/;
+
+function quoteSymbol(s) {
+  if (s.match(UNQUOTED_SYMBOL_PATTERN)) {
+    return s;
+  } else {
+    return "\"" + s.replaceAll("\"", "\\\"") + "\"";
+  }
+}
+
 export default class Grammar {
   constructor(productions) {
     var i, j;
@@ -59,25 +69,20 @@ export default class Grammar {
   }
 
   toString() {
+    let result = "";
 
-    var i, j;
-    var result = "";
-
-    for (i = 0; i < this.productions.length; i++) {
-
-      result += this.productions[i][0];
+    for (let i = 0; i < this.productions.length; i++) {
+      result += quoteSymbol(this.productions[i][0]);
       result += " ->";
 
-      for (j = 1; j < this.productions[i].length; j++) {
-        result += " " + this.productions[i][j];
+      for (let j = 1; j < this.productions[i].length; j++) {
+        result += " " + quoteSymbol(this.productions[i][j]);
       }
 
       result += " .\n";
-
     }
 
     return result;
-
   }
 
   exampleSentences() {
