@@ -1,9 +1,10 @@
 import SiteHeaderComponent from "./site_header_component.jsx";
 import EditorComponent from "./editor_component.jsx";
+import ResizeComponent from "./resize_component.jsx";
 import AnalysisComponent from "./analysis_component.jsx";
 import BlankSlateComponent from "./blank_slate_component.jsx";
 
-export default function({ spec, updateSpec, mode, edit, transform, analyze, error, grammar, path, transformStack, transformIndex, undoTransformation, redoTransformation, applyTransformation, loadExample }) {
+export default function({ spec, updateSpec, mode, edit, transform, analyze, error, grammar, path, transformStack, transformIndex, undoTransformation, redoTransformation, applyTransformation, loadExample, onResize }) {
   return (
     <>
       <SiteHeaderComponent />
@@ -22,6 +23,8 @@ export default function({ spec, updateSpec, mode, edit, transform, analyze, erro
         undoTransformation={undoTransformation}
         redoTransformation={redoTransformation}
         applyTransformation={applyTransformation} />
+
+      <ResizeComponent onResize={onResize} />
 
       {
         grammar ?

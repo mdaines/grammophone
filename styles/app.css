@@ -5,22 +5,39 @@ body {
 }
 
 #app {
+  --editor-width: 50%;
+
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   display: grid;
-  grid-template-areas: "header header" "editor main";
+  grid-template-areas: "header header header" "editor resize main";
   grid-template-rows: min-content 1fr;
-  grid-template-columns: min-content 1fr;
+  grid-template-columns: minmax(350px, var(--editor-width)) 1px minmax(350px, 1fr);
 }
 
 #editor {
   grid-area: editor;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #bbb;
+}
+
+#resize {
+  grid-area: resize;
+  background: #bbb;
+  position: relative;
+  z-index: 1;
+}
+
+#resize-handle {
+  width: 7px;
+  left: -3px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  cursor: ew-resize;
 }
 
 main {

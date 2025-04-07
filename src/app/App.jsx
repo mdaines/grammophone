@@ -2,7 +2,7 @@ import { useReducer, useEffect } from "react";
 import { reducer, init } from "./reducer.js";
 import ApplicationComponent from "../components/application_component.jsx";
 
-export default function App({ initialSpec }) {
+export default function App({ initialSpec, onResize }) {
   const [state, dispatch] = useReducer(reducer, initialSpec, init);
 
   function onHashChange() {
@@ -37,6 +37,7 @@ export default function App({ initialSpec }) {
       redoTransformation={() => { dispatch({ type: "redoTransformation" }); }}
       applyTransformation={(t) => { dispatch({ type: "applyTransformation", transformation: t }); }}
       loadExample={(spec) => { dispatch({ type: "loadExample", spec }); }}
+      onResize={onResize}
     />
   );
 }
