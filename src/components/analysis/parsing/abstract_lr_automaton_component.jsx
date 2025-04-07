@@ -45,6 +45,6 @@ function transform(grammar, automaton, table) {
   };
 }
 
-export default function({ grammar, automaton, table }) {
+export default function AbstractLRAutomatonComponent({ grammar, automaton, table }) {
   return <VizComponent src={transform(grammar, automaton, table)} />;
 }

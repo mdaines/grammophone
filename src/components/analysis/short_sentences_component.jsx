@@ -4,7 +4,7 @@ import { takeFromIterator } from "../../grammar/sentences.js";
 export const ID = "short_sentences";
 export const TITLE = "Example Sentences";
 
-export default function({ grammar }) {
+export default function ShortSentencesComponent({ grammar }) {
   const { symbolInfo } = grammar.calculations;
   const iterator = grammar.exampleSentences();
   const { values, done } = takeFromIterator(iterator, 10, 1000);

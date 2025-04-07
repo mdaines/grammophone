@@ -4,7 +4,7 @@ import { END } from "../../../grammar/symbols.js";
 export const ID = "ll1_table";
 export const TITLE = "LL(1) Parsing Table";
 
-export default function({ grammar }) {
+export default function LL1TableComponent({ grammar }) {
   const { symbolInfo, ll1Table: table, productions } = grammar.calculations;
 
   return (

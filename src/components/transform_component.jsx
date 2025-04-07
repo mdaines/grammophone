@@ -21,7 +21,7 @@ function TransformPill({ symbol, symbolInfo, productionTransformations, producti
   );
 }
 
-export default function({ grammar, stack, index, undo, redo, apply }) {
+export default function TransformComponent({ grammar, stack, index, undo, redo, apply }) {
   const { allTransformations: transformations, symbolInfo, productions } = grammar.calculations;
   const undoTransformation = index > 0 ? stack[index].transformation : undefined;
   const redoTransformation = index < stack.length - 1 ? stack[index + 1].transformation : undefined;

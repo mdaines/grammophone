@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-export default function({ path }) {
+export default function PathComponent({ path }) {
   const segments = path.map((segment, index) => {
     if (segment.path) {
       return (

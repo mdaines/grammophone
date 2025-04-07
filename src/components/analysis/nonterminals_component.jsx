@@ -3,7 +3,7 @@ import { formatSymbol, formatSymbolList, listSymbols } from "../helpers.js";
 export const ID = "nonterminals";
 export const TITLE = "Nonterminals";
 
-export default function({ grammar }) {
+export default function NonterminalsComponent({ grammar }) {
   const { nullable, endable, first, follow, symbolInfo } = grammar.calculations;
 
   return (

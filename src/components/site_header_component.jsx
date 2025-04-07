@@ -1,4 +1,4 @@
-export default function() {
+export default function SiteHeaderComponent() {
   return (
     <div id="site-header">
       <h1>Grammophone, a context-free grammar checker</h1>

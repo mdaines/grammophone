@@ -12,7 +12,7 @@ function render(src) {
     .catch(error => document.createTextNode(error.toString()));
 }
 
-export default function({ src }) {
+export default function VizComponent({ src }) {
   const containerRef = useRef(null);
 
   useEffect(() => {

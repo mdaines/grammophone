@@ -71,7 +71,7 @@ function formatAmbiguous(ambiguous, info) {
 export const ID = "sanity";
 export const TITLE = "Sanity Checks";
 
-export default function({ grammar }) {
+export default function SanityComponent({ grammar }) {
   const { unreachable, unrealizable, cycle, nullAmbiguity, productions, symbolInfo } = grammar.calculations;
   const ambiguous = grammar.ambiguousSentenceExample;
 
