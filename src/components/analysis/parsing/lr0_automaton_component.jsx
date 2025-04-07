@@ -3,7 +3,7 @@ import AbstractLRAutomatonComponent from "./abstract_lr_automaton_component.jsx"
 export const ID = "lr0_automaton";
 export const TITLE = "LR(0) Automaton";
 
-export default function({ grammar }) {
+export default function LR0AutomatonComponent({ grammar }) {
   return (
     <section id={ID} className="analysis">
       <h2>{TITLE}</h2>

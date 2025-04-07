@@ -89,7 +89,7 @@ const ROUTES = {
   }
 };
 
-export default function({ grammar, path }) {
+export default function AnalysisComponent({ grammar, path }) {
   const route = ROUTES[path];
 
   return (

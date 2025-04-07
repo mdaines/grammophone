@@ -2,7 +2,7 @@ import { useRef } from "react";
 
 let statusTimeout;
 
-export default function({ mode, edit, transform, analyze, copySpecLink }) {
+export default function ModeComponent({ mode, edit, transform, analyze, copySpecLink }) {
   function onChange(e) {
     if (e.target.value === "edit") {
       edit();

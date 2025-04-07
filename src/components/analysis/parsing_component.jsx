@@ -9,7 +9,7 @@ function formatClassification(cs, c, n) {
 export const ID = "parsing";
 export const TITLE = "Parsing Algorithms";
 
-export default function({ grammar }) {
+export default function ParsingComponent({ grammar }) {
   const { classification } = grammar.calculations;
 
   return (

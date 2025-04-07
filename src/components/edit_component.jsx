@@ -1,4 +1,4 @@
-export default function({ spec, specChanged }) {
+export default function EditComponent({ spec, specChanged }) {
   return (
     <div id="edit">
       <div className="spec-wrap">

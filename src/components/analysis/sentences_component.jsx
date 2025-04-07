@@ -54,6 +54,6 @@ class SentencesInternalComponent extends Component {
   }
 }
 
-export default function({ grammar }) {
+export default function SentencesComponent({ grammar }) {
   return <SentencesInternalComponent key={grammar} grammar={grammar} />;
 }

@@ -5,7 +5,7 @@ function isConflict(actions) {
   return (typeof actions.shift === "undefined" ? 0 : 1) + (typeof actions.reduce !== "undefined" ? actions.reduce.length : 0) > 1;
 }
 
-export default function({ grammar, table }) {
+export default function AbstractLRTableComponent({ grammar, table }) {
   const { productions, symbolInfo } = grammar.calculations;
 
   return (

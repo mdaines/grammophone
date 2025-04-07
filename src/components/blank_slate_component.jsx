@@ -20,7 +20,7 @@ function Example({ name, src, loadExample }) {
   );
 }
 
-export default function({ loadExample }) {
+export default function BlankSlateComponent({ loadExample }) {
   return (
     <main id="blank-slate">
       <div className="message">
