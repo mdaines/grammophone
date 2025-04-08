@@ -3,6 +3,7 @@
   border-bottom: 1px solid #bbb;
   background: #ddd;
   display: flex;
+  justify-content: center;
   gap: 8px;
 }
 
