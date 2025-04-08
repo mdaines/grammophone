@@ -1,9 +1,14 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useRef } from "react";
 import { reducer, init } from "./reducer.js";
 import ApplicationComponent from "../components/application_component.jsx";
 
 export default function App({ initialSpec, onResize }) {
   const [state, dispatch] = useReducer(reducer, initialSpec, init);
+  const appRef = useRef(null);
+
+  function handleResize(width) {
+    appRef.current?.style.setProperty("--editor-width", width + "px");
+  }
 
   function onHashChange() {
     let path = window.location.hash.slice(1);
@@ -21,23 +26,25 @@ export default function App({ initialSpec, onResize }) {
   }, []);
 
   return (
-    <ApplicationComponent
-      spec={state.spec}
-      error={state.error}
-      grammar={state.grammar}
-      path={state.path}
-      mode={state.mode}
-      transformStack={state.transformStack}
-      transformIndex={state.transformIndex}
-      updateSpec={(newValue) => { dispatch({ type: "setSpec", spec: newValue }); }}
-      edit={() => dispatch({ type: "edit" })}
-      transform={() => dispatch({ type: "transform" })}
-      analyze={() => dispatch({ type: "analyze" })}
-      undoTransformation={() => { dispatch({ type: "undoTransformation" }); }}
-      redoTransformation={() => { dispatch({ type: "redoTransformation" }); }}
-      applyTransformation={(t) => { dispatch({ type: "applyTransformation", transformation: t }); }}
-      loadExample={(spec) => { dispatch({ type: "loadExample", spec }); }}
-      onResize={onResize}
-    />
+    <div id="app" ref={appRef}>
+      <ApplicationComponent
+        spec={state.spec}
+        error={state.error}
+        grammar={state.grammar}
+        path={state.path}
+        mode={state.mode}
+        transformStack={state.transformStack}
+        transformIndex={state.transformIndex}
+        updateSpec={(newValue) => { dispatch({ type: "setSpec", spec: newValue }); }}
+        edit={() => dispatch({ type: "edit" })}
+        transform={() => dispatch({ type: "transform" })}
+        analyze={() => dispatch({ type: "analyze" })}
+        undoTransformation={() => { dispatch({ type: "undoTransformation" }); }}
+        redoTransformation={() => { dispatch({ type: "redoTransformation" }); }}
+        applyTransformation={(t) => { dispatch({ type: "applyTransformation", transformation: t }); }}
+        loadExample={(spec) => { dispatch({ type: "loadExample", spec }); }}
+        onResize={handleResize}
+      />
+    </div>
   );
 }

@@ -1,4 +1,3 @@
-import SiteHeaderComponent from "./site_header_component.jsx";
 import EditorComponent from "./editor_component.jsx";
 import ResizeComponent from "./resize_component.jsx";
 import AnalysisComponent from "./analysis_component.jsx";
@@ -7,8 +6,6 @@ import BlankSlateComponent from "./blank_slate_component.jsx";
 export default function ApplicationComponent({ spec, updateSpec, mode, edit, transform, analyze, error, grammar, path, transformStack, transformIndex, undoTransformation, redoTransformation, applyTransformation, loadExample, onResize }) {
   return (
     <>
-      <SiteHeaderComponent />
-
       <EditorComponent
         mode={mode}
         edit={edit}
