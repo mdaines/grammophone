@@ -33,7 +33,7 @@ describe("Grammar", function() {
       assert.strictEqual(grammar.toString(), "A -> a .\nA -> b c .\n");
     });
 
-    it("property quotes symbols", function() {
+    it("properly quotes symbols", function() {
       const grammar = new Grammar([["A", "_a2"], ["A", "$t"], ["A", "あ"], ["あ", "\"a\""]]);
 
       assert.strictEqual(grammar.toString(), "A -> _a2 .\nA -> $t .\nA -> \"あ\" .\n\"あ\" -> \"\\\"a\\\"\" .\n");
