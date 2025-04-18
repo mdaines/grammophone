@@ -6,6 +6,8 @@ describe("quoteSymbol", function() {
     assert.strictEqual(quoteSymbol("A"), "A");
     assert.strictEqual(quoteSymbol("_a2"), "_a2");
     assert.strictEqual(quoteSymbol("$a"), "$a");
+    assert.strictEqual(quoteSymbol("\""), `"\\""`);
+    assert.strictEqual(quoteSymbol("'"), `"'"`);
     assert.strictEqual(quoteSymbol("あ"), `"あ"`);
     assert.strictEqual(quoteSymbol("\n"), `"\\n"`);
     assert.strictEqual(quoteSymbol("\0"), `"\\u0000"`);
