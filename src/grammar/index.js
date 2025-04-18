@@ -1,15 +1,6 @@
 import { makeCalculationsMemo } from "./calculations_memo.js";
 import { makeSentencesIterator, ambiguousSentenceExample } from "./sentences.js";
-
-const UNQUOTED_SYMBOL_PATTERN = /^[A-Za-z_$][A-Za-z_$0-9]*$/;
-
-function quoteSymbol(s) {
-  if (s.match(UNQUOTED_SYMBOL_PATTERN)) {
-    return s;
-  } else {
-    return "\"" + s.replaceAll("\"", "\\\"") + "\"";
-  }
-}
+import { quoteSymbol } from "./symbols.js";
 
 export default class Grammar {
   constructor(productions) {

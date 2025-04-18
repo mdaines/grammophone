@@ -33,10 +33,10 @@ describe("Grammar", function() {
       assert.strictEqual(grammar.toString(), "A -> a .\nA -> b c .\n");
     });
 
-    it("properly quotes symbols", function() {
-      const grammar = new Grammar([["A", "_a2"], ["A", "$t"], ["A", "あ"], ["あ", "\"a\""]]);
+    it("quotes symbols if necessary", function() {
+      const grammar = new Grammar([["A", "_a2"], ["A", "$t"], ["A", "あ"], ["あ", "\"a\""], ["A", "\n\u0000©"]]);
 
-      assert.strictEqual(grammar.toString(), "A -> _a2 .\nA -> $t .\nA -> \"あ\" .\n\"あ\" -> \"\\\"a\\\"\" .\n");
+      assert.strictEqual(grammar.toString(), "A -> _a2 .\nA -> $t .\nA -> \"あ\" .\n\"あ\" -> \"\\\"a\\\"\" .\nA -> \"\\n\\u0000©\" .\n");
     });
   });
 });
