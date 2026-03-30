@@ -1,4 +1,4 @@
-import { fillArray, formatSymbol, formatProduction } from "../../helpers.js";
+import { formatSymbol, formatProduction } from "../../helpers.js";
 import { END } from "../../../grammar/symbols.js";
 
 function isConflict(actions) {

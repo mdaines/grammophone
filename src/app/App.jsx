@@ -2,7 +2,7 @@ import { useReducer, useEffect, useRef } from "react";
 import { reducer, init } from "./reducer.js";
 import ApplicationComponent from "../components/application_component.jsx";
 
-export default function App({ initialSpec, onResize }) {
+export default function App({ initialSpec }) {
   const [state, dispatch] = useReducer(reducer, initialSpec, init);
   const appRef = useRef(null);
 

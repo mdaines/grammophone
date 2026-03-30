@@ -1,4 +1,4 @@
-import { fillArray, formatSymbol, formatProduction } from "../../helpers.js";
+import { formatSymbol, formatProduction } from "../../helpers.js";
 import { END } from "../../../grammar/symbols.js";
 
 export const ID = "ll1_table";

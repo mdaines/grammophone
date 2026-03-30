@@ -16,7 +16,7 @@ export default function ModeComponent({ mode, edit, transform, analyze, copySpec
       copyButtonRef.current?.classList.add("show-status");
 
       clearTimeout(statusTimeout);
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         statusTimeout = setTimeout(resolve, 1000);
       });
     })

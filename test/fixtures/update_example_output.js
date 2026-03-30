@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 import Grammar from "../../src/grammar/index.js";
 import exampleGrammars from "./example_grammars.js";
 import fs from "node:fs";
