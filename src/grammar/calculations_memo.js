@@ -10,7 +10,10 @@ export function makeCalculationsMemo(productions) {
       configurable: true,
       enumerable: true,
       get() {
-        Object.defineProperty(this, k, { value: Calculations[k](this), enumerable: true });
+        Object.defineProperty(this, k, {
+          value: Calculations[k](this),
+          enumerable: true
+        });
         return this[k];
       }
     });

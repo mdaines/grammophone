@@ -17,7 +17,8 @@ for (let exampleName of exampleNames) {
   let calculationNames = Object.keys(grammar.calculations).sort();
 
   for (let calculationName of calculationNames) {
-    output[exampleName][calculationName] = grammar.calculations[calculationName];
+    output[exampleName][calculationName] =
+      grammar.calculations[calculationName];
   }
 }
 

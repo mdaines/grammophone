@@ -2,9 +2,9 @@ import { bareFormatSymbol, formatSymbol } from "../src/components/helpers.js";
 import { END } from "../src/grammar/symbols.js";
 import assert from "node:assert/strict";
 
-describe("helpers", function() {
-  describe("formatSymbol", function() {
-    it("formats END as $", function() {
+describe("helpers", function () {
+  describe("formatSymbol", function () {
+    it("formats END as $", function () {
       let info = {
         terminals: new Set(),
         nonterminals: new Set()
@@ -16,7 +16,7 @@ describe("helpers", function() {
       assert.deepStrictEqual(output.props, { children: "$" });
     });
 
-    it("formats whitespace characters", function() {
+    it("formats whitespace characters", function () {
       let info = {
         terminals: new Set([" "]),
         nonterminals: new Set()
@@ -31,22 +31,24 @@ describe("helpers", function() {
       assert.strictEqual(output.props.children[1].props.children[0], "␣");
     });
 
-    it("refuses to format an unknown symbol", function() {
+    it("refuses to format an unknown symbol", function () {
       let info = {
         terminals: new Set(),
         nonterminals: new Set()
       };
 
-      assert.throws(function() { formatSymbol("x", info); });
+      assert.throws(function () {
+        formatSymbol("x", info);
+      });
     });
   });
 
-  describe("bareFormatSymbol", function() {
-    it("formats END as $", function() {
+  describe("bareFormatSymbol", function () {
+    it("formats END as $", function () {
       assert.deepStrictEqual(bareFormatSymbol(END, {}), "$");
     });
 
-    it("escapes HTML", function() {
+    it("escapes HTML", function () {
       let info = {
         terminals: new Set(["&"]),
         nonterminals: new Set()
@@ -55,7 +57,7 @@ describe("helpers", function() {
       assert.deepStrictEqual(bareFormatSymbol("&", info), "&amp;");
     });
 
-    it("formats whitespace characters", function() {
+    it("formats whitespace characters", function () {
       let info = {
         terminals: new Set([" "]),
         nonterminals: new Set()
@@ -64,7 +66,7 @@ describe("helpers", function() {
       assert.deepStrictEqual(bareFormatSymbol(" ", info), "␣");
     });
 
-    it("double escapes other nonprinting characters", function() {
+    it("double escapes other nonprinting characters", function () {
       let info = {
         terminals: new Set(["\n", "\\"]),
         nonterminals: new Set()
@@ -74,13 +76,15 @@ describe("helpers", function() {
       assert.deepStrictEqual(bareFormatSymbol("\\", info), "\\\\");
     });
 
-    it("refuses to format an unknown symbol", function() {
+    it("refuses to format an unknown symbol", function () {
       let info = {
         terminals: new Set(),
         nonterminals: new Set()
       };
 
-      assert.throws(function() { bareFormatSymbol("x", info); });
+      assert.throws(function () {
+        bareFormatSymbol("x", info);
+      });
     });
   });
 });

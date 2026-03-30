@@ -4,7 +4,11 @@ import VizComponent from "./viz_component.jsx";
 
 function isConflict(state) {
   for (const s in state) {
-    if ((typeof state[s].shift === "undefined" ? 0 : 1) + (typeof state[s].reduce !== "undefined" ? state[s].reduce.length : 0) > 1) {
+    if (
+      (typeof state[s].shift === "undefined" ? 0 : 1) +
+        (typeof state[s].reduce !== "undefined" ? state[s].reduce.length : 0) >
+      1
+    ) {
       return true;
     }
   }
@@ -46,7 +50,11 @@ function transform(grammar, automaton, table) {
   };
 }
 
-export default function AbstractLRAutomatonComponent({ grammar, automaton, table }) {
+export default function AbstractLRAutomatonComponent({
+  grammar,
+  automaton,
+  table
+}) {
   return <VizComponent src={transform(grammar, automaton, table)} />;
 }
 

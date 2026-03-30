@@ -6,7 +6,21 @@ import ModeComponent from "./mode_component.jsx";
 import TransformComponent from "./transform_component.jsx";
 import { copySpecLink } from "../app/spec_links.js";
 
-export default function EditorComponent({ spec, updateSpec, mode, edit, transform, analyze, error, grammar, transformStack, transformIndex, undoTransformation, redoTransformation, applyTransformation }) {
+export default function EditorComponent({
+  spec,
+  updateSpec,
+  mode,
+  edit,
+  transform,
+  analyze,
+  error,
+  grammar,
+  transformStack,
+  transformIndex,
+  undoTransformation,
+  redoTransformation,
+  applyTransformation
+}) {
   return (
     <div id="editor">
       <ModeComponent
@@ -19,11 +33,18 @@ export default function EditorComponent({ spec, updateSpec, mode, edit, transfor
 
       {error ? <ErrorComponent error={error} /> : []}
 
-      {
-        mode == "edit" ?
-          <EditComponent spec={spec} specChanged={updateSpec} /> :
-          <TransformComponent grammar={grammar} stack={transformStack} index={transformIndex} undo={undoTransformation} redo={redoTransformation} apply={applyTransformation} />
-      }
+      {mode == "edit" ? (
+        <EditComponent spec={spec} specChanged={updateSpec} />
+      ) : (
+        <TransformComponent
+          grammar={grammar}
+          stack={transformStack}
+          index={transformIndex}
+          undo={undoTransformation}
+          redo={redoTransformation}
+          apply={applyTransformation}
+        />
+      )}
     </div>
   );
 }

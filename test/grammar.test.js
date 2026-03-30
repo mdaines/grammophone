@@ -1,42 +1,75 @@
 import Grammar from "../src/grammar/index.js";
 import assert from "node:assert/strict";
 
-describe("Grammar", function() {
-  describe("constructor", function() {
-    it("validates productions", function() {
-      assert.throws(function() { new Grammar({ a: "1" }); });
-      assert.throws(function() { new Grammar([{ a: "1" }]); });
-      assert.throws(function() { new Grammar([[123]]); });
-      assert.throws(function() { new Grammar([["A", "Grammar.END"]]); });
-      assert.throws(function() { new Grammar([["A", ""]]); });
-      assert.throws(function() { new Grammar([[]]); });
-      assert.throws(function() { new Grammar([]); });
+describe("Grammar", function () {
+  describe("constructor", function () {
+    it("validates productions", function () {
+      assert.throws(function () {
+        new Grammar({ a: "1" });
+      });
+      assert.throws(function () {
+        new Grammar([{ a: "1" }]);
+      });
+      assert.throws(function () {
+        new Grammar([[123]]);
+      });
+      assert.throws(function () {
+        new Grammar([["A", "Grammar.END"]]);
+      });
+      assert.throws(function () {
+        new Grammar([["A", ""]]);
+      });
+      assert.throws(function () {
+        new Grammar([[]]);
+      });
+      assert.throws(function () {
+        new Grammar([]);
+      });
 
-      assert.doesNotThrow(function() { new Grammar([["A"]]); });
-      assert.doesNotThrow(function() { new Grammar([["A", "a"]]); });
+      assert.doesNotThrow(function () {
+        new Grammar([["A"]]);
+      });
+      assert.doesNotThrow(function () {
+        new Grammar([["A", "a"]]);
+      });
     });
   });
 
-  describe("calculations", function() {
-    it("returns an object with memoized calculation getters", function() {
+  describe("calculations", function () {
+    it("returns an object with memoized calculation getters", function () {
       const grammar = new Grammar([["A", "a"]]);
 
       assert.deepStrictEqual(grammar.calculations.symbols, new Set(["A", "a"]));
-      assert.deepStrictEqual(Object.getOwnPropertyDescriptor(grammar.calculations, "symbols").value, new Set(["A", "a"]));
+      assert.deepStrictEqual(
+        Object.getOwnPropertyDescriptor(grammar.calculations, "symbols").value,
+        new Set(["A", "a"])
+      );
     });
   });
 
-  describe("toString", function() {
-    it("returns a string representing the grammar", function() {
-      const grammar = new Grammar([["A", "a"], ["A", "b", "c"]]);
+  describe("toString", function () {
+    it("returns a string representing the grammar", function () {
+      const grammar = new Grammar([
+        ["A", "a"],
+        ["A", "b", "c"]
+      ]);
 
       assert.strictEqual(grammar.toString(), "A -> a .\nA -> b c .\n");
     });
 
-    it("quotes symbols if necessary", function() {
-      const grammar = new Grammar([["A", "_a2"], ["A", "$t"], ["A", "あ"], ["あ", "\"a\""], ["A", "\n\u0000©"]]);
+    it("quotes symbols if necessary", function () {
+      const grammar = new Grammar([
+        ["A", "_a2"],
+        ["A", "$t"],
+        ["A", "あ"],
+        ["あ", '"a"'],
+        ["A", "\n\u0000©"]
+      ]);
 
-      assert.strictEqual(grammar.toString(), "A -> _a2 .\nA -> $t .\nA -> \"あ\" .\n\"あ\" -> \"\\\"a\\\"\" .\nA -> \"\\n\\u0000©\" .\n");
+      assert.strictEqual(
+        grammar.toString(),
+        'A -> _a2 .\nA -> $t .\nA -> "あ" .\n"あ" -> "\\"a\\"" .\nA -> "\\n\\u0000©" .\n'
+      );
     });
   });
 });

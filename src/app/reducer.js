@@ -3,18 +3,15 @@ import parser from "../parser/index.js";
 
 export function reducer(state, action) {
   switch (action.type) {
-  case "setSpec":
-    {
+    case "setSpec": {
       return { ...state, spec: action.spec };
     }
 
-  case "setPath":
-    {
+    case "setPath": {
       return { ...state, path: action.path };
     }
 
-  case "analyze":
-    {
+    case "analyze": {
       const { productions, error } = parser(state.spec);
 
       if (error) {
@@ -23,20 +20,27 @@ export function reducer(state, action) {
         return { ...state, grammar: undefined, error: undefined };
       } else {
         try {
-          return { ...state, grammar: new Grammar(productions), error: undefined };
+          return {
+            ...state,
+            grammar: new Grammar(productions),
+            error: undefined
+          };
         } catch (error) {
           return { ...state, error };
         }
       }
     }
 
-  case "edit":
-    {
-      return { ...state, mode: "edit", transformStack: undefined, transformIndex: undefined };
+    case "edit": {
+      return {
+        ...state,
+        mode: "edit",
+        transformStack: undefined,
+        transformIndex: undefined
+      };
     }
 
-  case "transform":
-    {
+    case "transform": {
       const { productions, error } = parser(state.spec);
 
       if (error) {
@@ -61,15 +65,16 @@ export function reducer(state, action) {
       }
     }
 
-  case "applyTransformation":
-    {
+    case "applyTransformation": {
       const item = {
         grammar: state.grammar.transform(action.transformation),
         transformation: action.transformation
       };
 
       const transformIndex = state.transformIndex + 1;
-      const transformStack = state.transformStack.slice(0, transformIndex).concat(item);
+      const transformStack = state.transformStack
+        .slice(0, transformIndex)
+        .concat(item);
 
       return {
         ...state,
@@ -77,11 +82,10 @@ export function reducer(state, action) {
         spec: item.grammar.toString(),
         transformIndex,
         transformStack
-      }
+      };
     }
 
-  case "undoTransformation":
-    {
+    case "undoTransformation": {
       if (state.transformIndex > 0) {
         const transformIndex = state.transformIndex - 1;
         const grammar = state.transformStack[transformIndex].grammar;
@@ -93,8 +97,7 @@ export function reducer(state, action) {
       }
     }
 
-  case "redoTransformation":
-    {
+    case "redoTransformation": {
       if (state.transformIndex < state.transformStack.length - 1) {
         const transformIndex = state.transformIndex + 1;
         const grammar = state.transformStack[transformIndex].grammar;
@@ -106,15 +109,19 @@ export function reducer(state, action) {
       }
     }
 
-  case "loadExample":
-    {
+    case "loadExample": {
       const { productions, error } = parser(action.spec);
 
       if (error) {
         throw `Unexpected error loading example: ${error}`;
       }
 
-      return { ...state, spec: action.spec, grammar: new Grammar(productions), error: undefined };
+      return {
+        ...state,
+        spec: action.spec,
+        grammar: new Grammar(productions),
+        error: undefined
+      };
     }
   }
 

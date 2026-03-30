@@ -1,7 +1,10 @@
 import { getNewSymbol } from "./helpers.js";
 
-function removeImmediateLeftRecursion({ productions, symbols }, base, recursive) {
-
+function removeImmediateLeftRecursion(
+  { productions, symbols },
+  base,
+  recursive
+) {
   var i, j;
   var production;
 
@@ -17,9 +20,7 @@ function removeImmediateLeftRecursion({ productions, symbols }, base, recursive)
   var offset = 0;
 
   for (i = 0; i < productions.length; i++) {
-
     if (base.indexOf(i) !== -1 || recursive.indexOf(i) !== -1) {
-
       changes.push({ index: i + offset, operation: "delete" });
       offset--;
 
@@ -27,7 +28,6 @@ function removeImmediateLeftRecursion({ productions, symbols }, base, recursive)
         first = i;
       }
     }
-
   }
 
   // Create the new productions...
@@ -37,7 +37,6 @@ function removeImmediateLeftRecursion({ productions, symbols }, base, recursive)
   // Base rules
 
   for (i = 0; i < base.length; i++) {
-
     production = [];
 
     for (j = 0; j < productions[base[i]].length; j++) {
@@ -46,15 +45,17 @@ function removeImmediateLeftRecursion({ productions, symbols }, base, recursive)
 
     production.push(symbol);
 
-    changes.push({ production: production, operation: "insert", index: first + offset });
+    changes.push({
+      production: production,
+      operation: "insert",
+      index: first + offset
+    });
     offset++;
-
   }
 
   // Recursive rules
 
   for (i = 0; i < recursive.length; i++) {
-
     production = [];
 
     production.push(symbol);
@@ -65,21 +66,26 @@ function removeImmediateLeftRecursion({ productions, symbols }, base, recursive)
 
     production.push(symbol);
 
-    changes.push({ production: production, operation: "insert", index: first + offset });
+    changes.push({
+      production: production,
+      operation: "insert",
+      index: first + offset
+    });
     offset++;
-
   }
 
   // Epsilon
 
-  changes.push({ production: [symbol], operation: "insert", index: first + offset });
+  changes.push({
+    production: [symbol],
+    operation: "insert",
+    index: first + offset
+  });
 
   return changes;
-
 }
 
-export default function({ productions, nonterminals, symbols }) {
-
+export default function ({ productions, nonterminals, symbols }) {
   var i;
 
   var result = [];
@@ -108,20 +114,19 @@ export default function({ productions, nonterminals, symbols }) {
   }
 
   for (nt in candidates) {
-
     if (candidates[nt].recursive.length > 0 && candidates[nt].base.length > 0) {
-
       result.push({
         name: "removeImmediateLeftRecursion",
         production: candidates[nt].recursive[0],
         symbol: 0,
-        changes: removeImmediateLeftRecursion({ productions, symbols }, candidates[nt].base, candidates[nt].recursive)
+        changes: removeImmediateLeftRecursion(
+          { productions, symbols },
+          candidates[nt].base,
+          candidates[nt].recursive
+        )
       });
-
     }
-
   }
 
   return result;
-
 }

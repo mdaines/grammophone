@@ -21,7 +21,10 @@ class SentencesInternalComponent extends Component {
 
   more() {
     const { values, done } = takePage(this.state.iterator);
-    const sentences = { values: this.state.sentences.values.concat(values), done };
+    const sentences = {
+      values: this.state.sentences.values.concat(values),
+      done
+    };
 
     this.setState({ ...this.state, sentences });
   }
@@ -36,11 +39,9 @@ class SentencesInternalComponent extends Component {
     } else {
       examples = (
         <ul className="symbols">
-          {
-            this.state.sentences.values.map((sentence, index) => {
-              return <li key={index}>{formatSentence(sentence, symbolInfo)}</li>;
-            })
-          }
+          {this.state.sentences.values.map((sentence, index) => {
+            return <li key={index}>{formatSentence(sentence, symbolInfo)}</li>;
+          })}
         </ul>
       );
     }
@@ -49,7 +50,16 @@ class SentencesInternalComponent extends Component {
       <section id={ID} className="analysis">
         <h2>{TITLE}</h2>
         {examples}
-        <p><button disabled={this.state.done} onClick={() => { this.more(); }}>{"Generate more sentences"}</button></p>
+        <p>
+          <button
+            disabled={this.state.done}
+            onClick={() => {
+              this.more();
+            }}
+          >
+            {"Generate more sentences"}
+          </button>
+        </p>
       </section>
     );
   }

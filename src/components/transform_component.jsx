@@ -2,21 +2,26 @@ import PropTypes from "prop-types";
 import { formatTransformation, formatSymbol } from "./helpers.js";
 import { Fragment } from "react";
 
-function TransformPill({ symbol, symbolInfo, productionTransformations, productions }) {
+function TransformPill({
+  symbol,
+  symbolInfo,
+  productionTransformations,
+  productions
+}) {
   return (
     <span className="pill">
       {formatSymbol(symbol, symbolInfo)}
       <select value="symbol" readOnly>
-        <option disabled={true} value="symbol">{symbol}</option>
-        {
-          productionTransformations.map(function(t, index) {
-            return (
-              <option key={index} value={t.index}>
-                {formatTransformation(t.transformation, productions, symbolInfo)}
-              </option>
-            );
-          })
-        }
+        <option disabled={true} value="symbol">
+          {symbol}
+        </option>
+        {productionTransformations.map(function (t, index) {
+          return (
+            <option key={index} value={t.index}>
+              {formatTransformation(t.transformation, productions, symbolInfo)}
+            </option>
+          );
+        })}
       </select>
     </span>
   );
@@ -29,10 +34,23 @@ TransformPill.propTypes = {
   productions: PropTypes.array.isRequired
 };
 
-export default function TransformComponent({ grammar, stack, index, undo, redo, apply }) {
-  const { allTransformations: transformations, symbolInfo, productions } = grammar.calculations;
-  const undoTransformation = index > 0 ? stack[index].transformation : undefined;
-  const redoTransformation = index < stack.length - 1 ? stack[index + 1].transformation : undefined;
+export default function TransformComponent({
+  grammar,
+  stack,
+  index,
+  undo,
+  redo,
+  apply
+}) {
+  const {
+    allTransformations: transformations,
+    symbolInfo,
+    productions
+  } = grammar.calculations;
+  const undoTransformation =
+    index > 0 ? stack[index].transformation : undefined;
+  const redoTransformation =
+    index < stack.length - 1 ? stack[index + 1].transformation : undefined;
 
   const productionTransformations = [];
 
@@ -45,7 +63,9 @@ export default function TransformComponent({ grammar, stack, index, undo, redo, 
 
   for (let i = 0; i < transformations.length; i++) {
     let transformation = transformations[i];
-    productionTransformations[transformation.production][transformation.symbol].push({
+    productionTransformations[transformation.production][
+      transformation.symbol
+    ].push({
       index: i,
       transformation: transformation
     });
@@ -55,7 +75,12 @@ export default function TransformComponent({ grammar, stack, index, undo, redo, 
 
   if (typeof undoTransformation !== "undefined") {
     undoButton = (
-      <button className="undo" onClick={() => { undo(); }}>
+      <button
+        className="undo"
+        onClick={() => {
+          undo();
+        }}
+      >
         {"Undo "}
         {formatTransformation(undoTransformation, productions, symbolInfo)}
       </button>
@@ -64,7 +89,12 @@ export default function TransformComponent({ grammar, stack, index, undo, redo, 
 
   if (typeof redoTransformation !== "undefined") {
     redoButton = (
-      <button className="redo" onClick={() => { redo(); }}>
+      <button
+        className="redo"
+        onClick={() => {
+          redo();
+        }}
+      >
         {"Redo "}
         {formatTransformation(redoTransformation, productions, symbolInfo)}
       </button>
@@ -78,48 +108,56 @@ export default function TransformComponent({ grammar, stack, index, undo, redo, 
         {redoButton}
       </div>
 
-      <table className="symbols productions" onChange={(e) => { apply(transformations[parseInt(e.target.value)]); }}>
+      <table
+        className="symbols productions"
+        onChange={e => {
+          apply(transformations[parseInt(e.target.value)]);
+        }}
+      >
         <tbody>
-          {
-            productions.map(function(production, i) {
-              let result = [];
+          {productions.map(function (production, i) {
+            let result = [];
 
-              production.forEach(function(symbol, j) {
-                let symbolElement;
+            production.forEach(function (symbol, j) {
+              let symbolElement;
 
-                if (productionTransformations[i][j].length > 0) {
-                  symbolElement = <TransformPill symbol={symbol} symbolInfo={symbolInfo} productionTransformations={productionTransformations[i][j]} productions={productions} />;
-                } else {
-                  symbolElement = formatSymbol(symbol, symbolInfo);
-                }
-
-                result.push(
-                  <Fragment key={"s"+j}>
-                    {j > 0 ? " " : null}
-                    {symbolElement}
-                    {j === 0 ? " \u2192" : null}
-                  </Fragment>
-                )
-              });
-
-              if (production.length === 1) {
-                result.push(
-                  <Fragment key="epsilon">
-                    {" "}
-                    <u>{"\u03B5"}</u>
-                  </Fragment>
+              if (productionTransformations[i][j].length > 0) {
+                symbolElement = (
+                  <TransformPill
+                    symbol={symbol}
+                    symbolInfo={symbolInfo}
+                    productionTransformations={productionTransformations[i][j]}
+                    productions={productions}
+                  />
                 );
+              } else {
+                symbolElement = formatSymbol(symbol, symbolInfo);
               }
 
-              return (
-                <tr key={i}>
-                  <td>
-                    {result}
-                  </td>
-                </tr>
+              result.push(
+                <Fragment key={"s" + j}>
+                  {j > 0 ? " " : null}
+                  {symbolElement}
+                  {j === 0 ? " \u2192" : null}
+                </Fragment>
               );
-            })
-          }
+            });
+
+            if (production.length === 1) {
+              result.push(
+                <Fragment key="epsilon">
+                  {" "}
+                  <u>{"\u03B5"}</u>
+                </Fragment>
+              );
+            }
+
+            return (
+              <tr key={i}>
+                <td>{result}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

@@ -5,4 +5,8 @@ import { getURLSearchParamSpec } from "./spec_links.js";
 
 const initialSpec = getURLSearchParamSpec(window.location.search);
 const root = createRoot(document.getElementById("root"));
-root.render(<StrictMode><App initialSpec={initialSpec} /></StrictMode>);
+root.render(
+  <StrictMode>
+    <App initialSpec={initialSpec} />
+  </StrictMode>
+);

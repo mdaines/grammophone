@@ -17,17 +17,19 @@ export default function ShortSentencesComponent({ grammar }) {
   } else {
     examples = (
       <ul className="symbols">
-        {
-          values.map(function(sentence, index) {
-            return <li key={index}>{formatSentence(sentence, symbolInfo)}</li>;
-          })
-        }
+        {values.map(function (sentence, index) {
+          return <li key={index}>{formatSentence(sentence, symbolInfo)}</li>;
+        })}
       </ul>
     );
   }
 
   if (!done) {
-    link = <p><a href="#/sentences">{"More example sentences"}</a></p>;
+    link = (
+      <p>
+        <a href="#/sentences">{"More example sentences"}</a>
+      </p>
+    );
   }
 
   return (

@@ -1,7 +1,7 @@
 import * as SetOperations from "../../../../set_operations.js";
 import { getFirst } from "../helpers.js";
 
-export default function(calculations) {
+export default function (calculations) {
   const { nullAmbiguity, cycle } = calculations;
 
   var i, k, l, s;
@@ -19,7 +19,8 @@ export default function(calculations) {
     return { member: false, reason: "it contains a cycle" };
   }
 
-  const { productions, first, follow, terminals, nonterminals, nullable } = calculations;
+  const { productions, first, follow, terminals, nonterminals, nullable } =
+    calculations;
 
   // Check for first set clashes. Instead of checking intersections of
   // first sets of all productions alpha_i for a given nonterminal A,
@@ -31,17 +32,14 @@ export default function(calculations) {
   var table = {};
 
   for (k of nonterminals) {
-
     table[k] = {};
 
     for (l of terminals) {
       table[k][l] = false;
     }
-
   }
 
   for (i = 0; i < productions.length; i++) {
-
     head = productions[i][0];
     body = productions[i].slice(1);
 
@@ -54,19 +52,18 @@ export default function(calculations) {
 
       table[head][s] = true;
     }
-
   }
 
   // Check for first/follow set clashes. That is, check that every nullable
   // production has disjoint first and follow sets.
 
   for (k of nullable) {
-    if (SetOperations.any(SetOperations.intersection(first.get(k), follow.get(k)))) {
+    if (
+      SetOperations.any(SetOperations.intersection(first.get(k), follow.get(k)))
+    ) {
       return { member: false, reason: "it contains a first/follow set clash" };
     }
-
   }
 
   return { member: true };
-
 }

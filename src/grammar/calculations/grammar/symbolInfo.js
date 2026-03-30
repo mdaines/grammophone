@@ -1,5 +1,4 @@
-export default function({ productions, nonterminals, terminals }) {
-
+export default function ({ productions, nonterminals, terminals }) {
   var i, j, s;
 
   var terminalOrder = [];
@@ -7,7 +6,6 @@ export default function({ productions, nonterminals, terminals }) {
   var productionOrder = [];
 
   for (i = 0; i < productions.length; i++) {
-
     s = productions[i][0];
 
     if (productionOrder.indexOf(s) === -1) {
@@ -15,7 +13,6 @@ export default function({ productions, nonterminals, terminals }) {
     }
 
     for (j = 0; j < productions[i].length; j++) {
-
       s = productions[i][j];
 
       if (nonterminals.has(s) && nonterminalOrder.indexOf(s) === -1) {
@@ -25,9 +22,7 @@ export default function({ productions, nonterminals, terminals }) {
       if (terminals.has(s) && terminalOrder.indexOf(s) === -1) {
         terminalOrder.push(s);
       }
-
     }
-
   }
 
   return {
@@ -38,5 +33,4 @@ export default function({ productions, nonterminals, terminals }) {
     nonterminals: nonterminals,
     terminals: terminals
   };
-
 }

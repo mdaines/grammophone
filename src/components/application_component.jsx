@@ -4,7 +4,24 @@ import ResizeComponent from "./resize_component.jsx";
 import AnalysisComponent from "./analysis_component.jsx";
 import BlankSlateComponent from "./blank_slate_component.jsx";
 
-export default function ApplicationComponent({ spec, updateSpec, mode, edit, transform, analyze, error, grammar, path, transformStack, transformIndex, undoTransformation, redoTransformation, applyTransformation, loadExample, onResize }) {
+export default function ApplicationComponent({
+  spec,
+  updateSpec,
+  mode,
+  edit,
+  transform,
+  analyze,
+  error,
+  grammar,
+  path,
+  transformStack,
+  transformIndex,
+  undoTransformation,
+  redoTransformation,
+  applyTransformation,
+  loadExample,
+  onResize
+}) {
   return (
     <>
       <EditorComponent
@@ -20,15 +37,16 @@ export default function ApplicationComponent({ spec, updateSpec, mode, edit, tra
         transformIndex={transformIndex}
         undoTransformation={undoTransformation}
         redoTransformation={redoTransformation}
-        applyTransformation={applyTransformation} />
+        applyTransformation={applyTransformation}
+      />
 
       <ResizeComponent onResize={onResize} />
 
-      {
-        grammar ?
-          <AnalysisComponent grammar={grammar} path={path} /> :
-          <BlankSlateComponent loadExample={loadExample} />
-      }
+      {grammar ? (
+        <AnalysisComponent grammar={grammar} path={path} />
+      ) : (
+        <BlankSlateComponent loadExample={loadExample} />
+      )}
     </>
   );
 }

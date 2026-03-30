@@ -2,8 +2,8 @@ import * as Calculations from "../../../src/grammar/calculations/index.js";
 import Grammar from "../../../src/grammar/index.js";
 import assert from "node:assert/strict";
 
-describe("immutability", function() {
-  it("calling a calculation should not modify the results of another", function() {
+describe("immutability", function () {
+  it("calling a calculation should not modify the results of another", function () {
     const keys = Object.keys(Calculations);
 
     for (const k1 of keys) {
@@ -20,7 +20,11 @@ describe("immutability", function() {
         const k2Result = structuredClone(grammar.calculations[k2]); // eslint-disable-line no-unused-vars
         const k1Result2 = structuredClone(grammar.calculations[k1]);
 
-        assert.deepStrictEqual(k1Result, k1Result2, `Calculations not immutable when calling ${k1} then ${k2}`);
+        assert.deepStrictEqual(
+          k1Result,
+          k1Result2,
+          `Calculations not immutable when calling ${k1} then ${k2}`
+        );
       }
     }
   });

@@ -1,7 +1,6 @@
 import { getNewSymbol } from "./helpers.js";
 
 function epsilonSeparate({ productions, symbols }, group, epsilon) {
-
   var i;
 
   // Find a new symbol...
@@ -14,12 +13,10 @@ function epsilonSeparate({ productions, symbols }, group, epsilon) {
   var offset = 0;
 
   for (i = 0; i < productions.length; i++) {
-
     if (group.indexOf(i) !== -1 || i === epsilon) {
       changes.push({ index: i + offset, operation: "delete" });
       offset--;
     }
-
   }
 
   // Add the separated version of the original rule
@@ -47,11 +44,9 @@ function epsilonSeparate({ productions, symbols }, group, epsilon) {
   }
 
   return changes;
-
 }
 
-export default function({ productions, symbols, nonterminals }) {
-
+export default function ({ productions, symbols, nonterminals }) {
   var nt, i;
   var result = [];
   var group;
@@ -62,14 +57,11 @@ export default function({ productions, symbols, nonterminals }) {
   // production. If it is unambiguously nullable, add it to the result.
 
   for (nt of nonterminals) {
-
     group = [];
     epsilon = -1;
 
     for (i = 0; i < productions.length; i++) {
-
       if (productions[i][0] === nt) {
-
         if (productions[i].length === 1) {
           if (epsilon !== -1) {
             break;
@@ -78,24 +70,18 @@ export default function({ productions, symbols, nonterminals }) {
         } else {
           group.push(i);
         }
-
       }
-
     }
 
     if (i === productions.length && group.length > 0 && epsilon !== -1) {
-
       result.push({
         name: "epsilonSeparate",
         production: group[0],
         symbol: 0,
         changes: epsilonSeparate({ productions, symbols }, group, epsilon)
       });
-
     }
-
   }
 
   return result;
-
 }

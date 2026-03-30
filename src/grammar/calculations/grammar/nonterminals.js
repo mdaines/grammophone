@@ -1,4 +1,4 @@
-export default function({ productions }) {
+export default function ({ productions }) {
   let result = new Set();
 
   for (let production of productions) {

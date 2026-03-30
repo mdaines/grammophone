@@ -36,14 +36,24 @@ export default function App({ initialSpec }) {
         mode={state.mode}
         transformStack={state.transformStack}
         transformIndex={state.transformIndex}
-        updateSpec={(newValue) => { dispatch({ type: "setSpec", spec: newValue }); }}
+        updateSpec={newValue => {
+          dispatch({ type: "setSpec", spec: newValue });
+        }}
         edit={() => dispatch({ type: "edit" })}
         transform={() => dispatch({ type: "transform" })}
         analyze={() => dispatch({ type: "analyze" })}
-        undoTransformation={() => { dispatch({ type: "undoTransformation" }); }}
-        redoTransformation={() => { dispatch({ type: "redoTransformation" }); }}
-        applyTransformation={(t) => { dispatch({ type: "applyTransformation", transformation: t }); }}
-        loadExample={(spec) => { dispatch({ type: "loadExample", spec }); }}
+        undoTransformation={() => {
+          dispatch({ type: "undoTransformation" });
+        }}
+        redoTransformation={() => {
+          dispatch({ type: "redoTransformation" });
+        }}
+        applyTransformation={t => {
+          dispatch({ type: "applyTransformation", transformation: t });
+        }}
+        loadExample={spec => {
+          dispatch({ type: "loadExample", spec });
+        }}
         onResize={handleResize}
       />
     </div>

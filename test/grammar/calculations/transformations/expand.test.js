@@ -1,12 +1,9 @@
 import Grammar from "../../../../src/grammar/index.js";
 import assert from "node:assert/strict";
 
-describe("expandTransformation", function() {
-  it("returns the expected result", function() {
-    const grammar = new Grammar([
-      ["A", "A", "a"],
-      ["A"]
-    ]);
+describe("expandTransformation", function () {
+  it("returns the expected result", function () {
+    const grammar = new Grammar([["A", "A", "a"], ["A"]]);
 
     assert.deepStrictEqual(grammar.calculations.expandTransformation, [
       {
@@ -21,12 +18,12 @@ describe("expandTransformation", function() {
           {
             operation: "insert",
             index: 0,
-            production: ["A", "A", "a", "a"],
+            production: ["A", "A", "a", "a"]
           },
           {
             operation: "insert",
             index: 1,
-            production: ["A", "a"],
+            production: ["A", "a"]
           }
         ]
       }

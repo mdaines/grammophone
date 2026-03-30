@@ -19,11 +19,14 @@ function assertExampleClassifications(expected, name) {
   const calculations = new Grammar(Fixtures[name]).calculations;
 
   // expected should be a subset of classifications
-  assert.deepStrictEqual(SetOperations.intersection(expected, classifications(calculations)), expected);
+  assert.deepStrictEqual(
+    SetOperations.intersection(expected, classifications(calculations)),
+    expected
+  );
 }
 
-describe("classification", function() {
-  it("agrees with smlweb", function() {
+describe("classification", function () {
+  it("agrees with smlweb", function () {
     assertExampleClassifications(new Set(["lr0"]), "ll0-lr0-0.cfg");
     assertExampleClassifications(new Set(["lr0"]), "ll0-lr0-1.cfg");
     assertExampleClassifications(new Set(["lr0"]), "ll0-lr0-2.cfg");

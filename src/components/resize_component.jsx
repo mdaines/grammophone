@@ -7,7 +7,7 @@ let dragOffset;
 export default function ResizeComponent({ onResize }) {
   const resizeRef = useRef();
 
-  const handleMouseDown = useCallback((e) => {
+  const handleMouseDown = useCallback(e => {
     e.preventDefault();
 
     const resizeRect = resizeRef.current.getBoundingClientRect();
@@ -44,8 +44,7 @@ export default function ResizeComponent({ onResize }) {
 
   return (
     <div id="resize" ref={resizeRef} onMouseDown={handleMouseDown}>
-      <div id="resize-handle">
-      </div>
+      <div id="resize-handle"></div>
     </div>
   );
 }

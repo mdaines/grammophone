@@ -1,17 +1,12 @@
 import Grammar from "../../../../src/grammar/index.js";
 import assert from "node:assert/strict";
 
-describe("derivationSteps", function() {
-  it("simple grammar", function() {
-    const grammar = new Grammar([
-      ["S", "a", "S", "b"],
-      ["S"]
-    ]);
+describe("derivationSteps", function () {
+  it("simple grammar", function () {
+    const grammar = new Grammar([["S", "a", "S", "b"], ["S"]]);
 
     assert.deepStrictEqual(grammar.calculations.derivationSteps, {
-      symbols: new Map([
-        ["S", 1]
-      ]),
+      symbols: new Map([["S", 1]]),
       productions: new Map([
         [0, 2],
         [1, 1]
@@ -19,16 +14,14 @@ describe("derivationSteps", function() {
     });
   });
 
-  it("recursion", function() {
+  it("recursion", function () {
     const grammar = new Grammar([
       ["B", "z", "B"],
       ["B", "u"]
     ]);
 
     assert.deepStrictEqual(grammar.calculations.derivationSteps, {
-      symbols: new Map([
-        ["B", 1]
-      ]),
+      symbols: new Map([["B", 1]]),
       productions: new Map([
         [0, 2],
         [1, 1]
@@ -36,7 +29,7 @@ describe("derivationSteps", function() {
     });
   });
 
-  it("multiple nonterminals and recursion", function() {
+  it("multiple nonterminals and recursion", function () {
     const grammar = new Grammar([
       ["A", "y", "B"],
       ["A", "x"],
@@ -63,7 +56,7 @@ describe("derivationSteps", function() {
     });
   });
 
-  it("multiple steps", function() {
+  it("multiple steps", function () {
     const grammar = new Grammar([
       ["A", "B"],
       ["B", "C"],
@@ -84,7 +77,7 @@ describe("derivationSteps", function() {
     });
   });
 
-  it("repeated nonterminals and recursion", function() {
+  it("repeated nonterminals and recursion", function () {
     const grammar = new Grammar([
       ["a1", "x"],
       ["a1", "a2", "x", "a2"],
@@ -107,7 +100,7 @@ describe("derivationSteps", function() {
     });
   });
 
-  it("cycle", function() {
+  it("cycle", function () {
     const grammar = new Grammar([
       ["A", "B"],
       ["B", "C"],
@@ -120,7 +113,7 @@ describe("derivationSteps", function() {
     });
   });
 
-  it("optional cycle", function() {
+  it("optional cycle", function () {
     const grammar = new Grammar([
       ["A", "x"],
       ["A", "B"],
@@ -143,7 +136,7 @@ describe("derivationSteps", function() {
     });
   });
 
-  it("unreachable", function() {
+  it("unreachable", function () {
     const grammar = new Grammar([
       ["A", "x"],
       ["B", "y"]
@@ -161,10 +154,8 @@ describe("derivationSteps", function() {
     });
   });
 
-  it("unrealizable", function() {
-    const grammar = new Grammar([
-      ["A", "A", "x"]
-    ]);
+  it("unrealizable", function () {
+    const grammar = new Grammar([["A", "A", "x"]]);
 
     assert.deepStrictEqual(grammar.calculations.derivationSteps, {
       symbols: new Map(),
@@ -172,7 +163,7 @@ describe("derivationSteps", function() {
     });
   });
 
-  it("partially unrealizable", function() {
+  it("partially unrealizable", function () {
     const grammar = new Grammar([
       ["A", "B"],
       ["A", "x", "C"],

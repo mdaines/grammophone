@@ -1,8 +1,8 @@
 import Grammar from "../../../../src/grammar/index.js";
 import assert from "node:assert/strict";
 
-describe("symbolInfo", function() {
-  it("returns symbol orderings and the sets of nonterminal and terminal symbols", function() {
+describe("symbolInfo", function () {
+  it("returns symbol orderings and the sets of nonterminal and terminal symbols", function () {
     const grammar = new Grammar([
       ["A", "C"],
       ["A", "a", "B"],

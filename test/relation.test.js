@@ -1,9 +1,9 @@
 import Relation from "../src/relation.js";
 import assert from "node:assert/strict";
 
-describe("Relation", function() {
-  describe("get", function() {
-    it("returns added sets", function() {
+describe("Relation", function () {
+  describe("get", function () {
+    it("returns added sets", function () {
       let relation = new Relation();
       relation.add("x", "y");
       relation.add("x", "z");
@@ -13,7 +13,7 @@ describe("Relation", function() {
       assert.deepStrictEqual(relation.get("a"), new Set(["b"]));
     });
 
-    it("returns the empty set when nothing has been added", function() {
+    it("returns the empty set when nothing has been added", function () {
       let relation = new Relation();
       relation.add("x", "y");
 
@@ -21,8 +21,8 @@ describe("Relation", function() {
     });
   });
 
-  describe("keys", function() {
-    it("returns something that can be used to iterate over the domain in insertion order", function() {
+  describe("keys", function () {
+    it("returns something that can be used to iterate over the domain in insertion order", function () {
       let relation = new Relation();
       relation.add("x", "a");
       relation.add("y", "b");
@@ -31,8 +31,8 @@ describe("Relation", function() {
     });
   });
 
-  describe("has", function() {
-    it("returns a boolean indicating whether the pair is in the relation", function() {
+  describe("has", function () {
+    it("returns a boolean indicating whether the pair is in the relation", function () {
       let relation = new Relation();
       relation.add("x", "a");
       relation.add("y", "b");
@@ -45,8 +45,8 @@ describe("Relation", function() {
     });
   });
 
-  describe("closure", function() {
-    it("returns the closure of the relation", function() {
+  describe("closure", function () {
+    it("returns the closure of the relation", function () {
       let relation = new Relation();
       relation.add("x", "y");
       relation.add("y", "z");
@@ -67,24 +67,31 @@ describe("Relation", function() {
     });
   });
 
-  describe("iteration", function() {
-    it("is iterable", function() {
+  describe("iteration", function () {
+    it("is iterable", function () {
       let relation = new Relation();
       relation.add("x", "y");
       relation.add("y", "z");
 
-      assert.deepStrictEqual(Array.from(relation), [["x", "y"], ["y", "z"]]);
+      assert.deepStrictEqual(Array.from(relation), [
+        ["x", "y"],
+        ["y", "z"]
+      ]);
     });
   });
 
-  describe("entries", function() {
-    it("returns something that can be used to iterate over the pairs in the relation", function() {
+  describe("entries", function () {
+    it("returns something that can be used to iterate over the pairs in the relation", function () {
       let relation = new Relation();
       relation.add("x", "a");
       relation.add("x", "b");
       relation.add("y", "c");
 
-      assert.deepStrictEqual(Array.from(relation.entries()), [["x", "a"], ["x", "b"], ["y", "c"]]);
+      assert.deepStrictEqual(Array.from(relation.entries()), [
+        ["x", "a"],
+        ["x", "b"],
+        ["y", "c"]
+      ]);
     });
   });
 });

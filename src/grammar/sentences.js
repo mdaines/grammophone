@@ -11,7 +11,7 @@ function orderedProductions(grammar, nonterminal) {
   });
 
   indexes.sort((a, b) => {
-    return steps.productions.get(a) - steps.productions.get(b)
+    return steps.productions.get(a) - steps.productions.get(b);
   });
 
   return indexes.map(i => grammar.productions[i]);
@@ -36,13 +36,13 @@ export function makeSentencesIterator(grammar) {
 
   if (typeof steps === "undefined") {
     return {
-      next: function() {
+      next: function () {
         return { value: undefined, done: true };
       },
       [Symbol.iterator]() {
         return this;
       }
-    }
+    };
   }
 
   let start = grammar.calculations.start;
@@ -58,7 +58,7 @@ export function makeSentencesIterator(grammar) {
   };
 
   return {
-    next: function() {
+    next: function () {
       // if state.productionIndex == state.productions.length, we're done expanding the current sentence
       //   if there are no sentences left in the queue, return { value: undefined, done: true }
       //   otherwise,
@@ -77,15 +77,22 @@ export function makeSentencesIterator(grammar) {
           return { value: undefined, done: true };
         } else {
           state.sentence = state.queue.shift().sentence;
-          state.sentenceIndex = state.sentence.findIndex(s => nonterminals.has(s)); // choose symbol with fewest steps instead?
+          state.sentenceIndex = state.sentence.findIndex(s =>
+            nonterminals.has(s)
+          ); // choose symbol with fewest steps instead?
 
-          state.productions = orderedProductions(state.grammar, state.sentence[state.sentenceIndex]);
+          state.productions = orderedProductions(
+            state.grammar,
+            state.sentence[state.sentenceIndex]
+          );
           state.productionIndex = 0;
         }
       }
 
       let sentence = state.sentence.slice(0, state.sentenceIndex);
-      sentence = sentence.concat(state.productions[state.productionIndex].slice(1));
+      sentence = sentence.concat(
+        state.productions[state.productionIndex].slice(1)
+      );
       sentence = sentence.concat(state.sentence.slice(state.sentenceIndex + 1));
 
       state.productionIndex += 1;
@@ -93,7 +100,10 @@ export function makeSentencesIterator(grammar) {
       if (sentence.every(s => !nonterminals.has(s))) {
         return { value: sentence, done: false };
       } else {
-        state.queue.unshift({ sentence, cost: sentenceCost(grammar, sentence) });
+        state.queue.unshift({
+          sentence,
+          cost: sentenceCost(grammar, sentence)
+        });
         state.queue.sort((a, b) => {
           return a.cost - b.cost;
         });
@@ -104,7 +114,7 @@ export function makeSentencesIterator(grammar) {
     [Symbol.iterator]() {
       return this;
     }
-  }
+  };
 }
 
 export function takeFromIterator(iterator, count, limit) {
@@ -131,14 +141,14 @@ export function ambiguousSentenceExample(grammar) {
   sentences.sort();
 
   for (let i = 0; i < sentences.length - 1; i++) {
-    if (sentences[i].length != sentences[i+1].length) {
+    if (sentences[i].length != sentences[i + 1].length) {
       continue;
     }
 
     let j;
 
     for (j = 0; j < sentences[i].length; j++) {
-      if (sentences[i][j] !== sentences[i+1][j]) {
+      if (sentences[i][j] !== sentences[i + 1][j]) {
         break;
       }
     }

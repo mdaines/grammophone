@@ -17,11 +17,10 @@ export default function VizComponent({ src }) {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    render(src)
-      .then(element => {
-        containerRef.current.innerHTML = "";
-        containerRef.current.appendChild(element);
-      });
+    render(src).then(element => {
+      containerRef.current.innerHTML = "";
+      containerRef.current.appendChild(element);
+    });
   }, [src]);
 
   return <div ref={containerRef} />;

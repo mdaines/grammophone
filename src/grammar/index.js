@@ -1,5 +1,8 @@
 import { makeCalculationsMemo } from "./calculations_memo.js";
-import { makeSentencesIterator, ambiguousSentenceExample } from "./sentences.js";
+import {
+  makeSentencesIterator,
+  ambiguousSentenceExample
+} from "./sentences.js";
 import { quoteSymbol } from "./symbols.js";
 
 export default class Grammar {
@@ -29,7 +32,11 @@ export default class Grammar {
         }
 
         if (productions[i][j].match(/^Grammar\./)) {
-          throw new Error("Reserved symbol " + productions[i][j] + " may not be part of a production");
+          throw new Error(
+            "Reserved symbol " +
+              productions[i][j] +
+              " may not be part of a production"
+          );
         }
 
         if (productions[i][j] === "") {
@@ -42,21 +49,17 @@ export default class Grammar {
   }
 
   transform(transformation) {
-
     var productions = this.productions.slice();
 
-    transformation.changes.forEach(function(change) {
-
+    transformation.changes.forEach(function (change) {
       if (change.operation === "delete") {
         productions.splice(change.index, 1);
       } else if (change.operation === "insert") {
         productions.splice(change.index, 0, change.production);
       }
-
     });
 
     return new Grammar(productions);
-
   }
 
   toString() {
@@ -87,7 +90,10 @@ export default class Grammar {
   get calculations() {
     const calculations = makeCalculationsMemo(this.productions);
 
-    Object.defineProperty(this, "calculations", { value: calculations, enumerable: true });
+    Object.defineProperty(this, "calculations", {
+      value: calculations,
+      enumerable: true
+    });
     return this.calculations;
   }
 }

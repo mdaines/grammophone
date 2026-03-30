@@ -1,26 +1,31 @@
 import { parser } from "./rules.js";
 
 const ESCAPES = {
-  "0": "\0",
-  "n": "\n",
-  "r": "\r",
-  "v": "\v",
-  "t": "\t",
-  "b": "\b",
-  "f": "\f",
+  0: "\0",
+  n: "\n",
+  r: "\r",
+  v: "\v",
+  t: "\t",
+  b: "\b",
+  f: "\f",
   "\n": "",
   "\r": ""
 };
 
 function interpretEscapes(str) {
-  return str.replaceAll(/\\(?:x([0-9a-fA-F]{2})|u(?:\{([0-9a-fA-F]+)\}|([0-9a-fA-F]{4})))/g, function(_, hex, u1, u2) {
-    return String.fromCodePoint(parseInt(hex || u1 || u2, 16));
-  }).replaceAll(/\\(.)/gs, function(_, char) {
-    return ESCAPES[char] || char;
-  });
+  return str
+    .replaceAll(
+      /\\(?:x([0-9a-fA-F]{2})|u(?:\{([0-9a-fA-F]+)\}|([0-9a-fA-F]{4})))/g,
+      function (_, hex, u1, u2) {
+        return String.fromCodePoint(parseInt(hex || u1 || u2, 16));
+      }
+    )
+    .replaceAll(/\\(.)/gs, function (_, char) {
+      return ESCAPES[char] || char;
+    });
 }
 
-export default function(src) {
+export default function (src) {
   let tree = parser.parse(src);
   let cursor = tree.cursor();
 

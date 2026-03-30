@@ -1,8 +1,8 @@
 import Grammar from "../../../../src/grammar/index.js";
 import assert from "node:assert/strict";
 
-describe("leftFactorTransformation", function() {
-  it("returns the expected result", function() {
+describe("leftFactorTransformation", function () {
+  it("returns the expected result", function () {
     const grammar = new Grammar([
       ["A", "a", "A"],
       ["A", "a"]
@@ -26,17 +26,17 @@ describe("leftFactorTransformation", function() {
           {
             operation: "insert",
             index: 0,
-            production: ["A", "a", "A2"],
+            production: ["A", "a", "A2"]
           },
           {
             operation: "insert",
             index: 1,
-            production: ["A2", "A"],
+            production: ["A2", "A"]
           },
           {
             operation: "insert",
             index: 2,
-            production: ["A2"],
+            production: ["A2"]
           }
         ]
       }

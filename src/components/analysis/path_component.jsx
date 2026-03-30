@@ -19,9 +19,7 @@ export default function PathComponent({ path }) {
     }
   });
 
-  return (
-    <nav id="path">{segments}</nav>
-  );
+  return <nav id="path">{segments}</nav>;
 }
 
 PathComponent.propTypes = {

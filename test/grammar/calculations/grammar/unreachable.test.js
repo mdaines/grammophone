@@ -1,8 +1,8 @@
 import Grammar from "../../../../src/grammar/index.js";
 import assert from "node:assert/strict";
 
-describe("unreachable", function() {
-  it("returns the set of unreachable nonterminals", function() {
+describe("unreachable", function () {
+  it("returns the set of unreachable nonterminals", function () {
     const grammar = new Grammar([
       ["A", "B"],
       ["B", "b"],
@@ -10,6 +10,9 @@ describe("unreachable", function() {
       ["D", "A"]
     ]);
 
-    assert.deepStrictEqual(grammar.calculations.unreachable, new Set(["C", "D"]));
+    assert.deepStrictEqual(
+      grammar.calculations.unreachable,
+      new Set(["C", "D"])
+    );
   });
 });

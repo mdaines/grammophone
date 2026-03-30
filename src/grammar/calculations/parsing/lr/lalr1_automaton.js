@@ -11,8 +11,7 @@ function copyLR1Automaton(automaton) {
   });
 }
 
-export default function({ lr1Automaton }) {
-
+export default function ({ lr1Automaton }) {
   var i, j;
 
   // Copy the LR(1) automaton.
@@ -22,10 +21,8 @@ export default function({ lr1Automaton }) {
   // Collapse lookaheads.
 
   for (i = 0; i < automaton.length; i++) {
-
     automaton[i].kernel = collapseLookaheads(automaton[i].kernel);
     automaton[i].items = collapseLookaheads(automaton[i].items);
-
   }
 
   // Find states to merge.
@@ -42,7 +39,6 @@ export default function({ lr1Automaton }) {
   var merge = [];
 
   for (i = 0; i < automaton.length; i++) {
-
     // If this state has been used already for merging, skip it.
 
     if (used[i]) {
@@ -54,18 +50,13 @@ export default function({ lr1Automaton }) {
     var m = [];
 
     for (j = 0; j < automaton.length; j++) {
-
       if (!used[j] && build.same(automaton[i].kernel, automaton[j].kernel)) {
-
         m.push(j);
         used[j] = true;
-
       }
-
     }
 
     merge.push(m);
-
   }
 
   // for fixing transitions. looks like:
@@ -78,9 +69,7 @@ export default function({ lr1Automaton }) {
 
   for (i = 0; i < merge.length; i++) {
     for (j = 0; j < merge[i].length; j++) {
-
       transition[merge[i][j]] = i;
-
     }
   }
 
@@ -89,16 +78,13 @@ export default function({ lr1Automaton }) {
   var states = [];
 
   for (i = 0; i < merge.length; i++) {
-
     var state = { kernel: [], items: [], transitions: {} };
 
     // Merge items
 
     for (j = 0; j < merge[i].length; j++) {
-
       state.kernel = mergeItems(automaton[merge[i][j]].kernel, state.kernel);
       state.items = mergeItems(automaton[merge[i][j]].items, state.items);
-
     }
 
     // Add transitions (just use the first merge index)
@@ -113,9 +99,7 @@ export default function({ lr1Automaton }) {
     // Add the new state
 
     states.push(state);
-
   }
 
   return states;
-
 }

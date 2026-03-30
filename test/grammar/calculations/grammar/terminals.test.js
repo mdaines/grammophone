@@ -1,8 +1,8 @@
 import Grammar from "../../../../src/grammar/index.js";
 import assert from "node:assert/strict";
 
-describe("terminals", function() {
-  it("returns the set of the grammar's terminal symbols", function() {
+describe("terminals", function () {
+  it("returns the set of the grammar's terminal symbols", function () {
     const grammar = new Grammar([
       ["A", "a", "B", "b"],
       ["B", "A"],
@@ -10,6 +10,9 @@ describe("terminals", function() {
       ["C", "x"]
     ]);
 
-    assert.deepStrictEqual(grammar.calculations.terminals, new Set(["a", "b", "x"]));
+    assert.deepStrictEqual(
+      grammar.calculations.terminals,
+      new Set(["a", "b", "x"])
+    );
   });
 });

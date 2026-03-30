@@ -1,5 +1,10 @@
 import PropTypes from "prop-types";
-import { formatSentence, formatSymbolList, listSymbols, formatProduction } from "../helpers.js";
+import {
+  formatSentence,
+  formatSymbolList,
+  listSymbols,
+  formatProduction
+} from "../helpers.js";
 
 function formatUnreachable(unreachable, info) {
   if (unreachable.size > 0) {
@@ -19,7 +24,10 @@ function formatUnrealizable(unrealizable, info) {
     return (
       <li>
         {"The grammar has unrealizable nonterminals: "}
-        {formatSymbolList(listSymbols(unrealizable, info.productionOrder), info)}
+        {formatSymbolList(
+          listSymbols(unrealizable, info.productionOrder),
+          info
+        )}
       </li>
     );
   } else {
@@ -73,7 +81,14 @@ export const ID = "sanity";
 export const TITLE = "Sanity Checks";
 
 export default function SanityComponent({ grammar }) {
-  const { unreachable, unrealizable, cycle, nullAmbiguity, productions, symbolInfo } = grammar.calculations;
+  const {
+    unreachable,
+    unrealizable,
+    cycle,
+    nullAmbiguity,
+    productions,
+    symbolInfo
+  } = grammar.calculations;
   const ambiguous = grammar.ambiguousSentenceExample;
 
   return (

@@ -20,4 +20,3 @@ export default function LR1AutomatonComponent({ grammar }) {
 LR1AutomatonComponent.propTypes = {
   grammar: PropTypes.object.isRequired
 };
-

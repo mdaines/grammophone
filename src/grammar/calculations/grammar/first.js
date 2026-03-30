@@ -1,7 +1,6 @@
 import Relation from "../../../relation.js";
 
-export default function({ productions, nullable, nonterminals }) {
-
+export default function ({ productions, nullable, nonterminals }) {
   var immediate, propagation, result;
   var i, j;
 
@@ -11,15 +10,12 @@ export default function({ productions, nullable, nonterminals }) {
   // For each production, add the first terminal symbol after a sequence of nullable symbols.
 
   for (i = 0; i < productions.length; i++) {
-
     // Skip nullable symbols...
 
     for (j = 1; j < productions[i].length; j++) {
-
       if (!nullable.has(productions[i][j])) {
         break;
       }
-
     }
 
     // If the first non-nullable symbol is a terminal, add it to the immediate first set
@@ -28,7 +24,6 @@ export default function({ productions, nullable, nonterminals }) {
     if (j < productions[i].length && !nonterminals.has(productions[i][j])) {
       immediate.add(productions[i][0], productions[i][j]);
     }
-
   }
 
   // For each production, add the prefix of nullable nonterminals, and then the next symbol
@@ -36,7 +31,6 @@ export default function({ productions, nullable, nonterminals }) {
 
   for (i = 0; i < productions.length; i++) {
     for (j = 1; j < productions[i].length; j++) {
-
       // Is it a nonterminal? Add it.
 
       if (nonterminals.has(productions[i][j])) {
@@ -48,7 +42,6 @@ export default function({ productions, nullable, nonterminals }) {
       if (!nullable.has(productions[i][j])) {
         break;
       }
-
     }
   }
 
@@ -57,5 +50,4 @@ export default function({ productions, nullable, nonterminals }) {
   result = immediate.propagate(propagation);
 
   return result;
-
 }

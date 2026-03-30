@@ -21,14 +21,18 @@ export default function ParsingComponent({ grammar }) {
         <tbody>
           <tr>
             <th scope="row">{"LL(1)"}</th>
-            <td className="classification">{formatClassification(classification, "ll1", "LL(1)")}</td>
+            <td className="classification">
+              {formatClassification(classification, "ll1", "LL(1)")}
+            </td>
             <td>
               <a href="#/ll1-table">{"Parsing table"}</a>
             </td>
           </tr>
           <tr>
             <th scope="row">{"LR(0)"}</th>
-            <td className="classification">{formatClassification(classification, "lr0", "LR(0)")}</td>
+            <td className="classification">
+              {formatClassification(classification, "lr0", "LR(0)")}
+            </td>
             <td>
               <a href="#/lr0-automaton">{"Automaton"}</a>
               {", "}
@@ -37,14 +41,18 @@ export default function ParsingComponent({ grammar }) {
           </tr>
           <tr>
             <th scope="row">{"SLR(1)"}</th>
-            <td className="classification">{formatClassification(classification, "slr1", "SLR(1)")}</td>
+            <td className="classification">
+              {formatClassification(classification, "slr1", "SLR(1)")}
+            </td>
             <td>
               <a href="#/slr1-table">{"Parsing table"}</a>
             </td>
           </tr>
           <tr>
             <th scope="row">{"LR(1)"}</th>
-            <td className="classification">{formatClassification(classification, "lr1", "LR(1)")}</td>
+            <td className="classification">
+              {formatClassification(classification, "lr1", "LR(1)")}
+            </td>
             <td>
               <a href="#/lr1-automaton">{"Automaton"}</a>
               {", "}
@@ -53,7 +61,9 @@ export default function ParsingComponent({ grammar }) {
           </tr>
           <tr>
             <th scope="row">{"LALR(1)"}</th>
-            <td className="classification">{formatClassification(classification, "lalr1", "LALR(1)")}</td>
+            <td className="classification">
+              {formatClassification(classification, "lalr1", "LALR(1)")}
+            </td>
             <td>
               <a href="#/lalr1-automaton">{"Automaton"}</a>
               {", "}

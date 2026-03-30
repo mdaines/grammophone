@@ -19,17 +19,21 @@ const ROUTES = {
   "/": {
     views: [
       { id: SanityComponent.ID, component: SanityComponent.default },
-      { id: ShortSentencesComponent.ID, component: ShortSentencesComponent.default },
-      { id: NonterminalsComponent.ID, component: NonterminalsComponent.default },
+      {
+        id: ShortSentencesComponent.ID,
+        component: ShortSentencesComponent.default
+      },
+      {
+        id: NonterminalsComponent.ID,
+        component: NonterminalsComponent.default
+      },
       { id: ParsingComponent.ID, component: ParsingComponent.default }
     ],
     path: [{ title: "Analysis" }]
   },
 
   "/ll1-table": {
-    views: [
-      { id: LL1TableComponent.ID, component: LL1TableComponent.default }
-    ],
+    views: [{ id: LL1TableComponent.ID, component: LL1TableComponent.default }],
     path: [{ path: "/", title: "Analysis" }, { title: LL1TableComponent.TITLE }]
   },
 
@@ -37,13 +41,14 @@ const ROUTES = {
     views: [
       { id: LR0AutomatonComponent.ID, component: LR0AutomatonComponent.default }
     ],
-    path: [{ path: "/", title: "Analysis" }, { title: LR0AutomatonComponent.TITLE }]
+    path: [
+      { path: "/", title: "Analysis" },
+      { title: LR0AutomatonComponent.TITLE }
+    ]
   },
 
   "/lr0-table": {
-    views: [
-      { id: LR0TableComponent.ID, component: LR0TableComponent.default }
-    ],
+    views: [{ id: LR0TableComponent.ID, component: LR0TableComponent.default }],
     path: [{ path: "/", title: "Analysis" }, { title: LR0TableComponent.TITLE }]
   },
 
@@ -51,42 +56,58 @@ const ROUTES = {
     views: [
       { id: SLR1TableComponent.ID, component: SLR1TableComponent.default }
     ],
-    path: [{ path: "/", title: "Analysis" }, { title: SLR1TableComponent.TITLE }]
+    path: [
+      { path: "/", title: "Analysis" },
+      { title: SLR1TableComponent.TITLE }
+    ]
   },
 
   "/lr1-automaton": {
     views: [
       { id: LR1AutomatonComponent.ID, component: LR1AutomatonComponent.default }
     ],
-    path: [{ path: "/", title: "Analysis" }, { title: LR1AutomatonComponent.TITLE }]
+    path: [
+      { path: "/", title: "Analysis" },
+      { title: LR1AutomatonComponent.TITLE }
+    ]
   },
 
   "/lr1-table": {
-    views: [
-      { id: LR1TableComponent.ID, component: LR1TableComponent.default }
-    ],
+    views: [{ id: LR1TableComponent.ID, component: LR1TableComponent.default }],
     path: [{ path: "/", title: "Analysis" }, { title: LR1TableComponent.TITLE }]
   },
 
   "/lalr1-automaton": {
     views: [
-      { id: LALR1AutomatonComponent.ID, component: LALR1AutomatonComponent.default }
+      {
+        id: LALR1AutomatonComponent.ID,
+        component: LALR1AutomatonComponent.default
+      }
     ],
-    path: [{ path: "/", title: "Analysis" }, { title: LALR1AutomatonComponent.TITLE }]
+    path: [
+      { path: "/", title: "Analysis" },
+      { title: LALR1AutomatonComponent.TITLE }
+    ]
   },
 
   "/lalr1-table": {
     views: [
       { id: LALR1TableComponent.ID, component: LALR1TableComponent.default }
     ],
-    path: [{ path: "/", title: "Analysis" }, { title: LALR1TableComponent.TITLE }]
+    path: [
+      { path: "/", title: "Analysis" },
+      { title: LALR1TableComponent.TITLE }
+    ]
   },
 
   "/sentences": {
     views: [
       { id: SentencesComponent.ID, component: SentencesComponent.default }
     ],
-    path: [{ path: "/", title: "Analysis" }, { title: SentencesComponent.TITLE }]
+    path: [
+      { path: "/", title: "Analysis" },
+      { title: SentencesComponent.TITLE }
+    ]
   }
 };
 
@@ -97,11 +118,9 @@ export default function AnalysisComponent({ grammar, path }) {
     <main id="analysis">
       <PathComponent path={route.path} />
 
-      {
-        route.views.map((view) => {
-          return <view.component key={view.id} grammar={grammar} />;
-        })
-      }
+      {route.views.map(view => {
+        return <view.component key={view.id} grammar={grammar} />;
+      })}
     </main>
   );
 }

@@ -19,44 +19,43 @@ export default function LL1TableComponent({ grammar }) {
         <thead>
           <tr>
             <th />
-            {
-              symbolInfo.terminalOrder.map(function(symbol, index) {
-                return <th key={index}>{formatSymbol(symbol, symbolInfo)}</th>;
-              })
-            }
+            {symbolInfo.terminalOrder.map(function (symbol, index) {
+              return <th key={index}>{formatSymbol(symbol, symbolInfo)}</th>;
+            })}
             <th>{formatSymbol(END, symbolInfo)}</th>
           </tr>
         </thead>
 
         <tbody>
-          {
-            symbolInfo.productionOrder.map(function(nt, index) {
-              return (
-                <tr key={index}>
-                  <th scope="row">{formatSymbol(nt, symbolInfo)}</th>
-                  {
-                    symbolInfo.terminalOrder.concat(END).map(function(t, index) {
-                      if (typeof table[nt][t] !== "undefined") {
-                        return (
-                          <td key={index} className={table[nt][t].length > 1 ? "conflict" : ""}>
-                            <ul>
-                              {
-                                table[nt][t].map(function(p, index) {
-                                  return <li key={index}>{formatProduction(productions[p], symbolInfo)}</li>;
-                                })
-                              }
-                            </ul>
-                          </td>
-                        );
-                      } else {
-                        return <td key={index} />;
-                      }
-                    })
+          {symbolInfo.productionOrder.map(function (nt, index) {
+            return (
+              <tr key={index}>
+                <th scope="row">{formatSymbol(nt, symbolInfo)}</th>
+                {symbolInfo.terminalOrder.concat(END).map(function (t, index) {
+                  if (typeof table[nt][t] !== "undefined") {
+                    return (
+                      <td
+                        key={index}
+                        className={table[nt][t].length > 1 ? "conflict" : ""}
+                      >
+                        <ul>
+                          {table[nt][t].map(function (p, index) {
+                            return (
+                              <li key={index}>
+                                {formatProduction(productions[p], symbolInfo)}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </td>
+                    );
+                  } else {
+                    return <td key={index} />;
                   }
-                </tr>
-              );
-            })
-          }
+                })}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </section>

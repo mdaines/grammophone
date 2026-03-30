@@ -14,14 +14,19 @@ function measure(operation, timeLimit) {
   const duration = (stopTime - startTime) / 1000;
   const speed = callCount / duration;
 
-  return `${callCount} in ${duration.toFixed(2)} s, ${speed.toFixed(2)} calls/s`
+  return `${callCount} in ${duration.toFixed(2)} s, ${speed.toFixed(2)} calls/s`;
 }
 
-function randomProductions({ productionCount, maximumProductionLength, symbolCount }) {
+function randomProductions({
+  productionCount,
+  maximumProductionLength,
+  symbolCount
+}) {
   const productions = [];
 
   for (let i = 0; i < productionCount; i++) {
-    const productionLength = 1 + Math.floor(Math.random() * maximumProductionLength);
+    const productionLength =
+      1 + Math.floor(Math.random() * maximumProductionLength);
     const production = [];
 
     for (let j = 0; j < productionLength; j++) {
@@ -48,7 +53,7 @@ const timeLimit = 5000;
 for (const params of tests) {
   const result = measure(() => {
     const productions = randomProductions(params);
-    new Grammar(productions).calculations.classification
+    new Grammar(productions).calculations.classification;
   }, timeLimit);
   console.log(`productionCount=${params.productionCount}: ${result}`);
 }

@@ -1,7 +1,6 @@
 import { END } from "../../symbols.js";
 
-export default function({ follow }) {
-
+export default function ({ follow }) {
   var s;
   var endable = new Set();
 
@@ -12,5 +11,4 @@ export default function({ follow }) {
   }
 
   return endable;
-
 }

@@ -23,22 +23,30 @@ export default function NonterminalsComponent({ grammar }) {
         </thead>
 
         <tbody>
-          {
-            symbolInfo.productionOrder.map(function(symbol) {
-              const firstSymbols = first.get(symbol);
-              const followSymbols = follow.get(symbol);
+          {symbolInfo.productionOrder.map(function (symbol) {
+            const firstSymbols = first.get(symbol);
+            const followSymbols = follow.get(symbol);
 
-              return (
-                <tr key={symbol}>
-                  <td>{formatSymbol(symbol, symbolInfo)}</td>
-                  <td>{nullable.has(symbol) ? "Nullable" : ""}</td>
-                  <td>{endable.has(symbol) ? "Endable" : ""}</td>
-                  <td>{formatSymbolList(listSymbols(firstSymbols, symbolInfo.terminalOrder), symbolInfo)}</td>
-                  <td>{formatSymbolList(listSymbols(followSymbols, symbolInfo.terminalOrder), symbolInfo)}</td>
-                </tr>
-              );
-            })
-          }
+            return (
+              <tr key={symbol}>
+                <td>{formatSymbol(symbol, symbolInfo)}</td>
+                <td>{nullable.has(symbol) ? "Nullable" : ""}</td>
+                <td>{endable.has(symbol) ? "Endable" : ""}</td>
+                <td>
+                  {formatSymbolList(
+                    listSymbols(firstSymbols, symbolInfo.terminalOrder),
+                    symbolInfo
+                  )}
+                </td>
+                <td>
+                  {formatSymbolList(
+                    listSymbols(followSymbols, symbolInfo.terminalOrder),
+                    symbolInfo
+                  )}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </section>

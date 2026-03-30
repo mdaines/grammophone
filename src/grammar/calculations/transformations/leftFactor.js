@@ -5,7 +5,6 @@ import { getNewSymbol } from "./helpers.js";
 // the production) to factor.
 
 function leftFactor({ productions, symbols }, group, prefix) {
-
   var i;
 
   // Find a new symbol...
@@ -18,12 +17,10 @@ function leftFactor({ productions, symbols }, group, prefix) {
   var offset = 0;
 
   for (i = 0; i < productions.length; i++) {
-
     if (group.indexOf(i) !== -1) {
       changes.push({ index: i + offset, operation: "delete" });
       offset--;
     }
-
   }
 
   // Add the reference to the new symbol with the factored prefix
@@ -45,22 +42,18 @@ function leftFactor({ productions, symbols }, group, prefix) {
   }
 
   return changes;
-
 }
 
 // Mini trie implementation for finding factorable prefixes.
 
 function Trie() {
-
   this.root = {
     children: {},
     values: []
   };
-
 }
 
-Trie.prototype.insert = function(production, value) {
-
+Trie.prototype.insert = function (production, value) {
   var node = this.root;
   var i, s;
 
@@ -73,15 +66,12 @@ Trie.prototype.insert = function(production, value) {
   }
 
   node.values.push(value);
+};
 
-}
-
-Trie.prototype.getFactorablePrefixes = function() {
-
+Trie.prototype.getFactorablePrefixes = function () {
   var groups = [];
 
   function _values(length, node) {
-
     var symbol;
     var values = [];
 
@@ -96,17 +86,14 @@ Trie.prototype.getFactorablePrefixes = function() {
     }
 
     return values;
-
   }
 
   _values(0, this.root);
 
   return groups;
+};
 
-}
-
-export default function({ productions, symbols }) {
-
+export default function ({ productions, symbols }) {
   var i;
   var result = [];
   var nt;
@@ -116,7 +103,6 @@ export default function({ productions, symbols }) {
   var productionTries = {};
 
   for (i = 0; i < productions.length; i++) {
-
     nt = productions[i][0];
 
     if (typeof productionTries[nt] === "undefined") {
@@ -124,7 +110,6 @@ export default function({ productions, symbols }) {
     }
 
     productionTries[nt].insert(productions[i].slice(1), i);
-
   }
 
   // Get factorable prefixes and their corresponding productions
@@ -132,11 +117,9 @@ export default function({ productions, symbols }) {
   var factorable;
 
   for (nt in productionTries) {
-
     factorable = productionTries[nt].getFactorablePrefixes();
 
     for (i = 0; i < factorable.length; i++) {
-
       var length = factorable[i].length;
       var group = factorable[i].group;
       group.sort();
@@ -148,11 +131,8 @@ export default function({ productions, symbols }) {
         length: length,
         changes: leftFactor({ productions, symbols }, group, length)
       });
-
     }
-
   }
 
   return result;
-
 }

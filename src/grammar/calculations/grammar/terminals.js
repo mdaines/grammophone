@@ -1,4 +1,4 @@
-export default function({ symbols, nonterminals }) {
+export default function ({ symbols, nonterminals }) {
   let result = new Set();
 
   for (let s of symbols) {

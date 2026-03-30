@@ -1,4 +1,4 @@
-export default function({ productions, nonterminals, unrealizable }) {
+export default function ({ productions, nonterminals, unrealizable }) {
   let symbolCounts = new Map();
   let productionCounts = new Map();
 

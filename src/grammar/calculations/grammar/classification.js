@@ -1,4 +1,4 @@
-export default function({
+export default function ({
   ll1Classification: ll1,
   lr0Classification: lr0,
   slr1Classification: slr1,

@@ -1,42 +1,73 @@
 import parser from "../src/parser/index.js";
 import assert from "node:assert/strict";
 
-describe("parser", function() {
-  it("basics", function() {
+describe("parser", function () {
+  it("basics", function () {
     assert.deepStrictEqual(parser("A -> a ."), { productions: [["A", "a"]] });
-    assert.deepStrictEqual(parser("A -> a | b ."), { productions: [["A", "a"], ["A", "b"]] });
+    assert.deepStrictEqual(parser("A -> a | b ."), {
+      productions: [
+        ["A", "a"],
+        ["A", "b"]
+      ]
+    });
     assert.deepStrictEqual(parser("A -> ."), { productions: [["A"]] });
-    assert.deepStrictEqual(parser("A -> a. B -> b. A -> c."), { productions: [["A", "a"], ["B", "b"], ["A", "c"]] });
+    assert.deepStrictEqual(parser("A -> a. B -> b. A -> c."), {
+      productions: [
+        ["A", "a"],
+        ["B", "b"],
+        ["A", "c"]
+      ]
+    });
   });
 
-  it("colon and semicolon can be used to define rules", function() {
+  it("colon and semicolon can be used to define rules", function () {
     assert.deepStrictEqual(parser("A : a ;"), { productions: [["A", "a"]] });
-    assert.deepStrictEqual(parser("A : a | b ;"), { productions: [["A", "a"], ["A", "b"]] });
+    assert.deepStrictEqual(parser("A : a | b ;"), {
+      productions: [
+        ["A", "a"],
+        ["A", "b"]
+      ]
+    });
     assert.deepStrictEqual(parser("A : ;"), { productions: [["A"]] });
-    assert.deepStrictEqual(parser("A : a; B : b; A : c;"), { productions: [["A", "a"], ["B", "b"], ["A", "c"]] });
+    assert.deepStrictEqual(parser("A : a; B : b; A : c;"), {
+      productions: [
+        ["A", "a"],
+        ["B", "b"],
+        ["A", "c"]
+      ]
+    });
   });
 
-  it("spacing", function() {
+  it("spacing", function () {
     assert.deepStrictEqual(parser("A->a."), { productions: [["A", "a"]] });
-    assert.deepStrictEqual(parser("A->a|b."), { productions: [["A", "a"], ["A", "b"]] });
+    assert.deepStrictEqual(parser("A->a|b."), {
+      productions: [
+        ["A", "a"],
+        ["A", "b"]
+      ]
+    });
     assert.deepStrictEqual(parser("A->."), { productions: [["A"]] });
   });
 
-  it("symbols can contain numbers", function() {
+  it("symbols can contain numbers", function () {
     assert.deepStrictEqual(parser("A -> a1 ."), { productions: [["A", "a1"]] });
   });
 
-  it("symbols can contain dollar and underscore", function() {
+  it("symbols can contain dollar and underscore", function () {
     assert.deepStrictEqual(parser("$ -> _ ."), { productions: [["$", "_"]] });
-    assert.deepStrictEqual(parser("$a -> _1 a_2 ."), { productions: [["$a", "_1", "a_2"]] });
+    assert.deepStrictEqual(parser("$a -> _1 a_2 ."), {
+      productions: [["$a", "_1", "a_2"]]
+    });
   });
 
-  it("symbols can be quoted", function() {
-    assert.deepStrictEqual(parser(`"A" -> "a".`), { productions: [["A", "a"]] });
+  it("symbols can be quoted", function () {
+    assert.deepStrictEqual(parser(`"A" -> "a".`), {
+      productions: [["A", "a"]]
+    });
     assert.deepStrictEqual(parser(`"->" -> .`), { productions: [["->"]] });
   });
 
-  it("quoted symbols can contain escapes", function() {
+  it("quoted symbols can contain escapes", function () {
     // QUOTATION MARK and APOSTROPHE
     assert.deepStrictEqual(parser(`"\\"" -> .`), { productions: [[`"`]] });
     assert.deepStrictEqual(parser(`"\\'" -> .`), { productions: [[`'`]] });
@@ -63,81 +94,127 @@ describe("parser", function() {
     // COPYRIGHT SIGN
     assert.deepStrictEqual(parser(`"\\xA9" -> .`), { productions: [[`\xA9`]] });
     assert.deepStrictEqual(parser(`"\\xa9" -> .`), { productions: [[`\xa9`]] });
-    assert.deepStrictEqual(parser(`"\\u00A9" -> .`), { productions: [[`\u00A9`]] });
-    assert.deepStrictEqual(parser(`"\\u00a9" -> .`), { productions: [[`\u00a9`]] });
-    assert.deepStrictEqual(parser(`"\\u00a9" -> .`), { productions: [[`\u{00A9}`]] });
-    assert.deepStrictEqual(parser(`"\\u00a9" -> .`), { productions: [[`\u{00a9}`]] });
+    assert.deepStrictEqual(parser(`"\\u00A9" -> .`), {
+      productions: [[`\u00A9`]]
+    });
+    assert.deepStrictEqual(parser(`"\\u00a9" -> .`), {
+      productions: [[`\u00a9`]]
+    });
+    assert.deepStrictEqual(parser(`"\\u00a9" -> .`), {
+      productions: [[`\u{00A9}`]]
+    });
+    assert.deepStrictEqual(parser(`"\\u00a9" -> .`), {
+      productions: [[`\u{00a9}`]]
+    });
 
     // BLACK HEART SUIT
-    assert.deepStrictEqual(parser(`"\\u2665" -> .`), { productions: [[`\u2665`]] });
-    assert.deepStrictEqual(parser(`"\\u{2665}" -> .`), { productions: [[`\u{2665}`]] });
+    assert.deepStrictEqual(parser(`"\\u2665" -> .`), {
+      productions: [[`\u2665`]]
+    });
+    assert.deepStrictEqual(parser(`"\\u{2665}" -> .`), {
+      productions: [[`\u{2665}`]]
+    });
 
     // TETRAGRAM FOR CENTRE
-    assert.deepStrictEqual(parser(`"\\u{1D306}" -> .`), { productions: [[`\u{1D306}`]] });
+    assert.deepStrictEqual(parser(`"\\u{1D306}" -> .`), {
+      productions: [[`\u{1D306}`]]
+    });
 
     // AMPERSAND (\x and two hex digits)
-    assert.deepStrictEqual(parser(`"\\x2665" -> .`), { productions: [[`\x2665`]] });
+    assert.deepStrictEqual(parser(`"\\x2665" -> .`), {
+      productions: [[`\x2665`]]
+    });
 
     // MODIFIER LETTER CAPITAL D (\u without braces)
-    assert.deepStrictEqual(parser(`"\\u1D306" -> .`), { productions: [[`\u1D306`]] });
+    assert.deepStrictEqual(parser(`"\\u1D306" -> .`), {
+      productions: [[`\u1D306`]]
+    });
   });
 
-  it("quoted symbols can contain multiple escapes", function() {
-    assert.deepStrictEqual(
-      parser(`"\\" \\0 \\xA9 \\u00A9 \\u{2665}" -> .`),
-      { productions: [[`" \0 \xA9 \u00A9 \u{2665}`]] }
-    );
+  it("quoted symbols can contain multiple escapes", function () {
+    assert.deepStrictEqual(parser(`"\\" \\0 \\xA9 \\u00A9 \\u{2665}" -> .`), {
+      productions: [[`" \0 \xA9 \u00A9 \u{2665}`]]
+    });
   });
 
-  it("nonterminals don't need to be capitalized", function() {
+  it("nonterminals don't need to be capitalized", function () {
     assert.deepStrictEqual(parser("a -> b ."), { productions: [["a", "b"]] });
   });
 
-  it("terminals can be capitalized", function() {
+  it("terminals can be capitalized", function () {
     assert.deepStrictEqual(parser("a -> B ."), { productions: [["a", "B"]] });
   });
 
-  it("multiple lines", function() {
-    assert.deepStrictEqual(parser("A -> a |\n  b\n  ."), { productions: [["A", "a"], ["A", "b"]] });
+  it("multiple lines", function () {
+    assert.deepStrictEqual(parser("A -> a |\n  b\n  ."), {
+      productions: [
+        ["A", "a"],
+        ["A", "b"]
+      ]
+    });
   });
 
-  it("comments", function() {
-    assert.deepStrictEqual(parser("# A -> a .\nA -> b ."), { productions: [["A", "b"]] });
-    assert.deepStrictEqual(parser("# abc\n\nA -> b ."), { productions: [["A", "b"]] });
+  it("comments", function () {
+    assert.deepStrictEqual(parser("# A -> a .\nA -> b ."), {
+      productions: [["A", "b"]]
+    });
+    assert.deepStrictEqual(parser("# abc\n\nA -> b ."), {
+      productions: [["A", "b"]]
+    });
     assert.deepStrictEqual(parser("# 123\n\n"), { productions: [] });
   });
 
-  describe("errors", function() {
-    it("missing arrow", function() {
-      assert.deepStrictEqual(parser("A -> a. B"), { error: new Error("Parse error") });
+  describe("errors", function () {
+    it("missing arrow", function () {
+      assert.deepStrictEqual(parser("A -> a. B"), {
+        error: new Error("Parse error")
+      });
       assert.deepStrictEqual(parser("A"), { error: new Error("Parse error") });
     });
 
-    it("missing nonterminal", function() {
-      assert.deepStrictEqual(parser("A -> a. ->"), { error: new Error("Parse error") });
-      assert.deepStrictEqual(parser("-> X"), { error: new Error("Parse error") });
+    it("missing nonterminal", function () {
+      assert.deepStrictEqual(parser("A -> a. ->"), {
+        error: new Error("Parse error")
+      });
+      assert.deepStrictEqual(parser("-> X"), {
+        error: new Error("Parse error")
+      });
     });
 
-    it("multiple nonterminals", function() {
-      assert.deepStrictEqual(parser("A B -> a."), { error: new Error("Parse error") });
+    it("multiple nonterminals", function () {
+      assert.deepStrictEqual(parser("A B -> a."), {
+        error: new Error("Parse error")
+      });
     });
 
-    it("stop that looks like part of a symbol", function() {
-      assert.deepStrictEqual(parser("A.y -> a."), { error: new Error("Parse error") });
-      assert.deepStrictEqual(parser("A -> x.y ."), { error: new Error("Parse error") });
+    it("stop that looks like part of a symbol", function () {
+      assert.deepStrictEqual(parser("A.y -> a."), {
+        error: new Error("Parse error")
+      });
+      assert.deepStrictEqual(parser("A -> x.y ."), {
+        error: new Error("Parse error")
+      });
     });
 
-    it("rules can't mix definition styles", function() {
-      assert.deepStrictEqual(parser("A -> a ;"), { error: new Error("Parse error") });
-      assert.deepStrictEqual(parser("A : a ."), { error: new Error("Parse error") });
+    it("rules can't mix definition styles", function () {
+      assert.deepStrictEqual(parser("A -> a ;"), {
+        error: new Error("Parse error")
+      });
+      assert.deepStrictEqual(parser("A : a ."), {
+        error: new Error("Parse error")
+      });
     });
 
-    it("symbols can't start with a number", function() {
-      assert.deepStrictEqual(parser("A -> 1 ."), { error: new Error("Parse error") });
+    it("symbols can't start with a number", function () {
+      assert.deepStrictEqual(parser("A -> 1 ."), {
+        error: new Error("Parse error")
+      });
     });
 
-    it("quoted symbols can't contain an unescaped newline", function() {
-      assert.deepStrictEqual(parser("\"A\n\" -> a ."), { error: new Error("Parse error") });
+    it("quoted symbols can't contain an unescaped newline", function () {
+      assert.deepStrictEqual(parser('"A\n" -> a .'), {
+        error: new Error("Parse error")
+      });
     });
   });
 });
