@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 export default function EditComponent({ spec, specChanged }) {
+  const { t } = useTranslation();
   return (
     <div id="edit">
       <div className="spec-wrap">
@@ -10,7 +12,7 @@ export default function EditComponent({ spec, specChanged }) {
             specChanged(e.target.value);
           }}
           value={spec}
-          placeholder="Type a grammar here..."
+          placeholder={t("editor.placeholder")}
         />
       </div>
     </div>

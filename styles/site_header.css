@@ -19,6 +19,7 @@
   padding: 0;
   margin: 0;
   justify-content: flex-end;
+  align-items: center;
 }
 
 #site-header a {
@@ -32,4 +33,26 @@
 
 #site-header a:hover {
   background: #444;
+}
+
+#language-switcher-container {
+  margin-left: 10px;
+}
+
+#language-switcher {
+  margin: 0;
+}
+
+#language-switcher select {
+  padding: 6px 8px;
+  font: 12pt helvetica;
+  border-radius: 4px;
+  border: none;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+#language-switcher select:hover {
+  background: #f0f0f0;
 }

@@ -46,23 +46,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a cycle"
+        "reason": {
+          "key": "grammar.error.cycle"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       }
     },
     "cycle": [
@@ -228,7 +238,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -258,7 +270,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a cycle"
+      "reason": {
+        "key": "grammar.error.cycle"
+      }
     },
     "ll1Table": {
       "S": {
@@ -336,7 +350,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -441,7 +457,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -488,7 +506,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -5418,11 +5438,15 @@ export default {
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
@@ -6276,7 +6300,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -6827,7 +6853,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -7179,11 +7207,15 @@ export default {
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
@@ -8303,7 +8335,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -9239,7 +9273,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -9722,11 +9758,15 @@ export default {
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
@@ -11133,7 +11173,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -12447,7 +12489,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -19366,18 +19410,24 @@ export default {
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -20142,7 +20192,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -20655,7 +20707,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -21491,7 +21545,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -21845,18 +21901,24 @@ export default {
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -22521,7 +22583,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -22980,7 +23044,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -23772,7 +23838,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -24540,18 +24608,24 @@ export default {
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -26295,7 +26369,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -27381,7 +27457,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -30666,7 +30744,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -31300,7 +31380,9 @@ export default {
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": true
@@ -32234,7 +32316,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -33629,7 +33713,9 @@ export default {
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": true
@@ -34755,7 +34841,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -36302,7 +36390,9 @@ export default {
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": true
@@ -40347,7 +40437,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -46305,15 +46397,21 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
@@ -46819,7 +46917,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -47032,7 +47132,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -47525,7 +47627,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -47811,15 +47915,21 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": true
@@ -48586,7 +48696,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S'": {
@@ -48876,7 +48988,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -49739,7 +49853,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -50010,15 +50126,21 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
@@ -50647,7 +50769,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -50926,7 +51050,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -51535,7 +51661,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -51719,7 +51847,9 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": true
@@ -52062,7 +52192,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -52878,7 +53010,9 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": true
@@ -53721,7 +53855,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -55103,7 +55239,9 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": true
@@ -55493,7 +55631,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "Emoticon": {
@@ -56385,22 +56525,30 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -57202,7 +57350,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -57400,7 +57550,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -57789,7 +57941,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -58666,7 +58820,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -59124,22 +59280,30 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -60029,7 +60193,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -60239,7 +60405,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "Value": {
@@ -60682,7 +60850,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -61824,7 +61994,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -62450,22 +62622,30 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -63716,7 +63896,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -63965,7 +64147,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -64473,7 +64657,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -65990,7 +66176,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -66453,23 +66641,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -67134,7 +67332,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -67270,7 +67470,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -67597,7 +67799,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -68194,7 +68398,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -68388,7 +68594,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -68829,23 +69037,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -69606,7 +69824,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -69800,7 +70020,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "A": {
@@ -70150,7 +70372,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -70940,7 +71164,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -71145,7 +71371,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -71438,23 +71666,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first/follow set clash"
+        "reason": {
+          "key": "grammar.error.firstFollowClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -71713,7 +71951,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -71760,7 +72000,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first/follow set clash"
+      "reason": {
+        "key": "grammar.error.firstFollowClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -71874,7 +72116,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -72048,7 +72292,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -72118,7 +72364,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -72328,23 +72576,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first/follow set clash"
+        "reason": {
+          "key": "grammar.error.firstFollowClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -72813,7 +73071,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -72896,7 +73156,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first/follow set clash"
+      "reason": {
+        "key": "grammar.error.firstFollowClash"
+      }
     },
     "ll1Table": {
       "A": {
@@ -73110,7 +73372,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -73486,7 +73750,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -73603,7 +73869,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -73996,23 +74264,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first/follow set clash"
+        "reason": {
+          "key": "grammar.error.firstFollowClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -74750,7 +75028,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -74898,7 +75178,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first/follow set clash"
+      "reason": {
+        "key": "grammar.error.firstFollowClash"
+      }
     },
     "ll1Table": {
       "A": {
@@ -75182,7 +75464,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -75790,7 +76074,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -75987,7 +76273,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -76450,11 +76738,15 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": true
@@ -77362,7 +77654,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "A": {
@@ -77652,7 +77946,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -79096,11 +79392,15 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": true
@@ -79988,7 +80288,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "TERM": {
@@ -80291,7 +80593,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -81985,11 +82289,15 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": true
@@ -83706,7 +84014,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "Line": {
@@ -84284,7 +84594,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -87823,15 +88135,21 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
@@ -88685,7 +89003,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -88991,7 +89311,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -89951,7 +90273,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -90363,15 +90687,21 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
@@ -91200,7 +91530,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "L": {
@@ -91546,7 +91878,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -92508,7 +92842,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -92947,15 +93283,21 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
@@ -93949,7 +94291,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "E": {
@@ -94305,7 +94649,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -95640,7 +95986,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -96010,15 +96358,21 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": true
@@ -96791,7 +97145,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -97112,7 +97468,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -97919,7 +98277,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -98217,7 +98577,9 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": true
@@ -98879,7 +99241,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "A": {
@@ -100127,7 +100491,9 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": true
@@ -100735,7 +101101,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -101875,7 +102243,9 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": true
@@ -102688,7 +103058,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -104170,7 +104542,9 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": true
@@ -104671,7 +105045,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -105564,22 +105940,30 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -106836,7 +107220,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -107073,7 +107459,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "E": {
@@ -107728,7 +108116,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -109322,7 +109712,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -109944,22 +110336,30 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -111035,7 +111435,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -111277,7 +111679,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -111718,7 +112122,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -113315,7 +113721,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -114053,22 +114461,30 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "lr1": {
         "member": true
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -115573,7 +115989,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -115889,7 +116307,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -116582,7 +117002,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -119596,7 +120018,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -120240,23 +120664,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -121101,7 +121535,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -121313,7 +121749,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -121718,7 +122156,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -122469,7 +122909,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -122702,7 +123144,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -123220,23 +123664,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first/follow set clash"
+        "reason": {
+          "key": "grammar.error.firstFollowClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -124431,7 +124885,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -124788,7 +125244,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first/follow set clash"
+      "reason": {
+        "key": "grammar.error.firstFollowClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -125221,7 +125679,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -127685,7 +128145,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -128404,7 +128866,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -128988,23 +129452,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -129514,7 +129988,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -129611,7 +130087,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "B": {
@@ -129849,7 +130327,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -130372,7 +130852,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -130549,7 +131031,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -130864,23 +131348,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first/follow set clash"
+        "reason": {
+          "key": "grammar.error.firstFollowClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -131471,7 +131965,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -131592,7 +132088,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first/follow set clash"
+      "reason": {
+        "key": "grammar.error.firstFollowClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -131854,7 +132352,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -132506,7 +133006,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -132706,7 +133208,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -133038,23 +133542,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -133639,7 +134153,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -133741,7 +134257,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "A": {
@@ -134004,7 +134522,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -134459,7 +134979,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -134600,7 +135122,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -135090,23 +135614,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -136356,7 +136890,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -136636,7 +137172,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "EXPR": {
@@ -137132,7 +137670,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -140182,7 +140722,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -140859,7 +141401,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -141392,23 +141936,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -142003,7 +142557,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -142102,7 +142658,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "A": {
@@ -142345,7 +142903,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -142726,7 +143286,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -142864,7 +143426,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -143276,23 +143840,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -144576,7 +145150,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -144907,7 +145483,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "A": {
@@ -145408,7 +145986,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -148847,7 +149427,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -149576,7 +150158,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -150122,23 +150706,33 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first/follow set clash"
+        "reason": {
+          "key": "grammar.error.firstFollowClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "lalr1": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       }
     },
     "cycle": null,
@@ -150746,7 +151340,9 @@ export default {
     ],
     "lalr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lalr1Table": [
       {
@@ -150874,7 +151470,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first/follow set clash"
+      "reason": {
+        "key": "grammar.error.firstFollowClash"
+      }
     },
     "ll1Table": {
       "A": {
@@ -151129,7 +151727,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -151744,7 +152344,9 @@ export default {
     ],
     "lr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr1Table": [
       {
@@ -151960,7 +152562,9 @@ export default {
     "removeUnreachableTransformation": [],
     "slr1Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "slr1Table": [
       {
@@ -152205,11 +152809,15 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": true
@@ -152469,7 +153077,9 @@ export default {
     "leftFactorTransformation": [],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "A": {
@@ -152566,7 +153176,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -153574,11 +154186,15 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a shift-reduce conflict"
+        "reason": {
+          "key": "grammar.error.shiftReduceConflict"
+        }
       },
       "slr1": {
         "member": true
@@ -155689,7 +156305,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "EXP": {
@@ -156347,7 +156965,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a shift-reduce conflict"
+      "reason": {
+        "key": "grammar.error.shiftReduceConflict"
+      }
     },
     "lr0Table": [
       {
@@ -162000,11 +162620,15 @@ export default {
     "classification": {
       "ll1": {
         "member": false,
-        "reason": "it contains a first set clash"
+        "reason": {
+          "key": "grammar.error.firstSetClash"
+        }
       },
       "lr0": {
         "member": false,
-        "reason": "it contains a reduce-reduce conflict"
+        "reason": {
+          "key": "grammar.error.reduceReduceConflict"
+        }
       },
       "slr1": {
         "member": true
@@ -163150,7 +163774,9 @@ export default {
     ],
     "ll1Classification": {
       "member": false,
-      "reason": "it contains a first set clash"
+      "reason": {
+        "key": "grammar.error.firstSetClash"
+      }
     },
     "ll1Table": {
       "S": {
@@ -163504,7 +164130,9 @@ export default {
     ],
     "lr0Classification": {
       "member": false,
-      "reason": "it contains a reduce-reduce conflict"
+      "reason": {
+        "key": "grammar.error.reduceReduceConflict"
+      }
     },
     "lr0Table": [
       {

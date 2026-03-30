@@ -1,0 +1,120 @@
+{
+  "app": {
+    "title": "Grammophone"
+  },
+  "header": {
+    "title": "Grammophone, a context-free grammar checker",
+    "help": "Help",
+    "examples": "Examples",
+    "github": "GitHub"
+  },
+  "blankSlate": {
+    "description": "<b>Grammophone</b> is a tool for analyzing and transforming context-free grammars. To start, enter a grammar and click <i>Analyze</i> or <i>Transform</i>.",
+    "exampleGrammars": "Example Grammars",
+    "analyze": "Analyze"
+  },
+  "examples": {
+    "arithmeticExpressions": "Arithmetic Expressions",
+    "danglingElse": "Dangling Else"
+  },
+  "editor": {
+    "placeholder": "Type a grammar here..."
+  },
+  "mode": {
+    "edit": "Edit",
+    "transform": "Transform",
+    "analyze": "Analyze",
+    "copyLink": "Copy Link",
+    "copied": "Copied!"
+  },
+  "analysis": {
+    "title": "Analysis",
+    "sanity": "Sanity Checks",
+    "short_sentences": "Example Sentences",
+    "sentences": "Example Sentences",
+    "nonterminals": "Nonterminals",
+    "parsing": "Parsing Algorithms",
+    "moreExampleSentences": "More example sentences",
+    "generateMoreSentences": "Generate more sentences",
+    "noExampleSentences": "No example sentences could be generated."
+  },
+  "sanity": {
+    "unreachableNonterminals": "The grammar has unreachable nonterminals: <symbols/>",
+    "allNonterminalsReachable": "All nonterminals are reachable.",
+    "unrealizableNonterminals": "The grammar has unrealizable nonterminals: <symbols/>",
+    "allNonterminalsRealizable": "All nonterminals are realizable.",
+    "cycle": "The grammar is cyclic: <symbols/> is a cycle.",
+    "noCycles": "The grammar contains no cycles.",
+    "nullAmbiguity": "The grammar contains a null ambiguity: <production1/> and <production2/> are ambiguously nullable.",
+    "nullUnambiguous": "The grammar is null unambiguous.",
+    "grammarIsAmbiguous": "The grammar is ambiguous: the sentence <sentence/> has an ambiguous derivation."
+  },
+  "parsing": {
+    "ll1": "LL(1)",
+    "lr0": "LR(0)",
+    "slr1": "SLR(1)",
+    "lr1": "LR(1)",
+    "lalr1": "LALR(1)",
+    "classification": "The grammar is {{algorithm}}.",
+    "notClassification": "Not {{algorithm}} — {{reason}}.",
+    "ll1_table": "LL(1) Parsing Table",
+    "lr0_table": "LR(0) Parsing Table",
+    "slr1_table": "SLR(1) Parsing Table",
+    "lr1_table": "LR(1) Parsing Table",
+    "lalr1_table": "LALR(1) Parsing Table",
+    "lr0_automaton": "LR(0) Automaton",
+    "lr1_automaton": "LR(1) Automaton",
+    "lalr1_automaton": "LALR(1) Automaton",
+    "parsingTable": "Parsing table",
+    "automaton": "Automaton"
+  },
+  "tables": {
+    "symbol": "Symbol",
+    "nullable": "Nullable?",
+    "nullableValue": "Nullable",
+    "endable": "Endable?",
+    "endableValue": "Endable",
+    "firstSet": "First set",
+    "followSet": "Follow set",
+    "state": "State"
+  },
+  "actions": {
+    "shift": "shift",
+    "reduce": "reduce",
+    "accept": "accept"
+  },
+  "language": {
+    "switcher": "Language",
+    "english": "English",
+    "simplifiedChinese": "简体中文",
+    "traditionalChinese": "繁體中文"
+  },
+  "grammar": {
+    "error": {
+      "parseError": "Error: Parse error",
+      "productionsMustBeArray": "Error: List of productions must be an array",
+      "grammarMustHaveProduction": "Error: A grammar must have at least one production",
+      "productionsMustBeArrays": "Error: Productions must be arrays",
+      "productionMustHaveSymbol": "Error: Productions must have at least one symbol",
+      "productionSymbolsMustBeStrings": "Error: Production symbols must be strings",
+      "reservedSymbol": "Error: Reserved symbol {{symbol}} may not be part of a production",
+      "emptySymbolNotAllowed": "Error: An empty symbol may not be part of a production",
+      "reduceReduceConflict": "it contains a reduce-reduce conflict",
+      "shiftReduceConflict": "it contains a shift-reduce conflict",
+      "nullAmbiguity": "it contains a null ambiguity",
+      "cycle": "it contains a cycle",
+      "firstSetClash": "it contains a first set clash",
+      "firstFollowClash": "it contains a first/follow set clash",
+      "unexpectedSymbol": "Unexpected symbol {{symbol}}"
+    },
+    "transformations": {
+      "expand": "Expand Nonterminal",
+      "removeImmediateLeftRecursion": "Remove Immediate Left Recursion",
+      "leftFactor": "Left Factor {{symbols}}",
+      "epsilonSeparate": "Epsilon-Separate",
+      "removeUnreachable": "Remove Unreachable Nonterminal",
+      "undo": "Undo {{transformation}}",
+      "redo": "Redo {{transformation}}"
+    }
+  }
+}

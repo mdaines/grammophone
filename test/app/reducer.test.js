@@ -29,7 +29,7 @@ describe("reducer", function () {
         spec: "invalid!",
         path: "/",
         mode: "edit",
-        error: new Error("Parse error")
+        error: { key: "grammar.error.parseError" }
       });
     });
 
@@ -38,7 +38,7 @@ describe("reducer", function () {
         spec: 'A -> "".',
         path: "/",
         mode: "edit",
-        error: new Error("An empty symbol may not be part of a production")
+        error: { key: "grammar.error.emptySymbolNotAllowed" }
       });
     });
   });
@@ -56,7 +56,7 @@ describe("reducer", function () {
           path: "/",
           mode: "edit",
           grammar: new Grammar([["A"]]),
-          error: new Error("Parse error")
+          error: { key: "grammar.error.parseError" }
         });
       });
 
@@ -137,7 +137,7 @@ describe("reducer", function () {
           path: "/",
           mode: "edit",
           grammar: undefined,
-          error: new Error("Parse error")
+          error: { key: "grammar.error.parseError" }
         });
       });
 

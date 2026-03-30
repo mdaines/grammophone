@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 let statusTimeout;
 
@@ -10,6 +11,7 @@ export default function ModeComponent({
   analyze,
   copySpecLink
 }) {
+  const { t } = useTranslation();
   function onChange(e) {
     if (e.target.value === "edit") {
       edit();
@@ -50,7 +52,7 @@ export default function ModeComponent({
           onChange={onChange}
         />
         <label className="left" htmlFor="mode-edit">
-          Edit
+          {t("mode.edit")}
         </label>
         <input
           id="mode-transform"
@@ -61,16 +63,16 @@ export default function ModeComponent({
           onChange={onChange}
         />
         <label className="right" htmlFor="mode-transform">
-          Transform
+          {t("mode.transform")}
         </label>
       </div>
 
       <button id="mode-analyze" disabled={mode !== "edit"} onClick={analyze}>
-        Analyze
+        {t("mode.analyze")}
       </button>
       <button id="mode-copy" onClick={handleCopy} ref={copyButtonRef}>
-        <span className="label">{"Copy Link"}</span>
-        <span className="status">{"Copied!"}</span>
+        <span className="label">{t("mode.copyLink")}</span>
+        <span className="status">{t("mode.copied")}</span>
       </button>
     </div>
   );

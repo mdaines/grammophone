@@ -1,15 +1,16 @@
 import PropTypes from "prop-types";
+import { useTranslation, Trans } from "react-i18next";
 
 const EXAMPLES = [
   [
-    "Arithmetic Expressions",
+    "examples.arithmeticExpressions",
     `exp -> exp "+" term | term .
 term -> term "*" factor | factor .
 factor -> "(" exp ")" | number .
 `
   ],
   [
-    "Dangling Else",
+    "examples.danglingElse",
     `statement -> if_stmt | other .
 if_stmt -> if "(" cond ")" statement |
   if "(" cond ")" statement else statement .
@@ -19,14 +20,17 @@ cond -> true | false .
 ];
 
 function Example({ name, src, loadExample }) {
+  const { t } = useTranslation();
   return (
     <>
-      <h3>{name}</h3>
+      <h3>{t(name)}</h3>
       <pre>
         <code>{src}</code>
       </pre>
       <p>
-        <button onClick={() => loadExample(src)}>Analyze</button>
+        <button onClick={() => loadExample(src)}>
+          {t("blankSlate.analyze")}
+        </button>
       </p>
     </>
   );
@@ -39,16 +43,18 @@ Example.propTypes = {
 };
 
 export default function BlankSlateComponent({ loadExample }) {
+  const { t } = useTranslation();
   return (
     <main id="blank-slate">
       <div className="message">
         <p>
-          <b>Grammophone</b> is a tool for analyzing and transforming
-          context-free grammars. To start, enter a grammar and click{" "}
-          <i>Analyze</i> or <i>Transform</i>.
+          <Trans
+            i18nKey="blankSlate.description"
+            components={{ b: <b />, i: <i /> }}
+          />
         </p>
 
-        <h2>Example Grammars</h2>
+        <h2>{t("blankSlate.exampleGrammars")}</h2>
 
         {EXAMPLES.map(([name, src]) => (
           <Example name={name} src={src} key={name} loadExample={loadExample} />

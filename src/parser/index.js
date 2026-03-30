@@ -35,7 +35,7 @@ export default function (src) {
 
   do {
     if (cursor.type.isError) {
-      return { error: new Error("Parse error") };
+      return { error: { key: "grammar.error.parseError" } };
     }
 
     if (cursor.name === "Head") {

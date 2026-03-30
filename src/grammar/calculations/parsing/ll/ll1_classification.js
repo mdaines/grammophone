@@ -10,13 +10,13 @@ export default function (calculations) {
   // We can return immediately if the grammar contains a null ambiguity.
 
   if (nullAmbiguity.length > 0) {
-    return { member: false, reason: "it contains a null ambiguity" };
+    return { member: false, reason: { key: "grammar.error.nullAmbiguity" } };
   }
 
   // Also, return immediately if the grammar contains a cycle.
 
   if (typeof cycle !== "undefined") {
-    return { member: false, reason: "it contains a cycle" };
+    return { member: false, reason: { key: "grammar.error.cycle" } };
   }
 
   const { productions, first, follow, terminals, nonterminals, nullable } =
@@ -47,7 +47,10 @@ export default function (calculations) {
 
     for (s of bodyFirst) {
       if (table[head][s]) {
-        return { member: false, reason: "it contains a first set clash" };
+        return {
+          member: false,
+          reason: { key: "grammar.error.firstSetClash" }
+        };
       }
 
       table[head][s] = true;
@@ -61,7 +64,10 @@ export default function (calculations) {
     if (
       SetOperations.any(SetOperations.intersection(first.get(k), follow.get(k)))
     ) {
-      return { member: false, reason: "it contains a first/follow set clash" };
+      return {
+        member: false,
+        reason: { key: "grammar.error.firstFollowClash" }
+      };
     }
   }
 

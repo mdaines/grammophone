@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import { formatSymbol, formatProduction } from "../../helpers.js";
 import { END } from "../../../grammar/symbols.js";
 
@@ -11,6 +12,7 @@ function isConflict(actions) {
 }
 
 export default function AbstractLRTableComponent({ grammar, table }) {
+  const { t } = useTranslation();
   const { productions, symbolInfo } = grammar.calculations;
 
   return (
@@ -21,7 +23,7 @@ export default function AbstractLRTableComponent({ grammar, table }) {
 
       <thead>
         <tr>
-          <th>State</th>
+          <th>{t("tables.state")}</th>
           {symbolInfo.terminalOrder.map(function (symbol, index) {
             return (
               <th key={"t" + index}>{formatSymbol(symbol, symbolInfo)}</th>
@@ -48,17 +50,21 @@ export default function AbstractLRTableComponent({ grammar, table }) {
                   let actions = [];
 
                   if (typeof state[s].shift !== "undefined") {
-                    actions.push(<li key="s">{`shift(${state[s].shift})`}</li>);
+                    actions.push(
+                      <li key="s">{`${t("actions.shift")}(${state[s].shift})`}</li>
+                    );
                   }
 
                   if (typeof state[s].reduce !== "undefined") {
                     state[s].reduce.forEach(function (p, index) {
                       if (p === -1) {
-                        actions.push(<li key={"r" + index}>{"accept"}</li>);
+                        actions.push(
+                          <li key={"r" + index}>{t("actions.accept")}</li>
+                        );
                       } else {
                         actions.push(
                           <li key={"r" + index}>
-                            {"reduce("}
+                            {`${t("actions.reduce")}(`}
                             {formatProduction(productions[p], symbolInfo)}
                             {")"}
                           </li>

@@ -1,16 +1,18 @@
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import { formatSymbol, formatProduction } from "../../helpers.js";
 import { END } from "../../../grammar/symbols.js";
 
 export const ID = "ll1_table";
-export const TITLE = "LL(1) Parsing Table";
+export const TITLE = "parsing." + ID;
 
 export default function LL1TableComponent({ grammar }) {
+  const { t } = useTranslation();
   const { symbolInfo, ll1Table: table, productions } = grammar.calculations;
 
   return (
     <section id={ID} className="analysis">
-      <h2>{TITLE}</h2>
+      <h2>{t(TITLE)}</h2>
 
       <table className="symbols ll1-table">
         <colgroup span="1"></colgroup>

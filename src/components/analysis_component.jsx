@@ -29,12 +29,15 @@ const ROUTES = {
       },
       { id: ParsingComponent.ID, component: ParsingComponent.default }
     ],
-    path: [{ title: "Analysis" }]
+    path: [{ title: "analysis.title" }]
   },
 
   "/ll1-table": {
     views: [{ id: LL1TableComponent.ID, component: LL1TableComponent.default }],
-    path: [{ path: "/", title: "Analysis" }, { title: LL1TableComponent.TITLE }]
+    path: [
+      { path: "/", title: "analysis.title" },
+      { title: LL1TableComponent.TITLE }
+    ]
   },
 
   "/lr0-automaton": {
@@ -42,14 +45,17 @@ const ROUTES = {
       { id: LR0AutomatonComponent.ID, component: LR0AutomatonComponent.default }
     ],
     path: [
-      { path: "/", title: "Analysis" },
+      { path: "/", title: "analysis.title" },
       { title: LR0AutomatonComponent.TITLE }
     ]
   },
 
   "/lr0-table": {
     views: [{ id: LR0TableComponent.ID, component: LR0TableComponent.default }],
-    path: [{ path: "/", title: "Analysis" }, { title: LR0TableComponent.TITLE }]
+    path: [
+      { path: "/", title: "analysis.title" },
+      { title: LR0TableComponent.TITLE }
+    ]
   },
 
   "/slr1-table": {
@@ -57,7 +63,7 @@ const ROUTES = {
       { id: SLR1TableComponent.ID, component: SLR1TableComponent.default }
     ],
     path: [
-      { path: "/", title: "Analysis" },
+      { path: "/", title: "analysis.title" },
       { title: SLR1TableComponent.TITLE }
     ]
   },
@@ -67,14 +73,17 @@ const ROUTES = {
       { id: LR1AutomatonComponent.ID, component: LR1AutomatonComponent.default }
     ],
     path: [
-      { path: "/", title: "Analysis" },
+      { path: "/", title: "analysis.title" },
       { title: LR1AutomatonComponent.TITLE }
     ]
   },
 
   "/lr1-table": {
     views: [{ id: LR1TableComponent.ID, component: LR1TableComponent.default }],
-    path: [{ path: "/", title: "Analysis" }, { title: LR1TableComponent.TITLE }]
+    path: [
+      { path: "/", title: "analysis.title" },
+      { title: LR1TableComponent.TITLE }
+    ]
   },
 
   "/lalr1-automaton": {
@@ -85,7 +94,7 @@ const ROUTES = {
       }
     ],
     path: [
-      { path: "/", title: "Analysis" },
+      { path: "/", title: "analysis.title" },
       { title: LALR1AutomatonComponent.TITLE }
     ]
   },
@@ -95,7 +104,7 @@ const ROUTES = {
       { id: LALR1TableComponent.ID, component: LALR1TableComponent.default }
     ],
     path: [
-      { path: "/", title: "Analysis" },
+      { path: "/", title: "analysis.title" },
       { title: LALR1TableComponent.TITLE }
     ]
   },
@@ -105,7 +114,7 @@ const ROUTES = {
       { id: SentencesComponent.ID, component: SentencesComponent.default }
     ],
     path: [
-      { path: "/", title: "Analysis" },
+      { path: "/", title: "analysis.title" },
       { title: SentencesComponent.TITLE }
     ]
   }

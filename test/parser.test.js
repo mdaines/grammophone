@@ -167,53 +167,55 @@ describe("parser", function () {
   describe("errors", function () {
     it("missing arrow", function () {
       assert.deepStrictEqual(parser("A -> a. B"), {
-        error: new Error("Parse error")
+        error: { key: "grammar.error.parseError" }
       });
-      assert.deepStrictEqual(parser("A"), { error: new Error("Parse error") });
+      assert.deepStrictEqual(parser("A"), {
+        error: { key: "grammar.error.parseError" }
+      });
     });
 
     it("missing nonterminal", function () {
       assert.deepStrictEqual(parser("A -> a. ->"), {
-        error: new Error("Parse error")
+        error: { key: "grammar.error.parseError" }
       });
       assert.deepStrictEqual(parser("-> X"), {
-        error: new Error("Parse error")
+        error: { key: "grammar.error.parseError" }
       });
     });
 
     it("multiple nonterminals", function () {
       assert.deepStrictEqual(parser("A B -> a."), {
-        error: new Error("Parse error")
+        error: { key: "grammar.error.parseError" }
       });
     });
 
     it("stop that looks like part of a symbol", function () {
       assert.deepStrictEqual(parser("A.y -> a."), {
-        error: new Error("Parse error")
+        error: { key: "grammar.error.parseError" }
       });
       assert.deepStrictEqual(parser("A -> x.y ."), {
-        error: new Error("Parse error")
+        error: { key: "grammar.error.parseError" }
       });
     });
 
     it("rules can't mix definition styles", function () {
       assert.deepStrictEqual(parser("A -> a ;"), {
-        error: new Error("Parse error")
+        error: { key: "grammar.error.parseError" }
       });
       assert.deepStrictEqual(parser("A : a ."), {
-        error: new Error("Parse error")
+        error: { key: "grammar.error.parseError" }
       });
     });
 
     it("symbols can't start with a number", function () {
       assert.deepStrictEqual(parser("A -> 1 ."), {
-        error: new Error("Parse error")
+        error: { key: "grammar.error.parseError" }
       });
     });
 
     it("quoted symbols can't contain an unescaped newline", function () {
       assert.deepStrictEqual(parser('"A\n" -> a .'), {
-        error: new Error("Parse error")
+        error: { key: "grammar.error.parseError" }
       });
     });
   });

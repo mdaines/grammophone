@@ -74,6 +74,96 @@ export function formatSymbolList(symbols, info, separator) {
   });
 }
 
+/**
+ * Format symbol list with custom renderer for i18n Trans component
+ * @param {Array} symbols - List of symbols to format
+ * @param {Object} info - Symbol information
+ * @param {string|Function} separator - Separator string or render function
+ * @param {Function} renderSymbol - Custom render function for each symbol (default: formatSymbol)
+ * @returns {Array} Formatted symbol list as React elements
+ */
+export function formatSymbolListWithRenderer(
+  symbols,
+  info,
+  separator,
+  renderSymbol
+) {
+  if (typeof separator === "undefined") {
+    separator = ", ";
+  }
+
+  if (!renderSymbol) {
+    renderSymbol = formatSymbol;
+  }
+
+  const elements = symbols.map((symbol, index) => {
+    const renderedSymbol = renderSymbol(symbol, info);
+    if (index > 0) {
+      return h(Fragment, { key: index }, separator, renderedSymbol);
+    } else {
+      return renderedSymbol;
+    }
+  });
+
+  // Wrap in Fragment for Trans component compatibility
+  return h(Fragment, null, ...elements);
+}
+
+/**
+ * Format sentence with custom renderer for i18n Trans component
+ * @param {Array} sentence - Sentence to format
+ * @param {Object} info - Symbol information
+ * @param {Function} renderSymbol - Custom render function for each symbol (default: formatSymbol)
+ * @returns {Array} Formatted sentence as React elements
+ */
+export function formatSentenceWithRenderer(sentence, info, renderSymbol) {
+  if (!renderSymbol) {
+    renderSymbol = formatSymbol;
+  }
+
+  if (sentence.length === 0) {
+    return renderSymbol(EPSILON, info);
+  }
+
+  return formatSymbolListWithRenderer(sentence, info, " ", renderSymbol);
+}
+
+/**
+ * Format production with custom renderer for i18n Trans component
+ * @param {Array} production - Production to format
+ * @param {Object} info - Symbol information
+ * @param {Function} renderSymbol - Custom render function for each symbol (default: formatSymbol)
+ * @returns {Array} Formatted production as React elements
+ */
+export function formatProductionWithRenderer(production, info, renderSymbol) {
+  if (!renderSymbol) {
+    renderSymbol = formatSymbol;
+  }
+
+  let symbols;
+
+  if (production.length > 1) {
+    symbols = formatSymbolListWithRenderer(
+      production.slice(1),
+      info,
+      " ",
+      renderSymbol
+    );
+  } else {
+    symbols = renderSymbol(EPSILON, info);
+  }
+
+  return h(
+    Fragment,
+    null,
+    renderSymbol(production[0], info),
+    " ",
+    ARROW,
+    " ",
+    symbols
+  );
+}
+
 function prettifySymbol(symbol) {
   return symbol.split(NONPRINTING_PATTERN).map((str, index) => {
     if (index % 2 == 1) {
@@ -205,42 +295,46 @@ export function bareFormatItem(item, start, productions, info) {
 }
 
 const TRANSFORMATION_FORMATTERS = {
-  expand: function () {
-    return "Expand Nonterminal";
+  expand: function (transformation, productions, info, t) {
+    return t("grammar.transformations.expand");
   },
 
-  removeImmediateLeftRecursion: function () {
-    return "Remove Immediate Left Recursion";
+  removeImmediateLeftRecursion: function (
+    transformation,
+    productions,
+    info,
+    t
+  ) {
+    return t("grammar.transformations.removeImmediateLeftRecursion");
   },
 
-  leftFactor: function (transformation, productions, info) {
-    return (
-      "Left Factor " +
-      bareFormatSymbols(
-        productions[transformation.production].slice(
-          1,
-          transformation.length + 1
-        ),
-        info
-      ).join(" ")
-    );
+  leftFactor: function (transformation, productions, info, t) {
+    const symbols = bareFormatSymbols(
+      productions[transformation.production].slice(
+        1,
+        transformation.length + 1
+      ),
+      info
+    ).join(" ");
+    return t("grammar.transformations.leftFactor", { symbols });
   },
 
-  epsilonSeparate: function () {
-    return "Epsilon-Separate";
+  epsilonSeparate: function (transformation, productions, info, t) {
+    return t("grammar.transformations.epsilonSeparate");
   },
 
-  removeUnreachable: function () {
-    return "Remove Unreachable Nonterminal";
+  removeUnreachable: function (transformation, productions, info, t) {
+    return t("grammar.transformations.removeUnreachable");
   }
 };
 
-export function formatTransformation(transformation, productions, info) {
+export function formatTransformation(transformation, productions, info, t) {
   return (
     TRANSFORMATION_FORMATTERS[transformation.name](
       transformation,
       productions,
-      info
+      info,
+      t
     ) || transformation.name
   );
 }

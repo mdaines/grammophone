@@ -88,7 +88,7 @@ export function classifyLR(table) {
       ) {
         return {
           member: false,
-          reason: "it contains a reduce-reduce conflict"
+          reason: { key: "grammar.error.reduceReduceConflict" }
         };
       }
 
@@ -97,7 +97,10 @@ export function classifyLR(table) {
         typeof table[i][s].reduce !== "undefined" &&
         table[i][s].reduce.length > 0
       ) {
-        return { member: false, reason: "it contains a shift-reduce conflict" };
+        return {
+          member: false,
+          reason: { key: "grammar.error.shiftReduceConflict" }
+        };
       }
     }
   }

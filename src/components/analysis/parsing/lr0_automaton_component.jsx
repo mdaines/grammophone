@@ -1,13 +1,15 @@
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import AbstractLRAutomatonComponent from "./abstract_lr_automaton_component.jsx";
 
 export const ID = "lr0_automaton";
-export const TITLE = "LR(0) Automaton";
+export const TITLE = "parsing." + ID;
 
 export default function LR0AutomatonComponent({ grammar }) {
+  const { t } = useTranslation();
   return (
     <section id={ID} className="analysis">
-      <h2>{TITLE}</h2>
+      <h2>{t(TITLE)}</h2>
       <AbstractLRAutomatonComponent
         grammar={grammar}
         automaton={grammar.calculations.lr0Automaton}

@@ -28,7 +28,7 @@ export function getFirst(
         break;
       }
     } else {
-      throw new Error("Unexpected symbol " + s);
+      throw { key: "grammar.error.unexpectedSymbol", options: { symbol: s } };
     }
   }
 
@@ -48,7 +48,7 @@ export function isNullable({ nullable, terminals, nonterminals }, symbols) {
     } else if (terminals.has(s)) {
       return false;
     } else {
-      throw new Error("Unexpected symbol " + s);
+      throw { key: "grammar.error.unexpectedSymbol", options: { symbol: s } };
     }
   }
 

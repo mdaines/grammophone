@@ -1,24 +1,26 @@
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import { formatSymbol, formatSymbolList, listSymbols } from "../helpers.js";
 
 export const ID = "nonterminals";
-export const TITLE = "Nonterminals";
+export const TITLE = "analysis." + ID;
 
 export default function NonterminalsComponent({ grammar }) {
+  const { t } = useTranslation();
   const { nullable, endable, first, follow, symbolInfo } = grammar.calculations;
 
   return (
     <section id={ID} className="analysis">
-      <h2>{TITLE}</h2>
+      <h2>{t(TITLE)}</h2>
 
       <table className="symbols">
         <thead>
           <tr>
-            <th>Symbol</th>
-            <th>Nullable?</th>
-            <th>Endable?</th>
-            <th>First set</th>
-            <th>Follow set</th>
+            <th>{t("tables.symbol")}</th>
+            <th>{t("tables.nullable")}</th>
+            <th>{t("tables.endable")}</th>
+            <th>{t("tables.firstSet")}</th>
+            <th>{t("tables.followSet")}</th>
           </tr>
         </thead>
 
@@ -30,8 +32,8 @@ export default function NonterminalsComponent({ grammar }) {
             return (
               <tr key={symbol}>
                 <td>{formatSymbol(symbol, symbolInfo)}</td>
-                <td>{nullable.has(symbol) ? "Nullable" : ""}</td>
-                <td>{endable.has(symbol) ? "Endable" : ""}</td>
+                <td>{nullable.has(symbol) ? t("tables.nullableValue") : ""}</td>
+                <td>{endable.has(symbol) ? t("tables.endableValue") : ""}</td>
                 <td>
                   {formatSymbolList(
                     listSymbols(firstSymbols, symbolInfo.terminalOrder),

@@ -1,75 +1,67 @@
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import { formatSentence } from "../helpers.js";
 import { takeFromIterator } from "../../grammar/sentences.js";
-import { Component } from "react";
+import { useState } from "react";
 
 function takePage(iterator) {
   return takeFromIterator(iterator, 20, 1000);
 }
 
 export const ID = "sentences";
-export const TITLE = "Example Sentences";
+export const TITLE = "analysis." + ID;
 
-class SentencesInternalComponent extends Component {
-  constructor(props) {
-    super(props);
+export default function SentencesInternalComponent({ grammar }) {
+  const { t } = useTranslation();
+  const { symbolInfo } = grammar.calculations;
+  const [state, setState] = useState(() => {
+    const iterator = grammar.exampleSentences();
+    return { iterator, sentences: takePage(iterator) };
+  });
 
-    const iterator = this.props.grammar.exampleSentences();
-
-    this.state = { iterator, sentences: takePage(iterator) };
-  }
-
-  more() {
-    const { values, done } = takePage(this.state.iterator);
+  function more() {
+    const { values, done } = takePage(state.iterator);
     const sentences = {
-      values: this.state.sentences.values.concat(values),
+      values: state.sentences.values.concat(values),
       done
     };
 
-    this.setState({ ...this.state, sentences });
+    setState({ ...state, sentences });
   }
 
-  render() {
-    const { symbolInfo } = this.props.grammar.calculations;
+  let examples;
 
-    let examples;
-
-    if (this.state.sentences.values.length == 0 && this.state.sentences.done) {
-      examples = <p>{"No example sentences could be generated."}</p>;
-    } else {
-      examples = (
-        <ul className="symbols">
-          {this.state.sentences.values.map((sentence, index) => {
-            return <li key={index}>{formatSentence(sentence, symbolInfo)}</li>;
-          })}
-        </ul>
-      );
-    }
-
-    return (
-      <section id={ID} className="analysis">
-        <h2>{TITLE}</h2>
-        {examples}
-        <p>
-          <button
-            disabled={this.state.done}
-            onClick={() => {
-              this.more();
-            }}
-          >
-            {"Generate more sentences"}
-          </button>
-        </p>
-      </section>
+  if (state.sentences.values.length == 0 && state.sentences.done) {
+    examples = <p>{t("analysis.noExampleSentences")}</p>;
+  } else {
+    examples = (
+      <ul className="symbols">
+        {state.sentences.values.map((sentence, index) => {
+          return <li key={index}>{formatSentence(sentence, symbolInfo)}</li>;
+        })}
+      </ul>
     );
   }
+
+  return (
+    <section id={ID} className="analysis">
+      <h2>{t(TITLE)}</h2>
+      {examples}
+      <p>
+        <button
+          disabled={state.done}
+          onClick={() => {
+            more();
+          }}
+        >
+          {t("analysis.generateMoreSentences")}
+        </button>
+      </p>
+    </section>
+  );
 }
 
-export default function SentencesComponent({ grammar }) {
-  return <SentencesInternalComponent key={grammar} grammar={grammar} />;
-}
-
-SentencesComponent.propTypes = {
+SentencesInternalComponent.propTypes = {
   grammar: PropTypes.shape({
     exampleSentences: PropTypes.func.isRequired,
     calculations: PropTypes.shape({
@@ -77,5 +69,3 @@ SentencesComponent.propTypes = {
     }).isRequired
   }).isRequired
 };
-
-SentencesInternalComponent.propTypes = SentencesComponent.propTypes;

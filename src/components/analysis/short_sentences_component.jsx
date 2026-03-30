@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import { formatSentence } from "../helpers.js";
 import { takeFromIterator } from "../../grammar/sentences.js";
 
 export const ID = "short_sentences";
-export const TITLE = "Example Sentences";
+export const TITLE = "analysis." + ID;
 
 export default function ShortSentencesComponent({ grammar }) {
+  const { t } = useTranslation();
   const { symbolInfo } = grammar.calculations;
   const iterator = grammar.exampleSentences();
   const { values, done } = takeFromIterator(iterator, 10, 1000);
@@ -13,7 +15,7 @@ export default function ShortSentencesComponent({ grammar }) {
   let examples, link;
 
   if (values.length == 0 && done) {
-    examples = <p>{"No example sentences could be generated."}</p>;
+    examples = <p>{t("analysis.noExampleSentences")}</p>;
   } else {
     examples = (
       <ul className="symbols">
@@ -27,14 +29,14 @@ export default function ShortSentencesComponent({ grammar }) {
   if (!done) {
     link = (
       <p>
-        <a href="#/sentences">{"More example sentences"}</a>
+        <a href="#/sentences">{t("analysis.moreExampleSentences")}</a>
       </p>
     );
   }
 
   return (
     <section id={ID} className="analysis">
-      <h2>{TITLE}</h2>
+      <h2>{t(TITLE)}</h2>
       {examples}
       {link}
     </section>

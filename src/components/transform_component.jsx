@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import { formatTransformation, formatSymbol } from "./helpers.js";
 import { Fragment } from "react";
 
@@ -6,7 +7,8 @@ function TransformPill({
   symbol,
   symbolInfo,
   productionTransformations,
-  productions
+  productions,
+  t
 }) {
   return (
     <span className="pill">
@@ -15,10 +17,15 @@ function TransformPill({
         <option disabled={true} value="symbol">
           {symbol}
         </option>
-        {productionTransformations.map(function (t, index) {
+        {productionTransformations.map(function (transformation, index) {
           return (
-            <option key={index} value={t.index}>
-              {formatTransformation(t.transformation, productions, symbolInfo)}
+            <option key={index} value={transformation.index}>
+              {formatTransformation(
+                transformation.transformation,
+                productions,
+                symbolInfo,
+                t
+              )}
             </option>
           );
         })}
@@ -31,7 +38,8 @@ TransformPill.propTypes = {
   symbol: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   symbolInfo: PropTypes.object.isRequired,
   productionTransformations: PropTypes.array.isRequired,
-  productions: PropTypes.array.isRequired
+  productions: PropTypes.array.isRequired,
+  t: PropTypes.func.isRequired
 };
 
 export default function TransformComponent({
@@ -42,6 +50,7 @@ export default function TransformComponent({
   redo,
   apply
 }) {
+  const { t } = useTranslation();
   const {
     allTransformations: transformations,
     symbolInfo,
@@ -81,8 +90,14 @@ export default function TransformComponent({
           undo();
         }}
       >
-        {"Undo "}
-        {formatTransformation(undoTransformation, productions, symbolInfo)}
+        {t("grammar.transformations.undo", {
+          transformation: formatTransformation(
+            undoTransformation,
+            productions,
+            symbolInfo,
+            t
+          )
+        })}
       </button>
     );
   }
@@ -95,8 +110,14 @@ export default function TransformComponent({
           redo();
         }}
       >
-        {"Redo "}
-        {formatTransformation(redoTransformation, productions, symbolInfo)}
+        {t("grammar.transformations.redo", {
+          transformation: formatTransformation(
+            redoTransformation,
+            productions,
+            symbolInfo,
+            t
+          )
+        })}
       </button>
     );
   }
@@ -128,6 +149,7 @@ export default function TransformComponent({
                     symbolInfo={symbolInfo}
                     productionTransformations={productionTransformations[i][j]}
                     productions={productions}
+                    t={t}
                   />
                 );
               } else {

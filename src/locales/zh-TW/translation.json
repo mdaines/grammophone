@@ -1,0 +1,120 @@
+{
+  "app": {
+    "title": "Grammophone"
+  },
+  "header": {
+    "title": "Grammophone，一個上下文無關文法檢查器",
+    "help": "幫助",
+    "examples": "示例",
+    "github": "GitHub"
+  },
+  "blankSlate": {
+    "description": "<b>Grammophone</b> 是一個用於分析和轉換上下文無關文法的工具。要開始，請輸入一個文法並點擊<i>分析</i>或<i>變換</i>。",
+    "exampleGrammars": "示例文法",
+    "analyze": "分析"
+  },
+  "examples": {
+    "arithmeticExpressions": "算術表達式",
+    "danglingElse": "懸空 else"
+  },
+  "editor": {
+    "placeholder": "在此輸入文法..."
+  },
+  "mode": {
+    "edit": "編輯",
+    "transform": "變換",
+    "analyze": "分析",
+    "copyLink": "複製連結",
+    "copied": "已複製！"
+  },
+  "analysis": {
+    "title": "分析",
+    "sanity": "健全性檢查",
+    "short_sentences": "示例句子",
+    "sentences": "示例句子",
+    "nonterminals": "非終結符",
+    "parsing": "語法分析演算法",
+    "moreExampleSentences": "更多示例句子",
+    "generateMoreSentences": "生成更多句子",
+    "noExampleSentences": "無法生成示例句子。"
+  },
+  "sanity": {
+    "unreachableNonterminals": "文法包含不可達的非終結符：<symbols/>",
+    "allNonterminalsReachable": "所有非終結符都是可達的。",
+    "unrealizableNonterminals": "文法包含不可實現的非終結符：<symbols/>",
+    "allNonterminalsRealizable": "所有非終結符都是可實現的。",
+    "cycle": "文法是循環的：<symbols/>。",
+    "noCycles": "文法不包含循環。",
+    "nullAmbiguity": "文法包含空歧義：<production1/> 和 <production2/> 是空歧義的。",
+    "nullUnambiguous": "文法是空無歧義的。",
+    "grammarIsAmbiguous": "文法是歧義的：句子 <sentence/> 有歧義的推導。"
+  },
+  "parsing": {
+    "ll1": "LL(1)",
+    "lr0": "LR(0)",
+    "slr1": "SLR(1)",
+    "lr1": "LR(1)",
+    "lalr1": "LALR(1)",
+    "classification": "該文法是 {{algorithm}} 文法。",
+    "notClassification": "該文法不是 {{algorithm}} 文法：{{reason}}",
+    "ll1_table": "LL(1) 分析表",
+    "lr0_table": "LR(0) 分析表",
+    "slr1_table": "SLR(1) 分析表",
+    "lr1_table": "LR(1) 分析表",
+    "lalr1_table": "LALR(1) 分析表",
+    "lr0_automaton": "LR(0) 自動機",
+    "lr1_automaton": "LR(1) 自動機",
+    "lalr1_automaton": "LALR(1) 自動機",
+    "parsingTable": "分析表",
+    "automaton": "自動機"
+  },
+  "tables": {
+    "symbol": "符號",
+    "nullable": "可為空？",
+    "nullableValue": "可為空",
+    "endable": "可結束？",
+    "endableValue": "可結束",
+    "firstSet": "First 集",
+    "followSet": "Follow 集",
+    "state": "狀態"
+  },
+  "actions": {
+    "shift": "移進",
+    "reduce": "歸約",
+    "accept": "接受"
+  },
+  "language": {
+    "switcher": "語言",
+    "english": "English",
+    "simplifiedChinese": "简体中文",
+    "traditionalChinese": "繁體中文"
+  },
+  "grammar": {
+    "error": {
+      "parseError": "錯誤：解析失敗",
+      "productionsMustBeArray": "錯誤：產生式列表必須是一個數組",
+      "grammarMustHaveProduction": "錯誤：文法必須至少包含一個產生式",
+      "productionsMustBeArrays": "錯誤：產生式必須是數組",
+      "productionMustHaveSymbol": "錯誤：產生式必須至少包含一個符號",
+      "productionSymbolsMustBeStrings": "錯誤：產生式符號必須是字符串",
+      "reservedSymbol": "錯誤：保留符號 {{symbol}} 不能作為產生式的一部分",
+      "emptySymbolNotAllowed": "錯誤：空符號不能作為產生式的一部分",
+      "reduceReduceConflict": "它包含一個歸約 - 歸約衝突",
+      "shiftReduceConflict": "它包含一個移進 - 歸約衝突",
+      "nullAmbiguity": "它包含一個空值歧義",
+      "cycle": "它包含一個循環",
+      "firstSetClash": "它存在 FIRST 集衝突",
+      "firstFollowClash": "它存在 FIRST/FOLLOW 集衝突",
+      "unexpectedSymbol": "意外的符號 {{symbol}}"
+    },
+    "transformations": {
+      "expand": "展開非終結符",
+      "removeImmediateLeftRecursion": "消除直接左遞歸",
+      "leftFactor": "提取左公因子 {{symbols}}",
+      "epsilonSeparate": "ε-分離",
+      "removeUnreachable": "移除不可達非終結符",
+      "undo": "撤銷 {{transformation}}",
+      "redo": "重做 {{transformation}}"
+    }
+  }
+}

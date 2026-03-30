@@ -10,37 +10,36 @@ export default class Grammar {
     var i, j;
 
     if (!(productions instanceof Array)) {
-      throw new Error("List of productions must be an array");
+      throw { key: "grammar.error.productionsMustBeArray" };
     }
 
     if (productions.length < 1) {
-      throw new Error("A grammar must have at least one production");
+      throw { key: "grammar.error.grammarMustHaveProduction" };
     }
 
     for (i = 0; i < productions.length; i++) {
       if (!(productions[i] instanceof Array)) {
-        throw new Error("Productions must be arrays");
+        throw { key: "grammar.error.productionsMustBeArrays" };
       }
 
       if (productions[i].length < 1) {
-        throw new Error("Productions must have at least one symbol");
+        throw { key: "grammar.error.productionMustHaveSymbol" };
       }
 
       for (j = 0; j < productions[i].length; j++) {
         if (typeof productions[i][j] !== "string") {
-          throw new Error("Production symbols must be strings");
+          throw { key: "grammar.error.productionSymbolsMustBeStrings" };
         }
 
         if (productions[i][j].match(/^Grammar\./)) {
-          throw new Error(
-            "Reserved symbol " +
-              productions[i][j] +
-              " may not be part of a production"
-          );
+          throw {
+            key: "grammar.error.reservedSymbol",
+            options: { symbol: productions[i][j] }
+          };
         }
 
         if (productions[i][j] === "") {
-          throw new Error("An empty symbol may not be part of a production");
+          throw { key: "grammar.error.emptySymbolNotAllowed" };
         }
       }
     }
