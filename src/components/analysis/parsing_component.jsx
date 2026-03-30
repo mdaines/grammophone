@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function formatClassification(cs, c, n) {
   if (cs[c].member) {
     return `The grammar is ${n}.`;
@@ -63,3 +65,11 @@ export default function ParsingComponent({ grammar }) {
     </section>
   );
 }
+
+ParsingComponent.propTypes = {
+  grammar: PropTypes.shape({
+    calculations: PropTypes.shape({
+      classification: PropTypes.object.isRequired
+    }).isRequired
+  }).isRequired
+};

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { formatSentence, formatSymbolList, listSymbols, formatProduction } from "../helpers.js";
 
 function formatUnreachable(unreachable, info) {
@@ -89,3 +90,17 @@ export default function SanityComponent({ grammar }) {
     </section>
   );
 }
+
+SanityComponent.propTypes = {
+  grammar: PropTypes.shape({
+    calculations: PropTypes.shape({
+      unreachable: PropTypes.instanceOf(Set).isRequired,
+      unrealizable: PropTypes.instanceOf(Set).isRequired,
+      cycle: PropTypes.array,
+      nullAmbiguity: PropTypes.array.isRequired,
+      productions: PropTypes.array.isRequired,
+      symbolInfo: PropTypes.object.isRequired
+    }).isRequired,
+    ambiguousSentenceExample: PropTypes.array
+  }).isRequired
+};

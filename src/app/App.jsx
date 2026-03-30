@@ -1,8 +1,9 @@
 import { useReducer, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import { reducer, init } from "./reducer.js";
 import ApplicationComponent from "../components/application_component.jsx";
 
-export default function App({ initialSpec, onResize }) {
+export default function App({ initialSpec }) {
   const [state, dispatch] = useReducer(reducer, initialSpec, init);
   const appRef = useRef(null);
 
@@ -23,7 +24,7 @@ export default function App({ initialSpec, onResize }) {
     window.location.hash = state.path;
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
-  }, []);
+  }, [state.path]);
 
   return (
     <div id="app" ref={appRef}>
@@ -48,3 +49,7 @@ export default function App({ initialSpec, onResize }) {
     </div>
   );
 }
+
+App.propTypes = {
+  initialSpec: PropTypes.string.isRequired
+};

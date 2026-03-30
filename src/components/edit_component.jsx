@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function EditComponent({ spec, specChanged }) {
   return (
     <div id="edit">
@@ -7,3 +9,8 @@ export default function EditComponent({ spec, specChanged }) {
     </div>
   );
 }
+
+EditComponent.propTypes = {
+  spec: PropTypes.string.isRequired,
+  specChanged: PropTypes.func.isRequired
+};

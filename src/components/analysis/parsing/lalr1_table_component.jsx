@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import AbstractLRTableComponent from "./abstract_lr_table_component.jsx";
 
 export const ID = "lalr1_table";
@@ -14,3 +15,7 @@ export default function LALR1TableComponent({ grammar }) {
     </section>
   );
 }
+
+LALR1TableComponent.propTypes = {
+  grammar: PropTypes.object.isRequired
+};

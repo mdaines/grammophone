@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useRef } from "react";
 
 let statusTimeout;
@@ -16,7 +17,7 @@ export default function ModeComponent({ mode, edit, transform, analyze, copySpec
       copyButtonRef.current?.classList.add("show-status");
 
       clearTimeout(statusTimeout);
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         statusTimeout = setTimeout(resolve, 1000);
       });
     })
@@ -47,3 +48,11 @@ export default function ModeComponent({ mode, edit, transform, analyze, copySpec
     </div>
   );
 }
+
+ModeComponent.propTypes = {
+  mode: PropTypes.string.isRequired,
+  edit: PropTypes.func.isRequired,
+  transform: PropTypes.func.isRequired,
+  analyze: PropTypes.func.isRequired,
+  copySpecLink: PropTypes.func.isRequired
+};

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { formatSentence } from "../helpers.js";
 import { takeFromIterator } from "../../grammar/sentences.js";
 
@@ -37,3 +38,12 @@ export default function ShortSentencesComponent({ grammar }) {
     </section>
   );
 }
+
+ShortSentencesComponent.propTypes = {
+  grammar: PropTypes.shape({
+    calculations: PropTypes.shape({
+      symbolInfo: PropTypes.object.isRequired
+    }).isRequired,
+    exampleSentences: PropTypes.func.isRequired
+  }).isRequired
+};

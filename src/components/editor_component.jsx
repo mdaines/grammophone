@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import EditComponent from "./edit_component.jsx";
 import ErrorComponent from "./error_component.jsx";
 import AnalysisComponent from "./analysis_component.jsx";
@@ -26,3 +27,19 @@ export default function EditorComponent({ spec, updateSpec, mode, edit, transfor
     </div>
   );
 }
+
+EditorComponent.propTypes = {
+  spec: PropTypes.string.isRequired,
+  updateSpec: PropTypes.func.isRequired,
+  mode: PropTypes.string.isRequired,
+  edit: PropTypes.func.isRequired,
+  transform: PropTypes.func.isRequired,
+  analyze: PropTypes.func.isRequired,
+  error: PropTypes.object,
+  grammar: PropTypes.object,
+  transformStack: PropTypes.array.isRequired,
+  transformIndex: PropTypes.number.isRequired,
+  undoTransformation: PropTypes.func.isRequired,
+  redoTransformation: PropTypes.func.isRequired,
+  applyTransformation: PropTypes.func.isRequired
+};

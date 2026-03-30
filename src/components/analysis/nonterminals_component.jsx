@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { formatSymbol, formatSymbolList, listSymbols } from "../helpers.js";
 
 export const ID = "nonterminals";
@@ -43,3 +44,18 @@ export default function NonterminalsComponent({ grammar }) {
     </section>
   );
 }
+
+NonterminalsComponent.propTypes = {
+  grammar: PropTypes.shape({
+    calculations: PropTypes.shape({
+      nullable: PropTypes.instanceOf(Set).isRequired,
+      endable: PropTypes.instanceOf(Set).isRequired,
+      first: PropTypes.instanceOf(Map).isRequired,
+      follow: PropTypes.instanceOf(Map).isRequired,
+      symbolInfo: PropTypes.shape({
+        productionOrder: PropTypes.array.isRequired,
+        terminalOrder: PropTypes.array.isRequired
+      }).isRequired
+    }).isRequired
+  }).isRequired
+};

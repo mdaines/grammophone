@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { bareFormatItem, bareFormatSymbol } from "../../helpers.js";
 import VizComponent from "./viz_component.jsx";
 
@@ -48,3 +49,9 @@ function transform(grammar, automaton, table) {
 export default function AbstractLRAutomatonComponent({ grammar, automaton, table }) {
   return <VizComponent src={transform(grammar, automaton, table)} />;
 }
+
+AbstractLRAutomatonComponent.propTypes = {
+  grammar: PropTypes.object.isRequired,
+  automaton: PropTypes.array.isRequired,
+  table: PropTypes.array.isRequired
+};

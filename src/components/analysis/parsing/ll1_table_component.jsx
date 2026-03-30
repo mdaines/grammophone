@@ -1,4 +1,5 @@
-import { fillArray, formatSymbol, formatProduction } from "../../helpers.js";
+import PropTypes from "prop-types";
+import { formatSymbol, formatProduction } from "../../helpers.js";
 import { END } from "../../../grammar/symbols.js";
 
 export const ID = "ll1_table";
@@ -61,3 +62,13 @@ export default function LL1TableComponent({ grammar }) {
     </section>
   );
 }
+
+LL1TableComponent.propTypes = {
+  grammar: PropTypes.shape({
+    calculations: PropTypes.shape({
+      symbolInfo: PropTypes.object.isRequired,
+      ll1Table: PropTypes.object.isRequired,
+      productions: PropTypes.array.isRequired
+    }).isRequired
+  }).isRequired
+};

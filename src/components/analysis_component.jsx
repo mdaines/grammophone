@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import PathComponent from "./analysis/path_component.jsx";
 
 import * as NonterminalsComponent from "./analysis/nonterminals_component.jsx";
@@ -104,3 +105,8 @@ export default function AnalysisComponent({ grammar, path }) {
     </main>
   );
 }
+
+AnalysisComponent.propTypes = {
+  grammar: PropTypes.object.isRequired,
+  path: PropTypes.string.isRequired
+};

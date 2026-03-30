@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const EXAMPLES = [
   ["Arithmetic Expressions", `exp -> exp "+" term | term .
 term -> term "*" factor | factor .
@@ -20,6 +22,12 @@ function Example({ name, src, loadExample }) {
   );
 }
 
+Example.propTypes = {
+  name: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  loadExample: PropTypes.func.isRequired
+};
+
 export default function BlankSlateComponent({ loadExample }) {
   return (
     <main id="blank-slate">
@@ -33,3 +41,7 @@ export default function BlankSlateComponent({ loadExample }) {
     </main>
   );
 }
+
+BlankSlateComponent.propTypes = {
+  loadExample: PropTypes.func.isRequired
+};

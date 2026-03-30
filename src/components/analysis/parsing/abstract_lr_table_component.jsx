@@ -1,4 +1,5 @@
-import { fillArray, formatSymbol, formatProduction } from "../../helpers.js";
+import PropTypes from "prop-types";
+import { formatSymbol, formatProduction } from "../../helpers.js";
 import { END } from "../../../grammar/symbols.js";
 
 function isConflict(actions) {
@@ -97,3 +98,18 @@ export default function AbstractLRTableComponent({ grammar, table }) {
     </table>
   );
 }
+
+AbstractLRTableComponent.propTypes = {
+  grammar: PropTypes.shape({
+    calculations: PropTypes.shape({
+      productions: PropTypes.array.isRequired,
+      symbolInfo: PropTypes.shape({
+        terminals: PropTypes.instanceOf(Set).isRequired,
+        nonterminals: PropTypes.instanceOf(Set).isRequired,
+        terminalOrder: PropTypes.array.isRequired,
+        nonterminalOrder: PropTypes.array.isRequired
+      }).isRequired
+    }).isRequired
+  }).isRequired,
+  table: PropTypes.array.isRequired
+};

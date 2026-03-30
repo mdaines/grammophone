@@ -1,33 +1,36 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
+import PropTypes from "prop-types";
 
 let dragging = false;
 let dragOffset;
 
 export default function ResizeComponent({ onResize }) {
-  function handleMouseDown(e) {
+  const resizeRef = useRef();
+
+  const handleMouseDown = useCallback((e) => {
     e.preventDefault();
 
     const resizeRect = resizeRef.current.getBoundingClientRect();
 
     dragging = true;
     dragOffset = Math.round(e.clientX - resizeRect.left);
-  }
+  }, []);
 
-  function handleMouseMove(e) {
+  const handleMouseMove = useCallback(() => {
     if (dragging) {
-      const width = Math.max(0, e.clientX - dragOffset);
+      const width = Math.max(0, window.event.clientX - dragOffset);
       onResize(width);
     }
-  }
+  }, [onResize]);
 
-  function handleMouseUp() {
+  const handleMouseUp = useCallback(() => {
     if (dragging) {
       const resizeRect = resizeRef.current.getBoundingClientRect();
       onResize(resizeRect.left);
     }
 
     dragging = false;
-  }
+  }, [onResize]);
 
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
@@ -37,9 +40,7 @@ export default function ResizeComponent({ onResize }) {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, []);
-
-  let resizeRef = useRef();
+  }, [handleMouseMove, handleMouseUp]);
 
   return (
     <div id="resize" ref={resizeRef} onMouseDown={handleMouseDown}>
@@ -48,3 +49,7 @@ export default function ResizeComponent({ onResize }) {
     </div>
   );
 }
+
+ResizeComponent.propTypes = {
+  onResize: PropTypes.func.isRequired
+};

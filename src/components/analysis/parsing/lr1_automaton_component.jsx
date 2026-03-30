@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import AbstractLRAutomatonComponent from "./abstract_lr_automaton_component.jsx";
 
 export const ID = "lr1_automaton";
@@ -15,4 +16,8 @@ export default function LR1AutomatonComponent({ grammar }) {
     </section>
   );
 }
+
+LR1AutomatonComponent.propTypes = {
+  grammar: PropTypes.object.isRequired
+};
 

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useRef, useEffect } from "react";
 
 let vizPromise;
@@ -25,3 +26,7 @@ export default function VizComponent({ src }) {
 
   return <div ref={containerRef} />;
 }
+
+VizComponent.propTypes = {
+  src: PropTypes.object.isRequired
+};

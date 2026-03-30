@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { formatSentence } from "../helpers.js";
 import { takeFromIterator } from "../../grammar/sentences.js";
 import { Component } from "react";
@@ -57,3 +58,14 @@ class SentencesInternalComponent extends Component {
 export default function SentencesComponent({ grammar }) {
   return <SentencesInternalComponent key={grammar} grammar={grammar} />;
 }
+
+SentencesComponent.propTypes = {
+  grammar: PropTypes.shape({
+    exampleSentences: PropTypes.func.isRequired,
+    calculations: PropTypes.shape({
+      symbolInfo: PropTypes.object.isRequired
+    }).isRequired
+  }).isRequired
+};
+
+SentencesInternalComponent.propTypes = SentencesComponent.propTypes;

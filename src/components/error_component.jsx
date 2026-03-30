@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function ErrorComponent({ error }) {
   return (
     <div id="error">
@@ -5,3 +7,7 @@ export default function ErrorComponent({ error }) {
     </div>
   );
 }
+
+ErrorComponent.propTypes = {
+  error: PropTypes.object
+};

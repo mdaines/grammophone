@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import AbstractLRTableComponent from "./abstract_lr_table_component.jsx";
 
 export const ID = "slr1_table";
@@ -14,3 +15,7 @@ export default function SLR1TableComponent({ grammar }) {
     </section>
   );
 }
+
+SLR1TableComponent.propTypes = {
+  grammar: PropTypes.object.isRequired
+};

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Fragment } from "react";
 
 export default function PathComponent({ path }) {
@@ -22,3 +23,12 @@ export default function PathComponent({ path }) {
     <nav id="path">{segments}</nav>
   );
 }
+
+PathComponent.propTypes = {
+  path: PropTypes.arrayOf(
+    PropTypes.shape({
+      path: PropTypes.string,
+      title: PropTypes.string.isRequired
+    })
+  ).isRequired
+};

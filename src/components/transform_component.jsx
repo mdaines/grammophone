@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { formatTransformation, formatSymbol } from "./helpers.js";
 import { Fragment } from "react";
 
@@ -20,6 +21,13 @@ function TransformPill({ symbol, symbolInfo, productionTransformations, producti
     </span>
   );
 }
+
+TransformPill.propTypes = {
+  symbol: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  symbolInfo: PropTypes.object.isRequired,
+  productionTransformations: PropTypes.array.isRequired,
+  productions: PropTypes.array.isRequired
+};
 
 export default function TransformComponent({ grammar, stack, index, undo, redo, apply }) {
   const { allTransformations: transformations, symbolInfo, productions } = grammar.calculations;
@@ -117,3 +125,18 @@ export default function TransformComponent({ grammar, stack, index, undo, redo, 
     </div>
   );
 }
+
+TransformComponent.propTypes = {
+  grammar: PropTypes.shape({
+    calculations: PropTypes.shape({
+      allTransformations: PropTypes.array.isRequired,
+      symbolInfo: PropTypes.object.isRequired,
+      productions: PropTypes.array.isRequired
+    }).isRequired
+  }).isRequired,
+  stack: PropTypes.array.isRequired,
+  index: PropTypes.number.isRequired,
+  undo: PropTypes.func.isRequired,
+  redo: PropTypes.func.isRequired,
+  apply: PropTypes.func.isRequired
+};
