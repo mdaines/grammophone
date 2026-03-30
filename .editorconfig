@@ -1,0 +1,49 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# Top-level configuration, indicating this is the root configuration file
+root = true
+
+# Default configuration for all files
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# JavaScript and JSX files
+[*.{js,jsx}]
+indent_size = 2
+indent_style = space
+
+# JSON files
+[*.json]
+indent_size = 2
+indent_style = space
+
+# CSS files
+[*.css]
+indent_size = 2
+indent_style = space
+
+# HTML files
+[*.html]
+indent_size = 2
+indent_style = space
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
+
+# YAML files
+[*.{yml,yaml}]
+indent_size = 2
+indent_style = space
+
+# Ignore node_modules and dist directories
+[{node_modules,dist}/**]
+indent_size = 0
+indent_style = unset
+insert_final_newline = false
+trim_trailing_whitespace = false

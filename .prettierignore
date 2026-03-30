@@ -1,0 +1,15 @@
+# Ignore all node_modules directories
+node_modules/
+# Ignore build output directory
+dist/
+# Ignore yarn lock file
+yarn.lock
+# Ignore log files
+*.log
+# Ignore system files
+.DS_Store
+Thumbs.db
+# Ignore auto-generated files
+src/parser/rules.js
+src/parser/rules.terms.js
+test/fixtures/example_output.js

@@ -17,16 +17,22 @@
   "devDependencies": {
     "@lezer/generator": "^1.2.2",
     "eslint": "^9.7.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "mocha": "^11.7.5",
-    "parcel": "^2.8.3"
+    "parcel": "^2.8.3",
+    "prettier": "^3.8.1"
   },
   "scripts": {
     "generate-lezer-parser": "lezer-generator --output src/parser/rules.js src/parser/rules.grammar",
+    "format": "prettier --write \"src/**/*.{js,jsx,json,css,md,html}\" \"test/**/*.{js,jsx,json}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,json,css,md,html}\" \"test/**/*.{js,jsx,json}\"",
     "lint": "eslint src test",
+    "lint:fix": "eslint src test --fix",
     "test": "mocha --recursive --extension \".test.js\"",
-    "build": "parcel build --no-autoinstall --no-cache",
+    "build": "yarn run format && yarn run lint && yarn run test && parcel build --no-autoinstall --no-cache",
     "serve": "parcel serve --no-autoinstall --no-cache"
   },
   "alias": {
